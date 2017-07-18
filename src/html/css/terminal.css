@@ -1,0 +1,9 @@
+body {
+	background-color: #000000;
+}
+
+span {
+	font-family: "Ubuntu Mono", "Courier", monospace;
+	color: #FFFFFF;
+	font-size: 14pt;
+}

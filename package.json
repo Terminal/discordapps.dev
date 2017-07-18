@@ -1,0 +1,53 @@
+{
+	"name": "ls",
+	"version": "1.0.0",
+	"description": "The Express server that hosts the bot directory listing.",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Terminal/ls.git"
+	},
+	"author": "7coil",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Terminal/ls/issues"
+	},
+	"homepage": "https://github.com/Terminal/ls#readme",
+	"dependencies": {
+		"config": "^1.26.1",
+		"consolidate": "^0.14.5",
+		"express": "^4.15.3",
+		"mustache": "^2.3.0",
+		"path": "^0.12.7",
+		"rethinkdb": "^2.3.3"
+	},
+	"devDependencies": {
+		"eslint": "^4.2.0",
+		"eslint-config-airbnb-base": "^11.2.0",
+		"eslint-plugin-import": "^2.7.0"
+	},
+	"eslintConfig": {
+		"extends": "airbnb-base",
+		"plugins": [
+			"import"
+		],
+		"rules": {
+			"indent": [
+				2,
+				"tab"
+			],
+			"no-tabs": 0,
+			"comma-dangle": 0,
+			"max-len": 0,
+			"no-console": 0,
+			"no-param-reassign": 0
+		},
+		"env": {
+			"node": true,
+			"browser": true
+		}
+	}
+}

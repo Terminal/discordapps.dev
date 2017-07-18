@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/css/terminal.css">
+		<title>ls</title>
+	</head>
+	<body>
+		<pre><span id="typing"></span></pre>
+		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+		<script>
+			const typing = new Typed('#typing', {
+				strings: [
+`{{code}} - {{message}}`
+				],
+				typeSpeed: 0,
+				backSpeed: 0,
+				cursorChar: '_',
+				fadeOut: true,
+				loop: false
+			});
+		</script>
+	</body>
+</html>

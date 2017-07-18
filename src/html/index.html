@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="/css/terminal.css">
+		<title>ls</title>
+	</head>
+	<body>
+		<pre><span id="typing"></span></pre>
+		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+		<script>
+			const typing = new Typed('#typing', {
+	strings: [
+		`Welcome to the Terminal Bot List API server.
+Please submit every request with <b>Authorization</b> header.
+
+<b>GET /bots</b> Get info on every bot
+<b>GET /bots/:id</b> Get info for a specific bot
+
+{
+	"userid": "5318008",
+	"iframe": "https://ls.terminal.ink/",
+	"guilds": 530,
+	"owners": [
+		"25565",
+		"3400"
+	]
+}
+
+<b>POST /bots/:id</b> Update info for a specific bot.
+
+{
+	"server_count": 50,
+	"shard_id": 0,
+	"shard_count": 2
+}
+
+<b>GET /users/:id</b> Get info for a specific dev.
+
+{
+	"userid": "25565",
+	"iframe": "https://ls.terminal.ink/",
+	"bots": [
+		"5318008"
+	]
+}
+
+Your token is: <i>{{ eh }}</i>
+
+terminal@terminal.ink:/$`
+	],
+	typeSpeed: 0,
+	backSpeed: 0,
+	cursorChar: '_',
+	fadeOut: true,
+	loop: false
+});
+		</script>
+	</body>
+</html>
