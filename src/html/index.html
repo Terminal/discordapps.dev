@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+		<link href="css/ls.css" rel="stylesheet">
+		<link href="img/favicon.png" rel="shortcut-icon">
+		<link href="img/favicon.png" rel="icon">
+		<title>ls</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-light bg-faded">
+			<a class="navbar-brand" href="#">Navbar!</a>
+		</nav>
+		<main>
+			<div class="jumbotron">
+				<h1 display="display-3"><kbd>terminal@terminal.ink:~/$ ls</kbd></h1>
+				<p class="lead">These bots are certified by professional bot developers, who deem the bots below suitable for larger guilds, for capacity, ease of use and features.</p>
+			</div>
+			<div class="container">
+				<div class="row">
+					{{ #bots }}
+					<div class="col-12 col-lg-6">
+						<div class="media">
+							<img class="d-flex mr-3 icon" src="{{ img }}" alt="Generic placeholder image">
+							<div class="media-body">
+								<h5 class="mt-0">{{ name }}</h5>
+								{{ short }}
+							</div>
+						</div>
+						{{{ html }}}
+					</div>
+					{{ /bots }}
+				</div>
+			</div>
+		</main>
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+	</body>
+</html>

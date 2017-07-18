@@ -2,8 +2,12 @@ body {
 	background-color: #000000;
 }
 
-span {
-	font-family: "Ubuntu Mono", "Courier", monospace;
+h1, h2, h3, h4, h5, h6, p {
+	font-family: "Roboto", "Ubuntu", "Arial", sans-serif;
 	color: #FFFFFF;
-	font-size: 14pt;
+}
+
+pre {
+	font-family: "Roboto Mono", "Ubuntu Mono", "Courier", monospace;
+	color: #FFFFFF;
 }

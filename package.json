@@ -17,9 +17,11 @@
 	},
 	"homepage": "https://github.com/Terminal/ls#readme",
 	"dependencies": {
+		"bulma": "^0.4.3",
 		"config": "^1.26.1",
 		"consolidate": "^0.14.5",
 		"express": "^4.15.3",
+		"marked": "^0.3.6",
 		"mustache": "^2.3.0",
 		"path": "^0.12.7",
 		"rethinkdb": "^2.3.3"
