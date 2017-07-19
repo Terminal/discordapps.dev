@@ -45,6 +45,8 @@ app.set('views', path.join(__dirname, 'html'))
 									bot.html = mustache.render('<iframe class="botiframe" src="{{ iframe }}"></iframe>', { iframe: render.long.value });
 								} else if (render.long.type === 'markdown') {
 									bot.html = mustache.render('<div class="botdesc">{{{ content }}}</div>', { content: marked(render.long.value) });
+								} else {
+									bot.html = '<div class="botdesc"><h1>Invalid Bot render type</h1></div>';
 								}
 								return render;
 							});

@@ -21,26 +21,25 @@
 					<li class="nav-item">
 						<a class="nav-link" href="/api">API Documentation</a>
 					</li>
-					{{#user}}
+					{{ #user }}
 					<li class="nav-item">
 						<a class="nav-link" href="/user">{{ username }}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/auth/logout">Log out</a>
 					</li>
-					{{/user}}
-					{{^user}}
+					{{ /user }}
+					{{ ^user }}
 					<li class="nav-item dropdown">
 						<a class="nav-link" href="/auth/">Log in</a>
 					</li>
-					{{/user}}
+					{{ /user }}
 				</ul>
 			</div>
 		</nav>
 		<main>
 			<div class="jumbotron">
 				<div class="container">
-					<br><br>
 					<p class="lead"><span id="typing" class="code"></span></p>
 				</div>
 			</div>
@@ -59,8 +58,18 @@
 					</div>
 					{{ /bots }}
 				</div>
+				{{ ^bots }}
+				<h1>Jinkies!</h1>
+				<p>We've come up empty.</p>
+				{{ /bots }}
 			</div>
 		</main>
+		<footer>
+			<div class="container">
+				<hr>
+				<p>Copyright 2017 - ls.terminal.ink</p>
+			</div>
+		</footer>
 
 		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
 		<script src="js/index-type.js"></script>

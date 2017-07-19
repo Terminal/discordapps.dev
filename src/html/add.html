@@ -1,1 +1,68 @@
-{{ csrf }}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="terminal.ink Discord Bot directory listing">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+		<link href="css/ls.css" rel="stylesheet">
+		<link href="img/favicon.png" rel="shortcut-icon">
+		<link href="img/favicon.png" rel="icon">
+		<title>ls</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="/">terminal@terminal.ink:~/$ ls</a>
+			<div class="navbar-collapse collapse" id="navbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/api">API Documentation</a>
+					</li>
+					{{ #user }}
+					<li class="nav-item">
+						<a class="nav-link" href="/user">{{ username }}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/auth/logout">Log out</a>
+					</li>
+					{{ /user }}
+					{{ ^user }}
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="/auth/">Log in</a>
+					</li>
+					{{ /user }}
+				</ul>
+			</div>
+		</nav>
+		<main>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<form method="post">
+							<small class="form-text text-muted">Welcome to </small>
+							<div class="form-group">
+								<label for="name">Bot ID</label>
+								<input type="text" class="form-control" id="name" name="name" placeholder="Insert Name">
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button><input type="text" name="csrf" value="{{ csrf }}" style="visibility: hidden">
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="container">
+				<hr>
+				<p>Copyright 2017 - ls.terminal.ink</p>
+			</div>
+		</footer>
+
+		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+	</body>
+</html>

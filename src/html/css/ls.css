@@ -23,3 +23,7 @@ iframe {
 .code {
 	font-family: "Roboto Mono", "Ubuntu Mono", "Courier", monospace;
 }
+
+body {
+	padding-top: 54px;
+}
