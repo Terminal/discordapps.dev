@@ -19,3 +19,7 @@
 iframe {
 	border: none;
 }
+
+.code {
+	font-family: "Roboto Mono", "Ubuntu Mono", "Courier", monospace;
+}

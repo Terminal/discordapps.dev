@@ -1,5 +1,8 @@
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="terminal.ink Discord Bot directory listing">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
 		<link href="css/ls.css" rel="stylesheet">
@@ -8,13 +11,38 @@
 		<title>ls</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-light bg-faded">
-			<a class="navbar-brand" href="#">Navbar!</a>
+		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="/">terminal@terminal.ink:~/$ ls</a>
+			<div class="navbar-collapse collapse" id="navbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/api">API Documentation</a>
+					</li>
+					{{#user}}
+					<li class="nav-item">
+						<a class="nav-link" href="/user">{{ username }}</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/auth/logout">Log out</a>
+					</li>
+					{{/user}}
+					{{^user}}
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="/auth/">Log in</a>
+					</li>
+					{{/user}}
+				</ul>
+			</div>
 		</nav>
 		<main>
 			<div class="jumbotron">
-				<h1 display="display-3"><kbd>terminal@terminal.ink:~/$ ls</kbd></h1>
-				<p class="lead">These bots are certified by professional bot developers, who deem the bots below suitable for larger guilds, for capacity, ease of use and features.</p>
+				<div class="container">
+					<br><br>
+					<p class="lead"><span id="typing" class="code"></span></p>
+				</div>
 			</div>
 			<div class="container">
 				<div class="row">
@@ -33,6 +61,9 @@
 				</div>
 			</div>
 		</main>
+
+		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+		<script src="js/index-type.js"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
