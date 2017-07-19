@@ -10,6 +10,7 @@ const r = require('./db');
 const apiRouter = require('./api');
 const authRouter = require('./auth');
 const csrfRouter = require('./csrf');
+const discordRouter = require('./discord');
 const auth = require('./auth/auth');
 
 const app = express();
@@ -56,13 +57,13 @@ app.set('views', path.join(__dirname, 'html'))
 				}
 			});
 	})
-	.get('/add', csrfRouter.make, (req, res) => {
+	.get('/add', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, (req, res) => {
 		res.status(200).render('add.html', { user: req.user, csrf: req.csrf });
 	})
 	.use('/api', apiRouter)
 	.use('/auth', authRouter)
 	.use(express.static(path.join(__dirname, 'html')))
 	.use('*', (req, res) => {
-		res.status(404).render('error.html', { code: 404, message: 'Not found' });
+		res.status(404).render('error.html', { status: 404, message: 'Not found' });
 	})
 	.listen(config.get('webserver').port);

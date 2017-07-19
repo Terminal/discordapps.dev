@@ -3,7 +3,7 @@ const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const r = require('../db');
 
-passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((user, done) => done(null, user));
 
 passport.deserializeUser((id, done) => {
 	r.table('users')
@@ -46,10 +46,11 @@ passport.use(new DiscordStrategy(
 ));
 
 passport.checkIfLoggedIn = (req, res, next) => {
+	console.dir(req.user);
 	if (req.user) {
 		next();
 	} else {
-		res.status(401).render('index.html', { user: req.user, error: 401, message: 'You have not logged in yet' });
+		res.status(401).render('error.html', { status: 401, message: 'You have not logged in yet' });
 	}
 };
 
