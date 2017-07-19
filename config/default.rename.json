@@ -1,0 +1,18 @@
+{
+	"rethinkdb": {
+		"host": "192.168.0.102",
+		"port": 28015,
+		"db": "directory"
+	},
+	"discord": {
+		"api": {
+			"clientID": "337266496889683979",
+			"clientSecret": "",
+			"scope": [ "identify" ]
+		}
+	},
+	"webserver": {
+		"port": 8080,
+		"secret": ""
+	}
+}
