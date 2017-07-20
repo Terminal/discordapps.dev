@@ -12,6 +12,6 @@ pre {
 	color: #FFFFFF;
 }
 
-a:link {
+a:link, a:visited, a:hover, a:active {
 	color: #FFFFFF;
 }

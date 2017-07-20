@@ -3,12 +3,15 @@ const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const r = require('../db');
 
-passport.serializeUser((user, done) => done(null, user));
+passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser((id, done) => {
 	r.table('users')
 		.get(id)
-		.run(r.conn, (err, user) => done(err, user));
+		.run(r.conn)
+		.then((user) => {
+			done(null, user);
+		});
 });
 
 // DiscordApp
@@ -20,7 +23,6 @@ passport.use(new DiscordStrategy(
 		callbackURL: '/auth/callback'
 	},
 	(accessToken, refreshToken, profile, done) => {
-		console.dir(profile);
 		if (accessToken !== null) {
 			r.table('users')
 				.get(profile.id)
@@ -34,7 +36,7 @@ passport.use(new DiscordStrategy(
 							.insert(profile)
 							.run(r.conn)
 							.then(() => {
-								done(null, profile.id);
+								done(null, profile);
 							});
 					}
 				})
@@ -46,7 +48,6 @@ passport.use(new DiscordStrategy(
 ));
 
 passport.checkIfLoggedIn = (req, res, next) => {
-	console.dir(req.user);
 	if (req.user) {
 		next();
 	} else {

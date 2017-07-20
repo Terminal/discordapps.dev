@@ -38,16 +38,39 @@
 			</div>
 		</nav>
 		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<p class="lead code">Welcome to the club.</p>
+				</div>
+			</div>
 			<div class="container">
+				<div class="row">
+					<div class="col-12" id="error">
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<form method="post">
-							<small class="form-text text-muted">Welcome to </small>
 							<div class="form-group">
-								<label for="name">Bot ID</label>
-								<input type="text" class="form-control" id="name" name="name" placeholder="Insert Name">
+								<label for="id">Bot ID</label>
+								<input type="text" class="form-control" id="id" name="id" maxlength="70" placeholder="Insert ID for your bot">
 							</div>
-							<button type="submit" class="btn btn-primary">Submit</button><input type="text" name="csrf" value="{{ csrf }}" style="visibility: hidden">
+							<div class="form-group">
+								<label for="shortDesc">Short Description</label>
+								<input type="text" class="form-control" id="shortDesc" name="shortDesc" maxlength="200" placeholder="Insert a short and consice description">
+							</div>
+							<div class="form-group">
+								<small class="form-text text-muted">Please insert how to trigger the bot in the long description. Your bot cannot be tested for quality and assurance without this. Descriptions are limited to 500px tall.</small>
+								<label for="type">Long Description Type</label>
+								<select class="form-control" id="type" name="type" placeholder="Select type here" onchange="description();">
+									<option disabled selected>Please select a value</option>
+									<option value="iframe">&lt;iframe&gt;</option>
+									<option value="markdown">GitHub flavoured Markdown</option>
+								</select>
+							</div>
+							<div class="form-group" id="description">
+							</div>
+							<button type="submit" class="btn btn-primary" onclick="return check();">Submit</button><input type="text" name="csrf" value="{{ csrf }}" style="visibility: hidden">
 						</form>
 					</div>
 				</div>
@@ -60,6 +83,7 @@
 			</div>
 		</footer>
 
+		<script src="/js/add.js"></script>
 		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>

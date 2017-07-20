@@ -24,13 +24,22 @@ const make = (req, res, next) => {
 const check = (req, res, next) => {
 	r.table('csrf')
 		.get(req.user.id)
-		.run(r.conn, (err, result) => {
-			if (err) {
+		.run(r.conn, (err1, result) => {
+			if (err1) {
 				res.status(500).render('error.html', { user: req.user, status: 500, message: 'An error occured with the Rethonk DB server.' });
 			} else if (result.csrf !== req.body.csrf && result.expiry < Date.now()) {
 				res.status(401).render('error.html', { user: req.user, status: 401, message: 'A CSRF error occured. Did your form expire?' });
 			} else {
-				next();
+				r.table('csrf')
+					.get(req.user.id)
+					.delete()
+					.run(r.conn, (err2) => {
+						if (err2) {
+							res.status(500).render('error.html', { user: req.user, status: 500, message: 'An error occured with the Rethonk DB server.' });
+						} else {
+							next();
+						}
+					});
 			}
 		});
 };
