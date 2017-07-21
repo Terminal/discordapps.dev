@@ -21,11 +21,5 @@
 		"port": 8080,
 		"secret": ""
 	},
-	"ls": {
-		"descriptions": [
-			"iframe",
-			"markdown"
-		]
-	},
 	"useragent": "Terminal/1.0.0 (Noud.js; Linux x86_64)"
 }
