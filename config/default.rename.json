@@ -1,6 +1,6 @@
 {
 	"rethinkdb": {
-		"host": "192.168.0.102",
+		"host": "",
 		"port": 28015,
 		"db": "directory"
 	},
@@ -8,11 +8,24 @@
 		"api": {
 			"clientID": "337266496889683979",
 			"clientSecret": "",
-			"scope": [ "identify" ]
-		}
+			"scope": [ "identify", "guilds" ]
+		},
+		"guild": "330777295952543744",
+		"admins": [
+			"86477779717066752",
+			"161866631004422144",
+			"190519304972664832"
+		]
 	},
 	"webserver": {
 		"port": 8080,
 		"secret": ""
-	}
+	},
+	"ls": {
+		"descriptions": [
+			"iframe",
+			"markdown"
+		]
+	},
+	"useragent": "Terminal/1.0.0 (Noud.js; Linux x86_64)"
 }
