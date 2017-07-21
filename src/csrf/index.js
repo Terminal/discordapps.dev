@@ -27,7 +27,7 @@ const check = (req, res, next) => {
 		.run(r.conn, (err1, result) => {
 			if (err1) {
 				res.status(500).render('error.html', { user: req.user, status: 500, message: 'An error occured with the Rethonk DB server.' });
-			} else if (result.csrf !== req.body.csrf && result.expiry < Date.now()) {
+			} else if (!result || result.csrf !== req.body.csrf || result.expiry > Date.now()) {
 				res.status(401).render('error.html', { user: req.user, status: 401, message: 'A CSRF error occured. Did your form expire?' });
 			} else {
 				r.table('csrf')

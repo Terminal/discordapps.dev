@@ -27,3 +27,8 @@ iframe {
 body {
 	padding-top: 54px;
 }
+
+.media {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

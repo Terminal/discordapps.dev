@@ -3,8 +3,6 @@ const config = require('config');
 const cons = require('consolidate');
 const express = require('express');
 const session = require('express-session');
-const mustache = require('mustache');
-const marked = require('marked');
 const path = require('path');
 const r = require('./db');
 const apiRouter = require('./api');
@@ -30,35 +28,21 @@ app.set('views', path.join(__dirname, 'html'))
 	.use(bodyParser.urlencoded({
 		extended: true
 	}))
-	.get('/', (req, res) => {
-		const approved = req.query.approved !== 'false';
-		r.table('bots')
-			.run(r.conn, (err1, cursor) => {
-				if (err1) {
-					res.status(500).render('error.html', { user: req.user, code: 500, message: err1.message });
-				} else {
-					cursor.toArray((err2, result) => {
-						if (err2) {
-							res.status(500).render('error.html', { user: req.user, code: 500, message: err2.message });
-						} else {
-							const bots = result.filter(bot => bot.approved === approved).map((bot) => {
-								const render = bot;
-								if (render.type === 'iframe') {
-									bot.html = mustache.render('<iframe class="botiframe" src="{{ iframe }}"></iframe>', { iframe: render.longDesc });
-								} else if (render.type === 'markdown') {
-									bot.html = mustache.render('<div class="botdesc">{{{ content }}}</div>', { content: marked(render.longDesc) });
-								} else {
-									bot.html = '<div class="botdesc"><h1>Invalid Bot render type</h1></div>';
-								}
-								return render;
-							});
-							const json = JSON.stringify(bots);
-
-							res.status(200).render('index.html', { user: req.user, bots, json });
-						}
-					});
-				}
-			});
+	.get('/', (req, res, next) => {
+		res.locals.approved = true;
+		next();
+	}, discordRouter.list)
+	.get('/queue', auth.checkIfLoggedIn, discordRouter.check, discordRouter.isadmin, csrfRouter.make, (req, res, next) => {
+		res.locals.approved = false;
+		next();
+	}, discordRouter.list)
+	.post('/queue', auth.checkIfLoggedIn, discordRouter.check, discordRouter.isadmin, csrfRouter.check, (req, res) => {
+		if (typeof req.body.id.length > 70
+			|| (req.body.approve !== 'true' && req.body.approve !== 'false')) {
+			res.status(400).render('error.html', { status: 400, message: 'Invalid input' });
+		} else {
+			res.redirect('/queue');
+		}
 	})
 	.get('/add', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, (req, res) => {
 		res.status(200).render('add.html', { user: req.user, csrf: req.csrf });
@@ -81,7 +65,6 @@ app.set('views', path.join(__dirname, 'html'))
 			|| (req.body.type === 'iframe' && !/^https:\/\//.test(req.body.longDesc))
 			|| /\D/.test(req.body.id)) {
 			res.status(400).render('error.html', { status: 400, message: 'Invalid input' });
-			console.dir(req.body);
 		} else {
 			r.table('bots')
 				.insert({

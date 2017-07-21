@@ -46,14 +46,28 @@
 			<div class="container">
 				<div class="row">
 					{{ #bots }}
-					<div class="col-12 col-lg-6" onclick="modal('{{ id }}')">
-						<div class="media">
+					<div class="col-12 col-lg-6">
+						<div class="media" onclick="modal('{{ id }}')">
 							<img class="d-flex mr-3 icon" src="{{ avatar }}" alt="Generic placeholder image">
 							<div class="media-body">
 								<h5 class="mt-0">{{ #name }}{{ name }}{{ /name }}{{ ^name }}{{ id }}{{ /name }}</h5>
 								{{ shortDesc }}
 							</div>
 						</div>
+						{{ ^approved }}
+						<form method="POST" style="float: left; margin-right: 5px;">
+							<button type="submit" class="btn btn-success">Approve</button>
+							<input type="text" name="id" value="{{ id }}" style="display: none;">
+							<input type="text" name="csrf" value="{{ csrf }}" style="display: none;">
+							<input type="text" name="approve" value="true" style="display: none;">
+						</form>
+						<form method="POST">
+							<button type="submit" class="btn btn-danger">Reject</button>
+							<input type="text" name="id" value="{{ id }}" style="display: none;">
+							<input type="text" name="csrf" value="{{ csrf }}" style="display: none;">
+							<input type="text" name="approve" value="false" style="display: none;">
+						</form>
+						{{ /approved }}
 					</div>
 					{{ /bots }}
 				</div>
