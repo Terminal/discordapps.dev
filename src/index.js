@@ -40,8 +40,32 @@ app.set('views', path.join(__dirname, 'html'))
 		if (typeof req.body.id.length > 70
 			|| (req.body.approve !== 'true' && req.body.approve !== 'false')) {
 			res.status(400).render('error.html', { status: 400, message: 'Invalid input' });
+		} else if (req.body.approve === 'true') {
+			r.table('bots')
+				.get(req.body.id)
+				.update({
+					approved: true
+				})
+				.run(r.conn, (err) => {
+					if (err) {
+						res.status(500).render('error.html', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
+					} else {
+						res.redirect('/queue');
+					}
+				});
+		} else if (req.body.approve === 'false') {
+			r.table('bots')
+				.get(req.body.id)
+				.delete()
+				.run(r.conn, (err) => {
+					if (err) {
+						res.status(500).render('error.html', { status: 500, message: 'An error occured while deleting bot info into Rethonk DB' });
+					} else {
+						res.redirect('/queue');
+					}
+				});
 		} else {
-			res.redirect('/queue');
+			res.status(500).render('error.html', { status: 500, message: 'An invalid approval type was encountered that was not caught earlier' });
 		}
 	})
 	.get('/add', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, (req, res) => {
