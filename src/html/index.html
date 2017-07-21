@@ -48,9 +48,9 @@
 					{{ #bots }}
 					<div class="col-12 col-lg-6" onclick="modal('{{ id }}')">
 						<div class="media">
-							<img class="d-flex mr-3 icon" src="{{ img }}" alt="Generic placeholder image">
+							<img class="d-flex mr-3 icon" src="{{ avatar }}" alt="Generic placeholder image">
 							<div class="media-body">
-								<h5 class="mt-0">{{ #name }}{{ name }} - {{ /name }}{{ id }}</h5>
+								<h5 class="mt-0">{{ #name }}{{ name }}{{ /name }}{{ ^name }}{{ id }}{{ /name }}</h5>
 								{{ shortDesc }}
 							</div>
 						</div>
@@ -58,8 +58,8 @@
 					{{ /bots }}
 				</div>
 				{{ ^bots }}
-				<h1>Jinkies!</h1>
-				<p>We've come up empty.</p>
+				<h1>No bots</h1>
+				<p>Thank &#123;&#123; deity &#125;&#125; for that.</p>
 				{{ /bots }}
 			</div>
 		</main>

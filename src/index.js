@@ -65,26 +65,33 @@ app.set('views', path.join(__dirname, 'html'))
 	})
 	.post('/add', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, (req, res) => {
 		if (typeof req.body.id !== 'string'
+			|| typeof req.body.name !== 'string'
+			|| typeof req.body.avatar !== 'string'
 			|| typeof req.body.shortDesc !== 'string'
 			|| typeof req.body.type !== 'string'
 			|| typeof req.body.longDesc !== 'string'
 			|| (req.body.type !== 'iframe' && req.body.type !== 'markdown') // If it's an invalid description type
 			|| req.body.id.length > 70 // If the ID is too long
+			|| req.body.name.length > 32 // If the ID is too long
+			|| req.body.avatar.length > 200 // If the ID is too long
 			|| req.body.shortDesc.length > 200 // If the short description is too long
+			|| !/^https:\/\//.test(req.body.avatar)
 			|| (req.body.type === 'iframe' && req.body.longDesc.length > 200)
 			|| (req.body.type === 'markdown' && req.body.longDesc.length > 20000)
-			|| (req.body.type === 'iframe' && !/^https?:\/\//.test(req.body.longDesc))
+			|| (req.body.type === 'iframe' && !/^https:\/\//.test(req.body.longDesc))
 			|| /\D/.test(req.body.id)) {
 			res.status(400).render('error.html', { status: 400, message: 'Invalid input' });
 			console.dir(req.body);
 		} else {
 			r.table('bots')
 				.insert({
-					approved: false,
 					id: req.body.id,
+					name: req.body.name,
+					avatar: req.body.avatar,
 					shortDesc: req.body.shortDesc,
 					type: req.body.type,
-					longDesc: req.body.longDesc
+					longDesc: req.body.longDesc,
+					approved: false
 				})
 				.run(r.conn, (err, response) => {
 					if (err) {

@@ -8,16 +8,16 @@ const modal = (id) => {
 
 	modalContent.innerHTML = Mustache.render(`
 		<div class="modal-header">
-			<h5 class="modal-title" id="modallabel">{{ #name }}{{ name }} - {{ /name }}{{ id }}</h5>
+			<h5 class="modal-title" id="modallabel">{{ id }}</h5>
 			<button type="button" class="close" data-dismiss="modal">
 				<span>&times;</span>
 			</button>
 		</div>
 		<div class="modal-body">
 			<div class="media">
-				<img class="d-flex mr-3 icon" src="{{ img }}" alt="Generic placeholder image">
+				<img class="d-flex mr-3 icon" src="{{ avatar }}" alt="Generic placeholder image">
 				<div class="media-body">
-					<h5 class="mt-0">{{ #name }}{{ name }} - {{ /name }}{{ id }}</h5>
+					<h5 class="mt-0">{{ #name }}{{ name }}{{ /name }}{{ ^name }}{{ id }}{{ /name }}</h5>
 					{{ shortDesc }}
 				</div>
 			</div>

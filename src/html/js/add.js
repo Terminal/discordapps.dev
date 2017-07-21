@@ -1,5 +1,7 @@
 /* eslint no-unused-vars: 0 */
 
+const name = document.getElementById('name');
+const avatar = document.getElementById('avatar');
 const botid = document.getElementById('id');
 const shortDesc = document.getElementById('shortDesc');
 const type = document.getElementById('type');
@@ -21,6 +23,12 @@ const check = () => {
 	} else if (!shortDesc.value) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Baaa!</b> You did not fill in your short description.</div>';
 		return false;
+	} else if (!name.value) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Caar!</b> You did not fill in your short description.</div>';
+		return false;
+	} else if (!avatar.value) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Bazinga!</b> You did not fill in your short description.</div>';
+		return false;
 	} else if (type.value !== 'iframe' && type.value !== 'markdown') {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Meow!</b> Please select a valid long description type.</div>';
 		return false;
@@ -33,11 +41,17 @@ const check = () => {
 	} else if (shortDesc.value.length > 200) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>It\'s a trap!</b> Your bot\'s URL is too long. (200)</div>';
 		return false;
-	} else if (type.value === 'iframe' && document.getElementById('longDesc').value.length > 200) {
-		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Ding!</b> Your bot\'s URL is too long. (200)</div>';
+	} else if (name.value.length > 32) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Snap!</b> Your bot\'s name is too long. (32)</div>';
 		return false;
-	} else if (type.value === 'iframe' && !/^https?:\/\//.test(document.getElementById('longDesc').value)) {
-		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Kahoot!</b> Your bot\'s URL has to begin with http:// or https://</div>';
+	} else if (avatar.value.length > 200) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Uno!</b> Your bot\'s avatar URL is too long. (200)</div>';
+		return false;
+	} else if (!/^https:\/\//.test(avatar.value)) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Fuuu!</b> Your bot\'s avatar URL has to begin with https://. If you still use http://, consider using imgur or another photo sharing website.</div>';
+		return false;
+	} else if (type.value === 'iframe' && !/^https:\/\//.test(document.getElementById('longDesc').value)) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Kahoot!</b> Your bot\'s URL has to begin with https://. If you still use http://, consider using GitHub Pages, Cloudflare SSL or Let\'s Encrypt</div>';
 		return false;
 	} else if (type.value === 'markdown' && document.getElementById('longDesc').value.length > 20000) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Boop!</b> Your bot\'s markdown is too long. (20000)</div>';
