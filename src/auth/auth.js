@@ -20,7 +20,7 @@ passport.use(new DiscordStrategy(
 		clientID: config.get('discord').api.clientID,
 		clientSecret: config.get('discord').api.clientSecret,
 		scope: config.get('discord').api.scope,
-		callbackURL: '/auth/callback'
+		callbackURL: `${config.get('webserver').location}auth/callback`
 	},
 	(accessToken, refreshToken, profile, done) => {
 		if (accessToken !== null) {
