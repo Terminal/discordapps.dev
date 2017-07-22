@@ -5,7 +5,12 @@
 		<title>ls - {{ status }}</title>
 	</head>
 	<body>
-		<pre><span id="typing"></span></pre>
+		<div class="background">
+
+		</div>
+		<div class="foreground">
+			<pre><span id="typing"></span></pre>
+		</div>
 		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
 		<script>
 			let directory = {{ status }} === 404 ? '/(unreachable)/' : window.location.pathname;
@@ -14,7 +19,7 @@
 				strings: [
 					`{{status}} - {{message}}\n\nterminal@terminal.ink:${directory}$ <a href="/">cd /</a>`
 				],
-				typeSpeed: 0,
+				typeSpeed: 10,
 				backSpeed: 0,
 				cursorChar: '_',
 				fadeOut: true,
