@@ -13,7 +13,7 @@ const auth = require('./auth/auth');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'html'))
+app.set('views', path.join(__dirname, 'template'))
 	.engine('html', cons.mustache)
 	.set('view engine', 'html')
 	.use(session({
@@ -113,7 +113,7 @@ app.set('views', path.join(__dirname, 'html'))
 	})
 	.use('/api', apiRouter)
 	.use('/auth', authRouter)
-	.use(express.static(path.join(__dirname, 'html')))
+	.use(express.static(path.join(__dirname, 'static')))
 	.use('*', (req, res) => {
 		res.status(404).render('error.html', { status: 404, message: 'Not found' });
 	})
