@@ -1,8 +1,19 @@
 <html>
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="terminal.ink Discord Bot directory listing">
+		<meta charset='utf-8' />
+		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+		<meta name='theme-color' content='#FFFFFF'>
+		<meta name="description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Terminal.ink">
+		<meta property="og:description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.">
+		<meta property="og:image" content="https://terminal.ink/assets/images/avatar.png">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="Terminal.ink">
+		<meta name="twitter:description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.">
+		<meta name="author" content="7coil">
+		<link rel="publisher" href="https://moustacheminer.com">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
 		<link href="css/ls.css" rel="stylesheet">
@@ -23,7 +34,10 @@
 					</li>
 					{{ #user }}
 					<li class="nav-item">
-						<a class="nav-link" href="/user">{{ username }}</a>
+						<span class="nav-link">{{ username }}</span>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/add">Add</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/auth/logout">Log out</a>
