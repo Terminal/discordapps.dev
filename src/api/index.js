@@ -10,11 +10,11 @@ router.get('/', (req, res) => {
 		r.table('bots')
 			.run(r.conn, (err1, cursor) => {
 				if (err1) {
-					res.status(500).send(JSON.stringify({ error: err1.message }));
+					res.status(500).json({ error: err1.message });
 				} else {
 					cursor.toArray((err2, result) => {
 						if (err2) {
-							res.status(500).send(JSON.stringify({ error: err2.message }));
+							res.status(500).json({ error: err2.message });
 						} else {
 							res.status(200).send(result);
 						}
@@ -24,22 +24,14 @@ router.get('/', (req, res) => {
 	})
 	.get('/bots/:id', (req, res) => {
 		r.table('bots')
-			.filter(
-				r.row('userid').eq(req.params.id)
-			)
-			.run(r.conn, (err1, cursor) => {
-				if (err1) {
-					res.status(500).send(JSON.stringify({ error: err1.message }));
+			.get(req.params.id)
+			.run(r.conn, (err, result) => {
+				if (err) {
+					res.status(500).json({ error: err.message });
+				} else if (!result) {
+					res.status(404).json({});
 				} else {
-					cursor.toArray((err2, result) => {
-						if (err2) {
-							res.status(500).send(JSON.stringify({ error: err2.message }));
-						} else if (result.length === 0) {
-							res.status(404).send(result);
-						} else {
-							res.status(200).send(result);
-						}
-					});
+					res.status(200).json(result);
 				}
 			});
 	});
