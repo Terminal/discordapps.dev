@@ -96,10 +96,10 @@ app.set('views', path.join(__dirname, 'dynamic'))
 				}
 			});
 	})
-	.get('/edit/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, discordRouter.owns, (req, res) => {
+	.get('/edit/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, discordRouter.isadmin(false), discordRouter.owns, (req, res) => {
 		res.render('edit.html', { user: req.user, csrf: req.csrf, bot: res.locals.bot });
 	})
-	.post('/edit/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, discordRouter.owns, discordRouter.validate, (req, res) => {
+	.post('/edit/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, discordRouter.isadmin(false), discordRouter.owns, discordRouter.validate, (req, res) => {
 		r.table('bots')
 			.get(req.body.id)
 			.update({
@@ -119,10 +119,10 @@ app.set('views', path.join(__dirname, 'dynamic'))
 				}
 			});
 	})
-	.get('/delete/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, discordRouter.owns, (req, res) => {
+	.get('/delete/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, discordRouter.isadmin(false), discordRouter.owns, (req, res) => {
 		res.render('delete.html', { user: req.user, csrf: req.csrf });
 	})
-	.post('/delete/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, discordRouter.owns, (req, res) => {
+	.post('/delete/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, discordRouter.isadmin(false), discordRouter.owns, (req, res) => {
 		r.table('bots')
 			.get(req.params.id)
 			.delete()
