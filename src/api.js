@@ -1,10 +1,10 @@
 const express = require('express');
-const r = require('./../db');
+const r = require('./db');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	res.status(200).render('api.html');
+	res.redirect('/docs/api');
 })
 	.get('/bots', (req, res) => {
 		r.table('bots')

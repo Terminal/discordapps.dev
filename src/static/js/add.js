@@ -24,10 +24,10 @@ const check = () => {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Baaa!</b> You did not fill in your short description.</div>';
 		return false;
 	} else if (!name.value) {
-		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Caar!</b> You did not fill in your short description.</div>';
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Caar!</b> You did not fill in your name.</div>';
 		return false;
 	} else if (!avatar.value) {
-		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Bazinga!</b> You did not fill in your short description.</div>';
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Bazinga!</b> You did not fill in your avatar.</div>';
 		return false;
 	} else if (type.value !== 'iframe' && type.value !== 'markdown') {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Meow!</b> Please select a valid long description type.</div>';
@@ -62,5 +62,3 @@ const check = () => {
 	}
 	return true;
 };
-
-window.onload = description;

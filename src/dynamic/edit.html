@@ -1,0 +1,132 @@
+<html>
+	<head>
+		<meta charset='utf-8' />
+		<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+		<meta name='theme-color' content='#FFFFFF'>
+		<meta name="description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Terminal.ink">
+		<meta property="og:description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.">
+		<meta property="og:image" content="https://terminal.ink/assets/images/avatar.png">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:title" content="Terminal.ink">
+		<meta name="twitter:description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.">
+		<meta name="author" content="7coil">
+		<link rel="publisher" href="https://moustacheminer.com">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+		<link href="/css/ls.css" rel="stylesheet">
+		<link href="/img/favicon.png" rel="shortcut-icon">
+		<link href="/img/favicon.png" rel="icon">
+		<title>ls</title>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-toggleable-md navbar-inverse bg-inverse">
+			<button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbar">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a class="navbar-brand" href="/">terminal@terminal.ink:~/$ ls</a>
+			<div class="navbar-collapse collapse" id="navbar">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/docs">Documentation</a>
+					</li>
+					{{ #user }}
+					<li class="nav-item">
+						<span class="nav-link">{{ username }}</span>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/add">Add</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/all">All Bots (Approved and Queued)</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/queue">Queue</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/auth/logout">Log out</a>
+					</li>
+					{{ /user }}
+					{{ ^user }}
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="/auth">Log in</a>
+					</li>
+					{{ /user }}
+				</ul>
+			</div>
+		</nav>
+		<main>
+			<div class="jumbotron">
+				<div class="container">
+					<p class="lead code">Welcome to the club.</p>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-12" id="error">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						{{ #bot }}
+						<form method="post">
+							<div class="form-group">
+								<label for="id">Name</label>
+								<input value="{{ name }}" type="text" class="form-control" id="name" name="name" maxlength="32" placeholder="Insert name for your bot">
+							</div>
+							<div class="form-group">
+								<label for="id">Bot avatar URL</label>
+								<input value="{{ avatar }}" type="text" class="form-control" id="avatar" name="avatar" maxlength="200" placeholder="Try not to use a link to Discord if you always change your picture.">
+							</div>
+							<div class="form-group">
+								<label for="id">ID</label>
+								<input value="{{ id }}" disabled type="text" class="form-control" id="id" maxlength="70" placeholder="Insert ID for your bot">
+							</div>
+							<div class="form-group">
+								<label for="shortDesc">Short Description</label>
+								<input value="{{ shortDesc }}" type="text" class="form-control" id="shortDesc" name="shortDesc" maxlength="200" placeholder="Insert a short and consice description">
+							</div>
+							{{ #types }}
+							<div class="form-group">
+								<small class="form-text text-muted">Please insert how to trigger the bot in the long description. Your bot cannot be tested for quality and assurance without this.</small>
+								<label for="type">Long Description Type</label>
+								<select class="form-control" id="type" name="type" placeholder="Select type here" onchange="description();">
+									<option disabled {{ #invalid }} selected {{ /invalid }}>Please select a value</option>
+									<option value="iframe" {{ #iframe }} selected {{ /iframe }}>&lt;iframe&gt;</option>
+									<option value="markdown" {{ #markdown }} selected {{ /markdown }}>GitHub flavoured Markdown</option>
+								</select>
+							</div>
+							<div class="form-group" id="description">
+								{{ #iframe }}
+								<label for="longDesc">Long Description</label><input value="{{ longDesc }}" type="text" class="form-control" id="longDesc" name="longDesc" maxlength="200" placeholder="Insert iframe URL">
+								{{ /iframe }}
+								{{ #markdown }}
+								<label for="longDesc">Long Description</label><textarea class="form-control" id="longDesc" name="longDesc" maxlength="20000" rows="6" placeholder="Insert Markdown">{{ longDesc }}</textarea><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">GitHub Markdown help</a>
+								{{ /markdown }}
+							</div>
+							{{ /types }}
+							<button type="submit" class="btn btn-primary" onclick="return check();">Submit</button>
+							<input type="text" name="csrf" value="{{ csrf }}" style="visibility: hidden">
+							<input type="text" name="id" value="{{ id }}" style="visibility: hidden">
+						</form>
+						{{ /bot }}
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="container">
+				<hr>
+				<p>Copyright 2017 - ls.terminal.ink</p>
+			</div>
+		</footer>
+
+		<script src="/js/add.js"></script>
+		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+	</body>
+</html>

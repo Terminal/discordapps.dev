@@ -19,7 +19,6 @@
 	"homepage": "https://github.com/Terminal/ls#readme",
 	"dependencies": {
 		"body-parser": "^1.17.2",
-		"bulma": "^0.4.3",
 		"config": "^1.26.1",
 		"consolidate": "^0.14.5",
 		"express": "^4.15.3",

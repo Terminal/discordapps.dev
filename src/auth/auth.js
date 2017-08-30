@@ -17,9 +17,9 @@ passport.deserializeUser((id, done) => {
 // DiscordApp
 passport.use(new DiscordStrategy(
 	{
-		clientID: config.get('discord').api.clientID,
-		clientSecret: config.get('discord').api.clientSecret,
-		scope: config.get('discord').api.scope,
+		clientID: config.get('discord').clientID,
+		clientSecret: config.get('discord').clientSecret,
+		scope: config.get('discord').scope,
 		callbackURL: `${config.get('webserver').location}auth/callback`
 	},
 	(accessToken, refreshToken, profile, done) => {

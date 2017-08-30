@@ -8,12 +8,13 @@ const r = require('./db');
 const apiRouter = require('./api');
 const authRouter = require('./auth');
 const csrfRouter = require('./csrf');
+const docsRouter = require('./docs');
 const discordRouter = require('./discord');
 const auth = require('./auth/auth');
 
 const app = express();
 
-app.set('views', path.join(__dirname, 'template'))
+app.set('views', path.join(__dirname, 'dynamic'))
 	.engine('html', cons.mustache)
 	.set('view engine', 'html')
 	.use(session({
@@ -29,14 +30,16 @@ app.set('views', path.join(__dirname, 'template'))
 		extended: true
 	}))
 	.get('/', (req, res, next) => {
-		res.locals.approved = true;
+		res.locals.approve = true;
 		next();
 	}, discordRouter.list)
-	.get('/queue', auth.checkIfLoggedIn, discordRouter.check, discordRouter.isadmin, csrfRouter.make, (req, res, next) => {
-		res.locals.approved = false;
+	.get('/all', auth.checkIfLoggedIn, csrfRouter.make, discordRouter.isadmin(true), discordRouter.list)
+	.get('/queue', auth.checkIfLoggedIn, csrfRouter.make, discordRouter.isadmin(true), (req, res, next) => {
+		res.locals.approve = false;
 		next();
 	}, discordRouter.list)
-	.post('/queue', auth.checkIfLoggedIn, discordRouter.check, discordRouter.isadmin, csrfRouter.check, (req, res) => {
+	.post('/queue', auth.checkIfLoggedIn, discordRouter.check, discordRouter.isadmin(false), csrfRouter.check, (req, res) => {
+		const previous = req.header('Referer') || '/';
 		if (typeof req.body.id.length > 70
 			|| (req.body.approve !== 'true' && req.body.approve !== 'false')) {
 			res.status(400).render('error.html', { status: 400, message: 'Invalid input' });
@@ -50,7 +53,7 @@ app.set('views', path.join(__dirname, 'template'))
 					if (err) {
 						res.status(500).render('error.html', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
 					} else {
-						res.redirect('/queue');
+						res.redirect(previous);
 					}
 				});
 		} else if (req.body.approve === 'false') {
@@ -61,7 +64,7 @@ app.set('views', path.join(__dirname, 'template'))
 					if (err) {
 						res.status(500).render('error.html', { status: 500, message: 'An error occured while deleting bot info into Rethonk DB' });
 					} else {
-						res.redirect('/queue');
+						res.redirect(previous);
 					}
 				});
 		} else {
@@ -69,50 +72,71 @@ app.set('views', path.join(__dirname, 'template'))
 		}
 	})
 	.get('/add', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, (req, res) => {
-		res.status(200).render('add.html', { user: req.user, csrf: req.csrf });
+		res.render('add.html', { user: req.user, csrf: req.csrf });
 	})
-	.post('/add', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, (req, res) => {
-		if (typeof req.body.id !== 'string'
-			|| typeof req.body.name !== 'string'
-			|| typeof req.body.avatar !== 'string'
-			|| typeof req.body.shortDesc !== 'string'
-			|| typeof req.body.type !== 'string'
-			|| typeof req.body.longDesc !== 'string'
-			|| (req.body.type !== 'iframe' && req.body.type !== 'markdown') // If it's an invalid description type
-			|| req.body.id.length > 70 // If the ID is too long
-			|| req.body.name.length > 32 // If the ID is too long
-			|| req.body.avatar.length > 200 // If the ID is too long
-			|| req.body.shortDesc.length > 200 // If the short description is too long
-			|| !/^https:\/\//.test(req.body.avatar)
-			|| (req.body.type === 'iframe' && req.body.longDesc.length > 200)
-			|| (req.body.type === 'markdown' && req.body.longDesc.length > 20000)
-			|| (req.body.type === 'iframe' && !/^https:\/\//.test(req.body.longDesc))
-			|| /\D/.test(req.body.id)) {
-			res.status(400).render('error.html', { status: 400, message: 'Invalid input' });
-		} else {
-			r.table('bots')
-				.insert({
-					id: req.body.id,
-					name: req.body.name,
-					avatar: req.body.avatar,
-					shortDesc: req.body.shortDesc,
-					type: req.body.type,
-					longDesc: req.body.longDesc,
-					approved: false
-				})
-				.run(r.conn, (err, response) => {
-					if (err) {
-						res.status(500).render('error.html', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
-					} else if (response.errors) {
-						res.status(409).render('error.html', { status: 409, message: 'A bot with this ID already exists in the database.' });
-					} else {
-						res.status(200).render('error.html', { status: 200, message: 'Thanks. That went well.' });
-					}
-				});
-		}
+	.post('/add', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, discordRouter.validate, (req, res) => {
+		r.table('bots')
+			.insert({
+				id: req.body.id,
+				name: req.body.name,
+				avatar: req.body.avatar,
+				shortDesc: req.body.shortDesc,
+				type: req.body.type,
+				longDesc: req.body.longDesc,
+				owner: req.user.id,
+				approved: false
+			})
+			.run(r.conn, (err, response) => {
+				if (err) {
+					res.status(500).render('error.html', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
+				} else if (response.errors) {
+					res.status(409).render('error.html', { status: 409, message: 'A bot with this ID already exists in the database.' });
+				} else {
+					res.render('error.html', { status: 200, message: 'Thanks. That went well.' });
+				}
+			});
+	})
+	.get('/edit/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, discordRouter.owns, (req, res) => {
+		res.render('edit.html', { user: req.user, csrf: req.csrf, bot: res.locals.bot });
+	})
+	.post('/edit/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, discordRouter.owns, discordRouter.validate, (req, res) => {
+		r.table('bots')
+			.get(req.body.id)
+			.update({
+				name: req.body.name,
+				avatar: req.body.avatar,
+				shortDesc: req.body.shortDesc,
+				type: req.body.type,
+				longDesc: req.body.longDesc
+			})
+			.run(r.conn, (err, response) => {
+				if (err) {
+					res.status(500).render('error.html', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
+				} else if (response.unchanged) {
+					res.render('error.html', { status: 200, message: 'Your bot was left unchanged.' });
+				} else {
+					res.render('error.html', { status: 200, message: 'Thanks. That went well.' });
+				}
+			});
+	})
+	.get('/delete/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.make, discordRouter.owns, (req, res) => {
+		res.render('delete.html', { user: req.user, csrf: req.csrf });
+	})
+	.post('/delete/:id', auth.checkIfLoggedIn, discordRouter.check, csrfRouter.check, discordRouter.owns, (req, res) => {
+		r.table('bots')
+			.get(req.params.id)
+			.delete()
+			.run(r.conn, (err) => {
+				if (err) {
+					res.status(500).render('error.html', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
+				} else {
+					res.render('error.html', { status: 200, message: 'Your bot was successfully deleted.' });
+				}
+			});
 	})
 	.use('/api', apiRouter)
 	.use('/auth', authRouter)
+	.use('/docs', docsRouter)
 	.use(express.static(path.join(__dirname, 'static')))
 	.use('*', (req, res) => {
 		res.status(404).render('error.html', { status: 404, message: 'Not found' });

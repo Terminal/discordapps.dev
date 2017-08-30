@@ -16,13 +16,13 @@
 		<link rel="publisher" href="https://moustacheminer.com">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
-		<link href="css/ls.css" rel="stylesheet">
-		<link href="img/favicon.png" rel="shortcut-icon">
-		<link href="img/favicon.png" rel="icon">
-		<title>ls</title>
+		<link href="/css/ls.css" rel="stylesheet">
+		<link href="/img/favicon.png" rel="shortcut-icon">
+		<link href="/img/favicon.png" rel="icon">
+		<title>Documentation - ls</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+		<nav class="navbar navbar-default navbar-toggleable-md navbar-inverse bg-inverse">
 			<button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -30,7 +30,7 @@
 			<div class="navbar-collapse collapse" id="navbar">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="/api">API Documentation</a>
+						<a class="nav-link" href="/docs">Documentation</a>
 					</li>
 					{{ #user }}
 					<li class="nav-item">
@@ -38,6 +38,12 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/add">Add</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/all">All Bots (Approved and Queued)</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/queue">Queue</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/auth/logout">Log out</a>
@@ -54,47 +60,13 @@
 		<main>
 			<div class="jumbotron">
 				<div class="container">
-					<p class="lead code">Welcome to the club.</p>
+					<p class="lead code"><code>&gt;terminal_ documentation</code></p>
 				</div>
 			</div>
 			<div class="container">
 				<div class="row">
-					<div class="col-12" id="error">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<form method="post">
-							<div class="form-group">
-								<label for="id">Name</label>
-								<input type="text" class="form-control" id="name" name="name" maxlength="32" placeholder="Insert name for your bot">
-							</div>
-							<div class="form-group">
-								<label for="id">Bot avatar URL</label>
-								<input type="text" class="form-control" id="avatar" name="avatar" maxlength="200" placeholder="Try not to use a link to Discord if you always change your picture.">
-							</div>
-							<div class="form-group">
-								<label for="id">ID</label>
-								<input type="text" class="form-control" id="id" name="id" maxlength="70" placeholder="Insert ID for your bot">
-							</div>
-							<div class="form-group">
-								<label for="shortDesc">Short Description</label>
-								<input type="text" class="form-control" id="shortDesc" name="shortDesc" maxlength="200" placeholder="Insert a short and consice description">
-							</div>
-							<div class="form-group">
-								<small class="form-text text-muted">Please insert how to trigger the bot in the long description. Your bot cannot be tested for quality and assurance without this. Descriptions are limited to 500px tall.</small>
-								<label for="type">Long Description Type</label>
-								<select class="form-control" id="type" name="type" placeholder="Select type here" onchange="description();">
-									<option disabled selected>Please select a value</option>
-									<option value="iframe">&lt;iframe&gt;</option>
-									<option value="markdown">GitHub flavoured Markdown</option>
-								</select>
-							</div>
-							<div class="form-group" id="description">
-							</div>
-							<button type="submit" class="btn btn-primary" onclick="return check();">Submit</button>
-							<input type="text" name="csrf" value="{{ csrf }}" style="visibility: hidden">
-						</form>
+					<div class="col-12">
+						{{{ markdown }}}
 					</div>
 				</div>
 			</div>
@@ -106,8 +78,21 @@
 			</div>
 		</footer>
 
-		<script src="/js/add.js"></script>
+		<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content" id="modalContent">
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const bots = {{{ json }}};
+			console.log(bots);
+		</script>
 		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
+		<script src="/js/index-type.js"></script>
+		<script src="/js/list.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>

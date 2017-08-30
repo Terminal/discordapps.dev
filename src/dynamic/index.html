@@ -16,13 +16,13 @@
 		<link rel="publisher" href="https://moustacheminer.com">
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
-		<link href="css/ls.css" rel="stylesheet">
-		<link href="img/favicon.png" rel="shortcut-icon">
-		<link href="img/favicon.png" rel="icon">
+		<link href="/css/ls.css" rel="stylesheet">
+		<link href="/img/favicon.png" rel="shortcut-icon">
+		<link href="/img/favicon.png" rel="icon">
 		<title>ls</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+		<nav class="navbar navbar-default navbar-toggleable-md navbar-inverse bg-inverse">
 			<button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -30,7 +30,7 @@
 			<div class="navbar-collapse collapse" id="navbar">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="/api">API Documentation</a>
+						<a class="nav-link" href="/docs">Documentation</a>
 					</li>
 					{{ #user }}
 					<li class="nav-item">
@@ -38,6 +38,12 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/add">Add</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/all">All Bots (Approved and Queued)</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/queue">Queue</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/auth/logout">Log out</a>
@@ -54,7 +60,7 @@
 		<main>
 			<div class="jumbotron">
 				<div class="container">
-					<p class="lead code"><span id="typing"></span></p>
+					<p class="lead code">These bots are certified by professional bot developers, who deem the bots below suitable for larger guilds, for capacity, ease of use and features.</p>
 				</div>
 			</div>
 			<div class="container">
@@ -68,26 +74,32 @@
 								{{ shortDesc }}
 							</div>
 						</div>
+						{{ #admin }}
 						{{ ^approved }}
-						<form method="POST" style="float: left; margin-right: 5px;">
+						<form action="/queue" method="POST" style="float: left; margin-right: 5px;">
 							<button type="submit" class="btn btn-success">Approve</button>
 							<input type="text" name="id" value="{{ id }}" style="display: none;">
 							<input type="text" name="csrf" value="{{ csrf }}" style="display: none;">
 							<input type="text" name="approve" value="true" style="display: none;">
 						</form>
-						<form method="POST">
+						{{ /approved }}
+						<form action="/queue" method="POST" style="float: left; margin-right: 5px;">
 							<button type="submit" class="btn btn-danger">Reject</button>
 							<input type="text" name="id" value="{{ id }}" style="display: none;">
 							<input type="text" name="csrf" value="{{ csrf }}" style="display: none;">
 							<input type="text" name="approve" value="false" style="display: none;">
 						</form>
-						{{ /approved }}
+						{{ /admin }}
+						{{ #editable }}
+						<a href="/edit/{{id}}" class="btn btn-primary">Edit</a>
+						<a href="/delete/{{id}}" class="btn btn-danger">Delete</a>
+						{{ /editable }}
 					</div>
 					{{ /bots }}
 				</div>
 				{{ ^bots }}
 				<h1>No bots</h1>
-				<p>Thank &#123;&#123; deity &#125;&#125; for that.</p>
+				<p>There were no bots found for your query.</p>
 				{{ /bots }}
 			</div>
 		</main>
@@ -110,7 +122,6 @@
 			console.log(bots);
 		</script>
 		<script src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js"></script>
-		<script src="/js/index-type.js"></script>
 		<script src="/js/list.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
