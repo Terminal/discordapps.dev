@@ -89,11 +89,13 @@
 							<input type="text" name="csrf" value="{{ csrf }}" style="display: none;">
 							<input type="text" name="approve" value="false" style="display: none;">
 						</form>
+						<a href="https://discordapp.com/oauth2/authorize?client_id={{ id }}&scope=bot&permissions=0" class="btn btn-info">No Perms Invite</a>
 						{{ /admin }}
 						{{ #editable }}
 						<a href="/edit/{{id}}" class="btn btn-primary">Edit</a>
 						<a href="/delete/{{id}}" class="btn btn-danger">Delete</a>
 						{{ /editable }}
+						<a href="{{ invite }}" class="btn btn-info">Invite</a>
 					</div>
 					{{ /bots }}
 				</div>
