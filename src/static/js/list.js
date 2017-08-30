@@ -24,6 +24,7 @@ const modal = (id) => {
 			{{{ html }}}
 		</div>
 		<div class="modal-footer">
+			<a href="{{ invite }}" class="btn btn-info">Invite</a>
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		</div>
 	`, botinfo);

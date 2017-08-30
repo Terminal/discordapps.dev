@@ -2,6 +2,7 @@
 
 const name = document.getElementById('name');
 const avatar = document.getElementById('avatar');
+const invite = document.getElementById('invite');
 const botid = document.getElementById('id');
 const shortDesc = document.getElementById('shortDesc');
 const type = document.getElementById('type');
@@ -12,7 +13,7 @@ const description = () => {
 	if (type.value === 'iframe') {
 		descbox.innerHTML = '<label for="longDesc">Long Description</label><input type="text" class="form-control" id="longDesc" name="longDesc" maxlength="200" placeholder="Insert iframe URL">';
 	} else if (type.value === 'markdown') {
-		descbox.innerHTML = '<label for="longDesc">Long Description</label><textarea class="form-control" id="longDesc" name="longDesc" maxlength="20000" rows="6" placeholder="Insert Markdown"></textarea><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">GitHub Markdown help</a>';
+		descbox.innerHTML = '<label for="longDesc">Long Description</label><textarea class="form-control" id="longDesc" name="longDesc" maxlength="20000" rows="6" placeholder="Insert Markdown"></textarea><p><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">GitHub Markdown help</a></p>';
 	}
 };
 
@@ -28,6 +29,9 @@ const check = () => {
 		return false;
 	} else if (!avatar.value) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Bazinga!</b> You did not fill in your avatar.</div>';
+		return false;
+	} else if (!invite.value) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Fart!</b> You did not fill in your invite URL.</div>';
 		return false;
 	} else if (type.value !== 'iframe' && type.value !== 'markdown') {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Meow!</b> Please select a valid long description type.</div>';
@@ -47,8 +51,14 @@ const check = () => {
 	} else if (avatar.value.length > 200) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Uno!</b> Your bot\'s avatar URL is too long. (200)</div>';
 		return false;
+	} else if (invite.value.length > 2000) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Schleem!</b> Your bot\'s invite URL is too long. (2000)</div>';
+		return false;
 	} else if (!/^https:\/\//.test(avatar.value)) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Fuuu!</b> Your bot\'s avatar URL has to begin with https://. If you still use http://, consider using imgur or another photo sharing website.</div>';
+		return false;
+	} else if (!/^https?:\/\//.test(avatar.value)) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Bing!</b> Your bot\'s invite URL has to begin with https:// or http://</div>';
 		return false;
 	} else if (type.value === 'iframe' && !/^https:\/\//.test(document.getElementById('longDesc').value)) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Kahoot!</b> Your bot\'s URL has to begin with https://. If you still use http://, consider using GitHub Pages, Cloudflare SSL or Let\'s Encrypt</div>';

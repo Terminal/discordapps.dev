@@ -73,15 +73,18 @@ const validate = (req, res, next) => {
 	if (typeof req.body.id !== 'string'
 		|| typeof req.body.name !== 'string'
 		|| typeof req.body.avatar !== 'string'
+		|| typeof req.body.invite !== 'string'
 		|| typeof req.body.shortDesc !== 'string'
 		|| typeof req.body.type !== 'string'
 		|| typeof req.body.longDesc !== 'string'
 		|| (req.body.type !== 'iframe' && req.body.type !== 'markdown') // If it's an invalid description type
-		|| req.body.id.length > 70 // If the ID is too long
-		|| req.body.name.length > 32 // If the ID is too long
-		|| req.body.avatar.length > 200 // If the ID is too long
-		|| req.body.shortDesc.length > 200 // If the short description is too long
+		|| req.body.id.length > 70
+		|| req.body.name.length > 32
+		|| req.body.avatar.length > 200
+		|| req.body.invite.length > 2000
+		|| req.body.shortDesc.length > 200
 		|| !/^https:\/\//.test(req.body.avatar)
+		|| !/^https?:\/\//.test(req.body.invite)
 		|| (req.body.type === 'iframe' && req.body.longDesc.length > 200)
 		|| (req.body.type === 'markdown' && req.body.longDesc.length > 20000)
 		|| (req.body.type === 'iframe' && !/^https:\/\//.test(req.body.longDesc))

@@ -80,6 +80,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 				id: req.body.id,
 				name: req.body.name,
 				avatar: req.body.avatar,
+				invite: req.body.invite,
 				shortDesc: req.body.shortDesc,
 				type: req.body.type,
 				longDesc: req.body.longDesc,
@@ -105,6 +106,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 			.update({
 				name: req.body.name,
 				avatar: req.body.avatar,
+				invite: req.body.invite,
 				shortDesc: req.body.shortDesc,
 				type: req.body.type,
 				longDesc: req.body.longDesc
