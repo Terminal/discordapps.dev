@@ -3,6 +3,10 @@ const r = require('./db');
 const mustache = require('mustache');
 const marked = require('marked');
 
+marked.setOptions({
+	sanitize: true
+});
+
 const check = (req, res, next) => {
 	if (req.user.guilds.find(guild => guild.id === config.get('discord').guild)) {
 		next();
@@ -55,10 +59,7 @@ const list = (req, res) => {
 							return render;
 						});
 
-						const json = JSON.stringify(bots)
-							.replace(/&/g, '\\&')
-							.replace(/</g, '\\<')
-							.replace(/>/g, '\\>')
+						const json = JSON.stringify(bots);
 
 						res.status(200).render('index.html', {
 							user: req.user,
