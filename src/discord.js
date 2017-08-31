@@ -59,7 +59,10 @@ const list = (req, res) => {
 							return render;
 						});
 
-						const json = JSON.stringify(bots);
+						const json = JSON.stringify(bots)
+							.replace(/&/g, '\\&')
+							.replace(/</g, '\\<')
+							.replace(/>/g, '\\>');
 
 						res.status(200).render('index.html', {
 							user: req.user,
