@@ -1,26 +1,22 @@
 {
 	"rethinkdb": {
-		"host": "",
+		"host": "127.0.0.1",
 		"port": 28015,
 		"db": "directory"
 	},
 	"discord": {
-		"api": {
-			"clientID": "337266496889683979",
-			"clientSecret": "",
-			"scope": [ "identify", "guilds" ]
-		},
+		"clientID": "",
+		"clientSecret": "",
+		"scope": [ "identify", "guilds" ],
 		"guild": "330777295952543744",
 		"admins": [
-			"86477779717066752",
-			"161866631004422144",
 			"190519304972664832"
 		]
 	},
 	"webserver": {
-		"port": 8080,
+		"port": 80,
 		"secret": "",
-		"location": ""
+		"location": "https://ls.terminal.ink/"
 	},
 	"useragent": "Terminal/1.0.0 (Noud.js; Linux x86_64)"
 }
