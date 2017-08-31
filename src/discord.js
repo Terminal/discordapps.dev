@@ -59,8 +59,6 @@ const list = (req, res) => {
 							.replace(/&/g, '\\&')
 							.replace(/</g, '\\<')
 							.replace(/>/g, '\\>')
-							.replace(/"/g, '\\"')
-							.replace(/'/g, '\\\'');
 
 						res.status(200).render('index.html', {
 							user: req.user,
