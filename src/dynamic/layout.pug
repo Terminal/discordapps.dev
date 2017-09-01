@@ -1,0 +1,60 @@
+doctype html
+
+html
+	head
+		title ls - #{title}
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1")
+		meta(name="theme-color" content="#FFFFFF")
+		meta(name="description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.")
+		meta(property="og:type" content="website")
+		meta(property="og:title" content="Terminal.ink")
+		meta(property="og:description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.")
+		meta(property="og:image" content="https://terminal.ink/assets/images/avatar.png")
+		meta(name="twitter:card" content="summary")
+		meta(name="twitter:title" content="Terminal.ink")
+		meta(name="twitter:description" content="The Terminal directory listings with the best of Discord bots by the certified Terminal community.")
+		meta(name="author" content="7coil")
+		link(rel="publisher" href="https://moustacheminer.com")
+		link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet")
+		link(href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet")
+		link(href="/css/ls.css" rel="stylesheet")
+		link(href="/img/favicon.png" rel="shortcut-icon")
+		link(href="/img/favicon.png" rel="icon")
+	body
+		nav.navbar.navbar-default.navbar-toggleable-md.navbar-inverse.bg-inverse
+			button.navbar-toggler.navbar-toggler-right.collapsed(type="button" data-toggle="collapse" data-target="#navbar")
+				span.navbar-toggler-icon
+			a.navbar-brand(href="/") terminal@terminal.ink:~/$ ls
+			#navbar.navbar-collapse.collapse
+				ul.navbar-nav.mr-auto
+					li.nav-item
+						a.nav-link(href="/docs") Documentation
+					if user
+						li.nav-item
+							span.nav-link #{user.username}
+						li.nav-item
+							a.nav-link(href="/add") Add
+						li.nav-item
+							a.nav-link(href="/all") All
+						li.nav-item
+							a.nav-link(href="/queue") Queue
+						li.nav-item
+							a.nav-link(href="/auth/logout") Log out
+					else
+						li.nav-item
+							a.nav-link(href="/auth") Log in
+		main
+			block jumbotron
+			.container
+				block content
+		footer
+			block footer
+				.container
+					hr
+					p Copyright 2017 - ls.terminal.ink
+		block script
+		script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js")

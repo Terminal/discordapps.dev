@@ -47,12 +47,4 @@ passport.use(new DiscordStrategy(
 	}
 ));
 
-passport.checkIfLoggedIn = (req, res, next) => {
-	if (req.user) {
-		next();
-	} else {
-		res.status(401).render('error.html', { status: 401, message: 'You have not logged in yet' });
-	}
-};
-
 module.exports = passport;

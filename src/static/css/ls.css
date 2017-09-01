@@ -28,3 +28,15 @@ iframe {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+
+.buddon {
+	float: left;
+}
+
+.btn {
+	margin-right: 5px;
+}
+
+.hide {
+	display: none;
+}
