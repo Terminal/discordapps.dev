@@ -125,7 +125,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.render('error.pug', { status: 200, message: 'Your bot was left unchanged.' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Thanks. That went well.' });
-					bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by \`<@${res.locals.bot.owner}\`>`);
+					bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 				}
 			});
 	})
