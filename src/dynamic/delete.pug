@@ -8,7 +8,7 @@ block jumbotron
 block content
 	.row
 		.col-12
-			.form.buddon
+			form.buddon(method="POST")
 				button.btn.btn-success(type="submit") Yes
 				input.hide(type="text" name="csrf" value=`${csrf}`)
 			a.btn.btn-danger(href="/") No

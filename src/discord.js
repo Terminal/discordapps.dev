@@ -112,7 +112,7 @@ const validate = (req, res, next) => {
 
 const owns = (req, res, next) => {
 	r.table('bots')
-		.get(req.params.id)
+		.get(req.params.id || req.body.id)
 		.run(r.conn, (err, result) => {
 			if (err) {
 				res.status(500).render('error.pug', { status: 500, message: err.message });

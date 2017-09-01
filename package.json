@@ -21,6 +21,7 @@
 		"body-parser": "^1.17.2",
 		"config": "^1.26.1",
 		"consolidate": "^0.14.5",
+		"eris": "^0.7.1",
 		"express": "^4.15.3",
 		"express-session": "^1.15.4",
 		"marked": "^0.3.6",

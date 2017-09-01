@@ -8,7 +8,9 @@
 		"clientID": "",
 		"clientSecret": "",
 		"scope": [ "identify", "guilds" ],
+		"token": "",
 		"guild": "330777295952543744",
+		"channel": "",
 		"admins": [
 			"190519304972664832"
 		]

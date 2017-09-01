@@ -3,6 +3,7 @@ const config = require('config');
 const cons = require('consolidate');
 const express = require('express');
 const session = require('express-session');
+const bot = require('./bot');
 const path = require('path');
 const r = require('./db');
 const apiR = require('./api');
@@ -40,7 +41,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 		res.locals.approve = false;
 		next();
 	}, discR.list)
-	.post('/queue', userR.terminal, csrfR.check, (req, res) => {
+	.post('/queue', userR.terminal, csrfR.check, discR.owns, (req, res) => {
 		const previous = req.header('Referer') || '/';
 		if (typeof req.body.id.length > 70
 			|| (req.body.approve !== 'true' && req.body.approve !== 'false')) {
@@ -56,6 +57,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
 					} else {
 						res.redirect(previous);
+						bot.channel.createMessage(`<@${req.user.id}> approved \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 					}
 				});
 		} else if (req.body.approve === 'false') {
@@ -67,6 +69,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while deleting bot info into Rethonk DB' });
 					} else {
 						res.redirect(previous);
+						bot.channel.createMessage(`<@${req.user.id}> rejected \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 					}
 				});
 		} else {
@@ -97,6 +100,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.status(409).render('error.pug', { status: 409, message: 'A bot with this ID already exists in the database.' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Thanks. That went well.' });
+					bot.channel.createMessage(`<@${req.body.owner}> added \`${req.body.name}\` <@${req.body.id}>`);
 				}
 			});
 	})
@@ -121,6 +125,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.render('error.pug', { status: 200, message: 'Your bot was left unchanged.' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Thanks. That went well.' });
+					bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by \`<@${res.locals.bot.owner}\`>`);
 				}
 			});
 	})
@@ -136,6 +141,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Your bot was successfully deleted.' });
+					bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 				}
 			});
 	})
