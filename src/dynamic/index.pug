@@ -1,0 +1,50 @@
+extends layout.pug
+
+block jumbotron
+	.jumbotron
+		.container
+			p.lead.code These bots are certified by professional bot developers, who deem the bots below suitable for larger guilds, for capacity, ease of use and features.
+
+block content
+	if bots.length
+		each val in bots
+			.col-12.col-lg-6
+				.media(onclick=`modal('${val.id}')`)
+					img.d-flex.mr-3.icon(src=val.avatar alt=`Avatar image for ${val.name}`)
+					.media-body
+						h5.mt-0= val.name
+						!= val.shortDesc
+				if user && user.admin
+					if !val.approved && csrf
+						form.buddon(action="/queue" method="POST")
+							button.btn.btn-success(type="submit") Approve
+							input.hide(type="text" name="id" value=`${val.id}`)
+							input.hide(type="text" name="csrf" value=`${csrf}`)
+							input.hide(type="text" name="approve" value="true")
+					if csrf
+						form.buddon(action="/queue" method="POST")
+							if val.approved
+								button.btn.btn-danger(type="submit") Remove
+							else
+								button.btn.btn-danger(type="submit") Reject
+							input.hide(type="text" name="id" value=`${val.id}`)
+							input.hide(type="text" name="csrf" value=`${csrf}`)
+							input.hide(type="text" name="approve" value="false")
+					a.btn.btn-info(href=`https://discordapp.com/oauth2/authorize?client_id=${id}&scope=bot&permissions=0`) No Perms Invite
+				if editable
+					a.btn.btn-primary(href=`/edit/${id}`) Edit
+					a.btn.btn-danger(href=`/delete/${id}`) Delete
+				a.btn.btn-info(href=val.invite) Invite
+	else
+		.col-12
+			p Your query found no results.
+
+block script
+	#modal.modal.fade(tabindex="-1" role="dialog")
+		.modal-dialog.modal-lg(role="document")
+			#modalContent.modal-content
+	script(src="/js/list.js")
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js")
+	script.
+		const bots = !{json};
+		console.log(bots);

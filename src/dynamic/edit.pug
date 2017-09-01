@@ -1,0 +1,52 @@
+extends layout.pug
+
+block jumbotron
+	.jumbotron
+		.container
+			p.lead.code ls.terminal.ink documentation
+
+block content
+	.col-12
+		form(method="post")
+			.form-group
+				label(for="name") Name
+				input#name.form-control(value=bot.name type="text" name="name" maxlength="32" placeholder="Insert name for your bot")
+			.form-group
+				label(for="avatar") Avatar URL
+				input#avatar.form-control(value=bot.avatar type="text" name="avatar" maxlength="200" placeholder="Try not to use a link to Discord if you always change your picture.")
+			.form-group
+				label(for="invite") Invite URL
+				input#invite.form-control(value=bot.invite type="text" name="invite" maxlength="2000" placeholder="An invite link for your bot. Can be any link, as long as it automatically redirects to Discord.")
+				p: a(href="https://discordapi.com/permissions.html" target="_blank") Invite Generator
+			.form-group
+				label(for="id") ID
+				input#id.form-control(value=bot.id type="text" name="id" maxlength="70" placeholder="Insert the ID for your bot")
+			.form-group
+				label(for="shortDesc") Short Description
+				input#shortDesc.form-control(value=bot.shortDesc type="text" name="shortDesc" maxlength="200" placeholder="Insert a short and consice description")
+			.form-group
+				small.form-text.text-muted Please insert how to trigger the bot in the long description. Your bot cannot be tested for quality and assurance without this.
+				label(for="type") Long Description Type
+				select#type.form-control(name="type" placeholder="Select type here" onchange!="description();")
+							{{ #types }}
+							<div class="form-group">
+
+								<label for="type">Long Description Type</label>
+								<select class="form-control" id="type" name="type" placeholder="Select type here" onchange="description();">
+									<option disabled {{ #invalid }} selected {{ /invalid }}>Please select a value</option>
+									<option value="iframe" {{ #iframe }} selected {{ /iframe }}>&lt;iframe&gt;</option>
+									<option value="markdown" {{ #markdown }} selected {{ /markdown }}>GitHub flavoured Markdown</option>
+								</select>
+							</div>
+							<div class="form-group" id="description">
+								{{ #iframe }}
+								<label for="longDesc">Long Description</label><input value="{{ longDesc }}" type="text" class="form-control" id="longDesc" name="longDesc" maxlength="200" placeholder="Insert iframe URL">
+								{{ /iframe }}
+								{{ #markdown }}
+								<label for="longDesc">Long Description</label><textarea class="form-control" id="longDesc" name="longDesc" maxlength="20000" rows="6" placeholder="Insert Markdown">{{ longDesc }}</textarea><p><a href="https://guides.github.com/features/mastering-markdown/" target="_blank">GitHub Markdown help</a></p>
+								{{ /markdown }}
+							</div>
+							{{ /types }}
+							<button type="submit" class="btn btn-primary" onclick="return check();">Submit</button>
+							<input type="text" name="csrf" value="{{ csrf }}" style="visibility: hidden">
+							<input type="text" name="id" value="{{ id }}" style="visibility: hidden">

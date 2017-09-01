@@ -7,18 +7,16 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
 	fs.readFile(path.join(__dirname, '/markdown/index.md'), 'utf8', (err, data) => {
-		res.render('markdown.html', {
-			markdown: marked(data),
-			user: req.user
+		res.render('md.pug', {
+			markdown: marked(data)
 		});
 	});
 })
 	.get('/:page', (req, res, next) => {
 		if (fs.existsSync(path.join(__dirname, '/markdown/', `${req.params.page}.md`))) {
 			fs.readFile(path.join(__dirname, '/markdown/', `${req.params.page}.md`), 'utf8', (err, data) => {
-				res.render('markdown.html', {
-					markdown: marked(data),
-					user: req.user
+				res.render('md.pug', {
+					markdown: marked(data)
 				});
 			});
 		} else {
