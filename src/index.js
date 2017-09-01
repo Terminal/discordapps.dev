@@ -35,8 +35,8 @@ app.set('views', path.join(__dirname, 'dynamic'))
 		res.locals.approve = true;
 		next();
 	}, discR.list)
-	.get('/all', userR.auth, csrfR.make, discR.list)
-	.get('/queue', userR.auth, csrfR.make, (req, res, next) => {
+	.get('/all', csrfR.make, discR.list)
+	.get('/queue', csrfR.make, (req, res, next) => {
 		res.locals.approve = false;
 		next();
 	}, discR.list)
@@ -87,7 +87,8 @@ app.set('views', path.join(__dirname, 'dynamic'))
 				type: req.body.type,
 				longDesc: req.body.longDesc,
 				owner: req.user.id,
-				approved: false
+				approved: false,
+				timestamp: Date.now()
 			})
 			.run(r.conn, (err, response) => {
 				if (err) {

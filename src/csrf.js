@@ -2,23 +2,27 @@ const r = require('./db');
 const crypto = require('crypto');
 
 const make = (req, res, next) => {
-	const csrf = crypto.randomBytes(64).toString('hex');
-	r.table('csrf')
-		.insert({
-			id: req.user.id,
-			expiry: Date.now() + 900,
-			csrf
-		}, {
-			conflict: 'replace'
-		})
-		.run(r.conn, (err) => {
-			if (err) {
-				res.status(500).render('error.pug', { status: 500, message: 'An error occured with the Rethonk DB server.' });
-			} else {
-				req.csrf = csrf;
-				next();
-			}
-		});
+	if (req.user && req.user.id) {
+		const csrf = crypto.randomBytes(64).toString('hex');
+		r.table('csrf')
+			.insert({
+				id: req.user.id,
+				expiry: Date.now() + 900,
+				csrf
+			}, {
+				conflict: 'replace'
+			})
+			.run(r.conn, (err) => {
+				if (err) {
+					res.status(500).render('error.pug', { status: 500, message: 'An error occured with the Rethonk DB server.' });
+				} else {
+					req.csrf = csrf;
+					next();
+				}
+			});
+	} else {
+		next();
+	}
 };
 
 const check = (req, res, next) => {

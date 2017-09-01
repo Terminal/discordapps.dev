@@ -17,7 +17,7 @@ const list = (req, res) => {
 					if (err2) {
 						res.status(500).render('error.pug', { status: 500, message: err2.message });
 					} else {
-						const bots = result.filter((bot) => {
+						let bots = result.filter((bot) => {
 							if (typeof res.locals.approve === 'boolean') {
 								return bot.approved === res.locals.approve;
 							}
@@ -39,7 +39,14 @@ const list = (req, res) => {
 							render.random = Math.random();
 
 							return render;
-						}).sort((a, b) => a.random - b.random);
+						});
+
+						// Sort by time if looking at queue, otherwise randomise the shit out of it
+						if (res.locals.approve === false) {
+							bots = bots.sort((a, b) => a.timestamp - b.timestamp);
+						} else {
+							bots = bots.sort((a, b) => a.random - b.random);
+						}
 
 						const json = JSON.stringify(bots)
 							.replace(/&/g, '\\&')
