@@ -3,7 +3,7 @@
 
 const modalContent = document.getElementById('modalContent');
 
-const modal = (id) => {
+const info = (id) => {
 	const botinfo = bots.find(bot => bot.id === id);
 
 	modalContent.innerHTML = Mustache.render(`
@@ -15,7 +15,7 @@ const modal = (id) => {
 		</div>
 		<div class="modal-body">
 			<div class="media">
-				<img class="d-flex mr-3 icon" src="{{ avatar }}" alt="Generic placeholder image">
+				<img class="d-flex mr-3 icon" src="{{ avatar }}" alt="Failed to load avatar">
 				<div class="media-body">
 					<h5 class="mt-0">{{ #name }}{{ name }}{{ /name }}{{ ^name }}{{ id }}{{ /name }}</h5>
 					{{ shortDesc }}

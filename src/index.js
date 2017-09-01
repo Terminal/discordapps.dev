@@ -13,6 +13,7 @@ const docsR = require('./docs');
 const userR = require('./user');
 const discR = require('./discord');
 const auth = require('./auth/auth');
+const crypto = require('crypto');
 
 const app = express();
 
@@ -41,7 +42,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 		res.locals.approve = false;
 		next();
 	}, discR.list)
-	.post('/queue', userR.terminal, csrfR.check, discR.owns, (req, res) => {
+	.post('/queue', userR.auth, csrfR.check, userR.admin, (req, res) => {
 		const previous = req.header('Referer') || '/';
 		if (typeof req.body.id.length > 70
 			|| (req.body.approve !== 'true' && req.body.approve !== 'false')) {
@@ -51,49 +52,55 @@ app.set('views', path.join(__dirname, 'dynamic'))
 				.get(req.body.id)
 				.update({
 					approved: true
+				}, {
+					returnChanges: true
 				})
-				.run(r.conn, (err) => {
+				.run(r.conn, (err, result) => {
 					if (err) {
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
 					} else {
 						res.redirect(previous);
-						bot.channel.createMessage(`<@${req.user.id}> approved \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+						bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 					}
 				});
 		} else if (req.body.approve === 'false') {
 			r.table('bots')
 				.get(req.body.id)
-				.delete()
-				.run(r.conn, (err) => {
+				.delete({
+					returnChanges: true
+				})
+				.run(r.conn, (err, result) => {
 					if (err) {
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while deleting bot info into Rethonk DB' });
 					} else {
 						res.redirect(previous);
-						bot.channel.createMessage(`<@${req.user.id}> rejected \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+						bot.channel.createMessage(`<@${req.user.id}> rejected \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 					}
 				});
 		} else {
 			res.status(500).render('error.pug', { status: 500, message: 'An invalid approval type was encountered that was not caught earlier' });
 		}
 	})
-	.get('/add', userR.terminal, csrfR.make, (req, res) => {
+	.get('/add', userR.auth, csrfR.make, (req, res) => {
 		res.render('add.pug', {
 			csrf: req.csrf,
 			title: 'Add Bot'
 		});
 	})
-	.post('/add', userR.terminal, csrfR.check, discR.validate, (req, res) => {
+	.post('/add', userR.auth, csrfR.check, discR.validate, (req, res) => {
 		r.table('bots')
 			.insert({
 				id: req.body.id,
 				name: req.body.name,
 				avatar: req.body.avatar,
 				invite: req.body.invite,
+				count: parseInt(req.body.count, 10),
 				shortDesc: req.body.shortDesc,
 				type: req.body.type,
 				longDesc: req.body.longDesc,
 				owner: req.user.id,
 				approved: false,
+				token: crypto.randomBytes(64).toString('hex'),
 				timestamp: Date.now()
 			})
 			.run(r.conn, (err, response) => {
@@ -103,24 +110,25 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.status(409).render('error.pug', { status: 409, message: 'A bot with this ID already exists in the database.' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Thanks. That went well.' });
-					bot.channel.createMessage(`<@${req.body.owner}> added \`${req.body.name}\` <@${req.body.id}>`);
+					bot.channel.createMessage(`<@${req.user.id}> added \`${req.body.name}\` <@${req.body.id}>`);
 				}
 			});
 	})
-	.get('/edit/:id', userR.terminal, csrfR.make, discR.owns, (req, res) => {
+	.get('/edit/:id', userR.auth, csrfR.make, discR.owns, (req, res) => {
 		res.render('edit.pug', {
 			csrf: req.csrf,
 			bot: res.locals.bot,
 			title: 'Edit Bot'
 		});
 	})
-	.post('/edit/:id', userR.terminal, csrfR.check, discR.owns, discR.validate, (req, res) => {
+	.post('/edit/:id', userR.auth, csrfR.check, discR.owns, discR.validate, (req, res) => {
 		r.table('bots')
 			.get(req.body.id)
 			.update({
 				name: req.body.name,
 				avatar: req.body.avatar,
 				invite: req.body.invite,
+				count: parseInt(req.body.count, 10),
 				shortDesc: req.body.shortDesc,
 				type: req.body.type,
 				longDesc: req.body.longDesc
@@ -136,13 +144,13 @@ app.set('views', path.join(__dirname, 'dynamic'))
 				}
 			});
 	})
-	.get('/delete/:id', userR.terminal, csrfR.make, discR.owns, (req, res) => {
+	.get('/delete/:id', userR.auth, csrfR.make, discR.owns, (req, res) => {
 		res.render('delete.pug', {
 			csrf: req.csrf,
 			title: 'Delete Bot'
 		});
 	})
-	.post('/delete/:id', userR.terminal, csrfR.check, discR.owns, (req, res) => {
+	.post('/delete/:id', userR.auth, csrfR.check, discR.owns, (req, res) => {
 		r.table('bots')
 			.get(req.params.id)
 			.delete()
@@ -152,6 +160,28 @@ app.set('views', path.join(__dirname, 'dynamic'))
 				} else {
 					res.render('error.pug', { status: 200, message: 'Your bot was successfully deleted.' });
 					bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+				}
+			});
+	})
+	.get('/token/:id', userR.auth, csrfR.make, discR.owns, (req, res) => {
+		res.render('token.pug', {
+			csrf: req.csrf,
+			bot: res.locals.bot
+		});
+	})
+	.post('/token/:id', userR.auth, csrfR.check, discR.owns, (req, res) => {
+		r.table('bots')
+			.get(req.params.id)
+			.update({
+				token: crypto.randomBytes(64).toString('hex')
+			}, {
+				returnChanges: true
+			})
+			.run(r.conn, (err) => {
+				if (err) {
+					res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
+				} else {
+					res.redirect(`/token/${req.params.id}`);
 				}
 			});
 	})

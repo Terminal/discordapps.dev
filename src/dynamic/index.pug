@@ -10,10 +10,13 @@ block content
 		if bots.length
 			each val in bots
 				.col-12.col-lg-6
-					.media(onclick=`modal('${val.id}')`)
-						img.d-flex.mr-3.icon(src=val.avatar alt=`Avatar image for ${val.name}`)
+					.media(onclick=`info('${val.id}')`)
+						img.d-flex.mr-3.icon(src=val.avatar alt='Failed to load avatar')
 						.media-body
-							h5.mt-0= val.name
+							h5.mt-0 #{val.name}
+								span.badge.badge-default.left #{val.count} guilds
+								if !val.approved
+									span.badge.badge-danger.left Unverified
 							!= val.shortDesc
 					if user && user.admin
 						if !val.approved && csrf
@@ -31,10 +34,12 @@ block content
 								input.hide(type="text" name="id" value=`${val.id}`)
 								input.hide(type="text" name="csrf" value=`${csrf}`)
 								input.hide(type="text" name="approve" value="false")
-						a.btn.btn-info(href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0`) No Perms Invite
+						a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0`) No Perms Invite
 					if val.editable
 						a.btn.btn-primary(href=`/edit/${val.id}`) Edit
 						a.btn.btn-danger(href=`/delete/${val.id}`) Delete
+						a.btn.btn-info(href=`/token/${val.id}`) Token
+					span.btn.btn-info(onclick=`info('${val.id}')`) Info
 					a.btn.btn-info(href=val.invite) Invite
 		else
 			.col-12

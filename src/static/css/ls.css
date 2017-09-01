@@ -42,3 +42,11 @@ iframe {
 .hide {
 	display: none;
 }
+
+.right {
+	margin-right: 5px;
+}
+
+.left {
+	margin-left: 5px;
+}

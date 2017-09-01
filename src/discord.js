@@ -9,6 +9,7 @@ marked.setOptions({
 
 const list = (req, res) => {
 	r.table('bots')
+		.without('token')
 		.run(r.conn, (err1, cursor) => {
 			if (err1) {
 				res.status(500).render('error.pug', { status: 500, message: err1.message });
@@ -84,16 +85,22 @@ const validate = (req, res, next) => {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an incorrect type' });
 	} else if (typeof req.body.longDesc !== 'string') {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid long description' });
+	} else if (typeof req.body.count !== 'string') {
+		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid guild count' });
 	} else if (req.body.id.length > 70) {
-		res.status(400).render('error.pug', { status: 400, message: 'You provided a bot id that was too long. ()' });
+		res.status(400).render('error.pug', { status: 400, message: 'You provided a bot id that was too long (70)' });
 	} else if (req.body.shortDesc.length > 200) {
-		res.status(400).render('error.pug', { status: 400, message: 'You provided a short description that was too long. ()' });
+		res.status(400).render('error.pug', { status: 400, message: 'You provided a short description that was too long (200)' });
 	} else if (req.body.name.length > 32) {
-		res.status(400).render('error.pug', { status: 400, message: 'You provided a name that was too long. ()' });
+		res.status(400).render('error.pug', { status: 400, message: 'You provided a name that was too long (32)' });
 	} else if (req.body.avatar.length > 2000) {
-		res.status(400).render('error.pug', { status: 400, message: 'You provided an avatar that was too long. ()' });
+		res.status(400).render('error.pug', { status: 400, message: 'You provided an avatar that was too long (2000)' });
 	} else if (req.body.invite.length > 2000) {
-		res.status(400).render('error.pug', { status: 400, message: 'You provided an invite that was too long. ()' });
+		res.status(400).render('error.pug', { status: 400, message: 'You provided an invite that was too long (2000)' });
+	} else if (parseInt(req.body.count, 10) < 0) {
+		res.status(400).render('error.pug', { status: 400, message: 'Your bot count was too low (0)' });
+	} else if (parseInt(req.body.count, 10) > 1000000) {
+		res.status(400).render('error.pug', { status: 400, message: 'Your bot count was too high (1000000)' });
 	} else if (!/^https:\/\//.test(req.body.avatar)) {
 		res.status(400).render('error.pug', { status: 400, message: 'Your avatar must use HTTPS' });
 	} else if (!/^https?:\/\//.test(req.body.invite)) {
@@ -101,9 +108,9 @@ const validate = (req, res, next) => {
 	} else if (req.body.type === 'iframe' && !/^https:\/\//.test(req.body.longDesc)) {
 		res.status(400).render('error.pug', { status: 400, message: 'Your iframe based long description must use HTTPS' });
 	} else if (req.body.type === 'iframe' && req.body.longDesc > 2000) {
-		res.status(400).render('error.pug', { status: 400, message: 'You provided an iframe based long description that was too long. (2000)' });
+		res.status(400).render('error.pug', { status: 400, message: 'You provided an iframe based long description that was too long (2000)' });
 	} else if (req.body.type === 'markdown' && req.body.longDesc > 20000) {
-		res.status(400).render('error.pug', { status: 400, message: 'You provided a markdown based long description that was too long. (20000)' });
+		res.status(400).render('error.pug', { status: 400, message: 'You provided a markdown based long description that was too long (20000)' });
 	} else if (/\D/.test(req.body.id)) {
 		res.status(400).render('error.pug', { status: 400, message: 'Your bot ID had values other than digits' });
 	} else {

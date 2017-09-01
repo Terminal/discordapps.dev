@@ -7,40 +7,41 @@ block jumbotron
 
 block content
 	.row
-		#error.col-12
-	.row
 		.col-12
 			form(method="post")
 				.form-group
+					label(for="id") ID
+					input#id.form-control(disabled value=bot.id type="text" maxlength="70" placeholder="Insert the ID for your bot" required pattern="\\d+")
+				.form-group
 					label(for="name") Name
-					input#name.form-control(value=bot.name type="text" name="name" maxlength="32" placeholder="Insert name for your bot")
+					input#name.form-control(value=bot.name type="text" name="name" maxlength="32" placeholder="Insert name for your bot" required)
+				.form-group
+					label(for="count") Guild Count
+					input#count.form-control(value=bot.count type="number" name="count" min="0" max="1000000" step="1" placeholder="Insert guild count for your bot" required)
 				.form-group
 					label(for="avatar") Avatar URL
-					input#avatar.form-control(value=bot.avatar type="text" name="avatar" maxlength="2000" placeholder="Try not to use a link to Discord if you always change your picture.")
+					input#avatar.form-control(value=bot.avatar type="text" name="avatar" maxlength="2000" placeholder="https://" required pattern="https:\\/\\/.+")
 				.form-group
 					label(for="invite") Invite URL
-					input#invite.form-control(value=bot.invite type="text" name="invite" maxlength="2000" placeholder="An invite link for your bot. Can be any link, as long as it automatically redirects to Discord.")
+					input#invite.form-control(value=bot.invite type="text" name="invite" maxlength="2000" placeholder="http:// or https://. Can be any link, as long as it automatically redirects to Discord." required pattern="https?:\\/\\/.+")
 					p: a(href="https://discordapi.com/permissions.html" target="_blank") Invite Generator
 				.form-group
-					label(for="id") ID
-					input#id.form-control(disabled value=bot.id type="text" maxlength="70" placeholder="Insert the ID for your bot")
-				.form-group
 					label(for="shortDesc") Short Description
-					input#shortDesc.form-control(value=bot.shortDesc type="text" name="shortDesc" maxlength="200" placeholder="Insert a short and consice description")
+					input#shortDesc.form-control(value=bot.shortDesc type="text" name="shortDesc" maxlength="200" placeholder="Insert a short and consice description" required)
 				.form-group
 					small.form-text.text-muted Please insert how to trigger the bot in the long description. Your bot cannot be tested for quality and assurance without this.
 					label(for="type") Long Description Type
-					select#type.form-control(name="type" placeholder="Select type here" onchange!="description();")
+					select#type.form-control(name="type" placeholder="Select type here" onchange!="description();" required)
 						option(disabled) Please select a value
 						option(value="iframe" selected=bot.type==="iframe") &lt;iframe&gt;
 						option(value="markdown" selected=bot.type==="markdown") Markdown (no HTML)
 				#description.form-group
 					label(for="longDesc") Long Description
 					if bot.type === "iframe"
-						input#longDesc.form-control(value=bot.longDesc type="text" name="longDesc" maxlength="2000" placeholder="Insert iframe URL")
+						input#longDesc.form-control(value=bot.longDesc type="text" name="longDesc" maxlength="2000" placeholder="Insert iframe URL" required pattern="https:\\/\\/.+")
 					else if bot.type === "markdown"
-						textarea#longDesc.form-control(name="longDesc" maxlength="20000" rows="6" placeholder="Insert Markdown") #{bot.longDesc}
-				button.btn.btn-primary(type="submit" onclick="return check();") Submit
+						textarea#longDesc.form-control(name="longDesc" maxlength="20000" rows="6" placeholder="Insert Markdown" required) #{bot.longDesc}
+				button.btn.btn-primary(type="submit") Submit
 				input.hide(type="text" name="csrf" value=csrf)
 				input.hide(type="text" name="id" value=bot.id)
 

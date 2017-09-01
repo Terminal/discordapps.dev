@@ -1,0 +1,18 @@
+extends layout.pug
+
+block jumbotron
+	.jumbotron
+		.container
+			p.lead.code Token for #{bot.name}
+
+block content
+	.row
+		.col-12
+			p This token is used to access the <code>ls.terminal.ink</code> API, whenever it is required. For more information about this API,
+				a(href="/docs/api") read the docs.
+			p: code(style="word-break: break-all") #{bot.token}
+		.col-12
+			form.buddon(method="POST")
+				button.btn.btn-danger(type="submit") Generate new token
+				input.hide(type="text" name="csrf" value=`${csrf}`)
+				input.hide(type="text" name="approve" value="true")
