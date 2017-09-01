@@ -35,8 +35,11 @@ const list = (req, res) => {
 							if ((req.user && req.user.id) === bot.owner || (req.user && req.user.admin)) {
 								render.editable = true;
 							}
+
+							render.random = Math.random();
+
 							return render;
-						});
+						}).sort((a, b) => a.random - b.random);
 
 						const json = JSON.stringify(bots)
 							.replace(/&/g, '\\&')
