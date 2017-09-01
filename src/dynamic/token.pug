@@ -10,7 +10,10 @@ block content
 		.col-12
 			p This token is used to access the <code>ls.terminal.ink</code> API, whenever it is required. For more information about this API,
 				a(href="/docs/api") read the docs.
-			p: code(style="word-break: break-all") #{bot.token}
+			if bot.token
+				p: code(style="word-break: break-all") #{bot.token}
+			else
+				p You do not have a token.
 		.col-12
 			form.buddon(method="POST")
 				button.btn.btn-danger(type="submit") Generate new token

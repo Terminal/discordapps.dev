@@ -14,7 +14,8 @@ block content
 						img.d-flex.mr-3.icon(src=val.avatar alt='Failed to load avatar')
 						.media-body
 							h5.mt-0 #{val.name}
-								span.badge.badge-default.left #{val.count} guilds
+								if val.count
+									span.badge.badge-default.left #{val.count} guilds
 								if !val.approved
 									span.badge.badge-danger.left Unverified
 							!= val.shortDesc
