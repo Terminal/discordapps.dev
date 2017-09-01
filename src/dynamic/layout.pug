@@ -31,15 +31,15 @@ html
 				ul.navbar-nav.mr-auto
 					li.nav-item
 						a.nav-link(href="/docs") Documentation
+					li.nav-item
+						a.nav-link(href="/all") All
+					li.nav-item
+						a.nav-link(href="/queue") Queue
 					if user
 						li.nav-item
 							span.nav-link #{user.username}
 						li.nav-item
 							a.nav-link(href="/add") Add
-						li.nav-item
-							a.nav-link(href="/all") All
-						li.nav-item
-							a.nav-link(href="/queue") Queue
 						li.nav-item
 							a.nav-link(href="/auth/logout") Log out
 					else
