@@ -31,12 +31,12 @@ iframe {
 
 .buddon {
 	float: left;
-	cursor: pointer;
 }
 
 .btn {
 	margin-right: 5px;
 	margin-bottom: 5px;
+	cursor: pointer;
 }
 
 .hide {
