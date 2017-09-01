@@ -31,7 +31,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 		extended: true
 	}))
 	.use(userR.userSetup)
-	.get('/', (req, res, next) => {
+	.get('/', csrfR.make, (req, res, next) => {
 		res.locals.approve = true;
 		next();
 	}, discR.list)
