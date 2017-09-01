@@ -3,7 +3,7 @@ extends layout.pug
 block jumbotron
 	.jumbotron
 		.container
-			p.lead.code Edit bot
+			p.lead.code Add bot
 
 block content
 	.row
@@ -23,7 +23,7 @@ block content
 					p: a(href="https://discordapi.com/permissions.html" target="_blank") Invite Generator
 				.form-group
 					label(for="id") ID
-					input#id.form-control(disabled value=bot.id type="text" maxlength="70" placeholder="Insert the ID for your bot")
+					input#id.form-control(value=bot.id type="text" name="id" maxlength="70" placeholder="Insert the ID for your bot")
 				.form-group
 					label(for="shortDesc") Short Description
 					input#shortDesc.form-control(value=bot.shortDesc type="text" name="shortDesc" maxlength="200" placeholder="Insert a short and consice description")
@@ -35,14 +35,8 @@ block content
 						option(value="iframe" selected=bot.type==="iframe") &lt;iframe&gt;
 						option(value="markdown" selected=bot.type==="markdown") Markdown (no HTML)
 				#description.form-group
-					label(for="longDesc") Long Description
-					if bot.type === "iframe"
-						input#longDesc.form-control(value=bot.longDesc type="text" name="longDesc" maxlength="2000" placeholder="Insert iframe URL")
-					else if bot.type === "markdown"
-						textarea#longDesc.form-control(name="longDesc" maxlength="20000" rows="6" placeholder="Insert Markdown") #{bot.longDesc}
 				button.btn.btn-primary(type="submit" onclick="return check();") Submit
 				input.hide(type="text" name="csrf" value=csrf)
-				input.hide(type="text" name="id" value=bot.id)
 
 block script
 	script(src="/js/add.js")

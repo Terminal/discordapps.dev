@@ -48,7 +48,7 @@ const check = () => {
 	} else if (name.value.length > 32) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Snap!</b> Your bot\'s name is too long. (32)</div>';
 		return false;
-	} else if (avatar.value.length > 200) {
+	} else if (avatar.value.length > 2000) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Uno!</b> Your bot\'s avatar URL is too long. (200)</div>';
 		return false;
 	} else if (invite.value.length > 2000) {
@@ -57,11 +57,14 @@ const check = () => {
 	} else if (!/^https:\/\//.test(avatar.value)) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Fuuu!</b> Your bot\'s avatar URL has to begin with https://. If you still use http://, consider using imgur or another photo sharing website.</div>';
 		return false;
-	} else if (!/^https?:\/\//.test(avatar.value)) {
+	} else if (!/^https?:\/\//.test(invite.value)) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Bing!</b> Your bot\'s invite URL has to begin with https:// or http://</div>';
 		return false;
 	} else if (type.value === 'iframe' && !/^https:\/\//.test(document.getElementById('longDesc').value)) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Kahoot!</b> Your bot\'s URL has to begin with https://. If you still use http://, consider using GitHub Pages, Cloudflare SSL or Let\'s Encrypt</div>';
+		return false;
+	} else if (type.value === 'iframe' && document.getElementById('longDesc').value.length > 2000) {
+		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Boop!</b> Your bot\'s iframe URL is too long. (2000)</div>';
 		return false;
 	} else if (type.value === 'markdown' && document.getElementById('longDesc').value.length > 20000) {
 		errorbox.innerHTML = '<div class="alert alert-danger" role="alert"><b>Boop!</b> Your bot\'s markdown is too long. (20000)</div>';
