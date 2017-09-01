@@ -58,7 +58,8 @@ const list = (req, res) => {
 							bots,
 							json,
 							csrf: req.csrf,
-							admin: res.locals.admin
+							admin: res.locals.admin,
+							title: 'Bot Listing'
 						});
 					}
 				});

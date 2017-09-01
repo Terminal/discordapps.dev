@@ -77,7 +77,10 @@ app.set('views', path.join(__dirname, 'dynamic'))
 		}
 	})
 	.get('/add', userR.terminal, csrfR.make, (req, res) => {
-		res.render('add.pug', { csrf: req.csrf });
+		res.render('add.pug', {
+			csrf: req.csrf,
+			title: 'Add Bot'
+		});
 	})
 	.post('/add', userR.terminal, csrfR.check, discR.validate, (req, res) => {
 		r.table('bots')
@@ -105,7 +108,11 @@ app.set('views', path.join(__dirname, 'dynamic'))
 			});
 	})
 	.get('/edit/:id', userR.terminal, csrfR.make, discR.owns, (req, res) => {
-		res.render('edit.pug', { csrf: req.csrf, bot: res.locals.bot });
+		res.render('edit.pug', {
+			csrf: req.csrf,
+			bot: res.locals.bot,
+			title: 'Edit Bot'
+		});
 	})
 	.post('/edit/:id', userR.terminal, csrfR.check, discR.owns, discR.validate, (req, res) => {
 		r.table('bots')
@@ -130,7 +137,10 @@ app.set('views', path.join(__dirname, 'dynamic'))
 			});
 	})
 	.get('/delete/:id', userR.terminal, csrfR.make, discR.owns, (req, res) => {
-		res.render('delete.pug', { csrf: req.csrf });
+		res.render('delete.pug', {
+			csrf: req.csrf,
+			title: 'Delete Bot'
+		});
 	})
 	.post('/delete/:id', userR.terminal, csrfR.check, discR.owns, (req, res) => {
 		r.table('bots')
