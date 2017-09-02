@@ -47,6 +47,7 @@ router.get('/', (req, res) => {
 	.get('/bots/:id', (req, res) => {
 		r.table('bots')
 			.get(req.params.id)
+			.default({})
 			.without('token')
 			.run(r.conn, (err, result) => {
 				if (err) {
