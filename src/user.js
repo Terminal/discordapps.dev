@@ -7,12 +7,6 @@ const userSetup = (req, res, next) => {
 		} else {
 			req.user.admin = false;
 		}
-
-		if (req.user.guilds.find(guild => guild.id === config.get('discord').guild)) {
-			req.user.terminal = true;
-		} else {
-			req.user.terminal = false;
-		}
 	}
 
 	res.locals.user = req.user;
