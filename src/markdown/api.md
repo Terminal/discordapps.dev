@@ -36,3 +36,11 @@ Update your bot count!
 	"count": 2321,
 }
 ```
+
+You can also use this.
+```json
+{
+	"server_count": 2321,
+}
+```
+
