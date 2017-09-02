@@ -3,12 +3,12 @@ extends layout.pug
 block jumbotron
 	.jumbotron
 		.container
-			p.lead.code Are you sure?
+			p.lead.code #{__('delete_sure')}
 
 block content
 	.row
 		.col-12
 			form.buddon(method="POST")
-				button.btn.btn-success(type="submit") Yes
+				button.btn.btn-success(type="submit") #{__('yes')}
 				input.hide(type="text" name="csrf" value=`${csrf}`)
-			a.btn.btn-danger(href="/") No
+			a.btn.btn-danger(href="/") #{__('no')}

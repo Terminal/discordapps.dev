@@ -11,8 +11,7 @@ html
 			pre: span#typing
 		script(src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js")
 		script.
-			let directory = !{status} === 404 ? '/(unreachable)/' : window.location.pathname;
-
+			const directory = !{status} === 404 ? '/(unreachable)/' : window.location.pathname;
 			const typing = new Typed('#typing', {
 				strings: [
 					`!{status} - !{message}\n\nterminal@terminal.ink:${directory}$ <a href="/">cd /</a>`
