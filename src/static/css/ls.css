@@ -33,10 +33,10 @@ iframe {
 	float: left;
 }
 
-.btn {
+.langicon {
+	float: left;
+	height: 2em;
 	margin-right: 5px;
-	margin-bottom: 5px;
-	cursor: pointer;
 }
 
 .hide {

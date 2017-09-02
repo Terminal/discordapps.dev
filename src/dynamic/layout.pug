@@ -26,25 +26,25 @@ html
 		nav.navbar.navbar-default.navbar-toggleable-md.navbar-inverse.bg-inverse
 			button.navbar-toggler.navbar-toggler-right.collapsed(type="button" data-toggle="collapse" data-target="#navbar")
 				span.navbar-toggler-icon
-			a.navbar-brand(href="/") terminal@terminal.ink:~/$ ls
+			a.navbar-brand(href="/") #{__('header')}
 			#navbar.navbar-collapse.collapse
 				ul.navbar-nav.mr-auto
 					li.nav-item
-						a.nav-link(href="/docs") Documentation
+						a.nav-link(href="/docs") #{__('nav_documentation')}
 					li.nav-item
-						a.nav-link(href="/all") All
+						a.nav-link(href="/all") #{__('nav_all')}
 					li.nav-item
-						a.nav-link(href="/queue") Queue
+						a.nav-link(href="/queue") #{__('nav_queue')}
 					if user
 						li.nav-item
 							span.nav-link #{user.username}
 						li.nav-item
-							a.nav-link(href="/add") Add
+							a.nav-link(href="/add") #{__('nav_add')}
 						li.nav-item
-							a.nav-link(href="/auth/logout") Log out
+							a.nav-link(href="/auth/logout") #{__('nav_logout')}
 					else
 						li.nav-item
-							a.nav-link(href="/auth") Log in
+							a.nav-link(href="/auth") #{__('nav_login')}
 		main
 			block jumbotron
 			.container
@@ -53,7 +53,7 @@ html
 			block footer
 				.container
 					hr
-					p Copyright 2017 - ls.terminal.ink
+					p #{__('footer_copyright')}
 		block script
 		script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js")

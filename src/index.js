@@ -1,9 +1,10 @@
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const config = require('config');
 const cons = require('consolidate');
 const express = require('express');
 const session = require('express-session');
-const bot = require('./bot');
+// const bot = require('./bot');
 const path = require('path');
 const r = require('./db');
 const apiR = require('./api');
@@ -12,20 +13,30 @@ const csrfR = require('./csrf');
 const docsR = require('./docs');
 const userR = require('./user');
 const discR = require('./discord');
+const langM = require('./lang');
 const auth = require('./auth/auth');
 const crypto = require('crypto');
+const i18n = require('i18n');
+
+i18n.configure({
+	directory: path.join(__dirname, '..', 'locales'),
+	cookie: 'lang',
+	defaultLocale: 'en-gb'
+});
 
 const app = express();
 
 app.set('views', path.join(__dirname, 'dynamic'))
 	.engine('html', cons.pug)
 	.set('view engine', 'html')
+	.use(cookieParser(config.get('webserver').secret))
 	.use(session({
 		secret: config.get('webserver').secret,
-		resave: false,
+		resave: true,
 		saveUninitialized: true,
 		proxy: true
 	}))
+	.use(i18n.init)
 	.use(auth.initialize())
 	.use(auth.session())
 	.use(bodyParser.json())
@@ -33,6 +44,10 @@ app.set('views', path.join(__dirname, 'dynamic'))
 		extended: true
 	}))
 	.use(userR.userSetup)
+	.use((req, res, next) => {
+		res.locals.i18n = i18n.__; // eslint-disable-line no-underscore-dangle
+		next();
+	})
 	.get('/', csrfR.make, (req, res, next) => {
 		res.locals.approve = true;
 		next();
@@ -60,7 +75,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
 					} else {
 						res.redirect(previous);
-						bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
+						// bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 					}
 				});
 		} else if (req.body.approve === 'false') {
@@ -74,7 +89,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while deleting bot info into Rethonk DB' });
 					} else {
 						res.redirect(previous);
-						bot.channel.createMessage(`<@${req.user.id}> rejected \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
+						// bot.channel.createMessage(`<@${req.user.id}> rejected \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 					}
 				});
 		} else {
@@ -110,7 +125,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.status(409).render('error.pug', { status: 409, message: 'A bot with this ID already exists in the database.' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Thanks. That went well.' });
-					bot.channel.createMessage(`<@${req.user.id}> added \`${req.body.name}\` <@${req.body.id}>`);
+					// bot.channel.createMessage(`<@${req.user.id}> added \`${req.body.name}\` <@${req.body.id}>`);
 				}
 			});
 	})
@@ -140,7 +155,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.render('error.pug', { status: 200, message: 'Your bot was left unchanged.' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Thanks. That went well.' });
-					bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+					// bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 				}
 			});
 	})
@@ -159,7 +174,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Your bot was successfully deleted.' });
-					bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+					// bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 				}
 			});
 	})
@@ -188,6 +203,7 @@ app.set('views', path.join(__dirname, 'dynamic'))
 	.use('/api', apiR)
 	.use('/auth', authR)
 	.use('/docs', docsR)
+	.use('/lang', langM)
 	.use(express.static(path.join(__dirname, 'static')))
 	.use('*', (req, res) => {
 		res.status(404).render('error.pug', { status: 404, message: 'Not found' });
