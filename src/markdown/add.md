@@ -11,7 +11,7 @@ _This is the correct procedure as of 2017-08-30. This documentation may be outda
 ## Requirements
 
 1. Bots must be located on either https://bots.discord.pw/ or https://discordbots.org/
-2. The trigger for the bot must contain more than 1 character
+2. At least one trigger for the bot must contain more than 1 character
 3. You must have a help command, found in the "Playing" status, or your trigger with the word "help"
 4. English is required, unless it's omitted for satirical purposes. Internationalisation is recommended
 5. All commands listed in the help must function
