@@ -15,7 +15,9 @@ const authMiddleware = (req, res, next) => {
 			.run(r.conn, (err, bot) => {
 				if (err) {
 					res.status(500).json({ error: err.message });
-				} else if (auth === bot.token) {
+				} else if (!bot) {
+					res.status(404).json({ error: 'This bot doesn\'t exist' });
+				} if (auth === bot.token) {
 					next();
 				} else {
 					res.status(401).json({ error: 'Incorrect Authorisation header.' });
