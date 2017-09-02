@@ -21,7 +21,9 @@ const i18n = require('i18n');
 i18n.configure({
 	directory: path.join(__dirname, '..', 'locales'),
 	cookie: 'lang',
-	defaultLocale: 'en-gb'
+	defaultLocale: 'en-gb',
+	autoReload: true,
+	updateFiles: false
 });
 
 const app = express();
@@ -44,10 +46,6 @@ app.set('views', path.join(__dirname, 'dynamic'))
 		extended: true
 	}))
 	.use(userR.userSetup)
-	.use((req, res, next) => {
-		res.locals.i18n = i18n.__; // eslint-disable-line no-underscore-dangle
-		next();
-	})
 	.get('/', csrfR.make, (req, res, next) => {
 		res.locals.approve = true;
 		next();

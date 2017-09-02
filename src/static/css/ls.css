@@ -29,6 +29,11 @@ iframe {
 	padding-bottom: 5px;
 }
 
+.btn {
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
 .buddon {
 	float: left;
 }

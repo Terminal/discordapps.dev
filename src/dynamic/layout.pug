@@ -26,7 +26,7 @@ html
 		nav.navbar.navbar-default.navbar-toggleable-md.navbar-inverse.bg-inverse
 			button.navbar-toggler.navbar-toggler-right.collapsed(type="button" data-toggle="collapse" data-target="#navbar")
 				span.navbar-toggler-icon
-			a.navbar-brand(href="/") #{__('header')}
+			a.navbar-brand(href="/") #{__('nav_header')}
 			#navbar.navbar-collapse.collapse
 				ul.navbar-nav.mr-auto
 					li.nav-item
@@ -45,6 +45,8 @@ html
 					else
 						li.nav-item
 							a.nav-link(href="/auth") #{__('nav_login')}
+					li.nav-item
+						a.nav-link(href="/lang") #{__('nav_lang')}
 		main
 			block jumbotron
 			.container
