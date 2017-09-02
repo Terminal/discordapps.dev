@@ -2,9 +2,10 @@
 The Express server that hosts the bot directory listing.
 
 ## Development Team
-Category		| People
---------------- | ----------
-Lead Developers | 7coil#3175
+Category           | People
+------------------ | ----------
+Lead Developers    | 7coil#3175
+French Translation | Yvan#5761
 
 ## Installation
 1. `npm i`
