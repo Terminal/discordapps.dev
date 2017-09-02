@@ -5,9 +5,10 @@
 
 Tokens are provided on a per-bot basis. View your bot's terminal.ink token by finding your bot and clicking the Token button.
 
-When a token is required (When _token needed_ is shown), please add your token to your HTTP `Authorization` header.
-
-`Authorization: dd8c7533eabfa62174a549f7b11678962ec00f8727537`  
+- All requests use JSON.
+- Please send POST requests with `Content-Type: application/json` with valid JSON in the body.
+- When a token is required (When _token needed_ is shown), please add your token to your HTTP `Authorization` header.
+	- `Authorization: dd8c7533eabfa62174a549f7b11678962ec00f8727537`  
 
 ## Methods
 
