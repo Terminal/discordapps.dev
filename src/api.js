@@ -63,7 +63,7 @@ router.get('/', (req, res) => {
 	})
 	.post('/bots/:id', authMiddleware, (req, res) => {
 		const count = req.body.count || req.body.server_count;
-		if (typeof req.body.count !== 'string' && typeof req.body.count !== 'number') {
+		if (typeof count !== 'string' && typeof count !== 'number') {
 			res.status(400).json({ error: 'You provided an invalid guild count' });
 		} else if (parseInt(count, 10) < 0) {
 			res.status(400).json({ error: 'Your bot count was too low (0)' });
