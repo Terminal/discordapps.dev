@@ -7,12 +7,14 @@
 	"discord": {
 		"clientID": "",
 		"clientSecret": "",
-		"scope": [ "identify", "guilds" ],
+		"scope": [ "identify" ],
 		"token": "",
 		"guild": "330777295952543744",
-		"channel": "",
-		"admins": [
-			"190519304972664832"
+		"channel": "353680459999215616",
+		"roles": [
+			"337167808813203456",
+			"353686617799786496",
+			"342762203532754945"
 		]
 	},
 	"webserver": {
