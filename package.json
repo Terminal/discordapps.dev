@@ -32,10 +32,11 @@
 		"passport-discord": "^0.1.2",
 		"path": "^0.12.7",
 		"pug": "^2.0.0-rc.3",
+		"request": "^2.81.0",
 		"rethinkdb": "^2.3.3"
 	},
 	"devDependencies": {
-		"eslint": "^4.2.0",
+		"eslint": "^4.6.0",
 		"eslint-config-airbnb-base": "^11.2.0",
 		"eslint-plugin-import": "^2.7.0"
 	},
