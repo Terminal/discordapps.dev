@@ -31,6 +31,10 @@ client.on('guildMemberAdd', (guild, member) => {
 						if (owner) {
 							owner.addRole(config.get('discord').dev);
 						}
+
+						if (res.approved) {
+							member.addRole(config.get('discord').bot);
+						}
 					}
 				});
 		} else {
