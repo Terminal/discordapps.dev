@@ -1,4 +1,4 @@
-# How to add a bot to `>terminal_` ls
+# How to add a bot to the Bot List
 ---
 
 _This is the correct procedure as of 2017-08-30. This documentation may be outdated by this time_
