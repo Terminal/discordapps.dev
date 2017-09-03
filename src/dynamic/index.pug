@@ -24,6 +24,23 @@ block content
 								if val.ownerinfo
 									span.badge.badge-info.left #{val.ownerinfo.username}##{val.ownerinfo.discriminator}
 							!= val.shortDesc
+					if user && user.admin
+						if !val.approved && csrf
+							form.buddon(action="/queue" method="POST")
+								button.btn.btn-success(type="submit") #{__('list_approve')}
+								input.hide(type="text" name="id" value=`${val.id}`)
+								input.hide(type="text" name="csrf" value=`${csrf}`)
+								input.hide(type="text" name="approve" value="true")
+						if csrf
+							form.buddon(action="/queue" method="POST")
+								if val.approved
+									button.btn.btn-danger(type="submit") #{__('list_remove')}
+								else
+									button.btn.btn-danger(type="submit") #{__('list_reject')}
+								input.hide(type="text" name="id" value=`${val.id}`)
+								input.hide(type="text" name="csrf" value=`${csrf}`)
+								input.hide(type="text" name="approve" value="false")
+						a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
 					if val.editable
 						a.btn.btn-primary(href=`/edit/${val.id}`) #{__('list_edit')}
 						a.btn.btn-danger(href=`/delete/${val.id}`) #{__('list_delete')}
