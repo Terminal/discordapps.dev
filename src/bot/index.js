@@ -19,8 +19,6 @@ client.on('ready', () => {
 client.on('guildMemberAdd', (guild, member) => {
 	if (module.exports.guild.id === guild.id) {
 		if (member.bot) {
-			member.addRole(config.get('discord').bot);
-
 			// Check if the owner is in the server
 			r.table('bots')
 				.without('token')
