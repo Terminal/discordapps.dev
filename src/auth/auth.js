@@ -25,20 +25,12 @@ passport.use(new DiscordStrategy(
 	(accessToken, refreshToken, profile, done) => {
 		if (accessToken !== null) {
 			r.table('users')
-				.get(profile.id)
+				.insert(profile, {
+					conflict: 'replace'
+				})
 				.run(r.conn)
-				.then((user) => {
-					if (user) {
-						done(null, user);
-					} else {
-						// If the user doesn't exist, add the user!
-						r.table('users')
-							.insert(profile)
-							.run(r.conn)
-							.then(() => {
-								done(null, profile);
-							});
-					}
+				.then(() => {
+					done(null, profile);
 				})
 				.catch((err) => {
 					throw err;
