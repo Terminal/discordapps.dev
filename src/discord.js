@@ -8,8 +8,11 @@ marked.setOptions({
 });
 
 const list = (req, res) => {
-	r.table('bots')
+	r.db('directory').table('bots')
 		.without('token')
+		.merge(info => ({
+			ownerinfo: r.db('directory').table('users').get(info('owner'))
+		}))
 		.run(r.conn, (err1, cursor) => {
 			if (err1) {
 				res.status(500).render('error.pug', { status: 500, message: err1.message });

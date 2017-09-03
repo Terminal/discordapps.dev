@@ -21,6 +21,8 @@ block content
 									span.badge.badge-default.left #{__('list_count', { count: val.count })}
 								if !val.approved
 									span.badge.badge-danger.left #{__('list_unverified')}
+								if val.ownerinfo
+									span.badge.badge-info.left #{val.ownerinfo.username}##{val.ownerinfo.discriminator}
 							!= val.shortDesc
 					if user && user.admin
 						if !val.approved && csrf
