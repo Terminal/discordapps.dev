@@ -8,10 +8,10 @@ marked.setOptions({
 });
 
 const list = (req, res) => {
-	r.db('directory').table('bots')
+	r.table('bots')
 		.without('token')
 		.merge(info => ({
-			ownerinfo: r.db('directory').table('users').get(info('owner'))
+			ownerinfo: r.table('users').get(info('owner'))
 		}))
 		.run(r.conn, (err1, cursor) => {
 			if (err1) {
