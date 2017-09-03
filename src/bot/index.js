@@ -40,10 +40,12 @@ client.on('guildMemberAdd', (guild, member) => {
 				.filter({
 					owner: member.id
 				})
-				.run(r.conn, (err, res) => {
-					if (res.some(bot => bot.approved)) {
-						member.addRole(config.get('discord').dev);
-					}
+				.run(r.conn, (err, cursor) => {
+					cursor.toArray().then((res) => {
+						if (res.some(bot => bot.approved)) {
+							member.addRole(config.get('discord').dev);
+						}
+					});
 				});
 		}
 	}
