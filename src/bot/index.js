@@ -26,5 +26,5 @@ client.on('guildMemberAdd', (guild, member) => {
 client.connect();
 
 module.exports.client = client;
-module.exports.tguild = tguild;
-module.exports.tchannel = tchannel;
+module.exports.guild = tguild;
+module.exports.channel = tchannel;
