@@ -60,6 +60,8 @@ i18n.configure({
 // Create an express app
 const app = express();
 
+app.locals.list_invite = config.get('discord').invite;
+
 app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	.engine('html', cons.pug) // Use PUG
 	.set('view engine', 'html')
