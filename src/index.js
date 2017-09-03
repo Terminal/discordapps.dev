@@ -107,7 +107,7 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
 					} else if (res.skipped) {
 						res.status(404).render('error.pug', { status: 404, message: 'Bot Not found' });
-					} else if (!result.changes[0]) {
+					} else if (!result.changes) {
 						res.redirect(previous);
 					} else {
 						res.redirect(previous);
@@ -129,7 +129,7 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 						res.status(500).render('error.pug', { status: 500, message: 'An error occured while deleting bot info into Rethonk DB' });
 					} else if (res.skipped) {
 						res.status(404).render('error.pug', { status: 404, message: 'Bot Not found' });
-					} else if (!result.changes[0]) {
+					} else if (!result.changes) {
 						res.redirect(previous);
 					} else {
 						res.redirect(previous);
