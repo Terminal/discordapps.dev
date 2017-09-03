@@ -10,7 +10,7 @@
     "add_invite_url_placeholder": "(Optional) http:// or https:// - Must redirect to https://discordapp.com/",
     "add_jumbotron": "Welcome to ls.terminal.ink",
     "add_longdesc": "Long Description",
-    "add_longdesc_iframe": "<iframe>",
+    "add_longdesc_iframe": "<iframe> (Insert URL)",
     "add_longdesc_markdown": "Markdown",
     "add_longdesc_mute": "Please insert how to trigger your bot in the long description",
     "add_longdesc_placeholder": "Long Description Type",
