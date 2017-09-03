@@ -108,6 +108,10 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 					} else {
 						res.redirect(previous);
 						bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
+						const owner = bot.guild.members.get(result.changes[0].old_val.owner);
+						if (owner) {
+							owner.addRole(config.get('discord').dev);
+						}
 					}
 				});
 		} else if (req.body.approve === 'false') {

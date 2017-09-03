@@ -1,5 +1,6 @@
 const Discord = require('eris');
 const config = require('config');
+const r = require('./../db');
 
 const client = new Discord.Client(config.get('discord').token);
 
@@ -16,8 +17,35 @@ client.on('ready', () => {
 });
 
 client.on('guildMemberAdd', (guild, member) => {
-	if (module.exports.guild.id === guild.id && member.bot) {
-		member.addRole(config.get('discord').bot);
+	if (module.exports.guild.id === guild.id) {
+		if (member.bot) {
+			member.addRole(config.get('discord').bot);
+
+			// Check if the owner is in the server
+			r.table('bots')
+				.without('token')
+				.get(member.id)
+				.run(r.conn, (err, res) => {
+					if (res) {
+						const owner = module.exports.guild.members.get(res.owner);
+						if (owner) {
+							owner.addRole(config.get('discord').dev);
+						}
+					}
+				});
+		} else {
+			// Check if the member owns any approved bots
+			r.table('bots')
+				.without('token')
+				.filter({
+					owner: member.id
+				})
+				.run(r.conn, (err, res) => {
+					if (res.some(bot => bot.approved)) {
+						member.addRole(config.get('discord').dev);
+					}
+				});
+		}
 	}
 });
 
