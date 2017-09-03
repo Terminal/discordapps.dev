@@ -18,4 +18,4 @@ French Translation | Yvan#5761
 - Please use tabs, preferably set to `4` column spacing to maintain alignment
 - Install dev dependancies while working on this
 - No ESlint errors please
-- noud.js 8.1.4, npm 5.3.0
+- noud.js 8.4.0, npm 5.4.0
