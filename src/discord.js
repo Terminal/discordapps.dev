@@ -135,8 +135,8 @@ const validate = (req, res, next) => {
 
 				if (response.statusCode === 404) {
 					res.status(404).render('error.pug', { status: 404, message: 'Discord could not find your bot.' });
-				} else if (response.statusCode !== 200) {
-					res.status(500).render('error.pug', { status: 500, message: `Discord returned error ${response.statusCode}` });
+				} else if (body.code) {
+					res.status(500).render('error.pug', { status: 500, message: `Discord returned error ${response.statusCode}: ${body.code} - ${body.message}` });
 				} else if (!body.bot) {
 					res.status(400).render('error.pug', { status: 400, message: 'Userbots are not allowed' });
 				} else if (typeof req.body.avatar !== 'string') {
