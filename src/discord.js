@@ -125,8 +125,6 @@ const validate = (req, res, next) => {
 				},
 				json: true
 			}, (err, response, body) => {
-				console.dir(body);
-
 				if (!req.body.avatar) {
 					req.body.avatar = `https://cdn.discordapp.com/avatars/${body.id}/${body.avatar}`;
 				}
