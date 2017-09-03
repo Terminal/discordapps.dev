@@ -3,7 +3,7 @@ html
 		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1")
 		link(href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet")
 		link(rel="stylesheet" href="/css/error.css")
-		title ls - #{status}
+		title #{status} - #{__('website')}
 	body
 		.background
 			// Add image or video with .media class to add fancy background.
@@ -14,7 +14,7 @@ html
 			const directory = !{status} === 404 ? '/(unreachable)/' : window.location.pathname;
 			const typing = new Typed('#typing', {
 				strings: [
-					`!{status} - !{message}\n\nterminal@terminal.ink:${directory}$ <a href="/">cd /</a>`
+					`!{status} - !{message}\n\nlist@mss.ovh:${directory}$ <a href="/">cd /</a>`
 				],
 				typeSpeed: 10,
 				backSpeed: 0,

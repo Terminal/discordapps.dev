@@ -6,7 +6,7 @@ const router = express.Router();
 const authMiddleware = (req, res, next) => {
 	const auth = req.get('Authorization');
 	if (!auth) {
-		res.status(401).json({ error: 'You need to provide a token. View ls.terminal.ink/docs/api' });
+		res.status(401).json({ error: 'You need to provide a token. View /docs/api' });
 	} else if (typeof auth !== 'string') {
 		res.status(401).json({ error: 'Invalid Authorisation header.' });
 	} else {

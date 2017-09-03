@@ -1,4 +1,4 @@
-# ls.terminal.ink
+# Moustacheminer Server Services List
 ---
 
 ## Topics
@@ -7,11 +7,10 @@
 
 ## How To
 
-- [Add bot to ls](/docs/add)
+- [Add bot to List](/docs/add)
 
 ## Useful links
 
-- [Homepage](https://terminal.ink/)
-- [`>terminal` registration form](https://docs.google.com/forms/d/e/1FAIpQLSexpbBYLhbda-uEu56gUKA2m951ALfQ_Vo0th43zV7FeLbI_w/viewform)
-- [Github](https://github.com/terminal)
-- [ls on Github](https://github.com/terminal/ls)
+- [Homepage](https://moustacheminer.com/)
+- [Github](https://github.com/moustacheminer)
+- [Bot List on Github](https://github.com/moustacheminer/ls)

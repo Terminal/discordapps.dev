@@ -19,7 +19,7 @@
 	"webserver": {
 		"port": 80,
 		"secret": "",
-		"location": "https://ls.terminal.ink/"
+		"location": "https://list.mss.ovh/"
 	},
 	"useragent": "Terminal/1.0.0 (Noud.js; Linux x86_64)"
 }

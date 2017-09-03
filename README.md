@@ -1,5 +1,5 @@
-# `terminal@terminal.ink:~/$ ls`
-The Express server that hosts the bot directory listing.
+# Discord Bot List
+An example Express and Eris server, which lists Discord bots
 
 ## Development Team
 Category           | People

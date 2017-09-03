@@ -8,7 +8,7 @@ client.on('ready', () => {
 	console.log('Discord Bot is online');
 
 	client.editStatus('online', {
-		name: 'ls.terminal.ink',
+		name: 'list.mss.ovh',
 		type: 0
 	});
 
