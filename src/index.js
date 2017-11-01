@@ -1,54 +1,22 @@
-// Parser for POST and cookies
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-
-// Configuration
-const config = require('config');
-
-// Consolidation of pug files to HTML
-const cons = require('consolidate');
-
-// Webserver
-const express = require('express');
-
-// Sessions for express
-const session = require('express-session');
-
-// Eris Discord Bot
-// bot.guild - The Terminal guild
-// bot.channel - The selected channel
-const bot = require('./bot');
-
-// Joining paths
-const path = require('path');
-
-// RethinkDB
 const r = require('./db');
-
-// API Middleware
+const i18n = require('i18n');
+const bot = require('./bot');
+const path = require('path');
 const apiM = require('./api');
-
-// Authentication Middleware
-const auth = require('./auth/auth');
 const authM = require('./auth');
 const userM = require('./user');
 const csrfM = require('./csrf');
-
-// Documentation Middleware
 const docsM = require('./docs');
-
-// Bot List Middleware
-const discM = require('./discord');
-
-// Crypto for generating API tokens when a bot is created
-const crypto = require('crypto');
-
-// Internationalisation
-const i18n = require('i18n');
 const langM = require('./lang');
+const crypto = require('crypto');
+const config = require('config');
+const discM = require('./discord');
+const express = require('express');
+const auth = require('./auth/auth');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 
-// Configure i18n to NEVER touch the files, and default to
-// English UK
 i18n.configure({
 	directory: path.join(__dirname, '..', 'locales'),
 	cookie: 'lang',
@@ -57,14 +25,12 @@ i18n.configure({
 	updateFiles: false
 });
 
-// Create an express app
 const app = express();
 
 app.locals.list_invite = config.get('discord').invite;
 
 app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
-	.engine('html', cons.pug) // Use PUG
-	.set('view engine', 'html')
+	.set('view engine', 'pug')
 	.use(cookieParser(config.get('webserver').secret)) // Set cookie secret
 	.use(session({
 		secret: config.get('webserver').secret,

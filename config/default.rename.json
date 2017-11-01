@@ -1,25 +1,24 @@
 {
 	"rethinkdb": {
-		"host": "127.0.0.1",
+		"host": "",
 		"port": 28015,
-		"db": "directory"
+		"db": "terminal"
 	},
 	"discord": {
-		"clientID": "",
+		"clientID": "375059824850763777",
 		"clientSecret": "",
 		"scope": [ "identify" ],
 		"token": "",
-		"guild": "330777295952543744",
-		"channel": "353680459999215616",
+		"guild": "226404143999221761",
+		"channel": "270942570194927636",
 		"roles": [
-			"337167808813203456",
-			"353686617799786496"
-		]
+		],
+		"invite": "https://discord.gg/KYZsaFb"
 	},
 	"webserver": {
-		"port": 80,
+		"port": 8080,
 		"secret": "",
 		"location": "https://list.mss.ovh/"
 	},
-	"useragent": "Terminal/1.0.0 (Noud.js; Linux x86_64)"
+	"useragent": "Discord Bot (https://list.mss.ovh, 2.0.0) list.mss.ovh/2.0.0 (Node.js; Linux x86_64)"
 }

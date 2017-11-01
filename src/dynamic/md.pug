@@ -1,12 +1,7 @@
-extends layout.pug
+extends templates/site.pug
 
 block title
 	title #{__('md_title')} - #{__('website')}
-
-block jumbotron
-	.jumbotron
-		.container
-			p.lead.code #{__('md_jumbotron')}
 
 block content
 	.row
