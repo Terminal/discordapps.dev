@@ -1,6 +1,5 @@
 //	const config = require('config');
 const r = require('./db');
-const mustache = require('mustache');
 const marked = require('marked');
 const request = require('request');
 const config = require('config');
@@ -29,22 +28,12 @@ const list = (req, res) => {
 							}
 							return true;
 						}).map((bot) => {
-							const render = bot;
-							if (render.type === 'iframe') {
-								render.html = mustache.render('<iframe class="botiframe" src="{{ iframe }}"></iframe>', { iframe: render.longDesc });
-							} else if (render.type === 'markdown') {
-								render.html = mustache.render('<div class="botdesc">{{{ content }}}</div>', { content: marked(render.longDesc) });
-							} else {
-								render.html = '<div class="botdesc"><h1>Invalid Bot render type</h1></div>';
-							}
-
 							if ((req.user && req.user.id) === bot.owner || (req.user && req.user.admin)) {
-								render.editable = true;
+								bot.editable = true;
 							}
 
-							render.random = Math.random();
-
-							return render;
+							bot.random = Math.random();
+							return bot;
 						});
 
 						// Sort by time if looking at queue, otherwise randomise the shit out of it
@@ -59,10 +48,10 @@ const list = (req, res) => {
 							.replace(/</g, '\\<')
 							.replace(/>/g, '\\>');
 
-						res.status(200).render('index.pug', {
+						res.status(200).render('list', {
 							user: req.user,
-							bots,
 							json,
+							bots,
 							csrf: req.csrf,
 							admin: res.locals.admin,
 							title: 'Bot Listing'
