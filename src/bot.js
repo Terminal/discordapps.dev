@@ -48,7 +48,7 @@ router.get('/:id', async (req, res) => {
 			})
 			.run(r.conn, (err, response) => {
 				if (err) {
-					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
+					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethink DB' });
 				} else if (response.unchanged) {
 					res.render('error.pug', { status: 200, message: 'Your bot was left unchanged.' });
 				} else {
@@ -71,7 +71,7 @@ router.get('/:id', async (req, res) => {
 			.delete()
 			.run(r.conn, (err) => {
 				if (err) {
-					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
+					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethink DB' });
 				} else {
 					res.render('error.pug', { status: 200, message: 'Your bot was successfully deleted.' });
 					bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
@@ -97,7 +97,7 @@ router.get('/:id', async (req, res) => {
 			})
 			.run(r.conn, (err) => {
 				if (err) {
-					res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
+					res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethink DB' });
 				} else {
 					// Go back to the token screen
 					res.redirect(`/token/${req.params.id}`);

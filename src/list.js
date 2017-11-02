@@ -34,7 +34,7 @@ router.get('/', csrfM.make, (req, res, next) => {
 				})
 				.run(r.conn, (err, result) => {
 					if (err) {
-						res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethonk DB' });
+						res.status(500).render('error.pug', { status: 500, message: 'An error occured while updating bot info into Rethink DB' });
 					} else if (res.skipped) {
 						res.status(404).render('error.pug', { status: 404, message: 'Bot Not found' });
 					} else if (!result.changes) {
@@ -56,7 +56,7 @@ router.get('/', csrfM.make, (req, res, next) => {
 				})
 				.run(r.conn, (err, result) => {
 					if (err) {
-						res.status(500).render('error.pug', { status: 500, message: 'An error occured while deleting bot info into Rethonk DB' });
+						res.status(500).render('error.pug', { status: 500, message: 'An error occured while deleting bot info into Rethink DB' });
 					} else if (res.skipped) {
 						res.status(404).render('error.pug', { status: 404, message: 'Bot Not found' });
 					} else if (!result.changes) {
@@ -97,7 +97,7 @@ router.get('/', csrfM.make, (req, res, next) => {
 			})
 			.run(r.conn, (err, response) => {
 				if (err) {
-					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethonk DB' });
+					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethink DB' });
 				} else if (response.errors) {
 					res.status(409).render('error.pug', { status: 409, message: 'A bot with this ID already exists in the database.' });
 				} else {
