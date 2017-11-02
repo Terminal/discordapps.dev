@@ -9,40 +9,41 @@ block jumbotron
 			p.lead.code #{__('add_jumbotron')}
 
 block content
-	.row
-		.col-12
-			p #{__('add_welcome')}
-		.col-12
-			form(method="post")
-				.form-group
-					label(for="id") #{__('add_id')}
-					input#id.form-control(type="text" name="id" maxlength="70" placeholder=__('add_id_placeholder') required pattern="\\d+")
-				.form-group
-					label(for="name") #{__('add_name')}
-					input#name.form-control(type="text" name="name" maxlength="32" placeholder=__('add_name_placeholder'))
-				.form-group
-					label(for="count") #{__('add_guild_count')}
-					input#count.form-control(type="number" name="count" value="0" min="0" max="1000000" step="1" placeholder=__('add_guild_count_placeholder') required)
-				.form-group
-					label(for="avatar") #{__('add_avatar_url')}
-					input#avatar.form-control(type="text" name="avatar" maxlength="2000" placeholder=__('add_avatar_url_placeholder') pattern="https:\\/\\/.+")
-				.form-group
-					label(for="invite") #{__('add_invite_url')}
-					input#invite.form-control(type="text" name="invite" maxlength="2000" placeholder=__('add_invite_url_placeholder') pattern="https?:\\/\\/.+")
-					p: a(href="https://discordapi.com/permissions.html" target="_blank") #{__('add_invite_url_generator')}
-				.form-group
-					label(for="shortDesc") #{__('add_shortdesc')}
-					input#shortDesc.form-control(type="text" name="shortDesc" maxlength="200" placeholder=__('add_shortdesc_placeholder') required)
-				.form-group
-					small.form-text.text-muted #{__('add_longdesc_mute')}
-					label(for="type") #{__('add_longdesc')}
-					select#type.form-control(name="type" placeholder=__('add_longdesc_placeholder') onchange!="description();" required)
-						option(value="" disabled selected) #{__('add_longdesc_select')}
-						option(value="iframe") #{__('add_longdesc_iframe')}
-						option(value="markdown") #{__('add_longdesc_markdown')}
-				#description.form-group
-				button.btn.btn-primary(type="submit") #{__('add_submit')}
-				input.hide(type="text" name="csrf" value=csrf)
+	.container
+		.row
+			.col-12
+				p #{__('add_welcome')}
+			.col-12
+				form(method="post")
+					.form-group
+						label(for="id") #{__('add_id')}
+						input#id.form-control(type="text" name="id" maxlength="70" placeholder=__('add_id_placeholder') required pattern="\\d+")
+					.form-group
+						label(for="name") #{__('add_name')}
+						input#name.form-control(type="text" name="name" maxlength="32" placeholder=__('add_name_placeholder'))
+					.form-group
+						label(for="count") #{__('add_guild_count')}
+						input#count.form-control(type="number" name="count" value="0" min="0" max="1000000" step="1" placeholder=__('add_guild_count_placeholder') required)
+					.form-group
+						label(for="avatar") #{__('add_avatar_url')}
+						input#avatar.form-control(type="text" name="avatar" maxlength="2000" placeholder=__('add_avatar_url_placeholder') pattern="https:\\/\\/.+")
+					.form-group
+						label(for="invite") #{__('add_invite_url')}
+						input#invite.form-control(type="text" name="invite" maxlength="2000" placeholder=__('add_invite_url_placeholder') pattern="https?:\\/\\/.+")
+						p: a(href="https://discordapi.com/permissions.html" target="_blank") #{__('add_invite_url_generator')}
+					.form-group
+						label(for="shortDesc") #{__('add_shortdesc')}
+						input#shortDesc.form-control(type="text" name="shortDesc" maxlength="200" placeholder=__('add_shortdesc_placeholder') required)
+					.form-group
+						small.form-text.text-muted #{__('add_longdesc_mute')}
+						label(for="type") #{__('add_longdesc')}
+						select#type.form-control(name="type" placeholder=__('add_longdesc_placeholder') onchange!="description();" required)
+							option(value="" disabled selected) #{__('add_longdesc_select')}
+							option(value="iframe") #{__('add_longdesc_iframe')}
+							option(value="markdown") #{__('add_longdesc_markdown')}
+					#description.form-group
+					button.btn.btn-primary(type="submit") #{__('add_submit')}
+					input.hide(type="text" name="csrf" value=csrf)
 
 block script
 	script(src="/js/add.js")

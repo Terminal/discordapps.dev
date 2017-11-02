@@ -25,9 +25,9 @@ html
 					li.nav-item
 						a.nav-link(href="/docs") #{__('nav_documentation')}
 					li.nav-item
-						a.nav-link(href="/all") #{__('nav_all')}
+						a.nav-link(href="/list/all") #{__('nav_all')}
 					li.nav-item
-						a.nav-link(href="/queue") #{__('nav_queue')}
+						a.nav-link(href="/list/queue") #{__('nav_queue')}
 					if user
 						li.nav-item
 							span.nav-link #{user.username}
@@ -43,8 +43,7 @@ html
 					a.nav-link(href=list_invite) #{__('list_invite')}
 		main
 			block jumbotron
-			.container
-				block content
+			block content
 		footer
 			block footer
 				.container

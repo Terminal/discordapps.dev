@@ -9,9 +9,10 @@ block jumbotron
 			p.lead.code #{__('delete_sure')}
 
 block content
-	.row
-		.col-12
-			form.buddon(method="POST")
-				button.btn.btn-success(type="submit") #{__('yes')}
-				input.hide(type="text" name="csrf" value=`${csrf}`)
-			a.btn.btn-danger(href="/") #{__('no')}
+	.container
+		.row
+			.col-12
+				form.buddon(method="POST")
+					button.btn.btn-success(type="submit") #{__('yes')}
+					input.hide(type="text" name="csrf" value=`${csrf}`)
+				a.btn.btn-danger(href="/") #{__('no')}
