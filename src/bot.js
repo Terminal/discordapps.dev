@@ -5,6 +5,7 @@ const discM = require('./discord');
 const r = require('./db');
 const bot = require('./listbot');
 const marked = require('marked');
+const crypto = require('crypto');
 
 const router = express.Router();
 marked.setOptions({

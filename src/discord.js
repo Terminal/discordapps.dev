@@ -43,6 +43,10 @@ const list = (req, res) => {
 							bots = bots.sort((a, b) => a.random - b.random);
 						}
 
+						if (res.locals.owner) {
+							bots = bots.filter(bot => bot.owner === res.locals.owner);
+						}
+
 						const json = JSON.stringify(bots)
 							.replace(/&/g, '\\&')
 							.replace(/</g, '\\<')

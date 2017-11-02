@@ -20,13 +20,13 @@ block jumbotron
 			.row
 				if user && user.admin
 					if !botinfo.approved && csrf
-						form.buddon(action="/queue" method="POST")
+						form.buddon(action="/list/queue" method="POST")
 							button.btn.btn-success(type="submit") #{__('list_approve')}
 							input.hide(type="text" name="id" botinfoue=`${botinfo.id}`)
 							input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
 							input.hide(type="text" name="approve" botinfoue="true")
 					if csrf
-						form.buddon(action="/queue" method="POST")
+						form.buddon(action="/list/queue" method="POST")
 							if botinfo.approved
 								button.btn.btn-danger(type="submit") #{__('list_remove')}
 							else
@@ -36,10 +36,9 @@ block jumbotron
 							input.hide(type="text" name="approve" botinfoue="false")
 					a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
 				if botinfo.editable
-					a.btn.btn-primary(href=`/edit/${botinfo.id}`) #{__('list_edit')}
-					a.btn.btn-danger(href=`/delete/${botinfo.id}`) #{__('list_delete')}
-					a.btn.btn-info(href=`/token/${botinfo.id}`) #{__('list_token')}
-				a.btn.btn-info(href=`/bot/${botinfo.id}`) #{__('list_info')}
+					a.btn.btn-primary(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+					a.btn.btn-danger(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+					a.btn.btn-info(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
 				a.btn.btn-info(href=botinfo.invite) #{__('list_invite')}
 
 block content
@@ -47,9 +46,9 @@ block content
 		.row
 			.col-12
 				if botinfo.type === 'iframe'
-					iframe(src=`${botinfo.longDesc}`)
+					iframe.botiframe(src=`${botinfo.longDesc}`)
 				else if botinfo.type === 'markdown'
-					!= marked(longDesc)
+					!= marked(botinfo.longDesc)
 
 block script
 	#modal.modal.fade(tabindex="-1" role="dialog")

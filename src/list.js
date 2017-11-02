@@ -106,6 +106,10 @@ router.get('/', csrfM.make, (req, res, next) => {
 					bot.channel.createMessage(`<@${req.user.id}> added \`${req.body.name}\` <@${req.body.id}>`);
 				}
 			});
-	});
+	})
+	.get('/:id', csrfM.make, (req, res, next) => {
+		res.locals.owner = req.params.id;
+		next();
+	}, discM.list);
 
 module.exports = router;
