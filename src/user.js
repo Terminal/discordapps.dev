@@ -1,5 +1,5 @@
 const config = require('config');
-const bot = require('./bot');
+const bot = require('./listbot');
 
 const userSetup = (req, res, next) => {
 	if (req.user) {
@@ -37,13 +37,12 @@ const terminal = (req, res, next) => {
 	if (req.user && req.user.terminal) {
 		next();
 	} else if (req.user) {
-		res.status(400).render('error.pug', { status: 400, message: 'You are not in the >terminal_ guild.' });
+		res.status(400).render('error.pug', { status: 400, message: 'You are not in the guild.' });
 	} else {
 		res.status(401).render('error.pug', { status: 401, message: 'You have not logged in yet.' });
 	}
 };
 
-module.exports.userSetup = userSetup;
-module.exports.auth = auth;
-module.exports.admin = admin;
-module.exports.terminal = terminal;
+module.exports = {
+	userSetup, auth, admin, terminal
+};
