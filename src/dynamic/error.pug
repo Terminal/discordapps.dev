@@ -37,7 +37,7 @@ html
 			const where = !{status} === 404 ? '<a href="#" onclick="window.history.back();">cd /</a>' : '<a href="#" onclick="window.history.back();">cd -</a>';
 			const typing = new Typed('#typing', {
 				strings: [
-					`!{status} - !{message}\n\nlist@${location.host}:${directory}$ `
+					`!{status} - !{message}\n\nlist@${location.host}:${directory}$ ${where}`
 				],
 				typeSpeed: 10,
 				backSpeed: 0,
