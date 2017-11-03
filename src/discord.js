@@ -73,7 +73,7 @@ const validate = (req, res, next) => {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid short description' });
 	} else if (typeof req.body.type !== 'string') {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid type' });
-	} else if (req.body.type !== 'iframe' && req.body.type !== 'markdown') {
+	} else if (['iframe', 'markdown'].some(type => req.body.type === type)) {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an incorrect type' });
 	} else if (typeof req.body.longDesc !== 'string') {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid long description' });
