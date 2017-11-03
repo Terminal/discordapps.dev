@@ -22,4 +22,4 @@ French Translation | Yvan#5761
 
 ## Licence
 
-MIT Licence
+GNU General Public License v3.0

@@ -12,7 +12,7 @@
 		"url": "git+https://github.com/Terminal/ls.git"
 	},
 	"author": "7coil",
-	"license": "MIT",
+	"license": "GPL-3.0",
 	"bugs": {
 		"url": "https://github.com/Terminal/ls/issues"
 	},
