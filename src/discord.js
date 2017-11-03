@@ -73,7 +73,7 @@ const validate = (req, res, next) => {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid short description' });
 	} else if (typeof req.body.type !== 'string') {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid type' });
-	} else if (['iframe', 'markdown'].some(type => req.body.type === type)) {
+	} else if (!['iframe', 'markdown'].any(type => req.body.type === type)) {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an incorrect type' });
 	} else if (typeof req.body.longDesc !== 'string') {
 		res.status(400).render('error.pug', { status: 400, message: 'You provided an invalid long description' });
@@ -118,8 +118,10 @@ const validate = (req, res, next) => {
 				},
 				json: true
 			}, (err, response, body) => {
-				if (!req.body.avatar) {
+				if (!req.body.avatar && body.avatar) {
 					req.body.avatar = `https://cdn.discordapp.com/avatars/${body.id}/${body.avatar}`;
+				} else if (!req.body.avatar) {
+					req.body.avatar = '/img/favicon.img';
 				}
 
 				if (!req.body.name) {

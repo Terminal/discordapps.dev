@@ -12,19 +12,56 @@ marked.setOptions({
 	sanitize: true
 });
 
-router.get('/:id', async (req, res) => {
-	const botinfo = await r.table('bots')
-		.get(req.params.id)
-		.run(r.conn);
-	if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
-		botinfo.editable = true;
-	}
-	if (botinfo) {
-		res.render('botpage', { botinfo, marked });
-	} else {
-		res.status(400).render('error', { status: 404, message: 'The bot was not found' });
-	}
+router.get('/add', userM.auth, csrfM.make, (req, res) => {
+	// Display the add screen
+	res.render('add.pug', {
+		csrf: req.csrf,
+		title: 'Add Bot'
+	});
 })
+	.post('/add', userM.auth, csrfM.check, discM.validate, (req, res) => {
+		// Insert specific elements into the database.
+		// Input validated by Discord Middleware
+		r.table('bots')
+			.insert({
+				id: req.body.id,
+				name: req.body.name,
+				avatar: req.body.avatar,
+				invite: req.body.invite,
+				count: parseInt(req.body.count, 10),
+				shortDesc: req.body.shortDesc,
+				type: req.body.type,
+				longDesc: req.body.longDesc,
+				owner: req.user.id,
+				approved: false,
+				token: crypto.randomBytes(64).toString('hex'),
+				timestamp: Date.now()
+			})
+			.run(r.conn, (err, response) => {
+				if (err) {
+					res.status(500).render('error.pug', { status: 500, message: 'An error occured while inserting bot info into Rethink DB' });
+				} else if (response.errors) {
+					res.status(409).render('error.pug', { status: 409, message: 'A bot with this ID already exists in the database.' });
+				} else {
+					res.render('error.pug', { status: 200, message: 'Thanks. That went well.' });
+					// Send message to Discord Channel
+					bot.channel.createMessage(`<@${req.user.id}> added \`${req.body.name}\` <@${req.body.id}>`);
+				}
+			});
+	})
+	.get('/:id', async (req, res) => {
+		const botinfo = await r.table('bots')
+			.get(req.params.id)
+			.run(r.conn);
+		if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
+			botinfo.editable = true;
+		}
+		if (botinfo) {
+			res.render('botpage', { botinfo, marked });
+		} else {
+			res.status(400).render('error', { status: 404, message: 'The bot was not found' });
+		}
+	})
 	.get('/:id/edit', userM.auth, csrfM.make, discM.owns, (req, res) => {
 		// Display the edit screen with the bot's items
 		res.render('edit.pug', {
@@ -33,7 +70,7 @@ router.get('/:id', async (req, res) => {
 			title: 'Edit Bot'
 		});
 	})
-	.post('/:id/edit', userM.auth, csrfM.check, discM.owns, discM.validate, (req, res) => {
+	.post('/:id/edit', userM.auth, csrfM.check, discM.owns, discM.validate, async (req, res) => {
 		// Edit only the bits that need to be edited
 		r.table('bots')
 			.get(req.body.id)
