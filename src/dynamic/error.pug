@@ -34,9 +34,10 @@ html
 		script(src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js")
 		script.
 			const directory = !{status} === 404 ? '/(unreachable)/' : window.location.pathname;
+			const where = !{status} === 404 ? '<a href="#" onclick="window.history.back();">cd /</a>' : '<a href="#" onclick="window.history.back();">cd -</a>';
 			const typing = new Typed('#typing', {
 				strings: [
-					`!{status} - !{message}\n\nlist@${location.host}:${directory}$ <a href="#" onclick="window.history.back();">cd -</a>`
+					`!{status} - !{message}\n\nlist@${location.host}:${directory}$ `
 				],
 				typeSpeed: 10,
 				backSpeed: 0,
