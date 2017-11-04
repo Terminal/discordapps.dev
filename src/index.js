@@ -6,11 +6,13 @@ const authM = require('./auth');
 const userM = require('./user');
 const docsM = require('./docs');
 const langM = require('./lang');
+const csrfM = require('./csrf');
 const config = require('config');
 const botM = require('./bot');
 const listM = require('./list');
 const bot = require('./listbot');
 const express = require('express');
+const discM = require('./discord');
 const auth = require('./auth/auth');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -60,9 +62,10 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 		extended: true
 	}))
 	.use(userM.userSetup) // Append details such as if they are an admin, and if they are in the guild
-	.get('/', isOnline, (req, res) => {
-		res.render('index');
-	})
+	.get('/', csrfM.make, (req, res, next) => {
+		res.locals.approve = true;
+		next();
+	}, discM.list)
 	.use('/list', isOnline, listM) // List Middleware
 	.use('/auth', isOnline, authM) // Authentication
 	.use('/docs', isOnline, docsM) // Documentation

@@ -1,0 +1,6 @@
+{
+	"remove": [
+		"unprefixed",
+		"nsfw_outside_nsfw"
+	]
+}

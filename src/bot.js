@@ -7,6 +7,7 @@ const bot = require('./listbot');
 const marked = require('marked');
 const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
+const reasons = require('./data/reasons.json');
 
 const router = express.Router();
 marked.setOptions({
@@ -121,6 +122,12 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	})
 	.get('/:id/delete', userM.auth, csrfM.make, discM.owns, (req, res) => {
 		// View a page before deleting the bot
+		res.render('delete', {
+			csrf: req.csrf
+		});
+	})
+	.get('/:id/delete', userM.auth, csrfM.make, discM.owns, (req, res) => {
+		// View a page before deleting the bot
 		res.render('delete.pug', {
 			csrf: req.csrf,
 			title: 'Delete Bot'
@@ -171,6 +178,49 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				returnChanges: true
 			})
 			.run();
+	})
+	.post('/:id/approve', userM.auth, csrfM.check, userM.admin, async (req, res) => {
+		const previous = req.header('Referer') || '/';
+		const result = await r.table('bots')
+			.get(req.body.id)
+			.update({
+				approved: true
+			}, {
+				returnChanges: true
+			})
+			.run();
+		if (res.skipped) {
+			res.status(404).render('error', { status: 404, message: 'Bot Not found' });
+		} else if (!result.changes) {
+			res.redirect(previous);
+		} else {
+			res.redirect(previous);
+			bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
+		}
+	})
+	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {
+		res.render('remove', {
+			csrf: req.csrf,
+			reasons: reasons.remove
+		});
+	})
+	.post('/:id/remove', userM.auth, csrfM.check, userM.admin, async (req, res) => {
+		const user = await r.table('bots')
+			.get(req.params.id)
+			.run();
+
+		if (!user) {
+			res.status(404).render('error', { status: 404, message: 'Bot Not found' });
+		} else if (reasons.remove[req.body.reason]) {
+			r.table('bots')
+				.get(req.params.id)
+				.delete()
+				.run();
+			res.redirect('/');
+			bot.channel.createMessage(`<@${req.user.id}> deleted \`${user.name}\` <@${user.id}> by <@${user.owner}> for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})`);
+		} else {
+			res.status(400).render('error', { status: 400, message: 'Invalid reason' });
+		}
 	});
 
 module.exports = router;
