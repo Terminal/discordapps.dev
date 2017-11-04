@@ -39,11 +39,15 @@ block content
 							option(disabled) #{__('add_longdesc_select')}
 							option(value="iframe" selected=bot.type==="iframe") #{__('add_longdesc_iframe')}
 							option(value="markdown" selected=bot.type==="markdown") #{__('add_longdesc_markdown')}
+							option(value="html" selected=bot.type==="html") #{__('add_longdesc_html')}
 					#description.form-group
 						if bot.type === "iframe"
 							input#longDesc.form-control(value=bot.longDesc type="text" name="longDesc" maxlength="2000" required pattern="https:\\/\\/.+")
 						else if bot.type === "markdown"
 							textarea#longDesc.form-control(name="longDesc" maxlength="20000" rows="6" required) #{bot.longDesc}
+						else if bot.type === "html"
+							textarea#longDesc.form-control(name="longDesc" maxlength="200000" rows="12" required) #{bot.longDesc}
+
 					button.btn.btn-primary(type="submit") #{__('add_submit')}
 					input.hide(type="text" name="csrf" value=csrf)
 					input.hide(type="text" name="id" value=bot.id)

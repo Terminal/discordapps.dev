@@ -31,7 +31,9 @@
 		"passport-discord": "^0.1.2",
 		"pug": "^2.0.0-rc.3",
 		"request": "^2.81.0",
-		"rethinkdb": "^2.3.3"
+		"rethinkdb": "^2.3.3",
+		"rethinkdbdash": "^2.3.31",
+		"session-rethinkdb": "^2.0.0"
 	},
 	"devDependencies": {
 		"eslint": "^4.10.0",
@@ -52,7 +54,8 @@
 			"comma-dangle": 0,
 			"max-len": 0,
 			"no-console": 0,
-			"no-param-reassign": 0
+			"no-param-reassign": 0,
+			"no-underscore-dangle": 0
 		},
 		"env": {
 			"node": true,

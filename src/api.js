@@ -34,7 +34,7 @@ const authMiddleware = async (req, res, next) => {
 
 	const bot = await r.table('bots')
 		.get(req.params.id)
-		.run(r.conn);
+		.run();
 
 	if (!bot) {
 		res.status(404).json({ error: 'This bot doesn\'t exist' });
@@ -49,17 +49,16 @@ router.get('/', (req, res) => {
 	res.redirect('/docs/api');
 })
 	.get('/bots', async (req, res) => {
-		const cursor = await r.table('bots')
+		const result = await r.table('bots')
 			.without('token')
-			.run(r.conn);
-		const result = await cursor.toArray();
+			.run();
 		res.status(200).send(result);
 	})
 	.get('/bots/:id', (req, res) => {
 		const result = r.table('bots')
 			.get(req.params.id)
 			.without('token')
-			.run(r.conn);
+			.run();
 
 		if (!result) {
 			res.status(404).json({});
@@ -79,7 +78,7 @@ router.get('/', (req, res) => {
 			await r.table('bots')
 				.get(req.params.id)
 				.update({ count })
-				.run(r.conn);
+				.run();
 			res.status(200).json({ message: 'OK' });
 		}
 	})

@@ -21,6 +21,13 @@ html
 		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1")
 		link(href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet")
 		link(rel="stylesheet" href="/css/error.css")
+		meta(name="theme-color" content="#000000")
+		meta(property="og:type" content="website")
+		link(rel="publisher" href="https://moustacheminer.com")
+		meta(name="author" content="Moustacheminer Server Services")
+		meta(property="og:description" content=message)
+		meta(name="og:image" content="/img/favicon.png")
+		meta(property="og:title" content=__('website'))
 		title #{status} - #{__('website')}
 	body
 		.background
@@ -30,12 +37,11 @@ html
 		script(src="https://cdn.rawgit.com/mattboldt/typed.js/master/lib/typed.min.js")
 		script.
 			const directory = !{status} === 404 ? '/(!{__('error_unreachable')})/' : window.location.pathname;
-			const where = !{status} === 404 ? '<a href="#" onclick="window.history.back();">cd /</a>' : '<a href="#" onclick="window.history.back();">cd -</a>';
 			const typing = new Typed('#typing', {
 				strings: [
-					`!{status} - !{message}\n\n!{__('error_list')}@${location.host}:${directory}$ ${where}`
+					`!{status} - !{message}\n\n!{__('error_list')}@${location.host}:${directory}$\n\n<a href="#" onclick="window.history.back();">Home</a> - <a href="#" onclick="window.history.back();">Back</a>`
 				],
-				typeSpeed: 10,
+				typeSpeed: 5,
 				backSpeed: 0,
 				cursorChar: '_',
 				fadeOut: true,

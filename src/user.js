@@ -2,7 +2,7 @@ const config = require('config');
 const bot = require('./listbot');
 
 const userSetup = (req, res, next) => {
-	if (req.user) {
+	if (req.user && bot.client.startTime) {
 		const user = bot.guild.members.get(req.user.id);
 
 		if (user) {
@@ -21,7 +21,7 @@ const auth = (req, res, next) => {
 	if (req.user) {
 		next();
 	} else {
-		res.status(401).render('error.pug', { status: 401, message: 'You have not logged in yet.' });
+		res.status(401).render('error', { status: 401, message: 'You have not logged in yet.' });
 	}
 };
 
@@ -29,7 +29,7 @@ const admin = (req, res, next) => {
 	if (req.user && req.user.admin) {
 		next();
 	} else {
-		res.status(400).render('error.pug', { status: 400, message: 'You are not authorised to run this command.' });
+		res.status(400).render('error', { status: 400, message: 'You are not authorised to run this command.' });
 	}
 };
 
@@ -37,9 +37,9 @@ const terminal = (req, res, next) => {
 	if (req.user && req.user.terminal) {
 		next();
 	} else if (req.user) {
-		res.status(400).render('error.pug', { status: 400, message: 'You are not in the guild.' });
+		res.status(400).render('error', { status: 400, message: 'You are not in the guild.' });
 	} else {
-		res.status(401).render('error.pug', { status: 401, message: 'You have not logged in yet.' });
+		res.status(401).render('error', { status: 401, message: 'You have not logged in yet.' });
 	}
 };
 

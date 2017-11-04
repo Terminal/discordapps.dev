@@ -8,7 +8,7 @@ passport.serializeUser((user, done) => done(null, user.id));
 passport.deserializeUser((id, done) => {
 	r.table('users')
 		.get(id)
-		.run(r.conn)
+		.run()
 		.then((user) => {
 			done(null, user);
 		});
@@ -28,7 +28,7 @@ passport.use(new DiscordStrategy(
 				.insert(profile, {
 					conflict: 'replace'
 				})
-				.run(r.conn)
+				.run()
 				.then(() => {
 					done(null, profile);
 				})

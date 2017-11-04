@@ -9,7 +9,7 @@ French Translation | Yvan#5761
 
 ## Installation
 1. `npm i`
-1. Create `terminal` database with `bots`, `csrf` and `users` as tables in RethinkDB
+1. Create `terminal` database with `bots`, `csrf`, `users` and `session` as tables in RethinkDB
 1. `cp config/default.rename.json config/default.json`
 1. `nano config/default.json`
 1. `npm start`

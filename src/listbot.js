@@ -13,6 +13,7 @@ client.on('ready', () => {
 
 	module.exports.guild = client.guilds.get(config.get('discord').guild);
 	module.exports.channel = module.exports.guild.channels.get(config.get('discord').channel);
+	module.exports.ready = true;
 });
 
 client.connect();

@@ -15,7 +15,7 @@ block content
 				each val in bots
 					.col-12.col-lg-6
 						.media
-							img.d-flex.mr-3.icon(src=val.avatar alt=__('list_avatar_fail'))
+							img.d-flex.mr-3.icon(src=(val.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
 							.media-body
 								h5.mt-0 #{val.name}
 									if val.count

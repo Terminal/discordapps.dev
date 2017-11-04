@@ -3,11 +3,17 @@ extends templates/site.pug
 block title
 	title #{__('list_title')} - #{__('website')}
 
+block embed
+	meta(name="author" content=`${botinfo.ownerinfo.username}#${botinfo.ownerinfo.discriminator}`)
+	meta(property="og:description" content=botinfo.shortDesc)
+	meta(name="og:image" content=(botinfo.avatar || '/img/favicon.png'))
+	meta(property="og:title" content=botinfo.name)
+
 block jumbotron
 	.jumbotron
 		.container
 			.media
-				img.d-flex.mr-3.icon(src=botinfo.avatar alt=__('list_avatar_fail'))
+				img.d-flex.mr-3.icon(src=(botinfo.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
 				.media-body
 					h5.mt-0 #{botinfo.name}
 						if botinfo.count
@@ -49,6 +55,9 @@ block content
 					iframe.botiframe(src=`${botinfo.longDesc}`)
 				else if botinfo.type === 'markdown'
 					!= marked(botinfo.longDesc)
+				else if botinfo.type === 'html'
+					iframe.botiframe#iframe(sandbox="allow-same-origin" onload="iframeLoaded()" src=`/bot/${botinfo.id}/iframe`)
+					script(src="/js/htmliframe.js")
 
 block script
 	#modal.modal.fade(tabindex="-1" role="dialog")
