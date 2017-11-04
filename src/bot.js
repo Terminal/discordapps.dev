@@ -211,13 +211,15 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 
 		if (!user) {
 			res.status(404).render('error', { status: 404, message: 'Bot Not found' });
-		} else if (reasons.remove[req.body.reason]) {
+		} else if (typeof req.body.reason !== 'string' || typeof req.body.description !== 'string' || req.body.description.length > 1000) {
+			res.status(400).render('error', { status: 400, message: 'The reason or description was invalid' });
+		} if (reasons.remove[req.body.reason]) {
 			r.table('bots')
 				.get(req.params.id)
 				.delete()
 				.run();
 			res.redirect('/');
-			bot.channel.createMessage(`<@${req.user.id}> deleted \`${user.name}\` <@${user.id}> by <@${user.owner}> for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})`);
+			bot.channel.createMessage(`<@${req.user.id}> deleted \`${user.name}\` <@${user.id}> by <@${user.owner}> for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})\n${req.body.description}`);
 		} else {
 			res.status(400).render('error', { status: 400, message: 'Invalid reason' });
 		}

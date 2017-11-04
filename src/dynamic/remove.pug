@@ -17,6 +17,8 @@ block content
 						option(selected disabled required value="") #{__('remove_select')}
 						for reason, index in reasons
 							option(value=index) #{__(`remove_${reason}`)}
+					label(for="description") #{__('remove_description')}
+					textarea.form-control(name="description" maxlength="1000" rows="6" required)
 					button.btn.btn-success(type="submit") #{__('proceed')}
 					a.btn.btn-danger(href="/") #{__('cancel')}
 					input.hide(type="text" name="csrf" value=csrf)
