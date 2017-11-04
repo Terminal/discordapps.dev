@@ -1,4 +1,4 @@
-# Moustacheminer Server Services List
+# ls.terminal.ink
 ---
 
 ## Topics
@@ -11,7 +11,7 @@
 
 ## Useful links
 
-- [Moustacheminer Server Services](https://moustacheminer.com/)
+- [terminal.ink](https://terminal.ink/)
 - [Bot List on Github](https://github.com/moustacheminer/ls.terminal.ink)
 - [List of Open Source Materials](/docs/opensource)
 
@@ -23,6 +23,7 @@
 ls.terminal.ink
 
 Copyright (C) 2017 Moustacheminer Server Services
+Copyright (C) 2017 ls.terminal.ink
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

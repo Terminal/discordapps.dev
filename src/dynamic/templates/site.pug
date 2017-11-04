@@ -4,6 +4,7 @@ doctype html
 	ls.terminal.ink
 
 	Copyright (C) 2017 Moustacheminer Server Services
+	Copyright (C) 2017 ls.terminal.ink
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -27,11 +28,11 @@ html
 		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1")
 		meta(name="theme-color" content="#FFFFFF")
 		meta(property="og:type" content="website")
-		link(rel="publisher" href="https://moustacheminer.com")
+		link(rel="publisher" href=location)
 		block embed
-			meta(name="author" content="Moustacheminer Server Services")
+			meta(name="author" content=location)
 			meta(property="og:description" content=__('website_description'))
-			meta(name="og:image" content="/img/favicon.png")
+			meta(name="og:image" content="/img/terminal.png")
 			meta(property="og:title" content=__('website'))
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css")
 		link(href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet")
@@ -47,6 +48,8 @@ html
 				ul.navbar-nav.mr-auto
 					li.nav-item
 						a.nav-link(href="/docs") #{__('nav_documentation')}
+					li.nav-item
+						a.nav-link(href="/list") #{__('nav_list')}
 					li.nav-item
 						a.nav-link(href="/list/all") #{__('nav_all')}
 					li.nav-item
