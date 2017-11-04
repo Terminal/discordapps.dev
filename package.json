@@ -18,6 +18,7 @@
 	},
 	"homepage": "https://github.com/Terminal/ls#readme",
 	"dependencies": {
+		"asciidoctor.js": "^1.5.6-preview.4",
 		"body-parser": "^1.17.2",
 		"config": "^1.26.1",
 		"cookie-parser": "^1.4.3",

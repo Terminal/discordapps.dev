@@ -37,13 +37,16 @@ block content
 						label(for="type") #{__('add_longdesc')}
 						select#type.form-control(name="type" placeholder=__('add_longdesc_placeholder') onchange!="description();" required)
 							option(disabled) #{__('add_longdesc_select')}
-							option(value="iframe" selected=bot.type==="iframe") #{__('add_longdesc_iframe')}
-							option(value="markdown" selected=bot.type==="markdown") #{__('add_longdesc_markdown')}
-							option(value="html" selected=bot.type==="html") #{__('add_longdesc_html')}
+								optgroup(label=__('add_longdesc_category_richtext'))
+									option(value="markdown" selected=bot.type==="markdown") #{__('add_longdesc_markdown')}
+									option(value="asciidoc" selected=bot.type==="asciidoc") #{__('add_longdesc_asciidoc')}
+								optgroup(label=__('add_longdesc_category_html'))
+									option(value="iframe" selected=bot.type==="iframe") #{__('add_longdesc_iframe')}
+									option(value="html" ) #{__('add_longdesc_html')}
 					#description.form-group
 						if bot.type === "iframe"
 							input#longDesc.form-control(value=bot.longDesc type="text" name="longDesc" maxlength="2000" required pattern="https:\\/\\/.+")
-						else if bot.type === "markdown"
+						else if bot.type === "markdown" || bot.type === "asciidoc"
 							textarea#longDesc.form-control(name="longDesc" maxlength="20000" rows="6" required) #{bot.longDesc}
 						else if bot.type === "html"
 							textarea#longDesc.form-control(name="longDesc" maxlength="200000" rows="12" required) #{bot.longDesc}

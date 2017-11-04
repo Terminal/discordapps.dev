@@ -39,18 +39,9 @@ const list = async (req, res) => {
 		bots = bots.filter(bot => bot.owner === res.locals.owner);
 	}
 
-	const json = JSON.stringify(bots)
-		.replace(/&/g, '\\&')
-		.replace(/</g, '\\<')
-		.replace(/>/g, '\\>');
-
 	res.status(200).render('list', {
-		user: req.user,
-		json,
 		bots,
-		csrf: req.csrf,
-		admin: res.locals.admin,
-		title: 'Bot Listing'
+		csrf: req.csrf
 	});
 };
 
@@ -61,7 +52,7 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid short description' });
 	} else if (typeof req.body.type !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid type' });
-	} else if (!['iframe', 'markdown', 'html'].some(type => req.body.type === type)) {
+	} else if (!['iframe', 'markdown', 'html', 'asciidoc'].some(type => req.body.type === type)) {
 		res.status(400).render('error', { status: 400, message: 'You provided an incorrect type' });
 	} else if (typeof req.body.longDesc !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid long description' });
@@ -85,6 +76,8 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an iframe based long description that was too long (2000)' });
 	} else if (req.body.type === 'markdown' && req.body.longDesc > 20000) {
 		res.status(400).render('error', { status: 400, message: 'You provided a markdown based long description that was too long (20000)' });
+	} else if (req.body.type === 'asciidoctor' && req.body.longDesc > 20000) {
+		res.status(400).render('error', { status: 400, message: 'You provided an AsciiDoctor based long description that was too long (20000)' });
 	} else if (req.body.type === 'html' && req.body.longDesc > 200000) {
 		res.status(400).render('error', { status: 400, message: 'You provided a HTML based long description that was too long (200000)' });
 	} else if (/\D/.test(req.body.id)) {

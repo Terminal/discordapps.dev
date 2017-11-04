@@ -5,6 +5,7 @@ const discM = require('./discord');
 const r = require('./db');
 const bot = require('./listbot');
 const marked = require('marked');
+const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
 
 const router = express.Router();
@@ -61,6 +62,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		if (exists) {
 			const botinfo = await r.table('bots')
 				.get(req.params.id)
+				.without('token')
 				.merge(info => ({
 					ownerinfo: r.table('users').get(info('owner'))
 				}))
@@ -71,10 +73,12 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			res.render('botpage', {
 				botinfo,
 				marked,
-				csrf: res.csrf
+				asciidoctor,
+				csrf: req.csrf
 			});
 		} else {
 			res.status(404).render('error', {
+				csrf: res.csrf,
 				status: 404,
 				message: res.__('error_bot_not_found')
 			});

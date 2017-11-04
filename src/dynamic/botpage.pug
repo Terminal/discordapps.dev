@@ -55,6 +55,8 @@ block content
 					iframe.botiframe(src=`${botinfo.longDesc}`)
 				else if botinfo.type === 'markdown'
 					!= marked(botinfo.longDesc)
+				else if botinfo.type === 'asciidoc'
+					!= asciidoctor.convert(botinfo.longDesc)
 				else if botinfo.type === 'html'
 					iframe.botiframe#iframe(sandbox="allow-same-origin" onload="iframeLoaded()" src=`/bot/${botinfo.id}/iframe`)
 					script(src="/js/htmliframe.js")
