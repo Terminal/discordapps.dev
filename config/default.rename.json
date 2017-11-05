@@ -25,5 +25,13 @@
 		"secret": "",
 		"location": "https://list.mss.ovh/"
 	},
+	"terminal": {
+		"description": [
+			'iframe',
+			'markdown',
+			'html',
+			'asciidoc'
+		]
+	},
 	"useragent": "Discord Bot (https://list.mss.ovh, 2.0.0) list.mss.ovh/2.0.0 (Node.js; Linux x86_64)"
 }

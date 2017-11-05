@@ -52,7 +52,7 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid short description' });
 	} else if (typeof req.body.type !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid type' });
-	} else if (!['iframe', 'markdown', 'html', 'asciidoc'].some(type => req.body.type === type)) {
+	} else if (!config.get('terminal').description.some(type => req.body.type === type)) {
 		res.status(400).render('error', { status: 400, message: 'You provided an incorrect type' });
 	} else if (typeof req.body.longDesc !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid long description' });
