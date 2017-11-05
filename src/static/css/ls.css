@@ -47,3 +47,7 @@ iframe {
 .left {
 	margin-left: 5px;
 }
+
+.inline {
+	display: inline;
+}

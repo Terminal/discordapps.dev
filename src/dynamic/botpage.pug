@@ -32,14 +32,7 @@ block jumbotron
 							input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
 							input.hide(type="text" name="approve" botinfoue="true")
 					if csrf
-						form.buddon(action="/list/queue" method="POST")
-							if botinfo.approved
-								button.btn.btn-danger(type="submit") #{__('list_remove')}
-							else
-								button.btn.btn-danger(type="submit") #{__('list_reject')}
-							input.hide(type="text" name="id" botinfoue=`${botinfo.id}`)
-							input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
-							input.hide(type="text" name="approve" botinfoue="false")
+						a.btn.btn-danger(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
 					a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
 				if botinfo.editable
 					a.btn.btn-primary(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}

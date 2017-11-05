@@ -28,7 +28,7 @@ block content
 					.form-group
 						label(for="invite") #{__('add_invite_url')}
 						input#invite.form-control(value=bot.invite type="text" name="invite" maxlength="2000" placeholder=__('add_invite_url_placeholder') pattern="https?:\\/\\/.+")
-						p: a(href="https://discordapi.com/permissions.html" target="_blank") #{__('add_invite_url_generator')}
+						button.btn.btn-primary(type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalperms") #{__('add_invite_url_generator')}
 					.form-group
 						label(for="shortDesc") #{__('add_shortdesc')}
 						input#shortDesc.form-control(value=bot.shortDesc type="text" name="shortDesc" maxlength="200" placeholder=__('add_shortdesc_placeholder') required)
@@ -56,4 +56,5 @@ block content
 					input.hide(type="text" name="id" value=bot.id)
 
 block script
+	include includes/modalperms.pug
 	script(src="/js/add.js")
