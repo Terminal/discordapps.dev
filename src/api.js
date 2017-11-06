@@ -25,68 +25,13 @@ SOFTWARE.
 */
 
 const express = require('express');
-const r = require('./db');
+const v1 = require('./apirevisions/v1');
 
 const router = express.Router();
-
-const authMiddleware = async (req, res, next) => {
-	const auth = req.get('Authorization');
-
-	const bot = await r.table('bots')
-		.get(req.params.id)
-		.run();
-
-	if (!bot) {
-		res.status(404).json({ error: 'This bot doesn\'t exist' });
-	} else if (auth === bot.token) {
-		next();
-	} else {
-		res.status(401).json({ error: 'Incorrect Authorisation header.' });
-	}
-};
 
 router.get('/', (req, res) => {
 	res.redirect('/docs/api');
 })
-	.get('/bots', async (req, res) => {
-		const result = await r.table('bots')
-			.without('token')
-			.run();
-		res.status(200).send(result);
-	})
-	.get('/bots/:id', (req, res) => {
-		const result = r.table('bots')
-			.get(req.params.id)
-			.without('token')
-			.run();
-
-		if (!result) {
-			res.status(404).json({});
-		} else {
-			res.status(200).json(result);
-		}
-	})
-	.post('/bots/:id', authMiddleware, async (req, res) => {
-		const count = parseInt(req.body.count || req.body.server_count, 10);
-		if (typeof count !== 'string' && typeof count !== 'number') {
-			res.status(400).json({ error: 'You provided an invalid guild count' });
-		} else if (count < 0) {
-			res.status(400).json({ error: 'Your bot count was too low (0)' });
-		} else if (count > 1000000) {
-			res.status(400).json({ error: 'Your bot count was too high (1000000)' });
-		} else {
-			await r.table('bots')
-				.get(req.params.id)
-				.update({ count })
-				.run();
-			res.status(200).json({ message: 'OK' });
-		}
-	})
-	.use('/test/:id', authMiddleware, (req, res) => {
-		res.status(200).json({ message: 'OK' });
-	})
-	.use('*', (req, res) => {
-		res.status(404).json({ error: 'This API method has not been defined.' });
-	});
+	.use('/v1', v1);
 
 module.exports = router;

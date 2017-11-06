@@ -10,9 +10,8 @@ Tokens are provided on a per-bot basis. View your bot's `bot list` token by find
 - When a token is required (When _token needed_ is shown), please add your token to your HTTP `Authorization` header.
 	- `Authorization: dd8c7533eabfa62174a549f7b11678962ec00f8727537`
 
-Base URL: `https://list.mss.ovh/api`
-
-## Methods
+## V1 Methods
+`https://ls.terminal.ink/api/v1/`
 
 ### USE `/test/:id` _token needed_
 Test your token.
