@@ -40,7 +40,7 @@ html
 			const directory = !{status} === 404 ? '/(!{__('error_unreachable')})/' : window.location.pathname;
 			const typing = new Typed('#typing', {
 				strings: [
-					`!{status} - !{message}\n\n!{__('error_list')}@${location.host}:${directory}$\n\n<a href="/">Home</a> - <a href="#" onclick="window.history.back();">Back</a>`
+					`!{status} - !{message}\n\n#{__('error_list')}@${location.host}:${directory}$\n\n<a href="/">#{__('error_home')}</a> - <a href="#" onclick="window.history.back();">#{__('error_back')}</a>`
 				],
 				typeSpeed: 5,
 				backSpeed: 0,
