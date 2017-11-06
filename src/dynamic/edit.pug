@@ -42,7 +42,7 @@ block content
 									option(value="asciidoc" selected=bot.type==="asciidoc") #{__('add_longdesc_asciidoc')}
 								optgroup(label=__('add_longdesc_category_html'))
 									option(value="iframe" selected=bot.type==="iframe") #{__('add_longdesc_iframe')}
-									option(value="html" ) #{__('add_longdesc_html')}
+									option(value="html" selected=bot.type==="html") #{__('add_longdesc_html')}
 					#description.form-group
 						if bot.type === "iframe"
 							input#longDesc.form-control(value=bot.longDesc type="text" name="longDesc" maxlength="2000" required pattern="https:\\/\\/.+")
