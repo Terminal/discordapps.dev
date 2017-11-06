@@ -30,15 +30,12 @@ const r = require('./../db');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-	res.redirect('/docs/api');
+router.get('/bots', async (req, res) => {
+	const result = await r.table('bots')
+		.without('token')
+		.run();
+	res.status(200).send(result);
 })
-	.get('/bots', async (req, res) => {
-		const result = await r.table('bots')
-			.without('token')
-			.run();
-		res.status(200).send(result);
-	})
 	.get('/bots/:id', (req, res) => {
 		const result = r.table('bots')
 			.get(req.params.id)
