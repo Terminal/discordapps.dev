@@ -18,7 +18,15 @@
 		"roles": [
 			"226725025183563787"
 		],
-		"invite": "https://discord.gg/DwBCgta"
+		"invite": "https://discord.gg/DwBCgta",
+		"game": "ls.terminal.ink",
+		"prefix": [
+			"ls>"
+		],
+		"admins": [
+			"190519304972664832"
+		],
+		"shards": 1
 	},
 	"webserver": {
 		"port": 8080,
@@ -33,5 +41,5 @@
 			"asciidoc"
 		]
 	},
-	"useragent": "Discord Bot (https://list.mss.ovh, 2.0.0) list.mss.ovh/2.0.0 (Node.js; Linux x86_64)"
+	"useragent": "Discord Bot (https://moustacheminer.com/, 2.0.0) Running at https://ls.terminal.ink/"
 }
