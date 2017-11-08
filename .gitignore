@@ -58,3 +58,4 @@ typings/
 .env
 /config/default.json
 /package-lock.json
+/.sass-cache/
