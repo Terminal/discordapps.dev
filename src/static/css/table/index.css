@@ -5,15 +5,14 @@ table, tr, td {
 .hide {
   display: none; }
 
-body table {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%; }
+body {
+  font-family: "Noto Serif", "Times New Roman", serif; }
+  body table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%; }
 
-.avatar {
-  height: 50px; }
-
-.header {
+.avatar, .header {
   height: 50px; }
 
 .footer {
