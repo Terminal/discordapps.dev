@@ -1,0 +1,47 @@
+table, tr, td {
+	border-style: inset;
+	border-width: 1px;
+}
+
+.hide {
+	display: none;
+}
+
+body {
+	table {
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+	}
+}
+
+.avatar {
+	height: 50px;
+}
+
+.header {
+	height: 50px;
+}
+
+.footer {
+	height: 100px;
+	p {
+		margin: 0px;
+	}
+}
+
+.addform {
+	display: flex;
+	flex-direction: column;
+}
+
+.nav {
+	vertical-align: top;
+	li {
+		list-style-type: none;
+	}
+}
+
+.content {
+	vertical-align: top;
+}

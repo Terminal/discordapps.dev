@@ -25,6 +25,7 @@
 		"eris": "^0.7.2",
 		"express": "^4.16.2",
 		"express-session": "^1.15.4",
+		"express-theme-pug": "^1.0.5",
 		"i18n": "^0.8.3",
 		"marked": "^0.3.6",
 		"mustache": "^2.3.0",

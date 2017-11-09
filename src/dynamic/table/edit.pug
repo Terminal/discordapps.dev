@@ -1,0 +1,44 @@
+extends templates/site.pug
+
+block title
+	title #{__('edit_title')} - #{__('website')}
+
+block content
+	form.addform(method="post")
+		label(for="id") #{__('add_id')}
+		input#id(disabled value=bot.id type="text" maxlength="70" placeholder=__('add_id_placeholder') required pattern="\\d+")
+		label(for="name") #{__('add_name')}
+		input#name(value=bot.name type="text" name="name" maxlength="32" placeholder=__('add_name_placeholder'))
+		label(for="count") #{__('add_guild_count')}
+		input#count(value=bot.count type="number" name="count" min="0" max="1000000" step="1" placeholder=__('add_guild_count_placeholder') required)
+		label(for="avatar") #{__('add_avatar_url')}
+		input#avatar(value=bot.avatar type="text" name="avatar" maxlength="2000" placeholder=__('add_avatar_url_placeholder') pattern="https:\\/\\/.+")
+		label(for="invite") #{__('add_invite_url')}
+		input#invite(value=bot.invite type="text" name="invite" maxlength="2000" placeholder=__('add_invite_url_placeholder') pattern="https?:\\/\\/.+")
+		a(href="https://discordapi.com/permissions.html" target="_blank") #{__('add_invite_url_generator')}
+		label(for="shortDesc") #{__('add_shortdesc')}
+		input#shortDesc(value=bot.shortDesc type="text" name="shortDesc" maxlength="200" placeholder=__('add_shortdesc_placeholder') required)
+		small #{__('add_longdesc_mute')}
+		label(for="type") #{__('add_longdesc')}
+		select#type(name="type" placeholder=__('add_longdesc_placeholder') onchange!="description();" required)
+			option(disabled) #{__('add_longdesc_select')}
+				optgroup(label=__('add_longdesc_category_richtext'))
+					option(value="markdown" selected=bot.type==="markdown") #{__('add_longdesc_markdown')}
+					option(value="asciidoc" selected=bot.type==="asciidoc") #{__('add_longdesc_asciidoc')}
+				optgroup(label=__('add_longdesc_category_html'))
+					option(value="iframe" selected=bot.type==="iframe") #{__('add_longdesc_iframe')}
+					option(value="html" selected=bot.type==="html") #{__('add_longdesc_html')}
+		#description
+			if bot.type === "iframe"
+				input(value=bot.longDesc type="text" name="longDesc" maxlength="2000" required pattern="https:\\/\\/.+")
+			else if bot.type === "markdown" || bot.type === "asciidoc"
+				textarea(name="longDesc" maxlength="20000" rows="6" required) #{bot.longDesc}
+			else if bot.type === "html"
+				textarea(name="longDesc" maxlength="200000" rows="12" required) #{bot.longDesc}
+
+		button.btn.btn-primary(type="submit") #{__('add_submit')}
+		input.hide(type="text" name="csrf" value=csrf)
+		input.hide(type="text" name="id" value=bot.id)
+
+block script
+	script(src="/js/add.js")

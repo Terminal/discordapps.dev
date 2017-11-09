@@ -1,0 +1,11 @@
+extends templates/site.pug
+
+block title
+	title #{__('delete_title')} - #{__('website')}
+
+block content
+	h1 #{__('delete_sure')}
+	form.buddon(method="POST")
+		button.btn.btn-success(type="submit") #{__('yes')}
+		input.hide(type="text" name="csrf" value=`${csrf}`)
+	a.btn.btn-danger(href="/") #{__('no')}

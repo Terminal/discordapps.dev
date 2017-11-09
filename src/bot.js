@@ -257,10 +257,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			});
 		}
 	})
-	.post('/:id/token', userM.auth, csrfM.check, discM.owns, (req, res) => {
-		res.redirect(`/token/${req.params.id}`);
-
-		r.table('bots')
+	.post('/:id/token', userM.auth, csrfM.check, discM.owns, async (req, res) => {
+		await r.table('bots')
 			.get(req.params.id)
 			.update({
 				token: crypto.randomBytes(64).toString('hex')
@@ -268,6 +266,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				returnChanges: true
 			})
 			.run();
+		res.redirect(req.originalUrl);
 	})
 	.post('/:id/approve', userM.auth, csrfM.check, userM.admin, async (req, res) => {
 		const previous = req.header('Referer') || '/';

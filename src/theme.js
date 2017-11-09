@@ -3,10 +3,10 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	res.render('lang');
+	res.render('theme');
 })
-	.get('/:lang', (req, res) => {
-		res.cookie('lang', req.params.lang);
+	.get('/:theme', (req, res) => {
+		res.cookie('theme', req.params.theme);
 		res.redirect('/');
 	});
 

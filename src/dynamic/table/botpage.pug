@@ -1,0 +1,52 @@
+extends templates/site.pug
+
+block title
+	title #{__('list_title')} - #{__('website')}
+
+block embed
+	meta(name="author" content=`${botinfo.ownerinfo.username}#${botinfo.ownerinfo.discriminator}`)
+	meta(property="og:description" content=botinfo.shortDesc)
+	meta(name="og:image" content=(botinfo.avatar || '/img/terminal.png'))
+	meta(property="og:title" content=botinfo.name)
+	meta(property="og:site_name" content=__('website'))
+
+block content
+	table
+		tr
+			td
+				img.avatar(src=(botinfo.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
+				p #{botinfo.name}
+			td
+				if botinfo.count
+					span #{__('list_count', { count: botinfo.count })}
+				if !botinfo.approved
+					p #{__('list_unverified')}
+				if botinfo.ownerinfo
+					p #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+		tr
+			td(colspan="2")
+				if user && user.admin
+					if !botinfo.approved && csrf
+						form(action=`/bot/${botinfo.id}/approve` method="POST")
+							button(type="submit") #{__('list_approve')}
+							input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
+					if csrf
+						a(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+					a(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
+				if botinfo.editable
+					a(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+					a(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+					a(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+				a(href=`/bot/${botinfo.id}`) #{__('list_info')}
+				a(href=botinfo.invite) #{__('list_invite')}
+		tr
+			td(colspan="2")
+				if botinfo.type === 'iframe'
+					iframe.botiframe(src=`${botinfo.longDesc}`)
+				else if botinfo.type === 'markdown'
+					!= marked(botinfo.longDesc)
+				else if botinfo.type === 'asciidoc'
+					!= asciidoctor.convert(botinfo.longDesc)
+				else if botinfo.type === 'html'
+					iframe.botiframe#iframe(sandbox="allow-same-origin" onload="iframeLoaded()" src=`/bot/${botinfo.id}/iframe`)
+					script(src="/js/htmliframe.js")

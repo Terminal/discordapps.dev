@@ -1,0 +1,45 @@
+extends templates/site.pug
+
+block title
+	title #{__('list_title')} - #{__('website')}
+
+block content
+	if bots.length
+		table
+			each val in bots
+				tr
+					td
+						table
+							tr
+								td
+									img.avatar(src=(val.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
+									p #{val.name}
+								td
+									if val.count
+										span #{__('list_count', { count: val.count })}
+									if !val.approved
+										p #{__('list_unverified')}
+									if val.ownerinfo
+										p #{val.ownerinfo.username}##{val.ownerinfo.discriminator}
+							tr
+								td(colspan="2")
+									!= val.shortDesc
+							tr
+								td(colspan="2")
+									if user && user.admin
+										if !val.approved && csrf
+											form(action=`/bot/${val.id}/approve` method="POST")
+												button(type="submit") #{__('list_approve')}
+												input.hide(type="text" name="csrf" value=`${csrf}`)
+										if csrf
+											a(href=`/bot/${val.id}/remove`) #{__('list_remove')}
+										a(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
+									if val.editable
+										a(href=`/bot/${val.id}/edit`) #{__('list_edit')}
+										a(href=`/bot/${val.id}/delete`) #{__('list_delete')}
+										a(href=`/bot/${val.id}/token`) #{__('list_token')}
+									a(href=`/bot/${val.id}`) #{__('list_info')}
+									a(href=val.invite) #{__('list_invite')}
+	else
+		p #{__('list_no_results')}
+
