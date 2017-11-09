@@ -12,4 +12,5 @@ block content
 	.container
 		.row
 			.col-12
-				a(href="/lang/en-gb") #{__('lang_en_gb')}
+				for language in languages
+					li: a(href=`/lang/${language}`) #{__(`lang_${language}`)}

@@ -5,4 +5,5 @@ block title
 
 block content
 	h1 Languages / #{__('lang_languages')}
-	a(href="/lang/en-gb") #{__('lang_en_gb')}
+	for language in languages
+		li: a(href=`/lang/${language}`) #{__(`lang_${language}`)}

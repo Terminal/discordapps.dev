@@ -5,5 +5,5 @@ block title
 
 block content
 	h1 #{__('theme_themes')}
-	li: a(href="/theme/default") #{__('theme_default')}
-	li: a(href="/theme/table") #{__('theme_table')}
+	for theme in themes
+		li: a(href=`/lang/${theme}`) #{__(`theme_${theme}`)}
