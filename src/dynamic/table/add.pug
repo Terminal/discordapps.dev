@@ -6,7 +6,7 @@ block title
 block content
 	form.addform(method="post")
 		label(for="id") #{__('add_id')}
-		input#id(type="text" maxlength="70" placeholder=__('add_id_placeholder') required pattern="\\d+")
+		input#id(type="text" name="id" maxlength="70" placeholder=__('add_id_placeholder') required pattern="\\d+")
 		label(for="name") #{__('add_name')}
 		input#name(type="text" name="name" maxlength="32" placeholder=__('add_name_placeholder'))
 		label(for="count") #{__('add_guild_count')}
