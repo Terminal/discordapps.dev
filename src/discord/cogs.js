@@ -4,7 +4,7 @@ const commands = {};
 const categories = {};
 
 // Register valid commands from "cogs"
-fs.readdir('./src/listbot/cogs/', (err, items) => {
+fs.readdir('./src/discord/cogs/', (err, items) => {
 	items.forEach((item) => {
 		const file = item.replace(/\.js/g, '');
 		const cog = require(`./cogs/${file}`); // eslint-disable-line global-require, import/no-dynamic-require

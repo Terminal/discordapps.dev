@@ -1,9 +1,8 @@
 const express = require('express');
 const userM = require('./user');
 const csrfM = require('./csrf');
-const discM = require('./discord');
 const r = require('./db');
-const bot = require('./listbot');
+const bot = require('./discord');
 const marked = require('marked');
 const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
@@ -104,6 +103,21 @@ const validate = (req, res, next) => {
 	}
 };
 
+const owns = async (req, res, next) => {
+	const result = await r.table('bots')
+		.get(req.params.id || req.body.id)
+		.run();
+
+	if (!result) {
+		res.status(404).render('error', { status: 404, message: 'Bot not found' });
+	} else if (req.user.id === result.owner || req.user.admin) {
+		res.locals.bot = result;
+		next();
+	} else {
+		res.status(400).render('error', { status: 400, message: 'You are not allowed to edit other\'s bots' });
+	}
+};
+
 router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	// Display the add screen
 	res.render('add.pug', {
@@ -175,14 +189,14 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			});
 		}
 	})
-	.get('/:id/edit', userM.auth, csrfM.make, discM.owns, (req, res) => {
+	.get('/:id/edit', userM.auth, csrfM.make, owns, (req, res) => {
 		// Display the edit screen with the bot's items
 		res.render('edit.pug', {
 			csrf: req.csrf,
 			bot: res.locals.bot
 		});
 	})
-	.post('/:id/edit', userM.auth, csrfM.check, discM.owns, validate, async (req, res) => {
+	.post('/:id/edit', userM.auth, csrfM.check, owns, validate, async (req, res) => {
 		// Edit only the bits that need to be edited
 		const response = await r.table('bots')
 			.get(req.body.id)
@@ -210,20 +224,20 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 		}
 	})
-	.get('/:id/delete', userM.auth, csrfM.make, discM.owns, (req, res) => {
+	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
 		// View a page before deleting the bot
 		res.render('delete', {
 			csrf: req.csrf
 		});
 	})
-	.get('/:id/delete', userM.auth, csrfM.make, discM.owns, (req, res) => {
+	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
 		// View a page before deleting the bot
 		res.render('delete.pug', {
 			csrf: req.csrf,
 			title: 'Delete Bot'
 		});
 	})
-	.post('/:id/delete', userM.auth, csrfM.check, discM.owns, (req, res) => {
+	.post('/:id/delete', userM.auth, csrfM.check, owns, (req, res) => {
 		// Delete the bot
 		r.table('bots')
 			.get(req.params.id)
@@ -236,7 +250,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		});
 		bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 	})
-	.get('/:id/token', userM.auth, csrfM.make, discM.owns, (req, res) => {
+	.get('/:id/token', userM.auth, csrfM.make, owns, (req, res) => {
 		// Display the token for this bot
 		res.render('token.pug', {
 			csrf: req.csrf,
@@ -257,7 +271,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			});
 		}
 	})
-	.post('/:id/token', userM.auth, csrfM.check, discM.owns, async (req, res) => {
+	.post('/:id/token', userM.auth, csrfM.check, owns, async (req, res) => {
 		await r.table('bots')
 			.get(req.params.id)
 			.update({
