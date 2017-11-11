@@ -78,6 +78,6 @@ module.exports = async (message, callback) => {
 		.get(message.author.id)
 		.run();
 
-	i18n.init(locale || 'en-gb');
+	message.setLocale((locale && locale.lang) || 'en-gb');
 	callback();
 };
