@@ -20,7 +20,7 @@ body {
   .footer p {
     margin: 0px; }
 
-.addform {
+.addform, .removeform {
   display: flex;
   flex-direction: column; }
 

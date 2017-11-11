@@ -5,7 +5,7 @@ block title
 
 block content
 	h1 #{__('remove_jumbotron')}
-	form(method="POST")
+	form.removeform(method="POST")
 		select#type(name="reason" required)
 			option(selected disabled required value="") #{__('remove_select')}
 			for reason, index in reasons
