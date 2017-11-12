@@ -10,10 +10,9 @@ const csrfM = require('./csrf');
 const config = require('config');
 const botM = require('./bot');
 const listM = require('./list');
-const bot = require('./discord');
 const themeM = require('./theme');
 const express = require('express');
-const discM = require('./discord');
+const bot = require('./discord');
 const auth = require('./auth/auth');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -72,8 +71,8 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	.get('/', csrfM.make, (req, res, next) => {
 		res.locals.approve = true;
 		next();
-	}, discM.list)
-	.use('/list', isOnline, listM) // List Middleware
+	}, listM.list)
+	.use('/list', isOnline, listM.router) // List Middleware
 	.use('/auth', isOnline, authM) // Authentication
 	.use('/docs', isOnline, docsM) // Documentation
 	.use('/lang', isOnline, langM) // Language settings

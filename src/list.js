@@ -56,4 +56,5 @@ router.get('/', (req, res) => {
 	}, list);
 
 
-module.exports = router;
+module.exports.router = router;
+module.exports.list = list;
