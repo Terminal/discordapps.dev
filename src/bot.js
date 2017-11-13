@@ -285,13 +285,12 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.post('/:id/approve', userM.auth, csrfM.check, userM.admin, async (req, res) => {
 		const previous = req.header('Referer') || '/';
 		const result = await r.table('bots')
-			.get(req.body.id)
+			.get(req.params.id)
 			.update({
 				approved: true
 			}, {
 				returnChanges: true
-			})
-			.run();
+			});
 		if (res.skipped) {
 			res.status(404).render('error', { status: 404, message: 'Bot Not found' });
 		} else if (!result.changes) {
