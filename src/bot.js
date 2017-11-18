@@ -155,7 +155,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				message: res.__('message_bot_inserted')
 			});
 			// Send message to Discord Channel
-			bot.channel.createMessage(`${req.user.name} added \`${req.body.name}\` (<@${req.body.id}>)`);
+			bot.channel.createMessage(`${req.user.username} added \`${req.body.name}\` (<@${req.body.id}>)`);
 		}
 	})
 	.get('/:id', csrfM.make, async (req, res) => {
@@ -221,7 +221,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				status: 200,
 				message: res.__('message_bot_changed')
 			});
-			bot.channel.createMessage(`${req.user.name} edited \`${res.locals.bot.name}\` (<@${res.locals.bot.id}>) by <@${res.locals.bot.owner.name}>`);
+			bot.channel.createMessage(`${req.user.username} edited \`${res.locals.bot.name}\` (<@${res.locals.bot.id}>) by <@${res.locals.bot.owner.username}>`);
 		}
 	})
 	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
@@ -248,7 +248,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			status: 200,
 			message: res.__('message_bot_deleted')
 		});
-		bot.channel.createMessage(`${req.user.name} deleted \`${res.locals.bot.name}\` (<@${res.locals.bot.id}>) by ${res.locals.bot.owner.name}`);
+		bot.channel.createMessage(`${req.user.username} deleted \`${res.locals.bot.name}\` (<@${res.locals.bot.id}>) by ${res.locals.bot.owner.username}`);
 	})
 	.get('/:id/token', userM.auth, csrfM.make, owns, (req, res) => {
 		// Display the token for this bot
@@ -297,7 +297,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			res.redirect(previous);
 		} else {
 			res.redirect(previous);
-			bot.channel.createMessage(`${req.user.name} approved \`${result.changes[0].old_val.name}\` (<@${result.changes[0].old_val.id}>) by <@${result.changes[0].old_val.owner.name}>`);
+			bot.channel.createMessage(`${req.user.username} approved \`${result.changes[0].old_val.name}\` (<@${result.changes[0].old_val.id}>) by ${result.changes[0].old_val.owner.username}`);
 		}
 	})
 	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {
@@ -321,7 +321,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				.delete()
 				.run();
 			res.redirect('/');
-			bot.channel.createMessage(`${req.user.name} deleted \`${user.name}\` (<@${user.id}>) by ${user.owner.name} for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})\n${req.body.description}`);
+			bot.channel.createMessage(`${req.user.username} deleted \`${user.name}\` (<@${user.id}>) by ${user.owner.username} for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})\n${req.body.description}`);
 		} else {
 			res.status(400).render('error', { status: 400, message: 'Invalid reason' });
 		}
