@@ -34,7 +34,7 @@ block jumbotron
 							input.hide(type="text" name="approve" botinfoue="true")
 					if csrf
 						a.btn.btn-danger(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
-					a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
+					a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
 				if botinfo.editable
 					a.btn.btn-primary(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
 					a.btn.btn-danger(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}

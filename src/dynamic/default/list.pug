@@ -32,7 +32,7 @@ block content
 									input.hide(type="text" name="csrf" value=`${csrf}`)
 							if csrf
 								a.btn.btn-danger(href=`/bot/${val.id}/remove`) #{__('list_remove')}
-							a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
+							a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
 						if val.editable
 							a.btn.btn-primary(href=`/bot/${val.id}/edit`) #{__('list_edit')}
 							a.btn.btn-danger(href=`/bot/${val.id}/delete`) #{__('list_delete')}
