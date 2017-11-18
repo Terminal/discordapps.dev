@@ -9,11 +9,21 @@ const crypto = require('crypto');
 const reasons = require('./data/reasons.json');
 const config = require('config');
 const request = require('request');
+const cheerio = require('cheerio');
 
 const router = express.Router();
 marked.setOptions({
 	sanitize: true
 });
+
+const on = [
+	'onchange',
+	'onclick',
+	'onmouseover',
+	'onmouseout',
+	'onkeydown',
+	'onload'
+];
 
 const validate = (req, res, next) => {
 	if (typeof req.body.id !== 'string') {
@@ -172,14 +182,26 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 					ownerinfo: r.table('users').get(info('owner'))
 				}))
 				.run();
+			let render = '';
 			if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
 				botinfo.editable = true;
 			}
+			if (botinfo.longDesc) {
+				if (botinfo.type === 'asciidoc') {
+					render = asciidoctor.convert(botinfo.longDesc);
+				} else if (botinfo.type === 'markdown') {
+					render = marked(botinfo.longDesc);
+				} else if (botinfo.type === 'html') {
+					const $ = cheerio.load(botinfo.longDesc);
+					on.forEach(event => $('*').removeAttr(event));
+					$('script').remove();
+					render = $.html();
+				}
+			}
 			res.render('botpage', {
 				botinfo,
-				marked,
-				asciidoctor,
-				csrf: req.csrf
+				csrf: req.csrf,
+				render
 			});
 		} else {
 			res.status(404).render('error', {
