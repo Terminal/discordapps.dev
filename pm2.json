@@ -1,0 +1,8 @@
+{
+	"apps" : [
+		{
+			"name"       : "ls.terminal.ink",
+			"script"     : "./index.js"
+		}
+	]
+}
