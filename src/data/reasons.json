@@ -1,6 +1,7 @@
 {
 	"remove": [
 		"other",
+		"owner_not_in_server",
 		"respond_other_bot",
 		"respond_itself",
 		"respond_feedback_loop",
