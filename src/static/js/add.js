@@ -3,7 +3,7 @@
 const type = document.getElementById('type');
 const descbox = document.getElementById('description');
 
-const description = () => {
+function description() {
 	const desc = document.getElementById('longDesc');
 	const temp = desc ? desc.value : '';
 	if (type.value === 'iframe') {
@@ -16,4 +16,4 @@ const description = () => {
 		descbox.innerHTML = '<textarea class="form-control" id="longDesc" name="longDesc" maxlength="200000" rows="12" required></textarea>';
 	}
 	document.getElementById('longDesc').value = temp;
-};
+}

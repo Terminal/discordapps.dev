@@ -1,4 +1,4 @@
-const modalperms = () => {
+function modalperms() {
 	const perms = {
 		CREATE_INSTANT_INVITE: 0x00000001,
 		KICK_MEMBERS: 0x00000002,
@@ -39,4 +39,4 @@ const modalperms = () => {
 	});
 
 	invite.value = `https://discordapp.com/oauth2/authorize?client_id=${id.value}&scope=bot&permissions=${permissions}`;
-};
+}
