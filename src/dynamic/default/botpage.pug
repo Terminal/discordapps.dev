@@ -27,7 +27,7 @@ block jumbotron
 			.row
 				if user && user.admin
 					if !botinfo.approved && csrf
-						form.buddon(action="/list/queue" method="POST")
+						form.buddon(action=`/bot/${botinfo.id}/approve` method="POST")
 							button.btn.btn-success(type="submit") #{__('list_approve')}
 							input.hide(type="text" name="id" botinfoue=`${botinfo.id}`)
 							input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
