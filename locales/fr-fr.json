@@ -114,6 +114,7 @@
 	"remove_jumbotron": "Supprimer ou rejecter un bot",
 	"remove_description": "Donner des preuves ou une raison supplémentaire",
 	"remove_other": "Autre",
+	"remove_owner_not_in_server": "Le propriétaire n'est pas dans le serveur",
 	"remove_respond_other_bot": "Le bot répond aux autres bots",
 	"remove_respond_itself": "Le bot répond à lui-même",
 	"remove_msg_on_join": "Messges de bienvenue",

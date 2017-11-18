@@ -115,6 +115,7 @@
 	"remove_jumbotron": "Remove or reject a bot",
 	"remove_description": "Give evidence or give extra reasoning",
 	"remove_other": "Other",
+	"remove_owner_not_in_server": "Owner isn't in the server",
 	"remove_respond_other_bot": "Bot responds to other bots",
 	"remove_respond_itself": "Bot responds to itself",
 	"remove_respond_feedback_loop": "Bot got involved in a feedback loop",
