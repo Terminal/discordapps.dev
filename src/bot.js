@@ -155,7 +155,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				message: res.__('message_bot_inserted')
 			});
 			// Send message to Discord Channel
-			bot.channel.createMessage(`<@${req.user.id}> added \`${req.body.name}\` <@${req.body.id}>`);
+			bot.channel.createMessage(`${req.user.username} added \`${req.body.name}\` <@${req.body.id}>`);
 		}
 	})
 	.get('/:id', csrfM.make, async (req, res) => {
@@ -221,7 +221,11 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				status: 200,
 				message: res.__('message_bot_changed')
 			});
-			bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+			if (req.user.id === res.locals.bot.owner) {
+				bot.channel.createMessage(`${req.user.username} edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}>`);
+			} else {
+				bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+			}
 		}
 	})
 	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
