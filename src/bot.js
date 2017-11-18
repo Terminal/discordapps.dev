@@ -291,13 +291,19 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			}, {
 				returnChanges: true
 			});
-		if (res.skipped) {
-			res.status(404).render('error', { status: 404, message: 'Bot Not found' });
-		} else if (!result.changes) {
-			res.redirect(previous);
+		const member = bot.guild.members.get(result.changes[0].old_val.id);
+		if (member) {
+			if (res.skipped) {
+				res.status(404).render('error', { status: 404, message: 'Bot Not found' });
+			} else if (!result.changes) {
+				res.redirect(previous);
+			} else {
+				member.removeRole(config.get('terminal').unverified);
+				bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
+				res.redirect(previous);
+			}
 		} else {
-			res.redirect(previous);
-			bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
+			res.status(500).render('error', { status: 500, message: 'The bot was not found within the guild. Please invite and apply the role manually.' });
 		}
 	})
 	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {
