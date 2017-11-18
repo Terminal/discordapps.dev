@@ -44,7 +44,7 @@ const isOnline = (req, res, next) => {
 
 app.locals.list_invite = config.get('discord').invite;
 app.locals.location = config.get('webserver').location;
-app.locals.guild_id = config.get('discord').clientID;
+app.locals.guild_id = config.get('discord').guild;
 
 app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	.set('view engine', 'pug')
