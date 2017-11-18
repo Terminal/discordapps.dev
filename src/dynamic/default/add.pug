@@ -37,7 +37,7 @@ block content
 					.form-group
 						small.form-text.text-muted #{__('add_longdesc_mute')}
 						label(for="type") #{__('add_longdesc')}
-						select#type.form-control(name="type" placeholder=__('add_longdesc_placeholder') onchange="description();" required)
+						select#type.form-control(name="type" placeholder=__('add_longdesc_placeholder') onchange="description();" onload="description();" required)
 							option(value="" disabled selected) #{__('add_longdesc_select')}
 							optgroup(label=__('add_longdesc_category_richtext'))
 								option(value="markdown") #{__('add_longdesc_markdown')}
