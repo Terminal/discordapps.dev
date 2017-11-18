@@ -4,6 +4,7 @@ const type = document.getElementById('type');
 const descbox = document.getElementById('description');
 
 const description = () => {
+	const temp = document.getElementById('longDesc').value;
 	if (type.value === 'iframe') {
 		descbox.innerHTML = '<input type="text" class="form-control" id="longDesc" name="longDesc" maxlength="200" required pattern="https:\\/\\/.+">';
 	} else if (type.value === 'markdown') {
@@ -13,4 +14,5 @@ const description = () => {
 	} else if (type.value === 'html') {
 		descbox.innerHTML = '<textarea class="form-control" id="longDesc" name="longDesc" maxlength="200000" rows="12" required></textarea>';
 	}
+	document.getElementById('longDesc').value = temp;
 };
