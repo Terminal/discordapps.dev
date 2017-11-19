@@ -120,7 +120,7 @@
 	"remove_description": "Please select a valid reason to remove this bot. Reasons not listed will have to be voted in.",
 	"remove_select": "Select a removal reason",
 	"remove_jumbotron": "Remove or reject a bot",
-	"remove_description": "Give evidence or give extra reasoning",
+	"remove_description_evidence": "Give evidence or give extra reasoning",
 	"remove_other": "Other",
 	"remove_owner_not_in_server": "Owner isn't in the server",
 	"remove_respond_other_bot": "Bot responds to other bots",
