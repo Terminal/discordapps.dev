@@ -30,15 +30,15 @@ module.exports = [
 						},
 						fields: [
 							{
-								name: message.__('botinfo_invite'),
+								name: message.__('botinfo_get_invite'),
 								value: bot.invite
 							},
 							{
-								name: message.__('botinfo_count'),
+								name: message.__('botinfo_get_count'),
 								value: bot.count
 							},
 							{
-								name: message.__('botinfo_owner'),
+								name: message.__('botinfo_get_owner'),
 								value: `<@${bot.owner}>`
 							}
 						]
