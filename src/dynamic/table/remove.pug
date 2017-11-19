@@ -5,12 +5,13 @@ block title
 
 block content
 	h1 #{__('remove_jumbotron')}
+	p #{__('remove_description')}
 	form.removeform(method="POST")
 		select#type(name="reason" required)
 			option(selected disabled required value="") #{__('remove_select')}
 			for reason, index in reasons
 				option(value=index) #{__(`remove_${reason}`)}
-		label(for="description") #{__('remove_description')}
+		label(for="description") #{__('remove_description_evidence')}
 		textarea(name="description" maxlength="1000" rows="6" required)
 		button(type="submit") #{__('proceed')}
 		a(href="/") #{__('cancel')}

@@ -112,7 +112,7 @@
 	"remove_description": "Veuillez selectionner une raison dans la liste. Les raisons qui ne sont pas dans la liste seront votées.",
 	"remove_select": "Sélectionner une raison de suppression",
 	"remove_jumbotron": "Supprimer ou rejeter un bot",
-	"remove_description": "Donner des preuves ou une raison supplémentaire",
+	"remove_description_evidence": "Donner des preuves ou une raison supplémentaire",
 	"remove_other": "Autre",
 	"remove_owner_not_in_server": "Le propriétaire n'est pas dans le serveur",
 	"remove_respond_other_bot": "Le bot répond aux autres bots",
