@@ -46,3 +46,8 @@ You can also use this.
 }
 ```
 
+### GET `/bots/:id/embed`
+Returns a "cool" embed that's sure to impress nobody.
+You can embed this image on your website, or even `discordbots.org`.
+
+![An example embed of Hatsuse Izuna](https://ls.terminal.ink/api/v1/bots/323510457724043274/embed)
