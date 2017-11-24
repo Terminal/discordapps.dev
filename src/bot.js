@@ -325,12 +325,12 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				res.redirect(previous);
 			} else {
 				member.removeRole(config.get('terminal').unverified);
-				bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 				res.redirect(previous);
 			}
 		} else {
-			res.status(500).render('error', { status: 500, message: 'The bot was not found within the guild. Please invite and apply the role manually.' });
+			res.status(202).render('error', { status: 202, message: 'The bot has been approved, but is not within the guild. Please manually invite the bot.' });
 		}
+		bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 	})
 	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {
 		res.render('remove', {
