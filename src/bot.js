@@ -7,23 +7,19 @@ const marked = require('marked');
 const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
 const reasons = require('./data/reasons.json');
+const { on } = require('./data/on.json');
 const config = require('config');
 const request = require('request');
 const cheerio = require('cheerio');
 
 const router = express.Router();
-marked.setOptions({
-	sanitize: true
-});
 
-const on = [
-	'onchange',
-	'onclick',
-	'onmouseover',
-	'onmouseout',
-	'onkeydown',
-	'onload'
-];
+const clean = (html) => {
+	const $ = cheerio.load(html);
+	on.forEach(event => $('*').removeAttr(event));
+	$('script').remove();
+	return $.html();
+};
 
 const validate = (req, res, next) => {
 	if (typeof req.body.id !== 'string') {
@@ -188,14 +184,11 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			}
 			if (botinfo.longDesc) {
 				if (botinfo.type === 'asciidoc') {
-					render = asciidoctor.convert(botinfo.longDesc);
+					render = clean(asciidoctor.convert(botinfo.longDesc));
 				} else if (botinfo.type === 'markdown') {
-					render = marked(botinfo.longDesc);
+					render = clean(marked(botinfo.longDesc));
 				} else if (botinfo.type === 'html') {
-					const $ = cheerio.load(botinfo.longDesc);
-					on.forEach(event => $('*').removeAttr(event));
-					$('script').remove();
-					render = $.html();
+					render = clean(botinfo.longDesc);
 				}
 			}
 			res.render('botpage', {
