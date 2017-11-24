@@ -22,4 +22,4 @@ French Translation | Yvan#5761
 
 ## Licence
 
-GNU General Public License v3.0
+GNU General Public License v3.0, unless marked within the file.
