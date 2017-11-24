@@ -2,7 +2,7 @@
 
 MIT License
 
-Copyright (c) 2017 Moustacheminer Server Services
+Copyright (c) 2018 Moustacheminer Server Services
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
