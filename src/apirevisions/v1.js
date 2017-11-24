@@ -36,11 +36,10 @@ router.get('/bots', async (req, res) => {
 		.run();
 	res.status(200).send(result);
 })
-	.get('/bots/:id', (req, res) => {
-		const result = r.table('bots')
+	.get('/bots/:id', async (req, res) => {
+		const result = await r.table('bots')
 			.get(req.params.id)
-			.without('token')
-			.run();
+			.without('token');
 
 		if (!result) {
 			res.status(404).json({});
