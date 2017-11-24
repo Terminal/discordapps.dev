@@ -35,7 +35,7 @@ const list = async (req, res) => {
 		bots = bots.filter(bot => bot.owner === res.locals.owner);
 	}
 
-	res.status(200).render('list', {
+	res.render('list', {
 		bots,
 		csrf: req.csrf
 	});

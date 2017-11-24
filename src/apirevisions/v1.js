@@ -35,7 +35,7 @@ router.get('/bots', async (req, res) => {
 	const result = await r.table('bots')
 		.without('token')
 		.run();
-	res.status(200).send(result);
+	res.send(result);
 })
 	.get('/bots/:id', async (req, res) => {
 		const result = await r.table('bots')
@@ -45,7 +45,7 @@ router.get('/bots', async (req, res) => {
 		if (!result) {
 			res.status(404).json({});
 		} else {
-			res.status(200).json(result);
+			res.json(result);
 		}
 	})
 	.post('/bots/:id', authMiddleware, async (req, res) => {
@@ -61,7 +61,7 @@ router.get('/bots', async (req, res) => {
 				.get(req.params.id)
 				.update({ count })
 				.run();
-			res.status(200).json({ message: 'OK' });
+			res.json({ message: 'OK' });
 		}
 	})
 	.get('/bots/:id/embed*', async (req, res) => {
@@ -89,10 +89,10 @@ router.get('/bots', async (req, res) => {
 		}
 	})
 	.use('/test/:id', authMiddleware, (req, res) => {
-		res.status(200).json({ message: 'OK' });
+		res.json({ message: 'OK' });
 	})
 	.use('*', (req, res) => {
-		res.status(404).json({ error: 'This API method has not been defined.' });
+		res.json({ error: 'This API method has not been defined.' });
 	});
 
 module.exports = router;

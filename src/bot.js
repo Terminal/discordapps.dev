@@ -270,10 +270,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			.delete()
 			.run();
 
-		res.render('error', {
-			status: 200,
-			message: res.__('message_bot_deleted')
-		});
+		res.redirect('/');
 		bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 	})
 	.get('/:id/token', userM.auth, csrfM.make, owns, (req, res) => {
