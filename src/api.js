@@ -32,6 +32,9 @@ const router = express.Router();
 router.get('/', (req, res) => {
 	res.redirect('/docs/api');
 })
-	.use('/v1', v1);
+	.use('/v1', v1)
+	.use('*', (req, res) => {
+		res.status(404).json({ error: 'This API revision does not exist.' });
+	});
 
 module.exports = router;
