@@ -2,6 +2,7 @@ const Discord = require('eris');
 const config = require('config');
 const { commands } = require('./cogs');
 const handler = require('./handler');
+const r = require('./../db');
 
 const client = new Discord.Client(config.get('discord').token);
 
@@ -23,6 +24,16 @@ client.on('ready', () => {
 				commands[message.mss.command].command(message);
 			}
 		});
+	});
+
+	client.on('userUpdate', (user, old) => {
+		if (user.avatar !== old.avatar) {
+			r.table('bots')
+				.get(user.id)
+				.update({
+					avatar: user.avatar
+				});
+		}
 	});
 });
 
