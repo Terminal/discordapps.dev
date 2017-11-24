@@ -27,6 +27,7 @@ SOFTWARE.
 const express = require('express');
 const authMiddleware = require('./auth');
 const r = require('./../db');
+const request = require('request');
 
 const router = express.Router();
 
@@ -61,6 +62,30 @@ router.get('/bots', async (req, res) => {
 				.update({ count })
 				.run();
 			res.status(200).json({ message: 'OK' });
+		}
+	})
+	.get('/bots/:id/embed*', async (req, res) => {
+		res.theme('v1');
+		const bot = await r.table('bots')
+			.get(req.params.id)
+			.without('token')
+			.merge(info => ({
+				ownerinfo: r.table('users').get(info('owner'))
+			}));
+
+		if (!bot) {
+			res.status(404).json({});
+		} else {
+			request({ uri: bot.avatar, encoding: 'binary' }, (err, response, body) => {
+				let avatar = '';
+				if (response.statusCode === 200) {
+					const type = response.headers['content-type'];
+					const base64 = new Buffer(body, 'binary').toString('base64');
+					avatar = `data:${type};base64,${base64}`;
+				}
+				res.set('Content-Type', 'image/svg+xml');
+				res.render('embed', { bot, avatar });
+			});
 		}
 	})
 	.use('/test/:id', authMiddleware, (req, res) => {
