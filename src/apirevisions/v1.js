@@ -65,7 +65,6 @@ router.get('/bots', async (req, res) => {
 		}
 	})
 	.get('/bots/:id/embed*', async (req, res) => {
-		res.theme('v1');
 		const bot = await r.table('bots')
 			.get(req.params.id)
 			.without('token')
@@ -84,7 +83,7 @@ router.get('/bots', async (req, res) => {
 					avatar = `data:${type};base64,${base64}`;
 				}
 				res.set('Content-Type', 'image/svg+xml');
-				res.render('embed', { bot, avatar });
+				res.render('api/v1/embed', { bot, avatar });
 			});
 		}
 	})
