@@ -83,7 +83,7 @@ router.get('/bots', async (req, res) => {
 					avatar = `data:${type};base64,${base64}`;
 				}
 				res.set('Content-Type', 'image/svg+xml');
-				res.render('api/v1/embed', { bot, avatar });
+				res.render('api/v1/embed', { bot, avatar, query: req.query });
 			});
 		}
 	})

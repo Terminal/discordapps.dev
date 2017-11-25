@@ -2,13 +2,13 @@ doctype xml
 
 // Created with ls.terminal.ink (https://terminal.ink/)
 
-svg(width="200" height="150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
+svg(width=(query.width || "200") height="150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
 	style
 		|	text {
 		|		font-family: "Noto Sans", "Arial", sans-serif;
 		|	}
-	rect(rx="5" ry="5" width="200" height="150" fill="#181818")
-	rect(y="31" width="200" height="93" fill="#333333")
+	rect(rx="5" ry="5" width=(query.width || "200") height="150" fill="#181818")
+	rect(y="31" width=(query.width || "200") height="93" fill="#333333")
 	text(x="10" y="22" font-size="16" fill="#FFFFFF") #{bot.name}
 	if (bot.approved)
 		text(x="10" y="46" font-size="12" fill="#FFFFFF") #{bot.count} servers
