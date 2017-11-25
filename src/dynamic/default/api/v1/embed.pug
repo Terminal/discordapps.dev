@@ -10,7 +10,10 @@ svg(width="200" height="150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="htt
 	rect(rx="5" ry="5" width="200" height="150" fill="#181818")
 	rect(y="31" width="200" height="93" fill="#333333")
 	text(x="10" y="22" font-size="16" fill="#FFFFFF") #{bot.name}
-	text(x="10" y="46" font-size="12" fill="#FFFFFF") #{bot.count} servers
+	if (bot.approved)
+		text(x="10" y="46" font-size="12" fill="#FFFFFF") #{bot.count} servers
+	else
+		text(x="10" y="46" font-size="12" fill="#FFFFFF") Awaiting approval
 	if (avatar)
 		image(x="10" y="50" width="50" height="50" xlink:href=avatar)
 	text(x="10" y="115" font-size="12" fill="#FFFFFF") Bot by #{bot.ownerinfo.username}##{bot.ownerinfo.discriminator}
