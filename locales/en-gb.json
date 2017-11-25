@@ -203,5 +203,6 @@
 	"info_licencedesc": "{{{ name }}}, an instance of [ls.terminal.ink](https://ls.terminal.ink/) is licenced under the GNU GPLv3.",
 	"api_v1_embed_servers": "{{ count }} servers",
 	"api_v1_embed_await": "Awaiting approval",
-	"api_v1_embed_author": "Bot by {{ username }}#{{ discriminator }}"
+	"api_v1_embed_author": "Bot by {{ username }}#{{ discriminator }}",
+	"api_v1_embed_footer": "Bot listed on {{ website }}"
 }

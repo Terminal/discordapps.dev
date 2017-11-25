@@ -18,4 +18,4 @@ svg(width=(query.width || "200") height="150" xmlns="http://www.w3.org/2000/svg"
 		image(x="10" y="51" width="50" height="50" xlink:href=avatar)
 	text(x="10" y="115" font-size="12" fill="#FFFFFF") #{__('api_v1_embed_author', { username: bot.ownerinfo.username, discriminator: bot.ownerinfo.discriminator })}
 	a(href=`${location}bot/${bot.id}`)
-		text(x="10" y="140" font-size="10" fill="#FFFFFF") #{__('website')}
+		text(x="10" y="140" font-size="10" fill="#FFFFFF") #{__('api_v1_embed_footer', { website: __('website') })}
