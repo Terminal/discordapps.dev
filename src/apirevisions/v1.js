@@ -28,6 +28,9 @@ const express = require('express');
 const authMiddleware = require('./auth');
 const r = require('./../db');
 const request = require('request');
+const pug = require('pug');
+const { spawn } = require('child_process');
+const path = require('path');
 
 const router = express.Router();
 
@@ -83,8 +86,24 @@ router.get('/bots', async (req, res) => {
 					const base64 = new Buffer(body, 'binary').toString('base64');
 					avatar = `data:${type};base64,${base64}`;
 				}
-				res.set('Content-Type', 'image/svg+xml');
-				res.render('api/v1/embed', { bot, avatar, query: req.query });
+				const svg = pug.renderFile(path.join(__dirname, 'v1', 'embed.pug'), { bot, avatar, query: req.query, __: res.locals.__ });
+				if (req.query.type === 'png') {
+					const magick = spawn('convert', ['-density', '200', 'svg:-', 'png:-']);
+					magick.stdin.write(svg);
+					magick.stdin.end();
+					res.set('Content-Type', 'image/png');
+
+					magick.stdout.on('data', (data) => {
+						res.write(data);
+					});
+
+					magick.stdout.on('close', () => {
+						res.end();
+					});
+				} else {
+					res.set('Content-Type', 'image/svg+xml');
+					res.send(svg);
+				}
 			});
 		}
 	})
