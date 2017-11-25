@@ -1,9 +1,9 @@
 # ls.terminal.ink
 ---
 
-## Topics
+## API
 
-- [API](/docs/api)
+- [Version 1](/docs/v1)
 
 ## How To
 
