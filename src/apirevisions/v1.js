@@ -65,6 +65,7 @@ router.get('/bots', async (req, res) => {
 		}
 	})
 	.get('/bots/:id/embed*', async (req, res) => {
+		if (req.query && req.query.locale) res.locals.setLocale(req.query.locale);
 		const bot = await r.table('bots')
 			.get(req.params.id)
 			.without('token')

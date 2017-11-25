@@ -193,5 +193,8 @@
 	"info_hard": "Materiel",
 	"info_soft": "Logiciel",
 	"info_licence": "Licence",
-	"info_licencedesc": "{{{ name }}}, est une instance de [ls.terminal.ink](https://ls.terminal.ink/) sous licence GNU GPLv3."
+	"info_licencedesc": "{{{ name }}}, est une instance de [ls.terminal.ink](https://ls.terminal.ink/) sous licence GNU GPLv3.",
+	"api_v1_embed_servers": "{{ count }} serveurs",
+	"api_v1_embed_await": "Non-verifié",
+	"api_v1_embed_author": "{{ username }}#{{ discriminator }}"
 }
