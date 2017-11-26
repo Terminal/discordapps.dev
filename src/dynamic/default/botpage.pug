@@ -9,6 +9,7 @@ block embed
 	meta(name="og:image" content=(botinfo.avatar || '/img/terminal.png'))
 	meta(property="og:title" content=botinfo.name)
 	meta(property="og:site_name" content=__('website'))
+	meta(property="og:image" content=`${location}api/v1/${botinfo.id}/embed?type=png`)
 
 block jumbotron
 	.jumbotron
