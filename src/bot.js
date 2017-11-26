@@ -171,6 +171,11 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			.run();
 
 		if (exists) {
+
+			if (req.headers['user-agent'] && req.headers['user-agent'].toLowerCase().includes('discord')) {
+				return res.redirect(`/api/v1/bots/${req.params.id}/embed?type=png`)
+			}
+
 			const botinfo = await r.table('bots')
 				.get(req.params.id)
 				.without('token')
