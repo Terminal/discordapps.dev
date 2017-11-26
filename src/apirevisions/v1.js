@@ -81,15 +81,22 @@ router.get('/bots', async (req, res) => {
 		} else {
 			request({ uri: bot.avatar, encoding: 'binary' }, (err, response, body) => {
 				let avatar = '';
-				const scale = parseInt(req.query && req.query.scale, 10) || 200;
+				const scale = parseInt(req.query && req.query.scale, 10) <= 1000 ? parseInt(req.query && req.query.scale, 10) : 200;
+				const font = (req.query && req.query.font) || '';
 				if (response.statusCode === 200) {
 					const type = response.headers['content-type'];
 					const base64 = new Buffer(body, 'binary').toString('base64');
 					avatar = `data:${type};base64,${base64}`;
 				}
-				const svg = pug.renderFile(path.join(__dirname, 'v1', 'embed.pug'), { bot, avatar, query: req.query, __: res.locals.__ });
+				const svg = pug.renderFile(path.join(__dirname, 'v1', 'embed.pug'), {
+					bot,
+					avatar,
+					font,
+					query: req.query,
+					__: res.locals.__
+				});
 				if (req.query.type === 'png') {
-					const magick = spawn('convert', ['-density', scale, 'svg:-', 'png:-']);
+					const magick = spawn('convert', ['-background', 'none', '-font', font || 'Noto-Sans', '-density', scale, 'svg:-', 'png:-']);
 					magick.stdin.write(svg);
 					magick.stdin.end();
 					res.set('Content-Type', 'image/png');
