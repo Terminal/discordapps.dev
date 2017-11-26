@@ -8,7 +8,8 @@ block embed
 	meta(name="og:description" content=botinfo.shortDesc)
 	meta(name="og:title" content=botinfo.name)
 	meta(name="og:site_name" content=__('website'))
-	meta(name="og:image" content=`/api/v1/bots/${botinfo.id}/embed.png?type=png&scale=300&width=300`)
+	meta(name="og:image" content=(botinfo.avatar || '/img/terminal.png'))
+	meta(name="og:type" content="website")
 
 block jumbotron
 	.jumbotron
