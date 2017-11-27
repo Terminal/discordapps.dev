@@ -27,7 +27,7 @@ client.on('ready', () => {
 	});
 
 	client.on('userUpdate', (user, old) => {
-		if (user.avatar !== old.avatar) {
+		if (user && old && (user.avatar !== old.avatar)) {
 			r.table('bots')
 				.get(user.id)
 				.update({
