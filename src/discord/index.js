@@ -24,8 +24,8 @@ client.on('messageCreate', (message) => {
 	handler(message, () => {
 		if (message.mss.command && message.mss.admin >= commands[message.mss.command].admin) {
 			commands[message.mss.command].command(message);
-    }
-  });
+		}
+    });
 });
 
 client.on('userUpdate', (user, old) => {
