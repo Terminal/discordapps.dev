@@ -171,36 +171,35 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			.run();
 
 		if (exists) {
-
 			if (req.headers['user-agent'] && req.headers['user-agent'].toLowerCase().includes('discord')) {
-				return res.redirect(`/api/v1/bots/${req.params.id}/embed?type=png`)
-			}
-
-			const botinfo = await r.table('bots')
-				.get(req.params.id)
-				.without('token')
-				.merge(info => ({
-					ownerinfo: r.table('users').get(info('owner'))
-				}))
-				.run();
-			let render = '';
-			if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
-				botinfo.editable = true;
-			}
-			if (botinfo.longDesc) {
-				if (botinfo.type === 'asciidoc') {
-					render = clean(asciidoctor.convert(botinfo.longDesc));
-				} else if (botinfo.type === 'markdown') {
-					render = clean(marked(botinfo.longDesc));
-				} else if (botinfo.type === 'html') {
-					render = clean(botinfo.longDesc);
+				res.redirect(`/api/v1/bots/${req.params.id}/embed?type=png`)
+			} else {
+				const botinfo = await r.table('bots')
+					.get(req.params.id)
+					.without('token')
+					.merge(info => ({
+						ownerinfo: r.table('users').get(info('owner'))
+					}))
+					.run();
+				let render = '';
+				if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
+					botinfo.editable = true;
 				}
+				if (botinfo.longDesc) {
+					if (botinfo.type === 'asciidoc') {
+						render = clean(asciidoctor.convert(botinfo.longDesc));
+					} else if (botinfo.type === 'markdown') {
+						render = clean(marked(botinfo.longDesc));
+					} else if (botinfo.type === 'html') {
+						render = clean(botinfo.longDesc);
+					}
+				}
+				res.render('botpage', {
+					botinfo,
+					csrf: req.csrf,
+					render
+				});
 			}
-			res.render('botpage', {
-				botinfo,
-				csrf: req.csrf,
-				render
-			});
 		} else {
 			res.status(404).render('error', {
 				csrf: res.csrf,
