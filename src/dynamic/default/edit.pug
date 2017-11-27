@@ -39,7 +39,7 @@ block content
 							option(disabled) #{__('add_longdesc_select')}
 								optgroup(label=__('add_longdesc_category_richtext'))
 									option(value="markdown" selected=bot.type==="markdown") #{__('add_longdesc_markdown')}
-									option(value="asciidoc" selected=bot.type==="asciidoc") #{__('add_longdesc_asciidoc')}
+									option(disabled value="asciidoc" selected=bot.type==="asciidoc") #{__('add_longdesc_asciidoc')}
 								optgroup(label=__('add_longdesc_category_html'))
 									option(value="iframe" selected=bot.type==="iframe") #{__('add_longdesc_iframe')}
 									option(value="html" selected=bot.type==="html") #{__('add_longdesc_html')}

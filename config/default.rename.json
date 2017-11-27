@@ -37,8 +37,7 @@
 		"description": [
 			"iframe",
 			"markdown",
-			"html",
-			"asciidoc"
+			"html"
 		]
 	},
 	"useragent": "Discord Bot (https://moustacheminer.com/, 2.0.0) Running at https://ls.terminal.ink/"
