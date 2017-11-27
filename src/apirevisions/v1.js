@@ -34,13 +34,23 @@ const path = require('path');
 
 const router = express.Router();
 
+const exists = async (req, res, next) => {
+	const exist = await r.table('bots')
+		.get(req.params.id);
+	if (exist) {
+		next();
+	} else {
+		res.json({});
+	}
+}
+
 router.get('/bots', async (req, res) => {
 	const result = await r.table('bots')
 		.without('token')
 		.run();
 	res.send(result);
 })
-	.get('/bots/:id', async (req, res) => {
+	.get('/bots/:id', exists, async (req, res) => {
 		const result = await r.table('bots')
 			.get(req.params.id)
 			.without('token');
@@ -51,7 +61,7 @@ router.get('/bots', async (req, res) => {
 			res.json(result);
 		}
 	})
-	.post('/bots/:id', authMiddleware, async (req, res) => {
+	.post('/bots/:id', exists, authMiddleware, async (req, res) => {
 		const count = parseInt(req.body.count || req.body.server_count, 10);
 		if (typeof count !== 'string' && typeof count !== 'number') {
 			res.status(400).json({ error: 'You provided an invalid guild count' });
@@ -67,48 +77,50 @@ router.get('/bots', async (req, res) => {
 			res.json({ message: 'OK' });
 		}
 	})
-	.get('/bots/:id/embed*', async (req, res) => {
-		if (req.query && req.query.locale) res.locals.setLocale(req.query.locale);
+	.get('/bots/:id/embed*', exists, async (req, res) => {
 		const bot = await r.table('bots')
 			.get(req.params.id)
+			.default({})
 			.without('token')
 			.merge(info => ({
 				ownerinfo: r.table('users').get(info('owner'))
 			}));
-
-		if (!bot) {
-			res.status(404).json({});
-		} else {
-			request({ uri: bot.avatar, encoding: 'binary' }, (err, response, body) => {
-				let avatar = '';
-				const scale = parseInt(req.query && req.query.scale, 10) || 200;
-				if (response.statusCode === 200) {
-					const type = response.headers['content-type'];
-					const base64 = new Buffer(body, 'binary').toString('base64');
-					avatar = `data:${type};base64,${base64}`;
-				}
-				const svg = pug.renderFile(path.join(__dirname, 'v1', 'embed.pug'), { bot, avatar, query: req.query, __: res.locals.__ });
-				if (req.query.type === 'png') {
-					const magick = spawn('convert', ['-density', scale, 'svg:-', 'png:-']);
-					magick.stdin.write(svg);
-					magick.stdin.end();
-					res.set('Content-Type', 'image/png');
-
-					magick.stdout.on('data', (data) => {
-						res.write(data);
-					});
-
-					magick.stdout.on('close', () => {
-						res.end();
-					});
-				} else {
-					res.set('Content-Type', 'image/svg+xml');
-					res.send(svg);
-				}
+		request({ uri: bot.avatar, encoding: 'binary' }, (err, response, body) => {
+			let avatar = '';
+			const scale = parseInt(req.query && req.query.scale, 10) <= 1000 ? parseInt(req.query && req.query.scale, 10) : 200;
+			const font = ((req.query && req.query.font) || '').replace(/[\\/]/g, '');
+			if (response.statusCode === 200) {
+				const type = response.headers['content-type'];
+				const base64 = new Buffer(body, 'binary').toString('base64');
+				avatar = `data:${type};base64,${base64}`;
+			}
+			const svg = pug.renderFile(path.join(__dirname, 'v1', 'embed.pug'), {
+				bot,
+				avatar,
+				font,
+				query: req.query,
+				__: res.locals.__
 			});
-		}
+			if (req.query.type === 'png') {
+				const magick = spawn('convert', ['-background', 'none', '-font', `"${font}"` || '"Noto-Sans"', '-density', scale, 'svg:-', 'png:-']);
+				magick.stdin.write(svg);
+				magick.stdin.end();
+				res.set('Content-Type', 'image/png');
+
+				magick.stdout.on('data', (data) => {
+					res.write(data);
+				});
+
+				magick.stdout.on('close', () => {
+					res.end();
+				});
+			} else {
+				res.set('Content-Type', 'image/svg+xml');
+				res.send(svg);
+			}
+		});
 	})
-	.use('/test/:id', authMiddleware, (req, res) => {
+	.use('/test/:id', exists, authMiddleware, (req, res) => {
 		res.json({ message: 'OK' });
 	})
 	.use('*', (req, res) => {
