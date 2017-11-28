@@ -54,22 +54,22 @@ html
 						a.nav-link(href="/list/all") #{__('nav_all')}
 					li.nav-item
 						a.nav-link(href="/list/queue") #{__('nav_queue')}
-					if user
-						li.nav-item
-							a.nav-link(href=`/list/${user.id}`) #{user.username}
-						li.nav-item
-							a.nav-link(href="/bot/add") #{__('nav_add')}
-						li.nav-item
-							a.nav-link(href="/auth/logout") #{__('nav_logout')}
-					else
-						li.nav-item
-							a.nav-link(href="/auth") #{__('nav_login')}
 					li.nav-item
 						a.nav-link(href="/lang") #{__('nav_lang')}
 					li.nav-item
 						a.nav-link(href="/theme") #{__('nav_theme')}
 					li.nav-item
 						a.nav-link(href=list_invite) #{__('list_invite')}
+					if user
+						li.nav-item.dropdown
+							a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown") #{user.username}
+							.dropdown-menu
+								a.dropdown-item(href=`/list/${user.id}`) My bots
+								a.dropdown-item(href="/bot/add") #{__('nav_add')}
+								a.dropdown-item(href="/auth/logout") #{__('nav_logout')}
+					else
+						li.nav-itedropdown-item
+							a.nav-link(href="/auth") #{__('nav_login')}
 		main
 			block jumbotron
 			block content
