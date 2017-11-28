@@ -7,6 +7,7 @@ const marked = require('marked');
 const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
 const reasons = require('./data/reasons.json');
+const { description } = require('./data/description.json');
 const { on } = require('./data/on.json');
 const config = require('config');
 const request = require('request');
@@ -28,7 +29,7 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid short description' });
 	} else if (typeof req.body.type !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid type' });
-	} else if (!config.get('terminal').description.some(type => req.body.type === type)) {
+	} else if (!description.some(type => req.body.type === type)) {
 		res.status(400).render('error', { status: 400, message: 'You provided an incorrect type' });
 	} else if (typeof req.body.longDesc !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid long description' });

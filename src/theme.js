@@ -1,5 +1,5 @@
 const express = require('express');
-const themes = require('./data/themes.json');
+const themes = require('./data/themes.json').selectable;
 
 const router = express.Router();
 

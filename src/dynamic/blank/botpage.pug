@@ -1,3 +1,6 @@
 doctype html
 
-!= render
+if botinfo.type === 'iframe'
+	iframe.botiframe(src=`${botinfo.longDesc}`)
+else if (botinfo.type === 'markdown' || botinfo.type === 'asciidoc' || botinfo.type === 'html')
+	!= render

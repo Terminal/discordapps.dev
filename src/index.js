@@ -17,7 +17,7 @@ const auth = require('./auth/auth');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const themes = require('express-theme-pug');
-const themelist = require('./data/themes.json');
+const themelist = require('./data/themes.json').selectable;
 const cookieParser = require('cookie-parser');
 const RDBStore = require('session-rethinkdb')(session);
 

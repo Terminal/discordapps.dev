@@ -1,4 +1,13 @@
-[
-	"default",
-	"table"
-]
+{
+	"selectable": [
+		"default",
+		"table"
+	],
+	"usable": [
+		"default",
+		"table",
+		"discordbotsorg",
+		"botsdiscordpw",
+		"blank"
+	]
+}
