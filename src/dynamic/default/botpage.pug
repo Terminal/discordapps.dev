@@ -1,7 +1,7 @@
 extends templates/site.pug
 
 block title
-	title #{__('list_title')} - #{__('website')}
+	title #{botinfo.name} - #{__('website')}
 
 block embed
 	meta(name="author" content=`${botinfo.ownerinfo.username}#${botinfo.ownerinfo.discriminator}`)

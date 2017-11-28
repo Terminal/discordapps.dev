@@ -1,5 +1,15 @@
 extends templates/site.pug
 
+block title
+	title #{botinfo.name} - #{__('website')}
+
+block embed
+	meta(name="author" content=`${botinfo.ownerinfo.username}#${botinfo.ownerinfo.discriminator}`)
+	meta(property="og:description" content=botinfo.shortDesc)
+	meta(name="og:image" content=(botinfo.avatar || '/img/terminal.png'))
+	meta(property="og:title" content=botinfo.name)
+	meta(property="og:site_name" content=__('website'))
+
 block content
 	.profile
 		img.profilebotimage(alt=`${botinfo.name}'s avatar` src=botinfo.avatar width='128px' height='128px' style='margin-top:80px;border-radius:50%;')

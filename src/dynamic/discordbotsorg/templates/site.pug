@@ -5,7 +5,9 @@ doctype html
 
 html
 	head
-		title #{__('website')}
+		block title
+			title #{__('website')}
+		block embed
 		link(rel='stylesheet' href='https://discordbots.org/stylesheets/style.css')
 		link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css')
 		meta(name='viewport' content='width=device-width initial-scale=1.0')

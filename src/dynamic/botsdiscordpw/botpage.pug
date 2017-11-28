@@ -1,7 +1,14 @@
 extends templates/site.pug
 
 block title
-	title #{__('list_title')} - #{__('website')}
+	title #{botinfo.name} - #{__('website')}
+
+block embed
+	meta(name="author" content=`${botinfo.ownerinfo.username}#${botinfo.ownerinfo.discriminator}`)
+	meta(property="og:description" content=botinfo.shortDesc)
+	meta(name="og:image" content=(botinfo.avatar || '/img/terminal.png'))
+	meta(property="og:title" content=botinfo.name)
+	meta(property="og:site_name" content=__('website'))
 
 block content
 	.columns
