@@ -1,0 +1,28 @@
+extends templates/site.pug
+
+block content
+	.profile
+		img.profilebotimage(alt=`${botinfo.name}'s avatar` src=botinfo.avatar width='128px' height='128px' style='margin-top:80px;border-radius:50%;')
+		h1 #{botinfo.name}
+		.ui.label.blue #{botinfo.count} SERVERS
+		p#shortDESU #{botinfo.shortDesc}
+		if botinfo.editable
+			a.ui.google.plus.button(href=`/bot/${botinfo.id}/delete`)
+				i.archive.icon
+				| Delete
+			a.ui.labeled.icon.button(href=`/bot/${botinfo.id}/edit`)
+				i.write.icon
+				| Edit
+			a.ui.labeled.icon.button(href=`/bot/${botinfo.id}/token`)
+				i.write.icon
+				| Token
+		a.ui.labeled.icon.button(href=botinfo.invite)
+			i.mouse.pointer.icon
+			| Invite
+		p#createdby
+			b
+				a#ownerthing.ui.label(style='padding: 5px;' href=`/list/${botinfo.ownerinfo.id}`)
+					img.ui.right.spaced.avatar.image(src=`https://images.discordapp.net/avatars/${botinfo.ownerinfo.id}/${botinfo.ownerinfo.avatar}.png` style='border-radius:250px;')
+					| #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+		p#longdesc
+			!= render
