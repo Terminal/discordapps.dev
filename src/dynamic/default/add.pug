@@ -51,7 +51,7 @@ block content
 						label(for="theme") #{__('add_theme')}
 						select#theme.form-control(name="theme" placeholder=__('add_theme_placeholder') required)
 							for theme in themes
-								option(value="theme") #{__(`theme_${theme}`)}
+								option(value=theme) #{__(`theme_${theme}`)}
 
 					button.btn.btn-primary(type="submit") #{__('add_submit')}
 					input.hide(type="text" name="csrf" value=csrf)
