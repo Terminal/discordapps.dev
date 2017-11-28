@@ -124,7 +124,7 @@ router.get('/bots', async (req, res) => {
 		res.json({ message: 'OK' });
 	})
 	.use('*', (req, res) => {
-		res.json({ error: 'This API method has not been defined.' });
+		res.status(404).json({ error: 'This API method has not been defined.' });
 	});
 
 module.exports = router;
