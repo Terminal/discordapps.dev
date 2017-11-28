@@ -31,7 +31,11 @@
 	"webserver": {
 		"port": 8080,
 		"secret": "",
-		"location": "https://list.mss.ovh/"
+		"location": "https://list.mss.ovh/",
+		"store": {
+			"browserSessionsMaxAge": 2592000000,
+			"clearInterval": 2592000000
+		}
 	},
 	"terminal": {
 		"description": [

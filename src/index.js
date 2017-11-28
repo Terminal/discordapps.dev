@@ -29,7 +29,7 @@ i18n.configure({
 	updateFiles: false
 });
 
-const store = new RDBStore(r);
+const store = new RDBStore(r, config.get('webserver').store);
 const app = express();
 
 const isOnline = (req, res, next) => {
