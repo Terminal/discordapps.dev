@@ -2,10 +2,13 @@
 An example Express and Eris server, which lists Discord bots
 
 ## Development Team
-Category           | People
------------------- | ----------
-Lead Developers    | 7coil#3175
-French Translation | Yvan#5761
+Category            | People
+------------------- | --------------------------
+Lead Developer      | 7coil#3175 (@lepon01)
+Developer           | Devoxin#0387 (@Devoxin)
+French Translation  | Yvan#5761 (@lepeli)
+French Translation  | iDroid#4441 (@iDroid27210)
+Swedish Translation | Mackan#7196 (@Sven65)
 
 ## Installation
 1. `npm i`
