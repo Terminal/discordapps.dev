@@ -37,8 +37,8 @@ const validate = (req, res, next) => {
 	} else if (typeof req.body.count !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid guild count' });
 	} else if (typeof req.body.theme !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an theme ID' });
-	} else if (!themelist.some(type => req.body.theme === type)) {
+		res.status(400).render('error', { status: 400, message: 'You provided an invalid theme ID' });
+	} else if (!themelist.some(theme => req.body.theme === theme)) {
 		res.status(400).render('error', { status: 400, message: 'You provided an incorrect theme' });
 	} else if (req.body.id.length > 70) {
 		res.status(400).render('error', { status: 400, message: 'You provided a bot id that was too long (70)' });
