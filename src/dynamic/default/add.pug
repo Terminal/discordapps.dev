@@ -46,6 +46,11 @@ block content
 								option(value="iframe") #{__('add_longdesc_iframe')}
 								option(value="html") #{__('add_longdesc_html')}
 					#description.form-group
+					p: i The following options are for advanced users. Invalid options may break your bot page. Leave empty in doubt.
+					.form-group
+						label(for="theme") Theme (optional)
+						input#theme.form-control(type="text" name="theme" maxlength="200" placeholder="Theme")
+
 					button.btn.btn-primary(type="submit") #{__('add_submit')}
 					input.hide(type="text" name="csrf" value=csrf)
 

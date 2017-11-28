@@ -10,13 +10,14 @@ const csrfM = require('./csrf');
 const config = require('config');
 const botM = require('./bot');
 const listM = require('./list');
+const bot = require('./discord');
 const themeM = require('./theme');
 const express = require('express');
-const bot = require('./discord');
 const auth = require('./auth/auth');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const themes = require('express-theme-pug');
+const themelist = require('./data/themes.json');
 const cookieParser = require('cookie-parser');
 const RDBStore = require('session-rethinkdb')(session);
 
@@ -66,7 +67,7 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	}))
 	.use(userM.userSetup) // Append details such as if they are an admin, and if they are in the guild
 	.use((req, res, next) => {
-		res.theme(req.cookies.theme);
+		if (themelist[req.cookies.theme]) res.theme(req.cookies.theme);
 		next();
 	})
 	.get('/', csrfM.make, (req, res, next) => {

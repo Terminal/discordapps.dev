@@ -1,0 +1,39 @@
+extends templates/site.pug
+
+block title
+	title #{__('list_title')} - #{__('website')}
+
+
+block content
+	.columns
+		.column
+			if bots.length
+				table#bot-table.table
+					thead
+						tr
+							th.col-avatars
+							th Bot
+							th.is-hidden-mobile Description
+					tfoot
+						tr
+							th.col-avatars
+							th Bot
+							th.is-hidden-mobile Description
+					tbody
+						each val in bots
+							tr
+								td.col-avatars
+									a(href=`/bots/${val.id}`)
+									img.image.is-square.initial.loaded(src=(val.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
+								td
+									a(href=`/bots/${val.id}`)
+									span.larger #{val.name}
+									br
+									span.control.has-addons
+										a.button(href=`/bot/${val.id}`, target='_blank') View
+										a.button(href=val.invite, target='_blank') Invite
+										a.button(href='https://moustacheminer.com/discord-blocks/', target='_blank') Website
+										a.button(href=`/bot/${val.id}/edit`, target='_blank') Edit
+										a.button(href=`/bot/${val.id}/delete`, target='_blank') Delete
+								td.is-hidden-mobile #{val.shortDesc}
+

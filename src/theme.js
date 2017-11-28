@@ -1,7 +1,6 @@
 const express = require('express');
-const fs = require('fs');
+const themes = require('./data/themes.json');
 
-const themes = fs.readdirSync('./src/dynamic/');
 const router = express.Router();
 
 router.get('/', (req, res) => {

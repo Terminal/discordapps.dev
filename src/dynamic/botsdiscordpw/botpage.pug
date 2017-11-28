@@ -1,0 +1,20 @@
+extends templates/site.pug
+
+block title
+	title #{__('list_title')} - #{__('website')}
+
+block content
+	.columns
+		.column.is-2
+			img.image.is-centered.is-96x96(src=(botinfo.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
+		.column.is-9.bot-info
+			span.title.is-4.pad-right #{botinfo.name}
+			p #{botinfo.shortDesc}
+			p Owner: #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+		.column.is-1.has-text-right
+			a.button.is-primary(href=botinfo.invite) Invite
+	hr
+	if botinfo.type === 'iframe'
+		iframe.botiframe(src=`${botinfo.longDesc}`)
+	else if (botinfo.type === 'markdown' || botinfo.type === 'asciidoc' || botinfo.type === 'html')
+		!= render

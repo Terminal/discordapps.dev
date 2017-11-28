@@ -34,12 +34,16 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid long description' });
 	} else if (typeof req.body.count !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid guild count' });
+	} else if (typeof req.body.theme !== 'string') {
+		res.status(400).render('error', { status: 400, message: 'You provided an theme ID' });
 	} else if (req.body.id.length > 70) {
 		res.status(400).render('error', { status: 400, message: 'You provided a bot id that was too long (70)' });
 	} else if (req.body.shortDesc.length > 200) {
 		res.status(400).render('error', { status: 400, message: 'You provided a short description that was too long (200)' });
 	} else if (req.body.avatar.length > 2000) {
 		res.status(400).render('error', { status: 400, message: 'You provided an avatar that was too long (2000)' });
+	} else if (req.body.theme.length > 20) {
+		res.status(400).render('error', { status: 400, message: 'The theme ID was too long' });
 	} else if (/\D/.test(req.body.count)) {
 		res.status(400).render('error', { status: 400, message: 'Your bot count had values other than digits' });
 	} else if (parseInt(req.body.count, 10) < 0) {
@@ -145,6 +149,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				longDesc: req.body.longDesc,
 				owner: req.user.id,
 				approved: false,
+				theme: req.body.theme,
 				token: crypto.randomBytes(64).toString('hex'),
 				timestamp: Date.now()
 			})
@@ -171,35 +176,32 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			.run();
 
 		if (exists) {
-			if (req.headers['user-agent'] && req.headers['user-agent'].toLowerCase().includes('discord')) {
-				res.redirect(`/api/v1/bots/${req.params.id}/embed?type=png`);
-			} else {
-				const botinfo = await r.table('bots')
-					.get(req.params.id)
-					.without('token')
-					.merge(info => ({
-						ownerinfo: r.table('users').get(info('owner'))
-					}))
-					.run();
-				let render = '';
-				if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
-					botinfo.editable = true;
-				}
-				if (botinfo.longDesc) {
-					if (botinfo.type === 'asciidoc') {
-						render = clean(asciidoctor.convert(botinfo.longDesc));
-					} else if (botinfo.type === 'markdown') {
-						render = clean(marked(botinfo.longDesc));
-					} else if (botinfo.type === 'html') {
-						render = clean(botinfo.longDesc);
-					}
-				}
-				res.render('botpage', {
-					botinfo,
-					csrf: req.csrf,
-					render
-				});
+			const botinfo = await r.table('bots')
+				.get(req.params.id)
+				.without('token')
+				.merge(info => ({
+					ownerinfo: r.table('users').get(info('owner'))
+				}))
+				.run();
+			let render = '';
+			if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
+				botinfo.editable = true;
 			}
+			if (botinfo.longDesc) {
+				if (botinfo.type === 'asciidoc') {
+					render = clean(asciidoctor.convert(botinfo.longDesc));
+				} else if (botinfo.type === 'markdown') {
+					render = clean(marked(botinfo.longDesc));
+				} else if (botinfo.type === 'html') {
+					render = clean(botinfo.longDesc);
+				}
+			}
+			if (botinfo.theme) res.theme(botinfo.theme);
+			res.render('botpage', {
+				botinfo,
+				csrf: req.csrf,
+				render
+			});
 		} else {
 			res.status(404).render('error', {
 				csrf: res.csrf,
@@ -226,6 +228,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				count: parseInt(req.body.count, 10),
 				shortDesc: req.body.shortDesc,
 				type: req.body.type,
+				theme: req.body.theme,
 				longDesc: req.body.longDesc
 			})
 			.run();
