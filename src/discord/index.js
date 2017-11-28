@@ -25,11 +25,10 @@ client.on('messageCreate', (message) => {
 		if (message.mss.command && message.mss.admin >= commands[message.mss.command].admin) {
 			commands[message.mss.command].command(message);
 		}
-    });
+	});
 });
 
 client.on('userUpdate', (user, old) => {
-	if (!module.exports.ready) return;
 	if (user && old && (user.avatar !== old.avatar)) {
 		r.table('bots')
 			.get(user.id)
