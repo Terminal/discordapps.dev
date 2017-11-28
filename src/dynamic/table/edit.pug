@@ -35,6 +35,11 @@ block content
 				textarea(name="longDesc" maxlength="20000" rows="6" required) #{bot.longDesc}
 			else if bot.type === "html"
 				textarea(name="longDesc" maxlength="200000" rows="12" required) #{bot.longDesc}
+		p: i #{__('add_advanced')}
+		label(for="theme") #{__('add_theme')}
+		select#theme.form-control(name="theme" placeholder=__('add_theme_placeholder') required)
+			for theme in themes
+				option(value=theme selected=bot.theme===theme) #{__(`theme_${theme}`)}
 
 		button.btn.btn-primary(type="submit") #{__('add_submit')}
 		input.hide(type="text" name="csrf" value=csrf)

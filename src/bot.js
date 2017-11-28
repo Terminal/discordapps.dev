@@ -8,6 +8,7 @@ const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
 const reasons = require('./data/reasons.json');
 const { description } = require('./data/description.json');
+const themelist = require('./data/themes.json').usable;
 const { on } = require('./data/on.json');
 const config = require('config');
 const request = require('request');
@@ -37,14 +38,14 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid guild count' });
 	} else if (typeof req.body.theme !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an theme ID' });
+	} else if (!themelist.some(type => req.body.theme === type)) {
+		res.status(400).render('error', { status: 400, message: 'You provided an incorrect theme' });
 	} else if (req.body.id.length > 70) {
 		res.status(400).render('error', { status: 400, message: 'You provided a bot id that was too long (70)' });
 	} else if (req.body.shortDesc.length > 200) {
 		res.status(400).render('error', { status: 400, message: 'You provided a short description that was too long (200)' });
 	} else if (req.body.avatar.length > 2000) {
 		res.status(400).render('error', { status: 400, message: 'You provided an avatar that was too long (2000)' });
-	} else if (req.body.theme.length > 20) {
-		res.status(400).render('error', { status: 400, message: 'The theme ID was too long' });
 	} else if (/\D/.test(req.body.count)) {
 		res.status(400).render('error', { status: 400, message: 'Your bot count had values other than digits' });
 	} else if (parseInt(req.body.count, 10) < 0) {
@@ -132,7 +133,8 @@ const owns = async (req, res, next) => {
 router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	// Display the add screen
 	res.render('add.pug', {
-		csrf: req.csrf
+		csrf: req.csrf,
+		themes: themelist
 	});
 })
 	.post('/add', userM.auth, csrfM.check, validate, async (req, res) => {
@@ -215,7 +217,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		// Display the edit screen with the bot's items
 		res.render('edit.pug', {
 			csrf: req.csrf,
-			bot: res.locals.bot
+			bot: res.locals.bot,
+			themes: themelist
 		});
 	})
 	.post('/:id/edit', userM.auth, csrfM.check, owns, validate, async (req, res) => {
