@@ -56,9 +56,13 @@ html
 						a.nav-link(href="/list/queue") #{__('nav_queue')}
 					if user
 						li.nav-item
-							a.nav-link(href=`/list/${user.id}`) #{user.username}
-						li.nav-item
 							a.nav-link(href="/bot/add") #{__('nav_add')}
+					li.nav-item
+						a.nav-link(href=list_invite) #{__('list_invite')}
+				ul.navbar-nav.navbar-right.collapse
+					if user
+						li.nav-item
+							a.nav-link(href=`/list/${user.id}`) #{user.username}
 						li.nav-item
 							a.nav-link(href="/auth/logout") #{__('nav_logout')}
 					else
@@ -68,8 +72,6 @@ html
 						a.nav-link(href="/lang") #{__('nav_lang')}
 					li.nav-item
 						a.nav-link(href="/theme") #{__('nav_theme')}
-					li.nav-item
-						a.nav-link(href=list_invite) #{__('list_invite')}
 		main
 			block jumbotron
 			block content
