@@ -30,7 +30,7 @@ i18n.configure({
 	updateFiles: false
 });
 
-const store = new RDBStore(r, config.get('webserver').store);
+const store = new RDBStore(r);
 const app = express();
 
 /**
@@ -74,7 +74,7 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	}))
 	.use(userM.userSetup) // Append details such as if they are an admin, and if they are in the guild
 	.use((req, res, next) => {
-		if (themelist[req.cookies.theme]) res.theme(req.cookies.theme);
+		if (themelist.includes(req.cookies.theme)) res.theme(req.cookies.theme);
 		next();
 	})
 	.get('/', isOnline, csrfM.make, (req, res, next) => {
