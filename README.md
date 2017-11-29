@@ -1,5 +1,5 @@
-# Discord Bot List
-An example Express and Eris server, which lists Discord bots
+# ls.terminal.ink
+An open source Discord Bot listing website using Eris, Express and RethinkDB (and no jQuery if you select the `<table>` theme)
 
 ## Development Team
 Category            | People
