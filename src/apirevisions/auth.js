@@ -1,6 +1,13 @@
 const r = require('./../db');
 
+/**
+ * Check if a token is valid
+ * @param {*} req Express Request Information
+ * @param {*} res Express Result Methods
+ * @param {*} next Callback to run next middleware
+ */
 module.exports = async (req, res, next) => {
+	// Compare the token of the bot to the one sent by the client
 	const auth = req.get('Authorization');
 
 	const bot = await r.table('bots')

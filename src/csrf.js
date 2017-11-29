@@ -1,6 +1,12 @@
 const r = require('./db');
 const crypto = require('crypto');
 
+/**
+ * Make a CSRF token and put it in `req.csrf`
+ * @param {*} req Express Request Information
+ * @param {*} res Express Result Methods
+ * @param {*} next Callback to run next middleware
+ */
 const make = async (req, res, next) => {
 	if (req.user && req.user.id) {
 		const csrf = crypto.randomBytes(64).toString('hex');
@@ -18,6 +24,12 @@ const make = async (req, res, next) => {
 	next();
 };
 
+/**
+ * Check the CSRF token within `req.body.csrf`
+ * @param {*} req Express Request Information
+ * @param {*} res Express Result Methods
+ * @param {*} next Callback to run next middleware
+ */
 const check = async (req, res, next) => {
 	const result = await r.table('csrf')
 		.get(req.user.id)

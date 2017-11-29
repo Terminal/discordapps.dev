@@ -6,6 +6,7 @@ const path = require('path');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+	// Render the homepage of the documentation
 	fs.readFile(path.join(__dirname, '/markdown/index.md'), 'utf8', (err, data) => {
 		res.render('md.pug', {
 			title: 'Documentation',
@@ -14,7 +15,9 @@ router.get('/', (req, res) => {
 	});
 })
 	.get('/:page', (req, res, next) => {
+		// Try to find the markdown page
 		if (fs.existsSync(path.join(__dirname, '/markdown/', `${req.params.page}.md`))) {
+			// Render the specific page
 			fs.readFile(path.join(__dirname, '/markdown/', `${req.params.page}.md`), 'utf8', (err, data) => {
 				res.render('md.pug', {
 					title: req.params.page,
@@ -22,6 +25,7 @@ router.get('/', (req, res) => {
 				});
 			});
 		} else {
+			// Continue (to reach the 404 found later on)
 			next();
 		}
 	});

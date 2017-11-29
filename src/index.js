@@ -21,6 +21,7 @@ const themelist = require('./data/themes.json').selectable;
 const cookieParser = require('cookie-parser');
 const RDBStore = require('session-rethinkdb')(session);
 
+// Configure internationalisation
 i18n.configure({
 	directory: path.join(__dirname, '..', 'locales'),
 	cookie: 'lang',
@@ -32,6 +33,12 @@ i18n.configure({
 const store = new RDBStore(r, config.get('webserver').store);
 const app = express();
 
+/**
+ * Check if the bot is ready at this moment
+ * @param {*} req Express Request Information
+ * @param {*} res Express Result Methods
+ * @param {*} next Callback to run next middleware
+ */
 const isOnline = (req, res, next) => {
 	if (bot.ready) {
 		next();
@@ -56,7 +63,7 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 		saveUninitialized: true,
 		proxy: true,
 		store
-	}))
+	})) // Set session
 	.use(i18n.init) // Use i18n
 	.use(themes) // Use themes
 	.use(auth.initialize()) // Initiate the authentication mechanisms
@@ -70,23 +77,23 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 		if (themelist[req.cookies.theme]) res.theme(req.cookies.theme);
 		next();
 	})
-	.get('/', csrfM.make, (req, res, next) => {
+	.get('/', isOnline, csrfM.make, (req, res, next) => {
 		res.locals.approve = true;
 		next();
-	}, listM.list)
+	}, listM.list) // List the homepage
 	.use('/list', isOnline, listM.router) // List Middleware
 	.use('/auth', isOnline, authM) // Authentication
 	.use('/docs', isOnline, docsM) // Documentation
 	.use('/lang', isOnline, langM) // Language settings
 	.use('/theme', isOnline, themeM) // Theme settings
 	.use('/bot', isOnline, botM) // Listing bots
-	.use('/api', isOnline, apiM) // API
+	.use('/api', apiM) // API
 	.use(express.static(path.join(__dirname, 'static'))) // Pull static files from /src/static
 	.use((req, res) => {
 		// Give off a 404 if the chain ends here
 		res.status(404).render('error', { status: 404, message: 'Not found' });
 	})
-	.listen(config.get('webserver').port);
+	.listen(config.get('webserver').port); // Listen to the port (default: 8080)
 
 process.on('unhandledRejection', (reason) => {
 	console.dir(reason);

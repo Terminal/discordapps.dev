@@ -34,6 +34,12 @@ const path = require('path');
 
 const router = express.Router();
 
+/**
+ * Check if a bot exists
+ * @param {*} req Express Request Information
+ * @param {*} res Express Result Methods
+ * @param {*} next Callback to run next middleware
+ */
 const exists = async (req, res, next) => {
 	const exist = await r.table('bots')
 		.get(req.params.id);

@@ -16,6 +16,11 @@ const cheerio = require('cheerio');
 
 const router = express.Router();
 
+/**
+ * Remove dangerous tags from rendered HTML sent to the client
+ * @param {string} html The dangerous HTML
+ * @returns {string} The "safe" HTML
+ */
 const clean = (html) => {
 	const $ = cheerio.load(html);
 	on.forEach(event => $('*').removeAttr(event));
@@ -23,6 +28,12 @@ const clean = (html) => {
 	return $.html();
 };
 
+/**
+ * Validate the POST query to check if the bot is valid.
+ * @param {*} req Express Request Information
+ * @param {*} res Express Result Methods
+ * @param {*} next Callback to run next middleware
+ */
 const validate = (req, res, next) => {
 	if (typeof req.body.id !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid ID' });
@@ -115,6 +126,12 @@ const validate = (req, res, next) => {
 	}
 };
 
+/**
+ * Check if a user owns a bot, or is an admin
+ * @param {*} req Express Request Information
+ * @param {*} res Express Result Methods
+ * @param {*} next Callback to run next middleware
+ */
 const owns = async (req, res, next) => {
 	const result = await r.table('bots')
 		.get(req.params.id || req.body.id)
@@ -284,21 +301,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			bot: res.locals.bot
 		});
 	})
-	.get('/:id/iframe', async (req, res) => {
-		const result = await r.table('bots')
-			.get(req.params.id)
-			.run();
-
-		if (result && result.type === 'html') {
-			res.send(result.longDesc);
-		} else {
-			res.status(404).render('error', {
-				status: 404,
-				message: res.__('error_bot_html_not_found')
-			});
-		}
-	})
 	.post('/:id/token', userM.auth, csrfM.check, owns, async (req, res) => {
+		// Generate a new token
 		await r.table('bots')
 			.get(req.params.id)
 			.update({
@@ -310,7 +314,10 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		res.redirect(req.originalUrl);
 	})
 	.post('/:id/approve', userM.auth, csrfM.check, userM.admin, async (req, res) => {
+		// Get the previous URL
 		const previous = req.header('Referer') || '/';
+
+		// Find the bot and set the approved flag to true.
 		const result = await r.table('bots')
 			.get(req.params.id)
 			.update({
@@ -319,10 +326,13 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				returnChanges: true
 			});
 		const member = bot.guild.members.get(result.changes[0].old_val.id);
+
+		// Return a specific page
 		if (member) {
 			if (res.skipped) {
 				res.status(404).render('error', { status: 404, message: 'Bot Not found' });
 			} else if (!result.changes) {
+				// Go back
 				res.redirect(previous);
 			} else {
 				member.removeRole(config.get('terminal').unverified);
@@ -331,6 +341,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		} else {
 			res.status(202).render('error', { status: 202, message: 'The bot has been approved, but is not within the guild. Please manually invite the bot.' });
 		}
+
+		// Send a message to the Discord channel
 		bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 	})
 	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {

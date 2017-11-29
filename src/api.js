@@ -29,10 +29,11 @@ const v1 = require('./apirevisions/v1');
 
 const router = express.Router();
 
+// Redirect to the documentation
 router.get('/', (req, res) => {
-	res.redirect('/docs/api');
+	res.redirect('/docs');
 })
-	.use('/v1', v1)
+	.use('/v1', v1) // Version 1
 	.use('*', (req, res) => {
 		res.status(404).json({ error: 'This API revision does not exist.' });
 	});
