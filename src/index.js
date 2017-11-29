@@ -2,14 +2,14 @@ const r = require('./db');
 const i18n = require('i18n');
 const path = require('path');
 const apiM = require('./api');
+const botM = require('./bot');
 const authM = require('./auth');
 const userM = require('./user');
 const docsM = require('./docs');
 const langM = require('./lang');
 const csrfM = require('./csrf');
-const config = require('config');
-const botM = require('./bot');
 const listM = require('./list');
+const config = require('config');
 const bot = require('./discord');
 const themeM = require('./theme');
 const express = require('express');
@@ -17,9 +17,9 @@ const auth = require('./auth/auth');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const themes = require('express-theme-pug');
-const themelist = require('./data/themes.json').selectable;
 const cookieParser = require('cookie-parser');
 const RDBStore = require('session-rethinkdb')(session);
+const themelist = require('./data/themes.json').selectable;
 
 // Configure internationalisation
 i18n.configure({
