@@ -4,8 +4,6 @@ const defaultConfig = config.get('rethinkdb');
 const rConfig = {servers: defaultConfig.servers}
 const r = require('rethinkdbdash')(rConfig);
 
-verifyDb();
-
 async function verifyDb() {
 	const shouldConfigure = !(await r.dbList().contains('terminal').run());
 	if (shouldConfigure) {
@@ -19,5 +17,5 @@ async function verifyDb() {
 	delete r;
 }
 
-
-//require('./src/index');
+verifyDb();
+require('./src/index');
