@@ -3,35 +3,31 @@
 		"db": "terminal",
 		"servers": [
 			{
-				"host": "192.168.0.102",
+				"host": "127.0.0.1",
 				"port": 28015
 			}
 		]
 	},
 	"discord": {
-		"clientID": "375059824850763777",
+		"clientID": "",
 		"clientSecret": "",
 		"scope": [ "identify" ],
 		"token": "",
-		"guild": "226404143999221761",
-		"channel": "270942570194927636",
-		"roles": [
-			"226725025183563787"
-		],
+		"guild": "",
+		"channel": "",
+		"roles": [],
 		"invite": "https://discord.gg/DwBCgta",
 		"game": "ls.terminal.ink",
 		"prefix": [
 			"ls>"
 		],
-		"admins": [
-			"190519304972664832"
-		],
+		"admins": [],
 		"shards": 1
 	},
 	"webserver": {
 		"port": 8080,
 		"secret": "",
-		"location": "https://list.mss.ovh/",
+		"location": "",
 		"store": {
 			"browserSessionsMaxAge": 2592000000,
 			"clearInterval": 2592000000
