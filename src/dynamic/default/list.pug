@@ -12,33 +12,33 @@ block content
 	.container
 		.row
 			if bots.length
-				each val in bots
+				each botinfo in bots
 					.col-12.col-lg-6
 						.media
-							img.d-flex.mr-3.icon(src=(val.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
+							img.d-flex.mr-3.icon(src=(botinfo.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
 							.media-body
-								h5.mt-0 #{val.name}
-									if val.count
-										span.badge.badge-default.left #{__('list_count', { count: val.count })}
-									if !val.approved
+								h5.mt-0 #{botinfo.name}
+									if botinfo.count
+										span.badge.badge-default.left #{__('list_count', { count: botinfo.count })}
+									if !botinfo.approved
 										span.badge.badge-danger.left #{__('list_unverified')}
-									if val.ownerinfo
-										span.badge.badge-info.left #{val.ownerinfo.username}##{val.ownerinfo.discriminator}
+									if botinfo.ownerinfo
+										span.badge.badge-info.left #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
 								span #{botinfo.shortDesc}
 						if user && user.admin
-							if !val.approved && csrf
-								form.buddon(action=`/bot/${val.id}/approve` method="POST")
+							if !botinfo.approved && csrf
+								form.buddon(action=`/bot/${botinfo.id}/approve` method="POST")
 									button.btn.btn-success(type="submit") #{__('list_approve')}
-									input.hide(type="text" name="csrf" value=`${csrf}`)
+									input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
 							if csrf
-								a.btn.btn-danger(href=`/bot/${val.id}/remove`) #{__('list_remove')}
-							a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
-						if val.editable
-							a.btn.btn-primary(href=`/bot/${val.id}/edit`) #{__('list_edit')}
-							a.btn.btn-danger(href=`/bot/${val.id}/delete`) #{__('list_delete')}
-							a.btn.btn-info(href=`/bot/${val.id}/token`) #{__('list_token')}
-						a.btn.btn-info(href=`/bot/${val.id}`) #{__('list_info')}
-						a.btn.btn-info(href=val.invite) #{__('list_invite')}
+								a.btn.btn-danger(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+							a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
+						if botinfo.editable
+							a.btn.btn-primary(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+							a.btn.btn-danger(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+							a.btn.btn-info(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+						a.btn.btn-info(href=`/bot/${botinfo.id}`) #{__('list_info')}
+						a.btn.btn-info(href=botinfo.invite) #{__('list_invite')}
 			else
 				.col-12
 					p #{__('list_no_results')}

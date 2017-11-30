@@ -6,40 +6,40 @@ block title
 block content
 	if bots.length
 		table
-			each val in bots
+			each botinfo in bots
 				tr
 					td
 						table
 							tr
 								td
-									img.avatar(src=(val.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
-									p #{val.name}
+									img.avatar(src=(botinfo.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
+									p #{botinfo.name}
 								td
-									if val.count
-										span #{__('list_count', { count: val.count })}
-									if !val.approved
+									if botinfo.count
+										span #{__('list_count', { count: botinfo.count })}
+									if !botinfo.approved
 										p #{__('list_unverified')}
-									if val.ownerinfo
-										p #{val.ownerinfo.username}##{val.ownerinfo.discriminator}
+									if botinfo.ownerinfo
+										p #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
 							tr
 								td(colspan="2")
-									span #{val.shortDesc}
+									span #{botinfo.shortDesc}
 							tr
 								td(colspan="2")
 									if user && user.admin
-										if !val.approved && csrf
-											form(action=`/bot/${val.id}/approve` method="POST")
+										if !botinfo.approved && csrf
+											form(action=`/bot/${botinfo.id}/approve` method="POST")
 												button(type="submit") #{__('list_approve')}
-												input.hide(type="text" name="csrf" value=`${csrf}`)
+												input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
 										if csrf
-											a(href=`/bot/${val.id}/remove`) #{__('list_remove')}
-										a(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${val.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
-									if val.editable
-										a(href=`/bot/${val.id}/edit`) #{__('list_edit')}
-										a(href=`/bot/${val.id}/delete`) #{__('list_delete')}
-										a(href=`/bot/${val.id}/token`) #{__('list_token')}
-									a(href=`/bot/${val.id}`) #{__('list_info')}
-									a(href=val.invite) #{__('list_invite')}
+											a(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+										a(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}
+									if botinfo.editable
+										a(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+										a(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+										a(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+									a(href=`/bot/${botinfo.id}`) #{__('list_info')}
+									a(href=botinfo.invite) #{__('list_invite')}
 	else
 		p #{__('list_no_results')}
 
