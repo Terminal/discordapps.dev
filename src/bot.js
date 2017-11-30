@@ -325,20 +325,21 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			}, {
 				returnChanges: true
 			});
-		const member = bot.guild.members.get(result.changes[0].old_val.id);
+		const member = bot.guild.members.get(req.params.id);
 
 		// Return a specific page
-		if (member) {
-			if (res.skipped) {
-				res.status(404).render('error', { status: 404, message: 'Bot Not found' });
-			} else if (!result.changes) {
-				// Go back
-				res.redirect(previous);
-			} else {
-				member.removeRole(config.get('terminal').unverified);
-				res.redirect(previous);
-			}
+		if (res.skipped) {
+			// The bot was not found
+			res.status(404).render('error', { status: 404, message: 'Bot Not found' });
+		} else if (!result.changes) {
+			// There was no changes, so go back
+			res.redirect(previous);
+		} else if (member) {
+			// There was a change, and the member was found
+			member.removeRole(config.get('terminal').unverified);
+			res.redirect(previous);
 		} else {
+			// There was a change, but the member was not found
 			res.status(202).render('error', { status: 202, message: 'The bot has been approved, but is not within the guild. Please manually invite the bot.' });
 		}
 
