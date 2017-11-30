@@ -23,7 +23,7 @@ block content
 										p #{val.ownerinfo.username}##{val.ownerinfo.discriminator}
 							tr
 								td(colspan="2")
-									!= val.shortDesc
+									span #{val.shortDesc}
 							tr
 								td(colspan="2")
 									if user && user.admin

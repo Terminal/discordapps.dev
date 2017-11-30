@@ -39,6 +39,8 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid ID' });
 	} else if (typeof req.body.shortDesc !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid short description' });
+	} else if (typeof req.body.prefix !== 'string') {
+		res.status(400).render('error', { status: 400, message: 'You provided an invalid prefix' });
 	} else if (typeof req.body.type !== 'string') {
 		res.status(400).render('error', { status: 400, message: 'You provided an invalid type' });
 	} else if (!description.some(type => req.body.type === type)) {
@@ -55,6 +57,8 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided a bot id that was too long (70)' });
 	} else if (req.body.shortDesc.length > 200) {
 		res.status(400).render('error', { status: 400, message: 'You provided a short description that was too long (200)' });
+	} else if (req.body.prefix.length > 50) {
+		res.status(400).render('error', { status: 400, message: 'You provided a prefix that was too long (50)' });
 	} else if (req.body.avatar.length > 2000) {
 		res.status(400).render('error', { status: 400, message: 'You provided an avatar that was too long (2000)' });
 	} else if (/\D/.test(req.body.count)) {
@@ -165,6 +169,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				invite: req.body.invite,
 				count: parseInt(req.body.count, 10),
 				shortDesc: req.body.shortDesc,
+				prefix: req.body.prefix,
 				type: req.body.type,
 				longDesc: req.body.longDesc,
 				owner: req.user.id,
@@ -248,6 +253,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				invite: req.body.invite,
 				count: parseInt(req.body.count, 10),
 				shortDesc: req.body.shortDesc,
+				prefix: req.body.prefix,
 				type: req.body.type,
 				theme: req.body.theme,
 				longDesc: req.body.longDesc

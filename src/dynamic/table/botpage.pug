@@ -16,6 +16,8 @@ block content
 			td
 				img.avatar(src=(botinfo.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
 				p #{botinfo.name}
+				p #{botinfo.shortDesc}
+				p #{__('list_prefix', { prefix: botinfo.prefix })}
 			td
 				if botinfo.count
 					span #{__('list_count', { count: botinfo.count })}

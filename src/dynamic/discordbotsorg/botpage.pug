@@ -29,6 +29,8 @@ block content
 		a.ui.labeled.icon.button(href=botinfo.invite)
 			i.mouse.pointer.icon
 			| Invite
+		p#bottprefix Bot Prefix: 
+			b #{botinfo.prefix}
 		p#createdby
 			b
 				a#ownerthing.ui.label(style='padding: 5px;' href=`/list/${botinfo.ownerinfo.id}`)

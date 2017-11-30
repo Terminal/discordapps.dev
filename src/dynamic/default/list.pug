@@ -24,7 +24,7 @@ block content
 										span.badge.badge-danger.left #{__('list_unverified')}
 									if val.ownerinfo
 										span.badge.badge-info.left #{val.ownerinfo.username}##{val.ownerinfo.discriminator}
-								!= val.shortDesc
+								span #{botinfo.shortDesc}
 						if user && user.admin
 							if !val.approved && csrf
 								form.buddon(action=`/bot/${val.id}/approve` method="POST")

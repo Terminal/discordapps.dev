@@ -18,6 +18,8 @@ block content
 			span.title.is-4.pad-right #{botinfo.name}
 			p #{botinfo.shortDesc}
 			p Owner: #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+			p Prefix: 
+				code #{botinfo.prefix}
 		.column.is-1.has-text-right
 			a.button.is-primary(href=botinfo.invite) Invite
 	hr
