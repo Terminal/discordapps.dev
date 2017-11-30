@@ -9,14 +9,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Terminal/ls.git"
+		"url": "git+https://github.com/terminal/ls.terminal.ink.git"
 	},
 	"author": "7coil",
 	"license": "GPL-3.0",
 	"bugs": {
-		"url": "https://github.com/Terminal/ls/issues"
+		"url": "https://github.com/terminal/ls.terminal.ink/issues"
 	},
-	"homepage": "https://github.com/Terminal/ls#readme",
+	"homepage": "https://ls.terminal.ink/",
 	"dependencies": {
 		"asciidoctor.js": "^1.5.6-preview.4",
 		"body-parser": "^1.17.2",
