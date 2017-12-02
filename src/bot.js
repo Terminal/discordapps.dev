@@ -246,7 +246,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.post('/:id/edit', userM.auth, csrfM.check, owns, validate, async (req, res) => {
 		// Edit only the bits that need to be edited
 		const response = await r.table('bots')
-			.get(req.body.id)
+			.get(req.params.id)
 			.update({
 				name: req.body.name,
 				avatar: req.body.avatar,
@@ -260,16 +260,11 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			})
 			.run();
 
-		if (response.unchanged) {
-			res.render('error', {
-				status: 200,
-				message: res.__('message_bot_unchanged')
-			});
-		} else {
-			res.render('error', {
-				status: 200,
-				message: res.__('message_bot_changed')
-			});
+		// Redirect to the bot page
+		res.redirect(`/bot/${req.params.id}`);
+
+		// Post info if it's changed
+		if (!response.unchanged) {
 			if (req.user.id === res.locals.bot.owner) {
 				bot.channel.createMessage(`${req.user.username} edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}>`);
 			} else {
