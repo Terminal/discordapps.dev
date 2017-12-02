@@ -52,8 +52,7 @@ const exists = async (req, res, next) => {
 
 router.get('/bots', async (req, res) => {
 	const result = await r.table('bots')
-		.without('token')
-		.run();
+		.without('token');
 	res.send(result);
 })
 	.get('/bots/:id', exists, async (req, res) => {
@@ -78,8 +77,7 @@ router.get('/bots', async (req, res) => {
 		} else {
 			await r.table('bots')
 				.get(req.params.id)
-				.update({ count })
-				.run();
+				.update({ count });
 			res.json({ message: 'OK' });
 		}
 	})

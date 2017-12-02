@@ -75,8 +75,7 @@ module.exports = async (message, callback) => {
 	message.mss = mss;
 
 	const locale = await r.table('i18n')
-		.get(message.author.id)
-		.run();
+		.get(message.author.id);
 
 	message.setLocale((locale && locale.lang) || 'en-gb');
 	callback();

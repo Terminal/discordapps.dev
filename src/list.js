@@ -10,8 +10,7 @@ const list = async (req, res) => {
 		.without('token')
 		.merge(info => ({
 			ownerinfo: r.table('users').get(info('owner'))
-		}))
-		.run();
+		}));
 
 	// If we're looking at approved/queued bots, filter it out
 	if (typeof res.locals.approve === 'boolean') {

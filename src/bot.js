@@ -138,8 +138,7 @@ const validate = (req, res, next) => {
  */
 const owns = async (req, res, next) => {
 	const result = await r.table('bots')
-		.get(req.params.id || req.body.id)
-		.run();
+		.get(req.params.id || req.body.id);
 
 	if (!result) {
 		res.status(404).render('error', { status: 404, message: 'Bot not found' });
@@ -177,8 +176,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				theme: req.body.theme,
 				token: crypto.randomBytes(64).toString('hex'),
 				timestamp: Date.now()
-			})
-			.run();
+			});
 
 		if (response.errors) {
 			res.status(409).render('error', {
@@ -197,8 +195,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.get('/:id', csrfM.make, async (req, res) => {
 		// Check if the count is empty
 		const exists = await r.table('bots')
-			.get(req.params.id)
-			.run();
+			.get(req.params.id);
 
 		if (exists) {
 			const botinfo = await r.table('bots')
@@ -206,8 +203,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				.without('token')
 				.merge(info => ({
 					ownerinfo: r.table('users').get(info('owner'))
-				}))
-				.run();
+				}));
 			let render = '';
 			if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
 				botinfo.editable = true;
@@ -257,8 +253,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				type: req.body.type,
 				theme: req.body.theme,
 				longDesc: req.body.longDesc
-			})
-			.run();
+			});
 
 		// Redirect to the bot page
 		res.redirect(`/bot/${req.params.id}`);
@@ -289,8 +284,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		// Delete the bot
 		r.table('bots')
 			.get(req.params.id)
-			.delete()
-			.run();
+			.delete();
 
 		res.redirect('/');
 		bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
@@ -310,8 +304,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				token: crypto.randomBytes(64).toString('hex')
 			}, {
 				returnChanges: true
-			})
-			.run();
+			});
 		res.redirect(req.originalUrl);
 	})
 	.post('/:id/approve', userM.auth, csrfM.check, userM.admin, async (req, res) => {
@@ -355,8 +348,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	})
 	.post('/:id/remove', userM.auth, csrfM.check, userM.admin, async (req, res) => {
 		const user = await r.table('bots')
-			.get(req.params.id)
-			.run();
+			.get(req.params.id);
 
 		if (!user) {
 			res.status(404).render('error', { status: 404, message: 'Bot Not found' });
@@ -365,8 +357,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		} if (reasons.remove[req.body.reason]) {
 			r.table('bots')
 				.get(req.params.id)
-				.delete()
-				.run();
+				.delete();
 			res.redirect('/');
 			bot.channel.createMessage(`<@${req.user.id}> deleted \`${user.name}\` <@${user.id}> by <@${user.owner}> for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})\n${req.body.description}`);
 		} else {
