@@ -1,4 +1,4 @@
-package `terminal-botlist`.Services
+package `terminal-botlist`.Services.BotService
 
 import `terminal-botlist`.Repositories.BotRepository.BotRepository
 import org.springframework.web.bind.annotation.GetMapping
