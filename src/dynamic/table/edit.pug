@@ -15,7 +15,7 @@ block content
 		input#avatar(value=bot.avatar type="text" name="avatar" maxlength="2000" placeholder=__('add_avatar_url_placeholder') pattern="https:\\/\\/.+")
 		label(for="invite") #{__('add_invite_url')}
 		input#invite(value=bot.invite type="text" name="invite" maxlength="2000" placeholder=__('add_invite_url_placeholder') pattern="https?:\\/\\/.+")
-		a(href="https://discordapi.com/permissions.html" target="_blank") #{__('add_invite_url_generator')}
+		a(href="https://discordapp.com/developers/tools/oauth2-url-generator?is_bot=true&require_grant=false" target="_blank") #{__('add_invite_url_generator')}
 		label(for="shortDesc") #{__('add_shortdesc')}
 		input#shortDesc(value=bot.shortDesc type="text" name="shortDesc" maxlength="200" placeholder=__('add_shortdesc_placeholder') required)
 		label(for="prefix") #{__('add_prefix')}
