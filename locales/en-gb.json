@@ -82,7 +82,7 @@
 	"list_title": "Bot Listing",
 	"list_token": "Token",
 	"list_unverified": "Unverified",
-	"list_prefix": "Prefix: {{ prefix }}",
+	"list_prefix": "Prefix: {{{ prefix }}}",
 	"md_title": "Documentation",
 	"nav_add": "Add",
 	"nav_all": "All",
