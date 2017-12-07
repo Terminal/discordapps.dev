@@ -1,10 +1,10 @@
 const config = require('config');
-const defaultConfig = config.get('rethinkdb');
 
-const rConfig = {servers: defaultConfig.servers}
+const defaultConfig = config.get('rethinkdb');
+const rConfig = { servers: defaultConfig.servers };
 const r = require('rethinkdbdash')(rConfig);
 
-async function verifyDb() {
+const verifyDb = async () => {
 	const shouldConfigure = !(await r.dbList().contains('terminal').run());
 	if (shouldConfigure) {
 		await r.dbCreate(defaultConfig.db);
@@ -14,8 +14,7 @@ async function verifyDb() {
 	}
 
 	r.getPoolMaster().drain();
-	delete r;
-}
+};
 
 verifyDb();
 require('./src/index');
