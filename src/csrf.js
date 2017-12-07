@@ -2,7 +2,7 @@ const r = require('./db');
 const crypto = require('crypto');
 
 /**
- * Make a CSRF token and put it in `req.csrf`
+ * Make a CSRF token and put it in `res.locals.csrf`
  * @param {*} req Express Request Information
  * @param {*} res Express Result Methods
  * @param {*} next Callback to run next middleware
@@ -18,7 +18,7 @@ const make = async (req, res, next) => {
 			}, {
 				conflict: 'replace'
 			});
-		req.csrf = csrf;
+		res.locals.csrf = csrf;
 	}
 	next();
 };

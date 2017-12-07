@@ -42,7 +42,8 @@ const router = express.Router();
  */
 const exists = async (req, res, next) => {
 	const exist = await r.table('bots')
-		.get(req.params.id);
+		.get(req.params.id)
+		.run();
 	if (exist) {
 		next();
 	} else {
@@ -52,13 +53,15 @@ const exists = async (req, res, next) => {
 
 router.get('/bots', async (req, res) => {
 	const result = await r.table('bots')
-		.without('token');
+		.without('token')
+		.run();
 	res.send(result);
 })
 	.get('/bots/:id', exists, async (req, res) => {
 		const result = await r.table('bots')
 			.get(req.params.id)
-			.without('token');
+			.without('token')
+			.run();
 
 		if (!result) {
 			res.status(404).json({});
@@ -77,7 +80,8 @@ router.get('/bots', async (req, res) => {
 		} else {
 			await r.table('bots')
 				.get(req.params.id)
-				.update({ count });
+				.update({ count })
+				.run();
 			res.json({ message: 'OK' });
 		}
 	})
@@ -88,7 +92,8 @@ router.get('/bots', async (req, res) => {
 			.without('token')
 			.merge(info => ({
 				ownerinfo: r.table('users').get(info('owner'))
-			}));
+			}))
+			.run();
 		request({ uri: bot.avatar, encoding: 'binary' }, (err, response, body) => {
 			let avatar = '';
 			const scale = parseInt(req.query && req.query.scale, 10) <= 1000 ? parseInt(req.query && req.query.scale, 10) : 200;
