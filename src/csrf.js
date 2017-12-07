@@ -12,7 +12,7 @@ const make = async (req, res, next) => {
 		const csrf = crypto.randomBytes(64).toString('hex');
 		await r.table('csrf')
 			.insert({
-				id: req.user.id,
+				user: req.user.id,
 				expiry: Date.now() + 1800000,
 				csrf
 			}, {
@@ -30,13 +30,29 @@ const make = async (req, res, next) => {
  * @param {*} next Callback to run next middleware
  */
 const check = async (req, res, next) => {
-	const result = await r.table('csrf')
-		.get(req.user.id);
-	if (!result || result.csrf !== req.body.csrf || result.expiry < Date.now()) {
-		res.status(401).render('error', { status: 401, message: 'A CSRF error occured. Did your form expire?' });
+	// Delete old CSRF records
+	await r.table('csrf')
+		.filter(r.row('expiry').lt(Date.now()))
+		.delete();
+
+	// Find the user's CSRF record
+	const results = await r.table('csrf')
+		.filter({
+			user: req.user.id,
+			csrf: req.body.csrf
+		})
+		.run();
+
+	// Get the first result
+	const result = results[0] || null;
+
+	// If there is no result, send an error, as there is no valid CSRF record
+	if (!result) {
+		res.status(401).render('error', { status: 401, message: 'The server could not find your CSRF record. Has it expired?' });
 	} else {
+		// Delete the CSRF record.
 		await r.table('csrf')
-			.get(req.user.id)
+			.get(result.id)
 			.delete();
 		next();
 	}
