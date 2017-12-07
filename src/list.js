@@ -41,10 +41,7 @@ const list = async (req, res) => {
 	}
 
 	// Send the list of bots to the client, as well as CSRF in case an action needs it.
-	res.render('list', {
-		bots,
-		csrf: req.csrf
-	});
+	res.render('list', { bots });
 };
 
 router.get('/', (req, res) => {

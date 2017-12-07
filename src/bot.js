@@ -153,7 +153,6 @@ const owns = async (req, res, next) => {
 router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	// Display the add screen
 	res.render('add.pug', {
-		csrf: req.csrf,
 		themes: themelist
 	});
 })
@@ -220,7 +219,6 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			if (botinfo.theme) res.theme(botinfo.theme);
 			res.render('botpage', {
 				botinfo,
-				csrf: req.csrf,
 				render
 			});
 		} else {
@@ -234,7 +232,6 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.get('/:id/edit', userM.auth, csrfM.make, owns, (req, res) => {
 		// Display the edit screen with the bot's items
 		res.render('edit.pug', {
-			csrf: req.csrf,
 			bot: res.locals.bot,
 			themes: themelist
 		});
@@ -269,14 +266,11 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	})
 	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
 		// View a page before deleting the bot
-		res.render('delete', {
-			csrf: req.csrf
-		});
+		res.render('delete');
 	})
 	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
 		// View a page before deleting the bot
 		res.render('delete.pug', {
-			csrf: req.csrf,
 			title: 'Delete Bot'
 		});
 	})
@@ -292,7 +286,6 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.get('/:id/token', userM.auth, csrfM.make, owns, (req, res) => {
 		// Display the token for this bot
 		res.render('token.pug', {
-			csrf: req.csrf,
 			bot: res.locals.bot
 		});
 	})
@@ -342,7 +335,6 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	})
 	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {
 		res.render('remove', {
-			csrf: req.csrf,
 			reasons: reasons.remove
 		});
 	})
