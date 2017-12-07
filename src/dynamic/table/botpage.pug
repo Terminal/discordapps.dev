@@ -31,7 +31,7 @@ block content
 					if !botinfo.approved && csrf
 						form(action=`/bot/${botinfo.id}/approve` method="POST")
 							button(type="submit") #{__('list_approve')}
-							input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
+							input.hide(type="text" name="csrf" value=`${csrf}`)
 					if csrf
 						a(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
 					a(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0`) #{__('list_no_perms_invite')}

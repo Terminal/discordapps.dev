@@ -31,9 +31,9 @@ block jumbotron
 					if !botinfo.approved && csrf
 						form.buddon(action=`/bot/${botinfo.id}/approve` method="POST")
 							button.btn.btn-success(type="submit") #{__('list_approve')}
-							input.hide(type="text" name="id" botinfoue=`${botinfo.id}`)
-							input.hide(type="text" name="csrf" botinfoue=`${csrf}`)
-							input.hide(type="text" name="approve" botinfoue="true")
+							input.hide(type="text" name="id" value=`${botinfo.id}`)
+							input.hide(type="text" name="csrf" value=`${csrf}`)
+							input.hide(type="text" name="approve" value="true")
 					if csrf
 						a.btn.btn-danger(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
 					a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
