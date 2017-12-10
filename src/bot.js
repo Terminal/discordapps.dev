@@ -2,7 +2,7 @@ const express = require('express');
 const userM = require('./user');
 const csrfM = require('./csrf');
 const r = require('./db');
-const bot = require('./discord');
+const client = require('./discord');
 const marked = require('marked');
 const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
@@ -190,7 +190,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				message: res.__('message_bot_inserted')
 			});
 			// Send message to Discord Channel
-			bot.channel.createMessage(`${req.user.username} added \`${req.body.name}\` <@${req.body.id}>`);
+			client.createMessage(config.get('discord').channel, `${req.user.username} added \`${req.body.name}\` <@${req.body.id}>`);
 		}
 	})
 	.get('/:id', csrfM.make, async (req, res) => {
@@ -263,9 +263,9 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		// Post info if it's changed
 		if (!response.unchanged) {
 			if (req.user.id === res.locals.bot.owner) {
-				bot.channel.createMessage(`${req.user.username} edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}>`);
+				client.createMessage(config.get('discord').channel, `${req.user.username} edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}>`);
 			} else {
-				bot.channel.createMessage(`<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+				client.createMessage(config.get('discord').channel, `<@${req.user.id}> edited \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 			}
 		}
 	})
@@ -287,7 +287,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			.run();
 
 		res.redirect('/');
-		bot.channel.createMessage(`<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
+		client.createMessage(config.get('discord').channel, `<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 	})
 	.get('/:id/token', userM.auth, csrfM.make, owns, (req, res) => {
 		// Display the token for this bot
@@ -320,7 +320,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				returnChanges: true
 			})
 			.run();
-		const member = bot.guild.members.get(req.params.id);
+		const member = client.guilds.get(config.get('discord').guild).members.get(req.params.id);
+		console.log(member);
 
 		// Return a specific page
 		if (res.skipped) {
@@ -335,11 +336,11 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			res.redirect(previous);
 		} else {
 			// There was a change, but the member was not found
-			res.status(202).render('error', { status: 202, message: 'The bot has been approved, but is not within the guild. Please manually invite the bot.' });
+			res.status(202).render('error', { status: 202, message: 'The bot has been approved, but the website could not find the member.' });
 		}
 
 		// Send a message to the Discord channel
-		bot.channel.createMessage(`<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
+		client.createMessage(config.get('discord').channel, `<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 	})
 	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {
 		res.render('remove', {
@@ -361,7 +362,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				.delete()
 				.run();
 			res.redirect('/');
-			bot.channel.createMessage(`<@${req.user.id}> deleted \`${user.name}\` <@${user.id}> by <@${user.owner}> for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})\n${req.body.description}`);
+			client.createMessage(config.get('discord').channel, `<@${req.user.id}> deleted \`${user.name}\` <@${user.id}> by <@${user.owner}> for: \`${res.__(`remove_${reasons.remove[req.body.reason]}`)}\` (${req.body.reason})\n${req.body.description}`);
 		} else {
 			res.status(400).render('error', { status: 400, message: 'Invalid reason' });
 		}

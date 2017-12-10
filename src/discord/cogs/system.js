@@ -1,4 +1,4 @@
-const { client } = require('./..');
+const client = require('./..');
 const cogs = require('./../cogs');
 const { exec } = require('child_process');
 const r = require('./../../db');

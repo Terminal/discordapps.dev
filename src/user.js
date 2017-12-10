@@ -2,8 +2,8 @@ const config = require('config');
 const bot = require('./discord');
 
 const userSetup = (req, res, next) => {
-	if (req.user && bot.client.startTime) {
-		const user = bot.guild.members.get(req.user.id);
+	if (req.user && bot.startTime) {
+		const user = bot.guilds.get(config.get('discord').guild).members.get(req.user.id);
 
 		if (user) {
 			req.user.admin = user.roles.some(role => config.get('discord').roles.includes(role));

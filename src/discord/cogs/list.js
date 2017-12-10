@@ -1,4 +1,4 @@
-//	const { client } = require('./..');
+//	const client = require('./..');
 const r = require('./../../db');
 const config = require('config');
 
