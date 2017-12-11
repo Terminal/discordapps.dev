@@ -35,6 +35,7 @@
 		"pug": "^2.0.0-rc.3",
 		"request": "^2.81.0",
 		"rethinkdbdash": "^2.3.31",
+		"seedrandom": "^2.4.3",
 		"session-rethinkdb": "^2.0.0"
 	},
 	"devDependencies": {

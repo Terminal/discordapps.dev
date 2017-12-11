@@ -1,13 +1,28 @@
 const express = require('express');
 const csrfM = require('./csrf');
 const r = require('./db');
+const seedrandom = require('seedrandom');
+const crypto = require('crypto');
 
 const router = express.Router();
 
 const list = async (req, res) => {
+	// Grab the client's seed, and regenerate the same random numbers to make the page look the same
+	// If the client doesn't have a seed, make one for them
+	const seed = req.cookies.seed || crypto.randomBytes(64).toString('hex');
+	const rng = seedrandom(seed);
+
+	// Set the seed on the client. Expires 60 minutes after the person leaves.
+	res.cookie('seed', seed, {
+		maxAge: 1000 * 60 * 60
+	});
+
 	// Obtain the list of bots
 	let bots = await r.table('bots')
 		.without('token')
+		.map(bot => bot.merge({
+			random: rng()
+		}))
 		.merge(info => ({
 			ownerinfo: r.table('users').get(info('owner'))
 		}))
@@ -24,8 +39,6 @@ const list = async (req, res) => {
 		if ((req.user && req.user.id) === bot.owner || (req.user && req.user.admin)) {
 			bot.editable = true;
 		}
-
-		bot.random = Math.random();
 		return bot;
 	});
 
