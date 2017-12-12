@@ -25,7 +25,6 @@ block content
 									if botinfo.ownerinfo
 										span.badge.badge-info.left #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
 								span #{botinfo.shortDesc}
-								span #{botinfo.random}
 						if user && user.admin
 							if !botinfo.approved && csrf
 								form.buddon(action=`/bot/${botinfo.id}/approve` method="POST")
