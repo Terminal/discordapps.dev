@@ -9,6 +9,7 @@ Developer           | Devoxin#0387 (@Devoxin)
 French Translation  | Yvan#5761 (@lepeli)
 French Translation  | iDroid#4441 (@iDroid27210)
 Swedish Translation | Mackan#7196 (@Sven65)
+Chinese Translation | The Double-Eyed Bus#6889 (@austinhuang0131)
 
 ## Installation
 1. Install `imagemagick`, `Node.js` 9.0.0, `npm` 5.5.1, `RethinkDB`
