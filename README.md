@@ -10,10 +10,11 @@ Secondary Developer | Devoxin#0387 (@Devoxin)
 ## Translators
 Language | Name
 -------- | ----------------
+Chinese  | The Double-Eyed Bus#6889 (@austinhuang0131)
+Dutch    | Auxim#2994 (@GeoffreyWesthoff)
 French   | Yvan#5761 (@lepeli)
 French   | iDroid#4441 (@iDroid27210)
 Swedish  | Mackan#7196 (@Sven65)
-Chinese  | The Double-Eyed Bus#6889 (@austinhuang0131)
 
 ## Installation
 1. Install `imagemagick`, `Node.js` 9.0.0, `npm` 5.5.1, `RethinkDB`
