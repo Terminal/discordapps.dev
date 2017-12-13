@@ -5,11 +5,15 @@ An open source Discord Bot listing website using Eris, Express and RethinkDB (an
 Category            | People
 ------------------- | --------------------------
 Lead Developer      | 7coil#3175 (@lepon01)
-Developer           | Kromatic#0387 (@Devoxin)
-French Translation  | Yvan#5761 (@lepeli)
-French Translation  | iDroid#4441 (@iDroid27210)
-Swedish Translation | Mackan#7196 (@Sven65)
-Chinese Translation | The Double-Eyed Bus#6889 (@austinhuang0131)
+Secondary Developer | Devoxin#0387 (@Devoxin)
+
+## Translators
+Language | Name
+-------- | ----------------
+French   | Yvan#5761 (@lepeli)
+French   | iDroid#4441 (@iDroid27210)
+Swedish  | Mackan#7196 (@Sven65)
+Chinese  | The Double-Eyed Bus#6889 (@austinhuang0131)
 
 ## Installation
 1. Install `imagemagick`, `Node.js` 9.0.0, `npm` 5.5.1, `RethinkDB`
