@@ -103,6 +103,7 @@ router.get('/bots', async (req, res) => {
 				const base64 = new Buffer(body, 'binary').toString('base64');
 				avatar = `data:${type};base64,${base64}`;
 			}
+			if (req.query && req.query.locale) res.locals.__.setLocale(req.query.locale);
 			const svg = pug.renderFile(path.join(__dirname, 'v1', 'embed.pug'), {
 				bot,
 				avatar,
