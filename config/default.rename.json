@@ -33,12 +33,6 @@
 			"clearInterval": 2592000000
 		}
 	},
-	"terminal": {
-		"description": [
-			"iframe",
-			"markdown",
-			"html"
-		]
-	},
-	"useragent": "Discord Bot (https://moustacheminer.com/, 2.0.0) Running at https://ls.terminal.ink/"
+	"useragent": "Discord Bot (https://moustacheminer.com/, 2.0.0) Running at https://ls.terminal.ink/",
+	"production": true
 }
