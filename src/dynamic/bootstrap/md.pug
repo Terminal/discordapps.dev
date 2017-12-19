@@ -3,5 +3,8 @@ extends templates/site.pug
 block title
 	title #{__('md_title')} - #{__('website')}
 
-block main
-	!= markdown
+block content
+	.container
+		.row
+			.col-12
+				!= markdown

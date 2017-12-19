@@ -1,0 +1,55 @@
+.red-darken {
+  background-color: #b30000; }
+
+.red-lighten {
+  background-color: #ff4d4d; }
+
+.red {
+  background-color: #ff0000; }
+
+.blue-darken {
+  background-color: #0000e6; }
+
+.blue-lighten {
+  background-color: #8080ff; }
+
+.blue {
+  background-color: #3333FF; }
+
+.header-darken {
+  background-color: #b7b7b7; }
+
+.header-lighten {
+  background-color: white; }
+
+.header {
+  background-color: #dddddd; }
+
+.footer-darken {
+  background-color: #a6a6a6; }
+
+.footer-lighten {
+  background-color: #f2f2f2; }
+
+.footer {
+  background-color: #cccccc; }
+
+.aside-darken {
+  background-color: #c8c8c8; }
+
+.aside-lighten {
+  background-color: white; }
+
+.aside {
+  background-color: #eeeeee; }
+
+.button-darken {
+  background-color: #404040; }
+
+.button-lighten {
+  background-color: #8c8c8c; }
+
+.button {
+  background-color: #666666; }
+
+/*# sourceMappingURL=colour.css.map */

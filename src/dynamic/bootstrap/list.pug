@@ -1,0 +1,51 @@
+extends templates/site.pug
+
+block title
+	title #{__('list_title')} - #{__('website')}
+
+block jumbotron
+	.jumbotron
+		.container
+			p.lead.code #{__('list_jumbotron')}
+
+block content
+	.container
+		.row
+			if bots.length
+				each botinfo in bots
+					.col-12.col-lg-6
+						.media
+							img.d-flex.mr-3.icon(src=(botinfo.avatar || '/img/terminal.png') alt=__('list_avatar_fail'))
+							.media-body
+								h5.mt-0 #{botinfo.name}
+									if botinfo.count
+										span.badge.badge-default.left #{__('list_count', { count: botinfo.count })}
+									if !botinfo.approved
+										span.badge.badge-danger.left #{__('list_unverified')}
+									if botinfo.ownerinfo
+										span.badge.badge-info.left #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+								span #{botinfo.shortDesc}
+						if user && user.admin
+							if !botinfo.approved && csrf
+								form.buddon(action=`/bot/${botinfo.id}/approve` method="POST")
+									button.btn.btn-success(type="submit") #{__('list_approve')}
+									input.hide(type="text" name="csrf" value=`${csrf}`)
+							if csrf
+								a.btn.btn-danger(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+							a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
+						if botinfo.editable
+							a.btn.btn-primary(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+							a.btn.btn-danger(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+							a.btn.btn-info(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+						a.btn.btn-info(href=`/bot/${botinfo.id}`) #{__('list_info')}
+						a.btn.btn-info(href=botinfo.invite) #{__('list_invite')}
+			else
+				.col-12
+					p #{__('list_no_results')}
+
+block script
+	#modal.modal.fade(tabindex="-1" role="dialog")
+		.modal-dialog.modal-lg(role="document")
+			#modalContent.modal-content
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js")
+

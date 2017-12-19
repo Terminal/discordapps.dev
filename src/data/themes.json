@@ -1,6 +1,7 @@
 {
 	"selectable": [
 		"default",
+		"bootstrap",
 		"table"
 	],
 	"usable": [

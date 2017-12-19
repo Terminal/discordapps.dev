@@ -1,0 +1,24 @@
+extends templates/site.pug
+
+block title
+	title #{__('token_title')} - #{__('website')}
+
+block jumbotron
+	.jumbotron
+		.container
+			p.lead.code #{__('token_jumbotron', { name: bot.name })}
+
+block content
+	.container
+		.row
+			.col-12
+				p #{__('token_description')}
+				if bot.token
+					p: code(style="word-break: break-all") #{bot.token}
+				else
+					p #{__('token_missing')}
+			.col-12
+				form.buddon(method="POST")
+					button.btn.btn-danger(type="submit") #{__('token_generate')}
+					input.hide(type="text" name="csrf" value=`${csrf}`)
+					input.hide(type="text" name="approve" value="true")

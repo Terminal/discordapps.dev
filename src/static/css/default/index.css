@@ -1,54 +1,174 @@
-nav ul {
-  margin: 0;
-  padding: 0;
-  list-style: none; }
-nav li {
-  display: inline-block; }
-nav a {
-  display: block;
-  padding: 6px 12px;
-  text-decoration: none; }
+/**
+ * Something about GNU GPL v3
+ */
+.red-darken {
+  background-color: #b30000; }
 
-.botiframe {
+.red-lighten {
+  background-color: #ff4d4d; }
+
+.red {
+  background-color: #ff0000; }
+
+.blue-darken {
+  background-color: #0000e6; }
+
+.blue-lighten {
+  background-color: #8080ff; }
+
+.blue {
+  background-color: #3333FF; }
+
+.header-darken {
+  background-color: #b7b7b7; }
+
+.header-lighten {
+  background-color: white; }
+
+.header {
+  background-color: #dddddd; }
+
+.footer-darken {
+  background-color: #a6a6a6; }
+
+.footer-lighten {
+  background-color: #f2f2f2; }
+
+.footer {
+  background-color: #cccccc; }
+
+.aside-darken {
+  background-color: #c8c8c8; }
+
+.aside-lighten {
+  background-color: white; }
+
+.aside {
+  background-color: #eeeeee; }
+
+.button-darken {
+  background-color: #404040; }
+
+.button-lighten {
+  background-color: #8c8c8c; }
+
+.button {
+  background-color: #666666; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0px;
+  margin: 0px;
+  font-family: Noto Sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+
+footer {
+  text-align: center;
+  background-color: #cccccc;
+  padding: 3em;
+  flex: 1; }
+  footer .right {
+    margin-left: auto; }
+
+header {
+  display: flex;
+  align-items: center;
+  height: 3.5em;
+  background-color: #dddddd; }
+  header .item {
+    padding-left: 1em; }
+    header .item * {
+      display: block;
+      max-height: 3.5em;
+      padding: 0px;
+      margin: 0px; }
+  header .right {
+    margin-left: auto; }
+
+aside {
+  background-color: #eeeeee; }
+  aside .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 2em;
+    width: 100%;
+    padding: 0.5em; }
+  aside .icon {
+    padding: 0.5em; }
+    aside .icon i {
+      color: #ffffff; }
+    aside .icon img {
+      display: block;
+      max-height: 2em; }
+  aside a {
+    text-decoration: none !important;
+    color: #000000; }
+
+form {
+  max-width: 70vw; }
+  form .form-group {
+    margin: 0.5em 0;
+    display: flex;
+    flex-direction: column; }
+  form input, form select, form button {
+    padding: 0.25em;
+    font-size: 12pt;
+    font-family: Noto Sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+
+main {
+  padding: 3em; }
+  main h1 {
+    text-decoration: underline;
+    margin: 0.25em 0; }
+  main .right {
+    margin-left: auto; }
+
+.horizontal {
+  display: flex;
+  flex-direction: row; }
+
+.hover {
+  background: transparent;
+  transition: all 0.3s; }
+  .hover:hover, .hover:focus {
+    background: rgba(0, 0, 0, 0.4); }
+
+.botcard {
+  display: inline-block;
+  padding: 1em;
+  width: 30em; }
+  .botcard h1 {
+    text-decoration: none;
+    margin: 0.25em 0; }
+  .botcard img {
+    width: 7em; }
+  @media screen and (max-width: 50em) {
+    .botcard {
+      width: 100%; } }
+
+.enlarge {
   width: 100%;
-  height: 60vh;
-  padding-top: 10px; }
-
-.icon {
-  width: 64px;
-  height: 64px; }
-
-iframe {
-  border: none; }
-
-.code {
-  font-family: "Roboto Mono", "Ubuntu Mono", "Courier", monospace; }
-
-.media {
-  padding-top: 5px;
-  padding-bottom: 5px; }
-
-.btn {
-  margin: 5px 5px 5px 0; }
-
-.buddon {
-  float: left; }
-
-.langicon {
-  float: left;
-  height: 2em;
-  margin-right: 5px; }
+  transition: width 0.3s; }
+  .enlarge:hover, .enlarge:focus {
+    width: 120%; }
 
 .hide {
   display: none; }
 
-.right {
-  margin-right: 5px; }
+.inline-block {
+  display: inline-block; }
 
-.left {
-  margin-left: 5px; }
-
-.inline {
-  display: inline; }
+.button {
+  display: inline-block;
+  background-color: #666666;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.25em;
+  margin-right: 0.25em;
+  margin-bottom: 0.25em;
+  border-radius: 0.25em;
+  text-decoration: none; }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,0 +1,24 @@
+$colours: (
+	"red": #ff0000,
+	"blue": #3333FF,
+	header: #dddddd,
+	footer: #cccccc,
+	aside: #eeeeee,
+	button: #666666
+);
+
+@function getColour($colour) {
+	@return map-get($colours, $colour);
+}
+
+@each $key, $value in $colours {
+	.#{$key}-darken {
+		background-color: darken($value, 15%);
+	}
+	.#{$key}-lighten {
+		background-color: lighten($value, 15%);
+	}
+	.#{$key} {
+		background-color: $value;
+	}
+}

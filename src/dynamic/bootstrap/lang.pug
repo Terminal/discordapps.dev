@@ -1,0 +1,16 @@
+extends templates/site.pug
+
+block title
+	title Languages / #{__('lang_title')} - #{__('website')}
+
+block jumbotron
+	.jumbotron
+		.container
+			p.lead.code Languages / #{__('lang_languages')}
+
+block content
+	.container
+		.row
+			.col-12
+				for language in languages
+					li: a(href=`/lang/${language}`) #{__(`lang_${language}`)}

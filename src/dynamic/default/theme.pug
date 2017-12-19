@@ -1,16 +1,5 @@
 extends templates/site.pug
 
-block title
-	title #{__('theme_title')} - #{__('website')}
-
-block jumbotron
-	.jumbotron
-		.container
-			p.lead.code #{__('theme_themes')}
-
-block content
-	.container
-		.row
-			.col-12
-				for theme in themes
-					li: a(href=`/theme/${theme}`) #{__(`theme_${theme}`)}
+block main
+	for theme in themes
+		li: a(href=`/theme/${theme}`) #{__(`theme_${theme}`)}
