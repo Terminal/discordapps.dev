@@ -43,9 +43,8 @@ const isOnline = (req, res, next) => {
 	if (bot.ready) {
 		next();
 	} else {
-		res.status(500).render('error', {
-			status: 500,
-			message: res.__('error_bot_offline')
+		res.status(500).json({
+			error: 'The webserver has not fully initialised yet. Please try again later'
 		});
 	}
 };
@@ -53,6 +52,7 @@ const isOnline = (req, res, next) => {
 app.locals.list_invite = config.get('discord').invite;
 app.locals.location = config.get('webserver').location;
 app.locals.guild_id = config.get('discord').guild;
+app.locals.production = config.get('production');
 
 app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	.set('view engine', 'pug')
@@ -68,6 +68,7 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	.use(themes) // Use themes
 	.use(auth.initialize()) // Initiate the authentication mechanisms
 	.use(auth.session())
+	.use(isOnline) // Check if the webserver is fully online yet
 	.use(bodyParser.json())
 	.use(bodyParser.urlencoded({
 		extended: true
@@ -77,16 +78,16 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 		if (themelist.includes(req.cookies.theme)) res.theme(req.cookies.theme);
 		next();
 	})
-	.get('/', isOnline, csrfM.make, (req, res, next) => {
+	.get('/', csrfM.make, (req, res, next) => {
 		res.locals.approve = true;
 		next();
 	}, listM.list) // List the homepage
-	.use('/list', isOnline, listM.router) // List Middleware
-	.use('/auth', isOnline, authM) // Authentication
-	.use('/docs', isOnline, docsM) // Documentation
-	.use('/lang', isOnline, langM) // Language settings
-	.use('/theme', isOnline, themeM) // Theme settings
-	.use('/bot', isOnline, botM) // Listing bots
+	.use('/list', listM.router) // List Middleware
+	.use('/auth', authM) // Authentication
+	.use('/docs', docsM) // Documentation
+	.use('/lang', langM) // Language settings
+	.use('/theme', themeM) // Theme settings
+	.use('/bot', botM) // Listing bots
 	.use('/api', apiM) // API
 	.use(express.static(path.join(__dirname, 'static'))) // Pull static files from /src/static
 	.use((req, res) => {
