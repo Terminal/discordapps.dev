@@ -31,6 +31,8 @@ const request = require('request');
 const pug = require('pug');
 const { spawn } = require('child_process');
 const path = require('path');
+const marked = require('marked');
+const fs = require('fs');
 
 const router = express.Router();
 
@@ -132,6 +134,16 @@ router.get('/bots', async (req, res) => {
 	})
 	.use('/test/:id', exists, authMiddleware, (req, res) => {
 		res.json({ message: 'OK' });
+	})
+	.get('/docs/', (req, res) => fs.readFile(path.join(__dirname, '..', 'markdown', 'index.md'), 'utf8', (err, data) => res.send(marked(data))))
+	.get('/docs/:page', (req, res) => {
+		// Try to find the markdown page
+		if (fs.existsSync(path.join(__dirname, '..', 'markdown', `${req.params.page}.md`))) {
+			// Render the specific page
+			fs.readFile(path.join(__dirname, '..', 'markdown', `${req.params.page}.md`), 'utf8', (err, data) => res.send(marked(data)));
+		} else {
+			res.status(404).json({ error: 'The page was not found' });
+		}
 	})
 	.use('*', (req, res) => {
 		res.status(404).json({ error: 'This API method has not been defined.' });
