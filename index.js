@@ -1,4 +1,5 @@
 const config = require('config');
+const fs = require('fs');
 
 const defaultConfig = config.get('rethinkdb');
 const rConfig = { servers: defaultConfig.servers };
@@ -18,27 +19,6 @@ const verifyDb = async () => {
 
 verifyDb();
 
-console.log('\x1b[0m');
-
-console.log('  Welcome to ls.terminal.ink!');
-console.log('\x1b[0m');
-console.log('  \x1b[0m  \x1b[1m\x1b[32m\x1b[46m\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2593\u2593\u2593\u2593\u2593\u2592\u2592\u2592\u2592\u2592\u2592\u2591\u2591\u2591\u2591\u2591\u2591      \x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2588\u2588\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2588\u2588\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2588\u2588\x1b[0m   ▞                          \x1b[1m\x1b[36m\x1b[44m\u2588\u2588\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2588\u2588\x1b[0m  ▟▙▖                         \x1b[1m\x1b[36m\x1b[44m\u2588\u2588\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2593\u2593\x1b[0m   ▛                          \x1b[1m\x1b[36m\x1b[44m\u2593\u2593\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2593\u2593\x1b[0m  ▝   \x1b[5m▀▀▀\x1b[0m                     \x1b[1m\x1b[36m\x1b[44m\u2593\u2593\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2593\u2593\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2593\u2593\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2592\u2592\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2592\u2592\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2592\u2592\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2592\u2592\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2592\u2592\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2592\u2592\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2591\u2591\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2591\u2591\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2591\u2591\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2591\u2591\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m\u2591\u2591\x1b[0m                              \x1b[1m\x1b[36m\x1b[44m\u2591\u2591\x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m  \x1b[0m                              \x1b[1m\x1b[36m\x1b[44m  \x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m  \x1b[0m                              \x1b[1m\x1b[36m\x1b[44m  \x1b[0m');
-console.log('  \x1b[0m\x1b[1m\x1b[32m\x1b[46m  \x1b[0m                              \x1b[1m\x1b[36m\x1b[44m  \x1b[0m');
-console.log('  \x1b[0m  \x1b[1m\x1b[36m\x1b[44m\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2593\u2593\u2593\u2593\u2593\u2592\u2592\u2592\u2592\u2592\u2592\u2591\u2591\u2591\u2591\u2591\u2591      \x1b[0m');
-console.log('\x1b[0m');
+console.log(fs.readFileSync('./banner.txt').toString());
 
 require('./src/index');
