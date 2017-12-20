@@ -76,6 +76,7 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	.use(userM.userSetup) // Append details such as if they are an admin, and if they are in the guild
 	.use((req, res, next) => {
 		if (themelist.includes(req.cookies.theme)) res.theme(req.cookies.theme);
+		res.locals.lang = req.cookies.lang || 'en-gb';
 		next();
 	})
 	.get('/', csrfM.make, (req, res, next) => {

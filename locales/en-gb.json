@@ -31,6 +31,7 @@
 	"add_advanced": "The following fields are for advanced users. Invalid options may break your bot page.",
 	"add_theme": "Theme",
 	"add_theme_placeholder": "Select a theme",
+	"alt_logo": "Logo of terminal.ink",
 	"botinfo_get": "Bot info",
 	"botinfo_get_desc": "Obtain information about a bot",
 	"botinfo_get_1_in": "{{ prefix }} {{ command }} [@mention]",

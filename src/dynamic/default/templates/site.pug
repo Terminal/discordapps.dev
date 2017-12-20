@@ -19,7 +19,7 @@ doctype html
 	You should have received a copy of the GNU General Public License
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-html
+html(lang=lang)
 	head
 		block title
 			title #{title ? `${title} -` : ''} #{__('website')}
@@ -43,49 +43,49 @@ html
 			.item
 				span ls.terminal.ink
 			.item.right
-				img(src="/img/terminal.png")
+				img(src="/img/terminal.png" alt=__('alt_logo'))
 		.horizontal
 			aside
 				a.horizontal.enlarge(href="/")
 					.icon.red
-						img(src="/img/icon/white_home.svg")
+						img(src="/img/icon/white_home.svg" alt=__('nav_homepage'))
 					.item.red-lighten
 						span #{__('nav_homepage')}
 				if user
 					a.horizontal.enlarge(href=`/list/${user.id}`)
 						.icon.blue
-							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`)
+							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` alt=user.username)
 						.item.blue-lighten
 							span #{user.username}
 				.horizontal.hover
 					a.horizontal.enlarge(href="/lang")
 						.icon
-							img(src="/img/icon/black_language.svg")
+							img(src="/img/icon/black_language.svg" alt=__('nav_lang'))
 						.item
 							span #{__('nav_lang')}
 				.horizontal.hover
 					a.horizontal.enlarge(href="/theme")
 						.icon
-							img(src="/img/icon/black_theme.svg")
+							img(src="/img/icon/black_theme.svg" alt=__('nav_theme'))
 						.item
 							span #{__('nav_theme')}
 				.horizontal.hover
 					a.horizontal.enlarge(href="/docs")
 						.icon
-							img(src="/img/icon/black_library_books.svg")
+							img(src="/img/icon/black_library_books.svg" alt=__('nav_documentation'))
 						.item
 							span #{__('nav_documentation')}
 				.horizontal.hover
 					if user
 						a.horizontal.enlarge(href="/auth/logout")
 							.icon
-								img(src="/img/icon/black_exit.svg")
+								img(src="/img/icon/black_exit.svg" alt=__('nav_logout'))
 							.item
 								span #{__('nav_logout')} 
 					else
 						a.horizontal.enlarge(href="/auth")
 							.icon
-								img(src="/img/icon/black_login.svg")
+								img(src="/img/icon/black_login.svg" alt=__('nav_login'))
 							.item
 								span #{__('nav_login')}
 			main
