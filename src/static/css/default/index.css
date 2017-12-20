@@ -2,22 +2,22 @@
  * Something about GNU GPL v3
  */
 .red-darken {
-  background-color: #b30000; }
+  background-color: #ff0909; }
 
 .red-lighten {
-  background-color: #ff4d4d; }
+  background-color: #ffa2a2; }
 
 .red {
-  background-color: #ff0000; }
+  background-color: #ff5555; }
 
 .blue-darken {
-  background-color: #0000e6; }
+  background-color: #0909ff; }
 
 .blue-lighten {
-  background-color: #8080ff; }
+  background-color: #a2a2ff; }
 
 .blue {
-  background-color: #3333FF; }
+  background-color: #5555ff; }
 
 .header-darken {
   background-color: #b7b7b7; }
@@ -105,6 +105,11 @@ aside {
   aside a {
     text-decoration: none !important;
     color: #000000; }
+  @media screen and (max-width: 800px) {
+    aside {
+      min-width: 3em;
+      width: 3em;
+      overflow-x: hidden; } }
 
 form {
   max-width: 70vw; }
@@ -124,6 +129,9 @@ main {
     margin: 0.25em 0; }
   main .right {
     margin-left: auto; }
+  @media screen and (max-width: 800px) {
+    main {
+      padding: 0.5em; } }
 
 .horizontal {
   display: flex;
@@ -144,9 +152,9 @@ main {
     margin: 0.25em 0; }
   .botcard img {
     width: 7em; }
-  @media screen and (max-width: 50em) {
+  @media screen and (max-width: 800px) {
     .botcard {
-      width: 100%; } }
+      width: calc(90%); } }
 
 .enlarge {
   width: 100%;

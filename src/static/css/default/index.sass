@@ -56,6 +56,10 @@ aside
 	a
 		text-decoration: none !important
 		color: #000000
+	@media screen and (max-width: 800px)
+		min-width: 3em
+		width: 3em
+		overflow-x: hidden
 
 form
 	max-width: 70vw
@@ -75,6 +79,8 @@ main
 		margin: 0.25em 0
 	.right
 		margin-left: auto
+	@media screen and (max-width: 800px)
+		padding: 0.5em
 
 .horizontal
 	display: flex
@@ -95,8 +101,8 @@ main
 	display: inline-block
 	padding: 1em
 	width: 30em
-	@media screen and (max-width: 50em)
-		width: 100%
+	@media screen and (max-width: 800px)
+		width: calc(90%)
 
 .enlarge
 	width: 100%
