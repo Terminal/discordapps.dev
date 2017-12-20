@@ -6,6 +6,7 @@
 	],
 	"usable": [
 		"default",
+		"bootstrap",
 		"table",
 		"discordbotsorg",
 		"botsdiscordpw",
