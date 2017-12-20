@@ -17,7 +17,7 @@ French   | iDroid#4441 (@iDroid27210)
 Swedish  | Mackan#7196 (@Sven65)
 
 ## Installation
-1. Install `imagemagick`, `Node.js` 9.0.0, `npm` 5.5.1, `RethinkDB`
+1. Install `imagemagick`, `Node.js` v9.3.0, `npm` 5.5.1, `RethinkDB`
 1. `git clone https://github.com/terminal/ls.terminal.ink.git`
 1. `cd ls.terminal.ink`
 1. `npm i`
