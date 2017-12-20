@@ -48,7 +48,7 @@ html
 			aside
 				a.horizontal.enlarge(href="/")
 					.icon.red
-						img(src="/img/icon/home.svg")
+						img(src="/img/icon/white_home.svg")
 					.item.red-lighten
 						span Homepage
 				if user
@@ -56,23 +56,38 @@ html
 						.icon.blue
 							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=128`)
 						.item.blue-lighten
-							span My Bots
+							span #{user.username}
 				.horizontal.hover
-					a.item(href="/lang")
-						span #{__('nav_lang')}
+					a.horizontal.enlarge(href="/lang")
+						.icon
+							img(src="/img/icon/black_language.svg")
+						.item
+							span #{__('nav_lang')}
 				.horizontal.hover
-					a.item(href="/theme")
-						span #{__('nav_theme')}
+					a.horizontal.enlarge(href="/theme")
+						.icon
+							img(src="/img/icon/black_theme.svg")
+						.item
+							span #{__('nav_theme')}
 				.horizontal.hover
-					a.item(href="/docs")
-						span #{__('nav_documentation')}
+					a.horizontal.enlarge(href="/docs")
+						.icon
+							img(src="/img/icon/black_library_books.svg")
+						.item
+							span #{__('nav_documentation')}
 				.horizontal.hover
 					if user
-						a.item(href="/auth/logout")
-							span #{__('nav_logout')}
+						a.horizontal.enlarge(href="/auth/logout")
+							.icon
+								img(src="/img/icon/black_exit.svg")
+							.item
+								span #{__('nav_logout')} 
 					else
-						a.item(href="/auth")
-							span #{__('nav_login')}
+						a.horizontal.enlarge(href="/auth")
+							.icon
+								img(src="/img/icon/black_login.svg")
+							.item
+								span #{__('nav_login')}
 			main
 				block main
 		footer
