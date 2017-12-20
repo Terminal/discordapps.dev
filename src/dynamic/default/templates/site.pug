@@ -32,18 +32,19 @@ html(lang=lang)
 		block embed
 			meta(name="author" content=location)
 			meta(property="og:description" content=__('website_description'))
-			meta(name="og:image" content="/img/terminal.png")
+			meta(name="og:image" content="/img/terminal512.png")
 			meta(property="og:title" content=__('website'))
 		link(href="/img/favicon.gif" rel="shortcut-icon")
 		link(href="/img/favicon.gif" rel="icon")
 		link(async href="https://fonts.googleapis.com/icon?family=Noto+Sans" rel="stylesheet")
 		link(href="/css/default/index.css" rel="stylesheet")
+		link(href="/manifest.json" rel="manifest")
 	body
 		header
 			.item
 				span ls.terminal.ink
 			.item.right
-				img(src="/img/terminal.png" alt=__('alt_logo'))
+				img(src="/img/terminal512.png" alt=__('alt_logo'))
 		.horizontal
 			aside
 				a.horizontal.enlarge(href="/")
@@ -54,7 +55,7 @@ html(lang=lang)
 				if user
 					a.horizontal.enlarge(href=`/list/${user.id}`)
 						.icon.blue
-							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` alt=user.username)
+							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="this.src='terminal32.png'" alt=user.username)
 						.item.blue-lighten
 							span #{user.username}
 				.horizontal.hover

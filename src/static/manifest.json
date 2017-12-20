@@ -1,0 +1,35 @@
+{
+	"short_name": "LS Bot List",
+	"name": "ls.terminal.ink Discord Bot Listing",
+	"icons": [
+		{
+			"src": "/img/terminal512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}, {
+			"src": "/img/terminal256.png",
+			"sizes": "256x256",
+			"type": "image/png"
+		}, {
+			"src": "/img/terminal128.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		}, {
+			"src": "/img/terminal64.png",
+			"sizes": "64x64",
+			"type": "image/png"
+		}, {
+			"src": "/img/terminal32.png",
+			"sizes": "32x32",
+			"type": "image/png"
+		}, {
+			"src": "/img/favicon.gif",
+			"sizes": "16x16",
+			"type": "image/gif"
+		}
+	],
+	"start_url": "/",
+	"background_color": "#181818",
+	"theme_color": "#FFFFFF",
+	"display": "standalone"
+}
