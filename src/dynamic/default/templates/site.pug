@@ -55,7 +55,7 @@ html(lang=lang)
 				if user
 					a.horizontal.enlarge(href=`/list/${user.id}`)
 						.icon.blue
-							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="this.src='terminal32.png'" alt=user.username)
+							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="this.src='/img/terminal32.png'" alt=user.username)
 						.item.blue-lighten
 							span #{user.username}
 				.horizontal.hover
