@@ -15,7 +15,7 @@ block main
 							span.button #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
 						p #{botinfo.shortDesc}
 					.item.right
-						img(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal32.png'" alt=__('list_avatar_fail'))
+						img(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal256.png'" alt=__('list_avatar_fail'))
 				if user && user.admin
 					if !botinfo.approved && csrf
 						form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
