@@ -23,6 +23,7 @@ block main
 				if botinfo.ownerinfo
 					span.button #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
 				p #{botinfo.shortDesc}
+				p #{__('list_prefix', { prefix: botinfo.prefix })}
 			.item.right
 				img(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal256.png'" alt=__('list_avatar_fail'))
 		if user && user.admin
