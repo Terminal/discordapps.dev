@@ -7,6 +7,15 @@
 .red {
   background-color: #ff5555; }
 
+.green-darken {
+  background-color: #158015; }
+
+.green-lighten {
+  background-color: #4de24d; }
+
+.green {
+  background-color: #20c220; }
+
 .blue-darken {
   background-color: #0909ff; }
 
@@ -15,6 +24,24 @@
 
 .blue {
   background-color: #5555ff; }
+
+.orange-darken {
+  background-color: #b37400; }
+
+.orange-lighten {
+  background-color: #ffc04d; }
+
+.orange {
+  background-color: #ffa500; }
+
+.magenta-darken {
+  background-color: #b300b3; }
+
+.magenta-lighten {
+  background-color: #ff4dff; }
+
+.magenta {
+  background-color: #ff00ff; }
 
 .header-darken {
   background-color: #b7b7b7; }

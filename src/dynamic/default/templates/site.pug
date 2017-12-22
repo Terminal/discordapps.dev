@@ -58,33 +58,48 @@ html(lang=lang)
 							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="this.src='/img/terminal256.png'" alt=user.username)
 						.item.blue-lighten
 							span #{user.username}
-				.horizontal.hover
-					a.horizontal.enlarge(href="/lang")
+					a.horizontal.enlarge(href="/bot/add")
+						.icon.magenta
+							img(src="/img/icon/white_add.svg" alt=__('nav_add'))
+						.item.magenta-lighten
+							span #{__('nav_add')}
+				a.horizontal.enlarge(href="/")
+					.icon.green
+						img(src="/img/icon/white_all.svg" alt=__('nav_all'))
+					.item.green-lighten
+						span #{__('nav_all')}
+				a.horizontal.enlarge(href="/")
+					.icon.orange
+						img(src="/img/icon/white_queue.svg" alt=__('nav_queue'))
+					.item.orange-lighten
+						span #{__('nav_queue')}
+				.hover
+					a.horizontal(href="/lang")
 						.icon
 							img(src="/img/icon/black_language.svg" alt=__('nav_lang'))
 						.item
 							span #{__('nav_lang')}
-				.horizontal.hover
-					a.horizontal.enlarge(href="/theme")
+				.hover
+					a.horizontal(href="/theme")
 						.icon
 							img(src="/img/icon/black_theme.svg" alt=__('nav_theme'))
 						.item
 							span #{__('nav_theme')}
-				.horizontal.hover
-					a.horizontal.enlarge(href="/docs")
+				.hover
+					a.horizontal(href="/docs")
 						.icon
 							img(src="/img/icon/black_library_books.svg" alt=__('nav_documentation'))
 						.item
 							span #{__('nav_documentation')}
-				.horizontal.hover
+				.hover
 					if user
-						a.horizontal.enlarge(href="/auth/logout")
+						a.horizontal(href="/auth/logout")
 							.icon
 								img(src="/img/icon/black_exit.svg" alt=__('nav_logout'))
 							.item
 								span #{__('nav_logout')} 
 					else
-						a.horizontal.enlarge(href="/auth")
+						a.horizontal(href="/auth")
 							.icon
 								img(src="/img/icon/black_login.svg" alt=__('nav_login'))
 							.item
