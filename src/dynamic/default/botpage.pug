@@ -15,17 +15,17 @@ block main
 	section.botcard
 		.horizontal
 			.item
-				h1 #{botinfo.name}
+				h1.botname #{botinfo.name}
 				if botinfo.count
-					span.button #{__('list_count', { count: botinfo.count })}
+					span.button.botcount #{__('list_count', { count: botinfo.count })}
 				if !botinfo.approved
-					span.button #{__('list_unverified')}
+					span.button.botunverified #{__('list_unverified')}
 				if botinfo.ownerinfo
-					span.button #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
-				p #{botinfo.shortDesc}
-				p #{__('list_prefix', { prefix: botinfo.prefix })}
+					span.button.ownerinfo #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+				p.botshortDesc #{botinfo.shortDesc}
+				p.botprefix #{__('list_prefix', { prefix: botinfo.prefix })}
 			.item.right
-				img(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal256.png'" alt=__('list_avatar_fail'))
+				img.botavatar(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal256.png'" alt=__('list_avatar_fail'))
 		if user && user.admin
 			if !botinfo.approved && csrf
 				form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
