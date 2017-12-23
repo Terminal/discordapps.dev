@@ -4,7 +4,8 @@ block title
 	title #{botinfo.name} - #{__('website')}
 
 block embed
-	meta(name="author" content=`${botinfo.ownerinfo.username}#${botinfo.ownerinfo.discriminator}`)
+	if botinfo.ownerinfo
+		meta(name="author" content=`${botinfo.ownerinfo.username}#${botinfo.ownerinfo.discriminator}`)
 	meta(name="og:description" content=botinfo.shortDesc)
 	meta(name="og:title" content=botinfo.name)
 	meta(name="og:site_name" content=__('website'))

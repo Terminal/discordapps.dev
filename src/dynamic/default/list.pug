@@ -2,34 +2,35 @@ extends templates/site.pug
 
 block main
 	if bots.length
-		each botinfo in bots
-			section.botcard
-				.horizontal
-					.item
-						h1 #{botinfo.name}
-						if botinfo.count
-							span.button #{__('list_count', { count: botinfo.count })}
-						if !botinfo.approved
-							span.button #{__('list_unverified')}
-						if botinfo.ownerinfo
-							span.button #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
-						p #{botinfo.shortDesc}
-					.item.right
-						img(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal256.png'" alt=__('list_avatar_fail'))
-				if user && user.admin
-					if !botinfo.approved && csrf
-						form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
-							button.button.hover(type="submit") #{__('list_approve')}
-							input.hide(type="text" name="csrf" value=`${csrf}`)
-					if csrf
-						a.button.hover(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
-					a.button.hover(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
-				if botinfo.editable
-					a.button.hover(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
-					a.button.hover(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
-					a.button.hover(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
-				a.button.hover(href=`/bot/${botinfo.id}`) #{__('list_info')}
-				a.button.hover(href=botinfo.invite) #{__('list_invite')}
+		.horizontal.wrap
+			each botinfo in bots
+				section.botcard
+					.horizontal
+						.item
+							.horizontal
+								h1 #{botinfo.name}
+								if botinfo.count
+									span.button #{__('list_count', { count: botinfo.count })}
+								if botinfo.ownerinfo
+									span.button #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+								if !botinfo.approved
+									span.button #{__('list_unverified')}
+							p #{botinfo.shortDesc}
+						.item.right
+							img(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal256.png'" alt=__('list_avatar_fail'))
+					if user && user.admin
+						if !botinfo.approved && csrf
+							form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
+								button.button.hover(type="submit") #{__('list_approve')}
+								input.hide(type="text" name="csrf" value=`${csrf}`)
+						if csrf
+							a.button.hover(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+						a.button.hover(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
+					if botinfo.editable
+						a.button.hover(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+						a.button.hover(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+						a.button.hover(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+					a.button.hover(href=`/bot/${botinfo.id}`) #{__('list_info')}
+					a.button.hover(href=botinfo.invite) #{__('list_invite')}
 	else
-		.col-12
-			p #{__('list_no_results')}
+		p #{__('list_no_results')}

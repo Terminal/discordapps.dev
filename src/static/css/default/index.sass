@@ -88,6 +88,8 @@ main
 .horizontal
 	display: flex
 	flex-direction: row
+	.wrap
+		flex-wrap: wrap
 
 .hover
 	background: transparent
@@ -96,16 +98,20 @@ main
 		background: rgba(0,0,0,0.4)
 
 .botcard
-	h1
-		text-decoration: none
-		margin: 0.25em 0
-	img
-		width: 7em
 	display: inline-block
 	padding: 1em
 	width: 30em
+	border: 0.5px solid #cccccc
+	margin-bottom: 0.5em
+	margin-right: 0.5em
 	@media screen and (max-width: 800px)
 		width: 90%
+	h1
+		text-decoration: none
+		margin: 0.3em 0
+	img
+		width: 7em
+		margin-left: 0.3em
 
 .enlarge
 	width: 100%
@@ -124,9 +130,9 @@ main
 	background-color: getColour(button)
 	color: #FFFFFF
 	border: none
-	padding: 0.25em
-	margin-right: 0.25em
-	margin-bottom: 0.25em
+	padding: 0.3em
+	margin-right: 0.3em
+	margin-bottom: 0.3em
 	border-radius: 0.25em
 	text-decoration: none
 
