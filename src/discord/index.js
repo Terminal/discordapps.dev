@@ -26,7 +26,9 @@ client.on('messageCreate', (message) => {
 
 client.on('userUpdate', async (user, old) => {
 	if (user && user.bot && user.avatar) {
-		if (await r.table('bots').get(user.id)) {
+		const bot = await r.table('bots').get(user.id);
+
+		if (bot && user.avatar !== bot.avatar) {
 			r.table('bots')
 				.get(user.id)
 				.update({
