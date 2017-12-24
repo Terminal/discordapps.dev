@@ -4,7 +4,8 @@ const { exec } = require('child_process');
 const r = require('./../../db');
 const i18n = require('i18n');
 const os = require('os');
-const { inspect } = require('util')
+const { inspect } = require('util');
+const snekfetch = require('snekfetch');
 
 const hardwareinfo = `(${os.arch()}) ${os.cpus()[0].model} @ ${os.cpus()[0].speed} MHz`;
 const softwareinfo = `[${os.type()}] ${os.release()}`;
@@ -32,15 +33,24 @@ module.exports = [{
 	name: 'eval',
 	uses: 1,
 	admin: 3,
-	command: (message) => {
+	command: async (message) => {
 		try {
-			let e = eval(message.mss.input); // eslint-disable-line no-eval
+			let e = await eval(message.mss.input); // eslint-disable-line no-eval
 
 			if (e) {
 				if (typeof e !== 'string') {
 					e = inspect(e, { depth: 0 });
 				}
-				message.channel.createMessage(`\`\`\`\n${e}\n\`\`\``);
+				e = e.split(client.token.replace('Bot ', '')).join('-- BOT TOKEN --');
+				if (String(e).length > 1985) {
+					snekfetch.post('https://hastebin.com/documents').send(e).then((result) => {
+						message.channel.createMessage(`https://hastebin.com/${result.body.key}`);
+					}).catch((error) => {
+						message.channel.createMessage(`Failed to upload to hastebin: ${error.message}`);
+					});
+				} else {
+					message.channel.createMessage(`\`\`\`\n${e}\n\`\`\``);
+				}
 			}
 
 		} catch(e) {
