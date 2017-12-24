@@ -36,7 +36,7 @@ const list = async (req, res) => {
 	// Add an "editable" flag if the user can edit the bot.
 	// This is used on the page to display buttons like `edit` or `token`
 	bots = bots.map((bot) => {
-		if ((req.user && req.user.id) === bot.owner || (req.user && req.user.admin)) {
+		if (req.user && (req.user.id === bot.owner || req.user.admin)) {
 			bot.editable = true;
 		}
 		return bot;

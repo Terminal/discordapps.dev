@@ -24,13 +24,16 @@ client.on('messageCreate', (message) => {
 	});
 });
 
-client.on('userUpdate', (user, old) => {
-	if (user && old && (user.avatar !== old.avatar)) {
-		r.table('bots')
-			.get(user.id)
-			.update({
-				avatar: user.avatar
-			});
+client.on('userUpdate', async (user, old) => {
+	if (user && user.bot && user.avatar) {
+		const bot = await r.table('bots').get(user.id);
+
+		if (bot && user.avatar !== bot.avatar) {
+			r.table('bots')
+				.get(user.id)
+				.update({ avatar: user.avatar })
+				.run();
+		}
 	}
 });
 
