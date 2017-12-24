@@ -4,6 +4,7 @@ const { exec } = require('child_process');
 const r = require('./../../db');
 const i18n = require('i18n');
 const os = require('os');
+const { inspect } = require('util')
 
 const hardwareinfo = `(${os.arch()}) ${os.cpus()[0].model} @ ${os.cpus()[0].speed} MHz`;
 const softwareinfo = `[${os.type()}] ${os.release()}`;
@@ -32,7 +33,19 @@ module.exports = [{
 	uses: 1,
 	admin: 3,
 	command: (message) => {
-		eval(message.mss.input); // eslint-disable-line no-eval
+		try {
+			let e = eval(message.mss.input); // eslint-disable-line no-eval
+
+			if (e) {
+				if (typeof e !== 'string') {
+					e = inspect(e, { depth: 0 });
+				}
+				message.channel.createMessage(`\`\`\`\n${e}\n\`\`\``);
+			}
+
+		} catch(e) {
+			message.channel.createMessage(`\`\`\`\n${e}\`\`\``);
+		}
 	}
 }, {
 	aliases: [
