@@ -123,7 +123,7 @@
 	"perm_DEAFEN_MEMBERS": "Lautsprecher von Mitgliedern stummschalten",
 	"perm_MOVE_MEMBERS": "Mitglieder bewegen",
 	"perm_USE_VAD": "Sprachaktivität verwenden",
-	"perm_CHANGE_NICKNAME": "Spitznamen ändeet",
+	"perm_CHANGE_NICKNAME": "Spitznamen ändern",
 	"perm_MANAGE_NICKNAMES": "Spitznamen verwalten",
 	"perm_MANAGE_ROLES": "Rollen verwalten",
 	"perm_MANAGE_WEBHOOKS": "Webhooks verwalten",
