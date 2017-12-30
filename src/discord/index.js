@@ -31,7 +31,9 @@ client.on('userUpdate', async (user, old) => {
 		if (bot && user.avatar !== bot.avatar) {
 			r.table('bots')
 				.get(user.id)
-				.update({ avatar: user.avatar })
+				.update({
+					avatar: user.avatarURL || user.defaultAvatarURL
+				})
 				.run();
 		}
 	}
