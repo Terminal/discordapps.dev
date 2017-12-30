@@ -19,6 +19,6 @@ const verifyDb = async () => {
 
 verifyDb();
 
-console.log(fs.readFileSync('./banner.txt').toString());
+console.log(fs.readFileSync('./banner.txt', { encoding: 'utf8' }));
 
 require('./src/index');
