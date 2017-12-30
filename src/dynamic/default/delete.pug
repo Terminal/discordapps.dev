@@ -8,4 +8,4 @@ block main
 	form.inline-block(method="POST")
 		button.button(type="submit") #{__('yes')}
 		input.hide(type="text" name="csrf" value=`${csrf}`)
-	a.button(href="/") #{__('no')}
+	a.button(data-ajax-url href="/") #{__('no')}

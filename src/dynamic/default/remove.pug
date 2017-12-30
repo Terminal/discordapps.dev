@@ -16,6 +16,5 @@ block main
 			label(for="description") #{__('remove_description_evidence')}
 			textarea.form-control(name="description" maxlength="1000" rows="6" required)
 		button.button(type="submit") #{__('proceed')}
-		a.button(href="/") #{__('cancel')}
+		a.button(data-ajax-url href="/") #{__('cancel')}
 		input.hide(type="text" name="csrf" value=csrf)
-

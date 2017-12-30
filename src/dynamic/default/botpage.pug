@@ -33,12 +33,12 @@ block main
 					button.button.hover(type="submit") #{__('list_approve')}
 					input.hide(type="text" name="csrf" value=`${csrf}`)
 			if csrf
-				a.button.hover(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
 			a.button.hover(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
 		if botinfo.editable
-			a.button.hover(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
-			a.button.hover(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
-			a.button.hover(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/token`) #{__('list_token')}
 		a.button.hover(href=botinfo.invite) #{__('list_invite')}
 	section.body
 		if botinfo.type === 'iframe'
