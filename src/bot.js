@@ -1,18 +1,18 @@
-const express = require('express');
+const r = require('./db');
 const userM = require('./user');
 const csrfM = require('./csrf');
-const r = require('./db');
-const client = require('./discord');
-const marked = require('marked');
-const asciidoctor = require('asciidoctor.js')();
 const crypto = require('crypto');
-const reasons = require('./data/reasons.json');
-const { description } = require('./data/description.json');
-const themelist = require('./data/themes.json').usable;
-const { on } = require('./data/on.json');
 const config = require('config');
+const marked = require('marked');
+const express = require('express');
 const request = require('request');
 const cheerio = require('cheerio');
+const client = require('./discord');
+const { on } = require('./data/on.json');
+const reasons = require('./data/reasons.json');
+const asciidoctor = require('asciidoctor.js')();
+const themelist = require('./data/themes.json').usable;
+const { description } = require('./data/description.json');
 
 const router = express.Router();
 
