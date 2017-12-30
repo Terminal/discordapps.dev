@@ -24,7 +24,7 @@ client.on('messageCreate', (message) => {
 	});
 });
 
-client.on('userUpdate', async (user, old) => {
+client.on('userUpdate', async (user) => {
 	if (user && user.bot && user.avatar) {
 		const bot = await r.table('bots').get(user.id);
 

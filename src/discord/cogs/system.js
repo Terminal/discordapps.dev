@@ -4,7 +4,7 @@ const { exec } = require('child_process');
 const r = require('./../../db');
 const i18n = require('i18n');
 const os = require('os');
-const { inspect } = require('util')
+const { inspect } = require('util');
 
 const hardwareinfo = `(${os.arch()}) ${os.cpus()[0].model} @ ${os.cpus()[0].speed} MHz`;
 const softwareinfo = `[${os.type()}] ${os.release()}`;
@@ -42,8 +42,7 @@ module.exports = [{
 				}
 				message.channel.createMessage(`\`\`\`\n${e}\n\`\`\``);
 			}
-
-		} catch(e) {
+		} catch (e) {
 			message.channel.createMessage(`\`\`\`\n${e}\`\`\``);
 		}
 	}
