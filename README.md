@@ -15,6 +15,7 @@ Dutch    | Auxim#2994 (@GeoffreyWesthoff)
 French   | Yvan#5761 (@lepeli)
 French   | iDroid#4441 (@iDroid27210)
 Swedish  | Mackan#7196 (@Sven65)
+German   | MrLar#8117 (@MrLar)
 
 ## Installation
 1. Install `imagemagick`, `Node.js` v9.3.0, `npm` 5.5.1, `RethinkDB`
