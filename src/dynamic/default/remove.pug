@@ -9,7 +9,7 @@ block main
 	form(method="POST")
 		.form-group
 			select#type.form-control(name="reason" required)
-				option(selected disabled required value="") #{__('remove_select')}
+				option(selected disabled required value="0") #{__('remove_select')}
 				for reason, index in reasons
 					option(value=index) #{__(`remove_${reason}`)}
 		.form-group
