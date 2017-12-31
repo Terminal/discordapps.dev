@@ -26,6 +26,6 @@ html
 						a#center(href='/docs') Docs
 						if (user)
 							a(href='/auth/logout') Logout
-							a(href=`/list/${user.id}`) 7coil
+							a(href=`/list/${user.id}`) #{user.username}
 							a(href='/bot/add') Add Bot
 		block content
