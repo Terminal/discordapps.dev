@@ -28,7 +28,7 @@
 		"express-session": "^1.15.4",
 		"express-theme-pug": "^1.0.5",
 		"i18n": "^0.8.3",
-		"marked": "^0.3.6",
+		"marked": "^0.3.9",
 		"mustache": "^2.3.0",
 		"passport": "^0.3.2",
 		"passport-discord": "^0.1.2",
