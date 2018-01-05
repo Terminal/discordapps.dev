@@ -29,3 +29,10 @@ html
 							a(href=`/list/${user.id}`) #{user.username}
 							a(href='/bot/add') Add Bot
 		block content
+		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-67900801-5")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-67900801-5');

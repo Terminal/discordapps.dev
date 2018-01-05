@@ -50,3 +50,10 @@ html
 						i Yes really, we support 
 							a(href="https://bots.discord.pw") bots.discord.pw
 	script(src="https://bots.discord.pw/js/app.js")
+	script(async src="https://www.googletagmanager.com/gtag/js?id=UA-67900801-5")
+	script.
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-67900801-5');

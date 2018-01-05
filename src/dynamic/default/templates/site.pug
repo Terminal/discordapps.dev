@@ -113,3 +113,10 @@ html(lang=lang)
 				span #{__('footer_licence')}
 		block script
 		//	script(src="/js/ajax.js")
+		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-67900801-5")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-67900801-5');
