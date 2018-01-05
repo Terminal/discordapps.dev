@@ -49,9 +49,9 @@ const exists = async (req, res, next) => {
 	if (exist) {
 		next();
 	} else {
-		res.json({});
+		res.status(404).json({});
 	}
-}
+};
 
 router.get('/bots', async (req, res) => {
 	const result = await r.table('bots')
