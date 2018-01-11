@@ -8,7 +8,6 @@ const express = require('express');
 const request = require('request');
 const cheerio = require('cheerio');
 const client = require('./discord');
-const { on } = require('./data/on.json');
 const reasons = require('./data/reasons.json');
 const asciidoctor = require('asciidoctor.js')();
 const themelist = require('./data/themes.json').usable;
@@ -23,7 +22,13 @@ const router = express.Router();
  */
 const clean = (html) => {
 	const $ = cheerio.load(html);
-	on.forEach(event => $('*').removeAttr(event));
+	$('*').each((i, element) => {
+		Object.keys(element.attribs)
+			.filter(attribute => attribute.startsWith('on'))
+			.forEach((attribute) => {
+				$(element).removeAttr(attribute);
+			});
+	});
 	$('script').remove();
 	return $.html();
 };
