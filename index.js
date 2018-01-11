@@ -1,9 +1,20 @@
 const config = require('config');
-const fs = require('fs');
+const { exec } = require('child_process');
 
 const defaultConfig = config.get('rethinkdb');
 const rConfig = { servers: defaultConfig.servers };
 const r = require('rethinkdbdash')(rConfig);
+
+// Print out version
+exec('git rev-parse --short HEAD', (error, stdout, stderr) => {
+	let version;
+	if (stderr || error) {
+		version = '(Unknown)';
+	} else {
+		version = stdout;
+	}
+	console.log(`Version ${version}`);
+});
 
 const verifyDb = async () => {
 	const shouldConfigure = !(await r.dbList().contains('terminal').run());
