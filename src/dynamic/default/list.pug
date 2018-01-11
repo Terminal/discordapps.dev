@@ -1,10 +1,11 @@
 extends templates/site.pug
 
 block main
+	input(id="search" type="text" placeholder="search for shit")
 	if bots.length
 		.horizontal.wrap
 			each botinfo in bots
-				section.botcard
+				section.botcard(id=botinfo.id data-random=botinfo.random)
 					.horizontal
 						.item
 							h1 #{botinfo.name}
@@ -16,7 +17,7 @@ block main
 								span.button #{__('list_unverified')}
 							p #{botinfo.shortDesc}
 						.item.right
-							img(src=(botinfo.avatar || '/img/terminal.png') onerror="this.src='/img/terminal256.png'" alt=__('list_avatar_fail'))
+							img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
 					if user && user.admin
 						if !botinfo.approved && csrf
 							form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
@@ -33,3 +34,6 @@ block main
 					a.button.hover(href=botinfo.invite) #{__('list_invite')}
 	else
 		p #{__('list_no_results')}
+
+block script
+	script(src="/js/search.js")

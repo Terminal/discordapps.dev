@@ -39,6 +39,7 @@ html(lang=lang)
 		link(async href="https://fonts.googleapis.com/icon?family=Noto+Sans" rel="stylesheet")
 		link(href="/css/default/index.css" rel="stylesheet")
 		link(href="/manifest.json" rel="manifest")
+		script(src="/js/images.js")
 	body
 		header
 			.item
@@ -55,7 +56,7 @@ html(lang=lang)
 				if user
 					a.horizontal.enlarge(data-ajax-url href=`/list/${user.id}`)
 						.icon.blue
-							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="this.src='/img/terminal256.png'" alt=user.username)
+							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="imageFail()" alt=user.username)
 						.item.blue-lighten
 							span #{user.username}
 					a.horizontal.enlarge(data-ajax-url href="/bot/add")
@@ -118,5 +119,4 @@ html(lang=lang)
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
-
 			gtag('config', 'UA-67900801-5');
