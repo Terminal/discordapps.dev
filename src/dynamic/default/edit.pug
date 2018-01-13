@@ -29,6 +29,9 @@ block main
 			label(for="prefix") #{__('add_prefix')}
 			input#prefix(type="text" value=bot.prefix name="prefix" maxlength="200" placeholder=__('add_prefix_placeholder') required)
 		.form-group
+			label(for="owners") #{__('add_owners')}
+			input#owners.form-control(type="text" name="owners" maxlength="200" placeholder=__('add_owners_placeholder'))
+		.form-group
 			label(for="type") #{__('add_longdesc')}
 			select#type(name="type" placeholder=__('add_longdesc_placeholder') onchange="description();" onload="description();" required)
 				option(value="" disabled selected) #{__('add_longdesc_select')}
