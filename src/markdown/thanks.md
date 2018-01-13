@@ -2,7 +2,7 @@
 Category            | People
 ------------------- | --------------------------
 Lead Developer      | 7coil#3175 ([@lepon01](https://github.com/lepon01))
-Secondary Developer | Devoxin#0387 ([@Devoxin](https://github.com/Devoxin))
+Secondary Developer | Kromatic#0387 ([@Devoxin](https://github.com/Devoxin))
 
 # Translators
 Language | Name
