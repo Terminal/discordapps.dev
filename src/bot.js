@@ -210,8 +210,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			const botinfo = await r.table('bots')
 				.get(req.params.id)
 				.without('token')
-				.merge(info => ({
-					ownerinfo: r.table('users').get(info('owner'))
+				.merge(bot => ({
+					ownerinfo: bot('owner').map(id => r.table('users').get(id)).default({ username: 'Unknown', discriminator: '0000' })
 				}))
 				.run();
 			let render = '';

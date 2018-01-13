@@ -22,7 +22,9 @@ block main
 				if !botinfo.approved
 					span.button.botunverified #{__('list_unverified')}
 				if botinfo.ownerinfo
-					span.button.ownerinfo #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+					each owner in botinfo.ownerinfo
+						if owner
+							span.button.ownerinfo #{owner.username}##{owner.discriminator}
 				p.botshortDesc #{botinfo.shortDesc}
 				p.botprefix #{__('list_prefix', { prefix: botinfo.prefix })}
 			.item.right

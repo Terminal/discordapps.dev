@@ -25,7 +25,9 @@ block content
 				if !botinfo.approved
 					p #{__('list_unverified')}
 				if botinfo.ownerinfo
-					p #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+					each owner in botinfo.ownerinfo
+						if owner
+							p #{owner.username}##{owner.discriminator}
 		tr
 			td(colspan="2")
 				if user && user.admin

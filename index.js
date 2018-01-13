@@ -7,12 +7,7 @@ const r = require('rethinkdbdash')(rConfig);
 
 // Print out version
 exec('git rev-parse --short HEAD', (error, stdout, stderr) => {
-	let version;
-	if (stderr || error) {
-		version = '(Unknown)';
-	} else {
-		version = stdout;
-	}
+	const version = stderr || error ? 'Unknown' : stdout;
 	console.log(`Version ${version}`);
 });
 

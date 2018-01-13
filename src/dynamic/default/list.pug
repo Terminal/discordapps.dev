@@ -12,7 +12,9 @@ block main
 							if botinfo.count
 								span.button #{__('list_count', { count: botinfo.count })}
 							if botinfo.ownerinfo
-								span.button #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+								each owner in botinfo.ownerinfo
+									if owner
+								span.button #{owner.username}##{owner.discriminator}
 							if !botinfo.approved
 								span.button #{__('list_unverified')}
 							p #{botinfo.shortDesc}

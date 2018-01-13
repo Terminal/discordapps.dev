@@ -24,7 +24,9 @@ block jumbotron
 						if !botinfo.approved
 							span.badge.badge-danger.left #{__('list_unverified')}
 						if botinfo.ownerinfo
-							span.badge.badge-info.left #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+							each owner in botinfo.ownerinfo
+								if owner
+									span.badge.badge-info.left #{owner.username}##{owner.discriminator}
 					span #{botinfo.shortDesc}
 					p #{__('list_prefix', { prefix: botinfo.prefix })}
 			.row
