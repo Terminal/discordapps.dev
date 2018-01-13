@@ -176,7 +176,7 @@
 	"theme_blank": "Entirely empty page",
 	"website": "ls.terminal.ink Discord Bot listing",
 	"website_comment": "This bot list is found on GitHub. Try not to hack us.",
-	"website_description": "An open source Discord Bot listing website.",
+	"website_description": "A repository of Discord Bots",
 	"yes": "Yes",
 	"ping": "Ping",
 	"ping_desc": "Fetch the latency from the bot to Discord",

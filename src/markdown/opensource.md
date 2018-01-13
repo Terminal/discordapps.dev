@@ -2,9 +2,6 @@ This version of `ls.terminal.ink` was built with the following technologies:
 
 This list is not comprehensive: Please contact if we are missing any dependencies
 
-# ls.terminal.ink
-https://github.com/moustacheminer/ls.terminal.ink
-
 # body-parser
 https://github.com/expressjs/body-parser
 

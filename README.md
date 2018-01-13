@@ -1,25 +1,4 @@
 # ls.terminal.ink
-An open source Discord Bot listing website using Eris, Express and RethinkDB (and no jQuery if you select the `<table>` theme)
-
-Due to 7coil's inability to enforce the GNU GPLv3, this project is no longer updated on the open source side of things.
-
-[Part of the `ls.terminal.ink` development team and looking for the new project?](https://git.lepeli.fr/Terminal/ls.terminal.ink)
-
-## Development Team
-Category            | People
-------------------- | --------------------------
-Lead Developer      | 7coil#3175 ([@lepon01](https://github.com/lepon01))
-Secondary Developer | Devoxin#0387 ([@Devoxin](https://github.com/Devoxin))
-
-## Translators
-Language | Name
--------- | ----------------
-Chinese  | The Double-Eyed Bus#6889 ([@austinhuang0131](https://github.com/austinhuang0131))
-Dutch    | Auxim#2994 ([@GeoffreyWesthoff](https://github.com/GeoffreyWesthoff))
-French   | Yvan#5761 ([@lepeli](https://github.com/lepeli))
-French   | iDroid#4441 ([@iDroid27210](https://github.com/iDroid17210))
-German   | MrLar#8117 ([@MrLar](https://github.com/MrLar))
-Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
 
 ## Installation
 1. Install `imagemagick`, `Node.js` v9.3.0, `npm` 5.5.1, `RethinkDB`
@@ -35,7 +14,3 @@ Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
 
 1. Edit `locales/{locale}.json`
 1. Add the tag `lang_{locale}` in your new file as well as `en-gb.json`
-
-## Licence
-
-GNU General Public License v3.0, unless marked within the file.
