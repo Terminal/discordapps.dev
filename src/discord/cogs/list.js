@@ -7,8 +7,8 @@ const getID = string => string.replace(/\D/g, '');
 module.exports = [
 	{
 		aliases: [
-			'get',
-			'botinfo'
+			'botinfo',
+			'get'
 		],
 		name: 'botinfo_get',
 		uses: 1,
