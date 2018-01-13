@@ -14,7 +14,7 @@ block main
 							if botinfo.ownerinfo
 								each owner in botinfo.ownerinfo
 									if owner
-								span.button #{owner.username}##{owner.discriminator}
+										span.button #{owner.username}##{owner.discriminator}
 							if !botinfo.approved
 								span.button #{__('list_unverified')}
 							p #{botinfo.shortDesc}
