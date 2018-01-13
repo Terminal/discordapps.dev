@@ -26,10 +26,10 @@
 const search = document.getElementById('search');
 const fixtext = s => s.toLowerCase().replace(/ '/g, '').replace(/™/g, 'tm');
 
-// Distance divisor
+// Distance multiplier
 const weight = {
 	name: 2,
-	desc: 1,
+	desc: 3,
 	id: 1
 };
 
@@ -106,11 +106,22 @@ search.oninput = () => {
 			score: Math.min(...Object.keys(weight)
 				.map((key) => {
 					if (bot[key]) {
-						return distance(bot[key], fixtext(search.value)) / weight[key];
+						const score = distance(bot[key], fixtext(search.value)) * weight[key];
+						if (typeof score === 'number') return score;
 					}
 					return Number.MAX_SAFE_INTEGER;
+				})),
+			scores: Object.keys(weight)
+				.map((key) => {
+					if (bot[key]) {
+						const score = distance(bot[key], fixtext(search.value)) * weight[key];
+						if (typeof score === 'number') return score;
+					}
+					return {
+						score: Number.MAX_SAFE_INTEGER,
+						name: key
+					};
 				})
-				.filter(score => typeof score === 'number'))
 		},
 		bot
 	))).sort((a, b) => {
