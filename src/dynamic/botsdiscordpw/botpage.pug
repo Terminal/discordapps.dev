@@ -18,7 +18,11 @@ block content
 		.column.is-9.bot-info
 			span.title.is-4.pad-right #{botinfo.name}
 			p #{botinfo.shortDesc}
-			p Owner: #{botinfo.ownerinfo.username}##{botinfo.ownerinfo.discriminator}
+			p Owner: 
+				if botinfo.ownerinfo
+					each owner in botinfo.ownerinfo
+						if owner
+							span #{owner.username}##{owner.discriminator} 
 			p Prefix: 
 				code #{botinfo.prefix}
 		.column.is-1.has-text-right
