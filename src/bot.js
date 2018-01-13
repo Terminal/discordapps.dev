@@ -82,6 +82,8 @@ const validate = (req, res, next) => {
 		res.status(400).render('error', { status: 400, message: 'You provided an AsciiDoctor based long description that was too long (20000)' });
 	} else if (req.body.type === 'html' && req.body.longDesc > 200000) {
 		res.status(400).render('error', { status: 400, message: 'You provided a HTML based long description that was too long (200000)' });
+	} else if (req.body.owners.split(' ').length > 5) {
+		res.status(400).render('error', { status: 400, message: 'You provided too many additional owners. (Maximum: 5)' });
 	} else if (/\D/.test(req.body.id)) {
 		res.status(400).render('error', { status: 400, message: 'Your bot ID had values other than digits' });
 	} else {
@@ -165,6 +167,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.post('/add', userM.auth, csrfM.check, validate, async (req, res) => {
 		// Insert specific elements into the database.
 		// Input validated by Discord Middleware
+
+
 		const response = await r.table('bots')
 			.insert({
 				id: req.body.id,

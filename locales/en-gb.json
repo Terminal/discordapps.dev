@@ -24,7 +24,7 @@
 	"add_shortdesc": "Short Description",
 	"add_shortdesc_placeholder": "Insert Short Description",
 	"add_owners": "Additional Owners",
-	"add_owners_placeholder": "Additional Owner IDs (space-separated)",
+	"add_owners_placeholder": "Additional Owner IDs (space-separated, up to 5)",
 	"add_prefix": "Prefix",
 	"add_prefix_placeholder": "Insert Prefix",
 	"add_submit": "Submit",
