@@ -12,9 +12,6 @@ const list = async (req, res) => {
 			ownerinfo: bot('owner').map(id => r.table('users').get(id)).default({ username: 'Unknown', discriminator: '0000' })
 		}))
 		.run();
-
-	console.log(bots[0].ownerinfo[0]);
-
 	// If we're looking at approved/queued bots, filter it out
 	if (typeof res.locals.approve === 'boolean') {
 		bots = bots.filter(bot => bot.approved === res.locals.approve);

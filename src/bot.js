@@ -167,8 +167,6 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.post('/add', userM.auth, csrfM.check, validate, async (req, res) => {
 		// Insert specific elements into the database.
 		// Input validated by Discord Middleware
-
-
 		const response = await r.table('bots')
 			.insert({
 				id: req.body.id,
@@ -330,7 +328,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			})
 			.run();
 		const member = client.guilds.get(config.get('discord').guild).members.get(req.params.id);
-		console.log(member);
+		// console.log(member);
 
 		// Return a specific page
 		if (res.skipped) {
