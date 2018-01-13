@@ -1,6 +1,10 @@
 # ls.terminal.ink
 An open source Discord Bot listing website using Eris, Express and RethinkDB (and no jQuery if you select the `<table>` theme)
 
+Due to 7coil's inability to enforce the GNU GPLv3, this project is no longer updated on the open source side of things.
+
+[Part of the `ls.terminal.ink` development team and looking for the new project?](https://git.lepeli.fr/Terminal/ls.terminal.ink)
+
 ## Development Team
 Category            | People
 ------------------- | --------------------------
@@ -26,11 +30,6 @@ Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
 1. `cp config/default.rename.json config/default.json`
 1. Edit `config/default.json`
 1. `npm start`
-
-## Contributions
-- Please use tabs, preferably set to `4` column spacing to maintain alignment
-- Install dev dependancies while working on this
-- No ESlint errors please. Use `// eslint-disable-line` with permission
 
 ### Translations
 
