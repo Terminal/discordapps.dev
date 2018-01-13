@@ -91,7 +91,7 @@ router.get('/bots', async (req, res) => {
 			.default({})
 			.without('token')
 			.merge(info => ({
-				ownerinfo: r.table('users').get(info('owner')[0])
+				ownerinfo: r.table('users').get(info('owner').nth(0))
 			}))
 			.run();
 		request({ uri: bot.avatar, encoding: 'binary' }, (err, response, body) => {
