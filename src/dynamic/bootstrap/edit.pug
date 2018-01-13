@@ -37,7 +37,7 @@ block content
 						input#prefix.form-control(value=bot.prefix type="text" name="prefix" maxlength="200" placeholder=__('add_prefix_placeholder') required)
 					.form-group
 						label(for="owners") #{__('add_owners')}
-						input#owners.form-control(type="text" name="owners" maxlength="200" placeholder=__('add_owners_placeholder'))
+						input#owners.form-control(value=bot.owner type="text" name="owners" maxlength="200" placeholder=__('add_owners_placeholder'))
 					.form-group
 						small.form-text.text-muted #{__('add_longdesc_mute')}
 						label(for="type") #{__('add_longdesc')}

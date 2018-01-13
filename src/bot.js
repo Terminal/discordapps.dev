@@ -242,6 +242,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	})
 	.get('/:id/edit', userM.auth, csrfM.make, owns, (req, res) => {
 		// Display the edit screen with the bot's items
+		res.locals.bot.owner = res.locals.bot.owner.join(' ').replace(req.user.id, '');
 		res.render('edit.pug', {
 			bot: res.locals.bot,
 			themes: themelist
@@ -260,7 +261,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				prefix: req.body.prefix,
 				type: req.body.type,
 				theme: req.body.theme,
-				longDesc: req.body.longDesc
+				longDesc: req.body.longDesc,
+				owner: [req.user.id, ...req.body.owners.replace(req.user.id, '').split(' ')]
 			})
 			.run();
 
