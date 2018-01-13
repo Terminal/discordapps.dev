@@ -148,7 +148,7 @@ const owns = async (req, res, next) => {
 
 	if (!result) {
 		res.status(404).render('error', { status: 404, message: 'Bot not found' });
-	} else if (req.user.id === result.owner || req.user.admin) {
+	} else if (result.owner.includes(req.user.id) || req.user.admin) {
 		res.locals.bot = result;
 		next();
 	} else {
@@ -176,7 +176,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				prefix: req.body.prefix,
 				type: req.body.type,
 				longDesc: req.body.longDesc,
-				owner: req.user.id,
+				owner: [req.user.id, ...req.body.owners.split(' ')],
 				approved: false,
 				theme: req.body.theme,
 				token: crypto.randomBytes(64).toString('hex'),
@@ -213,7 +213,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				}))
 				.run();
 			let render = '';
-			if ((req.user && req.user.id) === botinfo.owner || (req.user && req.user.admin)) {
+			if (req.user && (botinfo.owner.includes(req.user.id) || req.user.admin)) {
 				botinfo.editable = true;
 			}
 			if (botinfo.longDesc) {

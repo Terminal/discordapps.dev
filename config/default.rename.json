@@ -21,8 +21,7 @@
 		"prefix": [
 			"ls>"
 		],
-		"admins": [],
-		"shards": 1
+		"admins": []
 	},
 	"webserver": {
 		"port": 8080,
