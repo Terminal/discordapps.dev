@@ -143,23 +143,16 @@ const validate = (req, res, next) => {
 	} else if (body.owners.length > 200) {
 		failure.push('error_owners_length');
 	} else if (failure.length === 0) {
-		// Remove duplicates
-		const owners = [...new Set(body.owners.split(/\D+/g))];
-
-		// If the current user is in the input, remove them
-		if (owners.indexOf(req.user.id)) {
-			owners.splice(owners.indexOf(req.user.id), 1);
-		}
+		// Remove duplicates, remove original owner
+		const owners = [...new Set(body.owners.split(/\D+/g))]
+			.filter(owner => owner !== req.user.id);
 
 		if (owners.length > 5) {
 			failure.push('error_owners_max');
 		} else if (owners.some(owner => owner.length > 25)) {
 			failure.push('error_owner_length');
-		} else if (owners.some(async owner => await r.table('users').get(owner) === null)) {
-			failure.push('error_owner_noexist');
 		} else {
-			// Add the original owner again
-			details.owners = [req.user.id, ...owners];
+			details.owners = owners;
 		}
 	}
 
@@ -169,13 +162,18 @@ const validate = (req, res, next) => {
 		failure.push('error_id_invalid');
 	} else if (body.id.length === 0) {
 		failure.push('error_id_blank');
-	} else if (body.id > 25) {
+	} else if (body.id.length > 25) {
 		failure.push('error_id_length');
 	} else if (/\D/.test(body.id)) {
 		failure.push('error_id_invalid');
-	} else if (failure.length === 0) {
+	} else {
+		details.id = body.id;
+	}
+
+	if (failure.length === 0) {
+		console.log('request start');
 		request({
-			uri: `https://discordapp.com/api/v6/users/${req.body.id}`,
+			uri: `https://discordapp.com/api/v6/users/${body.id}`,
 			method: 'GET',
 			headers: {
 				'User-Agent': config.get('useragent'),
@@ -240,44 +238,45 @@ const validate = (req, res, next) => {
 				} else {
 					// Error page where Discord has been contacted, and there is user error
 					res.render('error', {
-						message: failure.join(';')
+						message: failure.map(reason => res.__(reason)).join('; ')
 					});
 				}
 			} else {
 				// Error page where Discord has been contacted, but returned an error
 				res.render('error', {
-					message: failure.join(';')
+					message: failure.map(reason => res.__(reason)).join('; ')
 				});
 			}
 		});
 	} else {
 		// Error page where Discord has not been contacted, and there is user error
 		res.render('error', {
-			message: failure.join(';')
+			message: failure.map(reason => res.__(reason)).join('; ')
 		});
 	}
 };
 
 /**
- * Check if a user owns a bot, or is an admin
- * @param {*} req Express Request Information
- * @param {*} res Express Result Methods
- * @param {*} next Callback to run next middleware
+ * Check if a user matches a certain permission level
+ * @param {number} level The level at which to check at
+ * @returns {Function} The middleware
  */
-const owns = async (req, res, next) => {
-	const result = await r.table('bots')
-		.get(req.params.id || req.body.id)
-		.run();
+const owns = level =>
+	async (req, res, next) => {
+		const result = await r.table('bots')
+			.get(req.params.id || req.body.id)
+			.run();
 
-	if (!result) {
-		res.status(404).render('error', { status: 404, message: 'Bot not found' });
-	} else if (result.owners.includes(req.user.id) || req.user.admin) {
-		res.locals.bot = result;
-		next();
-	} else {
-		res.status(400).render('error', { status: 400, message: 'You are not allowed to edit other\'s bots' });
-	}
-};
+		if (!result) {
+			res.status(404).render('error', { status: 404, message: 'Bot not found' });
+		} else if ((level <= 3 && req.user.admin) || (level <= 2 && result.owner === req.user.id) || (level <= 1 && result.owners.includes(req.user.id))) {
+			res.locals.bot = result;
+			next();
+		} else {
+			res.status(400).render('error', { status: 400, message: 'You are not allowed to edit other\'s bots' });
+		}
+	};
+
 
 router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	// Display the add screen
@@ -339,9 +338,13 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				.get(req.params.id)
 				.without('token')
 				.merge(bot => ({
-					ownerinfo: bot('owner').map(id => r.table('users').get(id)).default({ username: 'Unknown', discriminator: '0000' })
-				}))
-				.run();
+					ownerinfo: bot('owners')
+						.default([])
+						.append(bot('owner'))
+						.map(id => r.table('users').get(id))
+						.default({ username: 'Unknown', discriminator: '0000' }),
+					owners: bot('owners').default([])
+				}));
 			let render = '';
 			if (req.user && (botinfo.owner.includes(req.user.id) || req.user.admin)) {
 				botinfo.editable = true;
@@ -368,15 +371,15 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			});
 		}
 	})
-	.get('/:id/edit', userM.auth, csrfM.make, owns, (req, res) => {
+	.get('/:id/edit', userM.auth, csrfM.make, owns(1), (req, res) => {
 		// Display the edit screen with the bot's items
-		res.locals.bot.owner = res.locals.bot.owner.join(' ').replace(req.user.id, '');
 		res.render('edit.pug', {
 			bot: res.locals.bot,
+			owners: res.locals.bot.owners ? res.locals.bot.owners.join(' ') : '',
 			themes: themelist
 		});
 	})
-	.post('/:id/edit', userM.auth, csrfM.check, owns, validate, async (req, res) => {
+	.post('/:id/edit', userM.auth, csrfM.check, owns(1), validate, async (req, res) => {
 		// Edit only the bits that need to be edited
 		const response = await r.table('bots')
 			.get(req.params.id)
@@ -395,17 +398,11 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			}
 		}
 	})
-	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
+	.get('/:id/delete', userM.auth, csrfM.make, owns(2), (req, res) => {
 		// View a page before deleting the bot
 		res.render('delete');
 	})
-	.get('/:id/delete', userM.auth, csrfM.make, owns, (req, res) => {
-		// View a page before deleting the bot
-		res.render('delete.pug', {
-			title: 'Delete Bot'
-		});
-	})
-	.post('/:id/delete', userM.auth, csrfM.check, owns, (req, res) => {
+	.post('/:id/delete', userM.auth, csrfM.check, owns(2), (req, res) => {
 		// Delete the bot
 		r.table('bots')
 			.get(req.params.id)
@@ -415,13 +412,13 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		res.redirect('/');
 		client.createMessage(config.get('discord').channel, `<@${req.user.id}> deleted \`${res.locals.bot.name}\` <@${res.locals.bot.id}> by <@${res.locals.bot.owner}>`);
 	})
-	.get('/:id/token', userM.auth, csrfM.make, owns, (req, res) => {
+	.get('/:id/token', userM.auth, csrfM.make, owns(1), (req, res) => {
 		// Display the token for this bot
 		res.render('token.pug', {
 			bot: res.locals.bot
 		});
 	})
-	.post('/:id/token', userM.auth, csrfM.check, owns, async (req, res) => {
+	.post('/:id/token', userM.auth, csrfM.check, owns(1), async (req, res) => {
 		// Generate a new token
 		await r.table('bots')
 			.get(req.params.id)
