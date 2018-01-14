@@ -65,6 +65,12 @@ module.exports = async (message, callback) => {
 		}
 	}
 
+	// Set the permission level
+	/*
+	 * 3: Administrator of the bot
+	 * 2: Has administrator role
+	 * 1: Can kick/ban
+	 */
 	if (config.get('discord').admins.includes(message.author.id)) {
 		mss.admin = 3;
 	} else if (message.member && message.member.permission.has('administrator')) {
@@ -72,6 +78,7 @@ module.exports = async (message, callback) => {
 	} else if (message.member && (message.member.permission.has('kickMembers') || message.member.permission.has('banMembers'))) {
 		mss.admin = 1;
 	}
+
 	message.mss = mss;
 
 	const locale = await r.table('i18n')

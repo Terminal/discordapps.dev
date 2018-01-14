@@ -9,19 +9,29 @@ const list = async (req, res) => {
 	let bots = await r.table('bots')
 		.without('token')
 		.merge(bot => ({
-			ownerinfo: bot('owner').map(id => r.table('users').get(id)).default({ username: 'Unknown', discriminator: '0000' })
-		}))
-		.run();
+			ownerinfo: bot('owners')
+				.default([])
+				.append(bot('owner'))
+				.map(id => r.table('users').get(id))
+				.default({ username: 'Unknown', discriminator: '0000' }),
+			owners: bot('owners').default([])
+		}));
 	// If we're looking at approved/queued bots, filter it out
 	if (typeof res.locals.approve === 'boolean') {
 		bots = bots.filter(bot => bot.approved === res.locals.approve);
 	}
 
-	// Add an "editable" flag if the user can edit the bot.
+	// Add an "editable" flag to show level of ownership
 	// This is used on the page to display buttons like `edit` or `token`
 	bots = bots.map((bot) => {
-		if (req.user && (req.user.id === bot.owner || req.user.admin)) {
-			bot.editable = true;
+		if (req.user && req.user.admin) {
+			bot.editable = 3;
+		} else if (req.user && req.user.id === bot.owner) {
+			bot.editable = 2;
+		} else if (req.user && bot.owners.includes(req.user.id)) {
+			bot.editable = 1;
+		} else {
+			bot.editable = 0;
 		}
 		return bot;
 	});
@@ -35,7 +45,7 @@ const list = async (req, res) => {
 
 	// If we're looking for owner bots only, filter it
 	if (res.locals.owner) {
-		bots = bots.filter(bot => bot.owner.includes(res.locals.owner));
+		bots = bots.filter(bot => req.user.id === bot.owner || bot.owners.includes(res.locals.owner));
 	}
 
 	// Send the list of bots to the client, as well as CSRF in case an action needs it.

@@ -30,20 +30,21 @@ block jumbotron
 					span #{botinfo.shortDesc}
 					p #{__('list_prefix', { prefix: botinfo.prefix })}
 			.row
-				if user && user.admin
-					if !botinfo.approved && csrf
-						form.buddon(action=`/bot/${botinfo.id}/approve` method="POST")
-							button.btn.btn-success(type="submit") #{__('list_approve')}
-							input.hide(type="text" name="id" value=`${botinfo.id}`)
-							input.hide(type="text" name="csrf" value=`${csrf}`)
-							input.hide(type="text" name="approve" value="true")
-					if csrf
-						a.btn.btn-danger(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+				if botinfo.editable >= 3 && !botinfo.approved && csrf
+					form.buddon(action=`/bot/${botinfo.id}/approve` method="POST")
+						button.btn.btn-success(type="submit") #{__('list_approve')}
+						input.hide(type="text" name="csrf" value=`${csrf}`)
+				if botinfo.editable >= 3 && csrf
+					a.btn.btn-danger(href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+				if botinfo.editable >= 3
 					a.btn.btn-info(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
-				if botinfo.editable
+				if botinfo.editable >= 1
 					a.btn.btn-primary(href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+				if botinfo.editable >= 2
 					a.btn.btn-danger(href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+				if botinfo.editable >= 1
 					a.btn.btn-info(href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+				a.btn.btn-info(href=`/bot/${botinfo.id}`) #{__('list_info')}
 				a.btn.btn-info(href=botinfo.invite) #{__('list_invite')}
 
 block content
