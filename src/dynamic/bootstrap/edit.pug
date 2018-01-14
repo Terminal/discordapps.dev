@@ -21,7 +21,7 @@ block content
 						input#name.form-control(value=bot.name type="text" name="name" maxlength="32" placeholder=__('add_name_placeholder'))
 					.form-group
 						label(for="count") #{__('add_guild_count')}
-						input#count.form-control(value=bot.count type="number" name="count" min="0" max="1000000" step="1" placeholder=__('add_guild_count_placeholder') required)
+						input#count.form-control(value=bot.count.join(' ') type="number" name="count" min="0" max="1000000" step="1" placeholder=__('add_guild_count_placeholder'))
 					.form-group
 						label(for="avatar") #{__('add_avatar_url')}
 						input#avatar.form-control(value=bot.avatar type="text" name="avatar" maxlength="2000" placeholder=__('add_avatar_url_placeholder') pattern="https:\\/\\/.+")
@@ -37,7 +37,7 @@ block content
 						input#prefix.form-control(value=bot.prefix type="text" name="prefix" maxlength="200" placeholder=__('add_prefix_placeholder') required)
 					.form-group
 						label(for="owners") #{__('add_owners')}
-						input#owners.form-control(value=bot.owner type="text" name="owners" maxlength="200" placeholder=__('add_owners_placeholder'))
+						input#owners.form-control(value=bot.owners type="text" name="owners" maxlength="200" placeholder=__('add_owners_placeholder'))
 					.form-group
 						small.form-text.text-muted #{__('add_longdesc_mute')}
 						label(for="type") #{__('add_longdesc')}

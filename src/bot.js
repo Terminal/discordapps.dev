@@ -40,100 +40,221 @@ const clean = (html) => {
  * @param {*} next Callback to run next middleware
  */
 const validate = (req, res, next) => {
-	if (typeof req.body.id !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an invalid ID' });
-	} else if (typeof req.body.shortDesc !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an invalid short description' });
-	} else if (typeof req.body.prefix !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an invalid prefix' });
-	} else if (typeof req.body.type !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an invalid type' });
-	} else if (!description.some(type => req.body.type === type)) {
-		res.status(400).render('error', { status: 400, message: 'You provided an incorrect type' });
-	} else if (typeof req.body.longDesc !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an invalid long description' });
-	} else if (typeof req.body.count !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an invalid guild count' });
-	} else if (typeof req.body.theme !== 'string') {
-		res.status(400).render('error', { status: 400, message: 'You provided an invalid theme ID' });
-	} else if (!themelist.some(theme => req.body.theme === theme)) {
-		res.status(400).render('error', { status: 400, message: 'You provided an incorrect theme' });
-	} else if (req.body.id.length > 70) {
-		res.status(400).render('error', { status: 400, message: 'You provided a bot id that was too long (70)' });
-	} else if (req.body.shortDesc.length > 200) {
-		res.status(400).render('error', { status: 400, message: 'You provided a short description that was too long (200)' });
+	const details = {};
+	const failure = [];
+	const body = req.body;
+
+	// Check the short description
+	if (typeof body.shortDesc !== 'string') {
+		failure.push('error_shortdesc_invalid');
+	} else if (body.shortDesc.length === 0) {
+		failure.push('error_shortdesc_blank');
+	} else if (body.shortDesc.length > 200) {
+		failure.push('error_shortdesc_length');
+	} else if (failure.length === 0) {
+		details.shortDesc = body.shortDesc;
+	}
+
+	// Check the prefix
+	if (typeof body.prefix !== 'string') {
+		failure.push('error_prefix_invalid');
+	} else if (body.prefix.length === 0) {
+		failure.push('error_prefix_blank');
 	} else if (req.body.prefix.length > 50) {
-		res.status(400).render('error', { status: 400, message: 'You provided a prefix that was too long (50)' });
-	} else if (req.body.avatar.length > 2000) {
-		res.status(400).render('error', { status: 400, message: 'You provided an avatar that was too long (2000)' });
-	} else if (/\D/.test(req.body.count)) {
-		res.status(400).render('error', { status: 400, message: 'Your bot count had values other than digits' });
+		failure.push('error_prefix_length');
+	} else if (failure.length === 0) {
+		details.prefix = body.prefix;
+	}
+
+	// Check the type
+	if (typeof body.type !== 'string') {
+		failure.push('error_type_invalid');
+	} else if (!description.some(type => body.type === type)) {
+		failure.push('error_type_invalid');
+	} else if (failure.length === 0) {
+		details.type = body.type;
+
+		// There is a type, so there should be a long description to go along
+		if (typeof body.longDesc !== 'string') {
+			failure.push('error_longdesc_invalid');
+		} else if (body.longDesc.length === 0) {
+			failure.push('error_longdesc_blank');
+		} else if (body.type === 'iframe') {
+			// Validate the iframe input
+			if (body.longDesc.length > 2000) {
+				failure.push('error_longdesc_iframe_length');
+			} else if (!/^https:\/\//.test(body.longDesc)) {
+				failure.push('error_longdesc_iframe_https');
+			} else {
+				details.longDesc = body.longDesc;
+			}
+		} else if (body.type === 'markdown') {
+			// Validate the markdown input
+			if (body.longDesc.length > 20000) {
+				failure.push('error_longdesc_markdown_length');
+			} else {
+				details.longDesc = body.longDesc;
+			}
+		} else if (body.type === 'asciidoctor') {
+			// Validate the ASCIIdoctor input
+			if (body.longDesc.length > 20000) {
+				failure.push('error_longdesc_asciidoctor_length');
+			} else {
+				details.longDesc = body.longDesc;
+			}
+		} else if (body.type === 'html') {
+			// Validate the HTML input
+			// Dangerous tags are removed when sent to the client
+			if (body.longDesc.length > 200000) {
+				failure.push('error_longdesc_html_length');
+			} else {
+				details.longDesc = body.longDesc;
+			}
+		}
+	}
+
+	// Validate the bot counts
+	if (typeof body.count !== 'string') {
+		failure.push('error_count_invalid');
+	} else if (body.count.length === 0) {
+		details.count = 0;
+	} else if (/\D/.test(body.count)) {
+		failure.push('error_count_invalid');
 	} else if (parseInt(req.body.count, 10) < 0) {
-		res.status(400).render('error', { status: 400, message: 'Your bot count was too low (0)' });
-	} else if (parseInt(req.body.count, 10) > 1000000) {
-		res.status(400).render('error', { status: 400, message: 'Your bot count was too high (1000000)' });
-	} else if (req.body.type === 'iframe' && !/^https:\/\//.test(req.body.longDesc)) {
-		res.status(400).render('error', { status: 400, message: 'Your iframe based long description must use HTTPS' });
-	} else if (req.body.type === 'iframe' && req.body.longDesc > 2000) {
-		res.status(400).render('error', { status: 400, message: 'You provided an iframe based long description that was too long (2000)' });
-	} else if (req.body.type === 'markdown' && req.body.longDesc > 20000) {
-		res.status(400).render('error', { status: 400, message: 'You provided a markdown based long description that was too long (20000)' });
-	} else if (req.body.type === 'asciidoctor' && req.body.longDesc > 20000) {
-		res.status(400).render('error', { status: 400, message: 'You provided an AsciiDoctor based long description that was too long (20000)' });
-	} else if (req.body.type === 'html' && req.body.longDesc > 200000) {
-		res.status(400).render('error', { status: 400, message: 'You provided a HTML based long description that was too long (200000)' });
-	} else if (req.body.owners.split(' ').length > 5) {
-		res.status(400).render('error', { status: 400, message: 'You provided too many additional owners. (Maximum: 5)' });
-	} else if (/\D/.test(req.body.id)) {
-		res.status(400).render('error', { status: 400, message: 'Your bot ID had values other than digits' });
-	} else {
-		if (!req.body.invite) { // If there is no invite, make one up using the ID.
-			req.body.invite = `https://discordapp.com/oauth2/authorize?client_id=${req.body.id}&scope=bot&permissions=0`;
+		failure.push('error_count_low');
+	} else if (parseInt(body.count, 10) > 1000000) {
+		failure.push('error_count_low');
+	} else if (failure.length === 0) {
+		details.count = parseInt(body.count, 10);
+	}
+
+	// Validate the bot theme
+	if (typeof body.theme !== 'string') {
+		failure.push('error_theme_invalid');
+	} else if (!themelist.some(theme => req.body.theme === theme)) {
+		failure.push('error_theme_invalid');
+	} else if (failure.length === 0) {
+		details.theme = body.theme;
+	}
+
+	// Validate the owners
+	if (typeof body.owners !== 'string') {
+		failure.push('error_owners_invalid');
+	} else if (body.owners.length > 200) {
+		failure.push('error_owners_length');
+	} else if (failure.length === 0) {
+		// Remove duplicates
+		const owners = [...new Set(body.owners.split(/\D+/g))];
+
+		// If the current user is in the input, remove them
+		if (owners.indexOf(req.user.id)) {
+			owners.splice(owners.indexOf(req.user.id), 1);
 		}
 
-		if (typeof req.body.invite !== 'string') {
-			res.status(400).render('error', { status: 400, message: 'You provided an invalid invite' });
-		} else if (req.body.invite.length > 2000) {
-			res.status(400).render('error', { status: 400, message: 'You provided an invite that was too long (2000)' });
-		} else if (!/^https?:\/\//.test(req.body.invite)) {
-			res.status(400).render('error', { status: 400, message: 'Your invite must use HTTP or HTTPS' });
+		if (owners.length > 5) {
+			failure.push('error_owners_max');
+		} else if (owners.some(owner => owner.length > 25)) {
+			failure.push('error_owner_length');
+		} else if (owners.some(async owner => await r.table('users').get(owner) === null)) {
+			failure.push('error_owner_noexist');
 		} else {
-			request({
-				uri: `https://discordapp.com/api/v6/users/${req.body.id}`,
-				method: 'GET',
-				headers: {
-					'User-Agent': config.get('useragent'),
-					Authorization: `Bot ${config.get('discord').token}`
-				},
-				json: true
-			}, (err, response, body) => {
-				if (!req.body.avatar && body.avatar) {
-					req.body.avatar = `https://cdn.discordapp.com/avatars/${body.id}/${body.avatar}`;
-				}
-
-				if (!req.body.name) {
-					req.body.name = body.username;
-				}
-
-				if (response.statusCode === 404) {
-					res.status(404).render('error', { status: 404, message: 'Discord could not find your bot.' });
-				} else if (body.code) {
-					res.status(500).render('error', { status: 500, message: `Discord returned error ${response.statusCode}: ${body.code} - ${body.message}` });
-				} else if (!body.bot) {
-					res.status(400).render('error', { status: 400, message: 'Userbots are not allowed' });
-				} else if (typeof req.body.avatar !== 'string') {
-					res.status(400).render('error', { status: 400, message: 'You provided an invalid avatar' });
-				} else if (!/^https:\/\//.test(req.body.avatar) && req.body.avatar) {
-					res.status(400).render('error', { status: 400, message: 'Your avatar must use HTTPS' });
-				} else if (typeof req.body.name !== 'string') {
-					res.status(400).render('error', { status: 400, message: 'You provided an invalid name' });
-				} else if (req.body.name.length > 32) {
-					res.status(400).render('error', { status: 400, message: 'You provided a name that was too long (32)' });
-				} else {
-					next();
-				}
-			});
+			// Add the original owner again
+			details.owners = [req.user.id, ...owners];
 		}
+	}
+
+	// Validate the ID.
+	// If it's valid, contact Discord
+	if (typeof body.id !== 'string') {
+		failure.push('error_id_invalid');
+	} else if (body.id.length === 0) {
+		failure.push('error_id_blank');
+	} else if (body.id > 25) {
+		failure.push('error_id_length');
+	} else if (/\D/.test(body.id)) {
+		failure.push('error_id_invalid');
+	} else if (failure.length === 0) {
+		request({
+			uri: `https://discordapp.com/api/v6/users/${req.body.id}`,
+			method: 'GET',
+			headers: {
+				'User-Agent': config.get('useragent'),
+				Authorization: `Bot ${config.get('discord').token}`
+			},
+			json: true
+		}, (err, response, discordResponse) => {
+			if (response.statusCode === 404) {
+				failure.push('error_discord_not_found');
+			} else if (body.code) {
+				failure.push('error_discord_error');
+				console.dir(discordResponse);
+			}
+
+			if (failure.length === 0) {
+				// Validate the invite
+				if (typeof body.invite !== 'string') {
+					failure.push('error_invite_invalid');
+				} else if (body.invite.length === 0) {
+					details.invite = `https://discordapp.com/oauth2/authorize?client_id=${req.body.id}&scope=bot&permissions=0`;
+				} else if (body.invite.length > 2000) {
+					failure.push('error_invite_length');
+				} else if (!/^https?:\/\//.test(body.invite)) {
+					failure.push('error_invite_http');
+				} else if (failure.length === 0) {
+					details.invite = body.invite;
+				}
+
+				// Validate the avatar
+				if (typeof body.avatar !== 'string') {
+					failure.push('error_avatar_invalid');
+				} else if (body.avatar.length === 0) {
+					details.avatar = `https://cdn.discordapp.com/avatars/${discordResponse.id}/${discordResponse.avatar}`;
+				} else if (body.avatar.length > 2000) {
+					failure.push('error_avatar_length');
+				} else if (!/^https:\/\//.test(body.avatar)) {
+					failure.push('error_avatar_https');
+				} else if (failure.length === 0) {
+					details.avatar = body.avatar;
+				}
+
+				// Validate the name
+				if (typeof body.name !== 'string') {
+					failure.push('error_name_invalid');
+				} else if (body.name.length === 0) {
+					details.name = discordResponse.username;
+				} else if (body.name.length > 32) {
+					failure.push('error_name_length');
+				} else {
+					details.name = body.name;
+				}
+
+				// Check if the user is a bot or not
+				if (!discordResponse.bot) {
+					failure.push('error_discord_userbot');
+				}
+
+				if (failure.length === 0) {
+					// No errors was found
+					res.locals.details = details;
+					next();
+				} else {
+					// Error page where Discord has been contacted, and there is user error
+					res.render('error', {
+						message: failure.join(';')
+					});
+				}
+			} else {
+				// Error page where Discord has been contacted, but returned an error
+				res.render('error', {
+					message: failure.join(';')
+				});
+			}
+		});
+	} else {
+		// Error page where Discord has not been contacted, and there is user error
+		res.render('error', {
+			message: failure.join(';')
+		});
 	}
 };
 
@@ -150,7 +271,7 @@ const owns = async (req, res, next) => {
 
 	if (!result) {
 		res.status(404).render('error', { status: 404, message: 'Bot not found' });
-	} else if (result.owner.includes(req.user.id) || req.user.admin) {
+	} else if (result.owners.includes(req.user.id) || req.user.admin) {
 		res.locals.bot = result;
 		next();
 	} else {
@@ -167,24 +288,31 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.post('/add', userM.auth, csrfM.check, validate, async (req, res) => {
 		// Insert specific elements into the database.
 		// Input validated by Discord Middleware
+		// const response = await r.table('bots')
+		// 	.insert({
+		// 		id: req.body.id,
+		// 		name: req.body.name,
+		// 		avatar: req.body.avatar,
+		// 		invite: req.body.invite,
+		// 		count: parseInt(req.body.count, 10),
+		// 		shortDesc: req.body.shortDesc,
+		// 		prefix: req.body.prefix,
+		// 		type: req.body.type,
+		// 		longDesc: req.body.longDesc,
+		// 		owner: [req.user.id, ...req.body.owners.split(' ')],
+		// 		approved: false,
+		// 		theme: req.body.theme,
+		// 		timestamp: Date.now()
+		// 	})
+		// 	.run();
+
 		const response = await r.table('bots')
-			.insert({
-				id: req.body.id,
-				name: req.body.name,
-				avatar: req.body.avatar,
-				invite: req.body.invite,
-				count: parseInt(req.body.count, 10),
-				shortDesc: req.body.shortDesc,
-				prefix: req.body.prefix,
-				type: req.body.type,
-				longDesc: req.body.longDesc,
-				owner: [req.user.id, ...req.body.owners.split(' ')],
-				approved: false,
-				theme: req.body.theme,
+			.insert(Object.assign(res.locals.details), {
+				owner: req.user.id,
 				token: crypto.randomBytes(64).toString('hex'),
-				timestamp: Date.now()
-			})
-			.run();
+				timestamp: Date.now(),
+				approved: false
+			});
 
 		if (response.errors) {
 			res.status(409).render('error', {
@@ -252,18 +380,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		// Edit only the bits that need to be edited
 		const response = await r.table('bots')
 			.get(req.params.id)
-			.update({
-				name: req.body.name,
-				avatar: req.body.avatar,
-				invite: req.body.invite,
-				count: parseInt(req.body.count, 10),
-				shortDesc: req.body.shortDesc,
-				prefix: req.body.prefix,
-				type: req.body.type,
-				theme: req.body.theme,
-				longDesc: req.body.longDesc,
-				owner: [req.user.id, ...req.body.owners.replace(req.user.id, '').split(' ')]
-			})
+			.update(res.locals.details)
 			.run();
 
 		// Redirect to the bot page
