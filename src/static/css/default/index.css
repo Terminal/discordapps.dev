@@ -43,41 +43,126 @@
 .magenta {
   background-color: #ff00ff; }
 
-.header-darken {
-  background-color: #b7b7b7; }
+.shadow-darken {
+  background-color: rgba(0, 0, 0, 0.2); }
 
-.header-lighten {
+.shadow-lighten {
+  background-color: rgba(38, 38, 38, 0.2); }
+
+.shadow {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.white-darken {
+  background-color: #d9d9d9; }
+
+.white-lighten {
   background-color: white; }
 
-.header {
-  background-color: #dddddd; }
+.white {
+  background-color: #ffffff; }
 
-.footer-darken {
-  background-color: #a6a6a6; }
+header {
+  display: flex;
+  align-items: center;
+  height: 3.5em;
+  background-color: #dddddd;
+  box-shadow: 0.1em 0.2em 0.1em rgba(0, 0, 0, 0.2); }
+  header .item {
+    padding-left: 1em; }
+    header .item * {
+      display: block;
+      max-height: 3.5em;
+      padding: 0px;
+      margin: 0px; }
+  header .right {
+    margin-left: auto; }
 
-.footer-lighten {
-  background-color: #f2f2f2; }
+.jumbotron {
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 2em; }
+  .jumbotron input {
+    width: 100%;
+    font-size: 16pt; }
+  @media screen and (max-width: 800px) {
+    .jumbotron {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0.5em; } }
 
-.footer {
-  background-color: #cccccc; }
-
-.aside-darken {
-  background-color: #c8c8c8; }
-
-.aside-lighten {
-  background-color: white; }
-
-.aside {
-  background-color: #eeeeee; }
-
-.button-darken {
-  background-color: #404040; }
-
-.button-lighten {
-  background-color: #8c8c8c; }
+.botcard {
+  display: inline-block;
+  padding: 1em;
+  width: 30em;
+  border: 0.5px solid #cccccc;
+  margin-bottom: 0.5em;
+  margin-right: 0.5em;
+  box-shadow: 0.1em 0.2em 0.1em rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; }
+  @media screen and (max-width: 800px) {
+    .botcard {
+      width: 90%; } }
+  .botcard h1 {
+    text-decoration: none;
+    margin: 0.3em 0; }
+  .botcard img {
+    width: 7em;
+    margin-left: 0.3em; }
+  .botcard .info {
+    flex-grow: 1; }
 
 .button {
-  background-color: #666666; }
+  display: inline-block;
+  background-color: #666666;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.3em;
+  margin-right: 0.3em;
+  margin-bottom: 0.3em;
+  border-radius: 0.25em;
+  text-decoration: none; }
+  .button.hover:hover, .button.hover:focus {
+    transition: all 0.3s;
+    background: rgba(0, 0, 0, 0.4); }
+
+aside {
+  z-index: 1;
+  height: 100%;
+  box-shadow: 0.1em 0.2em 0.1em rgba(0, 0, 0, 0.2); }
+  aside .navigation {
+    background-color: #eeeeee; }
+    aside .navigation .item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 2em;
+      width: 100%;
+      padding: 0.5em; }
+    aside .navigation .icon {
+      padding: 0.5em; }
+      aside .navigation .icon i {
+        color: #ffffff; }
+      aside .navigation .icon img {
+        display: block;
+        max-height: 2em; }
+    aside .navigation a {
+      text-decoration: none !important;
+      color: #000000; }
+    aside .navigation .hover:hover, aside .navigation .hover:focus {
+      transition: all 0.3s;
+      background: rgba(0, 0, 0, 0.2); }
+    aside .navigation .enlarge {
+      width: 100%;
+      transition: width 0.3s, box-shadow 0.3s; }
+      aside .navigation .enlarge:hover, aside .navigation .enlarge:focus {
+        display: absolute;
+        width: calc(100% + 2em); }
+    @media screen and (max-width: 800px) {
+      aside .navigation {
+        min-width: 3em;
+        width: 3em;
+        overflow-x: hidden; } }
 
 body {
   display: flex;
@@ -90,50 +175,9 @@ body {
 footer {
   text-align: center;
   background-color: #cccccc;
-  padding: 3em;
-  flex: 1; }
+  padding: 3em; }
   footer .right {
     margin-left: auto; }
-
-header {
-  display: flex;
-  align-items: center;
-  height: 3.5em;
-  background-color: #dddddd; }
-  header .item {
-    padding-left: 1em; }
-    header .item * {
-      display: block;
-      max-height: 3.5em;
-      padding: 0px;
-      margin: 0px; }
-  header .right {
-    margin-left: auto; }
-
-aside {
-  background-color: #eeeeee; }
-  aside .item {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 2em;
-    width: 100%;
-    padding: 0.5em; }
-  aside .icon {
-    padding: 0.5em; }
-    aside .icon i {
-      color: #ffffff; }
-    aside .icon img {
-      display: block;
-      max-height: 2em; }
-  aside a {
-    text-decoration: none !important;
-    color: #000000; }
-  @media screen and (max-width: 800px) {
-    aside {
-      min-width: 3em;
-      width: 3em;
-      overflow-x: hidden; } }
 
 form {
   max-width: 70vw; }
@@ -160,57 +204,20 @@ main {
     main {
       padding: 0.5em; } }
 
+.body {
+  flex-grow: 1; }
+
 .horizontal {
   display: flex;
   flex-direction: row; }
   .horizontal .wrap {
     flex-wrap: wrap; }
 
-.hover {
-  background: transparent;
-  transition: all 0.3s; }
-  .hover:hover, .hover:focus {
-    background: rgba(0, 0, 0, 0.4); }
-
-.botcard {
-  display: inline-block;
-  padding: 1em;
-  width: 30em;
-  border: 0.5px solid #cccccc;
-  margin-bottom: 0.5em;
-  margin-right: 0.5em; }
-  @media screen and (max-width: 800px) {
-    .botcard {
-      width: 90%; } }
-  .botcard h1 {
-    text-decoration: none;
-    margin: 0.3em 0; }
-  .botcard img {
-    width: 7em;
-    margin-left: 0.3em; }
-
-.enlarge {
-  width: 100%;
-  transition: width 0.3s; }
-  .enlarge:hover, .enlarge:focus {
-    width: 120%; }
-
 .hide {
   display: none; }
 
 .inline-block {
   display: inline-block; }
-
-.button {
-  display: inline-block;
-  background-color: #666666;
-  color: #FFFFFF;
-  border: none;
-  padding: 0.3em;
-  margin-right: 0.3em;
-  margin-bottom: 0.3em;
-  border-radius: 0.25em;
-  text-decoration: none; }
 
 .botiframe {
   width: 100%;

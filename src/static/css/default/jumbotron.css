@@ -1,0 +1,14 @@
+.jumbotron {
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-bottom: 2em; }
+  .jumbotron input {
+    width: 100%;
+    font-size: 16pt; }
+  @media screen and (max-width: 800px) {
+    .jumbotron {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 0.5em; } }
+
+/*# sourceMappingURL=jumbotron.css.map */

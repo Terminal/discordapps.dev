@@ -1,0 +1,39 @@
+aside {
+  z-index: 1;
+  height: 100%;
+  box-shadow: 0.1em 0.2em 0.1em getColour(shadow); }
+  aside .navigation {
+    background-color: #eeeeee; }
+    aside .navigation .item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 2em;
+      width: 100%;
+      padding: 0.5em; }
+    aside .navigation .icon {
+      padding: 0.5em; }
+      aside .navigation .icon i {
+        color: #ffffff; }
+      aside .navigation .icon img {
+        display: block;
+        max-height: 2em; }
+    aside .navigation a {
+      text-decoration: none !important;
+      color: #000000; }
+    aside .navigation .hover:hover, aside .navigation .hover:focus {
+      transition: all 0.3s;
+      background: rgba(0, 0, 0, 0.2); }
+    aside .navigation .enlarge {
+      width: 100%;
+      transition: width 0.3s, box-shadow 0.3s; }
+      aside .navigation .enlarge:hover, aside .navigation .enlarge:focus {
+        display: absolute;
+        width: calc(100% + 2em); }
+    @media screen and (max-width: 800px) {
+      aside .navigation {
+        min-width: 3em;
+        width: 3em;
+        overflow-x: hidden; } }
+
+/*# sourceMappingURL=aside.css.map */

@@ -43,40 +43,22 @@
 .magenta {
   background-color: #ff00ff; }
 
-.header-darken {
-  background-color: #b7b7b7; }
+.shadow-darken {
+  background-color: rgba(0, 0, 0, 0.2); }
 
-.header-lighten {
+.shadow-lighten {
+  background-color: rgba(38, 38, 38, 0.2); }
+
+.shadow {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.white-darken {
+  background-color: #d9d9d9; }
+
+.white-lighten {
   background-color: white; }
 
-.header {
-  background-color: #dddddd; }
-
-.footer-darken {
-  background-color: #a6a6a6; }
-
-.footer-lighten {
-  background-color: #f2f2f2; }
-
-.footer {
-  background-color: #cccccc; }
-
-.aside-darken {
-  background-color: #c8c8c8; }
-
-.aside-lighten {
-  background-color: white; }
-
-.aside {
-  background-color: #eeeeee; }
-
-.button-darken {
-  background-color: #404040; }
-
-.button-lighten {
-  background-color: #8c8c8c; }
-
-.button {
-  background-color: #666666; }
+.white {
+  background-color: #ffffff; }
 
 /*# sourceMappingURL=colour.css.map */

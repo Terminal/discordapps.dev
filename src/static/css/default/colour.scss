@@ -4,10 +4,8 @@ $colours: (
 	"blue": #5555ff,
 	"orange": #ffa500,
 	"magenta": #ff00ff,
-	header: #dddddd,
-	footer: #cccccc,
-	aside: #eeeeee,
-	button: #666666
+	"shadow": rgba(0, 0, 0, 0.2),
+	"white": #ffffff
 );
 
 @function getColour($colour) {

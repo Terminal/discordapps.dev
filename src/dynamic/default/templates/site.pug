@@ -32,70 +32,72 @@ html(lang=lang)
 				span #{__('website')}
 			.item.right
 				img(src="/img/terminal512.png" alt=__('alt_logo'))
-		.horizontal
+		.horizontal.body
 			aside
-				a.horizontal.enlarge(data-ajax-url href="/")
-					.icon.red
-						img(src="/img/icon/white_home.svg" alt=__('nav_homepage'))
-					.item.red-lighten
-						span #{__('nav_homepage')}
-				if user
-					a.horizontal.enlarge(data-ajax-url href=`/list/${user.id}`)
-						.icon.blue
-							img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="imageFail()" alt=user.username)
-						.item.blue-lighten
-							span #{user.username}
-					a.horizontal.enlarge(data-ajax-url href="/bot/add")
-						.icon.magenta
-							img(src="/img/icon/white_add.svg" alt=__('nav_add'))
-						.item.magenta-lighten
-							span #{__('nav_add')}
-				a.horizontal.enlarge(data-ajax-url href="/list/all")
-					.icon.green
-						img(src="/img/icon/white_all.svg" alt=__('nav_all'))
-					.item.green-lighten
-						span #{__('nav_all')}
-				a.horizontal.enlarge(data-ajax-url href="/list/queue")
-					.icon.orange
-						img(src="/img/icon/white_queue.svg" alt=__('nav_queue'))
-					.item.orange-lighten
-						span #{__('nav_queue')}
-				.hover
-					a.horizontal(data-ajax-url href="/lang")
-						.icon
-							img(src="/img/icon/black_language.svg" alt=__('nav_lang'))
-						.item
-							span #{__('nav_lang')}
-				.hover
-					a.horizontal(data-ajax-url href="/theme")
-						.icon
-							img(src="/img/icon/black_theme.svg" alt=__('nav_theme'))
-						.item
-							span #{__('nav_theme')}
-				.hover
-					a.horizontal(data-ajax-url href="/docs")
-						.icon
-							img(src="/img/icon/black_library_books.svg" alt=__('nav_documentation'))
-						.item
-							span #{__('nav_documentation')}
-				.hover
+				.navigation
+					a.horizontal.enlarge(data-ajax-url href="/")
+						.icon.red
+							img(src="/img/icon/white_home.svg" alt=__('nav_homepage'))
+						.item.red-lighten
+							span #{__('nav_homepage')}
 					if user
-						a.horizontal(data-ajax-url href="/auth/logout")
+						a.horizontal.enlarge(data-ajax-url href=`/list/${user.id}`)
+							.icon.blue
+								img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="imageFail()" alt=user.username)
+							.item.blue-lighten
+								span #{user.username}
+						a.horizontal.enlarge(data-ajax-url href="/bot/add")
+							.icon.magenta
+								img(src="/img/icon/white_add.svg" alt=__('nav_add'))
+							.item.magenta-lighten
+								span #{__('nav_add')}
+					a.horizontal.enlarge(data-ajax-url href="/list/all")
+						.icon.green
+							img(src="/img/icon/white_all.svg" alt=__('nav_all'))
+						.item.green-lighten
+							span #{__('nav_all')}
+					a.horizontal.enlarge(data-ajax-url href="/list/queue")
+						.icon.orange
+							img(src="/img/icon/white_queue.svg" alt=__('nav_queue'))
+						.item.orange-lighten
+							span #{__('nav_queue')}
+					.hover
+						a.horizontal(data-ajax-url href="/lang")
 							.icon
-								img(src="/img/icon/black_exit.svg" alt=__('nav_logout'))
+								img(src="/img/icon/black_language.svg" alt=__('nav_lang'))
 							.item
-								span #{__('nav_logout')} 
-					else
-						a.horizontal(data-ajax-url href="/auth")
+								span #{__('nav_lang')}
+					.hover
+						a.horizontal(data-ajax-url href="/theme")
 							.icon
-								img(src="/img/icon/black_login.svg" alt=__('nav_login'))
+								img(src="/img/icon/black_theme.svg" alt=__('nav_theme'))
 							.item
-								span #{__('nav_login')}
+								span #{__('nav_theme')}
+					.hover
+						a.horizontal(data-ajax-url href="/docs")
+							.icon
+								img(src="/img/icon/black_library_books.svg" alt=__('nav_documentation'))
+							.item
+								span #{__('nav_documentation')}
+					.hover
+						if user
+							a.horizontal(data-ajax-url href="/auth/logout")
+								.icon
+									img(src="/img/icon/black_exit.svg" alt=__('nav_logout'))
+								.item
+									span #{__('nav_logout')} 
+						else
+							a.horizontal(data-ajax-url href="/auth")
+								.icon
+									img(src="/img/icon/black_login.svg" alt=__('nav_login'))
+								.item
+									span #{__('nav_login')}
 			main
 				block main
 		footer
 			.item
-				span #{__('footer_copyright')}
+				p #{__('footer_copyright')}
+				p #{__('footer_licence')}
 		block script
 		//	script(src="/js/ajax.js")
 		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-67900801-5")

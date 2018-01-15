@@ -1,0 +1,36 @@
+aside
+	z-index: 1
+	height: 100%
+	box-shadow: 0.1em 0.2em 0.1em getColour(shadow)
+	.navigation
+		background-color: #eeeeee
+		.item
+			display: flex
+			flex-direction: row
+			align-items: center
+			height: 2em
+			width: 100%
+			padding: 0.5em
+		.icon
+			padding: 0.5em
+			i
+				color: #ffffff
+			img
+				display: block
+				max-height: 2em
+		a
+			text-decoration: none !important
+			color: #000000
+		.hover:hover, .hover:focus
+			transition: all 0.3s
+			background: rgba(0,0,0,0.2)
+		.enlarge
+			width: 100%
+			transition: width 0.3s, box-shadow 0.3s
+			&:hover, &:focus
+				display: absolute
+				width: calc(100% + 2em)
+		@media screen and (max-width: 800px)
+			min-width: 3em
+			width: 3em
+			overflow-x: hidden

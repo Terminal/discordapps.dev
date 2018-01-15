@@ -14,7 +14,7 @@ block embed
 
 block main
 	section.botcard(id=botinfo.id data-random=botinfo.random)
-		.horizontal
+		.horizontal.info
 			.item
 				h1 #{botinfo.name}
 				if botinfo.count
@@ -28,22 +28,23 @@ block main
 				p #{botinfo.shortDesc}
 			.item.right
 				img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
-		if botinfo.editable >= 3 && !botinfo.approved && csrf
-			form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
-				button.button.hover(type="submit") #{__('list_approve')}
-				input.hide(type="text" name="csrf" value=`${csrf}`)
-		if botinfo.editable >= 3 && csrf
-			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
-		if botinfo.editable >= 3
-			a.button.hover(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
-		if botinfo.editable >= 1
-			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
-		if botinfo.editable >= 2
-			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
-		if botinfo.editable >= 1
-			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/token`) #{__('list_token')}
-		a.button.hover(data-ajax-url href=`/bot/${botinfo.id}`) #{__('list_info')}
-		a.button.hover(href=botinfo.invite) #{__('list_invite')}
+		.horizontal.wrap
+			if botinfo.editable >= 3 && !botinfo.approved && csrf
+				form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
+					button.button.hover(type="submit") #{__('list_approve')}
+					input.hide(type="text" name="csrf" value=`${csrf}`)
+			if botinfo.editable >= 3 && csrf
+				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+			if botinfo.editable >= 3
+				a.button.hover(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
+			if botinfo.editable >= 1
+				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+			if botinfo.editable >= 2
+				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+			if botinfo.editable >= 1
+				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/token`) #{__('list_token')}
+			a.button.hover(data-ajax-url href=`/bot/${botinfo.id}`) #{__('list_info')}
+			a.button.hover(href=botinfo.invite) #{__('list_invite')}
 	section.body
 		if botinfo.type === 'iframe'
 			iframe.botiframe(src=`${botinfo.longDesc}`)
