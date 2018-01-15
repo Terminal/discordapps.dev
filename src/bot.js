@@ -33,12 +33,6 @@ const clean = (html) => {
 	return $.html();
 };
 
-/**
- * Validate the POST query to check if the bot is valid.
- * @param {*} req Express Request Information
- * @param {*} res Express Result Methods
- * @param {*} next Callback to run next middleware
- */
 const validate = (req, res, next) => {
 	const details = {};
 	const failure = [];
@@ -145,7 +139,15 @@ const validate = (req, res, next) => {
 	} else if (failure.length === 0) {
 		// Remove duplicates, remove original owner
 		const owners = [...new Set(body.owners.split(/\D+/g))]
-			.filter(owner => owner !== req.user.id);
+			.filter((owner) => {
+				// If the bot exists, compare to the bot owner
+				if (res.locals.bot && res.locals.bot.owner) {
+					return owner !== res.locals.bot.owner;
+				}
+				// If the bot doesn't exist, compare to the logged in user
+				// Should work for adding new bots
+				return owner !== req.user.id;
+			});
 
 		if (owners.length > 5) {
 			failure.push('error_owners_max');
@@ -171,7 +173,6 @@ const validate = (req, res, next) => {
 	}
 
 	if (failure.length === 0) {
-		console.log('request start');
 		request({
 			uri: `https://discordapp.com/api/v6/users/${body.id}`,
 			method: 'GET',
@@ -238,20 +239,20 @@ const validate = (req, res, next) => {
 				} else {
 					// Error page where Discord has been contacted, and there is user error
 					res.render('error', {
-						message: failure.map(reason => res.__(reason)).join('; ')
+						message: failure.map(reason => res.__(reason)).join('\n')
 					});
 				}
 			} else {
 				// Error page where Discord has been contacted, but returned an error
 				res.render('error', {
-					message: failure.map(reason => res.__(reason)).join('; ')
+					message: failure.map(reason => res.__(reason)).join('\n')
 				});
 			}
 		});
 	} else {
 		// Error page where Discord has not been contacted, and there is user error
 		res.render('error', {
-			message: failure.map(reason => res.__(reason)).join('; ')
+			message: failure.map(reason => res.__(reason)).join('\n')
 		});
 	}
 };
@@ -373,7 +374,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	})
 	.get('/:id/edit', userM.auth, csrfM.make, owns(1), (req, res) => {
 		// Display the edit screen with the bot's items
-		res.render('edit.pug', {
+		res.render('edit', {
 			bot: res.locals.bot,
 			owners: res.locals.bot.owners ? res.locals.bot.owners.join(' ') : '',
 			themes: themelist
