@@ -46,11 +46,6 @@ html(lang=lang)
 								img(src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.webp?size=64` onerror="imageFail()" alt=user.username)
 							.item.blue-lighten
 								span #{user.username}
-						a.horizontal.enlarge(data-ajax-url href="/bot/add")
-							.icon.magenta
-								img(src="/img/icon/white_add.svg" alt=__('nav_add'))
-							.item.magenta-lighten
-								span #{__('nav_add')}
 					a.horizontal.enlarge(data-ajax-url href="/list/all")
 						.icon.green
 							img(src="/img/icon/white_all.svg" alt=__('nav_all'))
@@ -67,31 +62,26 @@ html(lang=lang)
 								img(src="/img/icon/black_language.svg" alt=__('nav_lang'))
 							.item
 								span #{__('nav_lang')}
-					.hover
-						a.horizontal(data-ajax-url href="/theme")
-							.icon
-								img(src="/img/icon/black_theme.svg" alt=__('nav_theme'))
-							.item
-								span #{__('nav_theme')}
-					.hover
-						a.horizontal(data-ajax-url href="/docs")
-							.icon
-								img(src="/img/icon/black_library_books.svg" alt=__('nav_documentation'))
-							.item
-								span #{__('nav_documentation')}
-					.hover
-						if user
+					if user
+						.hover
 							a.horizontal(data-ajax-url href="/auth/logout")
 								.icon
 									img(src="/img/icon/black_exit.svg" alt=__('nav_logout'))
 								.item
-									span #{__('nav_logout')} 
-						else
+									span #{__('nav_logout')}
+					else
+						.hover
 							a.horizontal(data-ajax-url href="/auth")
 								.icon
 									img(src="/img/icon/black_login.svg" alt=__('nav_login'))
 								.item
 									span #{__('nav_login')}
+				.extra-navigation
+					ul
+						li: a(data-ajax-url href="/docs") #{__('nav_documentation')}
+						li: a(data-ajax-url href="/theme") #{__('nav_theme')}
+					block nav
+					
 			main
 				block main
 		footer
