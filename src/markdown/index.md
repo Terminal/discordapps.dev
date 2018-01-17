@@ -2,8 +2,11 @@ ls.terminal.ink is an application store which aims to list Discord Bots.
 
 ## ls.terminal.ink
 
-- [API V1](/docs/v1)
 - [Adding a bot](/bot/add)
+- [View the Queue](/list/queue)
+
+### List API
+- [API V1](/docs/v1)
 
 ## Useful links
 
