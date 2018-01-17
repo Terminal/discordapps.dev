@@ -100,8 +100,12 @@ header {
   margin-right: 0.5em;
   box-shadow: 0.1em 0.2em 0.1em rgba(0, 0, 0, 0.2);
   display: flex;
-  flex-direction: column; }
-  @media screen and (max-width: 800px) {
+  flex-direction: column;
+  overflow: hidden; }
+  @media screen and (max-width: 1300px) {
+    .botcard {
+      width: 42%; } }
+  @media screen and (max-width: 900px) {
     .botcard {
       width: 90%; } }
   .botcard h1 {
