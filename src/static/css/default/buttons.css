@@ -12,4 +12,18 @@
     transition: all 0.3s;
     background: rgba(0, 0, 0, 0.4); }
 
+.pill {
+  display: inline-block;
+  background-color: #AAAAAA;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.3em;
+  margin-right: 0.3em;
+  margin-bottom: 0.3em;
+  border-radius: 0.25em;
+  text-decoration: none; }
+  .pill.hover:hover, .pill.hover:focus {
+    transition: all 0.3s;
+    background: rgba(0, 0, 0, 0.4); }
+
 /*# sourceMappingURL=buttons.css.map */

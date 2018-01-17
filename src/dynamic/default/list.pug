@@ -12,13 +12,13 @@ block main
 						.item
 							h1 #{botinfo.name}
 							if botinfo.count
-								span.button #{__('list_count', { count: botinfo.count })}
+								span.pill #{__('list_count', { count: botinfo.count })}
 							if botinfo.ownerinfo
 								each owner in botinfo.ownerinfo
 									if owner
-										span.button #{owner.username}##{owner.discriminator}
+										span.pill #{owner.username}##{owner.discriminator}
 							if !botinfo.approved
-								span.button #{__('list_unverified')}
+								span.pill #{__('list_unverified')}
 							p #{botinfo.shortDesc}
 						.item.right
 							img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
