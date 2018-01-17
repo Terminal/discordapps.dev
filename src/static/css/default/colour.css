@@ -1,64 +1,64 @@
 .red-darken {
-  background-color: #ff0909; }
+  background-color: #ff0909 !important; }
 
 .red-lighten {
-  background-color: #ffa2a2; }
+  background-color: #ffa2a2 !important; }
 
 .red {
-  background-color: #ff5555; }
+  background-color: #ff5555 !important; }
 
 .green-darken {
-  background-color: #158015; }
+  background-color: #158015 !important; }
 
 .green-lighten {
-  background-color: #4de24d; }
+  background-color: #4de24d !important; }
 
 .green {
-  background-color: #20c220; }
+  background-color: #20c220 !important; }
 
 .blue-darken {
-  background-color: #0909ff; }
+  background-color: #0909ff !important; }
 
 .blue-lighten {
-  background-color: #a2a2ff; }
+  background-color: #a2a2ff !important; }
 
 .blue {
-  background-color: #5555ff; }
+  background-color: #5555ff !important; }
 
 .orange-darken {
-  background-color: #b37400; }
+  background-color: #b37400 !important; }
 
 .orange-lighten {
-  background-color: #ffc04d; }
+  background-color: #ffc04d !important; }
 
 .orange {
-  background-color: #ffa500; }
+  background-color: #ffa500 !important; }
 
 .magenta-darken {
-  background-color: #b300b3; }
+  background-color: #b300b3 !important; }
 
 .magenta-lighten {
-  background-color: #ff4dff; }
+  background-color: #ff4dff !important; }
 
 .magenta {
-  background-color: #ff00ff; }
+  background-color: #ff00ff !important; }
 
 .shadow-darken {
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: rgba(0, 0, 0, 0.2) !important; }
 
 .shadow-lighten {
-  background-color: rgba(38, 38, 38, 0.2); }
+  background-color: rgba(38, 38, 38, 0.2) !important; }
 
 .shadow {
-  background-color: rgba(0, 0, 0, 0.2); }
+  background-color: rgba(0, 0, 0, 0.2) !important; }
 
 .white-darken {
-  background-color: #d9d9d9; }
+  background-color: #d9d9d9 !important; }
 
 .white-lighten {
-  background-color: white; }
+  background-color: white !important; }
 
 .white {
-  background-color: #ffffff; }
+  background-color: #ffffff !important; }
 
 /*# sourceMappingURL=colour.css.map */

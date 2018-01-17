@@ -18,7 +18,7 @@ block main
 									if owner
 										span.pill #{owner.username}##{owner.discriminator}
 							if !botinfo.approved
-								span.pill #{__('list_unverified')}
+								span.pill.red #{__('list_unverified')}
 							p #{botinfo.shortDesc}
 						.item.right
 							img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))

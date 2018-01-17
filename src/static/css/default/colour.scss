@@ -14,12 +14,12 @@ $colours: (
 
 @each $key, $value in $colours {
 	.#{$key}-darken {
-		background-color: darken($value, 15%);
+		background-color: darken($value, 15%) !important;
 	}
 	.#{$key}-lighten {
-		background-color: lighten($value, 15%);
+		background-color: lighten($value, 15%) !important;
 	}
 	.#{$key} {
-		background-color: $value;
+		background-color: $value !important;
 	}
 }
