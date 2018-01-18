@@ -325,7 +325,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				message: res.__('message_bot_inserted')
 			});
 			// Send message to Discord Channel
-			client.createMessage(config.get('discord').channel, `${req.user.username} added \`${req.body.name}\` <@${req.body.id}>`);
+			client.createMessage(config.get('discord').channel, `${req.user.username} added \`${res.locals.details.name}\` <@${req.body.id}>`);
 		}
 	})
 	.get('/:id', csrfM.make, async (req, res) => {
