@@ -13,9 +13,11 @@ block embed
 	meta(name="og:type" content="website")
 
 block main
-	section.botcard(id=botinfo.id data-random=botinfo.random)
-		.horizontal.info
+	.store
+		.horizontal
 			.item
+				img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
+			.item.pad-left
 				h1 #{botinfo.name}
 				if botinfo.count
 					span.pill #{__('list_count', { count: botinfo.count })}
@@ -26,8 +28,6 @@ block main
 				if !botinfo.approved
 					span.pill.red #{__('list_unverified')}
 				p #{botinfo.shortDesc}
-			.item.right
-				img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
 		.horizontal.wrap
 			if botinfo.editable >= 3 && !botinfo.approved && csrf
 				form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
@@ -43,9 +43,9 @@ block main
 				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
 			if botinfo.editable >= 1
 				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/token`) #{__('list_token')}
-			a.button.hover(href=botinfo.invite) #{__('list_invite')}
-	section.body
-		if botinfo.type === 'iframe'
-			iframe.botiframe(src=`${botinfo.longDesc}`)
-		else if (botinfo.type === 'markdown' || botinfo.type === 'asciidoc' || botinfo.type === 'html')
-			!= render
+			a.button.hover.green(href=botinfo.invite) #{__('list_invite')}
+		section.body
+			if botinfo.type === 'iframe'
+				iframe.botiframe(src=`${botinfo.longDesc}`)
+			else if (botinfo.type === 'markdown' || botinfo.type === 'asciidoc' || botinfo.type === 'html')
+				!= render
