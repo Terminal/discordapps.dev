@@ -307,12 +307,12 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		// 	.run();
 
 		const response = await r.table('bots')
-			.insert(Object.assign(res.locals.details), {
+			.insert(Object.assign(res.locals.details, {
 				owner: req.user.id,
 				token: crypto.randomBytes(64).toString('hex'),
 				timestamp: Date.now(),
 				approved: false
-			});
+			}));
 
 		if (response.errors) {
 			res.status(409).render('error', {
