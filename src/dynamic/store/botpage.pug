@@ -16,7 +16,7 @@ block main
 	.store
 		.horizontal
 			.item
-				img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
+				img.bot-img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
 			.item.pad-left
 				h1 #{botinfo.name}
 				if botinfo.count

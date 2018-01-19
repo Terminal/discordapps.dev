@@ -10,6 +10,9 @@
   @media screen and (min-width: 1300px) {
     .store {
       width: 60%; } }
+  .store .bot-img {
+    width: 7em;
+    max-height: 7em; }
   .store .pad-left {
     padding-left: 1em; }
   .store .short {
