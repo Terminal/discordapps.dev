@@ -47,15 +47,14 @@ block main
 		.horizontal.wrap
 			a.button.hover.green.right.font-large(href=botinfo.invite) #{__('list_invite')}
 		hr
-		section#longDescArea.vertical.wrap
-			#longDesc.short
-				!= render
-			#showMore.center.horizontal.center
-				i.material-icons keyboard_arrow_down
-				span #{__('bot_view_more')}
-			#showLess.center.horizontal.center.hide
-				i.material-icons keyboard_arrow_up
-				span #{__('bot_view_less')}
+		#longDesc.short
+			!= render
+		#showMore.center.horizontal.center
+			i.material-icons keyboard_arrow_down
+			span #{__('bot_view_more')}
+		#showLess.center.horizontal.center.hide
+			i.material-icons keyboard_arrow_up
+			span #{__('bot_view_less')}
 		hr
 
 block script
