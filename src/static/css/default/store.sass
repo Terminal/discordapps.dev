@@ -1,0 +1,20 @@
+.store
+	border: 0.5px solid #cccccc
+	box-shadow: 0.1em 0.2em 0.1em getColour(shadow)
+	margin-left: auto
+	margin-right: auto
+	padding: 1em
+	@media screen and (min-width: 900px)
+		width: 90%
+	@media screen and (min-width: 1300px)
+		width: 60%
+	.pad-left
+		padding-left: 1em
+	.short
+		height: 10em
+		overflow-y: hidden
+		position: relative
+		-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)))
+	.extend
+		height: 100%
+		-webkit-mask-image: none

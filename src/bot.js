@@ -127,7 +127,9 @@ const validate = (req, res, next) => {
 		failure.push('error_theme_invalid');
 	} else if (!themelist.some(theme => req.body.theme === theme)) {
 		failure.push('error_theme_invalid');
-	} else if (failure.length === 0) {
+	} else if (req.body.theme === 'store' && details.type !== 'markdown') {
+		failure.push('error_theme_store_markdown');
+	} if (failure.length === 0) {
 		details.theme = body.theme;
 	}
 
@@ -354,7 +356,9 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 				if (botinfo.type === 'asciidoc') {
 					render = clean(asciidoctor.convert(botinfo.longDesc));
 				} else if (botinfo.type === 'markdown') {
-					render = clean(marked(botinfo.longDesc));
+					render = clean(marked(botinfo.longDesc, {
+						sanitize: botinfo.theme === 'store'
+					}));
 				} else if (botinfo.type === 'html') {
 					render = clean(botinfo.longDesc);
 				}

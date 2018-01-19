@@ -28,24 +28,35 @@ block main
 				if !botinfo.approved
 					span.pill.red #{__('list_unverified')}
 				p #{botinfo.shortDesc}
+		if botinfo.editable >= 1
+			.horizontal.wrap
+				if botinfo.editable >= 3 && !botinfo.approved && csrf
+					form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
+						button.button.hover(type="submit") #{__('list_approve')}
+						input.hide(type="text" name="csrf" value=`${csrf}`)
+				if botinfo.editable >= 3 && csrf
+					a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
+				if botinfo.editable >= 3
+					a.button.hover(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
+				if botinfo.editable >= 1
+					a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
+				if botinfo.editable >= 2
+					a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
+				if botinfo.editable >= 1
+					a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/token`) #{__('list_token')}
 		.horizontal.wrap
-			if botinfo.editable >= 3 && !botinfo.approved && csrf
-				form.inline-block(action=`/bot/${botinfo.id}/approve` method="POST")
-					button.button.hover(type="submit") #{__('list_approve')}
-					input.hide(type="text" name="csrf" value=`${csrf}`)
-			if botinfo.editable >= 3 && csrf
-				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/remove`) #{__('list_remove')}
-			if botinfo.editable >= 3
-				a.button.hover(target="_blank" href=`https://discordapp.com/oauth2/authorize?client_id=${botinfo.id}&scope=bot&permissions=0&guild_id=${guild_id}`) #{__('list_no_perms_invite')}
-			if botinfo.editable >= 1
-				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/edit`) #{__('list_edit')}
-			if botinfo.editable >= 2
-				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/delete`) #{__('list_delete')}
-			if botinfo.editable >= 1
-				a.button.hover(data-ajax-url href=`/bot/${botinfo.id}/token`) #{__('list_token')}
-			a.button.hover.green(href=botinfo.invite) #{__('list_invite')}
-		section.body
-			if botinfo.type === 'iframe'
-				iframe.botiframe(src=`${botinfo.longDesc}`)
-			else if (botinfo.type === 'markdown' || botinfo.type === 'asciidoc' || botinfo.type === 'html')
+			a.button.hover.green.right.font-large(href=botinfo.invite) #{__('list_invite')}
+		hr
+		section#longDescArea.vertical.wrap
+			#longDesc.short
 				!= render
+			#showMore.center.horizontal.center
+				i.material-icons keyboard_arrow_down
+				span #{__('bot_view_more')}
+			#showLess.center.horizontal.center.hide
+				i.material-icons keyboard_arrow_up
+				span #{__('bot_view_less')}
+		hr
+
+block script
+	script(src="/js/store.js")
