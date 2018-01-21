@@ -26,6 +26,7 @@ block main
 				if !botinfo.approved
 					span.pill.red #{__('list_unverified')}
 				p #{botinfo.shortDesc}
+				p #{__('list_prefix', { prefix: botinfo.prefix })}
 			.item.right
 				img(src=(botinfo.avatar || '/img/terminal.png') onerror="imageFail(this)" alt=__('list_avatar_fail'))
 		.horizontal.wrap
