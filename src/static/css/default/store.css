@@ -23,5 +23,11 @@
   .store .extend {
     height: 100%;
     -webkit-mask-image: none; }
+  .store .categoryIcon {
+    width: 3em; }
+  .store .votes {
+    color: #777777; }
+    .store .votes .selected {
+      color: #000000; }
 
 /*# sourceMappingURL=store.css.map */

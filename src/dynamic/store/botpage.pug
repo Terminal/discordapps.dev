@@ -1,7 +1,7 @@
 extends templates/site.pug
 
 block title
-	title #{botinfo.name} - #{__('website')}
+	title #{__('website')} - #{botinfo.name}
 
 block embed
 	if botinfo.ownerinfo
@@ -13,6 +13,8 @@ block embed
 	meta(name="og:type" content="website")
 
 block main
+	xml#info.hide
+		id #{botinfo.id}
 	.store
 		.horizontal
 			.item
@@ -56,6 +58,18 @@ block main
 			i.material-icons keyboard_arrow_up
 			span #{__('bot_view_less')}
 		hr
+		.horizontal
+			if botinfo.category
+				.spread
+					h3 #{botinfo.category}
+					img.categoryIcon(src=`/img/category/${botinfo.category}.svg`)
+			.spread
+				h3 Votes
+				p.votes
+					i#upvote.material-icons thumb_up
+					i#downvote.material-icons thumb_down
+				p#voteDesc Something about votes
 
 block script
 	script(src="/js/store.js")
+	script(src="/js/vote.js")

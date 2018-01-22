@@ -11,7 +11,7 @@ const client = require('./discord');
 const reasons = require('./data/reasons.json');
 const asciidoctor = require('asciidoctor.js')();
 const themelist = require('./data/themes.json').usable;
-const { description } = require('./data/description.json');
+const { description, categories } = require('./data/types.json');
 
 const router = express.Router();
 
@@ -30,12 +30,17 @@ const clean = (html) => {
 			});
 	});
 	$('script').remove();
+	$('object').remove();
 	return $.html();
 };
 
 const validate = (req, res, next) => {
+	// Details to pass on to the next router to insert into the database
 	const details = {};
+
+	// List of failed points
 	const failure = [];
+
 	const body = req.body;
 
 	// Check the short description
@@ -125,12 +130,21 @@ const validate = (req, res, next) => {
 	// Validate the bot theme
 	if (typeof body.theme !== 'string') {
 		failure.push('error_theme_invalid');
-	} else if (!themelist.some(theme => req.body.theme === theme)) {
+	} else if (!themelist.some(theme => body.theme === theme)) {
 		failure.push('error_theme_invalid');
 	} else if (req.body.theme === 'store' && details.type !== 'markdown') {
 		failure.push('error_theme_store_markdown');
-	} if (failure.length === 0) {
+	} else if (failure.length === 0) {
 		details.theme = body.theme;
+	}
+
+	// Validate the bot category
+	if (typeof body.category !== 'string') {
+		failure.push('error_category_invalid');
+	} else if (!categories.some(category => body.category === category)) {
+		failure.push('error_category_invalid');
+	} else if (failure.length === 0) {
+		details.category = body.category;
 	}
 
 	// Validate the owners
@@ -142,14 +156,22 @@ const validate = (req, res, next) => {
 		// Remove duplicates, remove original owner
 		const owners = [...new Set(body.owners.split(/\D+/g))]
 			.filter((owner) => {
+				// If the owner is blank, remove it
+				if (owner === '') {
+					return false;
+				}
+
 				// If the bot exists, compare to the bot owner
 				if (res.locals.bot && res.locals.bot.owner) {
 					return owner !== res.locals.bot.owner;
 				}
+
 				// If the bot doesn't exist, compare to the logged in user
 				// Should work for adding new bots
 				return owner !== req.user.id;
 			});
+
+		console.dir(owners);
 
 		if (owners.length > 5) {
 			failure.push('error_owners_max');
@@ -284,7 +306,8 @@ const owns = level =>
 router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	// Display the add screen
 	res.render('add.pug', {
-		themes: themelist
+		themes: themelist,
+		categories
 	});
 })
 	.post('/add', userM.auth, csrfM.check, validate, async (req, res) => {
@@ -381,7 +404,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		res.render('edit', {
 			bot: res.locals.bot,
 			owners: res.locals.bot.owners ? res.locals.bot.owners.join(' ') : '',
-			themes: themelist
+			themes: themelist,
+			categories
 		});
 	})
 	.post('/:id/edit', userM.auth, csrfM.check, owns(1), validate, async (req, res) => {
@@ -470,7 +494,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		// Send a message to the Discord channel
 		client.createMessage(config.get('discord').channel, `<@${req.user.id}> approved \`${result.changes[0].old_val.name}\` <@${result.changes[0].old_val.id}> by <@${result.changes[0].old_val.owner}>`);
 	})
-	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, async (req, res) => {
+	.get('/:id/remove', userM.auth, csrfM.make, userM.admin, (req, res) => {
 		res.render('remove', {
 			reasons: reasons.remove
 		});
@@ -494,6 +518,57 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 		} else {
 			res.status(400).render('error', { status: 400, message: 'Invalid reason' });
 		}
+	})
+	.get('/:id/vote', userM.auth, async (req, res) => {
+		const status = await r.table('votes')
+			.filter({
+				botid: '233702481375395843',
+				userid: '190519304972664832'
+			})(0).default({});
+
+		if (status.id) {
+			res.send(status.vote.toString());
+		} else {
+			res.status(404).send({});
+		}
+	})
+	.post('/:id/vote', userM.auth, csrfM.check, async (req, res) => {
+		const status = await r.table('votes')
+			.filter({
+				botid: req.params.id,
+				userid: req.user.id
+			})(0).default(null);
+
+		let vote;
+		switch (req.body.vote) {
+		case '1':
+			vote = 1;
+			break;
+		case '-1':
+			vote = -1;
+			break;
+		default:
+			vote = 0;
+			break;
+		}
+
+		if (status.id) {
+			r.table('votes')
+				.get(status.id)
+				.update({
+					vote
+				})
+				.run();
+		} else {
+			r.table('votes')
+				.insert({
+					botid: req.params.id,
+					userid: req.user.id,
+					vote
+				})
+				.run();
+		}
+		res.send(vote.toString());
 	});
 
 module.exports = router;

@@ -1,7 +1,7 @@
 extends templates/site.pug
 
 block title
-	title #{__('edit_title')} - #{__('website')}
+	title #{__('website')} - #{__('edit_title')}
 
 block main
 	h1 #{__('edit_jumbotron', { name: bot.name })}
@@ -48,6 +48,11 @@ block main
 				textarea#longDesc(name="longDesc" maxlength="20000" rows="6" required) #{bot.longDesc}
 			else if bot.type === "html"
 				textarea#longDesc(name="longDesc" maxlength="200000" rows="12" required) #{bot.longDesc}
+		.form-group
+			label(for="category") #{__('add_category')}
+			select#category(name="category" placeholder=__('add_category_placeholder') required)
+				for category in categories
+					option(value=category selected=bot.category===category) #{__(`category_${category}`)}
 		p: i #{__('add_advanced')}
 		.form-group
 			label(for="theme") #{__('add_theme')}

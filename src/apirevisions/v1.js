@@ -55,13 +55,41 @@ const exists = async (req, res, next) => {
 router.get('/bots', async (req, res) => {
 	const result = await r.table('bots')
 		.without('token')
+		.merge(bot => ({
+			// Get individual votes for the bot
+			votes: r.db('terminal').table('votes')
+				.filter({
+					botid: bot('id')
+				})
+				.map(vote => vote('vote'))
+				.coerceTo('array')
+		}))
+		.merge(bot => ({
+			// Count upvotes and downvotes
+			upvotes: bot('votes').filter(1).count(),
+			downvotes: bot('votes').filter(-1).count()
+		}))
 		.run();
 	res.send(result);
 })
-	.get('/bots/:id', exists, async (req, res) => {
+	.get('/bot*/:id', exists, async (req, res) => {
 		const result = await r.table('bots')
 			.get(req.params.id)
 			.without('token')
+			.merge(bot => ({
+				// Get individual votes for the bot
+				votes: r.db('terminal').table('votes')
+					.filter({
+						botid: bot('id')
+					})
+					.map(vote => vote('vote'))
+					.coerceTo('array')
+			}))
+			.merge(bot => ({
+				// Count upvotes and downvotes
+				upvotes: bot('votes').filter(number => number.eq(1)).count(),
+				downvotes: bot('votes').filter(number => number.eq(-1)).count()
+			}))
 			.run();
 
 		if (!result) {
@@ -70,7 +98,7 @@ router.get('/bots', async (req, res) => {
 			res.json(result);
 		}
 	})
-	.post('/bots/:id', exists, authMiddleware, async (req, res) => {
+	.post('/bot*/:id', exists, authMiddleware, async (req, res) => {
 		const count = parseInt(req.body.count || req.body.server_count, 10);
 		if (typeof count !== 'string' && typeof count !== 'number') {
 			res.status(400).json({ error: 'You provided an invalid guild count' });
@@ -86,7 +114,7 @@ router.get('/bots', async (req, res) => {
 			res.json({ message: 'OK' });
 		}
 	})
-	.get('/bots/:id/embed*', exists, async (req, res) => {
+	.get('/bot*/:id/embed*', exists, async (req, res) => {
 		const bot = await r.table('bots')
 			.get(req.params.id)
 			.default({})
@@ -134,8 +162,8 @@ router.get('/bots', async (req, res) => {
 	.use('/test/:id', exists, authMiddleware, (req, res) => {
 		res.json({ message: 'OK' });
 	})
-	.get('/docs/', (req, res) => fs.readFile(path.join(__dirname, '..', 'markdown', 'index.md'), 'utf8', (err, data) => res.send(marked(data))))
-	.get('/docs/:page', (req, res) => {
+	.get('/doc*/', (req, res) => fs.readFile(path.join(__dirname, '..', 'markdown', 'index.md'), 'utf8', (err, data) => res.send(marked(data))))
+	.get('/doc*/:page', (req, res) => {
 		// Try to find the markdown page
 		if (fs.existsSync(path.join(__dirname, '..', 'markdown', `${req.params.page}.md`))) {
 			// Render the specific page

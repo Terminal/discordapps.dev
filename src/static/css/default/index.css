@@ -229,6 +229,12 @@ aside {
   .store .extend {
     height: 100%;
     -webkit-mask-image: none; }
+  .store .categoryIcon {
+    width: 3em; }
+  .store .votes {
+    color: #777777; }
+    .store .votes .selected {
+      color: #000000; }
 
 body {
   display: flex;
@@ -281,6 +287,9 @@ main {
     flex-wrap: wrap; }
   .horizontal .center {
     justify-content: center; }
+  .horizontal .spread {
+    width: 100%;
+    text-align: center; }
 
 .hide {
   display: none; }
