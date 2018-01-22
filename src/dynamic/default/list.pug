@@ -7,7 +7,7 @@ block main
 	if bots.length
 		.horizontal.wrap
 			each botinfo in bots
-				section.botcard(id=botinfo.id data-random=botinfo.random)
+				section.botcard(id=botinfo.id data-random=botinfo.random data-rating=botinfo.rating)
 					.horizontal.info
 						.item
 							h1 #{botinfo.name}

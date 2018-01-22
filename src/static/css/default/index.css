@@ -235,6 +235,9 @@ aside {
     color: #777777; }
     .store .votes .selected {
       color: #000000; }
+  .store #upvote, .store #downvote {
+    padding-right: 0.1em;
+    padding-left: 0.1em; }
 
 body {
   display: flex;

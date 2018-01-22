@@ -7,18 +7,33 @@ window.addEventListener('load', async () => {
 		credentials: 'same-origin'
 	}).then(res => res.json());
 
+	const info = await fetch(`${location.origin}/api/v1${location.pathname}`)
+		.then(res => res.json());
+
 	if (vote === -1) {
 		downvote.classList.add('selected');
 	} else if (vote === 1) {
 		upvote.classList.add('selected');
 	}
 
-	const doVote = (number) => {
+	const doVote = async (number) => {
 		if (vote === number) {
-			number = 0;
+			vote = 0;
+		} else {
+			vote = number;
 		}
-		vote = number;
-		console.log(number);
+
+		const result = await fetch(`${location.href}/vote`, {
+			credentials: 'same-origin',
+			method: 'post',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				vote
+			})
+		}).then(res => res.json());
 
 		if (vote === -1) {
 			upvote.classList.remove('selected');
@@ -31,26 +46,14 @@ window.addEventListener('load', async () => {
 			downvote.classList.remove('selected');
 		}
 
-		fetch(`${location.href}/vote`, {
-			credentials: 'same-origin',
-			method: 'post',
-			body: number
-		});
+		voteDesc.innerHTML = `${result.upvotes} - ${result.downvotes}`;
 	};
 
-	console.dir(vote);
-	fetch(`${location.origin}/api/v1${location.pathname}`)
-		.then(res => res.json())
-		.then((res) => {
-			console.dir(res);
-			voteDesc.innerHTML = `${res.upvotes} - ${res.downvotes}`;
+	upvote.onclick = () => {
+		doVote(1);
+	};
 
-			upvote.onclick = () => {
-				doVote(1);
-			};
-
-			downvote.onclick = () => {
-				doVote(-1);
-			};
-		});
+	downvote.onclick = () => {
+		doVote(-1);
+	};
 });

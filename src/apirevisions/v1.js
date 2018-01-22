@@ -52,6 +52,14 @@ const exists = async (req, res, next) => {
 	}
 };
 
+const GetRating = (positiveVotes, negativeVotes) => {
+	const totalVotes = positiveVotes + negativeVotes;
+	const average = positiveVotes / totalVotes;
+	const score = average - ((average - 0.5) * (2 ** -Math.log2(totalVotes + 1)));
+
+	return score * 100;
+};
+
 router.get('/bots', async (req, res) => {
 	const result = await r.table('bots')
 		.without('token')
@@ -66,10 +74,14 @@ router.get('/bots', async (req, res) => {
 		}))
 		.merge(bot => ({
 			// Count upvotes and downvotes
-			upvotes: bot('votes').filter(1).count(),
-			downvotes: bot('votes').filter(-1).count()
-		}))
-		.run();
+			upvotes: bot('votes').filter(number => number.eq(1)).count(),
+			downvotes: bot('votes').filter(number => number.eq(-1)).count()
+		}));
+
+	result.map((bot) => {
+		bot.rating = GetRating(bot.upvotes, bot.downvotes);
+		return bot;
+	});
 	res.send(result);
 })
 	.get('/bot*/:id', exists, async (req, res) => {
@@ -95,6 +107,7 @@ router.get('/bots', async (req, res) => {
 		if (!result) {
 			res.status(404).json({});
 		} else {
+			result.rating = GetRating(result.upvotes, result.downvotes);
 			res.json(result);
 		}
 	})

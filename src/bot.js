@@ -369,7 +369,18 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 						.append(bot('owner'))
 						.map(id => r.table('users').get(id))
 						.default({ username: 'Unknown', discriminator: '0000' }),
-					owners: bot('owners').default([])
+					owners: bot('owners').default([]),
+					votes: r.db('terminal').table('votes')
+						.filter({
+							botid: bot('id')
+						})
+						.map(vote => vote('vote'))
+						.coerceTo('array')
+				}))
+				.merge(bot => ({
+					// Count upvotes and downvotes
+					upvotes: bot('votes').filter(number => number.eq(1)).count(),
+					downvotes: bot('votes').filter(number => number.eq(-1)).count()
 				}));
 			let render = '';
 			if (req.user && (botinfo.owner.includes(req.user.id) || req.user.admin)) {
@@ -522,8 +533,8 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 	.get('/:id/vote', userM.auth, async (req, res) => {
 		const status = await r.table('votes')
 			.filter({
-				botid: '233702481375395843',
-				userid: '190519304972664832'
+				botid: req.params.id,
+				userid: req.user.id
 			})(0).default({});
 
 		if (status.id) {
@@ -532,43 +543,44 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			res.status(404).send({});
 		}
 	})
-	.post('/:id/vote', userM.auth, csrfM.check, async (req, res) => {
+	.post('/:id/vote', userM.auth, async (req, res) => {
 		const status = await r.table('votes')
 			.filter({
 				botid: req.params.id,
 				userid: req.user.id
 			})(0).default(null);
 
+		console.log(JSON.stringify(req.body));
+
 		let vote;
-		switch (req.body.vote) {
-		case '1':
-			vote = 1;
-			break;
-		case '-1':
-			vote = -1;
-			break;
-		default:
+		if (req.body.vote === 1 || req.body.vote === -1) {
+			vote = req.body.vote;
+		} else {
 			vote = 0;
-			break;
 		}
 
 		if (status.id) {
-			r.table('votes')
+			await r.table('votes')
 				.get(status.id)
 				.update({
 					vote
-				})
-				.run();
+				});
 		} else {
-			r.table('votes')
+			await r.table('votes')
 				.insert({
 					botid: req.params.id,
 					userid: req.user.id,
 					vote
-				})
-				.run();
+				});
 		}
-		res.send(vote.toString());
+
+		const upvotes = await r.table('votes')('vote').count(1);
+		const downvotes = await r.table('votes')('vote').count(-1);
+
+		res.json({
+			upvotes,
+			downvotes
+		});
 	});
 
 module.exports = router;
