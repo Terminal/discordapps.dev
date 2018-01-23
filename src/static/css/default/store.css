@@ -32,5 +32,7 @@
   .store #upvote, .store #downvote {
     padding-right: 0.1em;
     padding-left: 0.1em; }
+    .store #upvote::selection, .store #downvote::selection {
+      opacity: 0; }
 
 /*# sourceMappingURL=store.css.map */

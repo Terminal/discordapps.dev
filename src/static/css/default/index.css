@@ -238,6 +238,8 @@ aside {
   .store #upvote, .store #downvote {
     padding-right: 0.1em;
     padding-left: 0.1em; }
+    .store #upvote::selection, .store #downvote::selection {
+      opacity: 0; }
 
 body {
   display: flex;
@@ -265,6 +267,9 @@ input, select, button {
   padding: 0.25em;
   font-size: 12pt;
   font-family: Noto Sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+
+img::selection {
+  opacity: 0; }
 
 main {
   padding: 3em;
