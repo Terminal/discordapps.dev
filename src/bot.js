@@ -171,8 +171,6 @@ const validate = (req, res, next) => {
 				return owner !== req.user.id;
 			});
 
-		console.dir(owners);
-
 		if (owners.length > 5) {
 			failure.push('error_owners_max');
 		} else if (owners.some(owner => owner.length > 25)) {
