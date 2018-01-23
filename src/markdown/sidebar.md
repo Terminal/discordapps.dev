@@ -2,7 +2,7 @@
 
 - [Main Page](/docs)
 - [Random](/docs/random)
-- [Guild](https://discord.gg/DwBCgta)
+- [Support Guild](https://discord.gg/DwBCgta)
 - [terminal.ink](https://terminal.ink)
 
 # Tools
