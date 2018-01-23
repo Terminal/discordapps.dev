@@ -554,7 +554,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			.filter({
 				botid: req.params.id,
 				userid: req.user.id
-			})(0).default(null);
+			})(0).default({});
 
 		console.log(JSON.stringify(req.body));
 
