@@ -222,13 +222,9 @@ aside {
   .store .pad-left {
     padding-left: 1em; }
   .store .short {
-    height: 10em;
-    overflow-y: hidden;
-    position: relative;
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(black), to(rgba(0, 0, 0, 0))); }
-  .store .extend {
-    height: 100%;
-    -webkit-mask-image: none; }
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+    height: 6em; }
   .store .categoryIcon {
     width: 3em; }
   .store .votes {
