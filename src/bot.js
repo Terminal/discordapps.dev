@@ -383,8 +383,14 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 					downvotes: bot('votes').filter(number => number.eq(-1)).count()
 				}));
 			let render = '';
-			if (req.user && (botinfo.owner.includes(req.user.id) || req.user.admin)) {
-				botinfo.editable = true;
+			if (req.user && req.user.admin) {
+				botinfo.editable = 3;
+			} else if (req.user && req.user.id === botinfo.owner) {
+				botinfo.editable = 2;
+			} else if (req.user && botinfo.owners.includes(req.user.id)) {
+				botinfo.editable = 1;
+			} else {
+				botinfo.editable = 0;
 			}
 			if (botinfo.longDesc) {
 				if (botinfo.type === 'asciidoc') {
@@ -530,7 +536,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			res.status(400).render('error', { status: 400, message: 'Invalid reason' });
 		}
 	})
-	.get('/:id/vote', userM.auth, async (req, res) => {
+	.get('/:id/vote', userM.apiAuth, async (req, res) => {
 		const status = await r.table('votes')
 			.filter({
 				botid: req.params.id,
@@ -543,7 +549,7 @@ router.get('/add', userM.auth, csrfM.make, (req, res) => {
 			res.status(404).send({});
 		}
 	})
-	.post('/:id/vote', userM.auth, async (req, res) => {
+	.post('/:id/vote', userM.apiAuth, async (req, res) => {
 		const status = await r.table('votes')
 			.filter({
 				botid: req.params.id,

@@ -27,6 +27,10 @@ html(lang=lang)
 		link(href="/manifest.json" rel="manifest")
 		script(src="/js/images.js")
 	body
+		xml.hide#info
+			block xml
+			if user
+				field#userID #{user.id}
 		header
 			.item
 				a(data-ajax-url href="/")

@@ -13,8 +13,6 @@ block embed
 	meta(name="og:type" content="website")
 
 block main
-	xml#info.hide
-		id #{botinfo.id}
 	.store
 		.horizontal
 			.item
@@ -61,7 +59,7 @@ block main
 		.horizontal
 			if botinfo.category
 				.spread
-					h3 #{botinfo.category}
+					h3 #{__(`category_${botinfo.category}`)}
 					img.categoryIcon(src=`/img/category/${botinfo.category}.svg`)
 			.spread
 				h3 Votes

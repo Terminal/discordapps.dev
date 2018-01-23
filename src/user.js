@@ -25,6 +25,14 @@ const auth = (req, res, next) => {
 	}
 };
 
+const apiAuth = (req, res, next) => {
+	if (req.user) {
+		next();
+	} else {
+		res.status(401).json({});
+	}
+};
+
 const admin = (req, res, next) => {
 	if (req.user && req.user.admin) {
 		next();
@@ -44,5 +52,5 @@ const terminal = (req, res, next) => {
 };
 
 module.exports = {
-	userSetup, auth, admin, terminal
+	userSetup, auth, admin, terminal, apiAuth
 };
