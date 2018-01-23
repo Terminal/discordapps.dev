@@ -119,6 +119,8 @@ router.get('/bots', async (req, res) => {
 			res.status(400).json({ error: 'Your bot count was too low (0)' });
 		} else if (count > 1000000) {
 			res.status(400).json({ error: 'Your bot count was too high (1000000)' });
+		} else if (isNaN(count)) {
+			res.status(400).json({ error: 'The value of your count was NaN' });
 		} else {
 			await r.table('bots')
 				.get(req.params.id)
