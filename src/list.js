@@ -71,8 +71,6 @@ const list = async (req, res) => {
 		bots = bots.filter(bot => (req.user && req.user.id === bot.owner) || bot.owners.includes(res.locals.owner));
 	}
 
-	console.dir(bots);
-
 	// Send the list of bots to the client, as well as CSRF in case an action needs it.
 	res.render('list', { bots });
 };
