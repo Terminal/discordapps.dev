@@ -1,9 +1,10 @@
 const config = require('config');
 const { exec } = require('child_process');
+const r = require('rethinkdbdash')({
+	servers: config.get('rethinkdb.servers')
+});
 
-const defaultConfig = config.get('rethinkdb');
-const rConfig = { servers: defaultConfig.servers };
-const r = require('rethinkdbdash')(rConfig);
+const { tables } = require('./src/data/rethinkdb.json');
 
 // Print out version
 exec('git rev-parse --short HEAD', (error, stdout, stderr) => {
@@ -12,14 +13,24 @@ exec('git rev-parse --short HEAD', (error, stdout, stderr) => {
 });
 
 const verifyDb = async () => {
-	const shouldConfigure = !(await r.dbList().contains('terminal').run());
+	// Check if the 'terminal' database exists
+	const shouldConfigure = !(await r.dbList().contains('terminal'));
+
+	// If not, create the database and add relevant tables
 	if (shouldConfigure) {
-		await r.dbCreate(defaultConfig.db);
-		['bots', 'csrf', 'users', 'session', 'i18n'].map(async (table) => {
-			await r.db(defaultConfig.db).tableCreate(table).run();
-		});
+		// Create the database
+		await r.dbCreate(config.get('rethinkdb.db'));
+
+		// Asynchronously create individual tables
+		const promises = tables.map(table =>
+			r.db(config.get('rethinkdb.db')).tableCreate(table).run()
+		);
+
+		// Wait until all promises return
+		await Promise.all(promises);
 	}
 
+	// Drain and release
 	r.getPoolMaster().drain();
 };
 

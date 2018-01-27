@@ -1,0 +1,10 @@
+{
+	"tables": [
+		"bots",
+		"csrf",
+		"users",
+		"session",
+		"i18n",
+		"votes"
+	]
+}
