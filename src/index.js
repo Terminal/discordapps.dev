@@ -12,7 +12,6 @@ const csrfM = require('./routers/csrf');
 const listM = require('./routers/list');
 const discord = require('./discord');
 const config = require('config');
-const bot = require('./discord');
 const themeM = require('./routers/theme');
 const express = require('express');
 const auth = require('./auth/auth');
