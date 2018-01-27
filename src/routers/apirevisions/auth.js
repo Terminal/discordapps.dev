@@ -1,4 +1,4 @@
-const r = require('./../db');
+const r = require('./../../db');
 
 /**
  * Check if a token is valid

@@ -25,7 +25,7 @@
 
 const express = require('express');
 const authMiddleware = require('./auth');
-const r = require('./../db');
+const r = require('./../../db');
 const request = require('request');
 const pug = require('pug');
 const { spawn } = require('child_process');

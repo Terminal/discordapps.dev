@@ -1,5 +1,5 @@
 const config = require('config');
-const bot = require('./discord');
+const bot = require('./../discord');
 
 const userSetup = (req, res, next) => {
 	if (req.user && bot.startTime) {

@@ -1,4 +1,4 @@
-const r = require('./db');
+const r = require('./../db');
 const userM = require('./user');
 const csrfM = require('./csrf');
 const crypto = require('crypto');
@@ -7,11 +7,11 @@ const marked = require('marked');
 const express = require('express');
 const request = require('request');
 const cheerio = require('cheerio');
-const client = require('./discord');
-const reasons = require('./data/reasons.json');
+const client = require('./../discord');
+const reasons = require('./../data/reasons.json');
 const asciidoctor = require('asciidoctor.js')();
-const themelist = require('./data/themes.json').usable;
-const { description, categories } = require('./data/types.json');
+const themelist = require('./../data/themes.json').usable;
+const { description, categories } = require('./../data/types.json');
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 const express = require('express');
 const csrfM = require('./csrf');
-const r = require('./db');
+const r = require('./../db');
 
 const router = express.Router();
 
