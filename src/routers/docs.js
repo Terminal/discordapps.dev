@@ -39,7 +39,7 @@ router.get('', (req, res, next) => {
 	next();
 }, renderPage)
 	.get('/random', (req, res) => {
-		const elements = fs.readdirSync(path.join(__dirname, 'markdown'));
+		const elements = fs.readdirSync(path.join(__dirname, '..', 'markdown'));
 		const page = elements[Math.floor(Math.random() * elements.length)];
 		res.redirect(`/docs/${page.substr(page, page.indexOf('.'))}`);
 	})
