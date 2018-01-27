@@ -20,7 +20,6 @@ const session = require('express-session');
 const themes = require('express-theme-pug');
 const cookieParser = require('cookie-parser');
 const RDBStore = require('session-rethinkdb')(session);
-const themelist = require('./data/themes.json').selectable;
 
 // Configure internationalisation
 i18n.configure({
@@ -84,17 +83,9 @@ app.set('views', path.join(__dirname, 'dynamic'))
 	.use(auth.initialize())
 	.use(auth.session())
 	.use(userM.userSetup)
-	.use((req, res, next) => {
-		if (themelist.includes(req.cookies.theme)) res.theme(req.cookies.theme);
-		res.locals.lang = req.cookies.lang || 'en-gb';
-		next();
-	})
 	.use(express.static(path.join(__dirname, 'static')))
 	.use(isOnline)
-	.get('/', csrfM.make, (req, res, next) => {
-		res.locals.view = 'approved';
-		next();
-	}, listM.list) // List the homepage
+	.get('/', csrfM.make, listM.list('approved')) // List the homepage
 	.use('/list', listM.router) // List Middleware
 	.use('/auth', authM) // Authentication
 	.use('/docs', docsM) // Documentation

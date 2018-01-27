@@ -1,5 +1,6 @@
 const config = require('config');
 const bot = require('./../discord');
+const themelist = require('./../data/themes.json').selectable;
 
 const userSetup = (req, res, next) => {
 	if (req.user && bot.startTime) {
@@ -13,6 +14,9 @@ const userSetup = (req, res, next) => {
 	}
 
 	res.locals.user = req.user;
+
+	if (themelist.includes(req.cookies.theme)) res.theme(req.cookies.theme);
+	res.locals.lang = req.cookies.lang || 'en-gb';
 
 	next();
 };
