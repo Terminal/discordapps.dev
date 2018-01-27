@@ -85,7 +85,10 @@ app.set('views', path.join(__dirname, 'dynamic'))
 	.use(userM.userSetup)
 	.use(express.static(path.join(__dirname, 'static')))
 	.use(isOnline)
-	.get('/', csrfM.make, listM.list('approved')) // List the homepage
+	.get('/', csrfM.make, (req, res, next) => {
+		res.locals.approve = true;
+		next();
+	}, listM.list) // List the homepage
 	.use('/list', listM.router) // List Middleware
 	.use('/auth', authM) // Authentication
 	.use('/docs', docsM) // Documentation
