@@ -8,7 +8,6 @@ const client = new Discord.Client(config.get('discord').token);
 
 client.on('ready', () => {
 	console.log('Discord Bot is online');
-	module.exports.ready = true;
 	client.editStatus('online', {
 		name: config.get('discord').game,
 		type: 0
@@ -42,4 +41,3 @@ client.on('userUpdate', async (user) => {
 client.connect();
 
 module.exports = client;
-module.exports.ready = false;

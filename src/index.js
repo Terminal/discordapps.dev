@@ -10,6 +10,7 @@ const docsM = require('./routers/docs');
 const langM = require('./routers/lang');
 const csrfM = require('./routers/csrf');
 const listM = require('./routers/list');
+const discord = require('./discord');
 const config = require('config');
 const bot = require('./discord');
 const themeM = require('./routers/theme');
@@ -34,6 +35,17 @@ i18n.configure({
 const store = new RDBStore(r);
 const app = express();
 
+let online = false;
+
+// Have a status to check if the Discord bot is online or not
+discord.on('ready', () => {
+	online = true;
+});
+
+discord.on('disconnect', () => {
+	online = false;
+});
+
 /**
  * Check if the bot is ready at this moment
  * @param {*} req Express Request Information
@@ -41,12 +53,10 @@ const app = express();
  * @param {*} next Callback to run next middleware
  */
 const isOnline = (req, res, next) => {
-	if (bot.ready) {
+	if (online) {
 		next();
 	} else {
-		res.status(500).json({
-			error: 'The webserver has not fully initialised yet. Please try again later'
-		});
+		res.status(500).render('error', { status: 500, message: res.__('error_bot_offline') });
 	}
 };
 
@@ -55,33 +65,35 @@ app.locals.location = config.get('webserver').location;
 app.locals.guild_id = config.get('discord').guild;
 app.locals.production = config.get('production');
 
-app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
+app.set('views', path.join(__dirname, 'dynamic'))
 	.set('view engine', 'pug')
-	.use(cookieParser(config.get('webserver').secret)) // Set cookie secret
+	.use(bodyParser.json())
+	.use(bodyParser.urlencoded({
+		extended: true
+	}))
+	.use(i18n.init)
+	.use('/api', apiM) // API
+	.use(cookieParser(config.get('webserver').secret))
 	.use(session({
 		secret: config.get('webserver').secret,
 		resave: true,
 		saveUninitialized: true,
 		proxy: true,
 		store
-	})) // Set session
-	.use(i18n.init) // Use i18n
-	.use(themes) // Use themes
-	.use(auth.initialize()) // Initiate the authentication mechanisms
-	.use(auth.session())
-	.use(isOnline) // Check if the webserver is fully online yet
-	.use(bodyParser.json())
-	.use(bodyParser.urlencoded({
-		extended: true
 	}))
-	.use(userM.userSetup) // Append details such as if they are an admin, and if they are in the guild
+	.use(themes)
+	.use(auth.initialize())
+	.use(auth.session())
+	.use(userM.userSetup)
 	.use((req, res, next) => {
 		if (themelist.includes(req.cookies.theme)) res.theme(req.cookies.theme);
 		res.locals.lang = req.cookies.lang || 'en-gb';
 		next();
 	})
+	.use(express.static(path.join(__dirname, 'static')))
+	.use(isOnline)
 	.get('/', csrfM.make, (req, res, next) => {
-		res.locals.approve = true;
+		res.locals.view = 'approved';
 		next();
 	}, listM.list) // List the homepage
 	.use('/list', listM.router) // List Middleware
@@ -90,13 +102,10 @@ app.set('views', path.join(__dirname, 'dynamic')) // Allocate views to be used
 	.use('/lang', langM) // Language settings
 	.use('/theme', themeM) // Theme settings
 	.use('/bot', botM) // Listing bots
-	.use('/api', apiM) // API
-	.use(express.static(path.join(__dirname, 'static'))) // Pull static files from /src/static
 	.use((req, res) => {
-		// Give off a 404 if the chain ends here
 		res.status(404).render('error', { status: 404, message: 'Not found' });
 	})
-	.listen(config.get('webserver').port); // Listen to the port (default: 8080)
+	.listen(config.get('webserver').port);
 
 process.on('unhandledRejection', (reason) => {
 	console.dir(reason);
