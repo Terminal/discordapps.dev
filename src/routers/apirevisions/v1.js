@@ -85,7 +85,7 @@ router.get('/bots', async (req, res) => {
 	});
 	res.send(result);
 })
-	.get('/bot/:id', exists, async (req, res) => {
+	.get('/bots/:id', exists, async (req, res) => {
 		const result = await r.table('bots')
 			.get(req.params.id)
 			.without('token')
@@ -108,7 +108,7 @@ router.get('/bots', async (req, res) => {
 		result.rating = GetRating(result.upvotes, result.downvotes);
 		res.json(result);
 	})
-	.post('/bot/:id', exists, authMiddleware, async (req, res) => {
+	.post('/bots/:id', exists, authMiddleware, async (req, res) => {
 		const count = parseInt(req.body.count || req.body.server_count, 10);
 		if (typeof count !== 'string' && typeof count !== 'number') {
 			res.status(400).json({ error: 'You provided an invalid guild count' });
@@ -126,7 +126,7 @@ router.get('/bots', async (req, res) => {
 			res.json({ message: 'OK' });
 		}
 	})
-	.get('/bot/:id/embed*', exists, async (req, res) => {
+	.get('/bots/:id/embed*', exists, async (req, res) => {
 		const bot = await r.table('bots')
 			.get(req.params.id)
 			.default({})
