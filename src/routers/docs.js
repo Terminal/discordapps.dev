@@ -6,7 +6,7 @@ const path = require('path');
 const router = express.Router();
 
 const renderPage = (req, res, next) => {
-	const sidebar = marked(fs.readFileSync(path.join(__dirname, 'markdown', 'sidebar.md'), 'utf8'));
+	const sidebar = marked(fs.readFileSync(path.join(__dirname, '..', 'markdown', 'sidebar.md'), 'utf8'));
 	if (fs.existsSync(path.join(__dirname, '..', 'markdown', `${res.locals.page}.md`))) {
 		// Render the specific page
 		fs.readFile(path.join(__dirname, '..', 'markdown', `${res.locals.page}.md`), 'utf8', (err, data) => {
