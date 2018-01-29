@@ -1,1 +1,2 @@
 import './web';
+import './discord';

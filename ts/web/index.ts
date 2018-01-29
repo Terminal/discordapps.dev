@@ -1,10 +1,10 @@
 import * as express from 'express';
 import * as path from 'path';
-import { webserver } from './../../config';
+import config from './../../config';
 
 const app: express.Application = express();
 
 app.get('/', (req: express.Request, res: express.Response) => {
 	res.send('aaa');
 })
-	.listen(webserver.port);
+	.listen(config.webserver.port);
