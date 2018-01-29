@@ -10,6 +10,6 @@ ls.terminal.ink is an application store which aims to list Discord Bots.
 
 ## Useful links
 
-- [Thanks](/docs/thanks)
+- [Source Code](https://github.com/Terminal/ls.terminal.ink)
 - [terminal.ink](https://terminal.ink/)
 - [List of Open Source Materials](/docs/opensource)
