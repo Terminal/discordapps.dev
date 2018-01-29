@@ -31,7 +31,7 @@ client.on('userUpdate', async (user) => {
 			r.table('bots')
 				.get(user.id)
 				.update({
-					avatar: user.avatarURL || user.defaultAvatarURL
+					avatar: user.dynamicAvatarURL('png', 128)
 				})
 				.run();
 		}
