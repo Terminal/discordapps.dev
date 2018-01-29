@@ -1,9 +1,0 @@
-extends templates/site.pug
-
-block title
-	title Languages / #{__('lang_title')} - #{__('website')}
-
-block content
-	h1 Languages / #{__('lang_languages')}
-	for language in languages
-		li: a(href=`/lang/${language}`) #{__(`lang_${language}`)}

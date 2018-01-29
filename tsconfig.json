@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"target": "es2015",
+		"module": "commonjs",
+		"strict": false,
+		"types": [
+			"node"
+		],
+		"outDir": "js"
+	},
+	"include": [
+		"./ts/"
+	]
+}

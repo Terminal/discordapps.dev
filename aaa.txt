@@ -1,0 +1,6 @@
+typings install dt~node --save
+typings install dt~es6-shim --save
+typings install dt~express --save
+typings install dt~serve-static --save
+typings install dt~express-serve-static-core --save
+typings install dt~mime --save

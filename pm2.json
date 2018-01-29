@@ -1,8 +1,8 @@
 {
-	"apps" : [
+	"apps": [
 		{
-			"name"       : "ls.terminal.ink",
-			"script"     : "./index.js"
+			"name": "ls.terminal.ink",
+			"script": "./index.js"
 		}
 	]
 }

@@ -1,12 +1,12 @@
 {
 	"name": "ls",
-	"version": "1.0.0",
+	"version": "2.0.0",
 	"description": "The Express server that hosts the bot directory listing.",
 	"main": "src/index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node index.js",
-		"sass": "sass --watch src/static/css/"
+		"convert": "tsc --outDir js/"
 	},
 	"repository": {
 		"type": "git",
@@ -19,27 +19,12 @@
 	},
 	"homepage": "https://ls.terminal.ink/",
 	"dependencies": {
-		"asciidoctor.js": "^1.5.6-preview.4",
-		"body-parser": "^1.17.2",
-		"cheerio": "^1.0.0-rc.2",
-		"config": "^1.26.1",
-		"cookie-parser": "^1.4.3",
-		"eris": "^0.7.2",
 		"express": "^4.16.2",
-		"express-session": "^1.15.4",
-		"express-theme-pug": "^1.0.5",
-		"i18n": "^0.8.3",
-		"marked": "^0.3.9",
-		"mustache": "^2.3.0",
-		"passport": "^0.3.2",
-		"passport-discord": "^0.1.2",
-		"pug": "^2.0.0-rc.3",
-		"request": "^2.81.0",
-		"rethinkdbdash": "^2.3.31",
-		"seedrandom": "^2.4.3",
-		"session-rethinkdb": "^2.0.0"
+		"js-yaml": "^3.10.0",
+		"rethinkdbdash": "^2.3.31"
 	},
 	"devDependencies": {
+		"@types/express": "^4.11.0",
 		"eslint": "^4.10.0",
 		"eslint-config-airbnb-base": "^11.3.2",
 		"eslint-plugin-import": "^2.7.0"

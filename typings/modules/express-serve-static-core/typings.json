@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/919eca848c1746d54725f6e59ca3396e88a94a98/express-serve-static-core/index.d.ts",
+    "raw": "registry:dt/express-serve-static-core#4.0.0+20170324160323",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/919eca848c1746d54725f6e59ca3396e88a94a98/express-serve-static-core/index.d.ts"
+  }
+}
