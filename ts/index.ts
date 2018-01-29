@@ -1,2 +1,0 @@
-import './web';
-import './discord';
