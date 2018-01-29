@@ -185,7 +185,7 @@ module.exports = [{
 					},
 					{
 						name: message.__('info_licence'),
-						value: message.__('info_licencedesc', { name: message.__('website') })
+						value: `[${message.__('info_licencedesc', { name: message.__('website') })}](https://github.com/Terminal/ls.terminal.ink/blob/master/LICENCE)`
 					}
 				]
 			}
