@@ -7,7 +7,7 @@ module.exports = {
 	entry: [
 		'babel-polyfill',
 		'react-hot-loader/patch',
-		'./app.js',
+		'./App.js',
 	],
 	output: {
 		publicPath: '/',
