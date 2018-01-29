@@ -1,16 +1,9 @@
 import User from './User';
 import { Table, Model, Column, HasMany, CreatedAt, DataType } from 'sequelize-typescript';
-
-export interface BotInterface {
-	id: string;
-	owners: User[];
-	added: Date;
-	short_description?: string;
-	description?: string;
-}
+import BotRepresentation from './BotRepresentation';
 
 @Table
-export default class Bot extends Model<Bot> implements BotInterface {
+export default class Bot extends Model<Bot> implements BotRepresentation {
 	
 	@Column
 	id: string;
