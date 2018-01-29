@@ -19,36 +19,12 @@
 	},
 	"homepage": "https://ls.terminal.ink/",
 	"dependencies": {
+		"eris": "^0.8.3",
 		"express": "^4.16.2",
 		"js-yaml": "^3.10.0",
 		"rethinkdbdash": "^2.3.31"
 	},
 	"devDependencies": {
-		"@types/express": "^4.11.0",
-		"eslint": "^4.10.0",
-		"eslint-config-airbnb-base": "^11.3.2",
-		"eslint-plugin-import": "^2.7.0"
-	},
-	"eslintConfig": {
-		"extends": "airbnb-base",
-		"plugins": [
-			"import"
-		],
-		"rules": {
-			"indent": [
-				2,
-				"tab"
-			],
-			"no-tabs": 0,
-			"comma-dangle": 0,
-			"max-len": 0,
-			"no-console": 0,
-			"no-param-reassign": 0,
-			"no-underscore-dangle": 0
-		},
-		"env": {
-			"node": true,
-			"browser": true
-		}
+		"@types/express": "^4.11.0"
 	}
 }
