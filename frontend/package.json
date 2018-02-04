@@ -61,8 +61,11 @@
 		"webpack-merge": "~4.1.0"
 	},
 	"dependencies": {
+		"ansi-html": "0.0.7",
 		"bootstrap": "^4.0.0",
+		"bootstrap.native": "^2.0.21",
 		"file-loader": "~1.1.0",
+		"history": "^4.7.2",
 		"isomorphic-fetch": "~2.2.0",
 		"normalize.css": "~7.0.0",
 		"react": "~16.0.0",

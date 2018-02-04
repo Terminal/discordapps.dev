@@ -1,7 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import rootSaga from './sagas.js';
-import reducer from './reducer.js';
 import createHistory from 'history/createBrowserHistory';
 import { routerMiddleware } from 'react-router-redux';
 
@@ -9,6 +7,10 @@ import { routerMiddleware } from 'react-router-redux';
 import enLocale from 'react-intl/locale-data/en';
 import deLocale from 'react-intl/locale-data/de';
 import { addLocaleData } from 'react-intl';
+
+import rootSaga from './sagas';
+import reducer from './reducer';
+
 addLocaleData(enLocale);
 addLocaleData(deLocale);
 
@@ -18,9 +20,9 @@ const routingMiddleware = routerMiddleware(history);
 const sagaMiddleware = createSagaMiddleware();
 const composer = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose);
 const store = createStore(
-	reducer,
-	{},
-	composer(applyMiddleware(routingMiddleware, sagaMiddleware))
+  reducer,
+  {},
+  composer(applyMiddleware(routingMiddleware, sagaMiddleware)),
 );
 
 // Start running the main saga

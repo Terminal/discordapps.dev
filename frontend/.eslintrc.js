@@ -1,3 +1,16 @@
 module.exports = {
-    "extends": "airbnb"
+	extends: 'airbnb',
+	plugins: [
+		'react'
+	],
+	settings: {
+		'import/resolver': {
+			webpack: {
+				extensions: [
+					'.js',
+					'.jsx'
+				]
+			}
+		}
+	}
 };

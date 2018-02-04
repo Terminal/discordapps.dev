@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 
 import LocaleWrapper from './LocaleWrapper.js';
-import Application from './pages/Application';
+import Application from './pages/Application.jsx';
 
 function render() {
 	ReactDOM.render(
@@ -28,5 +28,5 @@ function render() {
 
 render();
 if (module.hot) {
-	module.hot.accept('./pages/Application.js', render);
+	module.hot.accept('./pages/Application.jsx', render);
 }
