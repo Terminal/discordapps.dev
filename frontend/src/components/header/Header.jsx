@@ -1,36 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, Navbar, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default () => (
-  <Navbar collapseOnSelect id="navbar">
-    <div className="container">
-      <Navbar.Header className="navbar-header">
-        <Link className="navbar-brand" to="/" href="/">Website</Link>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-        <Nav id="nav">
-          <LinkContainer exact to="/">
-            <NavItem>Home</NavItem>
-          </LinkContainer>
-          <LinkContainer exact to="/club">
-            <NavItem>Club</NavItem>
-          </LinkContainer>
-          <LinkContainer exact to="/contact">
-            <NavItem>Contact</NavItem>
-          </LinkContainer>
-        </Nav>
-        <Nav pullRight>
-          <LinkContainer to="/login">
-            <NavItem >Login</NavItem>
-          </LinkContainer>
-          <LinkContainer to="/register">
-            <NavItem>register</NavItem>
-          </LinkContainer>
-        </Nav>
-      </Navbar.Collapse>
-    </div>
+  <Navbar inverse collapseOnSelect>
+    <Navbar.Header>
+      <Navbar.Brand>
+        <a href="#brand">com.moustacheminer.ls</a>
+      </Navbar.Brand>
+      <Navbar.Toggle />
+    </Navbar.Header>
+    <Navbar.Collapse>
+      <Nav>
+        <LinkContainer to="/">
+          <NavItem eventKey="1">
+            Home
+          </NavItem>
+        </LinkContainer>
+        <LinkContainer to="/docs">
+          <NavItem eventKey="2">
+            Docs
+          </NavItem>
+        </LinkContainer>
+        <NavDropdown eventKey="3" title="Dropdown" id="nav-dropdown">
+          <MenuItem eventKey="3.1">Action</MenuItem>
+          <MenuItem eventKey="3.2">Another action</MenuItem>
+          <MenuItem eventKey="3.3">Something else here</MenuItem>
+          <MenuItem divider />
+          <MenuItem eventKey="3.4">Separated link</MenuItem>
+        </NavDropdown>
+      </Nav>
+      <Nav pullRight>
+        <NavItem eventKey="4" href="#">
+          Link Right
+        </NavItem>
+        <NavItem eventKey="5" href="#">
+          Link Right
+        </NavItem>
+      </Nav>
+    </Navbar.Collapse>
   </Navbar>
 );
