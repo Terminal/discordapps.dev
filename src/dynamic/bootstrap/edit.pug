@@ -56,6 +56,11 @@ block content
 							textarea#longDesc.form-control(name="longDesc" maxlength="20000" rows="6" required) #{bot.longDesc}
 						else if bot.type === "html"
 							textarea#longDesc.form-control(name="longDesc" maxlength="200000" rows="12" required) #{bot.longDesc}
+					.form-group
+						label(for="category") #{__('add_category')}
+						select#category.form-control(name="category" placeholder=__('add_category_placeholder') required)
+							for category in categories
+								option(value=category selected=bot.category===category) #{__(`category_${category}`)}
 					p: i #{__('add_advanced')}
 					.form-group
 						label(for="theme") #{__('add_theme')}

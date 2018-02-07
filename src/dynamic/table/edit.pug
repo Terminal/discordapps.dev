@@ -39,12 +39,15 @@ block content
 				textarea(name="longDesc" maxlength="20000" rows="6" required) #{bot.longDesc}
 			else if bot.type === "html"
 				textarea(name="longDesc" maxlength="200000" rows="12" required) #{bot.longDesc}
+		label(for="category") #{__('add_category')}
+		select#category.form-control(name="category" placeholder=__('add_category_placeholder') required)
+			for category in categories
+				option(value=category selected=bot.category===category) #{__(`category_${category}`)}
 		p: i #{__('add_advanced')}
 		label(for="theme") #{__('add_theme')}
 		select#theme.form-control(name="theme" placeholder=__('add_theme_placeholder') required)
 			for theme in themes
 				option(value=theme selected=bot.theme===theme) #{__(`theme_${theme}`)}
-
 		button.btn.btn-primary(type="submit") #{__('add_submit')}
 		input.hide(type="text" name="csrf" value=csrf)
 		input.hide(type="text" name="id" value=bot.id)
