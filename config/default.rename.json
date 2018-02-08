@@ -27,6 +27,7 @@
 		"port": 8080,
 		"secret": "",
 		"location": "",
+		"docs": "https://docs.terminal.ink/ls/",
 		"store": {
 			"browserSessionsMaxAge": 2592000000,
 			"clearInterval": 2592000000
