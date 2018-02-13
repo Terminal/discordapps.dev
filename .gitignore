@@ -11,3 +11,4 @@ node_modules/
 js/
 config/production
 config/test
+config/default.json
