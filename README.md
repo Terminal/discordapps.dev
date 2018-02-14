@@ -18,11 +18,11 @@ German   | MrLar#8117 ([@MrLar](https://github.com/MrLar))
 Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
 
 ## Installation
-1. Install `imagemagick`, `Node.js` v9.4.0, `npm` 5.6.0, `RethinkDB`
+1. Install `imagemagick`, `Node.js` v9.5.0, `npm` 5.6.0, `RethinkDB`
+1. Run `rethinkdb`
 1. `git clone https://github.com/terminal/ls.terminal.ink.git`
 1. `cd ls.terminal.ink`
 1. `npm i`
-1. Create `terminal` database with `bots`, `csrf`, `users`, `session` and `i18n` as tables in RethinkDB, by logging into the RethinkDB integrated webserver.
 1. `cp config/default.rename.json config/default.json`
 1. Edit `config/default.json`
 1. `npm start`
@@ -36,9 +36,9 @@ Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
 
 ```
 /**
-	ls.terminal.ink Discord Bot List Server
-	Copyright (C) 2018 Moustacheminer Server Services
-	Copyright (C) 2018 Terminal.ink
+    ls.terminal.ink Discord Bot List Server
+    Copyright (C) 2018 Moustacheminer Server Services
+    Copyright (C) 2018 Terminal.ink
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -51,6 +51,6 @@ Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 ```
