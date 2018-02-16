@@ -1,8 +1,10 @@
 version: '3'
 services:
-  db:
+  rethinkdb:
     image: rethinkdb:latest
   website:
     build: .
+    depends_on:
+      - rethinkdb
     ports:
       - "8080:8080"
