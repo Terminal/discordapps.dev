@@ -27,6 +27,14 @@ Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
 1. Edit `config/default.json`
 1. `npm start`
 
+### Installation on Docker
+1. `git clone https://github.com/terminal/ls.terminal.ink.git && cd ls.terminal.ink`
+1. `docker-compose build` to build the container
+1. `docker-compose up` to start the container
+1. `docker-compose start` to start the container in the background
+
+*Notice, when updating the list, you must pull and then `docker-compose build` to update*
+
 ### Translations
 
 1. Edit `locales/{locale}.json`

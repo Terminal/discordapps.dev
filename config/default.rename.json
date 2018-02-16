@@ -3,7 +3,7 @@
 		"db": "terminal",
 		"servers": [
 			{
-				"host": "127.0.0.1",
+				"host": "rethinkdb",
 				"port": 28015
 			}
 		]
