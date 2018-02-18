@@ -1,4 +1,4 @@
-# ls.terminal.ink
+# ls.terminal.ink [![Build Status](https://travis-ci.org/Terminal/ls.terminal.ink.svg?branch=master)](https://travis-ci.org/Terminal/ls.terminal.ink)
 An open source Discord Bot listing website using Eris, Express and RethinkDB (and no jQuery if you select the `<table>` theme)
 
 ## Development Team
