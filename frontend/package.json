@@ -71,6 +71,7 @@
 		"history": "^4.7.2",
 		"isomorphic-fetch": "~2.2.0",
 		"normalize.css": "~7.0.0",
+		"popper.js": "^1.12.9",
 		"react": "~16.0.0",
 		"react-bootstrap": "^0.32.1",
 		"react-dom": "~16.0.0",
