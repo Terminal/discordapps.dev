@@ -18,11 +18,9 @@ export default () => (
             Home
           </NavItem>
         </LinkContainer>
-        <LinkContainer to="/docs">
-          <NavItem eventKey="2">
-            Docs
-          </NavItem>
-        </LinkContainer>
+        <NavItem eventKey="2" href="https://docs.terminal.ink/ls2">
+          Docs
+        </NavItem>
         <NavDropdown eventKey="3" title="Dropdown" id="nav-dropdown">
           <MenuItem eventKey="3.1">Action</MenuItem>
           <MenuItem eventKey="3.2">Another action</MenuItem>
