@@ -46,7 +46,7 @@ export default class BotList extends Component {
         </div>
         <ReactPaginate previousLabel={"previous"}
           nextLabel={"next"}
-          breakLabel={<a href="">...</a>}
+          breakLabel={<span>...</span>}
           breakClassName={"break-me"}
           pageCount={this.state.pageCount}
           marginPagesDisplayed={3}
