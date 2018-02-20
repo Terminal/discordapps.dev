@@ -62,7 +62,7 @@
 	"error_bot_offline": "The web server is initializing.",
 	"error_rethinkdb_insert": "An error occurred while inserting data into RethinkDB.",
 	"error_rethinkdb_delete": "An error occurred while deleting data from RethinkDB.",
-	"error_rethinkdb_update": "An error occurred while updating data into RethinkDB".,
+	"error_rethinkdb_update": "An error occurred while updating data into RethinkDB.",
 	"error_bot_not_found": "The bot was not found.",
 	"error_duplicate_bot": "A bot with this ID already exists. If you believe this is in error, contact the administrators.",
 	"error_bot_html_not_found": "This bot does not have any associated HTML page.",
