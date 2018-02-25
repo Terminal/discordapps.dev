@@ -7,7 +7,7 @@ export default () => (
   <Navbar inverse collapseOnSelect>
     <Navbar.Header>
       <Navbar.Brand>
-        <a href="#brand">com.moustacheminer.ls</a>
+        <a href="#brand">Terminal.ink Bot List</a>
       </Navbar.Brand>
       <Navbar.Toggle />
     </Navbar.Header>
@@ -18,25 +18,25 @@ export default () => (
             Home
           </NavItem>
         </LinkContainer>
-        <NavItem eventKey="2" href="https://docs.terminal.ink/ls2">
+        <NavItem eventKey="2" href="https://docs.terminal.ink/ls">
           Docs
         </NavItem>
-        <NavDropdown eventKey="3" title="Dropdown" id="nav-dropdown">
+        {/* <NavDropdown eventKey="3" title="Dropdown" id="nav-dropdown">
           <MenuItem eventKey="3.1">Action</MenuItem>
           <MenuItem eventKey="3.2">Another action</MenuItem>
           <MenuItem eventKey="3.3">Something else here</MenuItem>
           <MenuItem divider />
           <MenuItem eventKey="3.4">Separated link</MenuItem>
-        </NavDropdown>
+        </NavDropdown> */}
       </Nav>
-      <Nav pullRight>
+      {/* <Nav pullRight>
         <NavItem eventKey="4" href="#">
           Link Right
         </NavItem>
         <NavItem eventKey="5" href="#">
           Link Right
         </NavItem>
-      </Nav>
+      </Nav> */}
     </Navbar.Collapse>
   </Navbar>
 );
