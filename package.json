@@ -24,6 +24,7 @@
 		"cheerio": "^1.0.0-rc.2",
 		"config": "^1.26.1",
 		"cookie-parser": "^1.4.3",
+		"cors": "^2.8.4",
 		"eris": "^0.7.2",
 		"express": "^4.16.2",
 		"express-session": "^1.15.4",

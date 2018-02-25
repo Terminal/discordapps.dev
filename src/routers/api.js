@@ -26,6 +26,7 @@
 const express = require('express');
 const v1 = require('./apirevisions/v1');
 const discord = require('./../discord');
+const cors = require('cors');
 
 let online;
 
@@ -41,9 +42,10 @@ discord.on('disconnect', () => {
 const router = express.Router();
 
 // Redirect to the documentation
-router.get('/', (req, res) => {
-	res.redirect('/docs');
-})
+router.use(cors())
+	.get('/', (req, res) => {
+		res.redirect('/docs');
+	})
 	.use((req, res, next) => {
 		if (online) {
 			next();
