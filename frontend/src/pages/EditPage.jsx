@@ -1,6 +1,6 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 
-export default class EdiPage extends Component {
+export default class EditPage extends Component {
   constructor(props) {
     super(props);
     fetch(`https://ls.terminal.ink/api/v1/bots/${props.match.params.id}`)
@@ -27,8 +27,8 @@ export default class EdiPage extends Component {
           The famous master making guitars are: Nicola Amati (nicolas, Marty), Antonio Stradivari (Antonio Stella bottom tile), and Giuseppe Guarneri (ji plug pu melon nai);
           They made instruments so far are priceless.
           The violins fifth tune: g, d1, a1, e2, register more than three and a half group, is all orchestra indispensable instrument, also after instruments.
-       </p>
+        </p>
       </div>
-    )
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { React, Component } from 'react';
+import React, { Component } from 'react';
 import { Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 export default class EditPage extends Component {
