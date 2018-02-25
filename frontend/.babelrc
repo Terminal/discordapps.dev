@@ -1,15 +1,37 @@
 {
 	"presets": [
-		[ "env", { "targets": { "browsers": [ "last 2 versions" ] }, "modules": false, "useBuiltIns": true } ],
+		[
+			"env",
+			{
+				"targets": {
+					"browsers": [
+						"last 2 versions"
+					]
+				},
+				"modules": false,
+				"useBuiltIns": true
+			}
+		],
 		"react"
 	],
-	"plugins": [ "transform-decorators-legacy", "transform-class-properties" ],
+	"plugins": [
+		"transform-decorators-legacy",
+		"transform-class-properties"
+	],
 	"env": {
 		"test": {
 			"presets": [
-				[ "env", { "modules": "commonjs" } ]
+				[
+					"env",
+					{
+						"modules": "commonjs"
+					}
+				]
 			],
-			"plugins": [ "transform-decorators-legacy", "transform-class-properties" ]
+			"plugins": [
+				"transform-decorators-legacy",
+				"transform-class-properties"
+			]
 		}
 	}
 }
