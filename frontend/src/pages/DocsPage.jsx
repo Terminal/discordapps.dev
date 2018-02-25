@@ -18,22 +18,16 @@
 */
 
 import React from 'react';
-import { Route } from 'react-router-dom';
-
-import 'normalize.css/normalize.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'popper.js';
-
-import Home from './Home.jsx';
-import Header from './../components/header/Header.jsx';
-import EditPage from './EditPage.jsx';
-import DocsPage from './DocsPage.jsx';
 
 export default () => (
-  <div className="app">
-    <Header />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/docs" component={DocsPage} />
-    <Route exact path="/edit/:id" component={EditPage} />
+  <div>
+    <h4>Introduction</h4>
+    <p>
+      Somebody once told me the world was gonna roll me
+      He ain&#39;t the smartest tool in the shed
+      She was looking kinda dumb
+      With her finger and her thumb
+      With a shape of an L on her forehead
+    </p>
   </div>
 );

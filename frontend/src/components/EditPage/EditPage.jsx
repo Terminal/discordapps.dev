@@ -17,23 +17,24 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import React from 'react';
-import { Route } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
-import 'normalize.css/normalize.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'popper.js';
-
-import Home from './Home.jsx';
-import Header from './../components/header/Header.jsx';
-import EditPage from './EditPage.jsx';
-import DocsPage from './DocsPage.jsx';
-
-export default () => (
-  <div className="app">
-    <Header />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/docs" component={DocsPage} />
-    <Route exact path="/edit/:id" component={EditPage} />
-  </div>
-);
+export default class EditPage extends Component {
+  render() {
+    return (
+      <Col xs={12}>
+        <form>
+          <FormGroup>
+            <ControlLabel>ID</ControlLabel>
+            <FormControl
+              type="text"
+              value={this.state.bot.id}
+              placeholder="Insert bot ID"
+            />
+          </FormGroup>
+        </form>
+      </Col>
+    );
+  }
+}
