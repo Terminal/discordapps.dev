@@ -28,11 +28,14 @@ export default class BotList extends Component {
     });
   };
   load() {
-    let data = bots.slice();
-    this.setState({
-      data: data.splice(this.state.offset, this.state.length),
-      pageCount: Math.ceil(bots.length / this.state.length)
-    })
+    fetch('https://ls.terminal.ink/api/v1/bots')
+      .then(data => data.json())
+      .then(data => {
+        this.setState({
+          data: data.splice(this.state.offset, this.state.length),
+          pageCount: Math.ceil(bots.length / this.state.length)
+        })
+      })
   }
   render() {
     const elements = this.state.data.map((bot) => (
