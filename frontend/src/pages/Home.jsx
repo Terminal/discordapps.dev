@@ -38,7 +38,7 @@ export default class BotList extends Component {
     let selected = data.selected;
     let offset = Math.ceil(selected * this.state.length);
 
-    this.setState({offset: offset}, () => {
+    this.setState({ offset }, () => {
       this.load();
     });
   };
@@ -64,11 +64,11 @@ export default class BotList extends Component {
         </div>
         <ReactPaginate previousLabel={"previous"}
           nextLabel={"next"}
-          breakLabel={<a href="">...</a>}
+          breakLabel={<span>...</span>}
           breakClassName={"break-me"}
           pageCount={this.state.pageCount}
-          marginPagesDisplayed={3}
-          pageRangeDisplayed={5}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
           onPageChange={this.handlePageClick}
           containerClassName={"pagination"}
           subContainerClassName={"pages pagination"}

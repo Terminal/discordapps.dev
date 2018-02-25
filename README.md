@@ -4,5 +4,5 @@
 Ensure you have:
 
 - 2 spaces
-- LF
+- LF (Unix)
 - Installed all dependencies

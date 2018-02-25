@@ -25,9 +25,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'popper.js';
 
 import Home from './Home.jsx';
-import DocsPage from './DocsPage.jsx';
 import Header from './../components/header/Header.jsx';
 import EditPage from './EditPage.jsx';
+import DocsPage from './DocsPage.jsx';
 
 export default () => (
   <div className="app">
