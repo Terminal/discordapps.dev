@@ -17,7 +17,7 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-const imageFail = (element) => {
+function imageFail(element) {
 	if (!element.dataset.imageFailure) {
 		element.src = '/img/terminal256.png';
 		element.dataset.imageFailure = true;
