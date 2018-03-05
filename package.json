@@ -4,7 +4,7 @@
 	"description": "The Express server that hosts the bot directory listing.",
 	"main": "src/index.js",
 	"scripts": {
-		"test": "standard",
+		"test": "eslint .",
 		"start": "node index.js",
 		"sass": "sass --watch src/static/css/"
 	},
