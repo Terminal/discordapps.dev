@@ -28,6 +28,7 @@ block main
 				if !botinfo.approved
 					span.pill.red #{__('list_unverified')}
 				p #{botinfo.shortDesc}
+				p #{__('list_prefix', { prefix: botinfo.prefix })}
 		if botinfo.editable >= 1
 			.horizontal.wrap
 				if botinfo.editable >= 3 && !botinfo.approved && csrf
