@@ -17,7 +17,7 @@
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-const imageFail = (element) => {
+const imageFail = (element) => { // eslint-disable-line
 	if (!element.dataset.imageFailure) {
 		element.src = '/img/terminal256.png';
 		element.dataset.imageFailure = true;

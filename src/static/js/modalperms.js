@@ -24,7 +24,7 @@
  * SOFTWARE.
  */
 
-function modalperms() {
+function modalperms() { // eslint-disable-line
 	const perms = {
 		CREATE_INSTANT_INVITE: 0x00000001,
 		KICK_MEMBERS: 0x00000002,
