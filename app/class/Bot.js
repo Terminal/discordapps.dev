@@ -20,14 +20,14 @@ class Bot {
 
     // Assign the inputs to the object
     this.id = bot.id;
-    this.name = bot.name || databaseResult.name || '';
-    this.invite = bot.invite || databaseResult.invite || '';
-    this.prefix = bot.prefix || databaseResult.prefix || '';
-    this.description = bot.description || databaseResult.description; // The description
-    this.installs = bot.installs || databaseResult.installs || 0; // The number of "installations"
-    this.votes = bot.votes || databaseResult.votes || []; // The array of votes
-    this.icons = bot.icons || databaseResult.icons || []; // An array of user upload image UUIDs
-    this.images = bot.images || databaseResult.images || []; // An array of user upload image UUIDs
+    this._name = bot.name || databaseResult.name || '';
+    this._invite = bot.invite || databaseResult.invite || '';
+    this._prefix = bot.prefix || databaseResult.prefix || '';
+    this._description = bot.description || databaseResult.description; // The description
+    this._installs = bot.installs || databaseResult.installs || 0; // The number of "installations"
+    this._votes = bot.votes || databaseResult.votes || []; // The array of votes
+    this._icons = bot.icons || databaseResult.icons || []; // An array of user upload image UUIDs
+    this._images = bot.images || databaseResult.images || []; // An array of user upload image UUIDs
 
     // (Re)upload to the database
     await rethinkdb.table('bots').insert({
@@ -147,6 +147,16 @@ class Bot {
       .update({
         images: value
       });
+  }
+
+  /**
+   * Delete the application
+   * @returns {Promise} The promise from RethinkDB that deletes the application
+   */
+  delete() {
+    return rethinkdb.table('bots')
+      .get(this.id)
+      .delete();
   }
 }
 
