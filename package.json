@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.16.3",
+    "rethinkdbdash": "^2.3.31"
+  },
+  "name": "ls.terminal.ink",
+  "version": "2.0.0",
+  "description": "A list of bots for the Discord Inc DiscordApp",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terminal/ls.terminal.ink.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Terminal/ls.terminal.ink/issues"
+  },
+  "homepage": "https://github.com/Terminal/ls.terminal.ink#readme"
+}

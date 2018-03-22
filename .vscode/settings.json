@@ -1,0 +1,7 @@
+{
+  // Don't be a `.git`
+  // Use 2 spaces or you will ruin the files
+  "editor.detectIndentation": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2
+}
