@@ -140,15 +140,18 @@ class Bot {
   /**
    * Get the current data from the database
    */
-  async get() {
-    const databaseResult = await rethinkdb.table('bots').get(this._id);
-
-    this._name = databaseResult.name || 'Unknown Name';
-    this._invite = databaseResult.invite || 'https://example.com/';
-    this._prefix = databaseResult.prefix || 'Unknown Prefix';
-    this._description = databaseResult.description;
-    this._owners = new Map(databaseResult.owners);
-    this._token = crypto.randomBytes(64).toString('hex');
+  get() {
+    return new Promise((resolve, reject) => {
+      rethinkdb.table('bots').get(this._id).then((databaseResult) => {
+        this._name = databaseResult.name || 'Unknown Name';
+        this._invite = databaseResult.invite || 'https://example.com/';
+        this._prefix = databaseResult.prefix || 'Unknown Prefix';
+        this._description = databaseResult.description;
+        this._owners = new Map(databaseResult.owners);
+        this._token = crypto.randomBytes(64).toString('hex');
+        resolve();
+      })
+    });
   }
 
   /**
