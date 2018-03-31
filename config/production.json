@@ -1,3 +1,4 @@
 {
-  "test": "TEST"
+  "config": "production",
+  "test": "PROD"
 }

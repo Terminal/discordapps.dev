@@ -1,15 +1,19 @@
 {
   "dependencies": {
+    "config": "^1.30.0",
     "express": "^4.16.3",
-    "rethinkdbdash": "^2.3.31"
+    "rethinkdbdash": "^2.3.31",
+    "uuid": "^3.2.1"
   },
   "name": "ls.terminal.ink",
   "version": "2.0.0",
   "description": "A list of bots for the Discord Inc DiscordApp",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "^5.0.5"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
