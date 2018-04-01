@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 const config = require('./../config');
 const assert = require('assert');
 const rethinkdb = require('../app/modules/rethinkdb');

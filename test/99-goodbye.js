@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 const rethinkdb = require('../app/modules/rethinkdb');
 
 describe('Test Completion', () => {

@@ -1,8 +1,8 @@
+/* eslint-env mocha */
+
 const Bot = require('./../app/class/Bot');
 const uuidv1 = require('uuid/v1');
 const assert = require('assert');
-
-const randomInt = max => Math.floor(Math.random() * Math.floor(max));
 
 describe('Bot Class', () => {
   let bot1;

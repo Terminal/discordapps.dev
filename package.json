@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "body-parser": "^1.18.2",
     "config": "^1.30.0",
     "express": "^4.16.3",
     "rethinkdbdash": "^2.3.31",
@@ -10,6 +11,8 @@
   "description": "A list of bots for the Discord Inc DiscordApp",
   "main": "index.js",
   "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0",
     "mocha": "^5.0.5"
   },
   "scripts": {

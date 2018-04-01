@@ -1,1 +1,1 @@
-console.log(require('./config'))
+require('./app');

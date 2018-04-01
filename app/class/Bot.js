@@ -14,7 +14,7 @@ class Bot {
   constructor(bot) {
     // Get existing results, if they exist
     if (typeof bot !== 'string') {
-      throw new Error('The constructor should give a string')
+      throw new Error('The constructor should give a string');
     }
 
     this._id = bot;
@@ -51,7 +51,7 @@ class Bot {
   }
 
   set id(value) {
-    throw new Error('Editing the ID is strictly prohibited');
+    throw new Error(`Editing the ID is strictly prohibited. The ID ${this._id} will not be changed to ${value}.`);
   }
 
   set name(value) {
@@ -98,9 +98,9 @@ class Bot {
     return rethinkdb.table('bots')
       .insert({
         id: this._id,
-        token: token
+        token,
       }, {
-        conflict: 'update'
+        conflict: 'update',
       });
   }
 
@@ -109,15 +109,16 @@ class Bot {
    * @returns {Promise} The promise from RethinkDB that added or set the user
    */
   setOwner(id, permission) {
-    if (!id) return Promise.reject('No ID was provided');
-    if (!permission) permission = 0;
-    this._owners.set(id, permission);
+    let perm = permission;
+    if (!id) return Promise.reject(new Error('No ID was provided'));
+    if (!permission) perm = 0;
+    this._owners.set(id, perm);
     return rethinkdb.table('bots')
       .insert({
         id: this._id,
-        owners: Array.from(this._owners)
+        owners: Array.from(this._owners),
       }, {
-        conflict: 'update'
+        conflict: 'update',
       });
   }
 
@@ -126,14 +127,14 @@ class Bot {
    * @returns {Promise} The promise from RethinkDB that removed the user
    */
   removeOwner(id) {
-    if (!id) return Promise.reject('No ID was provided');
+    if (!id) return Promise.reject(new Error('No ID was provided'));
     this._owners.delete(id);
     return rethinkdb.table('bots')
       .insert({
         id: this._id,
-        owners: Array.from(this._owners)
+        owners: Array.from(this._owners),
       }, {
-        conflict: 'update'
+        conflict: 'update',
       });
   }
 
@@ -141,7 +142,7 @@ class Bot {
    * Get the current data from the database
    */
   get() {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       rethinkdb.table('bots').get(this._id).then((databaseResult) => {
         this._name = databaseResult.name || 'Unknown Name';
         this._invite = databaseResult.invite || 'https://example.com/';
@@ -150,7 +151,7 @@ class Bot {
         this._owners = new Map(databaseResult.owners);
         this._token = crypto.randomBytes(64).toString('hex');
         resolve();
-      })
+      });
     });
   }
 
@@ -166,9 +167,9 @@ class Bot {
       prefix: this._prefix,
       description: this._description,
       owners: Array.from(this._owners),
-      token: this._token
+      token: this._token,
     }, {
-      conflict: 'update'
+      conflict: 'update',
     });
   }
 }
