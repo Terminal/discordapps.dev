@@ -1,0 +1,13 @@
+{
+  "config": "test",
+  "rethinkdb": {
+    "db": "test",
+    "servers": [
+      {
+        "host": "192.168.0.9",
+        "port": 28015
+      }
+    ],
+    "silent": true
+  }
+}

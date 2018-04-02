@@ -5,8 +5,8 @@ const assert = require('assert');
 const rethinkdb = require('../app/modules/rethinkdb');
 
 describe('Test Initialisation', () => {
-  it('should be the development configuration', () => {
-    assert.strictEqual(config.config, 'development');
+  it('should be the test configuration', () => {
+    assert.strictEqual(config.config, 'test');
   });
   it('should clean the bots table', (done) => {
     rethinkdb.table('bots').delete().then(() => done());
