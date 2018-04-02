@@ -35,9 +35,7 @@ app.use(bodyParser.json())
     r.table('bots')
       .without('token')
       .run()
-      .then((bots) => {
-        res.json(bots);
-      });
+      .then(bots => res.json(bots));
   });
 
 app.listen(8080);
