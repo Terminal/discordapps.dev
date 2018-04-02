@@ -6,7 +6,8 @@ const auth = require('./modules/passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const RDBStore = require('session-rethinkdb')(session);
-const authRouter = require('./middleware/auth');
+const authRouter = require('./router/auth');
+const botsRouter = require('./router/bots');
 const config = require('../config');
 
 const store = new RDBStore(r);
@@ -31,11 +32,6 @@ app.use(bodyParser.json())
     });
   })
   .use('/auth', authRouter)
-  .get('/bots', (req, res) => {
-    r.table('bots')
-      .without('token')
-      .run()
-      .then(bots => res.json(bots));
-  });
+  .use('/bots', botsRouter);
 
 app.listen(8080);

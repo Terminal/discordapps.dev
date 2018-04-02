@@ -26,6 +26,7 @@ class Bot {
     this._images = new Set();
     this._owners = new Map();
     this._token = crypto.randomBytes(64).toString('hex');
+    this._approved = false;
   }
 
   get id() {
@@ -64,6 +65,10 @@ class Bot {
     return this._owners;
   }
 
+  get approved() {
+    return this._approved;
+  }
+
   set id(value) {
     throw new Error(`Editing the ID is strictly prohibited. The ID ${this._id} will not be changed to ${value}.`);
   }
@@ -96,6 +101,11 @@ class Bot {
     if (typeof value !== 'string') throw new Error('Value needs to be a string');
     if (value.length > 2048) throw new Error('Value length exceeds 2048 characters');
     this._avatar = value;
+  }
+
+  set approved(value) {
+    if (typeof value !== 'boolean') throw new Error('Value needs to be a boolean');
+    this._approved = value;
   }
 
   /**
@@ -181,6 +191,7 @@ class Bot {
         this._avatar = databaseResult.avatar;
         this._images = new Set(databaseResult.images);
         this._owners = new Map(databaseResult.owners);
+        this._approved = databaseResult.approved || false;
         this._token = databaseResult.token || crypto.randomBytes(64).toString('hex');
         resolve();
       });
@@ -201,6 +212,7 @@ class Bot {
       avatar: this._avatar,
       images: Array.from(this._images),
       owners: Array.from(this._owners),
+      approved: this._approved,
       token: this._token,
     }, {
       conflict: 'update',
