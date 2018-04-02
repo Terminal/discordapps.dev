@@ -1,4 +1,25 @@
 {
   "config": "production",
-  "test": "PROD"
+  "rethinkdb": {
+    "db": "terminal",
+    "servers": [
+      {
+        "host": "127.0.0.1",
+        "port": 28015
+      }
+    ],
+    "silent": true
+  },
+  "webserver": {
+    "location": "https://api.ls.terminal.ink/",
+    "secret": "imsecretlygayfordevoxin"
+  },
+  "discord": {
+    "clientID": "",
+    "clientSecret": "",
+    "scope": [
+      "identify"
+    ],
+    "token": ""
+  }
 }

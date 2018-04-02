@@ -19,7 +19,6 @@ app.use(bodyParser.json())
     secret: config.webserver.secret,
     resave: true,
     saveUninitialized: true,
-    proxy: true,
     store,
   }))
   .use(auth.initialize())
@@ -27,7 +26,7 @@ app.use(bodyParser.json())
   .set('json spaces', 2)
   .get('/', (req, res) => {
     res.json({
-      message: 'Welcome to the ls.terminal.ink API server',
+      message: 'Welcome to the ls.terminal.ink API server. Please read https://docs.terminal.ink/ls for more info',
       user: req.user || {},
     });
   })
