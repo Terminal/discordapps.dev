@@ -22,6 +22,8 @@ class Bot {
     this._invite = 'https://example.com/';
     this._prefix = 'Unknown Prefix';
     this._description = '';
+    this._avatar = '';
+    this._images = new Set();
     this._owners = new Map();
     this._token = crypto.randomBytes(64).toString('hex');
   }
@@ -48,6 +50,18 @@ class Bot {
 
   get token() {
     return this._token;
+  }
+
+  get avatar() {
+    return this._avatar;
+  }
+
+  get images() {
+    return this._images;
+  }
+
+  get owners() {
+    return this._owners;
   }
 
   set id(value) {
@@ -78,68 +92,84 @@ class Bot {
     this._description = value;
   }
 
-  /**
-   * Delete the application
-   * @returns {Promise} The promise from RethinkDB that deletes the application
-   */
-  delete() {
-    return rethinkdb.table('bots')
-      .get(this.id)
-      .delete();
+  set avatar(value) {
+    if (typeof value !== 'string') throw new Error('Value needs to be a string');
+    if (value.length > 2048) throw new Error('Value length exceeds 2048 characters');
+    this._avatar = value;
   }
 
   /**
    * Reset the token of the application
-   * @returns {Promise} The promise from RethinkDB that resets the token
    */
   resetToken() {
-    const token = crypto.randomBytes(64).toString('hex');
-    this._token = token;
-    return rethinkdb.table('bots')
-      .insert({
-        id: this._id,
-        token,
-      }, {
-        conflict: 'update',
-      });
+    this._token = crypto.randomBytes(64).toString('hex');
+  }
+
+  /**
+   * Check if the bot has a specific owner, and returns the permission level
+   * `3` - Can delete
+   * `2` - Can edit
+   * `1` - Labelled
+   * @param id The ID of the user
+   * @returns {Number} The permission level. `0` if not an owner. Administrators are always level 3
+   */
+  getOwner(id) {
+    return this._owners.get(id) || 0;
   }
 
   /**
    * Add or set an owner of the bot with a permission level
-   * @returns {Promise} The promise from RethinkDB that added or set the user
+   * @param id The ID of the user
+   * @param permission The permission level of the user. `1`, `2` or `3`. Level `0` will delete.
    */
   setOwner(id, permission) {
-    let perm = permission;
-    if (!id) return Promise.reject(new Error('No ID was provided'));
-    if (!permission) perm = 0;
-    this._owners.set(id, perm);
-    return rethinkdb.table('bots')
-      .insert({
-        id: this._id,
-        owners: Array.from(this._owners),
-      }, {
-        conflict: 'update',
-      });
+    if (permission === 0) { // Permission 0 means "delete"
+      this.removeOwner(id);
+    } else if (permission === 1 || permission === 2 || permission === 3) { // Verbose is good
+      this._owners.set(id, permission);
+    } else {
+      throw new Error('The permission level was not `0`, `1`, `2` or `3`.');
+    }
+  }
+
+  /**
+   * Add or set an owner of the bot with a permission level
+   * Is the "non-preferred" alias for `.setOwner()`
+   * @param id The ID of the user
+   * @param permission The permission level of the user. `1`, `2` or `3`. Level `0` will delete.
+   */
+  addOwner(id, permission) {
+    this.setOwner(id, permission);
   }
 
   /**
    * Remove an owner of the bot
+   * @param id The ID of the user
    * @returns {Promise} The promise from RethinkDB that removed the user
    */
   removeOwner(id) {
-    if (!id) return Promise.reject(new Error('No ID was provided'));
     this._owners.delete(id);
-    return rethinkdb.table('bots')
-      .insert({
-        id: this._id,
-        owners: Array.from(this._owners),
-      }, {
-        conflict: 'update',
-      });
+  }
+
+  /**
+   * Add an image to the images collection
+   * @param hash The hash of the image
+   */
+  addImage(hash) {
+    this._images.add(hash);
+  }
+
+  /**
+   * Remove an image from the images collection
+   * @param hash The hash of the image
+   */
+  removeImage(hash) {
+    this._images.delete(hash);
   }
 
   /**
    * Get the current data from the database
+   * @returns {Promise} The promise from RethinkDB
    */
   get() {
     return new Promise((resolve) => {
@@ -148,8 +178,10 @@ class Bot {
         this._invite = databaseResult.invite || 'https://example.com/';
         this._prefix = databaseResult.prefix || 'Unknown Prefix';
         this._description = databaseResult.description;
+        this._avatar = databaseResult.avatar;
+        this._images = new Set(databaseResult.images);
         this._owners = new Map(databaseResult.owners);
-        this._token = crypto.randomBytes(64).toString('hex');
+        this._token = databaseResult.token || crypto.randomBytes(64).toString('hex');
         resolve();
       });
     });
@@ -157,7 +189,7 @@ class Bot {
 
   /**
    * Post the current data to the database
-   * @returns {Promise} The promise from RethinkDB that removed the user
+   * @returns {Promise} The promise from RethinkDB
    */
   post() {
     return rethinkdb.table('bots').insert({
@@ -166,11 +198,23 @@ class Bot {
       invite: this._invite,
       prefix: this._prefix,
       description: this._description,
+      avatar: this._avatar,
+      images: Array.from(this._images),
       owners: Array.from(this._owners),
       token: this._token,
     }, {
       conflict: 'update',
     });
+  }
+
+  /**
+   * Delete the data from the database. Does not delete the bot variable.
+   * @returns {Promise} The promise from RethinkDB
+   */
+  delete() {
+    return rethinkdb.table('bots')
+      .get(this.id)
+      .delete();
   }
 }
 

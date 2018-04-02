@@ -15,18 +15,24 @@ describe('Bot Class', () => {
   it('post it to the database', (done) => {
     bot1.post().then(() => done());
   });
-  it('reset the token and post it to the database', (done) => {
+  it('reset the token', () => {
     token1 = bot1.token;
-    bot1.resetToken().then(() => done());
+    bot1.resetToken();
+  });
+  it('post it to the database', (done) => {
+    bot1.post().then(() => done());
   });
   it('check that the token has actually changed', () => {
     assert.notStrictEqual(token1, bot1.token);
   });
   it('set information on the bot and post it to the database', (done) => {
-    bot1.name = 'DiscordMail';
-    bot1.invite = 'https://discordmail.com/url/invite';
-    bot1.prefix = 'dmail';
-    bot1.description = 'The Discord Bot that links E-Mail to your Discord DMs!';
+    bot1.name = 'Example Bot';
+    bot1.invite = 'https://example.com/invite';
+    bot1.prefix = 'exam';
+    bot1.description = 'The example Lorem Ipsum that is sure to impress!';
+    bot1.avatar = 'https://example.com/images/avatar.jif';
+    bot1.addImage('e-x-a-m-p-l-e-u-u-i-d-m-a-y-b-e');
+    bot1.addOwner('123456789', 3);
     bot1.post().then(() => done());
   });
   it('create an empty bot with the same ID', () => {
@@ -36,9 +42,6 @@ describe('Bot Class', () => {
     bot2.get().then(() => done());
   });
   it('check that the information has been saved', () => {
-    assert.strictEqual(bot1.name, bot2.name);
-    assert.strictEqual(bot1.invite, bot2.invite);
-    assert.strictEqual(bot1.prefix, bot2.prefix);
-    assert.strictEqual(bot1.description, bot2.description);
+    assert.deepStrictEqual(bot1, bot2);
   });
 });
