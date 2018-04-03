@@ -13,3 +13,8 @@ config/production
 config/test
 config/template
 config/default.json
+
+# Rewrite
+development.json
+test.json
+
