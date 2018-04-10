@@ -14,6 +14,12 @@ const store = new RDBStore(r);
 const app = express();
 
 app.use(bodyParser.json())
+  .use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', `${config.webserver.frontend.protocol}://${config.webserver.frontend.uri}`);
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Vary', '*');
+    next();
+  })
   .use(cookieParser(config.webserver.secret))
   .use(session({
     secret: config.webserver.secret,

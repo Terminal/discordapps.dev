@@ -1,10 +1,11 @@
 const express = require('express');
 const auth = require('../modules/passport');
+const config = require('../../config');
 
 const router = express.Router();
 
 router.use('/callback', auth.authenticate('discord'), (req, res) => {
-  res.redirect('/');
+  res.redirect(`${config.webserver.frontend.protocol}://${config.webserver.frontend.uri}/`);
 })
   .get('/', auth.authenticate('discord'))
   .get('/info', (req, res) => {
