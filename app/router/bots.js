@@ -41,13 +41,21 @@ router
     r.table('bots')
       .get(req.params.id)
       .without('token')
+      .default(null)
       .run()
       .then((bot) => {
-        if (!bot) res.status(404);
-        res.json({
-          ok: true,
-          bot,
-        });
+        if (!bot) {
+          res.status(404).json({
+            ok: false,
+            bot: {},
+            message: 'This bot does not exist',
+          });
+        } else {
+          res.json({
+            ok: true,
+            bot,
+          });
+        }
       });
   })
   .get('/owner/:id', (req, res) => {
