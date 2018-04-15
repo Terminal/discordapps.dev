@@ -24,6 +24,7 @@ class Bot {
     this._description = '';
     this._avatar = '';
     this._images = new Set();
+    this._banner = '';
     this._owners = new Map();
     this._token = crypto.randomBytes(64).toString('hex');
     this._approved = false;
@@ -59,6 +60,10 @@ class Bot {
 
   get images() {
     return this._images;
+  }
+
+  get banner() {
+    return this._banner;
   }
 
   get owners() {
@@ -106,6 +111,11 @@ class Bot {
   set approved(value) {
     if (typeof value !== 'boolean') throw new Error('Value needs to be a boolean');
     this._approved = value;
+  }
+
+  set banner(value) {
+    if (typeof value !== 'string') throw new Error('Value must be a string');
+    this._banner = value;
   }
 
   /**
@@ -190,6 +200,7 @@ class Bot {
         this._description = databaseResult.description;
         this._avatar = databaseResult.avatar;
         this._images = new Set(databaseResult.images);
+        this._banner = databaseResult.banner || '';
         this._owners = new Map(databaseResult.owners);
         this._approved = databaseResult.approved || false;
         this._token = databaseResult.token || crypto.randomBytes(64).toString('hex');
@@ -211,6 +222,7 @@ class Bot {
       description: this._description,
       avatar: this._avatar,
       images: Array.from(this._images),
+      banner: this._banner,
       owners: Array.from(this._owners),
       approved: this._approved,
       token: this._token,

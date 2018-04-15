@@ -30,8 +30,9 @@ describe('Bot Class', () => {
     bot1.invite = 'https://example.com/invite';
     bot1.prefix = 'exam';
     bot1.description = 'The example Lorem Ipsum that is sure to impress!';
-    bot1.avatar = 'https://example.com/images/avatar.jif';
-    bot1.addImage('e-x-a-m-p-l-e-u-u-i-d-m-a-y-b-e');
+    bot1.banner = 'background';
+    bot1.avatar = 'https://terminal.ink/assets/images/avatar.png';
+    bot1.addImage('background');
     bot1.addOwner('123456789', 3);
     bot1.post().then(() => done());
   });
