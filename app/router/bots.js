@@ -8,7 +8,10 @@ router
     r.table('bots')
       .without('token')
       .run()
-      .then(bots => res.json(bots));
+      .then(bots => res.json({
+        ok: true,
+        bots,
+      }));
   })
   .get('/approved', (req, res) => {
     r.table('bots')
@@ -17,7 +20,10 @@ router
         approved: true,
       })
       .run()
-      .then(bots => res.json(bots));
+      .then(bots => res.json({
+        ok: true,
+        bots,
+      }));
   })
   .get('/queued', (req, res) => {
     r.table('bots')
@@ -26,7 +32,10 @@ router
         approved: false,
       })
       .run()
-      .then(bots => res.json(bots));
+      .then(bots => res.json({
+        ok: true,
+        bots,
+      }));
   })
   .get('/id/:id', (req, res) => {
     r.table('bots')
@@ -35,7 +44,10 @@ router
       .run()
       .then((bot) => {
         if (!bot) res.status(404);
-        res.json(bot);
+        res.json({
+          ok: true,
+          bot,
+        });
       });
   })
   .get('/owner/:id', (req, res) => {
@@ -43,7 +55,10 @@ router
       .without('token')
       .filter(bot => bot('owners').contains(owner => owner.nth(0).eq(req.params.id)))
       .run()
-      .then(bots => res.json(bots));
+      .then(bots => res.json({
+        ok: true,
+        bots,
+      }));
   });
 
 module.exports = router;
