@@ -34,9 +34,14 @@ app.use(bodyParser.json())
     res.json({
       message: 'Welcome to the ls.terminal.ink API server. Please read https://docs.terminal.ink/ls for more info',
       user: req.user || {},
+      ok: true,
     });
   })
   .use('/auth', authRouter)
-  .use('/bots', botsRouter);
+  .use('/bots', botsRouter)
+  .use((req, res) => res.status(404).json({
+    message: 'Not Found',
+    ok: false,
+  }));
 
 app.listen(8080);
