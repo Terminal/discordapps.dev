@@ -33,6 +33,7 @@ describe('Bot Class', () => {
     bot1.banner = 'background';
     bot1.avatar = 'https://terminal.ink/assets/images/avatar.png';
     bot1.addImage('background');
+    bot1.addImage('avatar');
     bot1.addOwner('123456789', 3);
     bot1.post().then(() => done());
   });
