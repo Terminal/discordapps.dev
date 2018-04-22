@@ -44,4 +44,4 @@ app.use(bodyParser.json())
     ok: false,
   }));
 
-app.listen(8080);
+app.listen(config.webserver.port);
