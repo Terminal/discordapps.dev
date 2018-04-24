@@ -57,6 +57,7 @@ describe('Bot Class', () => {
       bots[i].description = 'The example Lorem Ipsum that is sure to impress!';
       bots[i].banner = 'background';
       bots[i].avatar = 'https://terminal.ink/assets/images/avatar.png';
+      bots[i].category = i % 8;
       bots[i].addImage('background');
       bots[i].addImage('avatar');
       bots[i].addOwner('123456789', 3);

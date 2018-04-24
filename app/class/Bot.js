@@ -26,6 +26,7 @@ class Bot {
     this._images = new Set();
     this._banner = '';
     this._owners = new Map();
+    this._category = 0;
     this._token = crypto.randomBytes(64).toString('hex');
     this._approved = false;
   }
@@ -74,6 +75,10 @@ class Bot {
     return this._approved;
   }
 
+  get category() {
+    return this._category;
+  }
+
   set id(value) {
     throw new Error(`Editing the ID is strictly prohibited. The ID ${this._id} will not be changed to ${value}.`);
   }
@@ -116,6 +121,11 @@ class Bot {
   set banner(value) {
     if (typeof value !== 'string') throw new Error('Value must be a string');
     this._banner = value;
+  }
+
+  set category(value) {
+    if (typeof value !== 'number' && Number.isInteger(value)) throw new Error('Value must be an integer');
+    this._category = value;
   }
 
   /**
@@ -202,6 +212,7 @@ class Bot {
         this._images = new Set(databaseResult.images);
         this._banner = databaseResult.banner || '';
         this._owners = new Map(databaseResult.owners);
+        this._category = databaseResult.category;
         this._approved = databaseResult.approved || false;
         this._token = databaseResult.token || crypto.randomBytes(64).toString('hex');
         resolve();
@@ -224,6 +235,7 @@ class Bot {
       images: Array.from(this._images),
       banner: this._banner,
       owners: Array.from(this._owners),
+      category: this._category,
       approved: this._approved,
       token: this._token,
     }, {
