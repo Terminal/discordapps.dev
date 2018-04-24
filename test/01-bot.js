@@ -46,4 +46,25 @@ describe('Bot Class', () => {
   it('check that the information has been saved', () => {
     assert.deepStrictEqual(bot1, bot2);
   });
+  it('adds a whole bunch of test data', (done) => {
+    const bots = [];
+    let i;
+    for (i = 0; i < 50; i += 1) {
+      bots[i] = new Bot(uuidv1());
+      bots[i].name = 'Example Bot';
+      bots[i].invite = 'https://example.com/invite';
+      bots[i].prefix = 'exam';
+      bots[i].description = 'The example Lorem Ipsum that is sure to impress!';
+      bots[i].banner = 'background';
+      bots[i].avatar = 'https://terminal.ink/assets/images/avatar.png';
+      bots[i].addImage('background');
+      bots[i].addImage('avatar');
+      bots[i].addOwner('123456789', 3);
+    }
+
+    Promise.all(bots.map(bot => bot.post()))
+      .then(() => {
+        done();
+      });
+  });
 });
