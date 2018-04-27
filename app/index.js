@@ -47,8 +47,8 @@ app.use(bodyParser.json())
   }));
 
 // Remove old socket
-if (typeof config.get('webserver').port !== 'number') {
-  fs.unlinkSync(config.get('webserver').port, (err) => { if (err) console.error(err); });
+if (typeof config.webserver.port !== 'number') {
+  fs.unlinkSync(config.webserver.port, (err) => { if (err) console.error(err); });
 }
 
 // Create a socket, or listen to a port
