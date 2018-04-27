@@ -9,6 +9,8 @@ const RDBStore = require('session-rethinkdb')(session);
 const authRouter = require('./router/auth');
 const botsRouter = require('./router/bots');
 const config = require('../config');
+const fs = require('fs');
+const { exec } = require('child_process');
 
 const store = new RDBStore(r);
 const app = express();
@@ -44,4 +46,21 @@ app.use(bodyParser.json())
     ok: false,
   }));
 
+// Remove old socket
+if (typeof config.get('webserver').port !== 'number') {
+  fs.unlinkSync(config.get('webserver').port, (err) => { if (err) console.error(err); });
+}
+
+// Create a socket, or listen to a port
+console.log('Listening on', config.webserver.port);
 app.listen(config.webserver.port);
+
+// Chown the new socket
+if (typeof config.webserver.port !== 'number') {
+  exec(`chown ${config.webserver.sock_owner} ${config.webserver.port}`);
+}
+
+process.on('unhandledRejection', (reason) => {
+  console.dir(reason);
+});
+

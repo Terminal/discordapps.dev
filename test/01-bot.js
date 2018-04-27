@@ -49,7 +49,7 @@ describe('Bot Class', () => {
   it('adds a whole bunch of test data', (done) => {
     const bots = [];
     let i;
-    for (i = 0; i < 50; i += 1) {
+    for (i = 0; i < 5; i += 1) {
       bots[i] = new Bot(uuidv1());
       bots[i].name = 'Example Bot';
       bots[i].invite = 'https://example.com/invite';
