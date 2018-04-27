@@ -1,18 +1,27 @@
 {
-  "config": "production",
+  "config": "test",
   "rethinkdb": {
-    "db": "terminal",
+    "db": "test",
     "servers": [
       {
-        "host": "127.0.0.1",
+        "host": "192.168.0.9",
         "port": 28015
       }
     ],
     "silent": true
   },
   "webserver": {
-    "location": "https://api.ls.terminal.ink/",
-    "secret": "imsecretlygayfordevoxin"
+    "backend": {
+      "uri": "localhost:8080",
+      "protocol": "http"
+    },
+    "frontend": {
+      "uri": "localhost:3000",
+      "protocol": "http"
+    },
+    "secret": "",
+    "sock_owner": "www_data",
+    "port": 8080
   },
   "discord": {
     "clientID": "",
