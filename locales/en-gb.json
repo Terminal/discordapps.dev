@@ -4,7 +4,7 @@
 	"add_category": "Category",
 	"add_guild_count": "Guild Count",
 	"add_guild_count_placeholder": "Insert Guild Count for bot",
-	"add_id": "Application ID",
+	"add_id": "Bot User ID",
 	"add_id_placeholder": "Insert Application ID - This is the same as your Client ID for newer bots",
 	"add_invite_url": "Custom Invite URL",
 	"add_invite_url_generator": "Invite URL Generator",
