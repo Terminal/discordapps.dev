@@ -62,7 +62,7 @@ describe('Bot Class', () => {
       bots[i].addImage('avatar');
       bots[i].addOwner('123456789', 3);
     }
-    
+
     const DiscordMail = new Bot('330003632298917889');
     DiscordMail.name = 'DiscordMail';
     DiscordMail.invite = 'https://discordmail.com/invite';
