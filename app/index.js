@@ -8,6 +8,7 @@ const session = require('express-session');
 const RDBStore = require('session-rethinkdb')(session);
 const authRouter = require('./router/auth');
 const botsRouter = require('./router/bots');
+const imgRouter = require('./router/img');
 const config = require('../config');
 const fs = require('fs');
 const { exec } = require('child_process');
@@ -41,6 +42,7 @@ app.use(bodyParser.json())
   })
   .use('/auth', authRouter)
   .use('/bots', botsRouter)
+  .use('/img', imgRouter)
   .use((req, res) => res.status(404).json({
     message: 'Not Found',
     ok: false,
@@ -59,8 +61,3 @@ app.listen(config.webserver.port);
 if (typeof config.webserver.port !== 'number') {
   exec(`chown ${config.webserver.sock_owner} ${config.webserver.port}`);
 }
-
-process.on('unhandledRejection', (reason) => {
-  console.dir(reason);
-});
-

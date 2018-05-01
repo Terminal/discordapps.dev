@@ -58,8 +58,6 @@ describe('Bot Class', () => {
       bots[i].banner = 'background';
       bots[i].avatar = 'https://terminal.ink/assets/images/avatar.png';
       bots[i].category = i % 8;
-      bots[i].addImage('background');
-      bots[i].addImage('avatar');
       bots[i].addOwner('123456789', 3);
     }
 
@@ -71,8 +69,6 @@ describe('Bot Class', () => {
     DiscordMail.banner = 'background';
     DiscordMail.avatar = 'https://discordmail.com/img/DiscordMail.png';
     DiscordMail.category = 7;
-    DiscordMail.addImage('background');
-    DiscordMail.addImage('avatar');
     DiscordMail.addOwner('190519304972664832', 3);
 
     bots.push(DiscordMail);
