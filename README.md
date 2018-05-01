@@ -9,6 +9,8 @@ For information, try [our Discord server.](https://discordapp.com/invite/8uC6aKZ
 2. Create `bots`, `users` and `session` tables
 3. `yarn run`
 
+(Or, if you are using Microsoft Visual Studio Code, use the "Command Palette" to run common tasks.)
+
 ## Deployment
 1. `yarn run`
 
