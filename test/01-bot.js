@@ -35,6 +35,7 @@ describe('Bot Class', () => {
     bot1.addImage('background');
     bot1.addImage('avatar');
     bot1.addOwner('123456789', 3);
+    bot1.addOwner('987654321', 2);
     bot1.post().then(() => done());
   });
   it('create an empty bot with the same ID', () => {
@@ -59,6 +60,7 @@ describe('Bot Class', () => {
       bots[i].avatar = 'https://terminal.ink/assets/images/avatar.png';
       bots[i].category = i % 8;
       bots[i].addOwner('123456789', 3);
+      bots[i].addOwner('987654321', 2);
     }
 
     const DiscordMail = new Bot('330003632298917889');
