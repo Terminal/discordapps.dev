@@ -1,4 +1,4 @@
-require('./helpers/logo');
+console.log(require('./helpers/logo'));
 const express = require('express');
 const bodyParser = require('body-parser');
 const r = require('./modules/rethinkdb');
