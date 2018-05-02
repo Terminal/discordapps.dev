@@ -108,7 +108,7 @@
 	"message_bot_changed": "You successfully edited the bot",
 	"message_bot_inserted": "You successfully added your bot. Your bot will be looked at soon.",
 	"message_bot_deleted": "You successfully deleted your bot",
-	"footer_copyright": "Copyright 2017 - 2018, Terminal.ink",
+	"footer_copyright": "Copyright 2015 - 2018, Moustacheminer Server Services",
 	"footer_licence": "Some rights reserved. See documentation for Terms",
 	"index_all": "View all bots",
 	"index_jumbotron": "Welcome to a generic Bootstrap page.",

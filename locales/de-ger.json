@@ -59,7 +59,7 @@
 	"message_bot_changed": "Die Bot wurder erfolgreich bearbeitet",
 	"message_bot_inserted": "Ihr bot wurder erfolgreich hinzugefügt. Der Bot wird demnächst angeschaut",
 	"message_bot_deleted": "Der Bot wurde erfolgreich gelöscht",
-	"footer_copyright": "Copyright 2017 - 2018, Terminal.ink",
+	"footer_copyright": "Copyright 2015 - 2018, Moustacheminer Server Services",
 	"footer_licence": "Diese Software ist lizensiert mit der GPL-3.0 Lizenz.",
 	"index_all": "Zeige alle Bots",
 	"index_jumbotron": "Wilkommen zu einer normalen Bootstrap-Seite.",
