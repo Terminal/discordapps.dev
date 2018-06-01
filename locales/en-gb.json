@@ -267,7 +267,7 @@
 	"info_hard": "Hardware",
 	"info_soft": "Software",
 	"info_licence": "Licence",
-	"info_licencedesc": "{{{ name }}}, an instance of ls.terminal.ink, is licenced under the GNU GPL v3",
+	"info_licencedesc": "{{{ name }}}, an instance of ls.terminal.ink, is licenced under the UNLICENCE",
 	"api_v1_embed_servers": "{{ count }} servers",
 	"api_v1_embed_await": "Awaiting approval",
 	"api_v1_embed_author": "Bot by {{ username }}#{{ discriminator }}",

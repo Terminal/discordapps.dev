@@ -212,7 +212,7 @@
 	"info_hard": "硬件",
 	"info_soft": "软件",
 	"info_licence": "许可证",
-	"info_licencedesc": "{{{ name }}}，[ls.terminal.ink](https://ls.terminal.ink/)的一个实例，是以GNU GPLv3释出的。",
+	"info_licencedesc": "{{{ name }}}，[ls.terminal.ink](https://ls.terminal.ink/)的一个实例，是以UNLICENSE释出的。",
 	"api_v1_embed_servers": "{{ count }} 个服务器",
 	"api_v1_embed_await": "待审核",
 	"api_v1_embed_author": "由 {{ username }}#{{ discriminator }} 的机器人",

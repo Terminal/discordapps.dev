@@ -203,7 +203,7 @@
 	"info_hard": "Hårdvara",
 	"info_soft": "Mjukvara",
 	"info_licence": "Licens",
-	"info_licencedesc": "{{{name}}}, en instans av [ls.terminal.ink](https://ls.terminal.ink/) är licensierad enligt GNU GPLv3.",
+	"info_licencedesc": "{{{name}}}, en instans av [ls.terminal.ink](https://ls.terminal.ink/) är licensierad enligt UNLICENSE.",
 	"api_v1_embed_servers": "{{ count }} servrar",
 	"api_v1_embed_await": "Inväntar Godkännande",
 	"api_v1_embed_author": "Bot av {{ username }}#{{ discriminator }}",

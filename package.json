@@ -13,7 +13,7 @@
 		"url": "git+https://github.com/terminal/ls.terminal.ink.git"
 	},
 	"author": "7coil",
-	"license": "GPL-3.0",
+	"license": "Unlicense",
 	"bugs": {
 		"url": "https://github.com/terminal/ls.terminal.ink/issues"
 	},

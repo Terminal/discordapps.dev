@@ -216,7 +216,7 @@
 	"info_hard": "Hardware",
 	"info_soft": "Software",
 	"info_licence": "Lizenz",
-	"info_licencedesc": "{{{ name }}}, eine Instanz von [ls.terminal.ink](https://ls.terminal.ink/) ist unter der Lizenz GNU GPLv3 lizensiert.",
+	"info_licencedesc": "{{{ name }}}, eine Instanz von [ls.terminal.ink](https://ls.terminal.ink/) ist unter der Lizenz UNLICENSE lizensiert.",
 	"api_v1_embed_servers": "{{ count }} Server",
 	"api_v1_embed_await": "Wartet auf Bestätigung",
 	"api_v1_embed_author": "Bot von {{ username }}#{{ discriminator }}",

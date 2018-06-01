@@ -212,7 +212,7 @@
 	"info_hard": "Hardware",
 	"info_soft": "Software",
 	"info_licence": "Licentie",
-	"info_licencedesc": "{{{ name }}}, een instantie van [ls.terminal.ink](https://ls.terminal.ink/) is gelicenseerd onder GNU GPLv3.",
+	"info_licencedesc": "{{{ name }}}, een instantie van [ls.terminal.ink](https://ls.terminal.ink/) is gelicenseerd onder UNLICENSE.",
 	"api_v1_embed_servers": "{{ count }} servers",
 	"api_v1_embed_await": "Wacht op goedkeuring",
 	"api_v1_embed_author": "Bot door {{ username }}#{{ discriminator }}",
