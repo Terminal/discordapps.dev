@@ -18,4 +18,6 @@ For information, try [our Discord server.](https://discordapp.com/invite/8uC6aKZ
 This is the new backend for ls.terminal.ink, which may or may not be renamed to `discordbots.co.uk` in the future.
 
 # Licence
-Please read `LICENCE.md`
+Please read `LICENCE.md`.
+
+If for any reason you will need a licence to use this software, maybe if you're in Germany, please E-Mail `admin@moustacheminer.com` for a free, non-revokable, permanent, non-expiring licence.
