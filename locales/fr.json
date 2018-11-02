@@ -1,0 +1,204 @@
+{
+  "pages": {
+    "list": {
+      "invite": "Inviter",
+      "github": "GitHub",
+      "view": "Voir",
+      "star": "J'aime",
+      "unstar": "Je n'aime plus",
+      "nsfw": "NSFW",
+      "visit": "Visiter le serveur Discord"
+    },
+    "items": {
+      "github": "Voir sur GitHub",
+      "discord": "Serveur d'assistance",
+      "embed": "embed:"
+    },
+    "homepage": {
+      "more": "Voir plus...",
+      "cool": "Bots cools"
+    },
+    "bots": {
+      "pagename": "Discord Fork List",
+      "shortname": "Bots",
+      "add": "Ajouter un bot",
+      "invite": "Inviter ce bot",
+      "backgroundAlt": "Le logo de Discord_Fork",
+      "description": "Une liste de bots avec intégration GitHub",
+      "prefix": "Préfixe: "
+    },
+    "servers": {
+      "pagename": "Liste des serveurs Discord Fork",
+      "shortname": "Serveurs",
+      "add": "Ajouter un serveur",
+      "invite": "Rejoindre ce serveur",
+      "description": "Une liste de serveurs avec intégration GitHub"
+    },
+    "reviews": {
+      "pagename": "Revues de bot Terminal.ink",
+      "shortname": "Revues",
+      "add": "Ajoutez votre bot ou votre serveur",
+      "invite": "",
+      "description": "La liste des meilleurs bots Discord"
+    },
+    "docs": {
+      "pagename": "Portail du développeur Discord Fork",
+      "shortname": "Documentation"
+    },
+    "cms": {
+      "pagename": "Système de gestion de contenu Discord Fork",
+      "shortname": "CMS"
+    },
+    "locale": {
+      "choose": "Sélectionnez une langue.",
+      "pleasehelp": "Êtes-vous un bon traducteur ? Cliquez ici."
+    },
+    "edit": {
+      "title": "Ajouter une application",
+      "info": "Les champs suivis d'un (FACULTATIF) ne sont pas obligatoires. Ne remplissez pas les champs optionels avec des informations incorrectes. Ne pas renseigner 'N/A' ou 'none' dans aucun des champs. Les demandes de modification seront rejetées.",
+      "notice": "Lorsque vous avez terminé, appuyez sur le bouton \"Créer une demande de modification\" pour publier vos modifications sur GitHub.",
+      "default": "<!--\nCeci est une zone de description.\nLe contenu de cette zone apparaîtera sur la page de votre bot\n\nCette zone autorise:\n- Markdown\n- HTML\n\nÉvitez l'usage du CSS.\nCSS pourrait être déprécié et supprimé dans les futures versions.\n-->\n",
+      "steps": {
+        "1": "Étape 1: Type de l'application",
+        "service": "Sélectionnez la nature de votre application",
+        "2bots": "Étape 2: Informations sur le bot",
+        "2servers": "Étape 2: Informations sur le serveur",
+        "3": "Étape 3: Contenu de l'application"
+      },
+      "client_id": {
+        "title": "Client ID",
+        "placeholder": "Quelque chose comme 255114091360681986"
+      },
+      "application_id": {
+        "title": "OAuth ID",
+        "placeholder": "Quelque chose comme 255114091360681986"
+      },
+      "server_id": {
+        "title": "ID du serveur",
+        "placeholder": "L'ID du serveur. Quelque chose comme 330777295952543744"
+      },
+      "bot_name": {
+        "title": "Nom du bot",
+        "placeholder": "Wumpus"
+      },
+      "server_name": {
+        "title": "Nom du serveur",
+        "placeholder": "b1nzy's fanclub"
+      },
+      "bot_prefix": {
+        "title": "Préfixe",
+        "placeholder": "wumpus!"
+      },
+      "bot_invite": {
+        "title": "URL d'invitation",
+        "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible"
+      },
+      "server_invite": {
+        "title": "URL d'invitation",
+        "placeholder": "https://discord.gg/8uC6aKZ ou autre URL compatible"
+      },
+      "bot_avatar": {
+        "title": "Avatar du bot",
+        "placeholder": "Lien de l'avatar de votre bot"
+      },
+      "server_avatar": {
+        "title": "Image du serveur",
+        "placeholder": "Lien de l'image de votre serveur"
+      },
+      "bot_cover": {
+        "title": "Photo de couverture",
+        "placeholder": "http:// or https:// - L'image d'arrière-plan affichée sur la page d'accueil du site"
+      },
+      "bot_support": {
+        "title": "Serveur d'assistance",
+        "placeholder": "Un truc du genre https://discord.gg/8uC6aKZ",
+        "small": "Laissez ce champ vide si vous n'aimez pas aider les gens"
+      },
+      "bot_images": {
+        "title": "Images",
+        "add": "Ajouter une image",
+        "placeholder": "http:// or https:// - Lien vers une image montrant une fonctionnalité de votre bot"
+      },
+      "bot_nsfw": {
+        "title": "NSFW",
+        "false": "Ce bot ne contient pas (ou peu) de contenu NSFW",
+        "true": "Ce bot a un avatar ou est axé sur du contenu NSFW"
+      },
+      "server_nsfw": {
+        "title": "NSFW",
+        "false": "Ce serveur n'est pas NSFW",
+        "true": "Ce serveur est NSFW"
+      },
+      "bot_description": {
+        "title": "Description",
+        "placeholder": "Ce bot vous permet de faire de la magie.",
+        "small": "Vous n'avez droit qu'à 60 caractères ! Soyez clair et efficace."
+      },
+      "server_description": {
+        "title": "Description",
+        "placeholder": "Ce serveur est magique et vous donne des super-pouvoirs."
+      },
+      "github": {
+        "title": "Répertoire GitHub",
+        "button": "J'ai un répertoire GitHub"
+      },
+      "github_owner": {
+        "title": "Utilisateur ou Organisation",
+        "placeholder": "Quelque chose comme ry00001"
+      },
+      "github_repo": {
+        "title": "Répertoire",
+        "placeholder": "Quelque chose comme Tuxedo"
+      },
+      "page": {
+        "title": "Page du bot",
+        "note": "Markdown et HTML autorisés"
+      },
+      "create_pr": {
+        "button": "Créer une demande de modification",
+        "modal": {
+          "title": "Créer une demande de modification",
+          "description": "Décrivez les modifications que vous voulez faire",
+          "wait": "Veuillez patienter..."
+        }
+      },
+      "editor_type": {
+        "title": "Type de service"
+      },
+      "editor_lang": {
+        "title": "Langue"
+      },
+      "localstorage": {
+        "title": "localStorage est introuvable",
+        "description": "localStorage est requis pour le service fonctionne."
+      },
+      "custom_path": {
+        "title": "Lien personnalisé @ https://discordbots.co.uk/r/[name]",
+        "placeholder": "Lettres et numéros seulement"
+      },
+      "submit": "Soumettre"
+    },
+    "notfound": {
+      "message": "Page introuvable",
+      "gohome": "Accueil"
+    }
+  },
+  "copyright": "Copyright 2017 - 2018, Terminal.ink<br> Concept original par AlexFlipnote<br> GitHub® est une marque déposée de GitHub, Inc.<br> Discord est une marque déposée de Discord, Inc.\nTraduction en français par iDroid27 et Bowser65.\n",
+  "intro": {
+    "login": "Se connecter avec GitHub",
+    "logout": "Se déconnecter",
+    "search": "Rechercher...",
+    "language": "Langues"
+  },
+  "footer": {
+    "view": "Voir cette page sur GitHub",
+    "licence": "Licence",
+    "attribution": "Attribution",
+    "source": "Code source",
+    "terminal": "Rejoindre Terminal.ink sur Discord"
+  },
+  "forms": {
+    "select": "Veuillez sélectionner...",
+    "delete": "Supprimer"
+  }
+}

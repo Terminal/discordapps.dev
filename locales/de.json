@@ -1,0 +1,178 @@
+{
+  "pages": {
+    "list": {
+      "invite": "Einladen",
+      "github": "GitHub",
+      "view": "Seite ansehen",
+      "star": "Staren",
+      "unstar": "Entstaren",
+      "nsfw": "NSFW",
+      "visit": "Besuche den Discord Server"
+    },
+    "item": {
+      "github": "Auf GitHub ansehen",
+      "discord": "Support Server",
+      "embed": "Einbettung:"
+    },
+    "homepage": {
+      "more": "Zeige weitere...",
+      "cool": "Coole Bots"
+    },
+    "bots": {
+      "pagename": "Discord Fork Liste",
+      "shortname": "Bots",
+      "add": "Eigenen Bot hinzufügen",
+      "invite": "Diesen Bot hinzufügen",
+      "backgroundAlt": "Das Logo für Discord_Fork",
+      "description": "Die Botliste mit eingebauter GitHub-Integration",
+      "prefix": "Prefix: "
+    },
+    "servers": {
+      "pagename": "Discord Fork Serverliste",
+      "shortname": "Server",
+      "add": "Eigenen Server hinzufügen",
+      "invite": "Diesem Server beitreten",
+      "description": "Die Serverliste mit eingebauter GitHub-Integration"
+    },
+    "docs": {
+      "pagename": "Discord Fork Developer Portal",
+      "shortname": "Dokumentation"
+    },
+    "locale": {
+      "choose": "Bitte wähle eine Sprache",
+      "pleasehelp": "Bist du ein guter Übersetzer? Klick hier."
+    },
+    "edit": {
+      "title": "Eine Anwendung hinzufügen",
+      "info": "Felder die mit (OPTIONAL) markiert sind, sind optional. Schreib nichts in Textboxen, welche optional sind, wenn du nichts hast. Optional bedeutet optional und bedeutet nicht 'N/A' oder 'nichts' zu schreiben. Pull-Anfragen damit werden abgelehnt.",
+      "notice": "Wenn du fertig bist, klicke auf den \"Create a pull request\" Knopf um es auf GitHub zu veröffentlichen.",
+      "default": "# Titel\n\nDies ist ein cooler Bot, welchen Ihr annehmen solltet.\nGründe unter anderem:\n\n- Cool sein\n- Nicht un-cool sein\n- Der prefix kann zu ! geändert werden\n\n<!--\n  Stan LOONA\n  Stan Talent\n-->\n",
+      "steps": {
+        "1": "Schritt 1: Art der Anwendung",
+        "2bots": "Schritt 2: Information über den Bot",
+        "2servers": "Schritt 2: Information über den Server",
+        "3": "Schritt 3: Inhalte der Anwendung"
+      },
+      "client_id": {
+        "title": "Bot Benutzer ID",
+        "placeholder": "Soetwas wie: 255114091360681986"
+      },
+      "application_id": {
+        "title": "Bot OAuth ID",
+        "placeholder": "Soetwas wie: 255114091360681986"
+      },
+      "server_id": {
+        "title": "Server ID",
+        "placeholder": "Die ID des Servers. Soetwas wie: 330777295952543744"
+      },
+      "bot_name": {
+        "title": "Botname",
+        "placeholder": "Discord Botname"
+      },
+      "server_name": {
+        "title": "Servername",
+        "placeholder": "Der name des Servers"
+      },
+      "bot_prefix": {
+        "title": "Prefix",
+        "placeholder": "Prefix"
+      },
+      "bot_invite": {
+        "title": "Einladungs-URL",
+        "placeholder": "https://discordapp.com/oauth/ oder ein anderer passender Link"
+      },
+      "server_invite": {
+        "title": "Einladungs URL",
+        "placeholder": "Soetwas wie: https://discord.gg/8uC6aKZ"
+      },
+      "bot_avatar": {
+        "title": "Avatar URL",
+        "placeholder": "Irgendein direkter link zum Avatar"
+      },
+      "server_avatar": {
+        "title": "Avatar URL",
+        "placeholder": "Irgendein direkter link zum Server Icon"
+      },
+      "bot_cover": {
+        "title": "Cover Bild",
+        "placeholder": "http:// oder https:// - Das grosse Cover Bild"
+      },
+      "bot_support": {
+        "title": "Support URL",
+        "placeholder": "https://discord.gg/8uC6aKZ",
+        "small": "Lass dieses Feld leer, wenn du nicht gerne anderen hilfst"
+      },
+      "bot_nsfw": {
+        "title": "NSFW",
+        "isnt": "NSFW Befehle sind nicht ein hauptteil dieses Bots",
+        "is": "Der bot-Avatar ist NSFW und/oder der Bot is NSFW-orientiert"
+      },
+      "server_nsfw": {
+        "title": "NSFW",
+        "false": "Dies ist kein NSFW-Server",
+        "true": "Dies ist ein NSFW-Server"
+      },
+      "bot_description": {
+        "title": "Beschreibung",
+        "placeholder": "Dieser Bot erlaubt dir, magisches zu tun.",
+        "small": "Die Frontseite erlaubt nur 60 Zeichen zum anzeigen."
+      },
+      "server_description": {
+        "title": "Description",
+        "placeholder": "Dieser Server ist magisch und gibt dir kräfte die das Vorstellungsvermögen übersteigen"
+      },
+      "github": {
+        "title": "GitHub Repository",
+        "button": "Ich habe eine GitHub repository"
+      },
+      "github_owner": {
+        "title": "GitHub Nutzer / Organisation",
+        "placeholder": "ry00001"
+      },
+      "github_repo": {
+        "title": "GitHub Repository",
+        "placeholder": "Tuxedo"
+      },
+      "page": {
+        "title": "Botseite",
+        "note": "Markdown und etwas HTML erlaubt"
+      },
+      "create_pr": {
+        "button": "Pull-Anfrage erstellen",
+        "modal": {
+          "title": "Pull-Anfrage erstellen",
+          "description": "Bitte füge Kommentare hinzu, welche du machen willst.",
+          "wait": "Bitte warten..."
+        }
+      },
+      "editor_type": {
+        "title": "Art des Service"
+      },
+      "editor_lang": {
+        "title": "Sprache"
+      },
+      "submit": "Absenden"
+    },
+    "notfound": {
+      "message": "Seite nicht gefunden",
+      "gohome": "Zur Hauptseite"
+    }
+  },
+  "copyright": "Copyright 2017 - 2018, Terminal.ink<br> Original konzept von AlexFlipnote<br> GitHub® ist eine eingetragene Marke von GitHub, Inc.<br> Discord ist eine eingetragene Marke von Discord Inc.\n",
+  "intro": {
+    "login": "Via GitHub einloggen",
+    "logout": "Ausloggen",
+    "search": "Suche...",
+    "language": "Sprachen"
+  },
+  "footer": {
+    "view": "Diese Seite auf GitHub ansehen",
+    "licence": "Lizenz",
+    "attribution": "Zuordnung",
+    "source": "Quellcode",
+    "terminal": "Besuche Terminal.ink auf Discord"
+  },
+  "forms": {
+    "select": "Bitte wähle..."
+  }
+}

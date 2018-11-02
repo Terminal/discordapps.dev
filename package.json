@@ -1,0 +1,35 @@
+{
+  "name": "ls.terminal.ink",
+  "version": "5.0.0",
+  "description": "For the old ls.terminal.ink, see the `archive-pugjs` branch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terminal/ls.terminal.ink.git"
+  },
+  "author": "",
+  "license": "AGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/Terminal/ls.terminal.ink/issues"
+  },
+  "homepage": "https://github.com/Terminal/ls.terminal.ink#readme",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "express": "^4.16.4",
+    "flat": "^4.1.0",
+    "next": "^7.0.2",
+    "next-images": "^1.0.1",
+    "node-sass": "^4.9.4",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-helmet": "^5.2.0",
+    "react-intl": "^2.7.2"
+  }
+}
