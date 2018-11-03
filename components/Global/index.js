@@ -28,7 +28,7 @@ class Global extends React.Component {
           : <link rel="icon" type="image/x-icon" href="/assets/images/logo/logo64.png"/>
         }
 
-        <link rel="manifest" href="/manifest.json"/>
+        {/* <link rel="manifest" href="/manifest.json"/> */}
         <meta name="revisit-after" content="2 days"/>
         <meta name="keywords" content="discord, bots, botlist"/>
         <meta name="theme-color" content={"#ffffff"}/>

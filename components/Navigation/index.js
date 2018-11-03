@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import './style.scss';
-import LocalLink from '../LocalLink';
+import Link from './../Link'
 import { FormattedMessage } from 'react-intl';
 
 class Navigation extends React.Component {
@@ -29,30 +29,30 @@ class Navigation extends React.Component {
           <h4 className="center">
             <FormattedMessage id="pages.docs.pagename">
               {(title) => (
-                <LocalLink to="/docs/">
+                <Link href="/docs/">
                   { this.props.title || title }
-                </LocalLink>
+                </Link>
               )}
             </FormattedMessage>
           </h4>
         </div>
       
         <div ref={elem => this.navside = elem} className="sidenav" style={({transform: 'translateX(-250px)'})}>
-          <LocalLink to="/">
+          <Link href="/">
             <FormattedMessage id="pages.bots.pagename" />
-          </LocalLink>
-          <LocalLink to="/bots/">
+          </Link>
+          <Link href="/bots/">
             <FormattedMessage id="pages.bots.shortname" />
-          </LocalLink>
-          <LocalLink to="/servers/">
+          </Link>
+          <Link href="/servers/">
             <FormattedMessage id="pages.servers.shortname" />
-          </LocalLink>
-          <LocalLink to="/tutorials/">
+          </Link>
+          <Link href="/tutorials/">
             <FormattedMessage id="pages.tutorials.shortname" />
-          </LocalLink>
-          <LocalLink to="/docs/">
+          </Link>
+          <Link href="/docs/">
             <FormattedMessage id="pages.docs.shortname" />
-          </LocalLink>
+          </Link>
         </div>
       </div>
     );

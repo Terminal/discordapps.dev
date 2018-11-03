@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import Link from './../Link'
 import Avatar from './../Avatar';
 import { FormattedMessage } from 'react-intl';
 import { ItemPropType } from './../../proptypes';
@@ -21,7 +21,7 @@ class Card extends React.Component {
           <Avatar post={post}></Avatar>
         </div>
         <div className="card-content">
-          <Link to={post.fields.permalink}>
+          <Link href={post.fields.permalink}>
             <h4 className="title">
               {post.frontmatter.pagename}
               {post.frontmatter.nsfw ? <span className="nsfw-tag">NSFW</span> : null }

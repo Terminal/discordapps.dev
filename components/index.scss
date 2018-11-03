@@ -6,7 +6,8 @@ body, .card-container .card {
   font-family: 'Montserrat', 'Noto Sans', 'Calibri', 'Arial', 'Helvetica', sans-serif;
 }
 
-.main-window {
+.site-layout {
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }

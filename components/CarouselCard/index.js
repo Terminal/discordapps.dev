@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'gatsby-link';
+import Link from './../Link'
 import Avatar from './../Avatar';
 import { FormattedMessage } from 'react-intl';
 import { ItemPropType } from './../../proptypes';
@@ -30,7 +30,7 @@ class CarouselCard extends React.Component {
     return (
       <section className="carousel-item" style={carouselStyle}>
         <div className="carousel-item-content" style={contentStyle}>
-          <Link to={post.fields.permalink}>
+          <Link href={post.fields.permalink}>
             <div className="avatar">
               <Avatar post={post}></Avatar>
             </div>

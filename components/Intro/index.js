@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import background from './background.jpg';
 import logo from './logo.svg';
-import LocalLink from '../LocalLink';
 import { FormattedMessage } from 'react-intl';
+import Link from './../Link'
 import './index.scss';
 
 class Intro extends React.Component {
@@ -15,7 +15,7 @@ class Intro extends React.Component {
         </div>
         <div className="center-object">
           <div className="center-items">
-            <LocalLink to="/">
+            <Link href="/">
               <section className="me unset">
                 <img alt="The logo for Discord_Fork" draggable="false" className="image-title" src={logo} style={({width: '7em', height: '7em'})}></img>
                 <div>
@@ -27,19 +27,19 @@ class Intro extends React.Component {
                   </span>
                 </div>
               </section>
-            </LocalLink>
+            </Link>
           </div>
           <div className="center">
             <FormattedMessage id="intro.language">
               {(language) => (
-                <LocalLink className="btn white emoji-button" to="/locale" aria-label={language}>
+                <Link className="btn white emoji-button" to="/locale" aria-label={language}>
                   <span className="emoji twa-globe-showing-europe-africa"></span>
-                </LocalLink>
+                </Link>
               )}
             </FormattedMessage>
-            <LocalLink className="btn white black-text emoji-button" to="/edit">
+            <Link className="btn white black-text emoji-button" to="/edit">
               <FormattedMessage id={`pages.${this.props.type}.add`} />
-            </LocalLink>
+            </Link>
           </div>
         </div>
       </section>
