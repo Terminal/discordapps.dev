@@ -53,7 +53,7 @@
 		"rules": {
 			"indent": [
 				2,
-				"tab"
+				"spaces"
 			],
 			"no-tabs": 0,
 			"comma-dangle": 0,

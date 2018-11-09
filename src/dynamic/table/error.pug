@@ -1,9 +1,0 @@
-extends templates/site.pug
-
-block title
-	title #{status} - #{__('website')}
-
-block content
-	h1 #{status} - #{message}
-	li: a(href="/") #{__('error_home')}
-	li: a(href="#" onclick="window.history.back();") #{__('error_back')}

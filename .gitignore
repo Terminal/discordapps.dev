@@ -1,20 +1,3 @@
-# SASS
-.sass-cache/
-
-# Node.js Modules
 node_modules/
-
-# KDE Dolphin
-.directory
-
-# ls.terminal.ink
-js/
-config/production
-config/test
-config/template
-config/default.json
-
-# Rewrite
-development.json
-test.json
-
+rethinkdb_data/
+website/config/*.json
