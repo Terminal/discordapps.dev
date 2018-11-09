@@ -64,7 +64,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   }))
   .use(express.static(path.join(__dirname, 'www-root')))
   .use((req, res, next) => {
-    res.locals.req = req;
+    res.locals.user = req.user;
     next();
   })
   .get('/', (req, res) => {

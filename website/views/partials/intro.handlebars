@@ -22,8 +22,20 @@
 				<span class="emoji twa-globe-showing-europe-africa" />
 			</a>
 			<a class="btn white black-text emoji-button" href="/edit">
-				<span>Add your own bot</span>
-			</a
+				Add your own bot
+			</a>
+			{{#if user}}
+				<a class="btn white black-text emoji-button" href="/user/{{user.id}}">
+					{{user.username}}
+				</a>
+				<a class="btn white black-text emoji-button" href="/auth/logout">
+					Log off
+				</a>
+			{{else}}
+				<a class="btn white black-text emoji-button" href="/auth">
+					Log in
+				</a>
+			{{/if}}
 		</div>
 	</div>
 </section>

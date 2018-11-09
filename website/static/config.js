@@ -1,12 +1,9 @@
-const flat = require('flat');
-
 const data = {
   en: {
     path: 'en',
     locale: 'English (United Kingdom)',
     native: 'English (United Kingdom)',
-    flag: 'twa-britain-british-cornwall-england-great-britain-ireland-northern-ireland-scotland-uk-union-jack-united-united-kingdom-wales-flag',
-    default: true
+    flag: 'twa-britain-british-cornwall-england-great-britain-ireland-northern-ireland-scotland-uk-union-jack-united-united-kingdom-wales-flag'
   },
   // fr: {
   //   path: 'fr',
@@ -21,9 +18,5 @@ const data = {
   //   flag: 'twa-de'
   // },
 };
-
-Object.keys(data).forEach((key) => {
-  data[key].data = flat(require(`./${key}.json`));
-});
 
 module.exports = data;

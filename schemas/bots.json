@@ -1,0 +1,39 @@
+{
+  "id": "ID of the user",
+  "oauth": "ID in the OAuth URL",
+  "avatar": "Link to an avatar",
+  "customInvite": "https://alexflipnote.xyz",
+  "support": "8uC6aKZ",
+  "guilds": [
+    1,
+    2,
+    3
+  ],
+  "stars": 99,
+  "authors": [
+    "86477779717066752"
+  ],
+  "github": {
+    "owner": "AlexFlipnote",
+    "repo": "Xela"
+  },
+  "trigger": {
+    "prefix": [],
+    "suffix": [],
+    "reaction": [],
+    "customisable": true
+  },
+  "token": "seesaw",
+  "contents": {
+    "en": {
+      "name": "Xela",
+      "description": "A description in English",
+      "page": "A Markdown long description which is in English"
+    },
+    "fr": {
+      "name": "Baguette",
+      "description": "Un description en Francais",
+      "page": "A Markdown long description in croissant language"
+    }
+  }
+}

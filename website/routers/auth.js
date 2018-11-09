@@ -14,9 +14,14 @@ router.use('/callback', passport.authenticate('discord'), (req, res) => {
       res.status(404).json(null);
     }
   })
-  .use('/logout', (req, res) => {
-    req.logout();
-    res.redirect('/');
+  .use('/logout', (req, res, next) => {
+    req.session.destroy((err) => {
+      if (err) {
+        next(err);
+      } else {
+        res.redirect('/');
+      }
+    });
   });
 
 module.exports = router;
