@@ -1,0 +1,18 @@
+@import 'intro.scss';
+@import 'footer.scss';
+@import 'error.scss';
+@import 'list.scss';
+
+.main-window {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+.ls-main-content-container {
+  flex-grow: 1;
+}

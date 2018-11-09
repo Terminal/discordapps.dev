@@ -1,3 +1,208 @@
 {
-
+  "pages": {
+    "list": {
+      "invite": "Invite",
+      "github": "GitHub",
+      "view": "View this page",
+      "star": "Star",
+      "unstar": "Unstar",
+      "nsfw": "NSFW",
+      "visit": "Visit Discord Server"
+    },
+    "items": {
+      "github": "View on GitHub",
+      "discord": "Support Server",
+      "embed": "embed:"
+    },
+    "homepage": {
+      "more": "View more...",
+      "cool": "Cool bots"
+    },
+    "bots": {
+      "pagename": "Discord Forklift",
+      "shortname": "Bots",
+      "add": "Add your own bot",
+      "invite": "Add this bot",
+      "backgroundAlt": "The logo for Discord Forklift",
+      "description": "A test open source bot list",
+      "prefix": "Prefix: "
+    },
+    "servers": {
+      "pagename": "Discord Forklift Serverlist",
+      "shortname": "Servers",
+      "add": "Add your own server",
+      "invite": "Join this server",
+      "description": "The server list with built-in GitHub integration"
+    },
+    "reviews": {
+      "pagename": "Terminal.ink Bot Reviews",
+      "shortname": "Reviews",
+      "add": "Add your own bot or server",
+      "invite": "",
+      "description": "A curated list of the best bots"
+    },
+    "docs": {
+      "pagename": "Discord Forklift Developer Portal",
+      "shortname": "Documentation"
+    },
+    "cms": {
+      "pagename": "Discord Forklift Content Management System",
+      "shortname": "CMS"
+    },
+    "locale": {
+      "choose": "Please select a language.",
+      "pleasehelp": "Are you a good translator? Click here."
+    },
+    "edit": {
+      "title": "Add a application",
+      "info": "Fields marked with (OPTIONAL) are optional. Do not type anything in boxes which are optional if you do not have them. Optional means optional, and does not mean type 'N/A' or 'none'. Pull requests with this will be rejected.",
+      "notice": "When you are finished, click the \"Create a pull request\" button to publish to GitHub.",
+      "default": "<!--\nThis is the description box.\nThe contents of this box will appear on your bot page\n\nThis box supports:\n- Markdown\n- HTML\n\nPlease refrain from using CSS.\nCSS may be deprecated in the future and removed.\n-->\n",
+      "steps": {
+        "1": "Step 1: Type of application",
+        "service": "Please select a type of service",
+        "2bots": "Step 2: Information about the bot",
+        "2servers": "Step 2: Information about the server",
+        "3": "Step 3: Contents of application"
+      },
+      "client_id": {
+        "title": "Bot User ID",
+        "placeholder": "Something like: 255114091360681986"
+      },
+      "application_id": {
+        "title": "Bot OAuth ID",
+        "placeholder": "Something like: 255114091360681986"
+      },
+      "server_id": {
+        "title": "Server ID",
+        "placeholder": "The ID of the server. Something like: 330777295952543744"
+      },
+      "bot_name": {
+        "title": "Bot Name",
+        "placeholder": "Discord Bot Name"
+      },
+      "server_name": {
+        "title": "Server Name",
+        "placeholder": "The name of the server"
+      },
+      "bot_prefix": {
+        "title": "Prefix",
+        "placeholder": "Prefix"
+      },
+      "bot_invite": {
+        "title": "Invite URL",
+        "placeholder": "https://discordapp.com/oauth/ or other suitable link"
+      },
+      "server_invite": {
+        "title": "Invite URL",
+        "placeholder": "Something like: https://discord.gg/8uC6aKZ"
+      },
+      "bot_avatar": {
+        "title": "Avatar URL",
+        "placeholder": "Any direct link to the bot image"
+      },
+      "server_avatar": {
+        "title": "Avatar URL",
+        "placeholder": "Any direct link to the server image"
+      },
+      "bot_cover": {
+        "title": "Cover Image",
+        "placeholder": "http:// or https:// - Image on homepage and in header of your page"
+      },
+      "bot_support": {
+        "title": "Support URL",
+        "placeholder": "Something like: https://discord.gg/8uC6aKZ",
+        "small": "Leave this field empty if you don't like helping people"
+      },
+      "bot_images": {
+        "title": "Images",
+        "add": "Add a new image URL",
+        "placeholder": "http:// or https:// - A link to an image demonstrating your bot"
+      },
+      "bot_nsfw": {
+        "title": "NSFW",
+        "false": "NSFW commands are not a major part of this bot",
+        "true": "The bot avatar is NSFW, and/or the bot is NSFW orientated"
+      },
+      "server_nsfw": {
+        "title": "NSFW",
+        "false": "This is not a NSFW server",
+        "true": "This is a NSFW server"
+      },
+      "bot_description": {
+        "title": "Description",
+        "placeholder": "This bot allows you to do magic.",
+        "small": "The front page only allows 60 characters to be displayed."
+      },
+      "server_description": {
+        "title": "Description",
+        "placeholder": "This server is magical and gives you powers beyond comprehension"
+      },
+      "github": {
+        "title": "GitHub Repository",
+        "button": "I have a GitHub repository"
+      },
+      "github_owner": {
+        "title": "GitHub User / Organisation",
+        "placeholder": "Something like: ry00001"
+      },
+      "github_repo": {
+        "title": "GitHub Repository",
+        "placeholder": "Something like: Tuxedo"
+      },
+      "page": {
+        "title": "Bot Page",
+        "note": "Markdown and some HTML allowed"
+      },
+      "create_pr": {
+        "button": "Create a pull request",
+        "modal": {
+          "title": "Create a pull request",
+          "description": "Please enter any comments you would like to make",
+          "wait": "Please wait..."
+        }
+      },
+      "editor_type": {
+        "title": "Type of service"
+      },
+      "editor_lang": {
+        "title": "Language"
+      },
+      "localstorage": {
+        "title": "localStorage was not found",
+        "description": "localStorage is required for this service to function."
+      },
+      "custom_path": {
+        "title": "Customised path @ https://discordbots.co.uk/r/[name]",
+        "placeholder": "Letters and numbers only"
+      },
+      "submit": "Submit"
+    },
+    "notfound": {
+      "message": "Page not found",
+      "gohome": "Go Home"
+    },
+    "error": {
+      "notfound": "Page not found...",
+      "server": "Unexpected rapid disassembly encountered"
+    }
+  },
+  "copyright": "Copyright 2017 - 2019, Terminal.ink\nOriginal concept by AlexFlipnote\nGitHub® is a trademark of GitHub, Inc.\nDiscord is a trademark of Discord Inc.\n",
+  "intro": {
+    "login": "Login via GitHub",
+    "logout": "Logout",
+    "search": "Search...",
+    "language": "Languages"
+  },
+  "footer": {
+    "view": "View this page in GitHub",
+    "licence": "Licence",
+    "attribution": "Attribution",
+    "source": "Source Code",
+    "terminal": "Join Terminal.ink on Discord"
+  },
+  "forms": {
+    "select": "Please select...",
+    "delete": "Delete"
+  }
 }

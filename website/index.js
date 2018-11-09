@@ -10,6 +10,9 @@ const RDBStore = require('session-rethinkdb')(session);
 const r = require('./rethinkdb');
 const passport = require('./static/passport');
 const authRouter = require('./routers/auth');
+const config = require('./config');
+
+const testPayload = require('./payload.json');
 
 require('./static/banner');
 
@@ -17,9 +20,10 @@ require('./static/banner');
 i18n.configure({
   directory: path.join(__dirname, '..', 'locales'),
   cookie: 'lang',
-  defaultLocale: 'en-gb',
+  defaultLocale: 'en',
   autoReload: true,
-  updateFiles: false
+  updateFiles: false,
+  objectNotation: true,
 });
 
 const store = new RDBStore(r);
@@ -31,6 +35,12 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     defaultLayout: 'main',
     layoutsDir: path.join(path.dirname(__filename), 'views', 'layouts'),
     partialsDir: path.join(path.dirname(__filename), 'views', 'partials'),
+    helpers: {
+      i18n: (...args) => {
+        const options = args.pop();
+        return i18n.__.apply(options, args);
+      },
+    },
   }))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
@@ -50,18 +60,32 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use(sass({ // Turns SASS to CSS in real time
     src: path.join(__dirname, 'sass'),
     dest: path.join(__dirname, 'www-root', 'css'),
-    prefix: '/assets/css',
+    prefix: '/css',
   }))
   .use(express.static(path.join(__dirname, 'www-root')))
+  .use((req, res, next) => {
+    res.locals.req = req;
+    next();
+  })
   .get('/', (req, res) => {
-    res.render('hi');
+    res.render('list', {
+      list: testPayload
+    });
+  })
+  .get('/oops', (req, res, next) => {
+    next(new Error('This error was thrown on purpose'));
   })
   .use('/auth', authRouter)
   .use((req, res) => {
-    res.send('404');
+    res.status(404).render('error', {
+      message: res.__('pages.error.notfound')
+    });
   })
   .use((err, req, res, next) => {
-    res.send(err.message);
+    res.status(500).render('error', {
+      message: res.__('pages.error.server'),
+      err
+    });
   })
   .listen(config.webserver.port);
 

@@ -1,8 +1,8 @@
 {
-	"name": "ls",
-	"version": "1.0.0",
+	"name": "forklift",
+	"version": "9.0.0",
 	"description": "The Express server that hosts the bot directory listing.",
-	"main": "src/index.js",
+	"main": "website/index.js",
 	"scripts": {
 		"test": "eslint .",
 		"start": "node index.js",
@@ -13,37 +13,33 @@
 		"url": "git+https://github.com/terminal/ls.terminal.ink.git"
 	},
 	"author": "7coil",
-	"license": "Unlicense",
+	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/terminal/ls.terminal.ink/issues"
 	},
 	"homepage": "https://ls.terminal.ink/",
 	"dependencies": {
-		"asciidoctor.js": "^1.5.6-preview.4",
-		"body-parser": "^1.17.2",
-		"cheerio": "^1.0.0-rc.2",
-		"config": "^1.26.1",
+		"body-parser": "^1.18.3",
+		"config": "^1.31.0",
 		"cookie-parser": "^1.4.3",
-		"cors": "^2.8.4",
-		"eris": "^0.7.2",
-		"express": "^4.16.2",
-		"express-session": "^1.15.4",
-		"express-theme-pug": "^1.0.5",
+		"cors": "^2.8.5",
+		"express": "^4.16.4",
+		"express-handlebars": "^3.0.0",
+		"express-session": "^1.15.6",
 		"i18n": "^0.8.3",
-		"marked": "^0.3.9",
-		"mustache": "^2.3.0",
+		"marked": "^0.3.19",
+		"mustache": "^2.3.2",
+		"node-sass-middleware": "^0.11.0",
 		"passport": "^0.3.2",
-		"passport-discord": "^0.1.2",
-		"pug": "^2.0.0-rc.3",
-		"request": "^2.81.0",
+		"passport-discord": "^0.1.3",
+		"request": "^2.88.0",
 		"rethinkdbdash": "^2.3.31",
-		"seedrandom": "^2.4.3",
-		"session-rethinkdb": "^2.0.0"
+		"session-rethinkdb": "^2.0.1"
 	},
 	"devDependencies": {
-		"eslint": "^4.10.0",
+		"eslint": "^4.19.1",
 		"eslint-config-airbnb-base": "^11.3.2",
-		"eslint-plugin-import": "^2.7.0"
+		"eslint-plugin-import": "^2.14.0"
 	},
 	"eslintConfig": {
 		"extends": "airbnb-base",
@@ -52,8 +48,7 @@
 		],
 		"rules": {
 			"indent": [
-				2,
-				"spaces"
+				2
 			],
 			"no-tabs": 0,
 			"comma-dangle": 0,

@@ -1,0 +1,28 @@
+.fullscreen.half.intro {
+  .center-object {
+    display: flex;
+    flex-direction: column;
+    transform: none;
+    top: 0% !important;
+    left: 0;
+    width: 100%;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+  }
+  .ls-intro-background {
+    .ls-bots-layout & {
+      background-image: url('/img/background_bots.jpg');
+    }
+  }
+  .background, .center-object {
+    height: 35%;
+    height: 35vh;
+  }
+  .background {
+    background-position: 0 -35vh;
+    background-repeat: no-repeat;
+    background-color: #2a2a2a;
+  }
+}
