@@ -16,3 +16,15 @@ pre {
 .ls-main-content-container {
   flex-grow: 1;
 }
+
+.ls-flex-row {
+  display: flex;
+}
+
+.ls-button {
+  height: 38px;
+  border-radius: 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+}

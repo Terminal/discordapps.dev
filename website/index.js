@@ -9,8 +9,10 @@ const sass = require('node-sass-middleware');
 const RDBStore = require('session-rethinkdb')(session);
 const r = require('./rethinkdb');
 const passport = require('./static/passport');
-const authRouter = require('./routers/auth');
 const config = require('./config');
+
+const authRouter = require('./routers/auth');
+const botsRouter = require('./routers/bots');
 
 const testPayload = require('./payload.json');
 
@@ -28,6 +30,8 @@ i18n.configure({
 
 const store = new RDBStore(r);
 const app = express();
+
+app.locals.links = config.links;
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')
@@ -76,16 +80,21 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     next(new Error('This error was thrown on purpose'));
   })
   .use('/auth', authRouter)
+  .use('/bots', botsRouter)
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')
     });
   })
   .use((err, req, res, next) => {
-    res.status(500).render('error', {
-      message: res.__('pages.error.server'),
-      err
-    });
+    if (err) {
+      res.status(500).render('error', {
+        message: res.__('pages.error.server'),
+        err
+      });
+    } else {
+      next();
+    }
   })
   .listen(config.webserver.port);
 
