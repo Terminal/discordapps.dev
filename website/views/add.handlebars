@@ -75,7 +75,7 @@
   <div class="modal-content">
     <span class="close ls-exit-modal">×</span>
     <h1>Invite URL Generator</h1>
-    <p>Select permissions</p>
+    <p>Please make sure "Bot ID" has been filled in with your Discord bot's ID</p>
     <div class="row">
       <div class="one-third column"><label class="inline left" for="CREATE_INSTANT_INVITE">{{{i18n "permission.CREATE_INSTANT_INVITE"}}}</label>
       <input id="CREATE_INSTANT_INVITE" type="checkbox" name="CREATE_INSTANT_INVITE"/></div>
@@ -152,7 +152,8 @@
       <div class="one-third column"><label class="inline left" for="MANAGE_EMOJIS">{{{i18n "permission.MANAGE_EMOJIS"}}}</label>
       <input id="MANAGE_EMOJIS" type="checkbox" name="MANAGE_EMOJIS"/></div>
     </div>
-    <a href="#" class="btn white black-text ls-exit-modal" onclick="generatePermissions()">Close</a>
+    <a class="btn white black-text ls-exit-modal">Close</a>
+    <a class="btn white black-text ls-exit-modal" onclick="generatePermissions()">Apply</a>
   </div>
 </div>
 
