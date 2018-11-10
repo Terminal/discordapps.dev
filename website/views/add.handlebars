@@ -5,19 +5,155 @@
     <h1>Basic Information</h1>
     <div class="row">
       <div class="one-half column">
-        <label for="id">ID</label>
+        <label for="id">Bot ID</label>
         <div class="ls-flex-row">
-          <input name="id" type="text" class="full-width">
-          <button type="button" id="id-modal-button" class="ls-button">?</button>
+          <input id="id" name="id" type="text" class="full-width">
+          <button type="button" id="id-modal-button" onclick="openModal(this)" class="ls-button">?</button>
+        </div>
+      </div>
+      <div class="one-half column">
+        <label for="oauth">OAuth ID</label>
+        <div class="ls-flex-row">
+          <input id="oauth" name="oauth" type="text" class="full-width">
+          <button type="button" id="oauth-modal-button" onclick="openModal(this)" class="ls-button">?</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="one-half column">
+        <label for="avatar">Avatar</label>
+        <div class="ls-flex-row">
+          <input name="avatar" type="file" accept="image/*" class="full-width">
+          <button type="button" id="avatar-modal-button" onclick="openModal(this)" class="ls-button">?</button>
+        </div>
+      </div>
+      <div class="one-half column">
+        <label for="invite">Invite URL</label>
+        <div class="ls-flex-row">
+          <input id="invite" name="invite" type="text" class="full-width">
+          <button type="button" id="invite-modal-button" onclick="openModal(this)" class="ls-button">Create a Link</button>
         </div>
       </div>
     </div>
   </form>
 </div>
+
+<!--
+  Modals
+-->
 <div id="id-modal" class="modal modal--close">
   <div class="modal-content">
-    <span class="close">×</span>
-    <h1>Hello world!</h1>
-    <p>This is simple just a test modal for my website :3</p>
+    <span class="close ls-exit-modal">×</span>
+    <h1>Bot ID</h1>
+    <p>The bot ID is a number which uniquely identifies the bot user. You can retrieve it by clicking the "Copy" button within the Discord Developer portal.</p>
+    <img data-src="/img/add/id1.png">
+    <p>You can also find the ID by enabling "Developer Mode" in the Discord settings, and then right clicking your bot and pressing "Copy ID". Be sure not to copy the ID of the message.</p>
+    <img data-src="/img/add/id2.png">
+    <img data-src="/img/add/id3.png">
+    <p>If you need an "Application ID", click </p>
   </div>
 </div>
+
+<div id="oauth-modal" class="modal modal--close">
+  <div class="modal-content">
+    <span class="close ls-exit-modal">×</span>
+    <h1>OAuth ID</h1>
+    <p>The OAuth ID is the ID which is used when users invite your bot via the OAuth workflow. In almost all cases, this ID is the same as your Bot ID. You will only need to take action if your bot has a difference between the two.</p>
+    <img data-src="/img/add/oauth1.png">
+  </div>
+</div>
+
+<div id="avatar-modal" class="modal modal--close">
+  <div class="modal-content">
+    <span class="close ls-exit-modal">×</span>
+    <h1>Avatar</h1>
+    <p>Upload an avatar. Most image formats are accepted.</p>
+  </div>
+</div>
+
+<div id="invite-modal" class="modal modal--close">
+  <div class="modal-content">
+    <span class="close ls-exit-modal">×</span>
+    <h1>Invite URL Generator</h1>
+    <p>Select permissions</p>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="CREATE_INSTANT_INVITE">{{{i18n "permission.CREATE_INSTANT_INVITE"}}}</label>
+      <input id="CREATE_INSTANT_INVITE" type="checkbox" name="CREATE_INSTANT_INVITE"/></div>
+      <div class="one-third column"><label class="inline left" for="KICK_MEMBERS">{{{i18n "permission.KICK_MEMBERS"}}}</label>
+      <input id="KICK_MEMBERS" type="checkbox" name="KICK_MEMBERS"/></div>
+      <div class="one-third column"><label class="inline left" for="BAN_MEMBERS">{{{i18n "permission.BAN_MEMBERS"}}}</label>
+      <input id="BAN_MEMBERS" type="checkbox" name="BAN_MEMBERS"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="ADMINISTRATOR">{{{i18n "permission.ADMINISTRATOR"}}}</label>
+      <input id="ADMINISTRATOR" type="checkbox" name="ADMINISTRATOR"/></div>
+      <div class="one-third column"><label class="inline left" for="MANAGE_CHANNELS">{{{i18n "permission.MANAGE_CHANNELS"}}}</label>
+      <input id="MANAGE_CHANNELS" type="checkbox" name="MANAGE_CHANNELS"/></div>
+      <div class="one-third column"><label class="inline left" for="MANAGE_GUILD">{{{i18n "permission.MANAGE_GUILD"}}}</label>
+      <input id="MANAGE_GUILD" type="checkbox" name="MANAGE_GUILD"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="ADD_REACTIONS">{{{i18n "permission.ADD_REACTIONS"}}}</label>
+      <input id="ADD_REACTIONS" type="checkbox" name="ADD_REACTIONS"/></div>
+      <div class="one-third column"><label class="inline left" for="VIEW_AUDIT_LOG">{{{i18n "permission.VIEW_AUDIT_LOG"}}}</label>
+      <input id="VIEW_AUDIT_LOG" type="checkbox" name="VIEW_AUDIT_LOG"/></div>
+      <div class="one-third column"><label class="inline left" for="READ_MESSAGES">{{{i18n "permission.READ_MESSAGES"}}}</label>
+      <input id="READ_MESSAGES" type="checkbox" name="READ_MESSAGES"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="SEND_MESSAGES">{{{i18n "permission.SEND_MESSAGES"}}}</label>
+      <input id="SEND_MESSAGES" type="checkbox" name="SEND_MESSAGES"/></div>
+      <div class="one-third column"><label class="inline left" for="SEND_TTS_MESSAGES">{{{i18n "permission.SEND_TTS_MESSAGES"}}}</label>
+      <input id="SEND_TTS_MESSAGES" type="checkbox" name="SEND_TTS_MESSAGES"/></div>
+      <div class="one-third column"><label class="inline left" for="MANAGE_MESSAGES">{{{i18n "permission.MANAGE_MESSAGES"}}}</label>
+      <input id="MANAGE_MESSAGES" type="checkbox" name="MANAGE_MESSAGES"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="EMBED_LINKS">{{{i18n "permission.EMBED_LINKS"}}}</label>
+      <input id="EMBED_LINKS" type="checkbox" name="EMBED_LINKS"/></div>
+      <div class="one-third column"><label class="inline left" for="ATTACH_FILES">{{{i18n "permission.ATTACH_FILES"}}}</label>
+      <input id="ATTACH_FILES" type="checkbox" name="ATTACH_FILES"/></div>
+      <div class="one-third column"><label class="inline left" for="READ_MESSAGE_HISTORY">{{{i18n "permission.READ_MESSAGE_HISTORY"}}}</label>
+      <input id="READ_MESSAGE_HISTORY" type="checkbox" name="READ_MESSAGE_HISTORY"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="MENTION_EVERYONE">{{{i18n "permission.MENTION_EVERYONE"}}}</label>
+      <input id="MENTION_EVERYONE" type="checkbox" name="MENTION_EVERYONE"/></div>
+      <div class="one-third column"><label class="inline left" for="USE_EXTERNAL_EMOJIS">{{{i18n "permission.USE_EXTERNAL_EMOJIS"}}}</label>
+      <input id="USE_EXTERNAL_EMOJIS" type="checkbox" name="USE_EXTERNAL_EMOJIS"/></div>
+      <div class="one-third column"><label class="inline left" for="CONNECT">{{{i18n "permission.CONNECT"}}}</label>
+      <input id="CONNECT" type="checkbox" name="CONNECT"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="SPEAK">{{{i18n "permission.SPEAK"}}}</label>
+      <input id="SPEAK" type="checkbox" name="SPEAK"/></div>
+      <div class="one-third column"><label class="inline left" for="MUTE_MEMBERS">{{{i18n "permission.MUTE_MEMBERS"}}}</label>
+      <input id="MUTE_MEMBERS" type="checkbox" name="MUTE_MEMBERS"/></div>
+      <div class="one-third column"><label class="inline left" for="DEAFEN_MEMBERS">{{{i18n "permission.DEAFEN_MEMBERS"}}}</label>
+      <input id="DEAFEN_MEMBERS" type="checkbox" name="DEAFEN_MEMBERS"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="MOVE_MEMBERS">{{{i18n "permission.MOVE_MEMBERS"}}}</label>
+      <input id="MOVE_MEMBERS" type="checkbox" name="MOVE_MEMBERS"/></div>
+      <div class="one-third column"><label class="inline left" for="USE_VAD">{{{i18n "permission.USE_VAD"}}}</label>
+      <input id="USE_VAD" type="checkbox" name="USE_VAD"/></div>
+      <div class="one-third column"><label class="inline left" for="CHANGE_NICKNAME">{{{i18n "permission.CHANGE_NICKNAME"}}}</label>
+      <input id="CHANGE_NICKNAME" type="checkbox" name="CHANGE_NICKNAME"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="MANAGE_NICKNAMES">{{{i18n "permission.MANAGE_NICKNAMES"}}}</label>
+      <input id="MANAGE_NICKNAMES" type="checkbox" name="MANAGE_NICKNAMES"/></div>
+      <div class="one-third column"><label class="inline left" for="MANAGE_ROLES">{{{i18n "permission.MANAGE_ROLES"}}}</label>
+      <input id="MANAGE_ROLES" type="checkbox" name="MANAGE_ROLES"/></div>
+      <div class="one-third column"><label class="inline left" for="MANAGE_WEBHOOKS">{{{i18n "permission.MANAGE_WEBHOOKS"}}}</label>
+      <input id="MANAGE_WEBHOOKS" type="checkbox" name="MANAGE_WEBHOOKS"/></div>
+    </div>
+    <div class="row">
+      <div class="one-third column"><label class="inline left" for="MANAGE_EMOJIS">{{{i18n "permission.MANAGE_EMOJIS"}}}</label>
+      <input id="MANAGE_EMOJIS" type="checkbox" name="MANAGE_EMOJIS"/></div>
+    </div>
+    <a href="#" class="btn white black-text ls-exit-modal" onclick="generatePermissions()">Close</a>
+  </div>
+</div>
+
+<script src="/js/modalPerms.js"></script>

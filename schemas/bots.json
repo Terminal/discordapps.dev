@@ -2,7 +2,7 @@
   "id": "ID of the user",
   "oauth": "ID in the OAuth URL",
   "avatar": "Link to an avatar",
-  "customInvite": "https://alexflipnote.xyz",
+  "invite": "https://alexflipnote.xyz",
   "support": "8uC6aKZ",
   "guilds": [
     1,

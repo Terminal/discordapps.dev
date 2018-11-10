@@ -66,3 +66,23 @@ pre {
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 0; }
+
+.modal {
+  z-index: 200;
+  padding-bottom: 100px;
+  box-sizing: border-box; }
+  .modal img {
+    max-width: 100%; }
+
+.ls-file-input {
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+  height: 38px;
+  padding: 6px 10px; }
+
+input[type=file] {
+  display: inline;
+  color: #000000; }
