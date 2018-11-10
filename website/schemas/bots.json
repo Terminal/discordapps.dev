@@ -19,8 +19,6 @@
   },
   "trigger": {
     "prefix": [],
-    "suffix": [],
-    "reaction": [],
     "customisable": true
   },
   "token": "seesaw",

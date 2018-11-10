@@ -1,40 +1,63 @@
 
 <div class="form-container">
-  <form>
+  <form method="POST">
     <p>By completing this form, you agree that Terminal.ink can hold your data</p>
-    <h1>Basic Information</h1>
+    <h2>Basic Information</h2>
     <div class="row">
       <div class="one-half column">
-        <label for="id">Bot ID</label>
+        <label for="bot.id">Bot ID</label>
         <div class="ls-flex-row">
-          <input id="id" name="id" type="text" class="full-width">
+          <input id="id" name="bot.id" type="text" class="full-width">
           <button type="button" id="id-modal-button" onclick="openModal(this)" class="ls-button">?</button>
         </div>
       </div>
       <div class="one-half column">
-        <label for="oauth">OAuth ID</label>
+        <label for="bot.oauth">OAuth ID</label>
         <div class="ls-flex-row">
-          <input id="oauth" name="oauth" type="text" class="full-width">
+          <input id="oauth" name="bot.oauth" type="text" class="full-width">
           <button type="button" id="oauth-modal-button" onclick="openModal(this)" class="ls-button">?</button>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="one-half column">
-        <label for="avatar">Avatar</label>
+        <label for="bot.invite">Invite URL</label>
         <div class="ls-flex-row">
-          <input name="avatar" type="file" accept="image/*" class="full-width">
-          <button type="button" id="avatar-modal-button" onclick="openModal(this)" class="ls-button">?</button>
-        </div>
-      </div>
-      <div class="one-half column">
-        <label for="invite">Invite URL</label>
-        <div class="ls-flex-row">
-          <input id="invite" name="invite" type="text" class="full-width">
+          <input id="invite" name="bot.invite" type="text" class="full-width">
           <button type="button" id="invite-modal-button" onclick="openModal(this)" class="ls-button">Create a Link</button>
         </div>
       </div>
+      <div class="one-half column">
+        <label for="bot.authors[]">Authors</label>
+        <div class="ls-flex-row">
+          <input name="bot.authors[]" type="text" class="full-width">
+          <button type="button" id="authors-modal-button" onclick="openModal(this)" class="ls-button">?</button>
+        </div>
+      </div>
     </div>
+    <h2>Trigger Methods</h2>
+    <div class="row">
+      <div class="one-half column">
+        {{> listinput name="bot.trigger.prefix[]"}}
+      </div>
+      <div class="one-half column">
+        <label for="bot.trigger.customisable">Customisable Prefix</label>
+        <input name="bot.trigger.customisable" type="checkbox">
+      </div>
+    </div>
+    <h2>Source Code</h2>
+    <p>This will allow your audience to check out your code.</p>
+    <div class="row">
+      <div class="one-half column">
+        <label for="bot.github.owner">GitHub Owner</label>
+        <input name="bot.github.owner" type="text" class="full-width">
+      </div>
+      <div class="one-half column">
+        <label for="bot.github.repo">Github Repository</label>
+        <input name="bot.github.repo" type="text" class="full-width">
+      </div>
+    </div>
+    <button>Submit!</button>
   </form>
 </div>
 
@@ -50,7 +73,6 @@
     <p>You can also find the ID by enabling "Developer Mode" in the Discord settings, and then right clicking your bot and pressing "Copy ID". Be sure not to copy the ID of the message.</p>
     <img data-src="/img/add/id2.png">
     <img data-src="/img/add/id3.png">
-    <p>If you need an "Application ID", click </p>
   </div>
 </div>
 
@@ -157,4 +179,13 @@
   </div>
 </div>
 
+<div id="authors-modal" class="modal modal--close">
+  <div class="modal-content">
+    <span class="close ls-exit-modal">×</span>
+    <h1>Authors</h1>
+    <p>Enter IDs of users who developed this bot, separated by commas.</p>
+  </div>
+</div>
+
 <script src="/js/modalPerms.js"></script>
+<script src="/js/rows.js"></script>

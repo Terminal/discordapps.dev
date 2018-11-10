@@ -74,6 +74,9 @@ pre {
   .modal img {
     max-width: 100%; }
 
+.nav-container {
+  display: block; }
+
 .ls-file-input {
   background-color: #fff;
   border: 1px solid #d1d1d1;
