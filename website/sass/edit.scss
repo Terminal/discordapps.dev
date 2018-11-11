@@ -1,0 +1,20 @@
+.ls-edit-page {
+  height: 30vh;
+}
+
+.ls-edit-monaco {
+  width: 100%;
+  height: 30vh;
+}
+
+@media (max-width: 600px) {
+  .ls-edit-monaco {
+    display: none !important;
+  }
+}
+
+@media (min-width: 601px) {
+  .ls-edit-page {
+    display: none !important;
+  }
+}

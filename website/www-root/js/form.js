@@ -1,3 +1,5 @@
+window.editors = {};
+
 window.newRow = (button) => {
   const row = button.parentElement;
   const container = row.parentElement;
@@ -86,12 +88,14 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
       descriptionInput.setAttribute('type', 'text');
       descriptionInput.setAttribute('class', 'full-width');
       const pageLabel = document.createElement('label');
-      const pageInput = document.createElement('input');
+      const pageInput = document.createElement('textarea');
+      const monacoInput = document.createElement('div');
       pageLabel.setAttribute('for', `bot.contents.${selectedLanguageCode}.page`);
       pageLabel.innerText = pageLocalised;
       pageInput.setAttribute('name', `bot.contents.${selectedLanguageCode}.page`);
-      pageInput.setAttribute('type', 'text');
-      pageInput.setAttribute('class', 'full-width');
+      pageInput.id = `bot.contents.${selectedLanguageCode}.page`;
+      pageInput.classList.add('full-width', 'ls-edit-page');
+      monacoInput.classList.add('ls-edit-monaco');
 
       titleRow.appendChild(title);
       titleRow.appendChild(deleteLanguageButton);
@@ -102,8 +106,17 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
       languageRow.appendChild(descriptionInput);
       languageRow.appendChild(pageLabel);
       languageRow.appendChild(pageInput);
+      languageRow.appendChild(monacoInput);
 
       languagesBox.appendChild(languageRow);
+
+      const editor = monaco.editor.create(monacoInput, { // eslint-disable-line
+        language: 'markdown',
+        automaticLayout: true,
+        theme: 'vs-dark'
+      });
+
+      window.editors[selectedLanguageCode] = editor;
     }
   };
 });
@@ -117,6 +130,7 @@ window.deleteLanguage = (id) => {
   if (boxToDelete) {
     const name = boxToDelete.dataset.title;
     languagesBox.removeChild(boxToDelete);
+    delete window.editors[id];
 
     const option = document.createElement('option');
     option.innerText = name;
@@ -132,6 +146,14 @@ window.deleteLanguage = (id) => {
   const formMessageText = formMessage.getElementsByTagName('p')[0];
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    Object.keys(window.editors).forEach((languageCode) => {
+      const textarea = document.getElementById(`bot.contents.${languageCode}.page`);
+      const value = window.editors[languageCode].getValue();
+      if (value.length > 0) {
+        textarea.value = value;
+      }
+    });
+
     const formdata = new FormData(form);
     fetch('', {
       method: 'POST',
@@ -140,11 +162,20 @@ window.deleteLanguage = (id) => {
       .then(data => data.json())
       .then((data) => {
         if (data.ok) {
-          console.log('Everything is OK!');
+          formMessage.classList.remove('hidden', 'alizarin');
+          formMessage.classList.add('emerald');
         } else {
-          formMessage.classList.remove('hidden');
-          formMessageText.innerText = data.message;
+          formMessage.classList.remove('hidden', 'emerald');
+          formMessage.classList.add('alizarin');
         }
+
+        if (data.redirect) {
+          setTimeout(() => {
+            window.location.href = data.redirect;
+          }, 500);
+        }
+
+        formMessageText.innerText = data.message;
       });
   });
 }

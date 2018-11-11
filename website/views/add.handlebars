@@ -31,14 +31,22 @@
         {{> listinput name="bot.authors[]" label="pages.edit.authors.label" modal="authors"}}
       </div>
     </div>
-    <h2>Trigger Methods</h2>
     <div class="row">
       <div class="one-half column">
-        {{> listinput name="bot.trigger.prefix[]" label="pages.edit.prefix.label"}}
+        <label for="bot.nsfw">NSFW</label>
+        <input name="bot.nsfw" type="checkbox">
       </div>
+    </div>
+    <h2>Trigger Methods</h2>
+    {{> listinput name="bot.trigger.prefix[]" label="pages.edit.prefix.label"}}
+    <div class="row">
       <div class="one-half column">
         <label for="bot.trigger.customisable">Customisable Prefix</label>
         <input name="bot.trigger.customisable" type="checkbox">
+      </div>
+      <div class="one-half column">
+        <label for="bot.trigger.mentionable">Mentionable</label>
+        <input name="bot.trigger.mentionable" type="checkbox">
       </div>
     </div>
     <h2>Source Code</h2>
@@ -59,7 +67,7 @@
         <label>Supported Languages</label>
         <div class="ls-flex-row">
           <select form="null" id="language" class="full-width">
-            {{#each siteLocales}}
+            {{#each selectableLanguages}}
               <option value={{this}}>{{i18n (concat "locales." this)}}</option>
             {{/each}}
           </select>
@@ -211,7 +219,6 @@
   </div>
 </div>
 
-<script src="/js/serialize-0.2.min.js"></script>
 <script src="/node_modules/monaco-editor/min/vs/loader.js"></script>
 <script src="/js/modalPerms.js"></script>
 <script src="/js/form.js"></script>

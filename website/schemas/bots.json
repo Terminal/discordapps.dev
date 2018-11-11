@@ -19,9 +19,11 @@
   },
   "trigger": {
     "prefix": [],
-    "customisable": true
+    "customisable": true,
+    "mentionable": true
   },
   "token": "seesaw",
+  "nsfw": false,
   "contents": {
     "en": {
       "name": "Xela",

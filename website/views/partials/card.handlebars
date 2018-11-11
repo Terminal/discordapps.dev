@@ -1,23 +1,23 @@
 <section class="card">
   <div class="avatar">
     <div class="avatar">
-      <img src="{{item.frontmatter.avatar}}" />
+      <img src="{{item.avatar}}" />
     </div>
   </div>
   <div class="card-content">
-    <a href={{item.fields.filelink}}>
+    <a href="/bots/{{item.id}}">
       <h4 class="title">
-        {{item.frontmatter.pagename}}
-        {{#if item.frontmatter.nsfw}}
+        {{item.contents.name}}
+        {{#if item.nsfw}}
           <span class="ls-list-nsfw">NSFW</span>
         {{/if}}
       </h4>
     </a>
-    <span class="description">{{item.frontmatter.description}}</span>
+    <span class="description">{{item.contents.description}}</span>
   </div>
   <div class="footer">
-    {{#if item.frontmatter.link}}
-      <a href="{{item.frontmatter.link}}">{{i18n "pages.list.invite"}}</a>
+    {{#if item.invite}}
+      <a href="{{item.invite}}">{{i18n "pages.list.invite"}}</a>
     {{/if}}
   </div>
 </section>

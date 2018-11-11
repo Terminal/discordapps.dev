@@ -22,6 +22,7 @@ const store = new RDBStore(r);
 const app = express();
 
 app.locals.links = config.links;
+app.locals.defaultLocale = config.defaultLanguage;
 app.locals.siteLocales = i18n.getLocales();
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
@@ -34,6 +35,13 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       i18n: (...args) => {
         const options = args.pop();
         return i18n.__.apply(options, args);
+      },
+      getCurrentLocale: (...args) => {
+        const options = args.pop();
+        return i18n.getLocale(options);
+      },
+      stringify: (...args) => {
+        return JSON.stringify(...args);
       },
       concat: (...args) => args.slice(0, -1).join('')
     },
