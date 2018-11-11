@@ -1,6 +1,6 @@
 
 <div class="form-container">
-  <form method="POST">
+  <form method="POST" id="edit-form">
     <p>By completing this form, you agree that Terminal.ink can hold your data</p>
     <h2>Basic Information</h2>
     <div class="row">
@@ -71,6 +71,9 @@
     <div id="languages-box" data-delete="{{i18n "pages.edit.deleteLanguage"}}" data-name="{{i18n "pages.edit.name.label"}}" data-description="{{i18n "pages.edit.description.label"}}" data-page="{{i18n "pages.edit.page.label"}}"></div>
     <h3>Support</h3>
     <button>Submit!</button>
+    <div class="box-container alizarin message hidden" id="form-message">
+      <p>You should not be able to see this.</p>
+    </div>
   </form>
 </div>
 
@@ -208,6 +211,7 @@
   </div>
 </div>
 
+<script src="/js/serialize-0.2.min.js"></script>
 <script src="/node_modules/monaco-editor/min/vs/loader.js"></script>
 <script src="/js/modalPerms.js"></script>
-<script src="/js/rows.js"></script>
+<script src="/js/form.js"></script>

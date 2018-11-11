@@ -65,6 +65,21 @@
       },
       "page": {
         "label": "Page"
+      },
+      "errors": {
+        "bot_id_error": "The Bot ID needs to be filled out, and numeric",
+        "bot_oauth_error": "The OAuth ID needs to be numeric",
+        "bot_invite_error": "The Invite URL needs to be filled out, and as a valid HTTPS link",
+        "bot_support_error": "The Support URL needs to be a valid HTTPS link",
+        "bot_authors_error": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
+        "bot_githubowner_error": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
+        "bot_githubrepo_error": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
+        "bot_prefix_error": "You must have at least 1 prefix, of max length 10.",
+        "bot_customisable_error": "The customisability of the prefix must be either ticked, or unticked",
+        "bot_name_error": "The bot must have a name of length between 4 and 32.",
+        "bot_description_error": "The short description must have a length between 10 and 64",
+        "bot_page_error": "The long description must have a length between 20 and 10000",
+        "bot_languages": "You must add a single language before continuing"
       }
     },
     "notfound": {

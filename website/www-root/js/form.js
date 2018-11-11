@@ -125,3 +125,26 @@ window.deleteLanguage = (id) => {
     languageOptionsBox.appendChild(option);
   }
 };
+
+{
+  const form = document.getElementById('edit-form');
+  const formMessage = document.getElementById('form-message');
+  const formMessageText = formMessage.getElementsByTagName('p')[0];
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formdata = new FormData(form);
+    fetch('', {
+      method: 'POST',
+      body: formdata,
+    })
+      .then(data => data.json())
+      .then((data) => {
+        if (data.ok) {
+          console.log('Everything is OK!');
+        } else {
+          formMessage.classList.remove('hidden');
+          formMessageText.innerText = data.message;
+        }
+      });
+  });
+}

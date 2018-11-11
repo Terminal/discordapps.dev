@@ -13,6 +13,10 @@ pre {
   overflow-x: auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .ls-main-content-container {
   flex-grow: 1;
 }
