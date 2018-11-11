@@ -1,7 +1,10 @@
-<label for="{{ name }}">Prefix</label>
+<label for="{{ name }}">{{ i18n label }}</label>
 <div class="ls-flex-column">
   <div class="ls-flex-row">
     <input name="{{ name }}" type="text" class="full-width">
-    <button type="button" onclick="newrow(this)" class="ls-button">Add another</button>
+    <button type="button" onclick="newRow(this)" class="ls-button">Add another</button>
+    {{#if modal}}
+      <button type="button" id="{{modal}}-modal-button" onclick="openModal(this)" class="ls-button">?</button>
+    {{/if}}
   </div>
 </div>

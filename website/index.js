@@ -22,6 +22,7 @@ const store = new RDBStore(r);
 const app = express();
 
 app.locals.links = config.links;
+app.locals.siteLocales = i18n.getLocales();
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')
@@ -34,6 +35,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
         const options = args.pop();
         return i18n.__.apply(options, args);
       },
+      concat: (...args) => args.slice(0, -1).join('')
     },
   }))
   .use(bodyParser.json())
@@ -57,6 +59,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     prefix: '/css',
   }))
   .use(express.static(path.join(__dirname, 'www-root')))
+  .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
   .use((req, res, next) => {
     res.locals.user = req.user;
     next();

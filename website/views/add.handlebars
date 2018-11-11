@@ -28,17 +28,13 @@
         </div>
       </div>
       <div class="one-half column">
-        <label for="bot.authors[]">Authors</label>
-        <div class="ls-flex-row">
-          <input name="bot.authors[]" type="text" class="full-width">
-          <button type="button" id="authors-modal-button" onclick="openModal(this)" class="ls-button">?</button>
-        </div>
+        {{> listinput name="bot.authors[]" label="pages.edit.authors.label" modal="authors"}}
       </div>
     </div>
     <h2>Trigger Methods</h2>
     <div class="row">
       <div class="one-half column">
-        {{> listinput name="bot.trigger.prefix[]"}}
+        {{> listinput name="bot.trigger.prefix[]" label="pages.edit.prefix.label"}}
       </div>
       <div class="one-half column">
         <label for="bot.trigger.customisable">Customisable Prefix</label>
@@ -57,6 +53,23 @@
         <input name="bot.github.repo" type="text" class="full-width">
       </div>
     </div>
+    <h2>Information</h2>
+    <div class="row">
+      <div class="column">
+        <label>Supported Languages</label>
+        <div class="ls-flex-row">
+          <select form="null" id="language" class="full-width">
+            {{#each siteLocales}}
+              <option value={{this}}>{{i18n (concat "locales." this)}}</option>
+            {{/each}}
+          </select>
+          <button type="button" id="add-language-button" onclick="addLanguage(this)" class="ls-button">Add this language</button>
+          <button type="button" id="language-modal-button" onclick="openModal(this)" class="ls-button">?</button>
+        </div>
+      </div>
+    </div>
+    <div id="languages-box" data-delete="{{i18n "pages.edit.deleteLanguage"}}" data-name="{{i18n "pages.edit.name.label"}}" data-description="{{i18n "pages.edit.description.label"}}" data-page="{{i18n "pages.edit.page.label"}}"></div>
+    <h3>Support</h3>
     <button>Submit!</button>
   </form>
 </div>
@@ -187,5 +200,14 @@
   </div>
 </div>
 
+<div id="language-modal" class="modal modal--close">
+  <div class="modal-content">
+    <span class="close ls-exit-modal">×</span>
+    <h1>Languages</h1>
+    <p>You can add different descriptions for different languages supported by this website, to better target your audience. To add a language, select your language and click "Add this language". You can then fill out the details for that language.</p>
+  </div>
+</div>
+
+<script src="/node_modules/monaco-editor/min/vs/loader.js"></script>
 <script src="/js/modalPerms.js"></script>
 <script src="/js/rows.js"></script>

@@ -21,7 +21,7 @@ const schema = joi.object({
     name: joi.string().min(4).max(32).required(),
     description: joi.string().min(10).max(64).required(),
     page: joi.string().min(20).max(10000).required(),
-  }))
+  })).required()
 });
 
 module.exports = schema;
