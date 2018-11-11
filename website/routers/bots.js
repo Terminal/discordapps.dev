@@ -15,7 +15,7 @@ router
       .then((list) => {
         res.render('list', {
           list: list.map((item) => {
-            item.contents = item.contents[req.getLocale()] || item.contents[res.locale.defaultLocale];
+            item.contents = item.contents[req.getLocale()] || item.contents[config.defaultLanguage];
             return item;
           })
         });

@@ -1,10 +1,14 @@
-<label for="{{ name }}">{{ i18n label }}</label>
+<label for="{{ name }}">{{ i18n __ label }}</label>
 <div class="ls-flex-column">
   <div class="ls-flex-row">
-    <input name="{{ name }}" type="text" class="full-width">
-    <button type="button" onclick="newRow(this)" class="ls-button">Add another</button>
+    <input name="{{ name }}" type="text" class="full-width"
+      {{#if placeholder}}
+        placeholder="{{ i18n __ placeholder }}"
+      {{/if}}
+    >
+    <button type="button" onclick="newRow(this)" class="ls-button">{{ i18n __ "forms.add"}}</button>
     {{#if modal}}
-      <button type="button" id="{{modal}}-modal-button" onclick="openModal(this)" class="ls-button">?</button>
+      <button type="button" id="{{modal}}-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "forms.help"}}</button>
     {{/if}}
   </div>
 </div>

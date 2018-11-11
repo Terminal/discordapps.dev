@@ -13,8 +13,7 @@ const config = require('./config');
 
 const authRouter = require('./routers/auth');
 const botsRouter = require('./routers/bots');
-
-const testPayload = require('./payload.json');
+// const langRouter = require('./routers/locales');
 
 require('./static/banner');
 
@@ -22,7 +21,7 @@ const store = new RDBStore(r);
 const app = express();
 
 app.locals.links = config.links;
-app.locals.defaultLocale = config.defaultLanguage;
+app.locals.defaultLanguage = config.defaultLanguage;
 app.locals.siteLocales = i18n.getLocales();
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
@@ -32,9 +31,12 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     layoutsDir: path.join(path.dirname(__filename), 'views', 'layouts'),
     partialsDir: path.join(path.dirname(__filename), 'views', 'partials'),
     helpers: {
-      i18n: (...args) => {
-        const options = args.pop();
-        return i18n.__.apply(options, args);
+      i18n: (translator, phrase) => {
+        if (typeof translator === 'function') {
+          return translator(phrase);
+        }
+        console.log(translator);
+        return phrase;
       },
       getCurrentLocale: (...args) => {
         const options = args.pop();
@@ -70,18 +72,18 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
   .use((req, res, next) => {
     res.locals.user = req.user;
+    // res.locals.lang = req.cookies.lang || config.defaultLanguage;
     next();
   })
   .get('/', (req, res) => {
-    res.render('list', {
-      list: testPayload
-    });
+    res.redirect('/bots');
   })
   .get('/oops', (req, res, next) => {
     next(new Error('This error was thrown on purpose'));
   })
   .use('/auth', authRouter)
   .use('/bots', botsRouter)
+  // .use('/locale', langRouter)
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')

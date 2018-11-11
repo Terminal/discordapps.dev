@@ -1,0 +1,4 @@
+<h2>{{i18n __ "pages.locale.choose"}}</h2>
+{{#each languages}}
+  <a href="/locale/{{this}}">{{i18n __ (concat "locales." this)}}</a>
+{{/each}}

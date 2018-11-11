@@ -5,35 +5,35 @@
 		<div class="center-items">
 		<a href="/">
 			<section class="me unset">
-			<img alt="The logo for Discord_Fork" draggable="false" class="image-title" src="/img/logo/logo.svg" style="width: 7em; height: 7em"></img>
+			<img alt="{{i18n __ "pages.bots.backgroundAlt"}}" draggable="false" class="image-title" src="/img/logo/logo.svg" style="width: 7em; height: 7em"></img>
 			<div>
 				<h1 class="title no-margin white-text">
-					{{{i18n "pages.bots.pagename"}}}
+					{{i18n __ "pages.bots.pagename"}}
 				</h1>
 				<span class="undertitle white-text">
-					{{{i18n "pages.bots.description"}}}
+					{{i18n __ "pages.bots.description"}}
 				</span>
 			</div>
 			</section>
 		</a>
 		</div>
 		<div class="center">
-			<a class="btn white emoji-button" aria-label="Languages" href="/locale">
+			{{!-- <a class="btn white emoji-button" aria-label="Languages" href="/locale">
 				<span class="emoji twa-globe-showing-europe-africa" />
-			</a>
+			</a> --}}
 			{{#if user}}
 				<a class="btn white black-text emoji-button" href="/bots/add">
-					Add your own bot
+					{{i18n __ "pages.bots.add"}}
 				</a>
 				<a class="btn white black-text emoji-button" href="/user/{{user.id}}">
 					{{user.username}}
 				</a>
 				<a class="btn white black-text emoji-button" href="/auth/logout">
-					Log off
+					{{i18n __ "intro.logout"}}
 				</a>
 			{{else}}
 				<a class="btn white black-text emoji-button" href="/auth">
-					Log in
+					{{i18n __ "intro.login"}}
 				</a>
 			{{/if}}
 		</div>
