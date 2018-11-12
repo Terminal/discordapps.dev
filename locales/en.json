@@ -46,8 +46,8 @@
     "sv": "Swedish",
     "tr": "Turkish",
     "vi": "Vietnamese",
-    "zh-Hans": "Chinese (Simplified)",
-    "zh-Hant": "Chinese (Traditional)"
+    "zh-cn": "Chinese (Simplified)",
+    "zh-tw": "Chinese (Traditional)"
   },
   "pages": {
     "bots": {
@@ -55,8 +55,14 @@
       "backgroundAlt": "The logo for Discord Forklift",
       "description": "A test open source bot list",
       "invite": "Add this bot",
+      "support": "Technical Support",
       "pagename": "Project Forklift",
-      "prefix": "Prefix: ",
+      "mentionable": "Mentionable",
+      "customisable": "Customisable",
+      "prefix": {
+        "one": "Prefix",
+        "other": "Prefixes"
+      },
       "shortname": "Bots"
     },
     "docs": {

@@ -5,20 +5,67 @@ const { unflatten } = require('flat');
 const multer = require('multer');
 const r = require('../rethinkdb');
 const config = require('../config');
+const marked = require('marked');
 
 const router = express.Router();
 const reader = multer();
+
+const localise = (item, req) => {
+  item.contents = item.contents[req.getLocale()] || item.contents[config.defaultLanguage];
+  return item;
+};
 
 router
   .get('/', (req, res, next) => {
     r.table('bots')
       .then((list) => {
         res.render('list', {
-          list: list.map((item) => {
-            item.contents = item.contents[req.getLocale()] || item.contents[config.defaultLanguage];
-            return item;
-          })
+          list: list.map(item => localise(item, req))
         });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
+  .get('/:id', (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .then((item) => {
+        if (!item) {
+          next();
+        } else {
+          const bot = localise(item, req);
+          marked.setOptions({
+            sanitize: !bot.legacy
+          });
+
+          res.render('bot', {
+            item: bot,
+            contents: marked(bot.contents.page)
+          });
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
+  .get('/:id', (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .then((item) => {
+        if (!item) {
+          next();
+        } else {
+          const bot = localise(item, req);
+          marked.setOptions({
+            sanitize: !bot.legacy
+          });
+
+          res.render('bot', {
+            item: bot,
+            contents: marked(bot.contents.page)
+          });
+        }
       })
       .catch((err) => {
         next(err);
@@ -46,11 +93,8 @@ router
     req.body['bot.trigger.customisable'] = req.body['bot.trigger.customisable'] === 'on';
     req.body['bot.trigger.mentionable'] = req.body['bot.trigger.mentionable'] === 'on';
     req.body['bot.nsfw'] = req.body['bot.nsfw'] === 'on';
-    // Empty fields are "null"
-    Object.keys(req.body);
-
     const body = unflatten(req.body);
-    console.log(body);
+
     joi.validate(body.bot, schema, {
       abortEarly: true
     }, (err, value) => {
@@ -61,6 +105,7 @@ router
         });
       } else {
         value.verified = false;
+        value.legacy = false;
         r.table('bots')
           .getAll(value.id)
           .count()

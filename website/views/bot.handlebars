@@ -1,0 +1,47 @@
+<div class="main-content-container container">
+  <div class="center-text card-container">
+    <section class="ls-bot-profile card profile">
+      <div class="avatar">
+        <img class="avatar " alt="Avatar for Grape" src="{{item.avatar}}">
+      </div>
+      <div class="card-content">
+        <h1 class="name">{{item.contents.name}}</h1>
+        <span class="description">{{item.contents.description}}</span>
+        <p>
+          {{#if item.trigger.prefix.length}}
+            {{i18n __n "pages.bots.prefix" item.trigger.prefix.length}}
+          {{/if}}
+          {{#each item.trigger.prefix}}
+            <code class="ls-bot-prefix label asbestos">{{this}}</code>
+          {{/each}}
+          {{#if item.trigger.mentionable}}
+            <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.mentionable"}}</code>
+          {{/if}}
+          {{#if item.trigger.customisable}}
+            <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.customisable"}}</code>
+          {{/if}}
+        </p>
+      </div>
+    </section>
+  </div>
+  <div class="center">
+    {{#if item.invite}}
+    <a class="btn white black-text bold" href="{{item.invite}}">
+      {{i18n __ "pages.bots.invite"}}
+    </a>
+    {{/if}}
+    {{#if item.support}}
+    <a class="btn white black-text bold" href="https://discord.io/circuit">
+      {{i18n __ "pages.bots.support"}}
+    </a>
+    {{/if}}
+    {{#if item.github.owner}}{{#if item.github.repo}}
+    <a class="btn white black-text bold" href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">
+      <span>View on GitHub</span>
+    </a>
+    {{/if}}{{/if}}
+  </div>
+  <div class="ls-custom-content">
+    {{{contents}}}
+  </div>
+</div>

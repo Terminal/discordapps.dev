@@ -13,7 +13,7 @@ const config = require('./config');
 
 const authRouter = require('./routers/auth');
 const botsRouter = require('./routers/bots');
-// const langRouter = require('./routers/locales');
+const langRouter = require('./routers/locales');
 
 require('./static/banner');
 
@@ -31,20 +31,17 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     layoutsDir: path.join(path.dirname(__filename), 'views', 'layouts'),
     partialsDir: path.join(path.dirname(__filename), 'views', 'partials'),
     helpers: {
-      i18n: (translator, phrase) => {
+      i18n: (translator, ...args) => {
         if (typeof translator === 'function') {
-          return translator(phrase);
+          return translator(...args);
         }
-        console.log(translator);
-        return phrase;
+        return args[0] || 'Translation Error!';
       },
       getCurrentLocale: (...args) => {
         const options = args.pop();
         return i18n.getLocale(options);
       },
-      stringify: (...args) => {
-        return JSON.stringify(...args);
-      },
+      stringify: (...args) => JSON.stringify(...args),
       concat: (...args) => args.slice(0, -1).join('')
     },
   }))
@@ -52,8 +49,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use(bodyParser.urlencoded({
     extended: true
   }))
-  .use(i18n.init)
   .use(cookieParser(config.webserver.secret))
+  .use(i18n.init)
   .use(session({
     secret: config.webserver.secret,
     resave: true,
@@ -83,7 +80,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   })
   .use('/auth', authRouter)
   .use('/bots', botsRouter)
-  // .use('/locale', langRouter)
+  .use('/locale', langRouter)
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')

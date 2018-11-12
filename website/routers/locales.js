@@ -9,11 +9,13 @@ router.get('/', (req, res) => {
     languages: i18n.getLocales()
   });
 })
-  .get('/:lang', (req, res) => {
-    if (i18n.getLocales()[req.params.lang]) {
+  .get('/:lang', (req, res, next) => {
+    if (i18n.getLocales().includes(req.params.lang)) {
       res.cookie('lang', req.params.lang);
+      res.redirect('/');
+    } else {
+      next();
     }
-    res.redirect('/');
   });
 
 module.exports = router;

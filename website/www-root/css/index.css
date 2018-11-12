@@ -61,6 +61,36 @@
   .ls-edit-page {
     display: none !important; } }
 
+.ls-bot-prefix {
+  font-size: 12pt; }
+
+.ls-iframe {
+  width: 100%;
+  height: 60vh; }
+
+.ls-bot-profile.card.profile {
+  background: transparent;
+  box-shadow: none;
+  margin-top: 2.5em;
+  width: 100%; }
+  .ls-bot-profile.card.profile .avatar, .ls-bot-profile.card.profile .link {
+    background: transparent; }
+  .ls-bot-profile.card.profile .avatar {
+    padding: 0; }
+    .ls-bot-profile.card.profile .avatar img {
+      width: 10em; }
+  .ls-bot-profile.card.profile .name {
+    font-size: 3em;
+    margin: 0;
+    padding: 0; }
+    .ls-bot-profile.card.profile .name .nsfw-tag {
+      font-size: 16px;
+      line-height: 50px;
+      margin-left: 0; }
+  .ls-bot-profile.card.profile .description {
+    color: #eee;
+    font-size: 1.5em; }
+
 .main-window {
   display: flex;
   flex-direction: column;
