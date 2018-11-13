@@ -62,7 +62,8 @@
     display: none !important; } }
 
 .ls-bot-prefix {
-  font-size: 12pt; }
+  font-size: 12pt;
+  white-space: pre; }
 
 .ls-iframe {
   width: 100%;

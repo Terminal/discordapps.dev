@@ -6,6 +6,8 @@ const multer = require('multer');
 const r = require('../rethinkdb');
 const config = require('../config');
 const marked = require('marked');
+const xss = require('xss');
+const ImageCache = require('../class/ImageCache');
 
 const router = express.Router();
 const reader = multer();
@@ -35,36 +37,46 @@ router
           next();
         } else {
           const bot = localise(item, req);
+          const promises = [];
+
           marked.setOptions({
             sanitize: !bot.legacy
           });
 
-          res.render('bot', {
-            item: bot,
-            contents: marked(bot.contents.page)
-          });
-        }
-      })
-      .catch((err) => {
-        next(err);
-      });
-  })
-  .get('/:id', (req, res, next) => {
-    r.table('bots')
-      .get(req.params.id)
-      .then((item) => {
-        if (!item) {
-          next();
-        } else {
-          const bot = localise(item, req);
-          marked.setOptions({
-            sanitize: !bot.legacy
+          const contents = xss(marked(bot.contents.page), {
+            whiteList: {
+              iframe: ['src', 'class'],
+              style: [],
+              link: ['href', 'rel', 'type'],
+              ...xss.whiteList
+            },
+            onTagAttr(tag, name, value) {
+              console.log(tag);
+              if (tag === 'img' && name === 'src') {
+                const cache = new ImageCache(value);
+                // Marked is synchronous. This hack makes it do Marked, download, and then render.
+                promises.push(cache.cache());
+                return `src="/appdata/${cache.hash}.png"`;
+              }
+              return undefined;
+            },
+            css: {
+              onAttr(name, value, options) {
+                console.log(name, value, options);
+              },
+            }
           });
 
-          res.render('bot', {
-            item: bot,
-            contents: marked(bot.contents.page)
-          });
+          Promise.all(promises)
+            .then(() => {
+              res.render('bot', {
+                item: bot,
+                contents
+              });
+            })
+            .catch((err) => {
+              next(err);
+            });
         }
       })
       .catch((err) => {

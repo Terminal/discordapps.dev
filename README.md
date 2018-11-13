@@ -44,7 +44,7 @@ Setup will take about 12 hours.
 3. From the root folder, run `node .\website\`
 
 ## Licence
-For licencing, please email `admin@moustacheminer.com`
+This software is free for non-commercial use
 
 ### Exceptions
 `/website/www-root/js/modalPerms.js` is licenced under the MIT licence.

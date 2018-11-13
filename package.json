@@ -40,7 +40,10 @@
 		"passport-discord": "^0.1.3",
 		"request": "^2.88.0",
 		"rethinkdbdash": "^2.3.31",
-		"session-rethinkdb": "^2.0.1"
+		"session-rethinkdb": "^2.0.1",
+		"sharp": "^0.21.0",
+		"valid-url": "^1.0.9",
+		"xss": "^1.0.3"
 	},
 	"devDependencies": {
 		"eslint": "^4.19.1",
