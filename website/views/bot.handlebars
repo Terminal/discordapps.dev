@@ -26,20 +26,27 @@
   </div>
   <div class="center">
     {{#if item.invite}}
-    <a class="btn white black-text bold" href="{{item.invite}}">
+    <a class="btn white black-text" href="{{item.invite}}">
       {{i18n __ "pages.bots.invite"}}
     </a>
     {{/if}}
     {{#if item.support}}
-    <a class="btn white black-text bold" href="https://discord.io/circuit">
+    <a class="btn white black-text" href="https://discord.io/circuit">
       {{i18n __ "pages.bots.support"}}
     </a>
     {{/if}}
-    {{#if item.github.owner}}{{#if item.github.repo}}
-    <a class="btn white black-text bold" href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">
+    {{#if item.github.owner}}
+    {{#if item.github.repo}}
+    <a class="btn white black-text" href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">
       <span>View on GitHub</span>
     </a>
-    {{/if}}{{/if}}
+    {{/if}}
+    {{/if}}
+    {{#if canEdit}}
+      <a class="btn midnight-blue" href="/bots/{{item.id}}/edit">
+        <span>Edit</span>
+      </a>
+    {{/if}}
   </div>
   <div class="ls-custom-content">
     {{{contents}}}

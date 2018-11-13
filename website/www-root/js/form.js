@@ -35,7 +35,7 @@ window.deleteRow = (button) => {
 
 require.config({
   paths: {
-    vs: '../node_modules/monaco-editor/min/vs'
+    vs: '/node_modules/monaco-editor/min/vs'
   }
 });
 
@@ -69,7 +69,7 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
       titleRow.setAttribute('class', 'ls-flex-row');
       title.innerText = selectedLanguageName;
       deleteLanguageButton.setAttribute('type', 'button');
-      deleteLanguageButton.setAttribute('onclick', `deleteLanguage("${selectedLanguageCode}")`);
+      deleteLanguageButton.setAttribute('onclick', `deleteLanguage('${selectedLanguageCode}')`);
       deleteLanguageButton.setAttribute('class', 'ls-button');
       deleteLanguageButton.innerText = deleteLocalised;
 
@@ -119,6 +119,21 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
       window.editors[selectedLanguageCode] = editor;
     }
   };
+
+  window.addEventListener('load', () => {
+    const monacos = [...document.getElementsByClassName('ls-edit-monaco')];
+    monacos.forEach((div) => {
+      const textarea = document.getElementById(`bot.contents.${div.parentElement.id}.page`);
+      const editor = monaco.editor.create(div, { // eslint-disable-line
+        language: 'markdown',
+        automaticLayout: true,
+        theme: 'vs-dark',
+        value: textarea.value
+      });
+
+      window.editors[div.parentElement.id] = editor;
+    });
+  });
 });
 
 window.deleteLanguage = (id) => {
@@ -155,7 +170,7 @@ window.deleteLanguage = (id) => {
     });
 
     const formdata = new FormData(form);
-    fetch('', {
+    fetch('/bots/add', {
       method: 'POST',
       body: formdata,
     })

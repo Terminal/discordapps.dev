@@ -157,7 +157,8 @@
       },
       "sourcecode": "Source Code",
       "title": "Add or Edit an Application",
-      "triggermethods": "Trigger Methods"
+      "triggermethods": "Trigger Methods",
+      "deleteLanguage": "Delete a language"
     },
     "error": {
       "notfound": "Page not found...",

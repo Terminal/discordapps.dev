@@ -12,6 +12,19 @@ const ImageCache = require('../class/ImageCache');
 const router = express.Router();
 const reader = multer();
 
+const selectableLanguages = Object.keys(config.languages).sort((a, b) => {
+  if (config.languages[a].top) {
+    return -1;
+  } else if (config.languages[b].top) {
+    return 1;
+  } else if (a < b) {
+    return -1;
+  } else if (a > b) {
+    return 1;
+  }
+  return 0;
+});
+
 const localise = (item, req) => {
   item.contents = item.contents[req.getLocale()] || item.contents[config.defaultLanguage];
   return item;
@@ -51,7 +64,6 @@ router
               ...xss.whiteList
             },
             onTagAttr(tag, name, value) {
-              console.log(tag);
               if (tag === 'img' && name === 'src') {
                 const cache = new ImageCache(value);
                 // Marked is synchronous. This hack makes it do Marked, download, and then render.
@@ -59,11 +71,6 @@ router
                 return `src="/appdata/${cache.hash}.png"`;
               }
               return undefined;
-            },
-            css: {
-              onAttr(name, value, options) {
-                console.log(name, value, options);
-              },
             }
           });
 
@@ -71,7 +78,8 @@ router
             .then(() => {
               res.render('bot', {
                 item: bot,
-                contents
+                contents,
+                canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false
               });
             })
             .catch((err) => {
@@ -83,21 +91,30 @@ router
         next(err);
       });
   })
+  .get('/:id/edit', isLoggedIn, (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .then((item) => {
+        if (item) {
+          const remainingLanguages = selectableLanguages.filter(language => !Object.keys(item.contents).includes(language));
+          res.render('add', {
+            selectableLanguages: remainingLanguages,
+            item,
+            layout: 'docs',
+          });
+        } else {
+          next();
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
   .get('/add', isLoggedIn, (req, res) => {
     res.render('add', {
-      selectableLanguages: Object.keys(config.languages).sort((a, b) => {
-        if (config.languages[a].top) {
-          return -1;
-        } else if (config.languages[b].top) {
-          return 1;
-        } else if (a < b) {
-          return -1;
-        } else if (a > b) {
-          return 1;
-        }
-        return 0;
-      }),
+      selectableLanguages,
       layout: 'docs',
+      item: {},
     });
   })
   .post('/add', isLoggedIn, reader.none(), (req, res, next) => {
@@ -118,28 +135,37 @@ router
       } else {
         value.verified = false;
         value.legacy = false;
-        r.table('bots')
-          .getAll(value.id)
-          .count()
-          .then((length) => {
-            if (length === 1) {
+        const insert = () => {
+          r.table('bots')
+            .insert(value, {
+              conflict: 'replace'
+            })
+            .then(() => {
               res.json({
-                ok: false,
-                message: 'Bot already exists in the database'
+                ok: true,
+                message: 'Added bot to the bot list queue.',
+                redirect: `/bots/${value.id}`
               });
-            } else {
-              r.table('bots')
-                .insert(value)
-                .then(() => {
-                  res.json({
-                    ok: true,
-                    message: 'Added bot to the bot list queue.',
-                    redirect: `/bots/${value.id}`
-                  });
-                })
-                .catch((err1) => {
-                  next(err1);
+            })
+            .catch((err1) => {
+              next(err1);
+            });
+        };
+
+        r.table('bots')
+          .get(value.id)
+          .then((existingBot) => {
+            if (existingBot) {
+              if (existingBot.authors.includes(req.user.id) || req.user.admin) {
+                insert();
+              } else {
+                res.json({
+                  ok: false,
+                  message: 'Bot already exists in the database'
                 });
+              }
+            } else {
+              insert();
             }
           })
           .catch((err1) => {

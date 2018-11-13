@@ -1,14 +1,21 @@
 <label for="{{ name }}">{{ i18n __ label }}</label>
 <div class="ls-flex-column">
-  <div class="ls-flex-row">
-    <input name="{{ name }}" type="text" class="full-width"
-      {{#if placeholder}}
-        placeholder="{{ i18n __ placeholder }}"
+  {{#if (isArray value)}}
+    {{#each value}}
+      {{#if @first}}
+        {{>input value=this name=../name modal=../modal __=../__ placeholder=../placeholder}}
+      {{else}}
+        <div class="ls-flex-row">
+          <input name="bot.authors[]" type="text" class="full-width" value={{this}}>
+          <button type="button" class="ls-button" onclick="deleteRow(this)">
+            Delete
+          </button>
+        </div>
       {{/if}}
-    >
-    <button type="button" onclick="newRow(this)" class="ls-button">{{ i18n __ "forms.add"}}</button>
-    {{#if modal}}
-      <button type="button" id="{{modal}}-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "forms.help"}}</button>
-    {{/if}}
-  </div>
+    {{else}}
+      {{>input name=name modal=../modal __=__ placeholder=placeholder}}
+    {{/each}}
+  {{else}}
+    {{>input value=default name=name modal=modal __=__ placeholder=placeholder}}
+  {{/if}}
 </div>

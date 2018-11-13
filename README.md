@@ -44,7 +44,7 @@ Setup will take about 12 hours.
 3. From the root folder, run `node .\website\`
 
 ## Licence
-This software is free for non-commercial use
+All files (except the exceptions below) are licenced under the GNU Affero General Public Licence.
 
 ### Exceptions
 `/website/www-root/js/modalPerms.js` is licenced under the MIT licence.
