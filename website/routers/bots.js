@@ -6,8 +6,7 @@ const multer = require('multer');
 const r = require('../rethinkdb');
 const config = require('../config');
 const marked = require('marked');
-const cacheAndXSS = require('../static/xss');
-const ImageCache = require('../class/ImageCache');
+const xss = require('../static/xss');
 
 const router = express.Router();
 const reader = multer();
@@ -38,23 +37,9 @@ const listRouter = (filter = {}) => (req, res, next) => {
   r.table('bots')
     .filter(filter)
     .then((list) => {
-      const promises = [];
-      list.forEach((item) => {
-        if (item.avatar) {
-          const cache = new ImageCache(item.avatar, 128, 128);
-          promises.push(cache.cache());
-          item.avatar = cache.permalink;
-        } else {
-          item.avatar = '/img/logo/logo.svg';
-        }
+      res.render('list', {
+        list: list.map(item => localise(item, req))
       });
-      Promise.all(promises)
-        .catch(() => {})
-        .finally(() => {
-          res.render('list', {
-            list: list.map(item => localise(item, req))
-          });
-        });
     })
     .catch((err) => {
       next(err);
@@ -77,26 +62,13 @@ router
           next();
         } else {
           const bot = localise(item, req);
-          const promises = [cacheAndXSS(marked(bot.contents.page))];
-          if (bot.avatar) {
-            const cache = new ImageCache(bot.avatar, 128, 128);
-            promises.push(cache.cache());
-            bot.avatar = cache.permalink;
-          } else {
-            bot.avatar = '/img/logo/logo.svg';
-          }
-          
-          Promise.all(promises)
-            .then(([contents]) => {
-              res.render('bot', {
-                item: bot,
-                contents,
-                canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false
-              });
-            })
-            .catch((err) => {
-              next(err);
-            });
+
+          const contents = xss(marked(bot.contents.page));
+          res.render('bot', {
+            item: bot,
+            contents,
+            canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false
+          });
         }
       })
       .catch((err) => {
