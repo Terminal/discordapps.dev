@@ -10,36 +10,7 @@ Secondary Developer | Devoxin#0387 ([@Devoxin](https://github.com/Devoxin))
 Setup will take about 12 hours.
 <!-- Of course not. -->
 
-1. Add your config into the configuration JSON
-```json
-{
-  "rethinkdb": {
-    "db": "test",
-    "servers": [
-      {
-        "host": "127.0.0.1",
-        "port": 28015
-      }
-    ],
-    "silent": true
-  },
-  "webserver": {
-    "secret": "nekkoya",
-    "location": "http://127.0.0.1:8000/",
-    "port": 8000
-  },
-  "discord": {
-    "clientID": "473861594749861909",
-    "clientSecret": "",
-    "scope": [
-      "identify"
-    ]
-  },
-  "links": {
-    "docs": "https://docs.terminal.ink"
-  }
-}
-```
+1. Add your config into the configuration JSON, based on the `config.json` file
 2. Run RethinkDB
 3. From the root folder, run `node .\website\`
 
