@@ -106,23 +106,6 @@
       "description": {
         "title": "Beschreibung"
       },
-      "errors": {
-        "bot_authors_error": "Du musst mindestens einen Autor haben und alle Autor IDs müssen nummerisch sein",
-        "bot_customisable_error": "Die änderbarkeit des Prefixes muss entweder ausgewählt oder nicht ausgewählt sein",
-        "bot_description_error": "Die kurze Beschreibung muss zwischen 10 und 64 Zeichen lang sein",
-        "bot_githubowner_error": "Der GitHub Besitzer muss ein gültiger Account sein. Lass es leer, wenn du keinen Account hast.",
-        "bot_githubrepo_error": "Die GitHub Repository muss ein gültiger String sein. Lass es leer, wenn du keine GitHub Repository hast.",
-        "bot_id_error": "Die Bot ID muss ausgefühlt und nummerisch sein",
-        "bot_invite_error": "Der Invite Link muss ausgefüllt und ein gültiger HTTPS Link sein",
-        "bot_languages": "Du musst eine einzelne Sprache auswählern befor du weitermachen kannst",
-        "bot_mentionable_error": "Die erwähnbarkeit des Bots muss entweder ausgewählt oder nicht ausgewählt sein",
-        "bot_name_error": "Der Botname muss eine Länge zwischen 4 und 32 Zeichen haben",
-        "bot_nsfw_error": "Der NSFW-status muss entweder ausgewählt oder nicht ausgewählt sein",
-        "bot_oauth_error": "Die OAuth ID muss nummerisch sein",
-        "bot_page_error": "Die lange Beschreibung muss zwischen 20 und 10000 Zeichen lang sein",
-        "bot_prefix_error": "Du musst mindestens einen Prefix haben, welcher maximal 10 Zeichen lang ist.",
-        "bot_support_error": "Der Support-link muss ein gültiger HTTPS Link sein"
-      },
       "github_owner": {
         "placeholder": "Etwas wie: ry00001",
         "title": "GitHub Benutzer / Organisation"
@@ -205,5 +188,24 @@
     "USE_EXTERNAL_EMOJIS": "Externe Emojis verwenden",
     "USE_VAD": "Sprachaktivierung verwenden",
     "VIEW_AUDIT_LOG": "Auditlogs ansehen"
+  },
+  "errors": {
+    "bots": {
+      "authors": "Du musst mindestens einen Autor haben und alle Autor IDs müssen nummerisch sein",
+      "customisable": "Die änderbarkeit des Prefixes muss entweder ausgewählt oder nicht ausgewählt sein",
+      "description": "Die kurze Beschreibung muss zwischen 10 und 64 Zeichen lang sein",
+      "githubowner": "Der GitHub Besitzer muss ein gültiger Account sein. Lass es leer, wenn du keinen Account hast.",
+      "githubrepo": "Die GitHub Repository muss ein gültiger String sein. Lass es leer, wenn du keine GitHub Repository hast.",
+      "id": "Die Bot ID muss ausgefühlt und nummerisch sein",
+      "invite": "Der Invite Link muss ausgefüllt und ein gültiger HTTPS Link sein",
+      "languages": "Du musst eine einzelne Sprache auswählern befor du weitermachen kannst",
+      "mentionable": "Die erwähnbarkeit des Bots muss entweder ausgewählt oder nicht ausgewählt sein",
+      "name": "Der Botname muss eine Länge zwischen 4 und 32 Zeichen haben",
+      "nsfw": "Der NSFW-status muss entweder ausgewählt oder nicht ausgewählt sein",
+      "oauth": "Die OAuth ID muss nummerisch sein",
+      "page": "Die lange Beschreibung muss zwischen 20 und 10000 Zeichen lang sein",
+      "prefix": "Du musst mindestens einen Prefix haben, welcher maximal 10 Zeichen lang ist.",
+      "support": "Der Support-link muss ein gültiger HTTPS Link sein"
+    }
   }
 }
