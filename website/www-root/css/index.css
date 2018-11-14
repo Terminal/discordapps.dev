@@ -22,6 +22,9 @@
   background-repeat: no-repeat;
   background-color: #2a2a2a; }
 
+footer {
+  color: #fff; }
+
 .ls-footer-copyright {
   white-space: pre-line;
   margin: 0; }
@@ -73,7 +76,8 @@
   background: transparent;
   box-shadow: none;
   margin-top: 2.5em;
-  width: 100%; }
+  width: 100%;
+  color: #fff; }
   .ls-bot-profile.card.profile .avatar, .ls-bot-profile.card.profile .link {
     background: transparent; }
   .ls-bot-profile.card.profile .avatar {
@@ -109,12 +113,15 @@ pre {
 .ls-flex-row {
   display: flex; }
 
-.ls-button {
+.form-container .ls-button {
   height: 38px;
   border-radius: 4px;
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 0; }
+
+button.btn {
+  box-shadow: unset; }
 
 .modal {
   z-index: 200;

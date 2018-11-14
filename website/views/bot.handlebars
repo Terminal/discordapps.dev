@@ -38,13 +38,16 @@
     {{#if item.github.owner}}
     {{#if item.github.repo}}
     <a class="btn white black-text" href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">
-      <span>View on GitHub</span>
+      {{i18n __ "pages.bots.github"}}
     </a>
     {{/if}}
     {{/if}}
     {{#if canEdit}}
       <a class="btn midnight-blue" href="/bots/{{item.id}}/edit">
-        <span>Edit</span>
+        {{i18n __ "pages.bots.edit"}}
+      </a>
+      <a class="btn midnight-blue" href="/bots/{{item.id}}/delete">
+        {{i18n __ "pages.bots.delete"}}
       </a>
     {{/if}}
   </div>

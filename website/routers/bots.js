@@ -6,7 +6,7 @@ const multer = require('multer');
 const r = require('../rethinkdb');
 const config = require('../config');
 const marked = require('marked');
-const xss = require('xss');
+const cacheAndXSS = require('../static/xss');
 const ImageCache = require('../class/ImageCache');
 
 const router = express.Router();
@@ -30,18 +30,45 @@ const localise = (item, req) => {
   return item;
 };
 
-router
-  .get('/', (req, res, next) => {
-    r.table('bots')
-      .then((list) => {
-        res.render('list', {
-          list: list.map(item => localise(item, req))
-        });
-      })
-      .catch((err) => {
-        next(err);
+const listRouter = (filter = {}) => (req, res, next) => {
+  if (filter === 'owner') {
+    filter = bot => bot('authors').contains(req.params.id);
+  }
+
+  r.table('bots')
+    .filter(filter)
+    .then((list) => {
+      const promises = [];
+      list.forEach((item) => {
+        if (item.avatar) {
+          const cache = new ImageCache(item.avatar, 128, 128);
+          promises.push(cache.cache());
+          item.avatar = cache.permalink;
+        } else {
+          item.avatar = '/img/logo/logo.svg';
+        }
       });
-  })
+      Promise.all(promises)
+        .catch(() => {})
+        .finally(() => {
+          res.render('list', {
+            list: list.map(item => localise(item, req))
+          });
+        });
+    })
+    .catch((err) => {
+      next(err);
+    });
+};
+
+router
+  .get('/', listRouter({
+    verified: true
+  }))
+  .get('/unverified', listRouter({
+    verified: false
+  }))
+  .get('/by/:id', listRouter('owner'))
   .get('/:id', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
@@ -50,32 +77,17 @@ router
           next();
         } else {
           const bot = localise(item, req);
-          const promises = [];
-
-          marked.setOptions({
-            sanitize: !bot.legacy
-          });
-
-          const contents = xss(marked(bot.contents.page), {
-            whiteList: {
-              iframe: ['src', 'class'],
-              style: [],
-              link: ['href', 'rel', 'type'],
-              ...xss.whiteList
-            },
-            onTagAttr(tag, name, value) {
-              if (tag === 'img' && name === 'src') {
-                const cache = new ImageCache(value);
-                // Marked is synchronous. This hack makes it do Marked, download, and then render.
-                promises.push(cache.cache());
-                return `src="/appdata/${cache.hash}.png"`;
-              }
-              return undefined;
-            }
-          });
-
+          const promises = [cacheAndXSS(marked(bot.contents.page))];
+          if (bot.avatar) {
+            const cache = new ImageCache(bot.avatar, 128, 128);
+            promises.push(cache.cache());
+            bot.avatar = cache.permalink;
+          } else {
+            bot.avatar = '/img/logo/logo.svg';
+          }
+          
           Promise.all(promises)
-            .then(() => {
+            .then(([contents]) => {
               res.render('bot', {
                 item: bot,
                 contents,
@@ -110,6 +122,38 @@ router
         next(err);
       });
   })
+  .get('/:id/delete', isLoggedIn, (req, res) => {
+    res.render('sure');
+  })
+  .post('/:id/delete', (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .then((existingBot) => {
+        if (existingBot) {
+          if (existingBot.authors.includes(req.user.id) || req.user.admin) {
+            r.table('bots')
+              .get(req.params.id)
+              .delete()
+              .then(() => {
+                res.redirect('/');
+              })
+              .catch((err) => {
+                next(err);
+              });
+          } else {
+            res.json({
+              ok: false,
+              message: res.__('bot_exists_error')
+            });
+          }
+        } else {
+          next();
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
   .get('/add', isLoggedIn, (req, res) => {
     res.render('add', {
       selectableLanguages,
@@ -130,20 +174,18 @@ router
       if (err) {
         res.json({
           ok: false,
-          message: res.__(`pages.edit.errors.${err.message}`)
+          message: res.__(err.message)
         });
       } else {
-        value.verified = false;
-        value.legacy = false;
-        const insert = () => {
+        const insert = (message) => {
           r.table('bots')
             .insert(value, {
-              conflict: 'replace'
+              conflict: 'update'
             })
             .then(() => {
               res.json({
                 ok: true,
-                message: 'Added bot to the bot list queue.',
+                message: res.__(message),
                 redirect: `/bots/${value.id}`
               });
             })
@@ -157,15 +199,17 @@ router
           .then((existingBot) => {
             if (existingBot) {
               if (existingBot.authors.includes(req.user.id) || req.user.admin) {
-                insert();
+                insert('errors.bots.edit_success');
               } else {
                 res.json({
                   ok: false,
-                  message: 'Bot already exists in the database'
+                  message: res.__('errors.bots.exists')
                 });
               }
             } else {
-              insert();
+              value.verified = false;
+              value.legacy = false;
+              insert('errors.bots.add_success');
             }
           })
           .catch((err1) => {

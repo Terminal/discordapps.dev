@@ -9,32 +9,33 @@ const joi = originaljoi.extend({
 });
 
 const schema = joi.object({
-  id: joi.string().regex(/^[0-9]+$/, 'numbers').required().error(new Error('bot_id_error')),
-  oauth: joi.string().regex(/^[0-9]+$/, 'numbers').allow(null).error(new Error('bot_oauth_error')),
-  invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('bot_invite_error')),
-  support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('bot_support_error')),
-  authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).required().error(new Error('bot_authors_error')),
-  nsfw: joi.bool().error(new Error('bot_nsfw_error')),
+  id: joi.string().regex(/^[0-9]+$/, 'numbers').required().error(new Error('errors.bots.id')),
+  oauth: joi.string().regex(/^[0-9]+$/, 'numbers').allow(null).error(new Error('errors.bots.oauth')),
+  invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.bots.invite')),
+  support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.support')),
+  avatar: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.avatar')),
+  authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).required().error(new Error('errors.bots.authors')),
+  nsfw: joi.bool().error(new Error('errors.bots.nsfw')),
   github: joi.object({
-    owner: joi.string().regex(githubUsernameRegex, 'github username').allow(null).error(new Error('bot_githubowner_error')),
-    repo: joi.string().allow(null).error(new Error('bot_githubrepo_error')),
+    owner: joi.string().regex(githubUsernameRegex, 'github username').allow(null).error(new Error('errors.bots.githubowner')),
+    repo: joi.string().allow(null).error(new Error('errors.bots.githubrepo')),
   }),
   trigger: joi.object({
     prefix: joi.array().items(joi.string().min(1).max(10)).min(1).max(10)
-      .error(new Error('bot_prefix_error')),
-    customisable: joi.bool().error(new Error('bot_customisable_error')),
-    mentionable: joi.bool().error(new Error('bot_mentionable_error')),
+      .error(new Error('errors.bots.prefix')),
+    customisable: joi.bool().error(new Error('errors.bots.customisable')),
+    mentionable: joi.bool().error(new Error('errors.bots.mentionable')),
   }),
   contents: joi.object().pattern(joi.string().valid(Object.keys(config.languages)), joi.object({
     name: joi.string().min(4).max(32).required()
-      .error(new Error('bot_name_error')),
+      .error(new Error('errors.bots.name')),
     description: joi.string().min(10).max(64).required()
-      .error(new Error('bot_description_error')),
+      .error(new Error('errors.bots.description')),
     page: joi.string().min(20).max(10000).required()
-      .error(new Error('bot_page_error')),
+      .error(new Error('errors.bots.page')),
   })).required().error((errors) => {
     if (errors.some(e => e.context.key === 'contents')) {
-      return new Error('bot_languages');
+      return new Error('errors.bots.languages');
     }
     return errors;
   })

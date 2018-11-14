@@ -1,0 +1,138 @@
+{
+  "rethinkdb": {
+    "db": "test",
+    "servers": [
+      {
+        "host": "127.0.0.1",
+        "port": 28015
+      }
+    ],
+    "silent": true
+  },
+  "webserver": {
+    "secret": "botlist.space sucks, bots.discord.pw rules",
+    "location": "http://127.0.0.1:8000/",
+    "port": 8000
+  },
+  "owners": [
+    "190519304972664832",
+    "86477779717066752",
+    "180093157554388993",
+    "261912303132344320",
+    "366454817373290508"
+  ],
+  "discord": {
+    "clientID": "473861594749861909",
+    "clientSecret": "",
+    "token": "",
+    "scope": [
+      "identify"
+    ]
+  },
+  "links": {
+    "docs": "https://docs.terminal.ink"
+  },
+  "languages": {
+    "ar": {
+      "flag": "",
+      "top": false
+    },
+    "da": {
+      "flag": "",
+      "top": false
+    },
+    "de": {
+      "flag": "",
+      "top": false
+    },
+    "el": {
+      "flag": "",
+      "top": false
+    },
+    "en": {
+      "flag": "",
+      "top": true
+    },
+    "es": {
+      "flag": "",
+      "top": false
+    },
+    "et": {
+      "flag": "",
+      "top": false
+    },
+    "fi": {
+      "flag": "",
+      "top": false
+    },
+    "fj": {
+      "flag": "",
+      "top": false
+    },
+    "fr": {
+      "flag": "",
+      "top": false
+    },
+    "gd": {
+      "flag": "",
+      "top": false
+    },
+    "hi": {
+      "flag": "",
+      "top": false
+    },
+    "it": {
+      "flag": "",
+      "top": false
+    },
+    "ja": {
+      "flag": "",
+      "top": false
+    },
+    "ko": {
+      "flag": "",
+      "top": false
+    },
+    "la": {
+      "flag": "",
+      "top": false
+    },
+    "nl": {
+      "flag": "",
+      "top": false
+    },
+    "no": {
+      "flag": "",
+      "top": false
+    },
+    "pt": {
+      "flag": "",
+      "top": false
+    },
+    "ru": {
+      "flag": "",
+      "top": false
+    },
+    "sv": {
+      "flag": "",
+      "top": false
+    },
+    "tr": {
+      "flag": "",
+      "top": false
+    },
+    "vi": {
+      "flag": "",
+      "top": false
+    },
+    "zh-cn": {
+      "flag": "",
+      "top": false
+    },
+    "zh-tw": {
+      "flag": "",
+      "top": false
+    }
+  },
+  "defaultLanguage": "en"
+}

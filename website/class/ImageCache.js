@@ -28,31 +28,48 @@ const crypto = require('crypto');
 const path = require('path');
 const fetch = require('node-fetch');
 const sharp = require('sharp');
-
 const r = require('../rethinkdb');
 
+const defaultImage = path.join(__dirname, '..', 'www-root', 'img', 'logo', 'logo.svg');
+
 class ImageCache {
-  constructor(url) {
+  constructor(url, x = 1280, y = 720) {
     this.url = url;
     this.hash = crypto.createHash('sha256').update(url).digest('hex');
+    this.permalink = `/appdata/${this.hash}.png`;
     this.file = path.join(__dirname, '..', 'www-root', 'appdata', `${this.hash}.png`);
+    this.x = x;
+    this.y = y;
   }
   download() {
     return new Promise((resolve, reject) => {
-      fetch(this.url)
+      fetch(this.url, {
+        timeout: 1000
+      })
         .then(res => res.buffer())
         .then((buffer) => {
           sharp(buffer)
-            .withoutEnlargement()
-            .resize(1280, 720, {
-              fit: "inside"
+            .resize(this.x, this.y, {
+              fit: 'inside',
+              withoutEnlargement: true
             })
             .toFile(this.file)
             .then(() => {
               resolve();
             })
-            .catch((err) => {
-              reject(err);
+            .catch(() => {
+              sharp(defaultImage)
+                .resize(this.x, this.y, {
+                  fit: 'inside',
+                  withoutEnlargement: true
+                })
+                .toFile(this.file)
+                .then(() => {
+                  resolve();
+                })
+                .catch((err) => {
+                  reject(err);
+                });
             });
         })
         .catch((err) => {

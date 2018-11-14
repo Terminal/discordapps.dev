@@ -59,6 +59,9 @@
       "pagename": "Project Forklift",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
+      "delete": "Delete",
+      "edit": "Edit",
+      "github": "View on GitHub",
       "prefix": {
         "one": "Prefix",
         "other": "Prefixes"
@@ -105,23 +108,6 @@
       },
       "description": {
         "title": "Description"
-      },
-      "errors": {
-        "bot_authors_error": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
-        "bot_customisable_error": "The customisability of the prefix must be either ticked, or unticked",
-        "bot_description_error": "The short description must have a length between 10 and 64",
-        "bot_githubowner_error": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
-        "bot_githubrepo_error": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
-        "bot_id_error": "The Bot ID needs to be filled out, and numeric",
-        "bot_invite_error": "The Invite URL needs to be filled out, and as a valid HTTPS link",
-        "bot_languages": "You must add a single language before continuing",
-        "bot_mentionable_error": "The mentionabiliity of the prefix must be either ticked, or unticked",
-        "bot_name_error": "The bot must have a name of length between 4 and 32.",
-        "bot_nsfw_error": "The NSFW status must be either ticked, or unticked",
-        "bot_oauth_error": "The OAuth ID needs to be numeric",
-        "bot_page_error": "The long description must have a length between 20 and 10000",
-        "bot_prefix_error": "You must have at least 1 prefix, of max length 10.",
-        "bot_support_error": "The Support URL needs to be a valid HTTPS link"
       },
       "github_owner": {
         "placeholder": "Something like: ry00001",
@@ -174,6 +160,11 @@
     "notfound": {
       "gohome": "Go Home",
       "message": "Page not found"
+    },
+    "sure": {
+      "title": "Are you sure?",
+      "ok": "Ok",
+      "no": "Go back"
     }
   },
   "permission": {
@@ -205,5 +196,31 @@
     "USE_EXTERNAL_EMOJIS": "Use External Emojis",
     "USE_VAD": "Use Voice Activity",
     "VIEW_AUDIT_LOG": "View Audit Log"
+  },
+  "errors": {
+    "bots": {
+      "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
+      "customisable": "The customisability of the prefix must be either ticked, or unticked",
+      "description": "The short description must have a length between 10 and 64",
+      "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
+      "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
+      "id": "The Bot ID needs to be filled out, and numeric",
+      "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
+      "languages": "You must add a single language before continuing",
+      "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
+      "name": "The bot must have a name of length between 4 and 32.",
+      "nsfw": "The NSFW status must be either ticked, or unticked",
+      "oauth": "The OAuth ID needs to be numeric",
+      "page": "The long description must have a length between 20 and 10000",
+      "prefix": "You must have at least 1 prefix, of max length 10.",
+      "support": "The Support URL needs to be a valid HTTPS link",
+      "exists": "The bot already exists in the database",
+      "add_success": "Added bot to the bot list queue.",
+      "edit_success": "Edited bot successfully."
+    },
+    "permissions": {
+      "login": "You are not logged in",
+      "denied": "You do not have the adequate permissions to access this"
+    }
   }
 }
