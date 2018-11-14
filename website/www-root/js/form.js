@@ -17,7 +17,7 @@ window.newRow = (button) => {
   newButton.setAttribute('type', 'button');
   newButton.setAttribute('class', 'ls-button');
   newButton.setAttribute('onclick', 'deleteRow(this)');
-  newButton.innerText = 'Delete';
+  newButton.innerText = button.dataset.deleteLocalised;
 
   newRow.appendChild(newInput);
   newRow.appendChild(newButton);
