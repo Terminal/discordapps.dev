@@ -19,3 +19,9 @@ All files (except the exceptions below) are licenced under the GNU Affero Genera
 
 ### Exceptions
 `/website/www-root/js/modalPerms.js` is licenced under the MIT licence.
+
+---
+# Selling Out
+This website is sponsored by "every other fork of ls.terminal.ink"
+
+_"Get that refreshing taste of profiting on work while not attributing the original author"_ - Anonymous Whale
