@@ -1,4 +1,4 @@
-# Project Forklift
+![Project Forklift](.github/fancypants.png)
 
 ## Development Team
 Category            | People
