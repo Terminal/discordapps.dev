@@ -90,7 +90,7 @@ router
             item: bot,
             contents,
             canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false,
-            cover: item.images ? item.images.cover : null
+            cover: item.cachedImages ? item.cachedImages.cover : null
           });
         }
       })
@@ -177,13 +177,13 @@ router
           };
 
           if (value.images && typeof value.images.avatar === 'string') {
-            const cache = new ImageCache(value.images.avatar, 512, 512);
+            const cache = new ImageCache(value.images.avatar, 512, 512, value.nsfw);
             imagePromises.push(cache.cache());
             value.cachedImages.avatar = cache.permalink;
           }
 
           if (value.images && typeof value.images.cover === 'string') {
-            const cache = new ImageCache(value.images.cover, 1280, 720);
+            const cache = new ImageCache(value.images.cover, 1280, 720, value.nsfw);
             imagePromises.push(cache.cache());
             value.cachedImages.cover = cache.permalink;
           }
@@ -191,7 +191,7 @@ router
           if (value.images && Array.isArray(value.images.preview)) {
             for (let i = 0; i < value.images.preview.length; i += 1) {
               if (typeof value.images.preview[i] === 'string') {
-                const cache = new ImageCache(value.images.preview[i], 1280, 720);
+                const cache = new ImageCache(value.images.preview[i], 1280, 720, value.nsfw);
                 imagePromises.push(cache.cache());
                 value.cachedImages.preview[i] = cache.permalink;
               }

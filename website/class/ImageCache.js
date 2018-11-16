@@ -33,50 +33,84 @@ const r = require('../rethinkdb');
 const defaultImage = path.join(__dirname, '..', 'www-root', 'img', 'logo', 'logo.svg');
 
 class ImageCache {
-  constructor(url, x = 1280, y = 720) {
+  constructor(url, x = 1280, y = 720, blur = false) {
     this.url = url;
     this.hash = crypto.createHash('sha256').update(url).digest('hex');
     this.permalink = `/appdata/${this.hash}.png`;
     this.file = path.join(__dirname, '..', 'www-root', 'appdata', `${this.hash}.png`);
     this.x = x;
     this.y = y;
+    this.blur = blur;
+  }
+  errURL(err) {
+    err.message = `${this.url} - ${err.message}`;
+    return err;
   }
   download() {
     return new Promise((resolve, reject) => {
-      fetch(this.url, {
-        timeout: 1000
-      })
-        .then(res => res.buffer())
-        .then((buffer) => {
-          sharp(buffer)
-            .resize(this.x, this.y, {
-              fit: 'inside',
-              withoutEnlargement: true
-            })
-            .toFile(this.file)
-            .then(() => {
-              resolve();
-            })
-            .catch((err) => {
-              sharp(defaultImage)
-                .resize(this.x, this.y, {
-                  fit: 'inside',
-                  withoutEnlargement: true
-                })
-                .toFile(this.file)
-                .then(() => {
-                  // Reject the first error.
-                  reject(err);
-                })
-                .catch((err1) => {
-                  // Reject the second error.
-                  reject(err1);
-                });
-            });
+      const useDefaultImage = (err) => {
+        sharp(defaultImage)
+          .resize(this.x, this.y, {
+            fit: 'inside',
+            withoutEnlargement: true
+          })
+          .toFile(this.file)
+          .then(() => {
+            // Reject the first error.
+            reject(err);
+          })
+          .catch((err1) => {
+            // Reject the second error.
+            reject(err1);
+          });
+      };
+
+      if (this.blur) {
+        fetch(this.url, {
+          timeout: 1000
         })
-        .catch((err) => {
-          reject(err);
-        });
+          .then(res => res.buffer())
+          .then((buffer) => {
+            sharp(buffer)
+              .resize(this.x, this.y, {
+                fit: 'inside',
+                withoutEnlargement: true
+              })
+              .blur(5)
+              .toFile(this.file)
+              .then(() => {
+                resolve();
+              })
+              .catch((err) => {
+                useDefaultImage(err);
+              });
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      } else {
+        fetch(this.url, {
+          timeout: 1000
+        })
+          .then(res => res.buffer())
+          .then((buffer) => {
+            sharp(buffer)
+              .resize(this.x, this.y, {
+                fit: 'inside',
+                withoutEnlargement: true
+              })
+              .toFile(this.file)
+              .then(() => {
+                resolve();
+              })
+              .catch((err) => {
+                useDefaultImage(err);
+              });
+          })
+          .catch((err) => {
+            reject(err);
+          });
+      }
     });
   }
   cache() {
@@ -99,16 +133,16 @@ class ImageCache {
                     resolve();
                   })
                   .catch((err) => {
-                    reject(err);
+                    reject(this.errURL(err));
                   });
               })
               .catch((err) => {
-                reject(err);
+                reject(this.errURL(err));
               });
           }
         })
         .catch((err) => {
-          reject(err);
+          reject(this.errURL(err));
         });
     });
   }

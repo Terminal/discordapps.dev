@@ -79,16 +79,17 @@ router
 
             const imagePromises = [];
             const nextImage = () => {
-              imagePromises.push(imageCaches[i].cache.cache()
+              const currentCounter = i;
+              imagePromises.push(imageCaches[currentCounter].cache.cache()
                 .then(() => ({
-                  bot: imageCaches[i].value,
-                  link: imageCaches[i].cache.url,
+                  bot: imageCaches[currentCounter].value,
+                  link: imageCaches[currentCounter].cache.url,
                   ok: true,
                   err: null
                 }))
                 .catch(err => ({
-                  bot: imageCaches[i].value,
-                  link: imageCaches[i].cache.url,
+                  bot: imageCaches[currentCounter].value,
+                  link: imageCaches[currentCounter].cache.url,
                   ok: false,
                   err
                 })));
@@ -100,7 +101,7 @@ router
                 Promise.all(imagePromises)
                   .then((results) => {
                     console.log(results);
-                    res.status(200).render('faults', {
+                    res.render('faults', {
                       results
                     });
                   });
