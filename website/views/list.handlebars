@@ -1,5 +1,7 @@
 <div class="center-text card-container">
   {{#each list}}
     {{> card __=../__ item=this}}
+  {{else}}
+    {{i18n __ 'pages.list.empty'}}
   {{/each}}
 </div>

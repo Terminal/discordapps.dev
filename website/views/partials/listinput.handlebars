@@ -6,7 +6,7 @@
         {{>input value=this name=../name modal=../modal __=../__ placeholder=../placeholder}}
       {{else}}
         <div class="ls-flex-row">
-          <input name="bot.authors[]" type="text" class="full-width" value={{this}}>
+          <input name="{{../name}}" type="text" class="full-width" value={{this}}>
           <button type="button" class="ls-button" onclick="deleteRow(this)">
             {{ i18n ../__ "forms.delete"}}
           </button>

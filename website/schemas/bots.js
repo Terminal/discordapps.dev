@@ -13,7 +13,6 @@ const schema = joi.object({
   oauth: joi.string().regex(/^[0-9]+$/, 'numbers').allow(null).error(new Error('errors.bots.oauth')),
   invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.bots.invite')),
   support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.support')),
-  avatar: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.avatar')),
   authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).required().error(new Error('errors.bots.authors')),
   nsfw: joi.bool().error(new Error('errors.bots.nsfw')),
   github: joi.object({
@@ -26,10 +25,15 @@ const schema = joi.object({
     customisable: joi.bool().error(new Error('errors.bots.customisable')),
     mentionable: joi.bool().error(new Error('errors.bots.mentionable')),
   }),
+  images: joi.object({
+    avatar: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.avatar')),
+    cover: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.cover')),
+    preview: joi.array().items(joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.preview'))).max(20)
+  }),
   contents: joi.object().pattern(joi.string().valid(Object.keys(config.languages)), joi.object({
     name: joi.string().min(4).max(32).required()
       .error(new Error('errors.bots.name')),
-    description: joi.string().min(10).max(64).required()
+    description: joi.string().min(10).max(100).required()
       .error(new Error('errors.bots.description')),
     page: joi.string().min(20).max(10000).required()
       .error(new Error('errors.bots.page')),

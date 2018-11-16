@@ -39,3 +39,31 @@
     font-size: 1.5em;
   }
 }
+
+.ls-custom-content {
+  max-height: 30vh;
+  padding: 5px;
+  background-color: #222;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.ls-custom-content {
+  text-align: center;
+  width: 100%;
+  box-sizing: content-box;
+  background-color: #222;
+  p {
+    margin-bottom: 0;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.ls-custom-content-less {
+  img {
+    transform: rotate(180deg);
+  }
+}

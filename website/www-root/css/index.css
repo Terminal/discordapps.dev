@@ -25,6 +25,12 @@
 footer {
   color: #fff; }
 
+.ls-footer {
+  text-align: right; }
+
+.ls-footer-links a {
+  margin-left: 10px; }
+
 .ls-footer-copyright {
   white-space: pre-line;
   margin: 0; }
@@ -96,6 +102,27 @@ footer {
     color: #eee;
     font-size: 1.5em; }
 
+.ls-custom-content {
+  max-height: 30vh;
+  padding: 5px;
+  background-color: #222;
+  overflow-y: hidden;
+  overflow-x: hidden; }
+
+.ls-custom-content {
+  text-align: center;
+  width: 100%;
+  box-sizing: content-box;
+  background-color: #222; }
+  .ls-custom-content p {
+    margin-bottom: 0; }
+  .ls-custom-content img {
+    width: 30px;
+    height: 30px; }
+
+.ls-custom-content-less img {
+  transform: rotate(180deg); }
+
 .main-window {
   display: flex;
   flex-direction: column;
@@ -141,6 +168,9 @@ button.btn {
   box-sizing: border-box;
   height: 38px;
   padding: 6px 10px; }
+
+.ls-main-content {
+  background-color: #222; }
 
 input[type=file] {
   display: inline;
