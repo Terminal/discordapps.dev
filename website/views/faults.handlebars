@@ -1,0 +1,19 @@
+<h1>Faults Page</h1>
+<table>
+  <thead>
+    <tr>
+      <td>Bot ID</td>
+      <td>Error Message</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each results}}
+      {{#unless this.ok}}
+        <tr>
+          <td><a href="/bots/{{this.bot.id}}">{{this.bot.id}}</a></td>
+          <td>{{this.err.message}}</td>
+        </tr>
+      {{/unless}}
+    {{/each}}
+  </tbody>
+</table>

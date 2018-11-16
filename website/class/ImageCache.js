@@ -57,7 +57,7 @@ class ImageCache {
             .then(() => {
               resolve();
             })
-            .catch(() => {
+            .catch((err) => {
               sharp(defaultImage)
                 .resize(this.x, this.y, {
                   fit: 'inside',
@@ -65,10 +65,12 @@ class ImageCache {
                 })
                 .toFile(this.file)
                 .then(() => {
-                  resolve();
-                })
-                .catch((err) => {
+                  // Reject the first error.
                   reject(err);
+                })
+                .catch((err1) => {
+                  // Reject the second error.
+                  reject(err1);
                 });
             });
         })

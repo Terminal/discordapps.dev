@@ -41,16 +41,41 @@
         <input name="bot.nsfw" type="checkbox" {{#if item.nsfw}}checked="on"{{/if}}>
       </div>
     </div>
+    <h2>Images</h2>
+    <div class="row">
+      <div class="one-half column">
+        <label for="bot.images.avatar">{{ i18n __ "pages.edit.images.avatar.title"}}</label>
+        <input name="bot.images.avatar" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.images.avatar.placeholder"}}" value="{{item.images.avatar}}">
+      </div>
+      <div class="one-half column">
+        <label for="bot.images.cover">{{ i18n __ "pages.edit.images.cover.title"}}</label>
+        <input name="bot.images.cover" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.images.cover.placeholder"}}" value="{{item.images.cover}}">
+      </div>
+    </div>
+    {{> listinput name="bot.images.preview[]" label="pages.edit.images.preview.title" placeholder="pages.edit.images.preview.placeholder" value=item.images.preview}}
     <h2>{{ i18n __ "pages.edit.triggermethods"}}</h2>
     {{> listinput name="bot.trigger.prefix[]" label="pages.edit.bot_prefix.title" placeholder="pages.edit.bot_prefix.placeholder" value=item.trigger.prefix}}
     <div class="row">
       <div class="one-half column">
         <label for="bot.trigger.customisable">{{ i18n __ "pages.edit.customisable.title"}}</label>
-        <input name="bot.trigger.customisable" type="checkbox" {{#if bot.trigger.customisable}}checked="on"{{/if}}>
+        <input name="bot.trigger.customisable" type="checkbox" {{#if item.trigger.customisable}}checked="on"{{/if}}>
       </div>
       <div class="one-half column">
         <label for="bot.trigger.mentionable">{{ i18n __ "pages.edit.mentionable.title"}}</label>
-        <input name="bot.trigger.mentionable" type="checkbox" {{#if bot.trigger.mentionable}}checked="on"{{/if}}>
+        <input name="bot.trigger.mentionable" type="checkbox" {{#if item.trigger.mentionable}}checked="on"{{/if}}>
+      </div>
+    </div>
+    <h2>Flags</h2>
+    <div class="row">
+      <div class="one-half column">
+        <label for="bot.flags.inAppPurchases">{{ i18n __ "pages.edit.flags.inAppPurchases.title"}}</label>
+        <input name="bot.flags.inAppPurchases" type="checkbox" {{#if item.flags.inAppPurchases}}checked="on"{{/if}}>
+        <small>{{ i18n __ "pages.edit.flags.inAppPurchases.small"}}</small>
+      </div>
+      <div class="one-half column">
+        <label for="bot.flags.adverts">{{ i18n __ "pages.edit.flags.adverts.title"}}</label>
+        <input name="bot.flags.adverts" type="checkbox" {{#if item.flags.adverts}}checked="on"{{/if}}>
+        <small>{{ i18n __ "pages.edit.flags.adverts.small"}}</small>
       </div>
     </div>
     <h2>{{ i18n __ "pages.edit.sourcecode"}}</h2>

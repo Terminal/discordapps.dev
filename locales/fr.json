@@ -3,42 +3,21 @@
     "list": {
       "invite": "Inviter",
       "github": "GitHub",
-      "view": "Voir",
-      "star": "J'aime",
-      "unstar": "Je n'aime plus",
       "nsfw": "NSFW",
       "visit": "Visiter le serveur Discord"
     },
     "bots": {
-      "pagename": "Discord Fork List",
+      "pagename": "Project Forklift",
       "shortname": "Bots",
       "add": "Ajouter un bot",
       "invite": "Inviter ce bot",
-      "backgroundAlt": "Le logo de Discord_Fork",
+      "backgroundAlt": "Le logo de Forklift",
       "description": "Une liste de bots avec intégration GitHub",
       "prefix": "Préfixe: "
-    },
-    "servers": {
-      "pagename": "Liste des serveurs Discord Fork",
-      "shortname": "Serveurs",
-      "add": "Ajouter un serveur",
-      "invite": "Rejoindre ce serveur",
-      "description": "Une liste de serveurs avec intégration GitHub"
-    },
-    "reviews": {
-      "pagename": "Revues de bot Terminal.ink",
-      "shortname": "Revues",
-      "add": "Ajoutez votre bot ou votre serveur",
-      "invite": "",
-      "description": "La liste des meilleurs bots Discord"
     },
     "docs": {
       "pagename": "Portail du développeur Discord Fork",
       "shortname": "Documentation"
-    },
-    "cms": {
-      "pagename": "Système de gestion de contenu Discord Fork",
-      "shortname": "CMS"
     },
     "locale": {
       "choose": "Sélectionnez une langue.",
@@ -54,17 +33,9 @@
         "title": "OAuth ID",
         "placeholder": "Quelque chose comme 255114091360681986"
       },
-      "server_id": {
-        "title": "ID du serveur",
-        "placeholder": "L'ID du serveur. Quelque chose comme 330777295952543744"
-      },
-      "bot_name": {
+      "name": {
         "title": "Nom du bot",
         "placeholder": "Wumpus"
-      },
-      "server_name": {
-        "title": "Nom du serveur",
-        "placeholder": "b1nzy's fanclub"
       },
       "bot_prefix": {
         "title": "Préfixe",
@@ -74,53 +45,32 @@
         "title": "URL d'invitation",
         "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible"
       },
-      "server_invite": {
-        "title": "URL d'invitation",
-        "placeholder": "https://discord.gg/8uC6aKZ ou autre URL compatible"
-      },
-      "bot_avatar": {
-        "title": "Avatar du bot",
-        "placeholder": "Lien de l'avatar de votre bot"
-      },
-      "server_avatar": {
-        "title": "Image du serveur",
-        "placeholder": "Lien de l'image de votre serveur"
-      },
-      "bot_cover": {
-        "title": "Photo de couverture",
-        "placeholder": "http:// or https:// - L'image d'arrière-plan affichée sur la page d'accueil du site"
+      "images": {
+        "cover": {
+          "title": "Photo de couverture",
+          "placeholder": "http:// or https:// - L'image d'arrière-plan affichée sur la page d'accueil du site"
+        },
+        "avatar": {
+          "title": "Avatar du bot",
+          "placeholder": "Lien de l'avatar de votre bot"
+        },
+        "preview": {
+          "title": "Images",
+          "placeholder": "http:// or https:// - Lien vers une image montrant une fonctionnalité de votre bot"
+        }
       },
       "bot_support": {
         "title": "Serveur d'assistance",
-        "placeholder": "Un truc du genre https://discord.gg/8uC6aKZ",
-        "small": "Laissez ce champ vide si vous n'aimez pas aider les gens"
-      },
-      "bot_images": {
-        "title": "Images",
-        "add": "Ajouter une image",
-        "placeholder": "http:// or https:// - Lien vers une image montrant une fonctionnalité de votre bot"
+        "placeholder": "Un truc du genre https://discord.gg/8uC6aKZ"
       },
       "bot_nsfw": {
         "title": "NSFW"
       },
-      "server_nsfw": {
-        "title": "NSFW",
-        "false": "Ce serveur n'est pas NSFW",
-        "true": "Ce serveur est NSFW"
-      },
-      "bot_description": {
+      "description": {
         "title": "Description",
-        "placeholder": "Ce bot vous permet de faire de la magie.",
-        "small": "Vous n'avez droit qu'à 60 caractères ! Soyez clair et efficace."
+        "placeholder": "Ce bot vous permet de faire de la magie."
       },
-      "server_description": {
-        "title": "Description",
-        "placeholder": "Ce serveur est magique et vous donne des super-pouvoirs."
-      },
-      "github": {
-        "title": "Répertoire GitHub",
-        "button": "J'ai un répertoire GitHub"
-      },
+      "sourcecode": "Répertoire GitHub",
       "github_owner": {
         "title": "Utilisateur ou Organisation",
         "placeholder": "Quelque chose comme ry00001"
@@ -132,36 +82,14 @@
       "page": {
         "title": "Page du bot",
         "note": "Markdown et HTML autorisés"
-      },
-      "create_pr": {
-        "button": "Créer une demande de modification",
-        "modal": {
-          "title": "Créer une demande de modification",
-          "description": "Décrivez les modifications que vous voulez faire",
-          "wait": "Veuillez patienter..."
-        }
-      },
-      "editor_type": {
-        "title": "Type de service"
-      },
-      "editor_lang": {
-        "title": "Langue"
-      },
-      "localstorage": {
-        "title": "localStorage est introuvable",
-        "description": "localStorage est requis pour le service fonctionne."
-      },
-      "custom_path": {
-        "title": "Lien personnalisé @ https://discordbots.co.uk/r/[name]",
-        "placeholder": "Lettres et numéros seulement"
       }
     },
-    "notfound": {
-      "message": "Page introuvable",
+    "error": {
+      "notfound": "Page introuvable",
       "gohome": "Accueil"
     }
   },
-  "copyright": "Copyright 2017 - 2018, Terminal.ink<br> Concept original par AlexFlipnote<br> GitHub® est une marque déposée de GitHub, Inc.<br> Discord est une marque déposée de Discord, Inc.\nTraduction en français par iDroid27 et Bowser65.\n",
+  "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord est une marque déposée de Discord, Inc.\nTraduction en français par iDroid27 et Bowser65.",
   "intro": {
     "login": "Se connecter avec GitHub",
     "logout": "Se déconnecter",
@@ -173,7 +101,8 @@
     "licence": "Licence",
     "attribution": "Attribution",
     "source": "Code source",
-    "terminal": "Rejoindre Terminal.ink sur Discord"
+    "discord": "Rejoindre Terminal.ink sur Discord",
+    "terminal": "Terminal.ink"
   },
   "forms": {
     "select": "Veuillez sélectionner...",

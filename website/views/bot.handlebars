@@ -1,70 +1,75 @@
-<div class="ls-main-content main-content-container container">
-  <div class="center-text card-container">
-    <section class="ls-bot-profile card profile">
-      <div class="avatar">
-        <img class="avatar " alt="{{item.contents.name}}" src="{{item.images.avatar}}">
+<div class="ls-main-content main-content-container container box-shadow">
+  <section class="ls-bot-profile ls-flex-row ls-wrap">
+    <img class="avatar" alt="{{item.contents.name}}" src="{{item.cachedImages.avatar}}">
+    <div class="ls-bot-profile-content-left">
+      <h1 class="name">{{item.contents.name}}</h1>
+      <p>
+        {{#if item.trigger.prefix.length}}
+          {{i18ns __n "pages.bots.prefix" item.trigger.prefix.length}}
+        {{/if}}
+        {{#each item.trigger.prefix}}
+          <code class="ls-bot-prefix label asbestos">{{this}}</code>
+        {{/each}}
+        {{#if item.trigger.mentionable}}
+          <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.mentionable"}}</code>
+        {{/if}}
+        {{#if item.trigger.customisable}}
+          <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.customisable"}}</code>
+        {{/if}}
+      </p>
+      <div class="ls-left-pad">
+        {{#if item.support}}
+        <a href="{{item.support}}">
+          {{i18n __ "pages.bots.support"}}
+        </a>
+        {{/if}}
+        {{#if item.github.owner}}
+        {{#if item.github.repo}}
+        <a href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">
+          {{i18n __ "pages.bots.github"}}
+        </a>
+        {{/if}}
+        {{/if}}
+        {{#if canEdit}}
+          <a href="/bots/{{item.id}}/edit">
+            {{i18n __ "pages.bots.edit"}}
+          </a>
+          <a href="/bots/{{item.id}}/delete">
+            {{i18n __ "pages.bots.delete"}}
+          </a>
+        {{/if}}
       </div>
-      <div class="card-content">
-        <h1 class="name">{{item.contents.name}}</h1>
-        <span class="description">{{item.contents.description}}</span>
-        <p>
-          {{#if item.trigger.prefix.length}}
-            {{i18n __n "pages.bots.prefix" item.trigger.prefix.length}}
-          {{/if}}
-          {{#each item.trigger.prefix}}
-            <code class="ls-bot-prefix label asbestos">{{this}}</code>
-          {{/each}}
-          {{#if item.trigger.mentionable}}
-            <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.mentionable"}}</code>
-          {{/if}}
-          {{#if item.trigger.customisable}}
-            <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.customisable"}}</code>
-          {{/if}}
-        </p>
+      <div class="ls-left-pad">
+        {{#if item.flags.inAppPurchases}}
+          <span>{{i18n __ "pages.bots.inAppPurchases"}}</span>
+        {{/if}}
+        {{#if item.flags.adverts}}
+          <span>{{i18n __ "pages.bots.adverts"}}</span>
+        {{/if}}
       </div>
-    </section>
+    </div>
+    <div class="ls-bot-profile-content-right">
+      {{#if item.invite}}
+        <a class="btn discord" href="{{item.invite}}">
+          {{i18n __ "pages.bots.invite"}}
+        </a>
+      {{/if}}
+    </div>
+  </section>
+  {{#if item.pageDisplayedLanguage}}<p><i>{{i18n __ "errors.bots.no_suitable_lang" "language" (i18n __ (concat "locales." item.pageDisplayedLanguage))}}</i></p>{{/if}}
+  <div id="ls-short-description" class="ls-custom-content">
+    {{item.contents.description}}
   </div>
-  <div class="center">
-    {{#if item.invite}}
-    <a class="btn white black-text" href="{{item.invite}}">
-      {{i18n __ "pages.bots.invite"}}
-    </a>
-    {{/if}}
-    {{#if item.support}}
-    <a class="btn white black-text" href="https://discord.io/circuit">
-      {{i18n __ "pages.bots.support"}}
-    </a>
-    {{/if}}
-    {{#if item.github.owner}}
-    {{#if item.github.repo}}
-    <a class="btn white black-text" href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">
-      {{i18n __ "pages.bots.github"}}
-    </a>
-    {{/if}}
-    {{/if}}
-    {{#if canEdit}}
-      <a class="btn midnight-blue" href="/bots/{{item.id}}/edit">
-        {{i18n __ "pages.bots.edit"}}
-      </a>
-      <a class="btn midnight-blue" href="/bots/{{item.id}}/delete">
-        {{i18n __ "pages.bots.delete"}}
-      </a>
-    {{/if}}
-  </div>
-  <div id="ls-custom-content" class="ls-custom-content">
+  <div id="ls-custom-content" class="ls-custom-content hidden">
     {{{contents}}}
   </div>
-  <div id="ls-more" class="ls-custom-content">
-    <p>More</p>
+  <div id="ls-more" class="ls-custom-content-button box-shadow">
+    <p>{{i18n __ "pages.bots.more"}}</p>
     <img src="/ModestaCSS/css/images/arrow.png">
   </div>
-  <div id="ls-less" class="ls-custom-content ls-custom-content-less hidden">
-    <p>Less</p>
+  <div id="ls-less" class="ls-custom-content-button ls-custom-content-less box-shadow hidden">
+    <p>{{i18n __ "pages.bots.less"}}</p>
     <img src="/ModestaCSS/css/images/arrow.png">
-  </div>
-  <hr>
-  <div>
-    <h2>Reviews</h2>
   </div>
 </div>
 

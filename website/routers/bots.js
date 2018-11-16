@@ -7,6 +7,7 @@ const r = require('../rethinkdb');
 const config = require('../config');
 const marked = require('marked');
 const xss = require('../static/xss');
+const ImageCache = require('../class/ImageCache');
 
 const router = express.Router();
 const reader = multer();
@@ -25,8 +26,29 @@ const selectableLanguages = Object.keys(config.languages).sort((a, b) => {
 });
 
 const localise = (item, req) => {
-  item.contents = item.contents[req.getLocale()] || item.contents[config.defaultLanguage];
-  return item;
+  if (item.contents[req.getLocale()]) {
+    item.contents = item.contents[req.getLocale()];
+    return item;
+  }
+  const availableLanguages = Object.keys(config.languages).sort((a, b) => {
+    if (a.priority < b.priority) {
+      return -1;
+    } else if (a.priority > b.priority) {
+      return 1;
+    }
+    return 0;
+  });
+
+  for (let i = 0; i < availableLanguages.length; i += 1) {
+    // Try all languages in priority order.
+    if (item.contents[availableLanguages[i]]) {
+      item.contents = item.contents[availableLanguages[i]];
+      item.pageDisplayedLanguage = availableLanguages[i];
+      return item;
+    }
+  }
+
+  throw new Error('Cannot find any languages for this bot!');
 };
 
 const listRouter = (filter = {}) => (req, res, next) => {
@@ -67,7 +89,8 @@ router
           res.render('bot', {
             item: bot,
             contents,
-            canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false
+            canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false,
+            cover: item.images ? item.images.cover : null
           });
         }
       })
@@ -134,10 +157,6 @@ router
     });
   })
   .post('/add', isLoggedIn, reader.none(), (req, res, next) => {
-    // Turn the checkbox into a boolean
-    req.body['bot.trigger.customisable'] = req.body['bot.trigger.customisable'] === 'on';
-    req.body['bot.trigger.mentionable'] = req.body['bot.trigger.mentionable'] === 'on';
-    req.body['bot.nsfw'] = req.body['bot.nsfw'] === 'on';
     const body = unflatten(req.body);
 
     joi.validate(body.bot, schema, {
@@ -150,19 +169,57 @@ router
         });
       } else {
         const insert = (message) => {
-          r.table('bots')
-            .insert(value, {
-              conflict: 'update'
-            })
+          const imagePromises = [];
+          value.cachedImages = {
+            avatar: null,
+            cover: null,
+            preview: [],
+          };
+
+          if (value.images && typeof value.images.avatar === 'string') {
+            const cache = new ImageCache(value.images.avatar, 512, 512);
+            imagePromises.push(cache.cache());
+            value.cachedImages.avatar = cache.permalink;
+          }
+
+          if (value.images && typeof value.images.cover === 'string') {
+            const cache = new ImageCache(value.images.cover, 1280, 720);
+            imagePromises.push(cache.cache());
+            value.cachedImages.cover = cache.permalink;
+          }
+
+          if (value.images && Array.isArray(value.images.preview)) {
+            for (let i = 0; i < value.images.preview.length; i += 1) {
+              if (typeof value.images.preview[i] === 'string') {
+                const cache = new ImageCache(value.images.preview[i], 1280, 720);
+                imagePromises.push(cache.cache());
+                value.cachedImages.preview[i] = cache.permalink;
+              }
+            }
+          }
+
+          Promise.all(imagePromises)
             .then(() => {
-              res.json({
-                ok: true,
-                message: res.__(message),
-                redirect: `/bots/${value.id}`
-              });
+              r.table('bots')
+                .insert(value, {
+                  conflict: 'replace'
+                })
+                .then(() => {
+                  res.json({
+                    ok: true,
+                    message: res.__(message),
+                    redirect: `/bots/${value.id}`
+                  });
+                })
+                .catch((err1) => {
+                  next(err1);
+                });
             })
             .catch((err1) => {
-              next(err1);
+              res.json({
+                ok: false,
+                message: err1.message
+              });
             });
         };
 
@@ -171,6 +228,8 @@ router
           .then((existingBot) => {
             if (existingBot) {
               if (existingBot.authors.includes(req.user.id) || req.user.admin) {
+                value.verified = existingBot.verified;
+                value.legacy = existingBot.legacy;
                 insert('errors.bots.edit_success');
               } else {
                 res.json({
@@ -181,6 +240,7 @@ router
             } else {
               value.verified = false;
               value.legacy = false;
+              value.random = Math.random();
               insert('errors.bots.add_success');
             }
           })

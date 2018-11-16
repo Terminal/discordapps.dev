@@ -19,7 +19,6 @@
     "submit": "Submit"
   },
   "intro": {
-    "language": "Languages",
     "login": "Login via Discord",
     "logout": "Logout",
     "search": "Search..."
@@ -68,7 +67,13 @@
         "one": "Prefix",
         "other": "Prefixes"
       },
-      "shortname": "Bots"
+      "shortname": "Bots",
+      "more": "View more",
+      "less": "View less",
+      "adverts": "Contains ads",
+      "inAppPurchases": "Has in-app purchases",
+      "unverified": "Unverified",
+      "nsfw": "NSFW"
     },
     "edit": {
       "application_id": {
@@ -138,6 +143,16 @@
       "bot_prefix": {
         "placeholder": "A single prefix",
         "title": "Prefix"
+      },
+      "flags": {
+        "inAppPurchases": {
+          "title": "In App Purchases",
+          "small": "Tick this box if you have features behind a paywall"
+        },
+        "adverts": {
+          "title": "Advertisments",
+          "small": "Tick this box if your bot displays adverts, including other bot lists"
+        }
       },
       "sourcecode": "Source Code",
       "title": "Add or Edit an Application",
@@ -213,9 +228,10 @@
       "page": "The long description must have a length between 20 and 10000",
       "prefix": "You must have at least 1 prefix, of max length 10.",
       "support": "The Support URL needs to be a valid HTTPS link",
-      "exists": "The bot already exists in the database",
+      "exists": "The bot already exists in the database, and you do not have permission to overwrite this.",
       "add_success": "Added bot to the bot list queue.",
-      "edit_success": "Edited bot successfully."
+      "edit_success": "Edited bot successfully.",
+      "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead."
     },
     "permissions": {
       "login": "You are not logged in",

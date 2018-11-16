@@ -6,6 +6,21 @@ const joi = originaljoi.extend({
   base: originaljoi.string(),
   name: 'string',
   coerce: (value, state, options) => (value === '' ? null : value) // eslint-disable-line
+}, {
+  base: originaljoi.bool(),
+  name: 'bool',
+  coerce: (value, state, options) => { // eslint-disable-line
+    if (typeof value === 'boolean') {
+      return value;
+    }
+    return value === 'on';
+  }
+}, {
+  base: originaljoi.array(),
+  name: 'array',
+  coerce: (values, state, options) => {
+    return values.filter(value => value !== '');
+  }
 });
 
 const schema = joi.object({
@@ -28,7 +43,11 @@ const schema = joi.object({
   images: joi.object({
     avatar: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.avatar')),
     cover: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.cover')),
-    preview: joi.array().items(joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.preview'))).max(20)
+    preview: joi.array().items(joi.string().uri({ scheme: ['https'] }).error(new Error('errors.bots.preview'))).max(20)
+  }),
+  flags: joi.object({
+    inAppPurchases: joi.bool().error(new Error('errors.bots.inAppPurchases')),
+    adverts: joi.bool().error(new Error('errors.bots.adverts'))
   }),
   contents: joi.object().pattern(joi.string().valid(Object.keys(config.languages)), joi.object({
     name: joi.string().min(4).max(32).required()

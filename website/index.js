@@ -10,10 +10,12 @@ const RDBStore = require('session-rethinkdb')(session);
 const r = require('./rethinkdb');
 const passport = require('./static/passport');
 const config = require('./config');
+const periodical = require('./static/periodical');
 
 const authRouter = require('./routers/auth');
 const botsRouter = require('./routers/bots');
 const langRouter = require('./routers/locales');
+const adminRouter = require('./routers/admin');
 
 require('./static/banner');
 
@@ -31,7 +33,17 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     layoutsDir: path.join(path.dirname(__filename), 'views', 'layouts'),
     partialsDir: path.join(path.dirname(__filename), 'views', 'partials'),
     helpers: {
-      i18n: (translator, ...args) => {
+      i18n: (translator, name, ...args) => {
+        const replacement = {};
+        for (let i = 0; i < args.length; i += 2) {
+          replacement[args[i]] = args[i + 1];
+        }
+        if (typeof translator === 'function') {
+          return translator(name, replacement);
+        }
+        return args[0] || 'Translation Error!';
+      },
+      i18ns: (translator, ...args) => {
         if (typeof translator === 'function') {
           return translator(...args);
         }
@@ -87,6 +99,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/auth', authRouter)
   .use('/bots', botsRouter)
   .use('/locale', langRouter)
+  .use('/admin', adminRouter)
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')
@@ -104,6 +117,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   })
   .listen(config.webserver.port);
 
-process.on('unhandledRejection', (reason) => {
-  throw reason;
-});
+periodical();
+setInterval(() => {
+  periodical();
+}, 1000 * 60 * 60 * 12);
