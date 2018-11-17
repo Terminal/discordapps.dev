@@ -101,11 +101,6 @@ footer {
     color: #eee;
     font-size: 1.5em; }
 
-.ls-main-content {
-  background-color: #222;
-  padding-top: 2em;
-  padding-bottom: 2em; }
-
 .ls-custom-content {
   padding-top: 2em;
   padding-bottom: 2em;
@@ -126,6 +121,14 @@ footer {
 .ls-custom-content-less img {
   transform: rotate(180deg); }
 
+.ls-image-slider img {
+  max-width: 100%;
+  max-height: 40vh;
+  object-fit: contain; }
+
+.tns-nav-active {
+  background: #999; }
+
 .main-window {
   display: flex;
   flex-direction: column;
@@ -136,6 +139,11 @@ pre {
 
 .hidden {
   display: none; }
+
+.ls-main-content {
+  background-color: #222;
+  padding-top: 2em;
+  padding-bottom: 2em; }
 
 .ls-main-content-container {
   flex-grow: 1; }

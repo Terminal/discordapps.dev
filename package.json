@@ -43,6 +43,7 @@
 		"rethinkdbdash": "^2.3.31",
 		"session-rethinkdb": "^2.0.1",
 		"sharp": "^0.21.0",
+		"tiny-slider": "^2.8.8",
 		"valid-url": "^1.0.9",
 		"xss": "^1.0.3"
 	},

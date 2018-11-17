@@ -1,4 +1,4 @@
-<label for="{{ name }}">{{ i18n __ label }}</label>
+<label for="{{ name }}">{{ i18n __ label }}{{#if required}}{{> required }}{{/if}}</label>
 <div class="ls-flex-column">
   {{#if (isArray value)}}
     {{#each value}}

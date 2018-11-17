@@ -2,10 +2,11 @@
 <div class="form-container">
   <form id="edit-form">
     <h1>{{ i18n __ "pages.edit.title"}}</h1>
+    <p>{{ i18n __ "pages.edit.required"}}</p>
     <h2>{{ i18n __ "pages.edit.basicinfo"}}</h2>
     <div class="row">
       <div class="one-half column">
-        <label for="bot.id">{{ i18n __ "pages.edit.client_id.title"}}</label>
+        <label for="bot.id">{{ i18n __ "pages.edit.client_id.title"}}{{> required }}</label>
         <div class="ls-flex-row">
           <input id="id" name="bot.id" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.client_id.placeholder"}}" value="{{item.id}}">
           <button type="button" id="id-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "forms.help"}}</button>
@@ -21,14 +22,14 @@
     </div>
     <div class="row">
       <div class="one-half column">
-        <label for="bot.invite">{{ i18n __ "pages.edit.bot_invite.title"}}</label>
+        <label for="bot.invite">{{ i18n __ "pages.edit.bot_invite.title"}}{{> required }}</label>
         <div class="ls-flex-row">
           <input id="invite" name="bot.invite" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.bot_invite.title"}}" value="{{item.invite}}">
           <button type="button" id="invite-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "pages.edit.bot_invite.generate"}}</button>
         </div>
       </div>
       <div class="one-half column">
-        {{> listinput name="bot.authors[]" label="pages.edit.authors.title" placeholder="pages.edit.authors.placeholder" modal="authors" value=item.authors default=user.id}}
+        {{> listinput name="bot.authors[]" label="pages.edit.authors.title" placeholder="pages.edit.authors.placeholder" modal="authors" value=item.authors default=user.id required=true}}
       </div>
     </div>
     <div class="row">
@@ -44,7 +45,7 @@
     <h2>Images</h2>
     <div class="row">
       <div class="one-half column">
-        <label for="bot.images.avatar">{{ i18n __ "pages.edit.images.avatar.title"}}</label>
+        <label for="bot.images.avatar">{{ i18n __ "pages.edit.images.avatar.title"}}{{> required }}</label>
         <input name="bot.images.avatar" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.images.avatar.placeholder"}}" value="{{item.images.avatar}}">
       </div>
       <div class="one-half column">
@@ -54,7 +55,7 @@
     </div>
     {{> listinput name="bot.images.preview[]" label="pages.edit.images.preview.title" placeholder="pages.edit.images.preview.placeholder" value=item.images.preview}}
     <h2>{{ i18n __ "pages.edit.triggermethods"}}</h2>
-    {{> listinput name="bot.trigger.prefix[]" label="pages.edit.bot_prefix.title" placeholder="pages.edit.bot_prefix.placeholder" value=item.trigger.prefix}}
+    {{> listinput name="bot.trigger.prefix[]" label="pages.edit.bot_prefix.title" placeholder="pages.edit.bot_prefix.placeholder" value=item.trigger.prefix required=true}}
     <div class="row">
       <div class="one-half column">
         <label for="bot.trigger.customisable">{{ i18n __ "pages.edit.customisable.title"}}</label>

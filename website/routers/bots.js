@@ -88,6 +88,10 @@ router
         } else {
           const bot = localise(item, req);
 
+          marked.setOptions({
+            sanitize: !item.legacy
+          });
+
           const contents = xss(marked(bot.contents.page));
           res.render('bot', {
             item: bot,
@@ -134,6 +138,19 @@ router
         } else {
           next();
         }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
+  .post('/:id/token', isOwner, (req, res, next) => {
+    r.table('bots')
+      .update({
+        id: req.params.id,
+        token: crypto.randomBytes(20).toString('hex')
+      })
+      .then(() => {
+        res.redirect(`/bots/${req.params.id}/configure`);
       })
       .catch((err) => {
         next(err);
@@ -252,7 +269,7 @@ router
                 value.verified = existingBot.verified;
                 value.legacy = existingBot.legacy;
                 value.token = existingBot.token;
-                insert('added', 'errors.bots.edit_success');
+                insert('edited', 'errors.bots.edit_success');
               } else {
                 res.json({
                   ok: false,
@@ -277,7 +294,7 @@ router
                       message: res.__('errors.bots.notfound')
                     });
                   } else if (result.bot) {
-                    insert('edited', 'errors.bots.add_success');
+                    insert('added', 'errors.bots.add_success');
                   } else {
                     res.json({
                       ok: false,

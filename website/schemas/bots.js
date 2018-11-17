@@ -41,9 +41,11 @@ const schema = joi.object({
     mentionable: joi.bool().error(new Error('errors.bots.mentionable')),
   }),
   images: joi.object({
-    avatar: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.avatar')),
-    cover: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.cover')),
-    preview: joi.array().items(joi.string().uri({ scheme: ['https'] }).error(new Error('errors.bots.preview'))).max(20)
+    avatar: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null)
+      .error(new Error('errors.bots.avatar')),
+    cover: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null)
+      .error(new Error('errors.bots.cover')),
+    preview: joi.array().items(joi.string().uri({ scheme: ['https'] }).max(2000)).max(20).error(new Error('errors.bots.preview'))
   }),
   flags: joi.object({
     inAppPurchases: joi.bool().error(new Error('errors.bots.inAppPurchases')),

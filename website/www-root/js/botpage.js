@@ -3,6 +3,7 @@
   const less = document.getElementById('ls-less');
   const custom = document.getElementById('ls-custom-content');
   const description = document.getElementById('ls-short-description');
+  const slider = document.getElementById('ls-image-slider');
 
   more.addEventListener('click', () => {
     description.classList.add('hidden');
@@ -17,4 +18,10 @@
     less.classList.add('hidden');
     more.classList.remove('hidden');
   });
+
+  if (slider) {
+    tns({
+      container: '#ls-image-slider',
+    });
+  }
 }

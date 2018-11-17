@@ -45,6 +45,9 @@
           <a href="/bots/{{item.id}}/delete">
             {{i18n __ "pages.bots.delete"}}
           </a>
+          <a href="/bots/{{item.id}}/configure">
+            {{i18n __ "pages.bots.configure"}}
+          </a>
         {{/if}}
       </div>
       <div class="ls-left-pad">
@@ -81,4 +84,15 @@
   </div>
 </div>
 
+{{#if item.cachedImages.preview.length}}
+<div class="ls-main-content main-content-container container box-shadow center">
+  <div id="ls-image-slider" class="ls-image-slider">
+    {{#each item.cachedImages.preview}}
+      <img src="{{this}}">
+    {{/each}}
+  </div>
+</div>
+
+<script src="/node_modules/tiny-slider/dist/tiny-slider.js"></script>
+{{/if}}
 <script src="/js/botpage.js"></script>

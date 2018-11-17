@@ -1,1 +1,7 @@
-{{item.token}}
+<div class="ls-main-content main-content-container container box-shadow">
+  <h2>{{ i18n __ "pages.configuration.token" }}</h2>
+  {{item.token}}
+  <form method="POST" action="/bots/{{item.id}}/token">
+    <button class="btn white black-text">{{ i18n __ "pages.configuration.renew" }}</button>
+  </form>
+</div>

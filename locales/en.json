@@ -63,6 +63,7 @@
       "customisable": "Customisable",
       "delete": "Delete",
       "edit": "Edit",
+      "configure": "Configure",
       "github": "View on GitHub",
       "prefix": {
         "one": "Prefix",
@@ -75,6 +76,10 @@
       "inAppPurchases": "Has in-app purchases",
       "unverified": "Unverified",
       "nsfw": "NSFW"
+    },
+    "configuration": {
+      "token": "Token",
+      "renew": "Renew Token"
     },
     "edit": {
       "application_id": {
@@ -155,10 +160,25 @@
           "small": "Tick this box if your bot displays adverts, including other bot lists"
         }
       },
+      "images": {
+        "avatar": {
+          "title": "Avatar URL",
+          "placeholder": "A HTTPS link to an avatar image"
+        },
+        "cover": {
+          "title": "Cover Image",
+          "placeholder": "A HTTPS link to a large image"
+        },
+        "preview": {
+          "title": "Preview Images",
+          "placeholder": "A HTTPS link to a single screenshot"
+        }
+      },
       "sourcecode": "Source Code",
       "title": "Add or Edit an Application",
       "triggermethods": "Trigger Methods",
-      "deleteLanguage": "Delete a language"
+      "deleteLanguage": "Delete a language",
+      "required": "Fields marked with * are required."
     },
     "error": {
       "notfound": "Page not found...",
@@ -234,6 +254,9 @@
       "notfound": "The ID provided was not found by Discord.",
       "add_success": "Added bot to the bot list queue.",
       "edit_success": "Edited bot successfully.",
+      "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
+      "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
+      "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
       "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead."
     },
     "permissions": {
