@@ -8,7 +8,9 @@ const config = require('../config');
 const marked = require('marked');
 const xss = require('../static/xss');
 const ImageCache = require('../class/ImageCache');
-const jwt = require('../static/jwt');
+const crypto = require('crypto');
+const discordWebhooks = require('../static/discordWebhook');
+const fetch = require('node-fetch');
 
 const router = express.Router();
 const reader = multer();
@@ -185,7 +187,7 @@ router
           message: res.__(err.message)
         });
       } else {
-        const insert = (message) => {
+        const insert = (type, message) => {
           const imagePromises = [];
           value.cachedImages = {
             avatar: null,
@@ -222,6 +224,7 @@ router
                   conflict: 'replace'
                 })
                 .then(() => {
+                  discordWebhooks(`<@${req.user.id}> ${type} <@${value.id}> - ${config.webserver.location}bots/${value.id}`);
                   res.json({
                     ok: true,
                     message: res.__(message),
@@ -249,7 +252,7 @@ router
                 value.verified = existingBot.verified;
                 value.legacy = existingBot.legacy;
                 value.token = existingBot.token;
-                insert('errors.bots.edit_success');
+                insert('added', 'errors.bots.edit_success');
               } else {
                 res.json({
                   ok: false,
@@ -260,10 +263,27 @@ router
               value.verified = false;
               value.legacy = false;
               value.random = Math.random();
-              jwt.sign({ id: value.id })
-                .then((token) => {
-                  value.token = token;
-                  insert('errors.bots.add_success');
+              value.token = crypto.randomBytes(20).toString('hex');
+              fetch(`https://discordapp.com/api/v6/users/${value.id}`, {
+                headers: {
+                  Authorization: `Bot ${config.discord.token}`
+                }
+              })
+                .then(result => result.json())
+                .then((result) => {
+                  if (result.code === 10013) {
+                    res.json({
+                      ok: false,
+                      message: res.__('errors.bots.notfound')
+                    });
+                  } else if (result.bot) {
+                    insert('edited', 'errors.bots.add_success');
+                  } else {
+                    res.json({
+                      ok: false,
+                      message: res.__('errors.bots.notabot')
+                    });
+                  }
                 });
             }
           })

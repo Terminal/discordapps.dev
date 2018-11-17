@@ -230,6 +230,8 @@
       "prefix": "You must have at least 1 prefix, of max length 10.",
       "support": "The Support URL needs to be a valid HTTPS link",
       "exists": "The bot already exists in the database, and you do not have permission to overwrite this.",
+      "notabot": "The ID provided was not a bot account.",
+      "notfound": "The ID provided was not found by Discord.",
       "add_success": "Added bot to the bot list queue.",
       "edit_success": "Edited bot successfully.",
       "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead."
