@@ -1,5 +1,5 @@
 const express = require('express');
-const { isLoggedIn } = require('../static/middleware');
+const { isOwner, isLoggedIn } = require('../static/middleware');
 const { joi, schema } = require('../schemas/bots');
 const { unflatten } = require('flat');
 const multer = require('multer');
@@ -8,6 +8,7 @@ const config = require('../config');
 const marked = require('marked');
 const xss = require('../static/xss');
 const ImageCache = require('../class/ImageCache');
+const jwt = require('../static/jwt');
 
 const router = express.Router();
 const reader = multer();
@@ -120,6 +121,22 @@ router
   .get('/:id/delete', isLoggedIn, (req, res) => {
     res.render('sure');
   })
+  .get('/:id/configure', isOwner, (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .then((item) => {
+        if (item) {
+          res.render('configure', {
+            item
+          });
+        } else {
+          next();
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
   .post('/:id/delete', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
@@ -228,8 +245,10 @@ router
           .then((existingBot) => {
             if (existingBot) {
               if (existingBot.authors.includes(req.user.id) || req.user.admin) {
+                // Copy over some stuff while overwriting
                 value.verified = existingBot.verified;
                 value.legacy = existingBot.legacy;
+                value.token = existingBot.token;
                 insert('errors.bots.edit_success');
               } else {
                 res.json({
@@ -241,7 +260,11 @@ router
               value.verified = false;
               value.legacy = false;
               value.random = Math.random();
-              insert('errors.bots.add_success');
+              jwt.sign({ id: value.id })
+                .then((token) => {
+                  value.token = token;
+                  insert('errors.bots.add_success');
+                });
             }
           })
           .catch((err1) => {

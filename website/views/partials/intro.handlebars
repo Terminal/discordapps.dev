@@ -21,18 +21,23 @@
 				<span class="emoji twa-globe-showing-europe-africa" />
 			</a>
 			{{#if user.id}}
-				<a class="btn white black-text emoji-button" href="/bots/add">
+				<a class="btn white black-text" href="/bots/add">
 					{{i18n __ "pages.bots.add"}}
 				</a>
-				<a class="btn white black-text emoji-button" href="/bots/by/{{user.id}}">
+				<a class="btn white black-text" href="/bots/by/{{user.id}}">
 					{{user.username}}
 				</a>
-				<a class="btn white black-text emoji-button" href="/auth/logout">
+				<a class="btn white black-text" href="/auth/logout">
 					{{i18n __ "intro.logout"}}
 				</a>
 			{{else}}
-				<a class="btn white black-text emoji-button" href="/auth">
+				<a class="btn white black-text" href="/auth">
 					{{i18n __ "intro.login"}}
+				</a>
+			{{/if}}
+			{{#if user.admin}}
+				<a class="btn white black-text" href="/admin">
+					{{i18n __ "intro.admin"}}
 				</a>
 			{{/if}}
 		</div>

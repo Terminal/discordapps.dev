@@ -21,7 +21,8 @@
   "intro": {
     "login": "Login via Discord",
     "logout": "Logout",
-    "search": "Search..."
+    "search": "Search...",
+    "admin": "Admin"
   },
   "locales": {
     "ar": "Arabic",

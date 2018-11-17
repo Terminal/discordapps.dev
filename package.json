@@ -30,6 +30,7 @@
 		"github-username-regex": "^1.0.0",
 		"i18n": "^0.8.3",
 		"joi": "^14.0.4",
+		"jsonwebtoken": "^8.4.0",
 		"marked": "^0.3.19",
 		"monaco-editor": "^0.14.3",
 		"multer": "^1.4.1",

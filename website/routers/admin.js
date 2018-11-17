@@ -2,6 +2,7 @@ const express = require('express');
 const { isAdmin } = require('../static/middleware');
 const r = require('../rethinkdb');
 const ImageCache = require('../class/ImageCache');
+const crypto = require('crypto');
 
 const router = express.Router();
 
@@ -35,7 +36,7 @@ router
           };
 
           if (value.images && typeof value.images.avatar === 'string') {
-            const cache = new ImageCache(value.images.avatar, 512, 512);
+            const cache = new ImageCache(value.images.avatar, 256, 256, value.nsfw);
             imageCaches.push({
               value,
               cache
@@ -44,7 +45,7 @@ router
           }
 
           if (value.images && typeof value.images.cover === 'string') {
-            const cache = new ImageCache(value.images.cover, 1280, 720);
+            const cache = new ImageCache(value.images.cover, 1280, 720, value.nsfw);
             imageCaches.push({
               value,
               cache
@@ -55,7 +56,7 @@ router
           if (value.images && Array.isArray(value.images.preview)) {
             for (let i = 0; i < value.images.preview.length; i += 1) {
               if (typeof value.images.preview[i] === 'string') {
-                const cache = new ImageCache(value.images.preview[i], 1280, 720);
+                const cache = new ImageCache(value.images.preview[i], 1280, 720, value.nsfw);
                 imageCaches.push({
                   value,
                   cache
@@ -100,7 +101,6 @@ router
               } else {
                 Promise.all(imagePromises)
                   .then((results) => {
-                    console.log(results);
                     res.render('faults', {
                       results
                     });
@@ -112,6 +112,30 @@ router
           .catch((err) => {
             next(err);
           });
+      });
+  })
+  .post('/tokens', (req, res, next) => {
+    r.table('bots')
+      .then(bots => bots.map((bot) => {
+        const returned = {};
+        returned.id = bot.id;
+        returned.token = crypto.randomBytes(20).toString('hex');
+        return returned;
+      }))
+      .then((bots) => {
+        r.table('bots')
+          .insert(bots, {
+            conflict: 'update'
+          })
+          .then(() => {
+            res.redirect('/admin');
+          })
+          .catch((err) => {
+            next(err);
+          });
+      })
+      .catch((err) => {
+        next(err);
       });
   });
 

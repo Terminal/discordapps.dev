@@ -2,7 +2,15 @@
   <section class="ls-bot-profile ls-flex-row ls-wrap">
     <img class="avatar" alt="{{item.contents.name}}" src="{{item.cachedImages.avatar}}">
     <div class="ls-bot-profile-content-left">
-      <h1 class="name">{{item.contents.name}}</h1>
+      <h1 class="name">
+        {{item.contents.name}}
+        {{#if item.nsfw}}
+          <span class="ls-list-nsfw">{{i18n __ "pages.bots.nsfw"}}</span>
+        {{/if}}
+        {{#unless item.verified}}
+          <span class="ls-list-nsfw">{{i18n __ "pages.bots.unverified"}}</span>
+        {{/unless}}
+      </h1>
       <p>
         {{#if item.trigger.prefix.length}}
           {{i18ns __n "pages.bots.prefix" item.trigger.prefix.length}}

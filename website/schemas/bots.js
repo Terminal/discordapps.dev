@@ -18,7 +18,7 @@ const joi = originaljoi.extend({
 }, {
   base: originaljoi.array(),
   name: 'array',
-  coerce: (values, state, options) => {
+  coerce: (values, state, options) => { // eslint-disable-line
     return values.filter(value => value !== '');
   }
 });

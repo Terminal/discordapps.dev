@@ -16,6 +16,7 @@ const authRouter = require('./routers/auth');
 const botsRouter = require('./routers/bots');
 const langRouter = require('./routers/locales');
 const adminRouter = require('./routers/admin');
+const v1Router = require('./routers/v1');
 
 require('./static/banner');
 
@@ -28,6 +29,7 @@ app.locals.siteLocales = i18n.getLocales();
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')
+  .set('json spaces', 4)
   .engine('handlebars', handlebars({
     defaultLayout: 'main',
     layoutsDir: path.join(path.dirname(__filename), 'views', 'layouts'),
@@ -100,6 +102,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/bots', botsRouter)
   .use('/locale', langRouter)
   .use('/admin', adminRouter)
+  .use('/api', v1Router)
+  .use('/api/v1', v1Router)
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')
