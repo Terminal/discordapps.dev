@@ -1,4 +1,4 @@
-<div class="ls-main-content main-content-container container box-shadow">
+<div class="ls-main-content main-content-container container box-shadow ls-round">
   <section class="ls-bot-profile ls-flex-row ls-wrap">
     <img class="avatar" alt="{{item.contents.name}}" src="{{item.cachedImages.avatar}}">
     <div class="ls-bot-profile-content-left">
@@ -25,43 +25,7 @@
           <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.customisable"}}</code>
         {{/if}}
       </p>
-      <div class="ls-left-pad ls-flex-row">
-        {{#if item.support}}
-        <a href="{{item.support}}">
-          {{i18n __ "pages.bots.support"}}
-        </a>
-        {{/if}}
-        {{#if item.github.owner}}
-        {{#if item.github.repo}}
-        <a href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">
-          {{i18n __ "pages.bots.github"}}
-        </a>
-        {{/if}}
-        {{/if}}
-        {{#if canEdit}}
-          <a href="/bots/{{item.id}}/edit">
-            {{i18n __ "pages.bots.edit"}}
-          </a>
-          <a href="/bots/{{item.id}}/delete">
-            {{i18n __ "pages.bots.delete"}}
-          </a>
-          <a href="/bots/{{item.id}}/configure">
-            {{i18n __ "pages.bots.configure"}}
-          </a>
-        {{/if}}
-        {{#unless item.verified}}
-        {{#if user.admin}}
-          <form method="POST" action="/bots/{{item.id}}/approve">
-            <button class="ls-not-a-button">
-              {{i18n __ "pages.bots.approve"}}
-            </button>
-          </form>
-          <a href="/bots/{{item.id}}/deny">
-            {{i18n __ "pages.bots.deny"}}
-          </a>
-        {{/if}}
-        {{/unless}}
-      </div>
+      {{> botlinks item=item canEdit=canEdit }}
       <div class="ls-left-pad">
         {{#if item.flags.inAppPurchases}}
           <span>{{i18n __ "pages.bots.inAppPurchases"}}</span>
@@ -86,11 +50,11 @@
   <div id="ls-custom-content" class="ls-custom-content">
     {{{contents}}}
   </div>
-  <div id="ls-more" class="ls-custom-content-button box-shadow hidden">
+  <div id="ls-more" class="ls-custom-content-button box-shadow ls-round hidden">
     <p>{{i18n __ "pages.bots.more"}}</p>
     <img src="/ModestaCSS/css/images/arrow.png">
   </div>
-  <div id="ls-less" class="ls-custom-content-button ls-custom-content-less box-shadow hidden">
+  <div id="ls-less" class="ls-custom-content-button ls-custom-content-less box-shadow ls-round hidden">
     <p>{{i18n __ "pages.bots.less"}}</p>
     <img src="/ModestaCSS/css/images/arrow.png">
   </div>
@@ -98,7 +62,7 @@
 
 {{#if item.cachedImages.preview.length}}
 <div class="ls-main-content main-content-container container box-shadow center">
-  <div id="ls-image-slider" class="ls-image-slider">
+  <div id="ls-carousel" class="ls-image-slider">
     {{#each item.cachedImages.preview}}
       <img src="{{this}}">
     {{/each}}
@@ -106,5 +70,21 @@
 </div>
 
 <script src="/node_modules/tiny-slider/dist/tiny-slider.js"></script>
+<script>
+  {
+    const slider = document.getElementById('ls-carousel');
+    if (slider) {
+      tns({
+        container: '#ls-carousel',
+        controlsPosition: 'bottom',
+        navPosition: 'bottom',
+        controlsText: [
+          `{{i18n __ "pagination.prev"}}`,
+          `{{i18n __ "pagination.next"}}`
+        ]
+      });
+    }
+  }
+</script>
 {{/if}}
 <script src="/js/botpage.js"></script>

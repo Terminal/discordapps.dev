@@ -1,0 +1,43 @@
+<div class="ls-main-content main-content-container container box-shadow center ls-round">
+  <div id="ls-carousel">
+    {{#each slider}}
+    {{#if this.cachedImages.cover}}
+    <div class="ls-carousel-item" style="background-image: url({{this.cachedImages.cover}})">
+      <a href="/bots/{{this.id}}">
+      <div class="ls-carousel-item-content">
+        <img class="ls-carousel-item-content-avatar" src="{{this.cachedImages.avatar}}">
+        <h4>{{this.contents.name}}</h4>
+        <p class="white-text">{{this.contents.description}}</p>
+      </div>
+      </a>
+    </div>
+    {{/if}}
+    {{/each}}
+  </div>
+</div>
+
+<div class="center-text card-container">
+  {{#each cards}}
+    {{> card __=../__ item=this}}
+  {{else}}
+    {{i18n __ 'pages.list.empty'}}
+  {{/each}}
+</div>
+
+<script src="/node_modules/tiny-slider/dist/tiny-slider.js"></script>
+<script>
+  {
+    const slider = document.getElementById('ls-carousel');
+    if (slider) {
+      tns({
+        container: '#ls-carousel',
+        controlsPosition: 'bottom',
+        navPosition: 'bottom',
+        controlsText: [
+          `{{i18n __ "pagination.prev"}}`,
+          `{{i18n __ "pagination.next"}}`
+        ]
+      });
+    }
+  }
+</script>

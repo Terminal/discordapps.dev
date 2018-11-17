@@ -11,6 +11,7 @@ const ImageCache = require('../class/ImageCache');
 const crypto = require('crypto');
 const discordWebhooks = require('../static/discordWebhook');
 const fetch = require('node-fetch');
+const { localise, listMiddleware } = require('../static/list');
 
 const router = express.Router();
 const reader = multer();
@@ -28,58 +29,14 @@ const selectableLanguages = Object.keys(config.languages).sort((a, b) => {
   return 0;
 });
 
-const localise = (item, req) => {
-  if (item.contents[req.getLocale()]) {
-    item.contents = item.contents[req.getLocale()];
-    return item;
-  }
-  const availableLanguages = Object.keys(config.languages).sort((a, b) => {
-    if (a.priority < b.priority) {
-      return -1;
-    } else if (a.priority > b.priority) {
-      return 1;
-    }
-    return 0;
-  });
-
-  for (let i = 0; i < availableLanguages.length; i += 1) {
-    // Try all languages in priority order.
-    if (item.contents[availableLanguages[i]]) {
-      item.contents = item.contents[availableLanguages[i]];
-      item.pageDisplayedLanguage = availableLanguages[i];
-      return item;
-    }
-  }
-
-  throw new Error('Cannot find any languages for this bot!');
-};
-
-const listRouter = (filter = {}) => (req, res, next) => {
-  if (filter === 'owner') {
-    filter = bot => bot('authors').contains(req.params.id);
-  }
-
-  r.table('bots')
-    .orderBy(r.desc('random'))
-    .filter(filter)
-    .then((list) => {
-      res.render('list', {
-        list: list.map(item => localise(item, req))
-      });
-    })
-    .catch((err) => {
-      next(err);
-    });
-};
-
 router
-  .get('/', listRouter({
+  .get('/', listMiddleware({
     verified: true
   }))
-  .get('/unverified', listRouter({
+  .get('/unverified', listMiddleware({
     verified: false
   }))
-  .get('/by/:id', listRouter('owner'))
+  .get('/by/:id', listMiddleware('owner'))
   .get('/:id', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
@@ -330,7 +287,6 @@ router
               })
                 .then(result => result.json())
                 .then((result) => {
-                  console.log(result);
                   if (result.code === 10013) {
                     res.json({
                       ok: false,

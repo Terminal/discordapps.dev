@@ -17,6 +17,7 @@ const botsRouter = require('./routers/bots');
 const langRouter = require('./routers/locales');
 const adminRouter = require('./routers/admin');
 const v1Router = require('./routers/v1');
+const { localise } = require('./static/list');
 
 require('./static/banner');
 
@@ -92,8 +93,25 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     }
     next();
   })
-  .get('/', (req, res) => {
-    res.redirect('/bots');
+  .get('/', (req, res, next) => {
+    r.table('bots')
+      .orderBy(r.desc('random'))
+      .filter({
+        verified: true,
+        nsfw: false
+      })
+      .limit(12)
+      .then((list) => {
+        const localised = list.map(item => localise(item, req));
+        const slider = localised.splice(0, 6);
+        res.render('main', {
+          slider,
+          cards: localised
+        });
+      })
+      .catch((err) => {
+        next(err);
+      });
   })
   .get('/oops', (req, res, next) => {
     next(new Error('This error was thrown on purpose'));

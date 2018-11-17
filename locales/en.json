@@ -18,6 +18,10 @@
     "select": "Please select...",
     "submit": "Submit"
   },
+  "pagination": {
+    "prev": "prev",
+    "next": "next"
+  },
   "intro": {
     "login": "Login via Discord",
     "logout": "Logout",

@@ -18,3 +18,18 @@
     display: none !important;
   }
 }
+
+input[type=file] {
+  display: inline;
+  color: #000000;
+}
+
+.ls-file-input {
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+  height: 38px;
+  padding: 6px 10px;
+}
