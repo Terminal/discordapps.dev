@@ -49,6 +49,7 @@
             {{i18n __ "pages.bots.configure"}}
           </a>
         {{/if}}
+        {{#unless item.verified}}
         {{#if user.admin}}
           <form method="POST" action="/bots/{{item.id}}/approve">
             <button class="ls-not-a-button">
@@ -59,6 +60,7 @@
             {{i18n __ "pages.bots.deny"}}
           </a>
         {{/if}}
+        {{/unless}}
       </div>
       <div class="ls-left-pad">
         {{#if item.flags.inAppPurchases}}
