@@ -12,7 +12,7 @@
       "add": "Ajouter un bot",
       "invite": "Inviter ce bot",
       "backgroundAlt": "Le logo de Forklift",
-      "description": "Une liste de bots avec intégration GitHub",
+      "description": "Une liste de bots",
       "prefix": "Préfixe: "
     },
     "docs": {
@@ -91,7 +91,7 @@
   },
   "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord est une marque déposée de Discord, Inc.\nTraduction en français par iDroid27 et Bowser65.",
   "intro": {
-    "login": "Se connecter avec GitHub",
+    "login": "Se connecter",
     "logout": "Se déconnecter",
     "search": "Rechercher...",
     "language": "Langues"
