@@ -1,6 +1,6 @@
 
 <div class="form-container">
-  <form id="edit-form">
+  <form method="POST" action="/bots/add" id="edit-form">
     <h1>{{ i18n __ "pages.edit.title"}}</h1>
     <p>{{ i18n __ "pages.edit.required"}}</p>
     <h2>{{ i18n __ "pages.edit.basicinfo"}}</h2>
@@ -45,7 +45,7 @@
     <h2>Images</h2>
     <div class="row">
       <div class="one-half column">
-        <label for="bot.images.avatar">{{ i18n __ "pages.edit.images.avatar.title"}}{{> required }}</label>
+        <label for="bot.images.avatar">{{ i18n __ "pages.edit.images.avatar.title"}}</label>
         <input name="bot.images.avatar" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.images.avatar.placeholder"}}" value="{{item.images.avatar}}">
       </div>
       <div class="one-half column">

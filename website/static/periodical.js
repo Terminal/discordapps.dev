@@ -6,6 +6,7 @@ module.exports = () => {
       const returned = {};
       returned.id = bot.id;
       returned.random = Math.random();
+      if (bot.github && bot.github.owner && bot.github.repo) returned.random += 1;
       return returned;
     }))
     .then(bots => r.table('bots')

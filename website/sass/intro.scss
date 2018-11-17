@@ -26,3 +26,16 @@
     background-color: #2a2a2a;
   }
 }
+
+.ls-not-a-button {
+  background-color: unset;
+  border: unset;
+  font-size: unset;
+  font-family: unset;
+  padding: unset;
+  margin: unset;
+  box-shadow: unset;
+  color: #2eaedb;
+  text-decoration: none;
+  cursor: pointer;
+}

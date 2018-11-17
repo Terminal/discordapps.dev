@@ -17,8 +17,10 @@ router
   .get('/bots/:id', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
+      .default({})
       .without('token')
       .then((bots) => {
+        if (!bots.id) res.status(404);
         res.json(bots);
       })
       .catch((err) => {

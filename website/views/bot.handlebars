@@ -25,7 +25,7 @@
           <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.customisable"}}</code>
         {{/if}}
       </p>
-      <div class="ls-left-pad">
+      <div class="ls-left-pad ls-flex-row">
         {{#if item.support}}
         <a href="{{item.support}}">
           {{i18n __ "pages.bots.support"}}
@@ -49,6 +49,16 @@
             {{i18n __ "pages.bots.configure"}}
           </a>
         {{/if}}
+        {{#if user.admin}}
+          <form method="POST" action="/bots/{{item.id}}/approve">
+            <button class="ls-not-a-button">
+              {{i18n __ "pages.bots.approve"}}
+            </button>
+          </form>
+          <a href="/bots/{{item.id}}/deny">
+            {{i18n __ "pages.bots.deny"}}
+          </a>
+        {{/if}}
       </div>
       <div class="ls-left-pad">
         {{#if item.flags.inAppPurchases}}
@@ -68,13 +78,13 @@
     </div>
   </section>
   {{#if item.pageDisplayedLanguage}}<p><i>{{i18n __ "errors.bots.no_suitable_lang" "language" (i18n __ (concat "locales." item.pageDisplayedLanguage))}}</i></p>{{/if}}
-  <div id="ls-short-description" class="ls-custom-content">
+  <div id="ls-short-description" class="ls-custom-content hidden">
     {{item.contents.description}}
   </div>
-  <div id="ls-custom-content" class="ls-custom-content hidden">
+  <div id="ls-custom-content" class="ls-custom-content">
     {{{contents}}}
   </div>
-  <div id="ls-more" class="ls-custom-content-button box-shadow">
+  <div id="ls-more" class="ls-custom-content-button box-shadow hidden">
     <p>{{i18n __ "pages.bots.more"}}</p>
     <img src="/ModestaCSS/css/images/arrow.png">
   </div>

@@ -1,5 +1,5 @@
 const express = require('express');
-const { isOwner, isLoggedIn } = require('../static/middleware');
+const { isOwner, isLoggedIn, isAdmin } = require('../static/middleware');
 const { joi, schema } = require('../schemas/bots');
 const { unflatten } = require('flat');
 const multer = require('multer');
@@ -60,6 +60,7 @@ const listRouter = (filter = {}) => (req, res, next) => {
   }
 
   r.table('bots')
+    .orderBy(r.desc('random'))
     .filter(filter)
     .then((list) => {
       res.render('list', {
@@ -156,6 +157,39 @@ router
         next(err);
       });
   })
+  .post('/:id/approve', isAdmin, (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .update({
+        verified: true
+      })
+      .then((result) => {
+        if (result.replaced === 1) {
+          discordWebhooks(`<@${req.user.id}> approved <@${req.params.id}>`);
+        }
+        res.redirect('/bots/unverified');
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
+  .get('/:id/deny', isAdmin, (req, res) => {
+    res.render('sure', {
+      reason: true
+    });
+  })
+  .post('/:id/deny', isAdmin, (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .delete()
+      .then(() => {
+        discordWebhooks(`<@${req.user.id}> denied <@${req.params.id}>\n${req.body.reason}`);
+        res.redirect('/bots/unverified');
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
   .post('/:id/delete', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
@@ -167,6 +201,7 @@ router
               .delete()
               .then(() => {
                 res.redirect('/');
+                discordWebhooks(`<@${req.user.id}> deleted <@${req.params.id}>`);
               })
               .catch((err) => {
                 next(err);
@@ -204,7 +239,7 @@ router
           message: res.__(err.message)
         });
       } else {
-        const insert = (type, message) => {
+        const insert = (type, message, avatar) => {
           const imagePromises = [];
           value.cachedImages = {
             avatar: null,
@@ -216,6 +251,12 @@ router
             const cache = new ImageCache(value.images.avatar, 512, 512, value.nsfw);
             imagePromises.push(cache.cache());
             value.cachedImages.avatar = cache.permalink;
+          } else if (avatar) {
+            const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${value.id}/${avatar}.png`, 512, 512, value.nsfw);
+            imagePromises.push(cache.cache());
+            value.cachedImages.avatar = cache.permalink;
+          } else {
+            value.cachedImages.avatar = '/img/logo/logo.svg';
           }
 
           if (value.images && typeof value.images.cover === 'string') {
@@ -268,6 +309,7 @@ router
                 // Copy over some stuff while overwriting
                 value.verified = existingBot.verified;
                 value.legacy = existingBot.legacy;
+                value.random = existingBot.random;
                 value.token = existingBot.token;
                 insert('edited', 'errors.bots.edit_success');
               } else {
@@ -288,13 +330,14 @@ router
               })
                 .then(result => result.json())
                 .then((result) => {
+                  console.log(result);
                   if (result.code === 10013) {
                     res.json({
                       ok: false,
                       message: res.__('errors.bots.notfound')
                     });
                   } else if (result.bot) {
-                    insert('added', 'errors.bots.add_success');
+                    insert('added', 'errors.bots.add_success', result.avatar);
                   } else {
                     res.json({
                       ok: false,

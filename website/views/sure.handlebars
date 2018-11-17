@@ -1,5 +1,10 @@
 <h1>{{ i18n __ 'pages.sure.title' }}</h1>
-<div class="ls-flex-row">
-  <form method="POST"><button class="ls-button btn emerald">{{ i18n __ 'pages.sure.ok' }}</button></form>
-  <button onclick="window.history.back()" class="ls-button btn alizarin">{{ i18n __ 'pages.sure.no' }}</button>
+<div class="form-container">
+  <form method="POST">
+    {{#if reason}}
+      <textarea name="reason" class="full-width" placeholder="Enter reason here..."></textarea>
+    {{/if}}
+    <button class="ls-button btn emerald">{{ i18n __ 'pages.sure.ok' }}</button>
+    <button type="button" onclick="window.history.back()" class="ls-button btn alizarin">{{ i18n __ 'pages.sure.no' }}</button>
+  </form>
 </div>

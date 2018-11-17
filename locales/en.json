@@ -65,6 +65,8 @@
       "edit": "Edit",
       "configure": "Configure",
       "github": "View on GitHub",
+      "approve": "Approve",
+      "deny": "Deny",
       "prefix": {
         "one": "Prefix",
         "other": "Prefixes"
@@ -262,6 +264,9 @@
     "permissions": {
       "login": "You are not logged in",
       "denied": "You do not have the adequate permissions to access this"
+    },
+    "website": {
+      "noscript": "JavaScript has been disabled. Functionality may be reduced."
     }
   }
 }
