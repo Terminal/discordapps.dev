@@ -28,7 +28,8 @@ const schema = joi.object({
   oauth: joi.string().regex(/^[0-9]+$/, 'numbers').allow(null).error(new Error('errors.bots.oauth')),
   invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.bots.invite')),
   support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.support')),
-  authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).required().error(new Error('errors.bots.authors')),
+  authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).min(1).max(10)
+    .error(new Error('errors.bots.authors')),
   nsfw: joi.bool().error(new Error('errors.bots.nsfw')),
   github: joi.object({
     owner: joi.string().regex(githubUsernameRegex, 'github username').allow(null).error(new Error('errors.bots.githubowner')),
