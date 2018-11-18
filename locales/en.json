@@ -88,7 +88,10 @@
       "adverts": "Contains ads",
       "inAppPurchases": "Has in-app purchases",
       "unverified": "Unverified",
-      "nsfw": "NSFW"
+      "nsfw": "NSFW",
+      "offeredby": "Offered By:",
+      "modified": "Last modified: {{ date }}",
+      "created": "First published: {{ date }}"
     },
     "configuration": {
       "token": "Token",
@@ -118,6 +121,9 @@
         "placeholder": "Something like: https://discord.gg/8uC6aKZ",
         "small": "Leave this field empty if you don't like helping people",
         "title": "Support URL"
+      },
+      "category": {
+        "title": "Category"
       },
       "client_id": {
         "modal1": "The bot ID is a number which uniquely identifies the bot user. You can retrieve it by clicking the \"Copy\" button within the Discord Developer portal.",
@@ -244,6 +250,20 @@
     "USE_EXTERNAL_EMOJIS": "Use External Emojis",
     "USE_VAD": "Use Voice Activity",
     "VIEW_AUDIT_LOG": "View Audit Log"
+  },
+  "categories": {
+    "fun": "Fun",
+    "games": "Games",
+    "entertainment": "Entertainment",
+    "productivity": "Productivity",
+    "education": "Education",
+    "image": "Image Manipulation",
+    "news": "News",
+    "music": "Music",
+    "moderation": "Moderation",
+    "utility": "Utility",
+    "notifications": "Notifications",
+    "other": "Other"
   },
   "errors": {
     "bots": {

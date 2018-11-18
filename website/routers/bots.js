@@ -46,6 +46,9 @@ router
   .get('/:id', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
+      .merge(bot => ({
+        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+      }))
       .then((item) => {
         if (!item) {
           next();
@@ -77,6 +80,7 @@ router
           const remainingLanguages = selectableLanguages.filter(language => !Object.keys(item.contents).includes(language));
           res.render('add', {
             selectableLanguages: remainingLanguages,
+            categories: config.categories,
             item,
             layout: 'docs',
           });
@@ -186,6 +190,7 @@ router
   .get('/add', isLoggedIn, (req, res) => {
     res.render('add', {
       selectableLanguages,
+      categories: config.categories,
       layout: 'docs',
       item: {},
     });
@@ -274,6 +279,8 @@ router
                 value.legacy = existingBot.legacy;
                 value.random = existingBot.random;
                 value.token = existingBot.token;
+                value.created = existingBot.created || (new Date()).getTime();
+                value.edited = (new Date()).getTime();
                 insert('edited', 'errors.bots.edit_success');
               } else {
                 res.json({
@@ -286,6 +293,8 @@ router
               value.legacy = false;
               value.random = Math.random();
               value.token = crypto.randomBytes(20).toString('hex');
+              value.created = (new Date()).getTime();
+              value.edited = (new Date()).getTime();
               fetch(`https://discordapp.com/api/v6/users/${value.id}`, {
                 headers: {
                   Authorization: `Bot ${config.discord.token}`

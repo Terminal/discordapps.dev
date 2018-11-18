@@ -61,7 +61,7 @@
 </div>
 
 {{#if item.cachedImages.preview.length}}
-<div class="ls-main-content main-content-container container box-shadow center">
+<div class="ls-main-content main-content-container container box-shadow ls-center ls-round">
   <div id="ls-carousel" class="ls-image-slider">
     {{#each item.cachedImages.preview}}
       <img src="{{this}}">
@@ -87,4 +87,16 @@
   }
 </script>
 {{/if}}
+
+<div class="ls-main-content main-content-container container box-shadow ls-round">
+  {{#if item.authors.length}}
+  <p>
+    {{i18n __ "pages.bots.offeredby"}}
+    {{#each item.authors}}
+    <a href="/bots/by/{{this.id}}"><span class="ls-bot-prefix label asbestos">{{this.username}}#{{this.discriminator}}</span></a>
+    {{/each}}
+  </p>
+  {{/if}}
+</div>
+
 <script src="/js/botpage.js"></script>

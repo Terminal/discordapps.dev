@@ -38,6 +38,17 @@
         <input name="bot.support" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.bot_support.placeholder"}}" value="{{item.support}}">
       </div>
       <div class="one-half column">
+        <label for="bot.category">{{ i18n __ "pages.edit.category.title"}}{{> required }}</label>
+        <select name="bot.category" class="full-width" value="{{item.support}}">
+          <option disabled selected>{{ i18n __ "forms.select" }}</option>
+          {{#each categories}}
+          <option value={{this}}>{{ i18n ../__ (concat "categories." this) }}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="one-half column">
         <label for="bot.nsfw">{{ i18n __ "pages.edit.bot_nsfw.title"}}</label>
         <input name="bot.nsfw" type="checkbox" {{#if item.nsfw}}checked="on"{{/if}}>
       </div>
@@ -93,9 +104,10 @@
     <h2>{{ i18n __ "pages.edit.information"}}</h2>
     <div class="row">
       <div class="column">
-        <label>{{ i18n __ "pages.edit.languages.title"}}</label>
+        <label>{{ i18n __ "pages.edit.languages.title"}}{{> required }}</label>
         <div class="ls-flex-row">
           <select form="null" id="language" class="full-width">
+            <option disabled selected>{{ i18n __ "forms.select" }}</option>
             {{#each selectableLanguages}}
               <option value={{this}}>{{i18n ../__ (concat "locales." this)}}</option>
             {{/each}}
