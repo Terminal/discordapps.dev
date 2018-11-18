@@ -64,7 +64,9 @@ router
             item: bot,
             contents,
             canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false,
-            cover: item.cachedImages ? item.cachedImages.cover : null
+            cover: item.cachedImages ? item.cachedImages.cover : null,
+            edited: (new Date(item.edited)).toLocaleDateString(req.getLocale(), config.dateformat),
+            created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat)
           });
         }
       })

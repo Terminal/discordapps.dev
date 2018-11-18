@@ -40,7 +40,7 @@
     "da": "Danish",
     "de": "German",
     "el": "Greek",
-    "en": "English (United Kingdom)",
+    "en-GB": "English (United Kingdom)",
     "es": "Spanish",
     "et": "Estonian",
     "fi": "Finnish",
@@ -90,8 +90,8 @@
       "unverified": "Unverified",
       "nsfw": "NSFW",
       "offeredby": "Offered By:",
-      "modified": "Last modified: {{ date }}",
-      "created": "First published: {{ date }}"
+      "modified": "Last modified: {{{ date }}}",
+      "created": "First published: {{{ date }}}"
     },
     "configuration": {
       "token": "Token",

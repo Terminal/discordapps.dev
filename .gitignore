@@ -1,4 +1,4 @@
 node_modules/
 rethinkdb_data/
 website/config/*.json
-website/www-root/appdata/
+website/www-root/appdata/*
