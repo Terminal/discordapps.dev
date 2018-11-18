@@ -1,76 +1,143 @@
 {
+  "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord est une marque déposée Discord Inc.\nTraduction en français par iDroid27 et Bowser65.",
+  "footer": {
+    "attribution": "Attribution",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "docs": "Docs",
+    "view": "Voir cette page sur GitHub"
+  },
+  "forms": {
+    "add": "En ajouter une autre",
+    "apply": "Appliquer",
+    "close": "Fermer",
+    "delete": "Supprimer",
+    "help": "🤔",
+    "select": "Veuillez séléctionner...",
+    "submit": "Envoyer"
+  },
+  "pagination": {
+    "image": {
+      "prev": "Précédent",
+      "next": "Suivant"
+    },
+    "page": {
+      "prev": "Précédente",
+      "next": "Suivante"
+    }
+  },
+  "intro": {
+    "login": "Se connecter via Discord",
+    "logout": "Déconnexion",
+    "search": "Rechercher...",
+    "admin": "Admin",
+    "docs": "Documentation"
+  },
+  "locales": {
+    "ar": "Arabe",
+    "da": "Danois",
+    "de": "Allemand",
+    "el": "Grec",
+    "en-GB": "Anglais (Royaume Uni)",
+    "es": "Espagnol",
+    "et": "Estonien",
+    "fi": "Finlandais",
+    "fj": "Fidjien",
+    "fr": "Français",
+    "gd": "Gaélique (Écossais)",
+    "hi": "Hindi",
+    "it": "Italien",
+    "ja": "Japonais",
+    "ko": "Coréen",
+    "la": "Latin",
+    "nl": "Néerlandais",
+    "no": "Norvégien",
+    "pt": "Portugais",
+    "ru": "Russe",
+    "sv": "Suédois",
+    "tr": "Turc",
+    "vi": "Vietnamien",
+    "zh-cn": "Chinois (Simplifié)",
+    "zh-tw": "Chinois (Traditionnel)"
+  },
   "pages": {
-    "list": {
-      "invite": "Inviter",
-      "github": "GitHub",
-      "nsfw": "NSFW",
-      "visit": "Visiter le serveur Discord"
-    },
     "bots": {
+      "add": "Ajouter votre propre bot",
+      "backgroundAlt": "Logo pour Discord Forklift",
+      "description": "Un test de liste de bots open source",
+      "invite": "Ajouter ce bot",
+      "support": "Support technique",
       "pagename": "Project Forklift",
+      "mentionable": "Mentionable",
+      "customisable": "Customisable",
+      "delete": "Supprimer",
+      "edit": "Editer",
+      "configure": "Configurer",
+      "github": "Voir sur GitHub",
+      "approve": "Approver",
+      "deny": "Refuser",
+      "prefix": {
+        "one": "Préfixe",
+        "other": "Préfixes"
+      },
       "shortname": "Bots",
-      "add": "Ajouter un bot",
-      "invite": "Inviter ce bot",
-      "backgroundAlt": "Le logo de Forklift",
-      "description": "Une liste de bots",
-      "prefix": "Préfixe: "
+      "more": "Voir plus",
+      "less": "Voir moins",
+      "adverts": "Contiens de la publicité",
+      "inAppPurchases": "Achats dans l'application",
+      "unverified": "Non vérifié",
+      "nsfw": "NSFW",
+      "offeredby": "Offert par:",
+      "modified": "Dernière modification: {{{ date }}}",
+      "created": "Première publication: {{{ date }}}",
+      "category": "Catégorie: {{{ category }}}"
     },
-    "docs": {
-      "pagename": "Portail du développeur Discord Fork",
-      "shortname": "Documentation"
-    },
-    "locale": {
-      "choose": "Sélectionnez une langue.",
-      "pleasehelp": "Êtes-vous un bon traducteur ? Cliquez ici."
+    "configuration": {
+      "token": "Jeton",
+      "renew": "Renouveler le jeton"
     },
     "edit": {
-      "title": "Ajouter une application",
-      "client_id": {
-        "title": "Client ID",
-        "placeholder": "Quelque chose comme 255114091360681986"
-      },
       "application_id": {
-        "title": "OAuth ID",
-        "placeholder": "Quelque chose comme 255114091360681986"
+        "modal": "L'ID OAuth is l'ID qui est utilisé lorsque les utilisateurs invitent votre bot via le flux de travail OAuth. Dans la plupart des cas, cet ID est le même que votre Bot ID. Vous ne devrez agir que si votre bot a une différence entre les deux.",
+        "placeholder": "L'ID utilisé dans le lien OAuth",
+        "title": "ID OAuth"
       },
-      "name": {
-        "title": "Nom du bot",
-        "placeholder": "Wumpus"
+      "authors": {
+        "modal": "Entrer un seul ID d'un propriétaire du bot.",
+        "placeholder": "ID d'un seul propriétaire",
+        "title": "Auteurs du Bot"
       },
-      "bot_prefix": {
-        "title": "Préfixe",
-        "placeholder": "wumpus!"
-      },
+      "basicinfo": "Informations Basiques",
       "bot_invite": {
-        "title": "URL d'invitation",
-        "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible"
-      },
-      "images": {
-        "cover": {
-          "title": "Photo de couverture",
-          "placeholder": "http:// or https:// - L'image d'arrière-plan affichée sur la page d'accueil du site"
-        },
-        "avatar": {
-          "title": "Avatar du bot",
-          "placeholder": "Lien de l'avatar de votre bot"
-        },
-        "preview": {
-          "title": "Images",
-          "placeholder": "http:// or https:// - Lien vers une image montrant une fonctionnalité de votre bot"
-        }
-      },
-      "bot_support": {
-        "title": "Serveur d'assistance",
-        "placeholder": "Un truc du genre https://discord.gg/8uC6aKZ"
+        "generate": "Générer une URL",
+        "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible",
+        "title": "URL d'invitation"
       },
       "bot_nsfw": {
-        "title": "NSFW"
+        "title": "Non adapté pour toutes les audiances"
+      },
+      "bot_support": {
+        "placeholder": "Un truc du genre https://discord.gg/8uC6aKZ",
+        "small": "Laissez ce champ vide si vous n'aimez pas aider les gens",
+        "title": "Serveur d'assistance"
+      },
+      "category": {
+        "title": "Catégorie"
+      },
+      "client_id": {
+        "modal1": "L'ID du bot est un nombre unique qui identifie les l'utilisateurs associés aux bots. Vous pouvez le récupérer en cliquant sur le bouton \"Copier\" dans le Portail Développeur de Discord.",
+        "modal2": "Vous pouvez également trouver cet ID en activant le \"Mode Développeur\" dans les paramètres Discord, et ensuite faire un click-droit sur votre bot et cliquer sur \"Copier l'identifiant\". Assurez vous de ne pas copier l'ID du message.",
+        "placeholder": "L'ID de l'utilisateur associé au bot",
+        "title": "ID du bot"
+      },
+      "customisable": {
+        "title": "Préfixe customisable"
       },
       "description": {
-        "title": "Description",
-        "placeholder": "Ce bot vous permet de faire de la magie."
+        "title": "Description"
       },
-      "sourcecode": "Répertoire GitHub",
       "github_owner": {
         "title": "Utilisateur ou Organisation",
         "placeholder": "Quelque chose comme ry00001"
@@ -79,93 +146,159 @@
         "title": "Répertoire",
         "placeholder": "Quelque chose comme Tuxedo"
       },
+      "information": "Information",
+      "invite": {
+        "modal": "Veuillez vérifier que \"ID du bot\" a été rempli avec l'ID de votre bot Discord",
+        "title": "URL d'invitation"
+      },
+      "languages": {
+        "add": "Ajouter une langue",
+        "delete": "Supprimer cette language",
+        "modal": "Vous pouvez ajouter d'autres descriptions pour les différentes langues supportées par ce site, afin de mieux cibler votre audience. Pour ajouter une langue, sélectionnez votre langue et cliquez sur \"Ajouter cette langue\". Vous pourrez ensuite remplir les détails pour cette langue.",
+        "title": "Langues"
+      },
+      "mentionable": {
+        "title": "Possibilité de mentionner pour déclencher le bot"
+      },
+      "name": {
+        "title": "Nom"
+      },
       "page": {
-        "title": "Page du bot",
-        "note": "Markdown et HTML autorisés"
-      }
+        "title": "Page"
+      },
+      "bot_prefix": {
+        "placeholder": "Un seul prefix",
+        "title": "Préfixe"
+      },
+      "flags": {
+        "inAppPurchases": {
+          "title": "Achats dans l'application",
+          "small": "Cochez cette case si vous avez des fonctionnalitées payantes"
+        },
+        "adverts": {
+          "title": "Publicités",
+          "small": "Cochez cette case si votre bot affiche des publicités, incluant d'autres listes de bot"
+        }
+      },
+      "images": {
+        "avatar": {
+          "title": "URL de l'Avatar",
+          "placeholder": "Un lien HTTPS vers une image d'avatar"
+        },
+        "cover": {
+          "title": "Image de couverture",
+          "placeholder": "Un lien HTTPS vers une image large"
+        },
+        "preview": {
+          "title": "Images d'aperçu",
+          "placeholder": "Un lien HTTPS vers un seul screenshot"
+        }
+      },
+      "sourcecode": "Code Source",
+      "title": "Ajouter ou Modifier une Application",
+      "triggermethods": "Methodes de déclenchement",
+      "deleteLanguage": "Supprimer une langue",
+      "required": "Les champs marqués avec * sont requis."
     },
     "error": {
-      "notfound": "Page introuvable",
-      "gohome": "Accueil"
+      "notfound": "Page introuvable...",
+      "server": "Désassemblage rapide et inattendu rencontré"
+    },
+    "list": {
+      "invite": "Inviter",
+      "empty": "Il n'y a pas de bots"
+    },
+    "locale": {
+      "choose": "Sélectionnez une langue.",
+      "pleasehelp": "Êtes-vous un bon traducteur ? Cliquez ici."
+    },
+    "notfound": {
+      "gohome": "Aller à l'accueil",
+      "message": "Page introuvable"
+    },
+    "sure": {
+      "title": "Êtes-vous sur ?",
+      "ok": "Ok",
+      "no": "Retour"
     }
   },
-  "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord est une marque déposée de Discord, Inc.\nTraduction en français par iDroid27 et Bowser65.",
-  "intro": {
-    "login": "Se connecter",
-    "logout": "Se déconnecter",
-    "search": "Rechercher...",
-    "language": "Langues"
-  },
-  "footer": {
-    "view": "Voir cette page sur GitHub",
-    "licence": "Licence",
-    "attribution": "Attribution",
-    "source": "Code source",
-    "discord": "Rejoindre Terminal.ink sur Discord",
-    "terminal": "Terminal.ink"
-  },
-  "forms": {
-    "select": "Veuillez sélectionner...",
-    "delete": "Supprimer",
-    "submit": "Soumettre",
-    "add": "Plus?",
-    "help": "Hon?"
-  },
   "permission": {
-    "CREATE_INSTANT_INVITE": "Créer une invitation",
-    "KICK_MEMBERS": "Expulser des membres",
-    "BAN_MEMBERS": "Bannir des membres",
+    "ADD_REACTIONS": "Ajouter des Reactions",
     "ADMINISTRATOR": "Administrateur",
-    "MANAGE_CHANNELS": "Gérer les salons",
-    "MANAGE_GUILD": "Gérer le serveur",
-    "ADD_REACTIONS": "Add Reactions",
-    "VIEW_AUDIT_LOG": "Voir les logs du serveur",
-    "READ_MESSAGES": "Lire les messages",
-    "SEND_MESSAGES": "Envoyer des messages",
-    "SEND_TTS_MESSAGES": "Envoyer des messages TTS",
-    "MANAGE_MESSAGES": "Gérer les messages",
-    "EMBED_LINKS": "Attacher des liens",
     "ATTACH_FILES": "Attacher des fichiers",
-    "READ_MESSAGE_HISTORY": "Voir les anciens messages",
-    "MENTION_EVERYONE": "Mentionner @everyone",
-    "USE_EXTERNAL_EMOJIS": "Utiliser des émojis externes",
-    "CONNECT": "Se connecter",
-    "SPEAK": "Parler",
-    "MUTE_MEMBERS": "Rendre des membres muets",
-    "DEAFEN_MEMBERS": "Rendre des membres sourds",
-    "MOVE_MEMBERS": "Déplacer les membres",
-    "USE_VAD": "Utiliser la détection de voix",
+    "BAN_MEMBERS": "Bannir des membres",
     "CHANGE_NICKNAME": "Changer de pseudo",
+    "CONNECT": "Se connecter",
+    "CREATE_INSTANT_INVITE": "Créer une invitation",
+    "DEAFEN_MEMBERS": "Rendre des membres sourds",
+    "EMBED_LINKS": "Attacher des liens",
+    "KICK_MEMBERS": "Expulser des membres",
+    "MANAGE_CHANNELS": "Gérer les salons",
+    "MANAGE_EMOJIS": "Gérer les émojis",
+    "MANAGE_GUILD": "Gérer le serveur",
+    "MANAGE_MESSAGES": "Gérer les messages",
     "MANAGE_NICKNAMES": "Gérer les pseudos",
     "MANAGE_ROLES": "Gérer les rôles",
     "MANAGE_WEBHOOKS": "Gérer les webhooks",
-    "MANAGE_EMOJIS": "Gérer les émojis"
+    "MENTION_EVERYONE": "Mentionner @everyone",
+    "MOVE_MEMBERS": "Déplacer les membres",
+    "MUTE_MEMBERS": "Rendre des membres muets",
+    "READ_MESSAGE_HISTORY": "Voir les anciens messages",
+    "READ_MESSAGES": "Lire les messages",
+    "SEND_MESSAGES": "Envoyer des messages",
+    "SEND_TTS_MESSAGES": "Envoyer des messages TTS",
+    "SPEAK": "Parler",
+    "USE_EXTERNAL_EMOJIS": "Utiliser des émojis externes",
+    "USE_VAD": "Utiliser la détection de voix",
+    "VIEW_AUDIT_LOG": "Voir les logs du serveur"
   },
-  "locales": {
-    "ar": "Arabic",
-    "da": "Danish",
-    "de": "German",
-    "el": "Greek",
-    "en-GB": "English (United Kingdom)",
-    "es": "Spanish",
-    "et": "Estonian",
-    "fi": "Finnish",
-    "fj": "Fijian",
-    "fr": "French",
-    "gd": "Gaelic (Scottish)",
-    "hi": "Hindi",
-    "it": "Italian",
-    "ja": "Japanese",
-    "ko": "Korean",
-    "la": "Latin",
-    "nl": "Dutch",
-    "no": "Norwegian",
-    "pt": "Portuguese",
-    "ru": "Russian",
-    "sv": "Swedish",
-    "tr": "Turkish",
-    "vi": "Vietnamese",
-    "zh-cn": "Chinese (Simplified)",
-    "zh-tw": "Chinese (Traditional)"
+  "categories": {
+    "fun": "Fun",
+    "games": "Jeux",
+    "entertainment": "Divertissement",
+    "productivity": "Productivité",
+    "education": "Éducation",
+    "image": "Manipulation d'images",
+    "news": "Informations",
+    "music": "Mudique",
+    "moderation": "Moderation",
+    "utility": "Utilitaire",
+    "notifications": "Notifications",
+    "other": "Autre"
+  },
+  "errors": {
+    "bots": {
+      "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
+      "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",
+      "description": "La description courte doit avoir une taille entre 10 et 100 caractères",
+      "githubowner": "Le propriétaire GitHub doit être un utilisateur GitHub valide. Laissez vide si vous n'avez pas de compte GitHub.",
+      "githubrepo": "le répertoire GitHub doit être une chaine de caractères valide. Laissez vide si vous n'avez pas de répertoire GitHub.",
+      "id": "L'ID du bot doit être renseigné, et numerique",
+      "invite": "L'URL d'invitation needs doit être renseignée, et avec un lien HTTPS valide",
+      "languages": "Vous devez ajouter une langue avant de continuer",
+      "mentionable": "la mentionnabilité du préfixe doit être soit coché, ou décoché",
+      "name": "Le bot doit avoir un nom d'une longueur entre 4 et 32 caractères.",
+      "nsfw": "Le status NSFW doit être soit coché, ou décoché",
+      "oauth": "L'ID OAuth doit être numerique",
+      "page": "la longue description dout avoir une longueur entre 20 et 10000 caractères.",
+      "prefix": "Vous devez avoir au moins un prefixe, d'une longueur maximale de 10 caractères.",
+      "support": "L'URL d'assistance doit être un lien HTTPS valide",
+      "exists": "Le bot existe déjà dans la base de données, et vous n'avez pas la permissions d'écraser cela.",
+      "notabot": "L'ID fourni n'était pas un ID de bot.",
+      "notfound": "L'ID fourni n'a pas été trouvé par Discord.",
+      "add_success": "Le bot a été ajouté à la liste d'attente des bots.",
+      "edit_success": "Bot édité avec succès.",
+      "avatar": "L'URL de l'avatar doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
+      "cover": "L'URL de la couverture doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
+      "preview": "Toutes les URL d'aperçu doivent être des liens HTTPS valides, avec une longueur maximale de 2000 caractères chacun, avec un maximum de 20 liens",
+      "no_suitable_lang": "Cette page n'a pas de version Française. '{{ language }}' est affiché à la place."
+    },
+    "permissions": {
+      "login": "Vous n'êtes pas connecté",
+      "denied": "Vous n'avez pas les permissions adéquates afin d'accéder à cela"
+    },
+    "website": {
+      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites."
+    }
   }
 }
