@@ -4,6 +4,8 @@ const config = require('./config');
 
 const app = express();
 
+console.log(config);
+
 app.get('*', (req, res, next) => {
   if (req.get('Authorization') === config.webserver.authorization) {
     next();
