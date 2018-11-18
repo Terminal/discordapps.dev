@@ -68,7 +68,7 @@ class ImageCache {
 
       if (this.blur) {
         fetch(`${config.proxy.host}/${this.url}`, {
-          timeout: 1000,
+          timeout: 30000,
           headers: {
             Authorization: config.proxy.authorization
           }
@@ -94,7 +94,7 @@ class ImageCache {
           });
       } else {
         fetch(`${config.proxy.host}/${this.url}`, {
-          timeout: 1000,
+          timeout: 30000,
           headers: {
             Authorization: config.proxy.authorization
           }
