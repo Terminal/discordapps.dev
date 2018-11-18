@@ -63,7 +63,9 @@
         "one": "Prefix",
         "other": "Prefixe"
       },
-      "shortname": "Bots"
+      "shortname": "Bots",
+      "modified": "Last modified: {{{ date }}}",
+      "created": "First published: {{{ date }}}"
     },
     "docs": {
       "pagename": "Forklift Developer Portal",

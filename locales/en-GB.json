@@ -91,7 +91,8 @@
       "nsfw": "NSFW",
       "offeredby": "Offered By:",
       "modified": "Last modified: {{{ date }}}",
-      "created": "First published: {{{ date }}}"
+      "created": "First published: {{{ date }}}",
+      "category": "Category: {{{ category }}}"
     },
     "configuration": {
       "token": "Token",

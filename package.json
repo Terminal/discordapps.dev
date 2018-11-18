@@ -5,7 +5,7 @@
 	"main": "website/index.js",
 	"scripts": {
 		"test": "eslint .",
-		"start": "node index.js",
+		"website": "node --icu-data-dir=node_modules\\full-icu website/",
 		"sass": "sass --watch src/static/css/"
 	},
 	"repository": {
@@ -26,6 +26,7 @@
 		"express-handlebars": "^3.0.0",
 		"express-session": "^1.15.6",
 		"flat": "^4.1.0",
+		"full-icu": "^1.2.1",
 		"github-username-regex": "^1.0.0",
 		"i18n": "^0.8.3",
 		"joi": "^14.0.4",

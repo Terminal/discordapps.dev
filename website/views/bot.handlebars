@@ -113,6 +113,13 @@
       </p>
     </div>
   </div>
+  {{#if item.category}}
+  <div class="row">
+    <p>
+      {{ i18n __ "pages.bots.category" "category" (i18n __ (concat "categories." item.category)) }}
+    </p>
+  </div>
+  {{/if}}
 </div>
 
 <script src="/js/botpage.js"></script>
