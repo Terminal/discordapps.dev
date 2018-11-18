@@ -31,12 +31,18 @@ const selectableLanguages = Object.keys(config.languages).sort((a, b) => {
 
 router
   .get('/', listMiddleware({
-    verified: true
+    filter: {
+      verified: true
+    }
   }))
   .get('/unverified', listMiddleware({
-    verified: false
+    filter: {
+      verified: false
+    }
   }))
-  .get('/by/:id', listMiddleware('owner'))
+  .get('/by/:id', listMiddleware({
+    filter: 'owner'
+  }))
   .get('/:id', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)

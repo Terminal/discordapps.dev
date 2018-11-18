@@ -27,17 +27,25 @@ const localise = (item, req) => {
   throw new Error('Cannot find any languages for this bot!');
 };
 
-const listMiddleware = (filter = {}) => (req, res, next) => {
-  if (filter === 'owner') {
-    filter = bot => bot('authors').contains(req.params.id);
+const listMiddleware = options => (req, res, next) => {
+  if (options.filter === 'owner') {
+    options.filter = bot => bot('authors').contains(req.params.id);
   }
+
+  const limit = parseInt(req.query.limit, 10) || 12;
+  const page = parseInt(req.query.page, 10) || 0;
 
   r.table('bots')
     .orderBy(r.desc('random'))
-    .filter(filter)
+    .filter(options.filter || {})
+    .skip(limit * page)
+    .limit(limit + 1) // 1 more for checking next page
     .then((list) => {
       res.render('list', {
-        list: list.map(item => localise(item, req))
+        list: list.map(item => localise(item, req)),
+        page,
+        previous: page - 1,
+        next: page + 1
       });
     })
     .catch((err) => {

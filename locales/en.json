@@ -19,8 +19,14 @@
     "submit": "Submit"
   },
   "pagination": {
-    "prev": "prev",
-    "next": "next"
+    "image": {
+      "prev": "Back",
+      "next": "Next"
+    },
+    "page": {
+      "prev": "Previous",
+      "next": "Next Page"
+    }
   },
   "intro": {
     "login": "Login via Discord",

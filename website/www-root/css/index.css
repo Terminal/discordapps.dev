@@ -34,6 +34,9 @@
   text-decoration: none;
   cursor: pointer; }
 
+.ls-nocursor {
+  cursor: unset; }
+
 footer {
   color: #fff; }
 

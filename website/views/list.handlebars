@@ -1,7 +1,26 @@
 <div class="center-text card-container">
   {{#each list}}
-    {{> card __=../__ item=this}}
+    {{#if (isEqual @index 12)}}
+      
+    {{else}}
+      {{> card __=../__ item=this}}
+    {{/if}}
   {{else}}
     {{i18n __ 'pages.list.empty'}}
   {{/each}}
+</div>
+<div class="ls-flex-row ls-left-pad center">
+  {{#unless (isEqual page 0)}}
+  <a class="btn white black-text" href="/bots?page={{previous}}">
+    {{ i18n __ 'pagination.page.prev' }}
+  </a>
+  {{/unless}}
+  <span class="btn asbestos-nodark ls-nocursor">
+    {{ page }}
+  </span>
+  {{#if (isEqual list.length 13)}}
+  <a class="btn white black-text" href="/bots?page={{next}}">
+    {{ i18n __ 'pagination.page.next' }}
+  </a>
+  {{/if}}
 </div>
