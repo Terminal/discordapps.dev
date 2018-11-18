@@ -30,9 +30,6 @@ const fetch = require('node-fetch');
 const sharp = require('sharp');
 const r = require('../rethinkdb');
 const config = require('../config');
-const HttpsProxyAgent = require('https-proxy-agent');
-
-const proxy = config.proxy ? new HttpsProxyAgent(config.proxy) : null;
 
 const defaultImage = path.join(__dirname, '..', 'www-root', 'img', 'logo', 'logo.svg');
 
@@ -70,9 +67,11 @@ class ImageCache {
       };
 
       if (this.blur) {
-        fetch(this.url, {
+        fetch(`${config.proxy.host}/${this.url}`, {
           timeout: 1000,
-          agent: proxy
+          headers: {
+            Authorization: config.proxy.authorization
+          }
         })
           .then(res => res.buffer())
           .then((buffer) => {
@@ -94,9 +93,11 @@ class ImageCache {
             reject(err);
           });
       } else {
-        fetch(this.url, {
+        fetch(`${config.proxy.host}/${this.url}`, {
           timeout: 1000,
-          agent: proxy
+          headers: {
+            Authorization: config.proxy.authorization
+          }
         })
           .then(res => res.buffer())
           .then((buffer) => {
