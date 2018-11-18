@@ -1,0 +1,23 @@
+<a class="{{class}}" aria-label="Languages" href="/locale">
+  <span class="emoji twa-globe-showing-europe-africa" />
+</a>
+{{#if user.id}}
+  <a class="{{class}}" href="/bots/add">
+    {{i18n __ "pages.bots.add"}}
+  </a>
+  <a class="{{class}}" href="/bots/by/{{user.id}}">
+    {{user.username}}
+  </a>
+  <a class="{{class}}" href="/auth/logout">
+    {{i18n __ "intro.logout"}}
+  </a>
+{{else}}
+  <a class="{{class}}" href="/auth">
+    {{i18n __ "intro.login"}}
+  </a>
+{{/if}}
+{{#if user.admin}}
+  <a class="{{class}}" href="/admin">
+    {{i18n __ "intro.admin"}}
+  </a>
+{{/if}}

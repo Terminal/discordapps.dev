@@ -32,7 +32,8 @@
     "login": "Login via Discord",
     "logout": "Logout",
     "search": "Search...",
-    "admin": "Admin"
+    "admin": "Admin",
+    "docs": "Documentation"
   },
   "locales": {
     "ar": "Arabic",
