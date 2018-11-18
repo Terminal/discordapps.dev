@@ -1,0 +1,6 @@
+{
+  "webserver": {
+    "port": 8080,
+    "authorization": "hahayes"
+  }
+}

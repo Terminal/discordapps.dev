@@ -28,6 +28,8 @@
 		"flat": "^4.1.0",
 		"full-icu": "^1.2.1",
 		"github-username-regex": "^1.0.0",
+		"http-proxy-agent": "^2.1.0",
+		"https-proxy-agent": "^2.2.1",
 		"i18n": "^0.8.3",
 		"joi": "^14.0.4",
 		"jsonwebtoken": "^8.4.0",

@@ -43,12 +43,16 @@ router
   .get('/by/:id', listMiddleware({
     filter: 'owner'
   }))
+  .get('/category/:category', listMiddleware({
+    filter: 'category'
+  }))
   .get('/:id', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .merge(bot => ({
         authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
       }))
+      .default(null)
       .then((item) => {
         if (!item) {
           next();

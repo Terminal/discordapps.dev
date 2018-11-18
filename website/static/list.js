@@ -28,8 +28,15 @@ const localise = (item, req) => {
 };
 
 const listMiddleware = options => (req, res, next) => {
+  let filter = {};
   if (options.filter === 'owner') {
-    options.filter = bot => bot('authors').contains(req.params.id);
+    filter = bot => bot('authors').contains(req.params.id);
+  }
+
+  if (options.filter === 'category') {
+    filter = {
+      category: req.params.category
+    };
   }
 
   const limit = parseInt(req.query.limit, 10) > 0 ? parseInt(req.query.limit, 10) : 12;
@@ -37,7 +44,7 @@ const listMiddleware = options => (req, res, next) => {
 
   r.table('bots')
     .orderBy(r.desc('random'))
-    .filter(options.filter || {})
+    .filter(filter || {})
     .skip(limit * page)
     .limit(limit + 1) // 1 more for checking next page
     .then((list) => {
