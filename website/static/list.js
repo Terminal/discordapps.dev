@@ -32,8 +32,8 @@ const listMiddleware = options => (req, res, next) => {
     options.filter = bot => bot('authors').contains(req.params.id);
   }
 
-  const limit = parseInt(req.query.limit, 10) || 12;
-  const page = parseInt(req.query.page, 10) || 0;
+  const limit = parseInt(req.query.limit, 10) > 0 ? parseInt(req.query.limit, 10) : 12;
+  const page = parseInt(req.query.page, 10) >= 0 ? parseInt(req.query.page, 10) : 0;
 
   r.table('bots')
     .orderBy(r.desc('random'))
@@ -44,8 +44,9 @@ const listMiddleware = options => (req, res, next) => {
       res.render('list', {
         list: list.map(item => localise(item, req)),
         page,
+        limit,
         previous: page - 1,
-        next: page + 1
+        next: page + 1,
       });
     })
     .catch((err) => {

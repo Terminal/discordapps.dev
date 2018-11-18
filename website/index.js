@@ -60,7 +60,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       concat: (...args) => args.slice(0, -1).join(''),
       isArray: value => Array.isArray(value),
       or: (var1, var2) => var1 || var2,
-      isEqual: (var1, var2) => var1 === var2
+      isEqual: (var1, var2) => var1 === var2,
+      add: (var1, var2) => var1 + var2
     },
   }))
   .use(bodyParser.json())
