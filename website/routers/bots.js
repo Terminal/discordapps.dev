@@ -259,7 +259,7 @@ router
                   conflict: 'replace'
                 })
                 .then(() => {
-                  discordWebhooks(`<@${req.user.id}> ${type} <@${value.id}> - ${config.webserver.location}bots/${value.id}`);
+                  discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.location}bots/${value.id}`);
                   res.json({
                     ok: true,
                     message: res.__(message),
