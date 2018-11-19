@@ -204,7 +204,9 @@
     },
     "error": {
       "notfound": "Page not found...",
-      "server": "Unexpected rapid disassembly encountered"
+      "server": "Unexpected rapid disassembly encountered",
+      "github": "Report this error at GitHub.com",
+      "report": "Thanks for taking the time to report this error. Please type in what you were doing before the incident."
     },
     "list": {
       "invite": "Invite",

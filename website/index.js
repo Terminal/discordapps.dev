@@ -133,7 +133,9 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     if (err) {
       res.status(500).render('error', {
         message: res.__('pages.error.server'),
-        err
+        err,
+        githubTitle: `Error with ${req.method} with link ${req.originalURL || req.url}`,
+        githubBody: encodeURIComponent(`${res.__('pages.error.report')}\n\n\n\n---\nURL: ${req.originalURL || req.url}\nMETHOD: ${req.method}\n\n\`\`\`\n${err.stack}\n\`\`\``)
       });
     } else {
       next();
