@@ -293,7 +293,7 @@
       "avatar": "Die Avatar URL muss ein gültiger HTTPS Link sein und darf nicht länger als 2000 Zeichn sein",
       "cover": "Das Cover URL muss ein gültiger HTTPS Link sein und darf nicht länger als 2000 Zeichn sein",
       "preview": "Die Vorschau URLs müssen gültige HTTPS Links sein, dürfen jeweils nicht länger als 2000 Zeichn sein und es dürfen maximal 20 Links sein.",
-      "no_suitable_lang": "Diese Seite hat keine Englische version. '{{ language }}' wird stattdessen angezeigt."
+      "no_suitable_lang": "Diese Seite hat keine Deutsche version. '{{ language }}' wird stattdessen angezeigt."
     },
     "permissions": {
       "login": "Du bist nicht eingeloggt",
