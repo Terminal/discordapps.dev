@@ -27,8 +27,11 @@ Setup will take about 12 hours.
 ## Licence
 All files (except the exceptions below) are licenced under the GNU Affero General Public Licence.
 
+For licencing without the GNU AGPL, contact `7coil#3175` or email at `admin@moustacheminer.com`
+
 ### Exceptions
-`/website/www-root/js/modalPerms.js` is licenced under the MIT licence.
+- `/website/www-root/js/modalPerms.js` is licenced under the MIT licence.
+- `/website/class/ImageCache.js` is licenced under the MIT licence.
 
 ## Versions
 This is Version 10 of ls.terminal.ink.
