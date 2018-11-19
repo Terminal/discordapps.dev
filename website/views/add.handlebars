@@ -40,9 +40,9 @@
       <div class="one-half column">
         <label for="bot.category">{{ i18n __ "pages.edit.category.title"}}{{> required }}</label>
         <select name="bot.category" class="full-width" value="{{item.support}}">
-          <option disabled selected>{{ i18n __ "forms.select" }}</option>
+          <option disabled {{#unless item.category}}selected{{/unless}}>{{ i18n __ "forms.select" }}</option>
           {{#each categories}}
-          <option value={{this}}>{{ i18n ../__ (concat "categories." this) }}</option>
+          <option value={{this}} {{#if (isEqual this ../item.category)}}selected{{/if}}>{{ i18n ../__ (concat "categories." this) }}</option>
           {{/each}}
         </select>
       </div>
@@ -109,7 +109,7 @@
           <select form="null" id="language" class="full-width">
             <option disabled selected>{{ i18n __ "forms.select" }}</option>
             {{#each selectableLanguages}}
-              <option value={{this}}>{{i18n ../__ (concat "locales." this)}}</option>
+              <option value="{{this}}">{{i18n ../__ (concat "locales." this)}}</option>
             {{/each}}
           </select>
           <button type="button" id="add-language-button" onclick="addLanguage(this)" class="ls-button">{{ i18n __ "pages.edit.languages.add"}}</button>
