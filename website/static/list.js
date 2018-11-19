@@ -1,5 +1,6 @@
 const r = require('../rethinkdb');
 const config = require('../config');
+const ImageCache = require('../class/ImageCache');
 
 const localise = (item, req) => {
   if (item.contents[req.getLocale()]) {
@@ -30,6 +31,7 @@ const localise = (item, req) => {
 const listMiddleware = options => (req, res, next) => {
   let filter = {};
   let title = null;
+  let avatar = null;
 
   const checkDatabase = () => {
     const limit = parseInt(req.query.limit, 10) > 0 ? parseInt(req.query.limit, 10) : 12;
@@ -57,7 +59,8 @@ const listMiddleware = options => (req, res, next) => {
           limit,
           previous: page - 1,
           next: page + 1,
-          title
+          title,
+          avatar
         });
       })
       .catch((err) => {
@@ -74,7 +77,15 @@ const listMiddleware = options => (req, res, next) => {
           title = res.__('pages.bots.ownerFilter', {
             name: `${user.username}#${user.discriminator}`
           });
-          checkDatabase();
+          const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`, 512, 512);
+          cache.cache()
+            .then(() => {
+              checkDatabase();
+              avatar = cache.permalink;
+            })
+            .catch(() => {
+              checkDatabase();
+            });
         } else {
           next();
         }
