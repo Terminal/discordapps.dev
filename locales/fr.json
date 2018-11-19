@@ -204,6 +204,10 @@
       "notfound": "Page introuvable...",
       "server": "Désassemblage rapide et inattendu rencontré"
     },
+    "website": {
+      "title": "Site internet",
+      "placeholder": "Un lien HTTPS vers votre site internet"
+    },
     "list": {
       "invite": "Inviter",
       "empty": "Il n'y a pas de bots"
