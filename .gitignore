@@ -3,4 +3,3 @@ rethinkdb_data/
 website/config/*.json
 proxy/config/*.json
 website/www-root/appdata/*
-website/www-root/css/*
