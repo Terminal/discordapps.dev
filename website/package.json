@@ -2,10 +2,10 @@
 	"name": "forklift",
 	"version": "10.0.0",
 	"description": "The Express server that hosts the bot directory listing.",
-	"main": "website/index.js",
+	"main": "index.js",
 	"scripts": {
 		"test": "eslint .",
-		"website": "node --icu-data-dir=node_modules/full-icu website/",
+		"website": "node --icu-data-dir=node_modules/full-icu index.js",
 		"sass": "sass --watch src/static/css/"
 	},
 	"repository": {
