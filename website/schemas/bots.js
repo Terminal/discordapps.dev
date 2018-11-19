@@ -27,6 +27,7 @@ const schema = joi.object({
   id: joi.string().regex(/^[0-9]+$/, 'numbers').required().error(new Error('errors.bots.id')),
   oauth: joi.string().regex(/^[0-9]+$/, 'numbers').allow(null).error(new Error('errors.bots.oauth')),
   invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.bots.invite')),
+  website: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.website')),
   support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.bots.support')),
   authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).min(1).max(10).required().error(new Error('errors.bots.authors')),
   nsfw: joi.bool().error(new Error('errors.bots.nsfw')),

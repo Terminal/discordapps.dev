@@ -4,6 +4,11 @@
     {{i18n __ "pages.bots.support"}}
   </a>
   {{/if}}
+  {{#if item.website}}
+  <a href="{{item.website}}">
+    {{i18n __ "pages.bots.website"}}
+  </a>
+  {{/if}}
   {{#if item.github.owner}}
   {{#if item.github.repo}}
   <a href="https://github.com/{{item.github.owner}}/{{item.github.repo}}">

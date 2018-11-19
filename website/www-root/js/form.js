@@ -159,6 +159,10 @@ window.deleteLanguage = (id) => {
   const form = document.getElementById('edit-form');
   const formMessage = document.getElementById('form-message');
   const formMessageText = formMessage.getElementsByTagName('p')[0];
+  const inputs = [...form.getElementsByTagName('input'), ...form.getElementsByTagName('select')];
+
+  const pleaseWait = formMessage.dataset.wait;
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     Object.keys(window.editors).forEach((languageCode) => {
@@ -169,7 +173,13 @@ window.deleteLanguage = (id) => {
       }
     });
 
+    formMessage.classList.remove('hidden');
+    formMessage.classList.add('asbestos');
+    formMessageText.innerText = pleaseWait;
+
     const formdata = new FormData(form);
+    inputs.forEach(input => input.setAttribute('disabled', ''));
+
     fetch('/bots/add', {
       method: 'POST',
       body: formdata,
@@ -177,11 +187,12 @@ window.deleteLanguage = (id) => {
       .then(data => data.json())
       .then((data) => {
         if (data.ok) {
-          formMessage.classList.remove('hidden', 'alizarin');
+          formMessage.classList.remove('alizarin', 'asbestos');
           formMessage.classList.add('emerald');
         } else {
-          formMessage.classList.remove('hidden', 'emerald');
+          formMessage.classList.remove('emerald', 'asbestos');
           formMessage.classList.add('alizarin');
+          inputs.forEach(input => input.removeAttribute('disabled'));
         }
 
         if (data.redirect) {

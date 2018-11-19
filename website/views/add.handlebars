@@ -49,6 +49,10 @@
     </div>
     <div class="row">
       <div class="one-half column">
+        <label for="bot.website">{{ i18n __ "pages.edit.website.title"}}</label>
+        <input name="bot.website" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.website.placeholder"}}" value="{{item.website}}">
+      </div>
+      <div class="one-half column">
         <label for="bot.nsfw">{{ i18n __ "pages.edit.bot_nsfw.title"}}</label>
         <input name="bot.nsfw" type="checkbox" {{#if item.nsfw}}checked="on"{{/if}}>
       </div>
@@ -137,8 +141,8 @@
       {{/each}}
     </div>
     <button class="btn white black-text">{{ i18n __ "forms.submit"}}</button>
-    <div class="box-container alizarin message hidden" id="form-message">
-      <p>Unexpectedly encountered un-encounterable unexpected message.</p>
+    <div class="box-container alizarin message hidden" id="form-message" data-wait="{{ i18n __ "forms.wait" }}">
+      <p>{{ i18n __ "forms.wait" }}</p>
     </div>
   </form>
 </div>

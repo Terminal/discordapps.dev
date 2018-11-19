@@ -16,7 +16,8 @@
     "delete": "Delete",
     "help": "🤔",
     "select": "Please select...",
-    "submit": "Submit"
+    "submit": "Submit",
+    "wait": "Please wait..."
   },
   "pagination": {
     "image": {
@@ -70,6 +71,7 @@
       "description": "A test open source bot list",
       "invite": "Add this bot",
       "support": "Technical Support",
+      "website": "Website",
       "pagename": "Project Forklift",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
@@ -196,6 +198,10 @@
           "placeholder": "A HTTPS link to a single screenshot"
         }
       },
+      "website": {
+        "title": "Website",
+        "placeholder": "A HTTPS link to your website"
+      },
       "sourcecode": "Source Code",
       "title": "Add or Edit an Application",
       "triggermethods": "Trigger Methods",
@@ -279,6 +285,7 @@
       "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
       "id": "The Bot ID needs to be filled out, and numeric",
       "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
+      "website": "The Website URL needs to be a valid HTTPS link",
       "languages": "You must add a single language before continuing",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
       "name": "The bot must have a name of length between 4 and 32.",
