@@ -6,8 +6,10 @@
 <link rel="stylesheet" href="/css/index.css" />
 {{#if title}}
   <title>{{title}} - {{i18n __ "pages.bots.pagename"}}</title>
+  <meta property="og:title" content="{{title}} - {{i18n __ "pages.bots.pagename"}}"/>
 {{else}}
   <title>{{i18n __ "pages.bots.pagename"}}</title>
+  <meta property="og:title" content="{{i18n __ "pages.bots.pagename"}}"/>
 {{/if}}
 
 {{#if description}}
