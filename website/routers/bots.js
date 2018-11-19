@@ -67,7 +67,7 @@ router
           res.render('bot', {
             item: bot,
             contents,
-            canEdit: req.user ? item.authors.includes(req.user.id) || req.user.admin : false,
+            canEdit: req.user ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
             cover: bot.cachedImages ? bot.cachedImages.cover : null,
             edited: (new Date(item.edited)).toLocaleDateString(req.getLocale(), config.dateformat),
             created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat),

@@ -215,7 +215,8 @@ button.btn {
 
 .ls-carousel-item {
   width: 100%;
-  height: 30em; }
+  height: 30em;
+  background-size: cover; }
   .ls-carousel-item .ls-carousel-item-content {
     text-align: left;
     padding: 3em;
