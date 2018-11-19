@@ -1,6 +1,6 @@
 const express = require('express');
 const fetch = require('node-fetch');
-const config = require('./config/index.json');
+const config = require('./config/index');
 
 const app = express();
 
