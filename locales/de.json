@@ -284,7 +284,7 @@
       "oauth": "Die OAuth ID muss nummerisch sein",
       "page": "Die lange Beschreibung muss zwischen 20 und 10000 Zeichen lang sein",
       "prefix": "Du musst mindestens einen Prefix haben, welcher maximal 10 Zeichen lang ist.",
-      "support": "Der Support-link muss ein gültiger HTTPS Link sein"
+      "support": "Der Support-link muss ein gültiger HTTPS Link sein",
       "exists": "Der Bot existiert bereits in der Datenbank und du hast keine Berechtigung, dies zu überschreiben.",
       "notabot": "Die angegebene ID ist nicht von einem Bot.",
       "notfound": "Die angegebene ID wurde von Discord nicht gefunden.",
