@@ -1,41 +1,36 @@
 const xss = require('xss');
 // const ImageCache = require('../class/ImageCache');
 
-module.exports = html => xss(html, {
-  whiteList: {
-    iframe: ['src', 'class'],
-    style: [],
-    link: ['href', 'rel', 'type'],
-    ...xss.whiteList
-  }
-});
-
-// module.exports = html => new Promise((resolve, reject) => {
-//   const promises = [];
-
-//   const output = xss(html, {
-//     whiteList: {
-//       iframe: ['src', 'class'],
-//       style: [],
-//       link: ['href', 'rel', 'type'],
-//       ...xss.whiteList
-//     },
-//     onTagAttr(tag, name, value) {
-//       if (tag === 'img' && name === 'src') {
-//         const cache = new ImageCache(value);
-//         // Marked is synchronous. This hack makes it do Marked, download, and then render.
-//         promises.push(cache.cache());
-//         return `src="${cache.permalink}"`;
-//       }
-//       return undefined;
-//     }
-//   });
-
-//   Promise.all(promises)
-//     .then(() => {
-//       resolve(output);
-//     })
-//     .catch((err) => {
-//       reject(err);
-//     });
-// });
+module.exports = {
+  lenient(html) {
+    return xss(html, {
+      whiteList: {
+        iframe: ['src', 'class'],
+        style: [],
+        link: ['href', 'rel', 'type'],
+        ...xss.whiteList
+      }
+    });
+  },
+  strict(html) {
+    return xss(html, {
+      whiteList: {
+        p: [],
+        span: [],
+        code: [],
+        b: [],
+        i: [],
+        li: [],
+        ul: [],
+        ol: [],
+        del: [],
+        h1: ['id'],
+        h2: ['id'],
+        h3: ['id'],
+        h4: ['id'],
+        h5: ['id'],
+        h6: ['id']
+      }
+    });
+  },
+};

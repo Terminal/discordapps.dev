@@ -63,7 +63,7 @@ router
             sanitize: !item.legacy
           });
 
-          const contents = xss(marked(bot.contents.page));
+          const contents = xss[item.legacy ? 'lenient' : 'strict'](marked(bot.contents.page));
           res.render('bot', {
             item: bot,
             contents,
