@@ -29,7 +29,7 @@ const localise = (item, req) => {
 };
 
 const listMiddleware = options => (req, res, next) => {
-  let filter = {};
+  let filter = options.filter || {};
   let title = null;
   let avatar = null;
 
