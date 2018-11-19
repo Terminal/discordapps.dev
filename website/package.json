@@ -5,7 +5,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "eslint .",
-		"website": "node --icu-data-dir=node_modules/full-icu index.js",
+		"start": "node --icu-data-dir=node_modules/full-icu index.js",
 		"sass": "sass --watch src/static/css/"
 	},
 	"repository": {

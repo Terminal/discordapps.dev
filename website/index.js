@@ -17,6 +17,7 @@ const botsRouter = require('./routers/bots');
 const langRouter = require('./routers/locales');
 const adminRouter = require('./routers/admin');
 const v1Router = require('./routers/v1');
+const docsRouter = require('./routers/docs');
 const { localise } = require('./static/list');
 
 require('./static/banner');
@@ -85,7 +86,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     prefix: '/css',
   }))
   .use(express.static(path.join(__dirname, 'www-root')))
-  .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
+  .use('/node_modules/', express.static(path.join(__dirname, 'node_modules')))
   .use((req, res, next) => {
     if (req.user) {
       req.user.admin = req.user && config.owners.includes(req.user.id);
@@ -124,6 +125,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/admin', adminRouter)
   .use('/api', v1Router)
   .use('/api/v1', v1Router)
+  .use('/docs', docsRouter)
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')
