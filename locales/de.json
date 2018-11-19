@@ -2,9 +2,11 @@
   "copyright": "Copyright 2017 - 2018, Terminal.ink\nDiscord ist eine eingetragene Marke von Discord Inc.",
   "footer": {
     "attribution": "Zuordnung",
-    "licence": "Lizenz",
-    "source": "Quellcode",
-    "terminal": "Besuche Terminal.ink auf Discord",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "docs": "Doks",
     "view": "Diese Seite auf GitHub ansehen"
   },
   "forms": {
@@ -16,11 +18,23 @@
     "select": "Bitte wählen...",
     "submit": "Einreichen"
   },
+  "pagination": {
+    "image": {
+      "prev": "Zurück",
+      "next": "Vorwärts"
+    },
+    "page": {
+      "prev": "Vorherige",
+      "next": "Nächste Seite"
+    },
+    "currentPage": "Seite {{{ number }}}"
+  },
   "intro": {
-    "language": "Sprachen",
     "login": "Via Discord einloggen",
     "logout": "Ausloggen",
-    "search": "Suchen..."
+    "search": "Suchen...",
+    "admin": "Admin",
+    "docs": "Dokumentation"
   },
   "locales": {
     "ar": "Arabisch",
@@ -53,23 +67,38 @@
     "bots": {
       "add": "Eigenen Bot hinzufügen",
       "backgroundAlt": "Das Logo für Discord Forklift",
-      "description": "Ein Open source botlist test",
+      "description": "Eine Open source Test Botliste",
       "invite": "Diesen Bot hinzufügen",
       "support": "Technischer Support",
       "pagename": "Projekt Forklift",
       "mentionable": "Erwähnbar",
       "customisable": "Änderbar",
+      "delete": "Löschen",
+      "edit": "Editieren",
+      "configure": "Konfigurieren",
+      "github": "Auf GitHub ansehen",
+      "approve": "Annehmen",
+      "deny": "Ablehnen",
       "prefix": {
         "one": "Prefix",
         "other": "Prefixe"
       },
       "shortname": "Bots",
-      "modified": "Last modified: {{{ date }}}",
-      "created": "First published: {{{ date }}}"
+      "more": "Zeige mehr",
+      "less": "Zeige weniger",
+      "adverts": "Enthält Werbung",
+      "inAppPurchases": "Hat in-app Käufe",
+      "unverified": "Unbestätigt",
+      "nsfw": "NSFW",
+      "offeredby": "Angeboten von:",
+      "modified": "Zuletzt bearbeitet: {{{ date }}}",
+      "created": "Zuerst veröffentlicht: {{{ date }}}",
+      "category": "Kategorie: {{{ category }}}",
+      "ownerFilter": "Bots von {{{ name }}}"
     },
-    "docs": {
-      "pagename": "Forklift Developer Portal",
-      "shortname": "Docs"
+    "configuration": {
+      "token": "Token",
+      "renew": "Token erneuern"
     },
     "edit": {
       "application_id": {
@@ -84,7 +113,7 @@
       },
       "basicinfo": "Einfache informationen",
       "bot_invite": {
-        "generate": "Erstelle einen Link",
+        "generate": "Erstelle eine URL",
         "placeholder": "https://discordapp.com/oauth/ oder ein ähnlicher Link",
         "title": "Einladungs URL"
       },
@@ -95,6 +124,9 @@
         "placeholder": "Soetwas wie: https://discord.gg/8uC6aKZ",
         "small": "Lass dieses Feld leer, wenn du nicht gerne anderen hilfst",
         "title": "Support URL"
+      },
+      "category": {
+        "title": "Kategorie"
       },
       "client_id": {
         "modal1": "Die Bot ID ist eine Nummer, welche den Bot einzigartig identifiziert. Du kannst Ihn erhalten, wenn du auf den \"Copy\" Knopf im Discord Developer Portal klickst.",
@@ -140,17 +172,43 @@
         "placeholder": "Ein einzelner Prefix",
         "title": "Prefix"
       },
+      "flags": {
+        "inAppPurchases": {
+          "title": "In-App käufe",
+          "small": "Aktiviere dieses Kontrollkästchen, wenn du Funktionen hinter einer Paywall hast"
+        },
+        "adverts": {
+          "title": "Werbung",
+          "small": "Aktiviere dieses Kontrollkästchen, wenn dein Bot Werbung anzeigt (Auch andere Botlists)"
+        }
+      },
+      "images": {
+        "avatar": {
+          "title": "Avatar URL",
+          "placeholder": "Ein HTTPS Link zu einem Avatar Bild"
+        },
+        "cover": {
+          "title": "Cover Bild",
+          "placeholder": "Ein HTTPS Link zu einem grossen Bild"
+        },
+        "preview": {
+          "title": "Vorschaubilder",
+          "placeholder": "Ein HTTPS Link zu einem einzelnen Screenshot"
+        }
+      },
       "sourcecode": "Quellcode",
       "title": "Hinzufügen oder bearbeiten einer Anwendung",
       "triggermethods": "Trigger Methoden",
-      "deleteLanguage": "Eine Sprache löschen"
+      "deleteLanguage": "Eine Sprache löschen",
+      "required": "Mit * Felder sind auszufüllen."
     },
     "error": {
       "notfound": "Seite nicht gefunden...",
       "server": "Unerwartet schnelle Demontage festgestellt"
     },
     "list": {
-      "invite": "Einladen"
+      "invite": "Einladen",
+      "empty": "Da sind keine Bots"
     },
     "locale": {
       "choose": "Bitte wähle eine Sprache.",
@@ -159,6 +217,11 @@
     "notfound": {
       "gohome": "Hauptseite",
       "message": "Seite nicht gefunden"
+    },
+    "sure": {
+      "title": "Bist du dir sicher?",
+      "ok": "Ok",
+      "no": "Zurück gehen"
     }
   },
   "permission": {
@@ -191,6 +254,20 @@
     "USE_VAD": "Sprachaktivierung verwenden",
     "VIEW_AUDIT_LOG": "Auditlogs ansehen"
   },
+  "categories": {
+    "fun": "Fun",
+    "games": "Spiele",
+    "entertainment": "Unterhaltung",
+    "productivity": "Produktivität",
+    "education": "Bildung",
+    "image": "Bildmanipulation",
+    "news": "Nachrichten",
+    "music": "Musik",
+    "moderation": "Moderation",
+    "utility": "Utility",
+    "notifications": "Meldungen",
+    "other": "Andere"
+  },
   "errors": {
     "bots": {
       "authors": "Du musst mindestens einen Autor haben und alle Autor IDs müssen nummerisch sein",
@@ -208,6 +285,25 @@
       "page": "Die lange Beschreibung muss zwischen 20 und 10000 Zeichen lang sein",
       "prefix": "Du musst mindestens einen Prefix haben, welcher maximal 10 Zeichen lang ist.",
       "support": "Der Support-link muss ein gültiger HTTPS Link sein"
+      "exists": "Der Bot existiert bereits in der Datenbank und du hast keine Berechtigung, dies zu überschreiben.",
+      "notabot": "Die angegebene ID ist nicht von einem Bot.",
+      "notfound": "Die angegebene ID wurde von Discord nicht gefunden.",
+      "add_success": "Bot wurde zur Botlist-Warteschlange hinzugefügt.",
+      "edit_success": "Bot erfolgreich editiert.",
+      "avatar": "Die Avatar URL muss ein gültiger HTTPS Link sein und darf nicht länger als 2000 Zeichn sein",
+      "cover": "Das Cover URL muss ein gültiger HTTPS Link sein und darf nicht länger als 2000 Zeichn sein",
+      "preview": "Die Vorschau URLs müssen gültige HTTPS Links sein, dürfen jeweils nicht länger als 2000 Zeichn sein und es dürfen maximal 20 Links sein.",
+      "no_suitable_lang": "Diese Seite hat keine Englische version. '{{ language }}' wird stattdessen angezeigt."
+    },
+    "permissions": {
+      "login": "Du bist nicht eingeloggt",
+      "denied": "Du hast nicht die richtigen Berechtigungen um darauf zugreiffen zu können"
+    },
+    "website": {
+      "noscript": "JavaScripts wurden deaktiviert. Funktionalität könnte verringert sein."
     }
+  },
+  "site": {
+    "description": "ls.terminal.ink ist eine Open source Webseite, wo du Bots für deinen Server finden kannst."
   }
 }
