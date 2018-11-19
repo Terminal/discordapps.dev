@@ -67,12 +67,12 @@
   "pages": {
     "bots": {
       "add": "Add your own bot",
-      "backgroundAlt": "The logo for Discord Forklift",
-      "description": "A test open source bot list",
+      "backgroundAlt": "The logo for ls.terminal.ink",
+      "description": "An application store for Discord bots",
       "invite": "Add this bot",
       "support": "Technical Support",
       "website": "Website",
-      "pagename": "Project Forklift",
+      "pagename": "ls.terminal.ink",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
       "delete": "Delete",
@@ -313,6 +313,6 @@
     }
   },
   "site": {
-    "description": "ls.terminal.ink is an open source website where you can obtain bots for your server."
+    "description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
   }
 }
