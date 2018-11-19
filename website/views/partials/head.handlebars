@@ -1,0 +1,30 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/ModestaCSS/css/modesta.min.css" />
+<link rel="stylesheet" href="/ModestaCSS/css/twemoji.min.css" />
+<link rel="stylesheet" href="/node_modules/tiny-slider/dist/tiny-slider.css" />
+<link rel="stylesheet" href="/css/index.css" />
+{{#if title}}
+  <title>{{title}} - {{i18n __ "pages.bots.pagename"}}</title>
+{{else}}
+  <title>{{i18n __ "pages.bots.pagename"}}</title>
+{{/if}}
+
+{{#if description}}
+  <meta property="og:description" content="{{description}}"/>
+  <meta name="description" content="{{description}} - {{i18n __ "pages.bots.pagename"}}"/>
+{{else}}
+  <meta property="og:description" content="{{i18n __ "site.description"}}"/>
+  <meta name="description" content="{{i18n __ "site.description"}} - {{i18n __ "pages.bots.pagename"}}"/>
+{{/if}}
+
+{{#if avatar}}
+  <meta property="og:image" content="{{avatar}}"/>
+  <link rel="icon" type="image/x-icon" href="{{avatar}}"/>
+{{else}}
+  <meta property="og:image" content="/img/logo/logo128.png"/>
+  <link rel="icon" type="image/x-icon" href="/img/logo/logo64.png"/>
+{{/if}}
+<meta name="revisit-after" content="2 days"/>
+<meta name="keywords" content="ls.terminal.ink, ls, list, botsfordiscord, discord, bots, botlist"/>
+<meta name="theme-color" content="#3498db"/>

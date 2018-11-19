@@ -26,7 +26,8 @@
     "page": {
       "prev": "Previous",
       "next": "Next Page"
-    }
+    },
+    "currentPage": "Page {{{ number }}}"
   },
   "intro": {
     "login": "Login via Discord",
@@ -92,7 +93,8 @@
       "offeredby": "Offered By:",
       "modified": "Last modified: {{{ date }}}",
       "created": "First published: {{{ date }}}",
-      "category": "Category: {{{ category }}}"
+      "category": "Category: {{{ category }}}",
+      "ownerFilter": "Bots by {{{ name }}}"
     },
     "configuration": {
       "token": "Token",
@@ -300,5 +302,8 @@
     "website": {
       "noscript": "JavaScript has been disabled. Functionality may be reduced."
     }
+  },
+  "site": {
+    "description": "ls.terminal.ink is an open source website where you can obtain bots for your server."
   }
 }
