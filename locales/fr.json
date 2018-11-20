@@ -1,5 +1,5 @@
 {
-  "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord est une marque déposée Discord Inc.\nTraduction en français par iDroid27 et Bowser65.",
+  "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord est une marque déposée Discord Inc.\nTraduction en français par iDroid27, Bowser65 et blue.",
   "footer": {
     "attribution": "Attribution",
     "licence": "GNU AGPLv3",
@@ -10,7 +10,7 @@
     "view": "Voir cette page sur GitHub"
   },
   "forms": {
-    "add": "En ajouter une autre",
+    "add": "Ajouter un(e) autre",
     "apply": "Appliquer",
     "close": "Fermer",
     "delete": "Supprimer",
@@ -67,7 +67,7 @@
       "add": "Ajouter votre propre bot",
       "backgroundAlt": "Logo pour Discord Forklift",
       "description": "Un test de liste de bots open source",
-      "invite": "Ajouter ce bot",
+      "invite": "Inviter ce bot",
       "support": "Support technique",
       "pagename": "Project Forklift",
       "mentionable": "Mentionable",
@@ -76,7 +76,7 @@
       "edit": "Editer",
       "configure": "Configurer",
       "github": "Voir sur GitHub",
-      "approve": "Approver",
+      "approve": "Approuver",
       "deny": "Refuser",
       "prefix": {
         "one": "Préfixe",
@@ -85,13 +85,13 @@
       "shortname": "Bots",
       "more": "Voir plus",
       "less": "Voir moins",
-      "adverts": "Contiens de la publicité",
+      "adverts": "Contient de la publicité",
       "inAppPurchases": "Achats dans l'application",
       "unverified": "Non vérifié",
       "nsfw": "NSFW",
-      "offeredby": "Offert par:",
+      "offeredby": "Proposé par :",
       "modified": "Dernière modification: {{{ date }}}",
-      "created": "Première publication: {{{ date }}}",
+      "created": "Publication: {{{ date }}}",
       "category": "Catégorie: {{{ category }}}"
     },
     "configuration": {
@@ -100,14 +100,14 @@
     },
     "edit": {
       "application_id": {
-        "modal": "L'ID OAuth is l'ID qui est utilisé lorsque les utilisateurs invitent votre bot via le flux de travail OAuth. Dans la plupart des cas, cet ID est le même que votre Bot ID. Vous ne devrez agir que si votre bot a une différence entre les deux.",
+        "modal": "L'ID OAuth est l'ID utilisé lorsque les utilisateurs invitent votre bot à travers le système OAuth. Dans la plupart des cas, cet ID est le même que votre Bot ID. Vous ne devrez agir que si les deux sont différents.",
         "placeholder": "L'ID utilisé dans le lien OAuth",
         "title": "ID OAuth"
       },
       "authors": {
         "modal": "Entrer un seul ID d'un propriétaire du bot.",
         "placeholder": "ID d'un seul propriétaire",
-        "title": "Auteurs du Bot"
+        "title": "Auteur(s) du Bot"
       },
       "basicinfo": "Informations Basiques",
       "bot_invite": {
@@ -115,11 +115,15 @@
         "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible",
         "title": "URL d'invitation"
       },
+	    "website": {
+		  "title": "Site Internet",
+	      "placeholder": "Un lien HTTPS vers votre site Internet"
+	    },
       "bot_nsfw": {
-        "title": "Non adapté pour toutes les audiances"
+        "title": "Non adapté pour toutes les audiences"
       },
       "bot_support": {
-        "placeholder": "Un truc du genre https://discord.gg/8uC6aKZ",
+        "placeholder": "Quelque chose comme https://discord.gg/8uC6aKZ",
         "small": "Laissez ce champ vide si vous n'aimez pas aider les gens",
         "title": "Serveur d'assistance"
       },
@@ -127,8 +131,8 @@
         "title": "Catégorie"
       },
       "client_id": {
-        "modal1": "L'ID du bot est un nombre unique qui identifie les l'utilisateurs associés aux bots. Vous pouvez le récupérer en cliquant sur le bouton \"Copier\" dans le Portail Développeur de Discord.",
-        "modal2": "Vous pouvez également trouver cet ID en activant le \"Mode Développeur\" dans les paramètres Discord, et ensuite faire un click-droit sur votre bot et cliquer sur \"Copier l'identifiant\". Assurez vous de ne pas copier l'ID du message.",
+        "modal1": "L'ID du bot est un nombre unique qui identifie l'utilisateur associé au bot. Vous pouvez le récupérer en cliquant sur le bouton \"Copier\" dans le Portail Développeur de Discord.",
+        "modal2": "Vous pouvez également trouver cet ID en activant le \"Mode Développeur\" dans les paramètres Discord. Ensuite,  faites un clic droit sur votre bot et cliquez sur \"Copier l'identifiant\". Assurez-vous de ne pas copier l'ID du message.",
         "placeholder": "L'ID de l'utilisateur associé au bot",
         "title": "ID du bot"
       },
@@ -148,17 +152,17 @@
       },
       "information": "Information",
       "invite": {
-        "modal": "Veuillez vérifier que \"ID du bot\" a été rempli avec l'ID de votre bot Discord",
+        "modal": "Veuillez vérifier que le champ \"ID du bot\" a été rempli avec l'ID de votre bot Discord",
         "title": "URL d'invitation"
       },
       "languages": {
         "add": "Ajouter une langue",
-        "delete": "Supprimer cette language",
+        "delete": "Supprimer cette langue",
         "modal": "Vous pouvez ajouter d'autres descriptions pour les différentes langues supportées par ce site, afin de mieux cibler votre audience. Pour ajouter une langue, sélectionnez votre langue et cliquez sur \"Ajouter cette langue\". Vous pourrez ensuite remplir les détails pour cette langue.",
         "title": "Langues"
       },
       "mentionable": {
-        "title": "Possibilité de mentionner pour déclencher le bot"
+        "title": "Possibilité de mentionner le bot pour le déclencher"
       },
       "name": {
         "title": "Nom"
@@ -167,17 +171,17 @@
         "title": "Page"
       },
       "bot_prefix": {
-        "placeholder": "Un seul prefix",
+        "placeholder": "Un seul préfixe",
         "title": "Préfixe"
       },
       "flags": {
         "inAppPurchases": {
           "title": "Achats dans l'application",
-          "small": "Cochez cette case si vous avez des fonctionnalitées payantes"
+          "small": "Cochez cette case si le bot a des fonctionnalités payantes"
         },
         "adverts": {
           "title": "Publicités",
-          "small": "Cochez cette case si votre bot affiche des publicités, incluant d'autres listes de bot"
+          "small": "Cochez cette case si votre bot affiche des publicités, incluant d'autres listes de bots"
         }
       },
       "images": {
@@ -191,22 +195,18 @@
         },
         "preview": {
           "title": "Images d'aperçu",
-          "placeholder": "Un lien HTTPS vers un seul screenshot"
+          "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot"
         }
       },
       "sourcecode": "Code Source",
       "title": "Ajouter ou Modifier une Application",
-      "triggermethods": "Methodes de déclenchement",
+      "triggermethods": "Méthodes de déclenchement",
       "deleteLanguage": "Supprimer une langue",
-      "required": "Les champs marqués avec * sont requis."
+      "required": "Les champs marqués d'un * sont requis."
     },
     "error": {
       "notfound": "Page introuvable...",
-      "server": "Désassemblage rapide et inattendu rencontré"
-    },
-    "website": {
-      "title": "Site internet",
-      "placeholder": "Un lien HTTPS vers votre site internet"
+      "server": "Problème inattendu rencontré"
     },
     "list": {
       "invite": "Inviter",
@@ -227,7 +227,7 @@
     }
   },
   "permission": {
-    "ADD_REACTIONS": "Ajouter des Reactions",
+    "ADD_REACTIONS": "Ajouter des réactions",
     "ADMINISTRATOR": "Administrateur",
     "ATTACH_FILES": "Attacher des fichiers",
     "BAN_MEMBERS": "Bannir des membres",
@@ -264,8 +264,8 @@
     "education": "Éducation",
     "image": "Manipulation d'images",
     "news": "Informations",
-    "music": "Mudique",
-    "moderation": "Moderation",
+    "music": "Musique",
+    "moderation": "Modération",
     "utility": "Utilitaire",
     "notifications": "Notifications",
     "other": "Autre"
