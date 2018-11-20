@@ -35,6 +35,7 @@ const sanitise = string => `(?i)${string.trim().toLowerCase().replace(operators,
 
 const listMiddleware = options => (req, res, next) => {
   let filter = options.filter || {};
+  const query = req.query.q;
   let title = null;
   let avatar = null;
 
@@ -65,7 +66,8 @@ const listMiddleware = options => (req, res, next) => {
           previous: page - 1,
           next: page + 1,
           title,
-          avatar
+          avatar,
+          query
         });
       })
       .catch((err) => {
@@ -106,7 +108,6 @@ const listMiddleware = options => (req, res, next) => {
       next();
     }
   } else if (options.filter === 'search') {
-    const query = req.query.q;
     if (query) {
       filter = (bot) => {
         let chain = r.expr(sanitise(query)).match(bot('category'))
