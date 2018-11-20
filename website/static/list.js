@@ -2,6 +2,8 @@ const r = require('../rethinkdb');
 const config = require('../config');
 const ImageCache = require('../class/ImageCache');
 
+const selectableLanguages = Object.keys(config.languages);
+
 const localise = (item, req) => {
   if (item.contents[req.getLocale()]) {
     item.contents = item.contents[req.getLocale()];
@@ -27,6 +29,9 @@ const localise = (item, req) => {
 
   throw new Error('Cannot find any languages for this bot!');
 };
+
+const operators = /[|\\{}()[\]^$+*?.]/g;
+const sanitise = string => `(?i)${string.trim().toLowerCase().replace(operators, '\\$&')}`;
 
 const listMiddleware = options => (req, res, next) => {
   let filter = options.filter || {};
@@ -99,6 +104,29 @@ const listMiddleware = options => (req, res, next) => {
       checkDatabase();
     } else {
       next();
+    }
+  } else if (options.filter === 'search') {
+    const query = req.query.q;
+
+    console.log(query);
+
+    if (query) {
+      filter = (bot) => {
+        let chain = r.expr(sanitise(query)).match(bot('category'))
+          .or(bot('nsfw').and(r.expr(sanitise(query)).match('nsfw')));
+
+        for (let i = 0; i < selectableLanguages.length; i += 1) {
+          chain = chain.or(bot('contents')(selectableLanguages[i])('page').default('').match(sanitise(query)))
+            .or(bot('contents')(selectableLanguages[i])('name').default('').match(sanitise(query)))
+            .or(bot('contents')(selectableLanguages[i])('description').default('').match(sanitise(query)));
+        }
+
+        return chain;
+      };
+
+      checkDatabase();
+    } else {
+      res.redirect('/');
     }
   } else {
     checkDatabase();

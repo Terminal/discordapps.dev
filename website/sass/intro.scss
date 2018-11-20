@@ -1,9 +1,10 @@
 .fullscreen.half.intro {
+  height: 30vh;
   .center-object {
     display: flex;
     flex-direction: column;
     transform: none;
-    top: 0% !important;
+    top: calc(4em + 4px);
     left: 0;
     width: 100%;
     display: flex;
@@ -17,8 +18,7 @@
     }
   }
   .background, .center-object {
-    height: 35%;
-    height: 35vh;
+    height: 30vh;
   }
   .background {
     background-position: 0 -35vh;

@@ -38,12 +38,13 @@ pre {
 }
 
 .ls-button {
-  .form-container & {
-    height: 38px;
-    border-radius: 4px;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-right: 0;
+  height: 38px;
+  border-radius: 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  .fullscreen & {
+    box-shadow: unset;
   }
 }
 
@@ -60,9 +61,6 @@ button.btn {
   }
 }
 
-.nav-container {
-  display: block;
-}
 
 .ls-left-pad *:not(:first-child) {
   margin-left: 10px;

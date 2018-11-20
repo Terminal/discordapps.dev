@@ -40,6 +40,9 @@ router
       verified: false
     }
   }))
+  .get('/search', listMiddleware({
+    filter: 'search'
+  }))
   .get('/by/:id', listMiddleware({
     filter: 'owner'
   }))

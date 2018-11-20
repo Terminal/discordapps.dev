@@ -31,9 +31,9 @@
     "currentPage": "Page {{{ number }}}"
   },
   "intro": {
-    "login": "Login via Discord",
+    "login": "Login",
     "logout": "Logout",
-    "search": "Search...",
+    "search": "What are you looking for?",
     "admin": "Admin",
     "docs": "Documentation"
   },
@@ -66,7 +66,7 @@
   },
   "pages": {
     "bots": {
-      "add": "Add your own bot",
+      "add": "Add an app",
       "backgroundAlt": "The logo for ls.terminal.ink",
       "description": "An application store for Discord bots",
       "invite": "Add this bot",

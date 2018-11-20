@@ -16,3 +16,15 @@
 .card, .card-content {
   font-family: "Montserrat", "Noto Sans", "Calibri", Arial, Helvetica, sans-serif;
 }
+
+.ls-search {
+  &[placeholder] {
+    text-align: center;
+  }
+
+  transition: all 0.25s;
+  width: 15em;
+  &:focus {
+    width: 50vw;
+  }
+}

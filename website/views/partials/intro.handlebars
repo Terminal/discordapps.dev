@@ -1,23 +1,11 @@
 <section class="fullscreen half intro">
 	<div class="background ls-intro-background" {{#if cover}}style="background-image: url({{cover}});"{{/if}}></div>
 	<div class="center-object">
-		<div class="center-items">
-			<a href="/">
-				<section class="me unset">
-				<img alt="{{i18n __ "pages.bots.backgroundAlt"}}" draggable="false" class="image-title" src="/img/logo/logo.svg" style="width: 7em; height: 7em"></img>
-				<div>
-					<h1 class="title no-margin white-text">
-						{{i18n __ "pages.bots.pagename"}}
-					</h1>
-					<span class="undertitle white-text">
-						{{i18n __ "pages.bots.description"}}
-					</span>
-				</div>
-				</section>
-			</a>
-		</div>
-		<div class="center">
-			{{> links class="btn white black-text"}}
+		<div>
+			<form action="/bots/search">
+				<input name="q" class="ls-search" placeholder="{{ i18n __ "intro.search" }}" required>
+				<button class="ls-button">Search</button>
+			</form>
 		</div>
 		<noscript class="center">
 			{{i18n __ "errors.website.noscript"}}
