@@ -6,7 +6,7 @@ module.exports = () => {
       const returned = {};
       returned.id = bot.id;
       returned.random = Math.random();
-      if (bot.cachedImages.cover) returned.random += 2;
+      if (bot.cachedImages.cover) returned.random += 0.5;
       if (bot.github && bot.github.owner && bot.github.repo) returned.random += 1;
       return returned;
     }))
