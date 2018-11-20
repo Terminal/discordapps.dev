@@ -107,9 +107,6 @@ const listMiddleware = options => (req, res, next) => {
     }
   } else if (options.filter === 'search') {
     const query = req.query.q;
-
-    console.log(query);
-
     if (query) {
       filter = (bot) => {
         let chain = r.expr(sanitise(query)).match(bot('category'))
