@@ -33,6 +33,10 @@ This is Version 10 of ls.terminal.ink.
 - Version 8 and 8.1 is not available for download
 - Version 10 (development)
 
+## Deployment
+- `npm i`
+- `npm start`
+
 ---
 
 # Selling Out

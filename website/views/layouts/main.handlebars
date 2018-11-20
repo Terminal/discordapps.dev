@@ -21,9 +21,10 @@
     {{> head avatar=avatar title=title description=description }}
   </head>
   <body class="ls-bots-layout">
-    {{> navigation}}
+    {{> intro cover=cover }}
+    {{> navigation }}
     <div class="main-window">
-      {{> intro cover=cover query=query }}
+      {{> search query=query }}
       <div class="ls-main-content-container container">
         {{{body}}}
       </div>
