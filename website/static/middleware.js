@@ -6,7 +6,7 @@ module.exports = class Middleware {
       next();
     } else {
       res.status(400).render('error', {
-        message: res.__('err.permissions.login'),
+        message: res.__('error.permissions.login'),
       });
     }
   }
@@ -16,7 +16,7 @@ module.exports = class Middleware {
       next();
     } else {
       res.status(400).render('error', {
-        message: res.__('err.permissions.denied'),
+        message: res.__('error.permissions.denied'),
       });
     }
   }
@@ -26,7 +26,7 @@ module.exports = class Middleware {
       next();
     } else if (!req.user) {
       res.status(400).render('error', {
-        message: res.__('err.permissions.login'),
+        message: res.__('error.permissions.login'),
       });
     } else {
       r.table('bots')
@@ -36,7 +36,7 @@ module.exports = class Middleware {
             next();
           } else {
             res.status(400).render('error', {
-              message: res.__('err.permissions.denied'),
+              message: res.__('error.permissions.denied'),
             });
           }
         });
