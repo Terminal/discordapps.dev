@@ -6,8 +6,6 @@
 @import 'bot.scss';
 
 .main-window {
-  display: flex;
-  flex-direction: column;
   height: 100vh;
 }
 
@@ -23,10 +21,6 @@ pre {
   background-color: #222;
   padding-top: 2em;
   padding-bottom: 2em;
-}
-
-.ls-main-content-container {
-  flex-grow: 1;
 }
 
 .ls-flex-row {
