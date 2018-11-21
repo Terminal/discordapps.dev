@@ -101,7 +101,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       .orderBy(r.desc('random'))
       .filter({
         verified: true,
-        nsfw: false
+        nsfw: false,
+        hide: false
       })
       .limit(12)
       .then((list) => {

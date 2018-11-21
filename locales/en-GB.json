@@ -100,7 +100,13 @@
     },
     "configuration": {
       "token": "Token",
-      "renew": "Renew Token"
+      "renew": "Renew Token",
+      "hide": {
+        "title": "Hide bot",
+        "description": "You can hide your bot from the front page of the website, in case you don't need to be there.",
+        "disable": "Unhide",
+        "enable": "Hide"
+      }
     },
     "edit": {
       "application_id": {

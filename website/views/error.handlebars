@@ -1,8 +1,9 @@
-<div class="center">
-  <h1>{{message}}</h1>
-  <p><a href="https://github.com/Terminal/ls.terminal.ink/issues/new?body={{githubBody}}&title={{githubTitle}}">{{ i18n __ "pages.error.github" }}</a></p>
+<div class="ls-main-content main-content-container container box-shadow ls-round">
+  <div class="center">
+    <h1>{{message}}</h1>
+    <p><a href="https://github.com/Terminal/ls.terminal.ink/issues/new?body={{githubBody}}&title={{githubTitle}}">{{ i18n __ "pages.error.github" }}</a></p>
+  </div>
+  {{#if err}}
+    <p><pre class="ls-error left">{{err.stack}}</pre></p>
+  {{/if}}
 </div>
-
-{{#if err}}
-  <p><pre class="ls-error">{{err.stack}}</pre></p>
-{{/if}}

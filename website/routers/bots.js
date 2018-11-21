@@ -136,6 +136,19 @@ router
         next(err);
       });
   })
+  .post('/:id/hide', isOwner, (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .update({
+        hide: r.row('hide').not()
+      })
+      .then(() => {
+        res.redirect(`/bots/${req.params.id}/configure`);
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
   .post('/:id/approve', isAdmin, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
@@ -293,6 +306,7 @@ router
                 value.token = existingBot.token;
                 value.created = existingBot.created || (new Date()).getTime();
                 value.edited = (new Date()).getTime();
+                value.hide = existingBot.hide;
                 insert('edited', 'errors.bots.edit_success');
               } else {
                 res.json({
@@ -307,6 +321,7 @@ router
               value.token = crypto.randomBytes(20).toString('hex');
               value.created = (new Date()).getTime();
               value.edited = (new Date()).getTime();
+              value.hide = false;
               fetch(`https://discordapp.com/api/v6/users/${value.id}`, {
                 headers: {
                   Authorization: `Bot ${config.discord.token}`
