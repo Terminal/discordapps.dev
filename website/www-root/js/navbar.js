@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const navside = document.getElementById('ls-navside');
   const menuIcon = document.getElementById('menu-icon');
   const navbar = document.getElementById('ls-navbar');
