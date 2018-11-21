@@ -135,6 +135,9 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       next();
     }
   })
+  .use('/edit', (req, res) => {
+    res.redirect('/bots/add');
+  })
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')
