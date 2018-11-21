@@ -19,9 +19,9 @@ router
       .get(req.params.id)
       .default({})
       .without('token')
-      .then((bots) => {
-        if (!bots.id) res.status(404);
-        res.json(bots);
+      .then((bot) => {
+        if (!bot.id) res.status(404);
+        res.json(bot);
       })
       .catch((err) => {
         next(err);
