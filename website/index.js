@@ -127,6 +127,14 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/api', v1Router)
   .use('/api/v1', v1Router)
   .use('/docs', docsRouter)
+  .use('/:lang/*', (req, res, next) => {
+    if (i18n.getLocales().includes(req.params.lang)) {
+      res.cookie('lang', req.params.lang);
+      res.redirect(req.originalUrl.substr(3));
+    } else {
+      next();
+    }
+  })
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')
