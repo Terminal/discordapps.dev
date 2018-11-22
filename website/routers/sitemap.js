@@ -4,6 +4,9 @@ const config = require('../config');
 
 module.exports = (req, res) => {
   const sitemap = {
+    '@': {
+      xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9'
+    },
     url: [
       {
         loc: config.webserver.location,
