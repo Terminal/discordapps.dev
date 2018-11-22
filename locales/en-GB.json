@@ -88,7 +88,7 @@
       "shortname": "Bots",
       "more": "View more",
       "less": "View less",
-      "adverts": "Contains ads",
+      "adverts": "Contains features locked behind other services",
       "inAppPurchases": "Has in-app purchases",
       "unverified": "Unverified",
       "nsfw": "NSFW",
@@ -187,7 +187,7 @@
         },
         "adverts": {
           "title": "Advertisments",
-          "small": "Tick this box if your bot displays adverts, including other bot lists"
+          "small": "Tick this box if you have features that are locked behind other services"
         }
       },
       "images": {
