@@ -17,7 +17,16 @@ router
   .get('/bots/:id', (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
-      .default({})
+      .merge(bot => ({
+        reviews: r.table('reviews')
+          .filter({
+            bot: bot('id')
+          })
+          .default([])
+          .without('id')
+          .coerceTo('array')
+      }))
+      .default(null)
       .without('token')
       .then((bot) => {
         if (!bot.id) res.status(404);
@@ -26,6 +35,12 @@ router
       .catch((err) => {
         next(err);
       });
+  })
+  .use((req, res) => {
+    res.status(404).json({
+      ok: false,
+      err: 'Endpoint not found'
+    });
   })
   .use((err, req, res, next) => { // eslint-disable-line
     if (err) {

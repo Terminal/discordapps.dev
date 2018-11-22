@@ -51,7 +51,16 @@ router
     r.table('bots')
       .get(req.params.id)
       .merge(bot => ({
-        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array'),
+        reviews: r.table('reviews')
+          .filter(review => review('bot').eq(bot('id')))
+          .sample(10)
+          .coerceTo('array'),
+        ratings: r.table('reviews')
+          .group('rating')
+          .filter(review => review('bot').eq(bot('id')))
+          .count()
+          .ungroup()
       }))
       .default(null)
       .then((item) => {
@@ -59,6 +68,36 @@ router
           next();
         } else {
           const bot = localise(item, req);
+          const ratings = {};
+          const numberOfRatings = bot.ratings.reduce((sum, rating) => sum + rating.reduction, 0);
+          const maximumNumber = bot.ratings.reduce((max, rating) => {
+            if (rating.reduction > max) {
+              return rating.reduction;
+            }
+            return max;
+          }, 0);
+
+          // The maximum rating is 5.
+          // Loop from 1 to including 5
+          for (let i = 1; i <= 5; i += 1) {
+            const rating = bot.ratings.find(groupedRating => groupedRating.group === i);
+
+            if (rating) {
+              ratings[i] = {
+                count: rating.reduction,
+                proportion: rating.reduction / numberOfRatings,
+                percentage: (rating.reduction / numberOfRatings) * 100,
+                sliderWidth: (rating.reduction / maximumNumber) * 100
+              };
+            } else {
+              ratings[i] = {
+                count: 0,
+                proportion: 0,
+                percentage: 0,
+                sliderWidth: 0
+              };
+            }
+          }
 
           marked.setOptions({
             sanitize: !item.legacy
@@ -74,7 +113,8 @@ router
             created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat),
             description: bot.contents.description || '',
             avatar: bot.cachedImages ? bot.cachedImages.avatar : null,
-            title: bot.contents.name
+            title: bot.contents.name,
+            ratings
           });
         }
       })
@@ -104,6 +144,36 @@ router
   })
   .get('/:id/delete', isLoggedIn, (req, res) => {
     res.render('sure');
+  })
+  .post('/:id/delete', (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
+      .then((existingBot) => {
+        if (existingBot) {
+          if (existingBot.authors.includes(req.user.id) || req.user.admin) {
+            r.table('bots')
+              .get(req.params.id)
+              .delete()
+              .then(() => {
+                res.redirect('/');
+                discordWebhooks(`<@${req.user.id}> deleted <@${req.params.id}>`);
+              })
+              .catch((err) => {
+                next(err);
+              });
+          } else {
+            res.json({
+              ok: false,
+              message: res.__('bot_exists_error')
+            });
+          }
+        } else {
+          next();
+        }
+      })
+      .catch((err) => {
+        next(err);
+      });
   })
   .get('/:id/configure', isOwner, (req, res, next) => {
     r.table('bots')
@@ -175,36 +245,6 @@ router
       .then(() => {
         discordWebhooks(`<@${req.user.id}> denied <@${req.params.id}>\n${req.body.reason}`);
         res.redirect('/bots/unverified');
-      })
-      .catch((err) => {
-        next(err);
-      });
-  })
-  .post('/:id/delete', (req, res, next) => {
-    r.table('bots')
-      .get(req.params.id)
-      .then((existingBot) => {
-        if (existingBot) {
-          if (existingBot.authors.includes(req.user.id) || req.user.admin) {
-            r.table('bots')
-              .get(req.params.id)
-              .delete()
-              .then(() => {
-                res.redirect('/');
-                discordWebhooks(`<@${req.user.id}> deleted <@${req.params.id}>`);
-              })
-              .catch((err) => {
-                next(err);
-              });
-          } else {
-            res.json({
-              ok: false,
-              message: res.__('bot_exists_error')
-            });
-          }
-        } else {
-          next();
-        }
       })
       .catch((err) => {
         next(err);

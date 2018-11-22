@@ -82,6 +82,19 @@
   }
 }
 
+.ls-review-box {
+  max-width: 20em;
+  .ls-flex-row {
+    align-items: center;
+  }
+  .progress-container {
+    width: 100%;
+  }
+  .ls-review-number {
+    width: 15px;
+  }
+}
+
 .tns-nav-active {
   background: #999;
 }
