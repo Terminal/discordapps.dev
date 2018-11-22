@@ -36,7 +36,7 @@ const defaultImage = path.join(__dirname, '..', 'www-root', 'img', 'logo', 'logo
 class ImageCache {
   constructor(url, x = 1280, y = 720, blur = false) {
     this.url = url;
-    this.hash = crypto.createHash('sha256').update(url).digest('hex');
+    this.hash = crypto.createHash('sha256').update(url + config.webserver.secret).digest('hex');
     this.permalink = `/appdata/${this.hash}.png`;
     this.file = path.join(__dirname, '..', 'www-root', 'appdata', `${this.hash}.png`);
     this.x = x;
