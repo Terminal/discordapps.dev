@@ -1,6 +1,5 @@
 const express = require('express');
 const passport = require('../static/passport');
-const ImageCache = require('../class/ImageCache');
 
 const router = express.Router();
 
