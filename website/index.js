@@ -29,7 +29,6 @@ const app = express();
 
 app.locals.links = config.links;
 app.locals.defaultLanguage = config.defaultLanguage;
-app.locals.siteLocales = i18n.getLocales();
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')
@@ -64,7 +63,9 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       isArray: value => Array.isArray(value),
       or: (var1, var2) => var1 || var2,
       isEqual: (var1, var2) => var1 === var2,
-      add: (var1, var2) => var1 + var2
+      add: (var1, var2) => var1 + var2,
+      languages: () => i18n.getLocales(),
+      webserverLocation: () => config.webserver.location
     },
   }))
   .use(bodyParser.json())

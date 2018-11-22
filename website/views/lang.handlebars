@@ -1,7 +1,7 @@
 <div class="ls-main-content main-content-container container box-shadow ls-round">
   <h2>{{i18n __ "pages.locale.choose"}}</h2>
   <ul>
-  {{#each languages}}
+  {{#each (languages)}}
     <li><a href="/locale/{{this}}">{{i18n ../__ (concat "locales." this)}}</a></li>
   {{/each}}
   </ul>

@@ -20,6 +20,10 @@
   <meta name="description" content="{{i18n __ "site.description"}} - {{i18n __ "pages.bots.pagename"}}"/>
 {{/if}}
 
+{{#each (languages)}}
+  <link rel="alternate" href="{{webserverLocation}}" hreflang="{{this}}" />
+{{/each}}
+
 {{#if avatar}}
   <meta property="og:image" content="{{avatar}}"/>
   <link rel="icon" type="image/x-icon" href="{{avatar}}"/>
