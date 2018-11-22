@@ -82,6 +82,10 @@
   }
 }
 
+/**
+* Reviews!
+*/
+
 .ls-review-box {
   max-width: 20em;
   .ls-flex-row {
@@ -95,6 +99,12 @@
   }
 }
 
-.tns-nav-active {
-  background: #999;
+.ls-reviewer-box {
+  .ls-reviewer-avatar {
+    width: 3em;
+    height: 3em;
+  }
+  .ls-reviewer-title {
+    flex-grow: 1;
+  }
 }

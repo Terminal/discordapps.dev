@@ -1,6 +1,7 @@
 const passport = require('passport');
 const DiscordStrategy = require('passport-discord').Strategy;
 const config = require('../config');
+const ImageCache = require('../class/ImageCache');
 
 const r = require('../rethinkdb');
 
@@ -24,15 +25,28 @@ passport.use(new DiscordStrategy(
   },
   (accessToken, refreshToken, profile, done) => {
     if (accessToken !== null) {
-      r.table('users')
-        .insert(profile, {
-          conflict: 'replace'
-        })
+      const write = () => {
+        r.table('users')
+          .insert(profile, {
+            conflict: 'replace'
+          })
+          .then(() => {
+            done(null, profile);
+          })
+          .catch((err) => {
+            throw err;
+          });
+      };
+
+      // Cache the user's avatar as soon as they log in.
+      const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`, 512, 512);
+      cache.cache()
         .then(() => {
-          done(null, profile);
+          profile.cachedAvatar = cache.permalink;
+          write();
         })
         .catch((err) => {
-          throw err;
+          done(err);
         });
     }
   }

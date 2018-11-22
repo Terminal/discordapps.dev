@@ -1,7 +1,9 @@
 const express = require('express');
 const { isOwner, isLoggedIn, isAdmin } = require('../static/middleware');
-const { joi, schema } = require('../schemas/bots');
+const schema = require('../schemas/bots');
+const joi = require('../schemas/joi');
 const { unflatten } = require('flat');
+const multer = require('multer');
 const r = require('../rethinkdb');
 const config = require('../config');
 const marked = require('marked');
@@ -13,6 +15,7 @@ const fetch = require('node-fetch');
 const { localise, listMiddleware } = require('../static/list');
 
 const router = express.Router();
+const reader = multer();
 
 const selectableLanguages = Object.keys(config.languages).sort((a, b) => {
   if (config.languages[a].top) {
@@ -54,7 +57,10 @@ router
         authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array'),
         reviews: r.table('reviews')
           .filter(review => review('bot').eq(bot('id')))
-          .sample(10)
+          .merge(review => ({
+            author: r.table('users').get(review('author'))
+          }))
+          .sample(5)
           .coerceTo('array'),
         ratings: r.table('reviews')
           .group('rating')
@@ -114,7 +120,8 @@ router
             description: bot.contents.description || '',
             avatar: bot.cachedImages ? bot.cachedImages.avatar : null,
             title: bot.contents.name,
-            ratings
+            ratings,
+            numberOfRatings
           });
         }
       })
@@ -258,7 +265,7 @@ router
       item: {},
     });
   })
-  .post('/add', isLoggedIn, (req, res, next) => {
+  .post('/add', isLoggedIn, reader.none(), (req, res, next) => {
     const body = unflatten(req.body);
 
     joi.validate(body.bot, schema, {
@@ -388,6 +395,15 @@ router
           });
       }
     });
+  }, (err, req, res, next) => {
+    if (err) {
+      res.status(500).json({
+        ok: false,
+        message: err.stack
+      });
+    } else {
+      next();
+    }
   });
 
 module.exports = router;

@@ -28,7 +28,8 @@ const store = new RDBStore(r);
 const app = express();
 
 app.locals.links = config.links;
-app.locals.defaultLanguage = config.defaultLanguage;
+app.locals.defaultLanguage = config.default.language;
+app.locals.defaultImage = config.default.image;
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')

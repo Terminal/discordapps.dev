@@ -25,6 +25,9 @@ pre {
 
 .ls-flex-row {
   display: flex;
+  .wrap {
+    flex-wrap: wrap;
+  }
 }
 
 .ls-wrap {

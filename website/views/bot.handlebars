@@ -126,7 +126,7 @@
 <div class="ls-main-content main-content-container container box-shadow ls-round">
   <h2>Reviews</h2>
   <div class="ls-review-box">
-    <p>{{item.reviews.length}} reviews</p>
+    <p>{{numberOfRatings}} reviews</p>
     <div class="ls-flex-row">
       <span class="ls-review-number">5</span>
       <div class="progress-container">
@@ -158,8 +158,23 @@
       </div>
     </div>
   </div>
+  {{#each item.reviews}}
+    <div class="ls-reviewer-box">
+      <div class="ls-flex-row">
+        <img class="ls-reviewer-avatar" src="{{or this.author.cachedAvatar defaultImage}}">
+        <h5 class="ls-reviewer-title">Review by {{this.author.username}}</h5>
+        {{#if (isEqual this.author.id ../user.id)}}
+          <a href="/bots/{{../item.id}}/reviews/{{this.id}}/delete">Delete</a>
+        {{/if}}
+      </div>
+      <p>{{this.text}}</p>
+    </div>
+  {{/each}}
+  <div class="center">
+    <a class="btn white black-text" href="/bots/{{item.id}}/reviews">View all</a>
+  </div>
 </div>
 
-{{stringify ratings}}
+{{stringify item.reviews}}
 
 <script src="/js/botpage.js"></script>

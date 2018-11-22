@@ -6,7 +6,7 @@ const config = require('../config');
 i18n.configure({
   directory: path.join(__dirname, '..', '..', 'locales'),
   cookie: 'lang',
-  defaultLocale: config.defaultLanguage,
+  defaultLocale: config.default.language,
   autoReload: true,
   updateFiles: false,
   objectNotation: true,
