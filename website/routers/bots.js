@@ -2,7 +2,6 @@ const express = require('express');
 const { isOwner, isLoggedIn, isAdmin } = require('../static/middleware');
 const { joi, schema } = require('../schemas/bots');
 const { unflatten } = require('flat');
-const multer = require('multer');
 const r = require('../rethinkdb');
 const config = require('../config');
 const marked = require('marked');
@@ -14,7 +13,6 @@ const fetch = require('node-fetch');
 const { localise, listMiddleware } = require('../static/list');
 
 const router = express.Router();
-const reader = multer();
 
 const selectableLanguages = Object.keys(config.languages).sort((a, b) => {
   if (config.languages[a].top) {
@@ -220,7 +218,7 @@ router
       item: {},
     });
   })
-  .post('/add', isLoggedIn, reader.none(), (req, res, next) => {
+  .post('/add', isLoggedIn, (req, res, next) => {
     const body = unflatten(req.body);
 
     joi.validate(body.bot, schema, {
