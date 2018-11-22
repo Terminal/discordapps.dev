@@ -75,7 +75,7 @@ router
             edited: (new Date(item.edited)).toLocaleDateString(req.getLocale(), config.dateformat),
             created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat),
             description: bot.contents.description || '',
-            avatar: bot.images.avatar || null,
+            avatar: bot.cachedImages ? bot.cachedImages.avatar : null,
             title: bot.contents.name
           });
         }
