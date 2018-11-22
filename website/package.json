@@ -32,6 +32,7 @@
 		"https-proxy-agent": "^2.2.1",
 		"i18n": "^0.8.3",
 		"joi": "^14.0.4",
+		"js2xmlparser": "^3.0.0",
 		"jsonwebtoken": "^8.4.0",
 		"marked": "^0.3.19",
 		"monaco-editor": "^0.14.3",

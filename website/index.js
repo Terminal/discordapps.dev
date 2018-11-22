@@ -18,6 +18,8 @@ const langRouter = require('./routers/locales');
 const adminRouter = require('./routers/admin');
 const v1Router = require('./routers/v1');
 const docsRouter = require('./routers/docs');
+const sitemapRouter = require('./routers/sitemap');
+
 const { localise } = require('./static/list');
 
 require('./static/banner');
@@ -138,6 +140,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/edit', (req, res) => {
     res.redirect('/bots/add');
   })
+  .use('/sitemap.xml', sitemapRouter)
   .use((req, res) => {
     res.status(404).render('error', {
       message: res.__('pages.error.notfound')
