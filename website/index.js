@@ -55,10 +55,6 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
         }
         return args[0] || 'Translation Error!';
       },
-      getCurrentLocale: (...args) => {
-        const options = args.pop();
-        return i18n.getLocale(options);
-      },
       stringify: (...args) => JSON.stringify(...args),
       concat: (...args) => args.slice(0, -1).join(''),
       isArray: value => Array.isArray(value),

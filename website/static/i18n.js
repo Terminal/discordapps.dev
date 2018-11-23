@@ -9,7 +9,7 @@ i18n.configure({
   defaultLocale: config.default.language,
   autoReload: true,
   updateFiles: false,
-  objectNotation: true,
+  objectNotation: true
 });
 
 module.exports = i18n;
