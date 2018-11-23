@@ -75,7 +75,7 @@
       "mentionable": "Mentionable",
       "customisable": "Customisable",
       "delete": "Supprimer",
-      "edit": "Editer",
+      "edit": "Éditer",
       "configure": "Configurer",
       "github": "Voir sur GitHub",
       "approve": "Approuver",
@@ -98,7 +98,13 @@
     },
     "configuration": {
       "token": "Jeton",
-      "renew": "Renouveler le jeton"
+      "renew": "Renouveler le jeton",
+      "hide": {
+        "title": "Masquer le bot",
+        "description": "Vous pouvez masquer votre bot de la page d'accueil du site, si vous ne souhaitez pas qu'il y soit.",
+        "disable": "Afficher",
+        "enable": "Masquer"
+      }
     },
     "edit": {
       "application_id": {
