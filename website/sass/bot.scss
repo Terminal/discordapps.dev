@@ -100,11 +100,13 @@
 }
 
 .ls-reviewer-box {
+  margin-top: 1em;
   .ls-reviewer-avatar {
     width: 3em;
     height: 3em;
   }
   .ls-reviewer-title {
     flex-grow: 1;
+    margin-left: 0.5em;
   }
 }

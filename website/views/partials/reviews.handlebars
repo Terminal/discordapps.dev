@@ -1,0 +1,51 @@
+<div class="ls-review-box">
+  <p>{{numberOfRatings}} reviews</p>
+  <div class="ls-flex-row">
+    <span class="ls-review-number">5</span>
+    <div class="progress-container">
+      <div class="progress-bar emerald-bar" style="width: {{ratings.5.sliderWidth}}%;"></div>
+    </div>
+  </div>
+  <div class="ls-flex-row">
+    <span class="ls-review-number">4</span>
+    <div class="progress-container">
+      <div class="progress-bar green-sea-bar" style="width: {{ratings.4.sliderWidth}}%;"></div>
+    </div>
+  </div>
+  <div class="ls-flex-row">
+    <span class="ls-review-number">3</span>
+    <div class="progress-container">
+      <div class="progress-bar sun-flower-bar" style="width: {{ratings.3.sliderWidth}}%;"></div>
+    </div>
+  </div>
+  <div class="ls-flex-row">
+    <span class="ls-review-number">2</span>
+    <div class="progress-container">
+      <div class="progress-bar carrot-bar" style="width: {{ratings.2.sliderWidth}}%;"></div>
+    </div>
+  </div>
+  <div class="ls-flex-row">
+    <span class="ls-review-number">1</span>
+    <div class="progress-container">
+      <div class="progress-bar alizarin-bar" style="width: {{ratings.1.sliderWidth}}%;"></div>
+    </div>
+  </div>
+</div>
+{{#each item.reviews}}
+  {{#if (isEqual @index ../limit)}}
+
+  {{else}}
+  <div class="ls-reviewer-box">
+    <div class="ls-flex-row">
+      <img class="ls-reviewer-avatar" src="{{or this.author.cachedAvatar defaultImage}}">
+      <h5 class="ls-reviewer-title">Review by {{this.author.username}}</h5>
+      {{#if (or (isEqual this.author.id ../user.id) ../user.admin)}}
+        <form method="POST" action="/bots/{{../item.id}}/reviews/{{this.id}}/delete">
+          <button class="ls-not-a-button">delete</button>
+        </form>
+      {{/if}}
+    </div>
+    <p>{{this.text}}</p>
+  </div>
+  {{/if}}
+{{/each}}
