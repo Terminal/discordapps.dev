@@ -16,7 +16,8 @@
     "delete": "Supprimer",
     "help": "🤔",
     "select": "Veuillez séléctionner...",
-    "submit": "Envoyer"
+    "submit": "Envoyer",
+    "wait": "Veuillez patienter ..."
   },
   "pagination": {
     "image": {
@@ -116,10 +117,10 @@
         "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible",
         "title": "URL d'invitation"
       },
-	    "website": {
-		  "title": "Site Internet",
-	      "placeholder": "Un lien HTTPS vers votre site Internet"
-	    },
+      "website": {
+        "title": "Site Internet",
+        "placeholder": "Un lien HTTPS vers votre site Internet"
+      },
       "bot_nsfw": {
         "title": "Non adapté pour toutes les audiences"
       },
@@ -280,6 +281,7 @@
       "githubrepo": "le répertoire GitHub doit être une chaine de caractères valide. Laissez vide si vous n'avez pas de répertoire GitHub.",
       "id": "L'ID du bot doit être renseigné, et numerique",
       "invite": "L'URL d'invitation needs doit être renseignée, et avec un lien HTTPS valide",
+      "website": "L'URL du site web doit être un lien HTTPS valide",
       "languages": "Vous devez ajouter une langue avant de continuer",
       "mentionable": "la mentionnabilité du préfixe doit être soit coché, ou décoché",
       "name": "Le bot doit avoir un nom d'une longueur entre 4 et 32 caractères.",
