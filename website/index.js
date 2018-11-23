@@ -94,6 +94,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     } else {
       res.locals.user = {};
     }
+    res.locals.url = req.url;
+    console.log(res.locals);
     next();
   })
   .get('/', (req, res, next) => {

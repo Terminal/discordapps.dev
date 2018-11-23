@@ -16,7 +16,7 @@
     const formdata = new FormData(form);
     inputs.forEach(input => input.setAttribute('disabled', ''));
 
-    fetch(`${window.location.pathname}reviews`, {
+    fetch(form.getAttribute('action'), {
       method: 'POST',
       body: formdata,
     })

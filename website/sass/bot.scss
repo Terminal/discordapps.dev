@@ -110,3 +110,18 @@
     margin-left: 0.5em;
   }
 }
+
+.ls-reviewer-stars-form {
+  font-size: 32pt;
+  direction: rtl;
+  max-width: min-content;
+  input {
+    display: none;
+  }
+  input:checked ~ label {
+    color: #ffff00;
+  }
+  label {
+    color: #333333;
+  }
+}

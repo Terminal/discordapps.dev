@@ -126,13 +126,13 @@
 <div class="ls-main-content main-content-container container box-shadow ls-round">
   <h2>Reviews</h2>
   <form method="POST" action="/bots/{{item.id}}/reviews" id="review-form">
-    <select name="review.rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-    </select>
+    <div class="ls-flex-row ls-reviewer-stars-form">
+      <input type="radio" name="review.rating" id="rating-5" value="5" /><label for="rating-5">★</label>
+      <input type="radio" name="review.rating" id="rating-4" value="4" /><label for="rating-4">★</label>
+      <input type="radio" name="review.rating" id="rating-3" value="3" /><label for="rating-3">★</label>
+      <input type="radio" name="review.rating" id="rating-2" value="2" /><label for="rating-2">★</label>
+      <input type="radio" name="review.rating" id="rating-1" value="1" /><label for="rating-1">★</label>
+    </div>
     <textarea name="review.text" id="review.text" class="full-width">{{this.page}}</textarea>
     <button class="btn white black-text">{{ i18n __ "forms.submit"}}</button>
     <div class="ls-form-message box-container alizarin message hidden" id="form-message" data-wait="{{ i18n __ "forms.wait" }}">

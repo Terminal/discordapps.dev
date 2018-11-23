@@ -19,6 +19,15 @@ const joi = originaljoi.extend({
   coerce: (values, state, options) => { // eslint-disable-line
     return values.filter(value => value !== '');
   }
+}, {
+  base: originaljoi.number(),
+  name: 'number',
+  coerce: (value, state, options) => { // eslint-disable-line
+    if (typeof value === 'number') {
+      return value;
+    }
+    return parseInt(value, 10);
+  }
 });
 
 module.exports = joi;
