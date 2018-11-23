@@ -1,0 +1,17 @@
+<div class="ls-reviewer-box">
+  <div class="ls-flex-row">
+    <img class="ls-reviewer-avatar" src="{{or review.author.cachedAvatar defaultImage}}">
+    <h5 class="ls-reviewer-title">Review by {{review.author.username}}</h5>
+    {{#if (or (isEqual review.author.id user.id) user.admin)}}
+      <form method="POST" action="/bots/{{../item.id}}/reviews/{{review.id}}/delete">
+        <button class="ls-not-a-button">delete</button>
+      </form>
+    {{/if}}
+  </div>
+  <p class="ls-star">
+    {{#do review.rating}}
+      ★
+    {{/do}}
+  </p>
+  <p>{{review.text}}</p>
+</div>

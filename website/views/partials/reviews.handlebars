@@ -35,17 +35,6 @@
   {{#if (isEqual @index ../limit)}}
 
   {{else}}
-  <div class="ls-reviewer-box">
-    <div class="ls-flex-row">
-      <img class="ls-reviewer-avatar" src="{{or this.author.cachedAvatar defaultImage}}">
-      <h5 class="ls-reviewer-title">Review by {{this.author.username}}</h5>
-      {{#if (or (isEqual this.author.id ../user.id) ../user.admin)}}
-        <form method="POST" action="/bots/{{../item.id}}/reviews/{{this.id}}/delete">
-          <button class="ls-not-a-button">delete</button>
-        </form>
-      {{/if}}
-    </div>
-    <p>{{this.text}}</p>
-  </div>
+    {{>reviewcard review=this user=../user}}
   {{/if}}
 {{/each}}

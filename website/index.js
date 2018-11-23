@@ -59,10 +59,18 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       concat: (...args) => args.slice(0, -1).join(''),
       isArray: value => Array.isArray(value),
       or: (var1, var2) => var1 || var2,
+      and: (var1, var2) => var1 && var2,
       isEqual: (var1, var2) => var1 === var2,
       add: (var1, var2) => var1 + var2,
       languages: () => i18n.getLocales(),
-      webserverLocation: () => config.webserver.location
+      webserverLocation: () => config.webserver.location,
+      do: (n, block) => {
+        let accumulator = '';
+        for (let i = 0; i < n; i += 1) {
+          accumulator += block.fn(i);
+        }
+        return accumulator;
+      }
     },
   }))
   .use(bodyParser.json())
@@ -95,7 +103,6 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       res.locals.user = {};
     }
     res.locals.url = req.url;
-    console.log(res.locals);
     next();
   })
   .get('/', (req, res, next) => {

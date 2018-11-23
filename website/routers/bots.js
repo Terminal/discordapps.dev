@@ -74,56 +74,82 @@ router
         if (!item) {
           next();
         } else {
-          const bot = localise(item, req);
-          const ratings = {};
-          const numberOfRatings = bot.ratings.reduce((sum, rating) => sum + rating.reduction, 0);
-          const maximumNumber = bot.ratings.reduce((max, rating) => {
-            if (rating.reduction > max) {
-              return rating.reduction;
-            }
-            return max;
-          }, 0);
+          const displayBot = (userReview) => {
+            const bot = localise(item, req);
+            const ratings = {};
+            const numberOfRatings = bot.ratings.reduce((sum, rating) => sum + rating.reduction, 0);
+            const maximumNumber = bot.ratings.reduce((max, rating) => {
+              if (rating.reduction > max) {
+                return rating.reduction;
+              }
+              return max;
+            }, 0);
 
-          // The maximum rating is 5.
-          // Loop from 1 to including 5
-          for (let i = 1; i <= 5; i += 1) {
-            const rating = bot.ratings.find(groupedRating => groupedRating.group === i);
+            // The maximum rating is 5.
+            // Loop from 1 to including 5
+            for (let i = 1; i <= 5; i += 1) {
+              const rating = bot.ratings.find(groupedRating => groupedRating.group === i);
 
-            if (rating) {
-              ratings[i] = {
-                count: rating.reduction,
-                proportion: rating.reduction / numberOfRatings,
-                percentage: (rating.reduction / numberOfRatings) * 100,
-                sliderWidth: (rating.reduction / maximumNumber) * 100
-              };
-            } else {
-              ratings[i] = {
-                count: 0,
-                proportion: 0,
-                percentage: 0,
-                sliderWidth: 0
-              };
+              if (rating) {
+                ratings[i] = {
+                  count: rating.reduction,
+                  proportion: rating.reduction / numberOfRatings,
+                  percentage: (rating.reduction / numberOfRatings) * 100,
+                  sliderWidth: (rating.reduction / maximumNumber) * 100
+                };
+              } else {
+                ratings[i] = {
+                  count: 0,
+                  proportion: 0,
+                  percentage: 0,
+                  sliderWidth: 0
+                };
+              }
             }
+
+            marked.setOptions({
+              sanitize: !item.legacy
+            });
+
+            const contents = xss[item.legacy ? 'lenient' : 'strict'](marked(bot.contents.page));
+            res.render('bot', {
+              item: bot,
+              contents,
+              canEdit: req.user ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
+              cover: bot.cachedImages ? bot.cachedImages.cover : null,
+              edited: (new Date(item.edited)).toLocaleDateString(req.getLocale(), config.dateformat),
+              created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat),
+              description: bot.contents.description || '',
+              avatar: bot.cachedImages ? bot.cachedImages.avatar : null,
+              title: bot.contents.name,
+              ratings,
+              numberOfRatings,
+              userReview
+            });
+          };
+
+          if (req.user) {
+            r.table('reviews')
+              .filter({
+                bot: req.params.id,
+                author: req.user.id
+              })
+              .merge(review => ({
+                author: r.table('users').get(review('author'))
+              }))
+              .then((reviews) => {
+                if (reviews && reviews.length === 1) {
+                  displayBot(reviews[0]);
+                } else {
+                  displayBot();
+                }
+              })
+              .catch((err) => {
+                next(err);
+              });
+          } else {
+            displayBot();
           }
-
-          marked.setOptions({
-            sanitize: !item.legacy
-          });
-
-          const contents = xss[item.legacy ? 'lenient' : 'strict'](marked(bot.contents.page));
-          res.render('bot', {
-            item: bot,
-            contents,
-            canEdit: req.user ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
-            cover: bot.cachedImages ? bot.cachedImages.cover : null,
-            edited: (new Date(item.edited)).toLocaleDateString(req.getLocale(), config.dateformat),
-            created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat),
-            description: bot.contents.description || '',
-            avatar: bot.cachedImages ? bot.cachedImages.avatar : null,
-            title: bot.contents.name,
-            ratings,
-            numberOfRatings
-          });
         }
       })
       .catch((err) => {
