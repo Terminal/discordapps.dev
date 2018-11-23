@@ -11,6 +11,17 @@ module.exports = class Middleware {
     }
   }
 
+  static isLoggedInButJSON(req, res, next) {
+    if (req.user) {
+      next();
+    } else {
+      res.status(400).json({
+        err: true,
+        message: res.__('errors.permissions.login')
+      });
+    }
+  }
+
   static isAdmin(req, res, next) {
     if (req.user.admin) {
       next();
@@ -70,7 +81,8 @@ module.exports = class Middleware {
       .count()
       .then((exists) => {
         if (exists) {
-          res.status(400).render('error', {
+          res.status(400).json({
+            err: true,
             message: 'A review already exists!'
           });
         } else {

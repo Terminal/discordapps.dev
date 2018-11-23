@@ -39,6 +39,6 @@ const schema = joi.object({
     }
     return errors;
   })
-});
+}).required();
 
 module.exports = schema;

@@ -125,9 +125,19 @@
 
 <div class="ls-main-content main-content-container container box-shadow ls-round">
   <h2>Reviews</h2>
-  <form method="POST" action="/bots/{{item.id}}/reviews">
+  <form method="POST" action="/bots/{{item.id}}/reviews" id="review-form">
+    <select name="review.rating">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
     <textarea name="review.text" id="review.text" class="full-width">{{this.page}}</textarea>
-    <button>submit daddy</button>
+    <button class="btn white black-text">{{ i18n __ "forms.submit"}}</button>
+    <div class="ls-form-message box-container alizarin message hidden" id="form-message" data-wait="{{ i18n __ "forms.wait" }}">
+      <p>{{ i18n __ "forms.wait" }}</p>
+    </div>
   </form>
   {{>reviews}}
   <div class="center">
@@ -136,3 +146,4 @@
 </div>
 
 <script src="/js/botpage.js"></script>
+<script src="/js/reviewform.js"></script>

@@ -1,5 +1,5 @@
 const express = require('express');
-const { isOwnerOfBot, isOwnerOfReview, botExists, reviewDoesntExist, isLoggedIn, isAdmin } = require('../static/middleware');
+const { isOwnerOfBot, isOwnerOfReview, botExists, reviewDoesntExist, isLoggedIn, isLoggedInButJSON, isAdmin } = require('../static/middleware');
 const botSchema = require('../schemas/bots');
 const reviewSchema = require('../schemas/reviews');
 const joi = require('../schemas/joi');
@@ -130,7 +130,7 @@ router
         next(err);
       });
   })
-  .get('/:id/edit', isLoggedIn, (req, res, next) => {
+  .get('/:id/edit', isLoggedIn, isLoggedIn, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .then((item) => {
@@ -150,10 +150,10 @@ router
         next(err);
       });
   })
-  .get('/:id/delete', isLoggedIn, (req, res) => {
+  .get('/:id/delete', isLoggedIn, isLoggedIn, (req, res) => {
     res.render('sure');
   })
-  .post('/:id/delete', isOwnerOfBot, (req, res, next) => {
+  .post('/:id/delete', isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .delete()
@@ -165,7 +165,7 @@ router
         next(err);
       });
   })
-  .get('/:id/configure', isOwnerOfBot, (req, res, next) => {
+  .get('/:id/configure', isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .then((item) => {
@@ -181,7 +181,7 @@ router
         next(err);
       });
   })
-  .post('/:id/token', isOwnerOfBot, (req, res, next) => {
+  .post('/:id/token', isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .update({
         id: req.params.id,
@@ -194,7 +194,7 @@ router
         next(err);
       });
   })
-  .post('/:id/hide', isOwnerOfBot, (req, res, next) => {
+  .post('/:id/hide', isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .update({
@@ -207,7 +207,7 @@ router
         next(err);
       });
   })
-  .post('/:id/approve', isAdmin, (req, res, next) => {
+  .post('/:id/approve', isLoggedIn, isAdmin, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .update({
@@ -223,12 +223,12 @@ router
         next(err);
       });
   })
-  .get('/:id/deny', isAdmin, (req, res) => {
+  .get('/:id/deny', isLoggedIn, isAdmin, (req, res) => {
     res.render('sure', {
       reason: true
     });
   })
-  .post('/:id/deny', isAdmin, (req, res, next) => {
+  .post('/:id/deny', isLoggedIn, isAdmin, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .delete()
@@ -333,8 +333,10 @@ router
         next(err);
       });
   })
-  .post('/:id/reviews', botExists, reviewDoesntExist, reader.none(), (req, res, next) => {
-    console.log(req.body);
+  .post('/:id/reviews', isLoggedIn, botExists, reviewDoesntExist, reader.none(), (req, res, next) => {
+    req.body['review.bot'] = req.params.id;
+    req.body['review.author'] = req.user.id;
+    req.body['review.language'] = res.getLocale();
     const body = unflatten(req.body);
     console.log(body);
     joi.validate(body.review, reviewSchema, {
@@ -346,16 +348,22 @@ router
           message: res.__(err.message)
         });
       } else {
-        console.log(value);
-        res.json({
-          ok: true,
-          message: 'ok!',
-          redirect: `/bots/${req.params.id}`
-        });
+        r.table('reviews')
+          .insert(value)
+          .then(() => {
+            res.json({
+              ok: true,
+              message: 'ok!',
+              redirect: `/bots/${req.params.id}`
+            });
+          })
+          .catch((err1) => {
+            next(err1);
+          });
       }
     });
   })
-  .post('/:id/reviews/:review/delete', isOwnerOfReview, (req, res, next) => {
+  .post('/:id/reviews/:review/delete', isLoggedInButJSON, isOwnerOfReview, (req, res, next) => {
     r.table('reviews')
       .get(req.params.review)
       .delete()
@@ -374,7 +382,7 @@ router
       item: {},
     });
   })
-  .post('/add', isLoggedIn, reader.none(), (req, res, next) => {
+  .post('/add', isLoggedInButJSON, reader.none(), (req, res, next) => {
     const body = unflatten(req.body);
 
     joi.validate(body.bot, botSchema, {
