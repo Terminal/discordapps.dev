@@ -29,7 +29,8 @@ module.exports = {
         h3: ['id'],
         h4: ['id'],
         h5: ['id'],
-        h6: ['id']
+        h6: ['id'],
+        blockquote: []
       }
     });
   },

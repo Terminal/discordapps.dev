@@ -31,12 +31,12 @@ const sharp = require('sharp');
 const r = require('../rethinkdb');
 const config = require('../config');
 
-const defaultImage = path.join(__dirname, '..', 'www-root', 'img', 'logo', 'logo.svg');
+const defaultImage = path.join(__dirname, '..', 'www-root', config.default.image);
 
 class ImageCache {
   constructor(url, x = 1280, y = 720, blur = false) {
     this.url = url;
-    this.hash = crypto.createHash('sha256').update(url).digest('hex');
+    this.hash = crypto.createHash('sha256').update(url + config.webserver.secret).digest('hex');
     this.permalink = `/appdata/${this.hash}.png`;
     this.file = path.join(__dirname, '..', 'www-root', 'appdata', `${this.hash}.png`);
     this.x = x;
@@ -124,7 +124,8 @@ class ImageCache {
     return new Promise((resolve, reject) => {
       this.getRecord()
         .then((record) => {
-          if (record && record.time + 3600000 > new Date().getTime()) {
+          // Invalidate image after 3 months
+          if (record && record.time + 7776000000 > new Date().getTime()) {
             resolve();
           } else {
             this.download()

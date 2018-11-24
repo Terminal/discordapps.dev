@@ -28,7 +28,8 @@ const store = new RDBStore(r);
 const app = express();
 
 app.locals.links = config.links;
-app.locals.defaultLanguage = config.defaultLanguage;
+app.locals.defaultLanguage = config.default.language;
+app.locals.defaultImage = config.default.image;
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')
@@ -54,18 +55,23 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
         }
         return args[0] || 'Translation Error!';
       },
-      getCurrentLocale: (...args) => {
-        const options = args.pop();
-        return i18n.getLocale(options);
-      },
+      date: (date, getLocale) => (new Date(date)).toLocaleDateString(getLocale(), config.dateformat),
       stringify: (...args) => JSON.stringify(...args),
       concat: (...args) => args.slice(0, -1).join(''),
       isArray: value => Array.isArray(value),
       or: (var1, var2) => var1 || var2,
+      and: (var1, var2) => var1 && var2,
       isEqual: (var1, var2) => var1 === var2,
       add: (var1, var2) => var1 + var2,
       languages: () => i18n.getLocales(),
-      webserverLocation: () => config.webserver.location
+      webserverLocation: () => config.webserver.location,
+      do: (n, block) => {
+        let accumulator = '';
+        for (let i = 0; i < n; i += 1) {
+          accumulator += block.fn(i);
+        }
+        return accumulator;
+      }
     },
   }))
   .use(bodyParser.json())
@@ -97,6 +103,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     } else {
       res.locals.user = {};
     }
+    res.locals.url = req.url;
     next();
   })
   .get('/', (req, res, next) => {
@@ -140,6 +147,9 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   })
   .use('/edit', (req, res) => {
     res.redirect('/bots/add');
+  })
+  .use('/bot/:id', (req, res) => {
+    res.redirect(`/bots/${req.params.id}`);
   })
   .use('/sitemap.xml', sitemapRouter)
   .use((req, res) => {

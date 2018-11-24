@@ -1,27 +1,6 @@
-const originaljoi = require('joi');
+const joi = require('./joi');
 const githubUsernameRegex = require('github-username-regex');
 const config = require('../config');
-
-const joi = originaljoi.extend({
-  base: originaljoi.string(),
-  name: 'string',
-  coerce: (value, state, options) => (value === '' ? null : value) // eslint-disable-line
-}, {
-  base: originaljoi.bool(),
-  name: 'bool',
-  coerce: (value, state, options) => { // eslint-disable-line
-    if (typeof value === 'boolean') {
-      return value;
-    }
-    return value === 'on';
-  }
-}, {
-  base: originaljoi.array(),
-  name: 'array',
-  coerce: (values, state, options) => { // eslint-disable-line
-    return values.filter(value => value !== '');
-  }
-});
 
 const schema = joi.object({
   id: joi.string().regex(/^[0-9]+$/, 'numbers').required().error(new Error('errors.bots.id')),
@@ -60,8 +39,6 @@ const schema = joi.object({
     }
     return errors;
   })
-});
+}).required();
 
-module.exports = {
-  joi, schema
-};
+module.exports = schema;

@@ -88,7 +88,7 @@
       "shortname": "Bots",
       "more": "View more",
       "less": "View less",
-      "adverts": "Contains ads",
+      "adverts": "Contains features locked behind other services",
       "inAppPurchases": "Has in-app purchases",
       "unverified": "Unverified",
       "nsfw": "NSFW",
@@ -187,7 +187,7 @@
         },
         "adverts": {
           "title": "Advertisments",
-          "small": "Tick this box if your bot displays adverts, including other bot lists"
+          "small": "Tick this box if you have features that are locked behind other services"
         }
       },
       "images": {
@@ -236,6 +236,18 @@
       "title": "Are you sure?",
       "ok": "Ok",
       "no": "Go back"
+    },
+    "reviews": {
+      "title": "Reviews",
+      "my": "My Review",
+      "write": "Write a review",
+      "placeholder": "Please enter a reason for your review.",
+      "number": {
+        "one": "%s review",
+        "other": "%s reviews"
+      },
+      "delete": "Delete review",
+      "all": "View all reviews"
     }
   },
   "permission": {
@@ -316,6 +328,10 @@
     },
     "website": {
       "noscript": "JavaScript has been disabled. Functionality may be reduced."
+    },
+    "reviews": {
+      "rating": "Please select a rating before continuing",
+      "text": "Please enter why you gave this number of stars for this bot."
     }
   },
   "site": {

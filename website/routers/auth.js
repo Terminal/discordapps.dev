@@ -3,9 +3,10 @@ const passport = require('../static/passport');
 
 const router = express.Router();
 
-router.use('/callback', passport.authenticate('discord'), (req, res) => {
-  res.redirect('/');
-})
+router
+  .use('/callback', passport.authenticate('discord'), (req, res) => {
+    res.redirect('/');
+  })
   .get('/', passport.authenticate('discord'))
   .get('/info', (req, res) => {
     if (req.user && req.user.id) {

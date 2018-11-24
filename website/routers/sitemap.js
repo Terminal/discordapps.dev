@@ -13,10 +13,10 @@ module.exports = (req, res) => {
         priority: 1
       },
       {
-        loc: `${config.webserver.location}bots/`
+        loc: `${config.webserver.location}/bots/`
       },
       {
-        loc: `${config.webserver.location}locale/`
+        loc: `${config.webserver.location}/locale/`
       }
     ]
   };
@@ -25,7 +25,7 @@ module.exports = (req, res) => {
     const category = config.categories[i];
 
     sitemap.url.push({
-      loc: `${config.webserver.location}bots/category/${category}`
+      loc: `${config.webserver.location}/bots/category/${category}`
     });
   }
 
@@ -35,7 +35,7 @@ module.exports = (req, res) => {
         const bot = bots[i];
 
         sitemap.url.push({
-          loc: `${config.webserver.location}bots/${bot.id}`
+          loc: `${config.webserver.location}/bots/${bot.id}`
         });
       }
 

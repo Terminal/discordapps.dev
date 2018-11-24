@@ -22,6 +22,7 @@
 
   .ls-bot-profile-content-left {
     margin-left: 10px;
+    max-width: calc(100% - 10px);
     flex-grow: 1;
   }
 
@@ -33,6 +34,7 @@
     font-size: 3em;
     margin: 0;
     padding: 0;
+    overflow-x: auto;
 
     .nsfw-tag {
       font-size: 16px;
@@ -82,6 +84,57 @@
   }
 }
 
-.tns-nav-active {
-  background: #999;
+/**
+* Reviews!
+*/
+
+.ls-review-box {
+  max-width: 20em;
+  flex-basis: 20em;
+  flex-grow: 1;
+  .ls-flex-row {
+    align-items: center;
+  }
+  .progress-container {
+    width: 100%;
+  }
+  .ls-review-number {
+    width: 15px;
+  }
+}
+
+.ls-review-average {
+  font-size: 36pt;
+  align-self: center;
+  padding: 0.25em;
+}
+
+.ls-reviewer-box {
+  margin-top: 1em;
+  .ls-star {
+    color: #ffff00;
+  }
+  .ls-reviewer-avatar {
+    width: 3em;
+    height: 3em;
+  }
+  .ls-reviewer-title {
+    flex-grow: 1;
+    margin-left: 0.5em;
+  }
+}
+
+.ls-reviewer-stars-form {
+  font-size: 32pt;
+  direction: rtl;
+  max-width: min-content;
+  input {
+    display: none;
+  }
+  input:checked ~ label {
+    color: #ffff00;
+  }
+  label {
+    color: #888888;
+  }
 }

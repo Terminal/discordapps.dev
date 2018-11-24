@@ -84,14 +84,17 @@ const listMiddleware = options => (req, res, next) => {
           title = res.__('pages.bots.ownerFilter', {
             name: `${user.username}#${user.discriminator}`
           });
-          const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`, 512, 512);
-          cache.cache()
-            .then(() => {
+          const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`);
+          // Don't cache the image. Image should already be cached on login
+          cache.getRecord()
+            .then((record) => {
+              if (record) {
+                avatar = cache.permalink;
+              }
               checkDatabase();
-              avatar = cache.permalink;
             })
-            .catch(() => {
-              checkDatabase();
+            .catch((err) => {
+              next(err);
             });
         } else {
           next();

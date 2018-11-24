@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', (event) => {
     if (event.target.closest('.nav-container') || window.innerWidth >= 650) return;
-    console.log(event.target);
     navside.style.transform = 'translateX(-250px)';
   });
 
