@@ -374,7 +374,6 @@ router
     req.body['review.author'] = req.user.id;
     req.body['review.language'] = res.getLocale();
     const body = unflatten(req.body);
-    console.log(body);
     joi.validate(body.review, reviewSchema, {
       abortEarly: true
     }, (err, value) => {

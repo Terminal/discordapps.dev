@@ -22,8 +22,6 @@ window.newRow = (button) => {
   newRow.appendChild(newInput);
   newRow.appendChild(newButton);
   container.appendChild(newRow);
-
-  console.log(row);
 };
 
 window.deleteRow = (button) => {

@@ -28,7 +28,6 @@ module.exports = (item, average, count) => {
         }
       });
     }
-    console.log(item);
   }
 
   return template;
