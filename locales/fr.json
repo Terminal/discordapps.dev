@@ -239,7 +239,7 @@
       "title": "Critique",
       "my": "Mes Critiques",
       "write": "Écrire une critique",
-      "placeholder": "Veuillez écrire une raison pour votre critique.",
+      "placeholder": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
       "number": {
         "one": "%s critique",
         "other": "%s critiques"
@@ -329,7 +329,8 @@
     },
     "reviews": {
       "rating": "Veuillez sélectionner une note avant de continuer",
-      "text": "Veuillez entrer pourquoi vous avez donné cette note à ce bot."
+      "text": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
+      "self": "Vous ne pouvez pas critiquer votre propre bot!"
     }
   },
   "site": {
