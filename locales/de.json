@@ -16,7 +16,8 @@
     "delete": "Löschen",
     "help": "🤔",
     "select": "Bitte wählen...",
-    "submit": "Einreichen"
+    "submit": "Einreichen",
+    "wait": "Bitte warten..."
   },
   "pagination": {
     "image": {
@@ -30,9 +31,9 @@
     "currentPage": "Seite {{{ number }}}"
   },
   "intro": {
-    "login": "Via Discord einloggen",
+    "login": "Einloggen",
     "logout": "Ausloggen",
-    "search": "Suchen...",
+    "search": "Nach was suchst du?",
     "admin": "Admin",
     "docs": "Dokumentation"
   },
@@ -99,7 +100,13 @@
     },
     "configuration": {
       "token": "Token",
-      "renew": "Token erneuern"
+      "renew": "Token erneuern",
+      "hide": {
+        "title": "Bot ausblenden",
+        "description": "Du kannst deinen Bot von der Hauptseite ausblenden, wenn du Ihn dort nicht brauchst.",
+        "disable": "Anzeigen",
+        "enable": "Ausblenden"
+      }
     },
     "edit": {
       "application_id": {
@@ -209,7 +216,9 @@
     },
     "error": {
       "notfound": "Seite nicht gefunden...",
-      "server": "Unerwartet schnelle Demontage festgestellt"
+      "server": "Unerwartet schnelle Demontage festgestellt",
+      "github": "Melde diesen Fehler auf GitHub.com",
+      "report": "Danke dass du dir Zeit nimmst, um diesen Fehler zu melden. Bitte schreibe, was du vor dem Vorfall getan hast."
     },
     "list": {
       "invite": "Einladen",
@@ -227,6 +236,18 @@
       "title": "Bist du dir sicher?",
       "ok": "Ok",
       "no": "Zurück gehen"
+    },
+    "reviews": {
+      "title": "Reviews",
+      "my": "Meine Review",
+      "write": "Schreibe eine Review",
+      "placeholder": "Bitte gib einen Grund für deine Review ein.",
+      "number": {
+        "one": "%s Review",
+        "other": "%s Reviews"
+      },
+      "delete": "Review löschen",
+      "all": "Alle Reviews ansehen"
     }
   },
   "permission": {
@@ -305,7 +326,11 @@
       "denied": "Du hast nicht die richtigen Berechtigungen um darauf zugreiffen zu können"
     },
     "website": {
-      "noscript": "JavaScripts wurden deaktiviert. Funktionalität könnte verringert sein."
+      "noscript": "JavaScript wurde deaktiviert. Funktionalität könnte beinträchtigt sein."
+    },
+    "reviews": {
+      "rating": "Bitte wähle eine Bewertung, befor du fortfährst",
+      "text": "Bitte gib an, warum du diesem Bot diese Anzahl an Sternen gegeben hast."
     }
   },
   "site": {
