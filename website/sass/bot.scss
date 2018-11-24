@@ -22,6 +22,7 @@
 
   .ls-bot-profile-content-left {
     margin-left: 10px;
+    max-width: calc(100% - 10px);
     flex-grow: 1;
   }
 
@@ -33,6 +34,7 @@
     font-size: 3em;
     margin: 0;
     padding: 0;
+    overflow-x: auto;
 
     .nsfw-tag {
       font-size: 16px;
@@ -88,6 +90,8 @@
 
 .ls-review-box {
   max-width: 20em;
+  flex-basis: 20em;
+  flex-grow: 1;
   .ls-flex-row {
     align-items: center;
   }
@@ -97,6 +101,12 @@
   .ls-review-number {
     width: 15px;
   }
+}
+
+.ls-review-average {
+  font-size: 36pt;
+  align-self: center;
+  padding: 0.25em;
 }
 
 .ls-reviewer-box {

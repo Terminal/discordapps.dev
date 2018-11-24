@@ -1,40 +1,47 @@
-<div class="ls-review-box">
-  <p>{{numberOfRatings}} reviews</p>
-  <div class="ls-flex-row">
-    <span class="ls-review-number">5</span>
-    <div class="progress-container">
-      <div class="progress-bar emerald-bar" style="width: {{ratings.5.sliderWidth}}%;"></div>
+<div class="ls-flex-row wrap">
+  <div class="ls-review-box">
+    <p>{{i18ns __n "pages.reviews.number" numberOfRatings}}</p>
+    <div class="ls-flex-row">
+      <span class="ls-review-number">5</span>
+      <div class="progress-container">
+        <div class="progress-bar emerald-bar" style="width: {{ratings.5.sliderWidth}}%;"></div>
+      </div>
+    </div>
+    <div class="ls-flex-row">
+      <span class="ls-review-number">4</span>
+      <div class="progress-container">
+        <div class="progress-bar green-sea-bar" style="width: {{ratings.4.sliderWidth}}%;"></div>
+      </div>
+    </div>
+    <div class="ls-flex-row">
+      <span class="ls-review-number">3</span>
+      <div class="progress-container">
+        <div class="progress-bar sun-flower-bar" style="width: {{ratings.3.sliderWidth}}%;"></div>
+      </div>
+    </div>
+    <div class="ls-flex-row">
+      <span class="ls-review-number">2</span>
+      <div class="progress-container">
+        <div class="progress-bar carrot-bar" style="width: {{ratings.2.sliderWidth}}%;"></div>
+      </div>
+    </div>
+    <div class="ls-flex-row">
+      <span class="ls-review-number">1</span>
+      <div class="progress-container">
+        <div class="progress-bar alizarin-bar" style="width: {{ratings.1.sliderWidth}}%;"></div>
+      </div>
     </div>
   </div>
-  <div class="ls-flex-row">
-    <span class="ls-review-number">4</span>
-    <div class="progress-container">
-      <div class="progress-bar green-sea-bar" style="width: {{ratings.4.sliderWidth}}%;"></div>
-    </div>
+  {{#if average}}
+  <div class="ls-review-average">
+    {{average}} / 5.0
   </div>
-  <div class="ls-flex-row">
-    <span class="ls-review-number">3</span>
-    <div class="progress-container">
-      <div class="progress-bar sun-flower-bar" style="width: {{ratings.3.sliderWidth}}%;"></div>
-    </div>
-  </div>
-  <div class="ls-flex-row">
-    <span class="ls-review-number">2</span>
-    <div class="progress-container">
-      <div class="progress-bar carrot-bar" style="width: {{ratings.2.sliderWidth}}%;"></div>
-    </div>
-  </div>
-  <div class="ls-flex-row">
-    <span class="ls-review-number">1</span>
-    <div class="progress-container">
-      <div class="progress-bar alizarin-bar" style="width: {{ratings.1.sliderWidth}}%;"></div>
-    </div>
-  </div>
+  {{/if}}
 </div>
 {{#each item.reviews}}
   {{#if (isEqual @index ../limit)}}
 
   {{else}}
-    {{>reviewcard review=this user=../user item=../item}}
+    {{>reviewcard review=this user=../user item=../item __=../__ getLocale=../getLocale}}
   {{/if}}
 {{/each}}

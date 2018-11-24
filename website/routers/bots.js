@@ -14,6 +14,7 @@ const crypto = require('crypto');
 const discordWebhooks = require('../static/discordWebhook');
 const fetch = require('node-fetch');
 const { localise, listMiddleware } = require('../static/list');
+const reviewToJsonLd = require('../static/reviewToJsonLd');
 
 const router = express.Router();
 const reader = multer();
@@ -78,6 +79,8 @@ router
             const bot = localise(item, req);
             const ratings = {};
             const numberOfRatings = bot.ratings.reduce((sum, rating) => sum + rating.reduction, 0);
+            let sum = 0;
+            let average = null;
             const maximumNumber = bot.ratings.reduce((max, rating) => {
               if (rating.reduction > max) {
                 return rating.reduction;
@@ -91,6 +94,7 @@ router
               const rating = bot.ratings.find(groupedRating => groupedRating.group === i);
 
               if (rating) {
+                sum += rating.reduction * i;
                 ratings[i] = {
                   count: rating.reduction,
                   proportion: rating.reduction / numberOfRatings,
@@ -105,6 +109,10 @@ router
                   sliderWidth: 0
                 };
               }
+            }
+
+            if (numberOfRatings > 0) {
+              average = (sum / numberOfRatings).toPrecision(2);
             }
 
             marked.setOptions({
@@ -124,7 +132,9 @@ router
               title: bot.contents.name,
               ratings,
               numberOfRatings,
-              userReview
+              userReview,
+              average,
+              schema: reviewToJsonLd(bot, average, numberOfRatings)
             });
           };
 
@@ -374,6 +384,7 @@ router
           message: res.__(err.message)
         });
       } else {
+        value.date = new Date();
         r.table('reviews')
           .insert(value)
           .then(() => {
