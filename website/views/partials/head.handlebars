@@ -6,18 +6,19 @@
 <link rel="stylesheet" href="/css/index.css" />
 {{#if title}}
   <title>{{title}} - {{i18n __ "pages.bots.pagename"}}</title>
-  <meta property="og:title" content="{{title}} - {{i18n __ "pages.bots.pagename"}}"/>
+  <meta property="og:title" content="{{title}}"/>
 {{else}}
   <title>{{i18n __ "pages.bots.pagename"}}</title>
   <meta property="og:title" content="{{i18n __ "pages.bots.pagename"}}"/>
 {{/if}}
+<meta property="og:site_name" content="{{i18n __ "pages.bots.pagename"}}"/>
 
 {{#if description}}
-  <meta property="og:description" content="{{description}} - {{i18n __ "pages.bots.pagename"}}"/>
-  <meta name="description" content="{{description}} - {{i18n __ "pages.bots.pagename"}}"/>
+  <meta property="og:description" content="{{description}}"/>
+  <meta name="description" content="{{description}}"/>
 {{else}}
   <meta property="og:description" content="{{i18n __ "site.description"}}"/>
-  <meta name="description" content="{{i18n __ "site.description"}} - {{i18n __ "pages.bots.pagename"}}"/>
+  <meta name="description" content="{{i18n __ "site.description"}}"/>
 {{/if}}
 
 {{#each (languages)}}
