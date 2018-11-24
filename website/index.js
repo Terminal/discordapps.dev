@@ -148,6 +148,9 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/edit', (req, res) => {
     res.redirect('/bots/add');
   })
+  .use('/bot/:id', (req, res) => {
+    res.redirect(`/bots/${req.params.id}`);
+  })
   .use('/sitemap.xml', sitemapRouter)
   .use((req, res) => {
     res.status(404).render('error', {
