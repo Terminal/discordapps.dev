@@ -124,6 +124,7 @@ router
               item: bot,
               contents,
               canEdit: req.user ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
+              isOwner: req.user ? bot.authors.some(owner => owner.id === req.user.id) : false,
               cover: bot.cachedImages ? bot.cachedImages.cover : null,
               edited: (new Date(item.edited)).toLocaleDateString(req.getLocale(), config.dateformat),
               created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat),
@@ -374,30 +375,42 @@ router
     req.body['review.author'] = req.user.id;
     req.body['review.language'] = res.getLocale();
     const body = unflatten(req.body);
-    joi.validate(body.review, reviewSchema, {
-      abortEarly: true
-    }, (err, value) => {
-      if (err) {
-        res.json({
-          ok: false,
-          message: res.__(err.message)
-        });
-      } else {
-        value.date = new Date();
-        r.table('reviews')
-          .insert(value)
-          .then(() => {
-            res.json({
-              ok: true,
-              message: 'ok!',
-              redirect: `/bots/${req.params.id}`
-            });
-          })
-          .catch((err1) => {
-            next(err1);
+    r.table('bots')
+      .get(req.params.id)
+      .then((bot) => {
+        const isAuthor = req.user ? bot.authors.some(owner => owner === req.user.id) : false;
+        if (!isAuthor) {
+          joi.validate(body.review, reviewSchema, {
+            abortEarly: true
+          }, (err, value) => {
+            if (err) {
+              res.json({
+                ok: false,
+                message: res.__(err.message)
+              });
+            } else {
+              value.date = new Date();
+              r.table('reviews')
+                .insert(value)
+                .then(() => {
+                  res.json({
+                    ok: true,
+                    message: 'ok!',
+                    redirect: `/bots/${req.params.id}`
+                  });
+                })
+                .catch((err1) => {
+                  next(err1);
+                });
+            }
           });
-      }
-    });
+        } else {
+          res.json({
+            ok: false,
+            message: res.__('errors.reviews.self')
+          });
+        }
+      });
   })
   .post('/:id/reviews/:review/delete', isLoggedInButJSON, isOwnerOfReview, (req, res, next) => {
     r.table('reviews')

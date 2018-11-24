@@ -331,7 +331,8 @@
     },
     "reviews": {
       "rating": "Please select a rating before continuing",
-      "text": "Please enter why you gave this number of stars for this bot."
+      "text": "Please enter why you gave this number of stars for this bot.",
+      "self": "You cannot review your own bot!"
     }
   },
   "site": {
