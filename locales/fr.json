@@ -32,7 +32,7 @@
   "intro": {
     "login": "Se connecter via Discord",
     "logout": "Déconnexion",
-    "search": "Rechercher...",
+    "search": "Que recherchez vous?",
     "admin": "Admin",
     "docs": "Documentation"
   },
@@ -66,11 +66,11 @@
   "pages": {
     "bots": {
       "add": "Ajouter votre propre bot",
-      "backgroundAlt": "Logo pour Discord Forklift",
-      "description": "Un test de liste de bots open source",
+      "backgroundAlt": "Logo pour ls.terminal.ink",
+      "description": "Un magasin d'applications pour des bots Discord",
       "invite": "Inviter ce bot",
       "support": "Support technique",
-      "pagename": "Project Forklift",
+      "pagename": "ls.terminal.ink",
       "website": "Site Internet",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
@@ -214,7 +214,9 @@
     },
     "error": {
       "notfound": "Page introuvable...",
-      "server": "Problème inattendu rencontré"
+      "server": "Problème inattendu rencontré",
+      "github": "Rapporter ce bug sur GitHub.com",
+      "report": "Merci de prendre le temps de nous signaler cette erreur. Veuillez mentionner ce que vous étiez en train de faire avant l'incident."
     },
     "list": {
       "invite": "Inviter",
@@ -232,6 +234,18 @@
       "title": "Êtes-vous sur ?",
       "ok": "Ok",
       "no": "Retour"
+    },
+    "reviews": {
+      "title": "Critique",
+      "my": "Mes Critiques",
+      "write": "Écrire une critique",
+      "placeholder": "Veuillez écrire une raison pour votre critique.",
+      "number": {
+        "one": "%s critique",
+        "other": "%s critiques"
+      },
+      "delete": "Supprimer la critique",
+      "all": "Voir toutes les critiques"
     }
   },
   "permission": {
@@ -304,7 +318,7 @@
       "avatar": "L'URL de l'avatar doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
       "cover": "L'URL de la couverture doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
       "preview": "Toutes les URL d'aperçu doivent être des liens HTTPS valides, avec une longueur maximale de 2000 caractères chacun, avec un maximum de 20 liens",
-      "no_suitable_lang": "Cette page n'a pas de version Française. '{{ language }}' est affiché à la place."
+      "no_suitable_lang": "Cette page n'a pas de version Française. La version en {{ language }} est affiché à la place."
     },
     "permissions": {
       "login": "Vous n'êtes pas connecté",
@@ -312,6 +326,13 @@
     },
     "website": {
       "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites."
+    },
+    "reviews": {
+      "rating": "Veuillez sélectionner une note avant de continuer",
+      "text": "Veuillez entrer pourquoi vous avez donné cette note à ce bot."
     }
+  },
+  "site": {
+    "description": "ls.terminal.ink est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des informations, pour modérer et plus pour votre serveur."
   }
 }
