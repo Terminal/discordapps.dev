@@ -443,7 +443,7 @@ router
           message: res.__(err.message)
         });
       } else {
-        const insert = (type, message, avatar) => {
+        const insert = (type, message) => {
           const imagePromises = [];
           value.cachedImages = {
             avatar: null,
@@ -453,10 +453,6 @@ router
 
           if (value.images && typeof value.images.avatar === 'string') {
             const cache = new ImageCache(value.images.avatar, 512, 512, value.nsfw);
-            imagePromises.push(cache.cache());
-            value.cachedImages.avatar = cache.permalink;
-          } else if (avatar) {
-            const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${value.id}/${avatar}.png`, 512, 512, value.nsfw);
             imagePromises.push(cache.cache());
             value.cachedImages.avatar = cache.permalink;
           } else {
@@ -546,7 +542,8 @@ router
                       message: res.__('errors.bots.notfound')
                     });
                   } else if (result.bot) {
-                    insert('added', 'errors.bots.add_success', result.avatar);
+                    if (!value.images.avatar) value.images.avatar = `https://cdn.discordapp.com/avatars/${value.id}/${result.avatar}.png`;
+                    insert('added', 'errors.bots.add_success');
                   } else {
                     res.json({
                       ok: false,
