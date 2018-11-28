@@ -212,7 +212,8 @@
       "title": "Hinzufügen oder bearbeiten einer Anwendung",
       "triggermethods": "Trigger Methoden",
       "deleteLanguage": "Eine Sprache löschen",
-      "required": "Mit * Felder sind auszufüllen."
+      "required": "Mit * markierte Felder sind auszufüllen.",
+      "updates": "Es ist empfohlen, demn Terminal.ink Discordserver beizutreten in dem du auf 'Discord' im Footer klickst, um Service updates zu erhalten, den aktuellen Verifizierungs-Status deines Bots zu sehen und um direkte Nachrichten vom Team über deine Applikation zu kriegen."
     },
     "error": {
       "notfound": "Seite nicht gefunden...",
@@ -330,7 +331,8 @@
     },
     "reviews": {
       "rating": "Bitte wähle eine Bewertung, befor du fortfährst",
-      "text": "Bitte gib an, warum du diesem Bot diese Anzahl an Sternen gegeben hast."
+      "text": "Bitte gib an, warum du diesem Bot diese Anzahl an Sternen gegeben hast.",
+      "self": "Du kannst deinen eigenen Bot nicht reviewen"
     }
   },
   "site": {
