@@ -212,7 +212,8 @@
       "title": "Add or Edit an Application",
       "triggermethods": "Trigger Methods",
       "deleteLanguage": "Delete a language",
-      "required": "Fields marked with * are required."
+      "required": "Fields marked with * are required.",
+      "updates": "It is highly recommended you join the Terminal.ink Discord Server by clicking 'Discord' in the footer, to view service updates, view your bot verification status, and also recieve direct messages from staff about your application."
     },
     "error": {
       "notfound": "Page not found...",

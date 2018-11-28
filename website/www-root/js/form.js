@@ -156,7 +156,6 @@ window.deleteLanguage = (id) => {
 {
   const form = document.getElementById('edit-form');
   const formMessage = document.getElementById('form-message');
-  const formMessageText = formMessage.getElementsByTagName('p')[0];
   const inputs = [...form.getElementsByTagName('input'), ...form.getElementsByTagName('select')];
 
   const pleaseWait = formMessage.dataset.wait;
@@ -171,9 +170,9 @@ window.deleteLanguage = (id) => {
       }
     });
 
-    formMessage.classList.remove('hidden');
+    formMessage.classList.remove('hidden', 'secondary');
     formMessage.classList.add('asbestos');
-    formMessageText.innerText = pleaseWait;
+    formMessage.innerText = pleaseWait;
 
     const formdata = new FormData(form);
     inputs.forEach(input => input.setAttribute('disabled', ''));
@@ -199,7 +198,7 @@ window.deleteLanguage = (id) => {
           }, 500);
         }
 
-        formMessageText.innerText = data.message;
+        formMessage.innerText = data.message;
       });
   });
 }
