@@ -27,7 +27,8 @@
     "page": {
       "prev": "Précédente",
       "next": "Suivante"
-    }
+    },
+    "currentPage": "Page {{{ number }}}"
   },
   "intro": {
     "login": "Se connecter via Discord",
