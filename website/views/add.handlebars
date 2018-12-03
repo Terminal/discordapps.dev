@@ -57,7 +57,7 @@
         <input name="bot.nsfw" type="checkbox" {{#if item.nsfw}}checked="on"{{/if}}>
       </div>
     </div>
-    <h2>Images</h2>
+    <h2>{{ i18n __ "pages.edit.images.title"}}</h2>
     <div class="row">
       <div class="one-half column">
         <label for="bot.images.avatar">{{ i18n __ "pages.edit.images.avatar.title"}}</label>
@@ -81,7 +81,7 @@
         <input name="bot.trigger.mentionable" type="checkbox" {{#if item.trigger.mentionable}}checked="on"{{/if}}>
       </div>
     </div>
-    <h2>Flags</h2>
+    <h2>{{ i18n __ "pages.edit.flags.title"}}</h2>
     <div class="row">
       <div class="one-half column">
         <label for="bot.flags.inAppPurchases">{{ i18n __ "pages.edit.flags.inAppPurchases.title"}}</label>
@@ -106,6 +106,7 @@
       </div>
     </div>
     <h2>{{ i18n __ "pages.edit.information"}}</h2>
+    <p>{{ i18n __ "pages.edit.languages.modal"}}</p>
     <div class="row">
       <div class="column">
         <label>{{ i18n __ "pages.edit.languages.title"}}{{> required }}</label>
@@ -117,7 +118,6 @@
             {{/each}}
           </select>
           <button type="button" id="add-language-button" onclick="addLanguage(this)" class="ls-button">{{ i18n __ "pages.edit.languages.add"}}</button>
-          <button type="button" id="language-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "forms.help"}}</button>
         </div>
       </div>
     </div>
@@ -262,14 +262,6 @@
     <span class="close ls-exit-modal">×</span>
     <h1>{{ i18n __ "pages.edit.authors.title"}}</h1>
     <p>{{ i18n __ "pages.edit.authors.modal"}}</p>
-  </div>
-</div>
-
-<div id="language-modal" class="modal modal--close">
-  <div class="modal-content">
-    <span class="close ls-exit-modal">×</span>
-    <h1>{{ i18n __ "pages.edit.languages.title"}}</h1>
-    <p>{{ i18n __ "pages.edit.languages.modal"}}</p>
   </div>
 </div>
 

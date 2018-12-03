@@ -181,6 +181,7 @@
         "title": "Prefix"
       },
       "flags": {
+        "title": "Funding and Advertising Decleration",
         "inAppPurchases": {
           "title": "In App Purchases",
           "small": "Tick this box if you have features behind a paywall"
@@ -191,6 +192,7 @@
         }
       },
       "images": {
+        "title": "Appearance",
         "avatar": {
           "title": "Avatar URL",
           "placeholder": "A HTTPS link to an avatar image"
@@ -202,6 +204,10 @@
         "preview": {
           "title": "Preview Images",
           "placeholder": "A HTTPS link to a single screenshot"
+        },
+        "youtube": {
+          "title": "YouTube ID",
+          "placeholder": "An ID to a YouTube video demonstrating your bot"
         }
       },
       "website": {
