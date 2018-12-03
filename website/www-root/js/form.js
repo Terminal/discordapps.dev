@@ -49,14 +49,14 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
     const descriptionLocalised = languagesBox.dataset.description;
     const pageLocalised = languagesBox.dataset.page;
 
-    if (selectedLanguageCode) {
+    if (selectedLanguageCode !== 'null') {
       const selectedLanguageOption = languageOptionsBox.children[languageOptionsBox.selectedIndex];
       const selectedLanguageName = selectedLanguageOption.innerText;
 
       languageOptionsBox.removeChild(selectedLanguageOption);
 
       const languageRow = document.createElement('div');
-      languageRow.setAttribute('class', 'box-container github');
+      languageRow.setAttribute('class', 'ls-main-content main-content-container container box-shadow ls-round github');
       languageRow.dataset.title = selectedLanguageName;
       languageRow.id = selectedLanguageCode;
 
