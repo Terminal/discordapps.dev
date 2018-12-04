@@ -66,13 +66,13 @@
   },
   "pages": {
     "bots": {
-      "add": "Eigenen Bot hinzufügen",
-      "backgroundAlt": "Das Logo für Discord Forklift",
-      "description": "Eine Open source Test Botliste",
+      "add": "App hinzufügen",
+      "backgroundAlt": "Das Logo für ls.terminal.ink",
+      "description": "Ein Applikations-Laden für Discord Bots",
       "invite": "Diesen Bot hinzufügen",
       "support": "Technischer Support",
       "website": "Webseite",
-      "pagename": "Projekt Forklift",
+      "pagename": "ls.terminal.ink",
       "mentionable": "Erwähnbar",
       "customisable": "Änderbar",
       "delete": "Löschen",
@@ -143,7 +143,7 @@
         "title": "Bot ID"
       },
       "customisable": {
-        "title": "Änderbarer prefix"
+        "title": "Prefix änderbar"
       },
       "description": {
         "title": "Beschreibung"
@@ -181,6 +181,7 @@
         "title": "Prefix"
       },
       "flags": {
+        "title": "Erklärung zur Finanzierung und Werbung",
         "inAppPurchases": {
           "title": "In-App käufe",
           "small": "Aktiviere dieses Kontrollkästchen, wenn du Funktionen hinter einer Paywall hast"
@@ -191,6 +192,7 @@
         }
       },
       "images": {
+        "title": "Darstellung",
         "avatar": {
           "title": "Avatar URL",
           "placeholder": "Ein HTTPS Link zu einem Avatar Bild"
@@ -202,6 +204,10 @@
         "preview": {
           "title": "Vorschaubilder",
           "placeholder": "Ein HTTPS Link zu einem einzelnen Screenshot"
+        },
+        "youtube": {
+          "title": "YouTube ID",
+          "placeholder": "Eine ID zu einem YouTube-Video, welche eine Demonstration deines Bots zeigt"
         }
       },
       "website": {
