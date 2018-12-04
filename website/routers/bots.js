@@ -529,7 +529,7 @@ router
               value.created = (new Date()).getTime();
               value.edited = (new Date()).getTime();
               value.hide = false;
-              fetch(`https://discordapp.com/api/v6/users/${value.id}`, {
+              fetch(`${config.discord.api}/users/${value.id}`, {
                 headers: {
                   Authorization: `Bot ${config.discord.token}`
                 }
@@ -542,7 +542,7 @@ router
                       message: res.__('errors.bots.notfound')
                     });
                   } else if (result.bot) {
-                    if (!value.images.avatar) value.images.avatar = `https://cdn.discordapp.com/avatars/${value.id}/${result.avatar}.png`;
+                    if (!value.images.avatar) value.images.avatar = `${config.discord.cdn}/avatars/${value.id}/${result.avatar}.png`;
                     insert('added', 'errors.bots.add_success');
                   } else {
                     res.json({
