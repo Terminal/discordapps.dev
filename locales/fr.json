@@ -184,6 +184,7 @@
         "title": "Préfixe"
       },
       "flags": {
+        "title": "Notification de publicité et/ou de monétisation",
         "inAppPurchases": {
           "title": "Achats dans l'application",
           "small": "Cochez cette case si le bot a des fonctionnalités payantes"
@@ -194,6 +195,7 @@
         }
       },
       "images": {
+        "title": "Apparance",
         "avatar": {
           "title": "URL de l'Avatar",
           "placeholder": "Un lien HTTPS vers une image d'avatar"
@@ -205,6 +207,10 @@
         "preview": {
           "title": "Images d'aperçu",
           "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot"
+        },
+        "youtube": {
+          "title": "ID YouTube",
+          "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
         }
       },
       "sourcecode": "Code Source",
