@@ -536,13 +536,18 @@ router
               })
                 .then(result => result.json())
                 .then((result) => {
-                  if (result.code === 10013) {
+                  if (result.error) {
+                    res.json({
+                      ok: false,
+                      message: result.message
+                    });
+                  } else if (result.code === 10013) {
                     res.json({
                       ok: false,
                       message: res.__('errors.bots.notfound')
                     });
                   } else if (result.bot) {
-                    if (!value.images.avatar) value.images.avatar = `${config.discord.cdn}/avatars/${value.id}/${result.avatar}.png`;
+                    if (!value.images.avatar && result.avatar) value.images.avatar = `${config.discord.cdn}/avatars/${value.id}/${result.avatar}.png`;
                     insert('added', 'errors.bots.add_success');
                   } else {
                     res.json({
