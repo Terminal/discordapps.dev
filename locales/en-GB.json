@@ -334,7 +334,8 @@
       "denied": "You do not have the adequate permissions to access this"
     },
     "website": {
-      "noscript": "JavaScript has been disabled. Functionality may be reduced."
+      "noscript": "JavaScript has been disabled. Functionality may be reduced.",
+      "print": "JavaScript is not compatible with paper printouts."
     },
     "reviews": {
       "rating": "Please select a rating before continuing",

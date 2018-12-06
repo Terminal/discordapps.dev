@@ -1,4 +1,4 @@
-@media (min-width: 650px) {
+@media screen and (min-width: 650px) {
   .ls-nav-container {
     display: block;
     background: transparent;
@@ -43,6 +43,13 @@
         margin: 0 .3em;
         padding: .4em 0;
         text-decoration: none;
+        &:hover {
+          transform: none;
+          -webkit-transform: none;
+          -ms-transform: none;
+          -moz-transform: none;
+          -o-transform: none;
+        }
       }
     }
   }

@@ -1,8 +1,10 @@
-.ls-footer {
-  text-align: right;
-}
+@media screen {
+  .ls-footer {
+    text-align: right;
+  }
 
-.ls-footer-copyright {
-  white-space: pre-line;
-  margin: 0;
+  .ls-footer-copyright {
+    white-space: pre-line;
+    margin: 0;
+  }
 }

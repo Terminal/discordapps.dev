@@ -1,141 +1,142 @@
-.ls-bot-prefix {
-  font-size: 12pt;
-  white-space: pre;
-}
-
-.ls-iframe {
-  width: 100%;
-  height: 60vh;
-  border: 0;
-}
-
-.ls-bot-profile {
-  background: transparent;
-  box-shadow: none;
-  width: 100%;
-  color: #fff;
-
-  .avatar {
-    width: 10em;
-    height: 10em;
+@media screen {
+  .ls-bot-prefix {
+    font-size: 12pt;
+    white-space: pre;
   }
 
-  .ls-bot-profile-content-left {
-    margin-left: 10px;
-    max-width: calc(100% - 10px);
-    flex-grow: 1;
+  .ls-iframe {
+    width: 100%;
+    height: 60vh;
+    border: 0;
   }
 
-  .ls-bot-profile-content-right {
-    margin-left: auto;
-  }
+  .ls-bot-profile {
+    background: transparent;
+    box-shadow: none;
+    width: 100%;
+    color: #fff;
 
-  .name {
-    font-size: 3em;
-    margin: 0;
-    padding: 0;
-    overflow-x: auto;
+    .avatar {
+      width: 10em;
+      height: 10em;
+    }
 
-    .nsfw-tag {
-      font-size: 16px;
-      line-height: 50px;
-      margin-left: 0;
+    .ls-bot-profile-content-left {
+      margin-left: 10px;
+      max-width: calc(100% - 10px);
+      flex-grow: 1;
+    }
+
+    .ls-bot-profile-content-right {
+      margin-left: auto;
+    }
+
+    .name {
+      font-size: 3em;
+      margin: 0;
+      padding: 0;
+      overflow-x: auto;
+
+      .nsfw-tag {
+        font-size: 16px;
+        line-height: 50px;
+        margin-left: 0;
+      }
+    }
+
+    .description {
+      color: #eee;
+      font-size: 1.5em;
     }
   }
 
-  .description {
-    color: #eee;
-    font-size: 1.5em;
+  .ls-custom-content {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    overflow-y: hidden;
+    overflow-x: hidden;
   }
-}
 
-.ls-custom-content {
-  padding-top: 2em;
-  padding-bottom: 2em;
-  overflow-y: hidden;
-  overflow-x: hidden;
-}
-
-.ls-custom-content-button {
-  text-align: center;
-  background-color: #333;
-  width: 100%;
-  box-sizing: content-box;
-  p {
-    margin-bottom: 0;
-  }
-  img {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-.ls-custom-content-less {
-  img {
-    transform: rotate(180deg);
-  }
-}
-
-.ls-image-slider {
-  img {
-    max-width: 100%;
-    max-height: 40vh;
-    object-fit: contain;
-  }
-}
-
-/**
-* Reviews!
-*/
-
-.ls-review-box {
-  max-width: 20em;
-  flex-basis: 20em;
-  flex-grow: 1;
-  .ls-flex-row {
-    align-items: center;
-  }
-  .progress-container {
+  .ls-custom-content-button {
+    text-align: center;
+    background-color: #333;
     width: 100%;
+    box-sizing: content-box;
+    p {
+      margin-bottom: 0;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+    }
   }
-  .ls-review-number {
-    width: 15px;
-  }
-}
 
-.ls-review-average {
-  font-size: 36pt;
-  align-self: center;
-  padding: 0.25em;
-}
+  .ls-custom-content-less {
+    img {
+      transform: rotate(180deg);
+    }
+  }
 
-.ls-reviewer-box {
-  margin-top: 1em;
-  .ls-star {
-    color: #ffff00;
+  .ls-image-slider {
+    img {
+      max-width: 100%;
+      max-height: 40vh;
+      object-fit: contain;
+    }
   }
-  .ls-reviewer-avatar {
-    width: 3em;
-    height: 3em;
-  }
-  .ls-reviewer-title {
+
+  /**
+  * Reviews!
+  */
+  .ls-review-box {
+    max-width: 20em;
+    flex-basis: 20em;
     flex-grow: 1;
-    margin-left: 0.5em;
+    .ls-flex-row {
+      align-items: center;
+    }
+    .progress-container {
+      width: 100%;
+    }
+    .ls-review-number {
+      width: 15px;
+    }
   }
-}
 
-.ls-reviewer-stars-form {
-  font-size: 32pt;
-  direction: rtl;
-  max-width: min-content;
-  input {
-    display: none;
+  .ls-review-average {
+    font-size: 36pt;
+    align-self: center;
+    padding: 0.25em;
   }
-  input:checked ~ label {
-    color: #ffff00;
+
+  .ls-reviewer-box {
+    margin-top: 1em;
+    .ls-star {
+      color: #ffff00;
+    }
+    .ls-reviewer-avatar {
+      width: 3em;
+      height: 3em;
+    }
+    .ls-reviewer-title {
+      flex-grow: 1;
+      margin-left: 0.5em;
+    }
   }
-  label {
-    color: #888888;
-    cursor: pointer;
+
+  .ls-reviewer-stars-form {
+    font-size: 32pt;
+    direction: rtl;
+    max-width: min-content;
+    input {
+      display: none;
+    }
+    input:checked ~ label {
+      color: #ffff00;
+    }
+    label {
+      color: #888888;
+      cursor: pointer;
+    }
   }
 }
