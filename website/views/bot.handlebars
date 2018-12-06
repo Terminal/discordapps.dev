@@ -98,7 +98,7 @@
           {{>reviewcard review=userReview user=user item=item}}
         </div>
       {{else}}
-        <div class="secondary ls-main-content container box-shadow ls-round ls-script">
+        <div class="secondary ls-main-content container box-shadow ls-round ls-script ls-write-a-review">
           <form method="POST" action="/bots/{{item.id}}/reviews" id="review-form">
             <h4>{{ i18n __ "pages.reviews.write" }}</h4>
             <div class="ls-flex-row ls-reviewer-stars-form">

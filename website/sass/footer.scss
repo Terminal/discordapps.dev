@@ -8,3 +8,13 @@
     margin: 0;
   }
 }
+
+@media print {
+  .ls-footer {
+    border-top: 1px solid black;
+    padding-top: 5px;
+    .ls-left-pad {
+      display: none;
+    }
+  }
+}

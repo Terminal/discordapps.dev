@@ -93,9 +93,11 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     src: path.join(__dirname, 'sass'),
     dest: path.join(__dirname, 'www-root', 'css'),
     prefix: '/css',
+    debug: false,
   }))
   .use(express.static(path.join(__dirname, 'www-root')))
   .use('/node_modules/', express.static(path.join(__dirname, 'node_modules')))
+  .use('/css/images/', express.static(path.join(__dirname, 'www-root', 'ModestaCSS', 'css', 'images')))
   .use((req, res, next) => {
     if (req.user) {
       req.user.admin = req.user && config.owners.includes(req.user.id);

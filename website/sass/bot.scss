@@ -140,3 +140,53 @@
     }
   }
 }
+
+@media print {
+  .ls-bot-profile {
+    width: 100%;
+    a {
+      display: none;
+    }
+    .avatar {
+      width: 10em;
+      height: 10em;
+    }
+    .ls-bot-prefix {
+      background-color: #999;
+      padding: 3px;
+    }
+  }
+
+  #ls-short-description {
+    font-size: 11pt;
+    font-style: italic;
+  }
+
+  #ls-more, #ls-less, .ls-write-a-review {
+    display: none;
+  }
+
+  .ls-review-box .ls-flex-row {
+    align-items: center;
+    .ls-review-number {
+      width: 15px;
+    }
+  }
+
+  .ls-reviewer-box {
+    .ls-reviewer-avatar {
+      width: 3em;
+      height: 3em;
+    }
+  }
+
+  .progress-container {
+    width: 20em;
+    height: 0.25em;
+    background-color: #999;
+    .progress-bar {
+      height: 0.25em;
+      background-color: #0f0;
+    }
+  }
+}

@@ -54,3 +54,9 @@
     }
   }
 }
+
+@media print {
+  .sidenav {
+    display: none;
+  }
+}
