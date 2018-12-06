@@ -25,6 +25,7 @@ module.exports = {
         ol: [],
         del: [],
         pre: [],
+        strong: [],
         em: [],
         h1: ['id'],
         h2: ['id'],
