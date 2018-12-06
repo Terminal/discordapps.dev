@@ -1,5 +1,5 @@
-<div id="ls-navbar" class="nav-container default">
-  <span id="menu-icon">
+<div id="ls-navbar" class="ls-nav-container nav-container">
+  <span id="menu-icon" class="ls-script">
   </span>
   <h3 class="nav-title">
     <a href="/">
@@ -7,6 +7,9 @@
     </a>
   </h3>
   <div id="ls-navside" class="sidenav" style="transform: translateX(-250px);">
+    {{>links}}
+  </div>
+  <div class="sidenav">
     {{>links}}
   </div>
 </div>
