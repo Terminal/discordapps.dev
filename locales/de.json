@@ -164,7 +164,7 @@
       "languages": {
         "add": "Sprache hinzufügen",
         "delete": "Diese Sprache löschen",
-        "modal": "Du kannst verschiedensprachige Beschreibungen hinzufügen, welche von der Webseite unterstützt werden, um deine Audienz besser anzusprechen. Um eine Sprache hinzuzufügen, wähle deine Sprache und klicke auf \"Diese Sprache löschen\". Du kannst dann die Details für diese Sprache ausfüllen.",
+        "modal": "Du kannst verschiedensprachige Beschreibungen hinzufügen, wenn von der Webseite unterstützt, um deine Audienz besser anzusprechen. Um eine Sprache hinzuzufügen, wähle deine Sprache und klicke auf \"Sprache hinzufügen\". Du kannst dann die Details für diese Sprache ausfüllen.",
         "title": "Sprachen"
       },
       "mentionable": {
