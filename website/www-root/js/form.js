@@ -56,7 +56,7 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
       languageOptionsBox.removeChild(selectedLanguageOption);
 
       const languageRow = document.createElement('div');
-      languageRow.setAttribute('class', 'ls-main-content main-content-container container box-shadow ls-round github');
+      languageRow.setAttribute('class', 'ls-main-content container box-shadow ls-round github');
       languageRow.dataset.title = selectedLanguageName;
       languageRow.id = selectedLanguageCode;
 

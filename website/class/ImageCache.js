@@ -57,77 +57,63 @@ class ImageCache {
           })
           .toFile(this.file)
           .then(() => {
-            // Reject the first error.
+            // Reject the error which caused the image to not be able to download
             reject(err);
           })
           .catch((err1) => {
-            // Reject the second error.
+            // Reject the error which happened when resizing the default image
             reject(err1);
           });
       };
 
-      if (this.blur) {
-        fetch(`${config.proxy.host}/${this.url}`, {
-          timeout: 30000,
-          headers: {
-            Authorization: config.proxy.authorization
-          }
-        })
-          .then(res => res.buffer())
-          .then((buffer) => {
-            sharp(buffer)
-              .resize(this.x, this.y, {
-                fit: 'inside',
-                withoutEnlargement: true
-              })
-              .blur(5)
-              .toFile(this.file)
-              .then(() => {
-                resolve();
-              })
-              .catch((err) => {
-                useDefaultImage(err);
-              });
-          })
-          .catch((err) => {
-            reject(err);
+      // Fetch the URL of the image
+      fetch(`${config.proxy.host}/${this.url}`, {
+        timeout: 30000,
+        headers: {
+          Authorization: config.proxy.authorization
+        }
+      })
+        .then(res => res.buffer())
+        .then((buffer) => {
+          let image = sharp(buffer);
+
+          // Resize the image
+          image = image.resize(this.x, this.y, {
+            fit: 'inside',
+            withoutEnlargement: true
           });
-      } else {
-        fetch(`${config.proxy.host}/${this.url}`, {
-          timeout: 30000,
-          headers: {
-            Authorization: config.proxy.authorization
+
+          // If a blur is required, blur the image
+          if (this.blur) {
+            image = image.blur(5);
           }
+
+          // Save the image to file.
+          image
+            .toFile(this.file)
+            .then(() => {
+              // Finshed saving.
+              resolve();
+            })
+            .catch((err) => {
+              // If the manipulation failed, use the default image
+              useDefaultImage(err);
+            });
         })
-          .then(res => res.buffer())
-          .then((buffer) => {
-            sharp(buffer)
-              .resize(this.x, this.y, {
-                fit: 'inside',
-                withoutEnlargement: true
-              })
-              .toFile(this.file)
-              .then(() => {
-                resolve();
-              })
-              .catch((err) => {
-                useDefaultImage(err);
-              });
-          })
-          .catch((err) => {
-            reject(err);
-          });
-      }
+        .catch((err) => {
+          reject(err);
+        });
     });
   }
   cache() {
     return new Promise((resolve, reject) => {
       this.getRecord()
         .then((record) => {
-          // Invalidate image after 3 months
+          // If the image is younger than 3 months, do not do anything.
           if (record && record.time + 7776000000 > new Date().getTime()) {
             resolve();
           } else {
+            // Download the image
             this.download()
               .then(() => {
                 r.table('images')

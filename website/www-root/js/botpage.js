@@ -4,13 +4,6 @@
   const custom = document.getElementById('ls-custom-content');
   const description = document.getElementById('ls-short-description');
 
-  window.addEventListener('load', () => {
-    custom.classList.add('hidden');
-    description.classList.remove('hidden');
-    less.classList.add('hidden');
-    more.classList.remove('hidden');
-  });
-
   more.addEventListener('click', () => {
     description.classList.add('hidden');
     custom.classList.remove('hidden');

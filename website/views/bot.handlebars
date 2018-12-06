@@ -1,4 +1,4 @@
-<div class="ls-main-content main-content-container container box-shadow ls-round">
+<div class="ls-main-content container box-shadow ls-round">
   <section class="ls-bot-profile ls-flex-row wrap">
     <img class="avatar" alt="{{item.contents.name}}" src="{{item.cachedImages.avatar}}">
     <div class="ls-bot-profile-content-left">
@@ -44,13 +44,13 @@
     </div>
   </section>
   {{#if item.pageDisplayedLanguage}}<p><i>{{i18n __ "errors.bots.no_suitable_lang" "language" (i18n __ (concat "locales." item.pageDisplayedLanguage))}}</i></p>{{/if}}
-  <div id="ls-short-description" class="ls-custom-content hidden">
+  <div id="ls-short-description" class="ls-custom-content ls-script">
     {{item.contents.description}}
   </div>
-  <div id="ls-custom-content" class="ls-custom-content">
+  <div id="ls-custom-content" class="ls-custom-content ls-noscript hidden">
     {{{contents}}}
   </div>
-  <div id="ls-more" class="ls-custom-content-button box-shadow ls-round hidden">
+  <div id="ls-more" class="ls-custom-content-button box-shadow ls-round ls-script">
     <p>{{i18n __ "pages.bots.more"}}</p>
     <img src="/ModestaCSS/css/images/arrow.png">
   </div>
@@ -61,7 +61,7 @@
 </div>
 
 {{#if item.cachedImages.preview.length}}
-<div class="ls-main-content main-content-container container box-shadow ls-center ls-round">
+<div class="ls-main-content container box-shadow ls-center ls-round">
   <div id="ls-carousel" class="ls-image-slider">
     {{#each item.cachedImages.preview}}
       <img src="{{this}}">
@@ -88,17 +88,17 @@
 </script>
 {{/if}}
 
-<div class="ls-main-content main-content-container container box-shadow ls-round">
+<div class="ls-main-content container box-shadow ls-round">
   <h2>{{ i18n __ "pages.reviews.title" }}</h2>
   {{#if user.id}}
     {{#unless isOwner}}
       {{#if userReview}}
-        <div class="secondary ls-main-content main-content-container container box-shadow ls-round">
+        <div class="secondary ls-main-content container box-shadow ls-round">
           <h4>{{ i18n __ "pages.reviews.my" }}</h4>
           {{>reviewcard review=userReview user=user item=item}}
         </div>
       {{else}}
-        <div class="secondary ls-main-content main-content-container container box-shadow ls-round">
+        <div class="secondary ls-main-content container box-shadow ls-round ls-script">
           <form method="POST" action="/bots/{{item.id}}/reviews" id="review-form">
             <h4>{{ i18n __ "pages.reviews.write" }}</h4>
             <div class="ls-flex-row ls-reviewer-stars-form">
@@ -126,7 +126,7 @@
 
 
 
-<div class="ls-main-content main-content-container container box-shadow ls-round">
+<div class="ls-main-content container box-shadow ls-round">
   {{#if item.authors.length}}
   <div class="row">
     <div class="column">
