@@ -218,7 +218,7 @@
       "triggermethods": "Méthodes de déclenchement",
       "deleteLanguage": "Supprimer une langue",
       "required": "Les champs marqués d'un * sont requis.",
-      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le status de la vérification de votre bot, ainsi que revevoir des messages privés de la part du staff à propos de votre application."
+      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le statut de la vérification de votre bot, ainsi que recevoir des messages privés de la part du staff à propos de votre application."
     },
     "error": {
       "notfound": "Page introuvable...",
