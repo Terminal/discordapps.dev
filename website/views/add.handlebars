@@ -1,8 +1,10 @@
 
 <div class="form-container">
   <form method="POST" action="/bots/add" id="edit-form">
-    <h1>{{ i18n __ "pages.edit.title"}}</h1>
-    <p>{{ i18n __ "pages.edit.required"}}</p>
+    <div class="container">
+      <h1>{{ i18n __ "pages.edit.title"}}</h1>
+      <p>{{ i18n __ "pages.edit.required"}}</p>
+    </div>
     <div class="ls-main-content container box-shadow ls-round">
       <h2>{{ i18n __ "pages.edit.basicinfo"}}</h2>
       <div class="row">
@@ -152,7 +154,9 @@
         </div>
       {{/each}}
     </div>
-    <button class="btn white black-text">{{ i18n __ "forms.submit"}}</button>
+    <div class="container">
+      <button class="btn white black-text">{{ i18n __ "forms.submit"}}</button>
+    </div>
     <div class="ls-main-content container box-shadow ls-round secondary" id="form-message" data-wait="{{ i18n __ "forms.wait" }}">
       {{ i18n __ "pages.edit.updates"}}
     </div>
