@@ -104,7 +104,14 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       res.locals.user = {};
     }
     res.locals.url = req.url;
-    next();
+
+    if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
+      res.redirect(config.webserver.location);
+    } else if (config.webserver.host !== req.get('host')) {
+      res.redirect(config.webserver.location);
+    } else {
+      next();
+    }
   })
   .get('/', (req, res, next) => {
     r.table('bots')
