@@ -59,6 +59,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       stringify: (...args) => JSON.stringify(...args),
       concat: (...args) => args.slice(0, -1).join(''),
       isArray: value => Array.isArray(value),
+      encodeURIComponent: value => encodeURIComponent(value),
       or: (var1, var2) => var1 || var2,
       and: (var1, var2) => var1 && var2,
       isEqual: (var1, var2) => var1 === var2,
