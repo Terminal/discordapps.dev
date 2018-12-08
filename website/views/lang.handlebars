@@ -2,7 +2,7 @@
   <h2>{{i18n __ "pages.locale.choose"}}</h2>
   <ul>
   {{#each (languages)}}
-    <li><a href="/locale/{{this}}?to={{encodeURIComponent ../to}}">{{i18n ../__ (concat "locales." this)}}</a></li>
+    <li><a href="{{languagePrefix}}locale/{{this}}?to={{encodeURIComponent ../to}}">{{i18n ../__ (concat "locales." this)}}</a></li>
   {{/each}}
   </ul>
 </div>

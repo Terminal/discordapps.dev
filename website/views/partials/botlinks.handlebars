@@ -17,24 +17,24 @@
   {{/if}}
   {{/if}}
   {{#if canEdit}}
-    <a href="/bots/{{item.id}}/edit" class="ls-script">
+    <a href="{{languagePrefix}}/bots/{{item.id}}/edit" class="ls-script">
       {{i18n __ "pages.bots.edit"}}
     </a>
-    <a href="/bots/{{item.id}}/delete">
+    <a href="{{languagePrefix}}/bots/{{item.id}}/delete">
       {{i18n __ "pages.bots.delete"}}
     </a>
-    <a href="/bots/{{item.id}}/configure">
+    <a href="{{languagePrefix}}/bots/{{item.id}}/configure">
       {{i18n __ "pages.bots.configure"}}
     </a>
   {{/if}}
   {{#unless item.verified}}
   {{#if user.admin}}
-    <form method="POST" action="/bots/{{item.id}}/approve">
+    <form method="POST" action="{{languagePrefix}}/bots/{{item.id}}/approve">
       <button class="ls-not-a-button">
         {{i18n __ "pages.bots.approve"}}
       </button>
     </form>
-    <a href="/bots/{{item.id}}/deny">
+    <a href="{{languagePrefix}}/bots/{{item.id}}/deny">
       {{i18n __ "pages.bots.deny"}}
     </a>
   {{/if}}

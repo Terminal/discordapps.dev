@@ -1,23 +1,23 @@
-<a class="{{class}}" aria-label="Languages" href="/locale?to={{encodeURIComponent url}}">
+<a class="{{class}}" aria-label="Languages" href="{{languagePrefix}}/locale?to={{encodeURIComponent url}}">
   <span class="emoji twa-globe-showing-europe-africa" />
 </a>
 {{#if user.id}}
-  <a class="{{class}} ls-script" href="/bots/add">
+  <a class="{{class}} ls-script" href="{{languagePrefix}}/bots/add">
     {{i18n __ "pages.bots.add"}}
   </a>
-  <a class="{{class}}" href="/bots/by/{{user.id}}">
+  <a class="{{class}}" href="{{languagePrefix}}/bots/by/{{user.id}}">
     {{user.username}}
   </a>
-  <a class="{{class}}" href="/auth/logout">
+  <a class="{{class}}" href="{{languagePrefix}}/auth/logout">
     {{i18n __ "intro.logout"}}
   </a>
 {{else}}
-  <a class="{{class}}" href="/auth">
+  <a class="{{class}}" href="{{languagePrefix}}/auth">
     {{i18n __ "intro.login"}}
   </a>
 {{/if}}
 {{#if user.admin}}
-  <a class="{{class}}" href="/admin">
+  <a class="{{class}}" href="{{languagePrefix}}/admin">
     {{i18n __ "intro.admin"}}
   </a>
 {{/if}}

@@ -76,7 +76,7 @@ router
           next();
         } else {
           const displayBot = (userReview) => {
-            const bot = localise(item, req);
+            const bot = localise(item, res);
             const ratings = {};
             const numberOfRatings = bot.ratings.reduce((sum, rating) => sum + rating.reduction, 0);
             let sum = 0;
@@ -126,8 +126,8 @@ router
               canEdit: req.user ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
               isOwner: req.user ? bot.authors.some(owner => owner.id === req.user.id) : false,
               cover: bot.cachedImages ? bot.cachedImages.cover : null,
-              edited: (new Date(item.edited)).toLocaleDateString(req.getLocale(), config.dateformat),
-              created: (new Date(item.created)).toLocaleDateString(req.getLocale(), config.dateformat),
+              edited: (new Date(item.edited)).toLocaleDateString(res.getLocale(), config.dateformat),
+              created: (new Date(item.created)).toLocaleDateString(res.getLocale(), config.dateformat),
               description: bot.contents.description || '',
               avatar: bot.cachedImages ? bot.cachedImages.avatar : null,
               title: bot.contents.name,
@@ -195,7 +195,7 @@ router
       .get(req.params.id)
       .delete()
       .then(() => {
-        res.redirect('/');
+        res.redirect(`${res.locals.languagePrefix}/`);
         discordWebhooks(`<@${req.user.id}> deleted <@${req.params.id}>`);
       })
       .catch((err) => {
@@ -225,7 +225,7 @@ router
         token: crypto.randomBytes(20).toString('hex')
       })
       .then(() => {
-        res.redirect(`/bots/${req.params.id}/configure`);
+        res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}/configure`);
       })
       .catch((err) => {
         next(err);
@@ -238,7 +238,7 @@ router
         hide: r.row('hide').not()
       })
       .then(() => {
-        res.redirect(`/bots/${req.params.id}/configure`);
+        res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}/configure`);
       })
       .catch((err) => {
         next(err);
@@ -254,7 +254,7 @@ router
         if (result.replaced === 1) {
           discordWebhooks(`<@${req.user.id}> approved <@${req.params.id}>`);
         }
-        res.redirect('/bots/unverified');
+        res.redirect(`${res.locals.languagePrefix}/bots/unverified`);
       })
       .catch((err) => {
         next(err);
@@ -271,7 +271,7 @@ router
       .delete()
       .then(() => {
         discordWebhooks(`<@${req.user.id}> denied <@${req.params.id}>\n${req.body.reason}`);
-        res.redirect('/bots/unverified');
+        res.redirect(`${res.locals.languagePrefix}/bots/unverified`);
       })
       .catch((err) => {
         next(err);
@@ -309,7 +309,7 @@ router
         if (!item) {
           next();
         } else {
-          const bot = localise(item, req);
+          const bot = localise(item, res);
           const ratings = {};
           const numberOfRatings = bot.ratings.reduce((sum, rating) => sum + rating.reduction, 0);
           const maximumNumber = bot.ratings.reduce((max, rating) => {
@@ -417,7 +417,7 @@ router
       .get(req.params.review)
       .delete()
       .then(() => {
-        res.redirect(`/bots/${req.params.id}/`);
+        res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}/`);
       })
       .catch((err) => {
         next(err);

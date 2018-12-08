@@ -12,15 +12,11 @@ const passport = require('./static/passport');
 const config = require('./config');
 const periodical = require('./static/periodical');
 
-const authRouter = require('./routers/auth');
-const botsRouter = require('./routers/bots');
-const langRouter = require('./routers/locales');
-const adminRouter = require('./routers/admin');
+const websiteRouter = require('./routers/website');
 const v1Router = require('./routers/v1');
-const docsRouter = require('./routers/docs');
 const sitemapRouter = require('./routers/sitemap');
-
-const { localise } = require('./static/list');
+const languageMiddleware = require('./middleware/language');
+const getBetterLanguageMiddleware = require('./middleware/getBetterLanguage');
 
 require('./static/banner');
 
@@ -99,77 +95,14 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use(express.static(path.join(__dirname, 'www-root')))
   .use('/node_modules/', express.static(path.join(__dirname, 'node_modules')))
   .use('/css/images/', express.static(path.join(__dirname, 'www-root', 'ModestaCSS', 'css', 'images')))
-  .use((req, res, next) => {
-    if (req.user) {
-      req.user.admin = req.user && config.owners.includes(req.user.id);
-      res.locals.user = req.user;
-    } else {
-      res.locals.user = {};
-    }
-    res.locals.url = req.url;
-
-    if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
-      res.redirect(config.webserver.location);
-    } else if (config.webserver.host !== req.get('host')) {
-      res.redirect(config.webserver.location);
-    } else {
-      next();
-    }
-  })
-  .get('/', (req, res, next) => {
-    r.table('bots')
-      .merge(bot => r.branch(bot('contents').hasFields(res.getLocale()), {
-        random: bot('random').add(10)
-      }, {}))
-      .orderBy(r.desc('random'))
-      .filter({
-        verified: true,
-        nsfw: false,
-        hide: false
-      })
-      .limit(12)
-      .then((list) => {
-        const localised = list.map(item => localise(item, req));
-        const slider = localised.splice(0, 6);
-        res.render('main', {
-          slider,
-          cards: localised
-        });
-      })
-      .catch((err) => {
-        next(err);
-      });
-  })
-  .get('/oops', (req, res, next) => {
-    next(new Error('This error was thrown on purpose'));
-  })
-  .use('/auth', authRouter)
-  .use('/bots', botsRouter)
-  .use('/locale', langRouter)
-  .use('/admin', adminRouter)
+  .use('/sitemap.xml', sitemapRouter)
+  .use('/de/', languageMiddleware('de'), websiteRouter) // Can't use `:lang`, will explode
+  .use('/de', languageMiddleware('de'), websiteRouter)
+  .use('/fr/', languageMiddleware('fr'), websiteRouter)
+  .use('/fr', languageMiddleware('fr'), websiteRouter)
+  .use('/', getBetterLanguageMiddleware, websiteRouter)
   .use('/api', v1Router)
   .use('/api/v1', v1Router)
-  .use('/docs', docsRouter)
-  .use('/:lang/*', (req, res, next) => {
-    if (i18n.getLocales().includes(req.params.lang)) {
-      res.cookie('lang', req.params.lang);
-      res.redirect(req.originalUrl.substr(3));
-    } else {
-      next();
-    }
-  })
-  .use('/edit', (req, res) => {
-    res.redirect('/bots/add');
-  })
-  .use('/bot/:id', (req, res) => {
-    res.redirect(`/bots/${req.params.id}`);
-  })
-  .use('/sitemap.xml', sitemapRouter)
-  .use((req, res) => {
-    res.status(404).render('error', {
-      message: res.__('pages.error.notfound')
-    });
-  })
   .use((err, req, res, next) => {
     if (err) {
       res.status(500).render('error', {
@@ -181,6 +114,11 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     } else {
       next();
     }
+  })
+  .use((req, res) => {
+    res.status(404).render('error', {
+      message: res.__('pages.error.notfound')
+    });
   })
   .listen(config.webserver.port);
 

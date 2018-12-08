@@ -177,7 +177,7 @@ window.deleteLanguage = (id) => {
     const formdata = new FormData(form);
     inputs.forEach(input => input.setAttribute('disabled', ''));
 
-    fetch('/bots/add', {
+    fetch(form.getAttribute('action'), {
       method: 'POST',
       body: formdata,
     })

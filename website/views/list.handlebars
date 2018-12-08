@@ -3,7 +3,7 @@
     {{#if (isEqual @index ../limit)}}
 
     {{else}}
-      {{> card __=../__ item=this}}
+      {{> card __=../__ item=this languagePrefix=../languagePrefix}}
     {{/if}}
   {{else}}
     {{i18n __ 'pages.list.empty'}}

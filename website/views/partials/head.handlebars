@@ -30,7 +30,11 @@
 {{/if}}
 
 {{#each (languages)}}
-  <link rel="alternate" href="{{webserverLocation}}{{ ../url }}" hreflang="{{this}}" />
+  {{#if (isEqual ../defaultLanguage this)}}
+    <link rel="alternate" href="{{webserverLocation}}{{ ../url }}" hreflang="{{this}}" />
+  {{else}}
+    <link rel="alternate" href="{{webserverLocation}}/{{this}}{{ ../url }}" hreflang="{{this}}" />
+  {{/if}}
 {{/each}}
 
 {{#if avatar}}

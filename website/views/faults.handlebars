@@ -10,7 +10,7 @@
     {{#each results}}
       {{#unless this.ok}}
         <tr>
-          <td><a href="/bots/{{this.bot.id}}">{{this.bot.id}}</a></td>
+          <td><a href="{{languagePrefix}}/bots/{{this.bot.id}}">{{this.bot.id}}</a></td>
           <td>{{this.err.message}}</td>
         </tr>
       {{/unless}}

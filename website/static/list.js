@@ -4,9 +4,9 @@ const ImageCache = require('../class/ImageCache');
 
 const selectableLanguages = Object.keys(config.languages);
 
-const localise = (item, req) => {
-  if (item.contents[req.getLocale()]) {
-    item.contents = item.contents[req.getLocale()];
+const localise = (item, res) => {
+  if (item.contents[res.getLocale()]) {
+    item.contents = item.contents[res.getLocale()];
     return item;
   }
   const availableLanguages = Object.keys(config.languages).sort((a, b) => {
@@ -63,7 +63,7 @@ const listMiddleware = options => (req, res, next) => {
       .limit(limit + 1) // 1 more for checking next page
       .then((list) => {
         res.render('list', {
-          list: list.map(item => localise(item, req)),
+          list: list.map(item => localise(item, res)),
           page,
           limit,
           previous: page - 1,

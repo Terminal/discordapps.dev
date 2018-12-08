@@ -3,7 +3,7 @@
     <img class="ls-reviewer-avatar" src="{{or review.author.cachedAvatar defaultImage}}">
     <h5 class="ls-reviewer-title">{{review.author.username}}</h5>
     {{#if (or (isEqual review.author.id user.id) user.admin)}}
-      <form method="POST" action="/bots/{{item.id}}/reviews/{{review.id}}/delete">
+      <form method="POST" action="{{languagePrefix}}/bots/{{item.id}}/reviews/{{review.id}}/delete">
         <button class="ls-not-a-button">{{ i18n __ 'pages.reviews.delete' }}</button>
       </form>
     {{/if}}

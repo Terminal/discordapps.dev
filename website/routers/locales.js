@@ -14,9 +14,10 @@ router.get('/', (req, res) => {
     if (i18n.getLocales().includes(req.params.lang)) {
       res.cookie('lang', req.params.lang);
       try {
-        const url = new URL(config.webserver.location + req.query.to);
+        const languagePrefix = req.params.lang === 'en-GB' ? '' : `/${req.params.lang}`;
+        const url = new URL(config.webserver.location + languagePrefix + req.query.to);
         if (url.origin === config.webserver.location) {
-          res.redirect(req.query.to);
+          res.redirect(url.pathname);
         } else {
           res.redirect('/');
         }
