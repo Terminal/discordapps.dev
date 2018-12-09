@@ -340,6 +340,11 @@
       "rating": "Please select a rating before continuing",
       "text": "Please enter why you gave this number of stars for this bot.",
       "self": "You cannot review your own bot!"
+    },
+    "api": {
+      "500": "An internal server error occured.",
+      "404": "This endpoint was not found, or the method used to request this page is not compatible.",
+      "test": "An error was thrown for development purposes."
     }
   },
   "site": {

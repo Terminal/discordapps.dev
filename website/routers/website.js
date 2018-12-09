@@ -7,6 +7,8 @@ const botsRouter = require('./bots');
 const langRouter = require('./locales');
 const adminRouter = require('./admin');
 const docsRouter = require('./docs');
+const v1Router = require('./v1');
+const v2Router = require('./v2');
 
 const { localise } = require('../static/list');
 const manifest = require('../static/manifest');
@@ -70,6 +72,9 @@ router
   .use('/bot/:id', (req, res) => {
     res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}`);
   })
+  .use('/api/v1', v1Router)
+  .use('/api/v2', v2Router)
+  .use('/api', v1Router)
   .use('/manifest.json', (req, res) => {
     res.json(manifest(res));
   });

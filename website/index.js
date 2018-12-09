@@ -13,7 +13,6 @@ const config = require('./config');
 const periodical = require('./static/periodical');
 
 const websiteRouter = require('./routers/website');
-const v1Router = require('./routers/v1');
 const sitemapRouter = require('./routers/sitemap');
 const languageMiddleware = require('./middleware/language');
 // const getBetterLanguageMiddleware = require('./middleware/getBetterLanguage');
@@ -103,8 +102,6 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/fr/', languageMiddleware('fr'), websiteRouter)
   .use('/fr', languageMiddleware('fr'), websiteRouter)
   .use('/', websiteRouter)
-  .use('/api', v1Router)
-  .use('/api/v1', v1Router)
   .use((err, req, res, next) => {
     if (err) {
       res.status(500).render('error', {
