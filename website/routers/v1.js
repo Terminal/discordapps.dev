@@ -1,5 +1,6 @@
 const express = require('express');
 const r = require('../rethinkdb');
+const config = require('../config');
 
 const router = express.Router();
 
@@ -35,6 +36,9 @@ router
       .catch((err) => {
         next(err);
       });
+  })
+  .use('/', (req, res) => {
+    res.redirect(config.links.docs);
   })
   .use((req, res) => {
     res.status(404).json({
