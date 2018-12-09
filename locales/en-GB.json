@@ -72,7 +72,7 @@
       "invite": "Add this bot",
       "support": "Technical Support",
       "website": "Website",
-      "pagename": "ls.terminal.ink",
+      "pagename": "Discord Bots by Terminal.ink",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
       "delete": "Delete",
@@ -155,7 +155,8 @@
       "information": "Information",
       "invite": {
         "modal": "Please make sure \"Bot ID\" has been filled in with your Discord bot's ID",
-        "title": "Invite URL"
+        "title": "Invite URL",
+        "generate": "Generate invite link"
       },
       "languages": {
         "add": "Add a language",
