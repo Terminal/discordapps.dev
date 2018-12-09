@@ -1,15 +1,17 @@
 const r = require('../rethinkdb');
-const config = require('../config');
 const ImageCache = require('../class/ImageCache');
 
-const selectableLanguages = Object.keys(config.languages);
+const languages = require('../data/languages.json');
+const categories = require('../data/categories.json');
+
+const selectableLanguages = Object.keys(languages);
 
 const localise = (item, res) => {
   if (item.contents[res.getLocale()]) {
     item.contents = item.contents[res.getLocale()];
     return item;
   }
-  const availableLanguages = Object.keys(config.languages).sort((a, b) => {
+  const availableLanguages = Object.keys(languages).sort((a, b) => {
     if (a.priority < b.priority) {
       return -1;
     } else if (a.priority > b.priority) {
@@ -104,7 +106,7 @@ const listMiddleware = options => (req, res, next) => {
         }
       });
   } else if (options.filter === 'category') {
-    if (config.categories.includes(req.params.category)) {
+    if (categories.includes(req.params.category)) {
       filter = {
         category: req.params.category
       };

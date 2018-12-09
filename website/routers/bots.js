@@ -15,14 +15,16 @@ const discordWebhooks = require('../static/discordWebhook');
 const fetch = require('node-fetch');
 const { localise, listMiddleware } = require('../static/list');
 const reviewToJsonLd = require('../static/reviewToJsonLd');
+const languages = require('../data/languages.json');
+const dateformat = require('../data/dateformat.json');
 
 const router = express.Router();
 const reader = multer();
 
-const selectableLanguages = Object.keys(config.languages).sort((a, b) => {
-  if (config.languages[a].top) {
+const selectableLanguages = Object.keys(languages).sort((a, b) => {
+  if (languages[a].top) {
     return -1;
-  } else if (config.languages[b].top) {
+  } else if (languages[b].top) {
     return 1;
   } else if (a < b) {
     return -1;
@@ -126,8 +128,8 @@ router
               canEdit: req.user ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
               isOwner: req.user ? bot.authors.some(owner => owner.id === req.user.id) : false,
               cover: bot.cachedImages ? bot.cachedImages.cover : null,
-              edited: (new Date(item.edited)).toLocaleDateString(res.getLocale(), config.dateformat),
-              created: (new Date(item.created)).toLocaleDateString(res.getLocale(), config.dateformat),
+              edited: (new Date(item.edited)).toLocaleDateString(res.getLocale(), dateformat),
+              created: (new Date(item.created)).toLocaleDateString(res.getLocale(), dateformat),
               description: bot.contents.description || '',
               avatar: bot.cachedImages ? bot.cachedImages.avatar : null,
               title: bot.contents.name,

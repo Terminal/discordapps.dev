@@ -18,6 +18,8 @@ const sitemapRouter = require('./routers/sitemap');
 const languageMiddleware = require('./middleware/language');
 // const getBetterLanguageMiddleware = require('./middleware/getBetterLanguage');
 
+const dateformat = require('./data/dateformat.json');
+
 require('./static/banner');
 
 const store = new RDBStore(r);
@@ -51,7 +53,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
         }
         return args[0] || 'Translation Error!';
       },
-      date: (date, getLocale) => (new Date(date)).toLocaleDateString(getLocale(), config.dateformat),
+      date: (date, getLocale) => (new Date(date)).toLocaleDateString(getLocale(), dateformat),
       stringify: (...args) => JSON.stringify(...args),
       concat: (...args) => args.slice(0, -1).join(''),
       isArray: value => Array.isArray(value),

@@ -1,8 +1,12 @@
 <div class="ls-main-content container box-shadow ls-round">
-  <h2>{{i18n __ "pages.locale.choose"}}</h2>
-  <ul>
-  {{#each (languages)}}
-    <li><a href="{{languagePrefix}}locale/{{this}}?to={{encodeURIComponent ../to}}">{{i18n ../__ (concat "locales." this)}}</a></li>
-  {{/each}}
-  </ul>
+  <div class="center">
+    <h2>{{i18n __ "pages.locale.choose"}}</h2>
+  </div>
+  <div class="ls-locale-flags">
+    {{#each languageData}}
+      <a href="{{languagePrefix}}locale/{{this.name}}?to={{encodeURIComponent ../to}}" title="{{i18n ../__ (concat "locales." this.name)}}">
+        <i aria-label="{{i18n ../__ (concat "locales." this.name)}}" class="emoji {{this.flag}}"></i>
+      </a>
+    {{/each}}
+  </div>
 </div>

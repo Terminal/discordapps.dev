@@ -1,0 +1,127 @@
+{
+  "ar": {
+    "flag": "",
+    "top": false,
+    "priority": 22
+  },
+  "da": {
+    "flag": "",
+    "top": false,
+    "priority": 21
+  },
+  "de": {
+    "flag": "twa-de",
+    "top": false,
+    "priority": 3
+  },
+  "el": {
+    "flag": "",
+    "top": false,
+    "priority": 20
+  },
+  "en-GB": {
+    "flag": "twa-gb",
+    "top": true,
+    "priority": 1
+  },
+  "es": {
+    "flag": "",
+    "top": false,
+    "priority": 4
+  },
+  "et": {
+    "flag": "",
+    "top": false,
+    "priority": 19
+  },
+  "fi": {
+    "flag": "",
+    "top": false,
+    "priority": 18
+  },
+  "fj": {
+    "flag": "",
+    "top": false,
+    "priority": 17
+  },
+  "fr": {
+    "flag": "twa-fr",
+    "top": false,
+    "priority": 2
+  },
+  "gd": {
+    "flag": "",
+    "top": false,
+    "priority": 16
+  },
+  "hi": {
+    "flag": "",
+    "top": false,
+    "priority": 15
+  },
+  "it": {
+    "flag": "",
+    "top": false,
+    "priority": 5
+  },
+  "ja": {
+    "flag": "",
+    "top": false,
+    "priority": 14
+  },
+  "ko": {
+    "flag": "",
+    "top": false,
+    "priority": 13
+  },
+  "la": {
+    "flag": "",
+    "top": false,
+    "priority": 12
+  },
+  "nl": {
+    "flag": "",
+    "top": false,
+    "priority": 11
+  },
+  "no": {
+    "flag": "",
+    "top": false,
+    "priority": 10
+  },
+  "pt": {
+    "flag": "",
+    "top": false,
+    "priority": 23
+  },
+  "ru": {
+    "flag": "",
+    "top": false,
+    "priority": 6
+  },
+  "sv": {
+    "flag": "",
+    "top": false,
+    "priority": 7
+  },
+  "tr": {
+    "flag": "",
+    "top": false,
+    "priority": 24
+  },
+  "vi": {
+    "flag": "",
+    "top": false,
+    "priority": 25
+  },
+  "zh-cn": {
+    "flag": "",
+    "top": false,
+    "priority": 9
+  },
+  "zh-tw": {
+    "flag": "",
+    "top": false,
+    "priority": 8
+  }
+}
