@@ -73,6 +73,7 @@
       "support": "Technical Support",
       "website": "Website",
       "pagename": "Discord Bots by Terminal.ink",
+      "shortname": "Discord Bots",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
       "delete": "Delete",
@@ -85,7 +86,6 @@
         "one": "Prefix",
         "other": "Prefixes"
       },
-      "shortname": "Bots",
       "more": "View more",
       "less": "View less",
       "adverts": "Contains features locked behind other services",

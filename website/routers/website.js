@@ -9,6 +9,7 @@ const adminRouter = require('./admin');
 const docsRouter = require('./docs');
 
 const { localise } = require('../static/list');
+const manifest = require('../static/manifest');
 
 const router = express.Router();
 
@@ -68,6 +69,9 @@ router
   })
   .use('/bot/:id', (req, res) => {
     res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}`);
+  })
+  .use('/manifest.json', (req, res) => {
+    res.json(manifest(res));
   });
 
 module.exports = router;
