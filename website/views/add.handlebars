@@ -25,10 +25,10 @@
       </div>
       <div class="row">
         <div class="one-half column">
-          <label for="bot.invite">{{ i18n __ "pages.edit.bot_invite.title"}}{{> required }}</label>
+          <label for="bot.invite">{{ i18n __ "pages.edit.invite.title"}}{{> required }}</label>
           <div class="ls-flex-row">
-            <input id="invite" name="bot.invite" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.bot_invite.title"}}" value="{{item.invite}}">
-            <button type="button" id="invite-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "pages.edit.bot_invite.generate"}}</button>
+            <input id="invite" name="bot.invite" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.invite.title"}}" value="{{item.invite}}">
+            <button type="button" id="invite-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "pages.edit.invite.generate"}}</button>
           </div>
         </div>
         <div class="one-half column">
@@ -37,8 +37,8 @@
       </div>
       <div class="row">
         <div class="one-half column">
-          <label for="bot.support">{{ i18n __ "pages.edit.bot_support.title"}}</label>
-          <input name="bot.support" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.bot_support.placeholder"}}" value="{{item.support}}">
+          <label for="bot.support">{{ i18n __ "pages.edit.support.title"}}</label>
+          <input name="bot.support" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.support.placeholder"}}" value="{{item.support}}">
         </div>
         <div class="one-half column">
           <label for="bot.category">{{ i18n __ "pages.edit.category.title"}}{{> required }}</label>
@@ -56,7 +56,7 @@
           <input name="bot.website" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.website.placeholder"}}" value="{{item.website}}">
         </div>
         <div class="one-half column">
-          <label for="bot.nsfw">{{ i18n __ "pages.edit.bot_nsfw.title"}}</label>
+          <label for="bot.nsfw">{{ i18n __ "pages.edit.nsfw.title"}}</label>
           <input name="bot.nsfw" type="checkbox" {{#if item.nsfw}}checked="on"{{/if}}>
         </div>
       </div>
@@ -77,7 +77,7 @@
     </div>
     <div class="ls-main-content container box-shadow ls-round">
       <h2>{{ i18n __ "pages.edit.triggermethods"}}</h2>
-      {{> listinput name="bot.trigger.prefix[]" label="pages.edit.bot_prefix.title" placeholder="pages.edit.bot_prefix.placeholder" add="pages.edit.bot_prefix.add" value=item.trigger.prefix required=true}}
+      {{> listinput name="bot.trigger.prefix[]" label="pages.edit.prefix.title" placeholder="pages.edit.prefix.placeholder" add="pages.edit.prefix.add" value=item.trigger.prefix required=true}}
       <div class="row">
         <div class="one-half column">
           <label for="bot.trigger.customisable">{{ i18n __ "pages.edit.customisable.title"}}</label>

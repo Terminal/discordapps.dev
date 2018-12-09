@@ -121,15 +121,15 @@
         "add": "Weitere hinzufügen"
       },
       "basicinfo": "Einfache informationen",
-      "bot_invite": {
+      "invite": {
         "generate": "Erstelle eine URL",
         "placeholder": "https://discordapp.com/oauth/ oder ein ähnlicher Link",
         "title": "Einladungs URL"
       },
-      "bot_nsfw": {
+      "nsfw": {
         "title": "Nicht sicher für die Arbeit"
       },
-      "bot_support": {
+      "support": {
         "placeholder": "Soetwas wie: https://discord.gg/8uC6aKZ",
         "small": "Lass dieses Feld leer, wenn du nicht gerne anderen hilfst",
         "title": "Support URL"
@@ -158,10 +158,6 @@
         "title": "GitHub Repository"
       },
       "information": "Information",
-      "invite": {
-        "modal": "Bitte stelle sicher, dass \"Bot ID\" mit der ID deines Discord Bots ausgefüllt wurde",
-        "title": "Invite URL"
-      },
       "languages": {
         "add": "Sprache hinzufügen",
         "delete": "Diese Sprache löschen",
@@ -177,7 +173,7 @@
       "page": {
         "title": "Seite"
       },
-      "bot_prefix": {
+      "prefix": {
         "placeholder": "Ein einzelner Prefix",
         "title": "Prefix",
         "add": "Weitere hinzufügen"

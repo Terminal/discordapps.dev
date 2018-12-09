@@ -120,7 +120,7 @@
         "add": "Ajouter un(e) autre"
       },
       "basicinfo": "Informations Basiques",
-      "bot_invite": {
+      "invite": {
         "generate": "Générer une URL",
         "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible",
         "title": "URL d'invitation"
@@ -129,10 +129,10 @@
         "title": "Site Internet",
         "placeholder": "Un lien HTTPS vers votre site Internet"
       },
-      "bot_nsfw": {
+      "nsfw": {
         "title": "Non adapté pour toutes les audiences"
       },
-      "bot_support": {
+      "support": {
         "placeholder": "Quelque chose comme https://discord.gg/8uC6aKZ",
         "small": "Laissez ce champ vide si vous n'aimez pas aider les gens",
         "title": "Serveur d'assistance"
@@ -161,10 +161,6 @@
         "placeholder": "Quelque chose comme Tuxedo"
       },
       "information": "Information",
-      "invite": {
-        "modal": "Veuillez vérifier que le champ \"ID du bot\" a été rempli avec l'ID de votre bot Discord",
-        "title": "URL d'invitation"
-      },
       "languages": {
         "add": "Ajouter une langue",
         "delete": "Supprimer cette langue",
@@ -180,7 +176,7 @@
       "page": {
         "title": "Page"
       },
-      "bot_prefix": {
+      "prefix": {
         "placeholder": "Un seul préfixe",
         "title": "Préfixe",
         "add": "Ajouter un(e) autre"

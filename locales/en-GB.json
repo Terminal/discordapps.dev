@@ -121,15 +121,10 @@
         "add": "Add another"
       },
       "basicinfo": "Basic Information",
-      "bot_invite": {
-        "generate": "Generate a URL",
-        "placeholder": "https://discordapp.com/oauth/ or other suitable link",
-        "title": "Invite URL"
-      },
-      "bot_nsfw": {
+      "nsfw": {
         "title": "Not Safe For Work"
       },
-      "bot_support": {
+      "support": {
         "placeholder": "Something like: https://discord.gg/8uC6aKZ",
         "small": "Leave this field empty if you don't like helping people",
         "title": "Support URL"
@@ -177,7 +172,7 @@
       "page": {
         "title": "Page"
       },
-      "bot_prefix": {
+      "prefix": {
         "placeholder": "A single prefix",
         "title": "Prefix",
         "add": "Add another prefix"
