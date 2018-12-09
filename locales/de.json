@@ -72,7 +72,8 @@
       "invite": "Diesen Bot hinzufügen",
       "support": "Technischer Support",
       "website": "Webseite",
-      "pagename": "ls.terminal.ink",
+      "pagename": "Discord Bots von terminal.ink",
+      "shortname": "Discord Bots",
       "mentionable": "Erwähnbar",
       "customisable": "Änderbar",
       "delete": "Löschen",
@@ -85,7 +86,6 @@
         "one": "Prefix",
         "other": "Prefixe"
       },
-      "shortname": "Bots",
       "more": "Zeige mehr",
       "less": "Zeige weniger",
       "adverts": "Enthält Werbung",
