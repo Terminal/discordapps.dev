@@ -116,7 +116,8 @@
       "authors": {
         "modal": "Entrer un seul ID d'un propriétaire du bot.",
         "placeholder": "ID d'un seul propriétaire",
-        "title": "Auteur(s) du Bot"
+        "title": "Auteur(s) du Bot",
+        "add": "Ajouter un(e) autre"
       },
       "basicinfo": "Informations Basiques",
       "bot_invite": {
@@ -181,7 +182,8 @@
       },
       "bot_prefix": {
         "placeholder": "Un seul préfixe",
-        "title": "Préfixe"
+        "title": "Préfixe",
+        "add": "Ajouter un(e) autre"
       },
       "flags": {
         "title": "Notification de publicité et/ou de monétisation",
@@ -206,7 +208,8 @@
         },
         "preview": {
           "title": "Images d'aperçu",
-          "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot"
+          "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot",
+          "add": "Ajouter un(e) autre"
         },
         "youtube": {
           "title": "ID YouTube",

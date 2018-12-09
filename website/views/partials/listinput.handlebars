@@ -3,7 +3,7 @@
   {{#if (isArray value)}}
     {{#each value}}
       {{#if @first}}
-        {{>input value=this name=../name modal=../modal __=../__ placeholder=../placeholder}}
+        {{>input value=this name=../name modal=../modal __=../__ placeholder=../placeholder add=../add}}
       {{else}}
         <div class="ls-flex-row">
           <input name="{{../name}}" type="text" class="full-width" value={{this}}>

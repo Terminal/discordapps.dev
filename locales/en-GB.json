@@ -117,7 +117,8 @@
       "authors": {
         "modal": "Enter a single ID of an owner of the bot.",
         "placeholder": "ID of a single owner",
-        "title": "Bot Authors"
+        "title": "Bot Authors",
+        "add": "Add another"
       },
       "basicinfo": "Basic Information",
       "bot_invite": {
@@ -178,7 +179,8 @@
       },
       "bot_prefix": {
         "placeholder": "A single prefix",
-        "title": "Prefix"
+        "title": "Prefix",
+        "add": "Add another prefix"
       },
       "flags": {
         "title": "Funding and Advertising Decleration",
@@ -203,7 +205,8 @@
         },
         "preview": {
           "title": "Preview Images",
-          "placeholder": "A HTTPS link to a single screenshot"
+          "placeholder": "A HTTPS link to a single screenshot",
+          "add": "Add another image"
         },
         "youtube": {
           "title": "YouTube ID",

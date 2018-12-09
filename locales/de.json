@@ -117,7 +117,8 @@
       "authors": {
         "modal": "Gib eine einzelne ID für den Besitzer des Bots ein.",
         "placeholder": "ID eines einzelnen Besitzers",
-        "title": "Bot Autoren"
+        "title": "Bot Autoren",
+        "add": "Weitere hinzufügen"
       },
       "basicinfo": "Einfache informationen",
       "bot_invite": {
@@ -178,7 +179,8 @@
       },
       "bot_prefix": {
         "placeholder": "Ein einzelner Prefix",
-        "title": "Prefix"
+        "title": "Prefix",
+        "add": "Weitere hinzufügen"
       },
       "flags": {
         "title": "Erklärung zur Finanzierung und Werbung",
@@ -203,7 +205,8 @@
         },
         "preview": {
           "title": "Vorschaubilder",
-          "placeholder": "Ein HTTPS Link zu einem einzelnen Screenshot"
+          "placeholder": "Ein HTTPS Link zu einem einzelnen Screenshot",
+          "add": "Weitere hinzufügen"
         },
         "youtube": {
           "title": "YouTube ID",
