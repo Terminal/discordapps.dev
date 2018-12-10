@@ -142,7 +142,7 @@
         "title": "Customisable prefix"
       },
       "description": {
-        "title": "Description"
+        "title": "Short Descripion"
       },
       "github_owner": {
         "placeholder": "Something like: ry00001",
@@ -171,7 +171,7 @@
         "title": "Name"
       },
       "page": {
-        "title": "Page"
+        "title": "Extended Description"
       },
       "prefix": {
         "placeholder": "A single prefix",
