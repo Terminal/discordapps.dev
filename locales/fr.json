@@ -71,7 +71,8 @@
       "description": "Un magasin d'applications pour des bots Discord",
       "invite": "Inviter ce bot",
       "support": "Support technique",
-      "pagename": "ls.terminal.ink",
+      "pagename": "Bots Discord par Terminal.ink",
+      "shortname": "Bots Discord",
       "website": "Site Internet",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
@@ -117,7 +118,7 @@
         "modal": "Entrer un seul ID d'un propriétaire du bot.",
         "placeholder": "ID d'un seul propriétaire",
         "title": "Auteur(s) du Bot",
-        "add": "Ajouter un(e) autre"
+        "add": "Ajouter un autre auteur"
       },
       "basicinfo": "Informations Basiques",
       "invite": {
@@ -130,7 +131,7 @@
         "placeholder": "Un lien HTTPS vers votre site Internet"
       },
       "nsfw": {
-        "title": "Non adapté pour toutes les audiences"
+        "title": "Non adapté pour toutes les audiences (NSFW)"
       },
       "support": {
         "placeholder": "Quelque chose comme https://discord.gg/8uC6aKZ",
@@ -160,12 +161,12 @@
         "title": "Répertoire",
         "placeholder": "Quelque chose comme Tuxedo"
       },
-      "information": "Information",
+      "information": "Page de votre bot",
       "languages": {
         "add": "Ajouter une langue",
         "delete": "Supprimer cette langue",
-        "modal": "Vous pouvez ajouter d'autres descriptions pour les différentes langues supportées par ce site, afin de mieux cibler votre audience. Pour ajouter une langue, sélectionnez votre langue et cliquez sur \"Ajouter cette langue\". Vous pourrez ensuite remplir les détails pour cette langue.",
-        "title": "Langues"
+        "modal": "Écrivez la page de votre bot dans n'importe quelle langue prise en charge. Sélectionnez une langue et cliquez sur \"Ajouter cette langue\".",
+        "title": "Langues de la page du bot"
       },
       "mentionable": {
         "title": "Possibilité de mentionner le bot pour le déclencher"
@@ -179,7 +180,7 @@
       "prefix": {
         "placeholder": "Un seul préfixe",
         "title": "Préfixe",
-        "add": "Ajouter un(e) autre"
+        "add": "Ajouter un autre préfixe"
       },
       "flags": {
         "title": "Notification de publicité et/ou de monétisation",
@@ -205,7 +206,7 @@
         "preview": {
           "title": "Images d'aperçu",
           "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot",
-          "add": "Ajouter un(e) autre"
+          "add": "Ajouter une autre image"
         },
         "youtube": {
           "title": "ID YouTube",
@@ -302,6 +303,7 @@
   "errors": {
     "bots": {
       "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
+      "category": "Vous devez sélectionner une catégorie pour votre bot",
       "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",
       "description": "La description courte doit avoir une taille entre 10 et 100 caractères",
       "githubowner": "Le propriétaire GitHub doit être un utilisateur GitHub valide. Laissez vide si vous n'avez pas de compte GitHub.",
@@ -309,7 +311,7 @@
       "id": "L'ID du bot doit être renseigné, et numerique",
       "invite": "L'URL d'invitation needs doit être renseignée, et avec un lien HTTPS valide",
       "website": "L'URL du site web doit être un lien HTTPS valide",
-      "languages": "Vous devez ajouter une langue avant de continuer",
+      "languages": "Vous devez ajouter au moins une langue. Sélectionnez sur la langue que dans laquelle vous souhaitez que votre page de bot soie, et cliquez sur 'Ajouter cette langue'",
       "mentionable": "la mentionnabilité du préfixe doit être soit coché, ou décoché",
       "name": "Le bot doit avoir un nom d'une longueur entre 4 et 32 caractères.",
       "nsfw": "Le status NSFW doit être soit coché, ou décoché",
@@ -332,12 +334,19 @@
       "denied": "Vous n'avez pas les permissions adéquates afin d'accéder à cela"
     },
     "website": {
-      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites."
+      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites.",
+      "print": "JavaScript n'est pas compatible avec les impressions papier."
     },
     "reviews": {
       "rating": "Veuillez sélectionner une note avant de continuer",
       "text": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
       "self": "Vous ne pouvez pas critiquer votre propre bot!"
+    },
+    "api": {
+      "500": "Une erreur interne au serveur est survenue.",
+      "404": "Ce chemin d'URL n'a pas été trouvé, ou la méthode utilisée pour effectuer cette requête n'est pas compatible.",
+      "test": "Cette erreur a été lancée uniquement à des fins de développement.",
+      "no_bot": "Bot introuvable"
     }
   },
   "site": {
