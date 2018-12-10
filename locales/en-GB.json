@@ -152,7 +152,7 @@
         "placeholder": "Something like: Tuxedo",
         "title": "GitHub Repository"
       },
-      "information": "Information",
+      "information": "Your Bot Page",
       "invite": {
         "modal": "Please make sure \"Bot ID\" has been filled in with your Discord bot's ID",
         "title": "Invite URL",
@@ -161,8 +161,8 @@
       "languages": {
         "add": "Add a language",
         "delete": "Delete this language",
-        "modal": "You can add different descriptions for different languages supported by this website, to better target your audience. To add a language, select your language and click \"Add this language\". You can then fill out the details for that language.",
-        "title": "Languages"
+        "modal": "Write your bot page in any supported language. Select a language, and click the 'Add a language' button.",
+        "title": "Bot Page Languages"
       },
       "mentionable": {
         "title": "Can mention to trigger bot"
@@ -310,7 +310,7 @@
       "id": "The Bot ID needs to be filled out, and numeric",
       "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
       "website": "The Website URL needs to be a valid HTTPS link",
-      "languages": "You must add a single language before continuing",
+      "languages": "You must add a single language. Click the language you want your bot page to be in, and select the 'Add a language' button",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
       "name": "The bot must have a name of length between 4 and 32.",
       "nsfw": "The NSFW status must be either ticked, or unticked",
