@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
       res.cookie('lang', req.params.lang);
       if (req.query.to) {
         try {
-          const languagePrefix = req.params.lang === 'en-GB' ? '' : `/${req.params.lang}`;
+          const languagePrefix = req.params.lang === config.default.language ? '' : `/${req.params.lang}`;
           const url = new URL(config.webserver.location + languagePrefix + req.query.to);
           if (url.origin === config.webserver.location) {
             res.redirect(url.pathname);
