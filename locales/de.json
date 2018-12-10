@@ -338,6 +338,12 @@
       "rating": "Bitte wähle eine Bewertung, befor du fortfährst",
       "text": "Bitte gib an, warum du diesem Bot diese Anzahl an Sternen gegeben hast.",
       "self": "Du kannst deinen eigenen Bot nicht reviewen"
+    },
+    "api": {
+      "500": "Ein interner Server-error ist aufgetreten.",
+      "404": "Dieser Endpunkt konnte nicht gefunden werden, oder die Methode um diese Seite anzufordern ist nicht kompatibel.",
+      "test": "Ein Fehler wurde aus Entwickler-Gründen ausgelöst.",
+      "no_bot": "Bot nicht gefunden."
     }
   },
   "site": {
