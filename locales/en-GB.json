@@ -344,7 +344,8 @@
     "api": {
       "500": "An internal server error occured.",
       "404": "This endpoint was not found, or the method used to request this page is not compatible.",
-      "test": "An error was thrown for development purposes."
+      "test": "An error was thrown for development purposes.",
+      "no_bot": "Bot not found"
     }
   },
   "site": {

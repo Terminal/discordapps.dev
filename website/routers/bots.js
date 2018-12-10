@@ -16,6 +16,7 @@ const fetch = require('node-fetch');
 const { localise, listMiddleware } = require('../static/list');
 const reviewToJsonLd = require('../static/reviewToJsonLd');
 const languages = require('../data/languages.json');
+const categories = require('../data/categories.json');
 const dateformat = require('../data/dateformat.json');
 
 const router = express.Router();
@@ -177,7 +178,7 @@ router
           const remainingLanguages = selectableLanguages.filter(language => !Object.keys(item.contents).includes(language));
           res.render('add', {
             selectableLanguages: remainingLanguages,
-            categories: config.categories,
+            categories,
             item,
             layout: 'docs',
           });
@@ -428,7 +429,7 @@ router
   .get('/add', isLoggedIn, (req, res) => {
     res.render('add', {
       selectableLanguages,
-      categories: config.categories,
+      categories,
       layout: 'docs',
       item: {},
     });
@@ -454,7 +455,12 @@ router
           };
 
           if (value.images && typeof value.images.avatar === 'string') {
-            const cache = new ImageCache(value.images.avatar, 512, 512, value.nsfw);
+            const cache = new ImageCache({
+              url: value.images.avatar,
+              x: 512,
+              y: 512,
+              blur: value.nsfw
+            });
             imagePromises.push(cache.cache());
             value.cachedImages.avatar = cache.permalink;
           } else {
@@ -462,7 +468,12 @@ router
           }
 
           if (value.images && typeof value.images.cover === 'string') {
-            const cache = new ImageCache(value.images.cover, 1280, 720, value.nsfw);
+            const cache = new ImageCache({
+              url: value.images.cover,
+              x: 1280,
+              y: 720,
+              blur: value.nsfw
+            });
             imagePromises.push(cache.cache());
             value.cachedImages.cover = cache.permalink;
           }
@@ -470,7 +481,12 @@ router
           if (value.images && Array.isArray(value.images.preview)) {
             for (let i = 0; i < value.images.preview.length; i += 1) {
               if (typeof value.images.preview[i] === 'string') {
-                const cache = new ImageCache(value.images.preview[i], 1280, 720, value.nsfw);
+                const cache = new ImageCache({
+                  url: value.images.preview[i],
+                  x: 1280,
+                  y: 720,
+                  blur: value.nsfw
+                });
                 imagePromises.push(cache.cache());
                 value.cachedImages.preview[i] = cache.permalink;
               }

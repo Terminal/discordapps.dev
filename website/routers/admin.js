@@ -36,16 +36,28 @@ router
           };
 
           if (value.images && typeof value.images.avatar === 'string') {
-            const cache = new ImageCache(value.images.avatar, 256, 256, value.nsfw);
+            const cache = new ImageCache({
+              url: value.images.avatar,
+              x: 256,
+              y: 256,
+              blur: value.nsfw
+            });
             imageCaches.push({
               value,
               cache
             });
             replacement.cachedImages.avatar = cache.permalink;
+          } else {
+            replacement.cachedImages.avatar = '/img/logo/logo.svg';
           }
 
           if (value.images && typeof value.images.cover === 'string') {
-            const cache = new ImageCache(value.images.cover, 1280, 720, value.nsfw);
+            const cache = new ImageCache({
+              url: value.images.cover,
+              x: 1280,
+              y: 720,
+              blur: value.nsfw
+            });
             imageCaches.push({
               value,
               cache
@@ -56,7 +68,12 @@ router
           if (value.images && Array.isArray(value.images.preview)) {
             for (let i = 0; i < value.images.preview.length; i += 1) {
               if (typeof value.images.preview[i] === 'string') {
-                const cache = new ImageCache(value.images.preview[i], 1280, 720, value.nsfw);
+                const cache = new ImageCache({
+                  url: value.images.preview[i],
+                  x: 1280,
+                  y: 720,
+                  blur: value.nsfw
+                });
                 imageCaches.push({
                   value,
                   cache

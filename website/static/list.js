@@ -89,7 +89,9 @@ const listMiddleware = options => (req, res, next) => {
           title = res.__('pages.bots.ownerFilter', {
             name: `${user.username}#${user.discriminator}`
           });
-          const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`);
+          const cache = new ImageCache({
+            url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
+          });
           // Don't cache the image. Image should already be cached on login
           cache.getRecord()
             .then((record) => {

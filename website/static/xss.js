@@ -1,5 +1,4 @@
 const xss = require('xss');
-// const ImageCache = require('../class/ImageCache');
 
 module.exports = {
   lenient(html) {

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="300"
+   height="100"
+   viewBox="0 0 79.374998 26.458334"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="embed_inkscape.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient2357">
+      <stop
+         style="stop-color:#ffe671;stop-opacity:1;"
+         offset="0"
+         id="stop2353" />
+      <stop
+         style="stop-color:#ffe671;stop-opacity:0;"
+         offset="1"
+         id="stop2355" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2293"
+       osb:paint="solid">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop2291" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2357"
+       id="linearGradient2359"
+       x1="50.270832"
+       y1="283.77079"
+       x2="64.822917"
+       y2="283.77079"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="160.18781"
+     inkscape:cy="72.020674"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     showguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid817" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-270.54165)">
+    <rect
+       style="opacity:1;fill:#ffe671;fill-opacity:1;stroke:none;stroke-width:2.11699986;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect831"
+       width="50.270832"
+       height="26.458326"
+       x="0"
+       y="270.54166" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.3499999px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="0.46359864"
+       y="276.78455"
+       id="text2327"><tspan
+         sodipodi:role="line"
+         id="tspan2325"
+         x="0.46359864"
+         y="276.78455"
+         style="stroke-width:0.26458332">{{title}}</tspan></text>
+    <rect
+       style="opacity:1;fill:url(#linearGradient2359);fill-opacity:1;stroke:none;stroke-width:0.99999988;paint-order:markers fill stroke"
+       id="rect833-9"
+       width="14.552085"
+       height="26.458334"
+       x="50.270832"
+       y="270.54163" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="1.3229166"
+       y="295.67706"
+       id="text2363"><tspan
+         sodipodi:role="line"
+         id="tspan2361"
+         x="1.3229166"
+         y="298.25186"
+         style="stroke-width:0.26458332"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="0.79329431"
+       y="295.57416"
+       id="text2367"><tspan
+         sodipodi:role="line"
+         id="tspan2365"
+         x="0.79329431"
+         y="295.57416"
+         style="font-size:2.11666656px;stroke-width:0.26458332">Discord Bots by Terminal.ink</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="0.94625652"
+       y="282.99841"
+       id="text2371"><tspan
+         sodipodi:role="line"
+         id="tspan2369"
+         x="0.94625652"
+         y="282.99841"
+         style="stroke-width:0.26458332">Well well well</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="0.94625652"
+       y="286.96716"
+       id="text2375"><tspan
+         sodipodi:role="line"
+         id="tspan2373"
+         x="0.94625652"
+         y="286.96716"
+         style="stroke-width:0.26458332">What do we have here?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="0.94625652"
+       y="290.93591"
+       id="text2379"><tspan
+         sodipodi:role="line"
+         id="tspan2377"
+         x="0.94625652"
+         y="290.93591"
+         style="stroke-width:0.26458332">A fake XELA embed?</tspan></text>
+  </g>
+</svg>

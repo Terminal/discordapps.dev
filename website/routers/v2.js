@@ -30,12 +30,12 @@ router
           .without('id')
           .coerceTo('array')
       }))
-      .default(null)
+      .default({})
       .without('token')
       .then((bot) => {
         if (!bot.id) res.status(404);
         res.json({
-          ok: true,
+          ok: !bot.id,
           data: bot
         });
       })
@@ -43,6 +43,27 @@ router
         next(err);
       });
   })
+  // .get('/bots/:id/embed', (req, res, next) => {
+  //   r.table('bots')
+  //     .get(req.params.id)
+  //     .default({})
+  //     .without('token')
+  //     .then((bot) => {
+  //       if (!bot.id) {
+  //         res.json({
+  //           ok: false,
+  //           message: res.__('errors.api.no_bot')
+  //         });
+  //       } else {
+  //         res.json({
+  //           ok: true
+  //         });
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       next(err);
+  //     });
+  // })
   .get('/oops', (req, res, next) => {
     next(new Error(res.__('errors.api.test')));
   })
@@ -52,7 +73,7 @@ router
   .use((req, res) => {
     res.status(404).json({
       ok: false,
-      message: res.__('errors.api.400')
+      message: res.__('errors.api.404')
     });
   })
   .use((err, req, res, next) => { // eslint-disable-line

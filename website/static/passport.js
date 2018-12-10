@@ -39,7 +39,11 @@ passport.use(new DiscordStrategy(
       };
 
       // Cache the user's avatar as soon as they log in.
-      const cache = new ImageCache(`https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`, 512, 512);
+      const cache = new ImageCache({
+        url: `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.png`,
+        x: 512,
+        y: 512
+      });
       cache.cache()
         .then(() => {
           profile.cachedAvatar = cache.permalink;
