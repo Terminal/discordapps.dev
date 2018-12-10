@@ -72,7 +72,6 @@
       "invite": "Diesen Bot hinzufügen",
       "support": "Technischer Support",
       "website": "Webseite",
-      "pagename": "Discord Bots von terminal.ink",
       "shortname": "Discord Bots",
       "mentionable": "Erwähnbar",
       "customisable": "Änderbar",
@@ -347,6 +346,7 @@
     }
   },
   "site": {
+    "name": "Discord Bots von terminal.ink",
     "description": "ls.terminal.ink ist eine Open source Webseite, wo du Bots für deinen Server finden kannst."
   }
 }

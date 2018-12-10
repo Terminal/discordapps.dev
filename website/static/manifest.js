@@ -1,5 +1,5 @@
 module.exports = res => ({
-  name: res.__('pages.bots.pagename'),
+  name: res.__('site.name'),
   short_name: res.__('pages.bots.shortname'),
   scope: `${res.locals.languagePrefix}/?source=manifest`,
   background_color: '#181818',

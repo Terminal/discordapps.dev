@@ -71,7 +71,6 @@
       "description": "Un magasin d'applications pour des bots Discord",
       "invite": "Inviter ce bot",
       "support": "Support technique",
-      "pagename": "ls.terminal.ink",
       "website": "Site Internet",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
@@ -341,6 +340,7 @@
     }
   },
   "site": {
+    "name": "ls.terminal.ink",
     "description": "ls.terminal.ink est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des informations, pour modérer et plus pour votre serveur."
   }
 }
