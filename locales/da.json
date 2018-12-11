@@ -145,7 +145,7 @@
         "modal1": "The bot ID is a number which uniquely identifies the bot user. You can retrieve it by clicking the \"Copy\" button within the Discord Developer portal.",
         "modal2": "You can also find the ID by enabling \"Developer Mode\" in the Discord settings, and then right clicking your bot and pressing \"Copy ID\". Be sure not to copy the ID of the message.",
         "placeholder": "ID'et for botbrugeren",
-        "title": "Bot ID"
+        "title": "Bot-ID"
       },
       "customisable": {
         "title": "Customisable prefix"
@@ -183,9 +183,9 @@
         "title": "Udvidet beskrivelse"
       },
       "prefix": {
-        "placeholder": "A single prefix",
+        "placeholder": "Et enkelt præfiks",
         "title": "Præfiks",
-        "add": "Add another prefix"
+        "add": "Tilføj et andet præfiks"
       },
       "flags": {
         "title": "Funding and Advertising Decleration",
@@ -199,7 +199,7 @@
         }
       },
       "images": {
-        "title": "Appearance",
+        "title": "Udseende",
         "avatar": {
           "title": "Avatar URL",
           "placeholder": "A HTTPS link to an avatar image"
@@ -232,7 +232,7 @@
     "error": {
       "notfound": "Siden blev ikke fundet...",
       "server": "Unexpected rapid disassembly encountered",
-      "github": "Report this error at GitHub.com",
+      "github": "Rapporter denne fejl på GitHub.com",
       "report": "Thanks for taking the time to report this error. Please type in what you were doing before the incident."
     },
     "list": {
@@ -253,15 +253,15 @@
       "no": "Gå tilbage"
     },
     "reviews": {
-      "title": "Reviews",
-      "my": "My Review",
-      "write": "Write a review",
+      "title": "Anmeldelser",
+      "my": "Min anmeldelse",
+      "write": "Skriv en anmeldelse",
       "placeholder": "Please enter a reason for your review.",
       "number": {
         "one": "%s review",
         "other": "%s reviews"
       },
-      "delete": "Delete review",
+      "delete": "Slet anmeldelse",
       "all": "View all reviews"
     }
   },
