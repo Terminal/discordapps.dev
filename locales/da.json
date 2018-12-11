@@ -267,21 +267,21 @@
   "permission": {
     "ADD_REACTIONS": "Tilføj Reaktioner",
     "ADMINISTRATOR": "Administrator",
-    "ATTACH_FILES": "Attach Files",
+    "ATTACH_FILES": "Vedhæft Filer",
     "BAN_MEMBERS": "Ban Members",
     "CHANGE_NICKNAME": "Change Nickname",
     "CONNECT": "Tilslut",
-    "CREATE_INSTANT_INVITE": "Create Instant Invite",
+    "CREATE_INSTANT_INVITE": "Opret Øjeblikkelig Invitation",
     "DEAFEN_MEMBERS": "Gør Medlemmer Døve",
     "EMBED_LINKS": "Embed Links",
-    "KICK_MEMBERS": "Kick Members",
+    "KICK_MEMBERS": "Smid Melemmer Ud",
     "MANAGE_CHANNELS": "Administrer Kanaler",
     "MANAGE_EMOJIS": "Administrer Emojis",
     "MANAGE_GUILD": "Administrer Server",
     "MANAGE_MESSAGES": "Administrer Beskeder",
     "MANAGE_NICKNAMES": "Manage Nicknames",
     "MANAGE_ROLES": "Administrer Roller",
-    "MANAGE_WEBHOOKS": "Manage Webhooks",
+    "MANAGE_WEBHOOKS": "Administrer Webhooks",
     "MENTION_EVERYONE": "Nævn Alle",
     "MOVE_MEMBERS": "Flyt Medlemmer",
     "MUTE_MEMBERS": "Gør Medlemmer Stumme",
@@ -340,7 +340,7 @@
     },
     "permissions": {
       "login": "Du er ikke logget ind",
-      "denied": "You do not have the adequate permissions to access this"
+      "denied": "Du har ikke tilstrækkelige rettigheder til at kunne tilgå dette"
     },
     "website": {
       "noscript": "JavaScript er deaktiveret. Funktionaliteten kan være nedsat.",
@@ -352,7 +352,7 @@
       "self": "You cannot review your own bot!"
     },
     "api": {
-      "500": "An internal server error occured.",
+      "500": "Der opstod en intern serverfejl.",
       "404": "This endpoint was not found, or the method used to request this page is not compatible.",
       "400": "You are unauthorised to use this endpoint. Check your token is correct.",
       "test": "An error was thrown for development purposes.",
@@ -361,7 +361,7 @@
     }
   },
   "site": {
-    "name": "Discord Bot List by Terminal.ink",
+    "name": "Discord Botliste af Terminal.ink",
     "description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
   }
 }
