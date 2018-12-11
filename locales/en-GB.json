@@ -103,7 +103,11 @@
       "rated": "Rated {{ rating }}/5"
     },
     "configuration": {
-      "token": "Token",
+      "token": {
+        "title": "Token",
+        "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints.",
+        "docs": "View Documentation"
+      },
       "renew": "Renew Token",
       "hide": {
         "title": "Hide bot",

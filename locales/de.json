@@ -103,7 +103,11 @@
       "rated": "{{ rating }}/5"
     },
     "configuration": {
-      "token": "Token",
+      "token": {
+        "title": "Token",
+        "description": "Click 'Docs' in the footer for help",
+        "docs": "View Documentation"
+      },
       "renew": "Token erneuern",
       "hide": {
         "title": "Bot ausblenden",

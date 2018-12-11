@@ -102,7 +102,11 @@
       "rated": "{{ rating }}/5"
     },
     "configuration": {
-      "token": "Jeton",
+      "token": {
+        "title": "Jeton",
+        "description": "Click 'Docs' in the footer for help",
+        "docs": "View Documentation"
+      },
       "renew": "Renouveler le jeton",
       "hide": {
         "title": "Masquer le bot",
