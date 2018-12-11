@@ -133,7 +133,8 @@
       "nsfw": {
         "title": "Not Safe For Work"
       },
-      "support": {I stil med: https://discord.gg/8uC6aKZ",
+      "support": {
+		"placeholder": "I stil med: https://discord.gg/8uC6aKZ",
         "small": "Lad dette felt stå tomt hvis du ikke ønsker at hjælpe folk",
         "title": "Support URL"
       },
@@ -313,7 +314,7 @@
       "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
       "category": "You must select a category for your bot",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",
-      "description": "The short description must have a length between 10 and 100",
+      "description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
       "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
       "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
       "id": "The Bot ID needs to be filled out, and numeric",
