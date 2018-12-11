@@ -10,7 +10,7 @@
     "view": "Vis denne side på Github"
   },
   "forms": {
-    "add": "TIlføj en anden",
+    "add": "Tilføj en anden",
     "apply": "Apply",
     "close": "Luk",
     "delete": "Slet",
@@ -68,7 +68,7 @@
     "bots": {
       "add": "Tilføj en applikation",
       "backgroundAlt": "Logoet for ls.terminal.ink",
-      "description": "An application store for Discord bots",
+      "description": "Et sted hvor du kan finde Discord bots",
       "invite": "Tilføj denne bot",
       "support": "Teknisk Support",
       "website": "Webside",
@@ -87,7 +87,7 @@
       },
       "more": "Vis mere",
       "less": "Vis mindre",
-      "adverts": "Contains features locked behind other services",
+      "adverts": "Indeholder funktioner der er låst bag andre tjenester",
       "inAppPurchases": "Has in-app purchases",
       "unverified": "Unverified",
       "nsfw": "NSFW",
@@ -95,13 +95,13 @@
       "modified": "Sidst redigeret: {{{ date }}}",
       "created": "Først udgivet: {{{ date }}}",
       "category": "Kategori: {{{ category }}}",
-      "initiateCategoryFilter": "Find bots for...",
+      "initiateCategoryFilter": "Find botter for...",
       "ownerFilter": "Botter af {{{ name }}}",
       "count": {
-        "one": "Installed in a single server",
-        "other": "Installed in %s servers"
+        "one": "Installeret på en enkelt server",
+        "other": "Installeret på %s servere"
       },
-      "rated": "Rated {{ rating }}/5"
+      "rated": "Bedømt {{ rating }}/5"
     },
     "configuration": {
       "token": {
@@ -124,9 +124,9 @@
         "title": "OAuth-ID"
       },
       "authors": {
-        "modal": "Enter a single ID of an owner of the bot.",
-        "placeholder": "ID of a single owner",
-        "title": "Fortattere af botten",
+        "modal": "Indtast et enkelt ID på en ejer til botten.",
+        "placeholder": "ID på en enkelt ejer",
+        "title": "Fortattere til botten",
         "add": "Tilføj en anden"
       },
       "basicinfo": "Grundlæggende oplysninger",
