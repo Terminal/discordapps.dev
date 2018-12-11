@@ -97,8 +97,8 @@
       "category": "Kategorie: {{{ category }}}",
       "ownerFilter": "Bots von {{{ name }}}",
       "count": {
-        "one": "%s servers",
-        "other": "%s server"
+        "one": "%s Server",
+        "other": "%s Server"
       },
       "rated": "{{ rating }}/5"
     },
