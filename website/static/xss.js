@@ -36,6 +36,7 @@ module.exports = {
         thead: [],
         tbody: [],
         tr: [],
+        th: [],
         td: [],
         hr: [],
         blockquote: []
