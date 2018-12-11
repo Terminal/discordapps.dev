@@ -219,7 +219,7 @@
         }
       },
       "website": {
-        "title": "Website",
+        "title": "Webside",
         "placeholder": "A HTTPS link to your website"
       },
       "sourcecode": "Kildekode",
@@ -262,7 +262,7 @@
         "other": "%s reviews"
       },
       "delete": "Slet anmeldelse",
-      "all": "View all reviews"
+      "all": "Vis alle anmeldelser"
     }
   },
   "permission": {
@@ -274,7 +274,7 @@
     "CONNECT": "Tilslut",
     "CREATE_INSTANT_INVITE": "Opret Øjeblikkelig Invitation",
     "DEAFEN_MEMBERS": "Gør Medlemmer Døve",
-    "EMBED_LINKS": "Embed Links",
+    "EMBED_LINKS": "Integrer Links",
     "KICK_MEMBERS": "Smid Melemmer Ud",
     "MANAGE_CHANNELS": "Administrer Kanaler",
     "MANAGE_EMOJIS": "Administrer Emojis",
@@ -291,7 +291,7 @@
     "SEND_MESSAGES": "Send Beskeder",
     "SEND_TTS_MESSAGES": "Send TTS Beskeder",
     "SPEAK": "Tal",
-    "USE_EXTERNAL_EMOJIS": "Use External Emojis",
+    "USE_EXTERNAL_EMOJIS": "Brug Eksterne Emojis",
     "USE_VAD": "Use Voice Activity",
     "VIEW_AUDIT_LOG": "View Audit Log"
   },
