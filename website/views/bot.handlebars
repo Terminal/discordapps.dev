@@ -43,6 +43,20 @@
       {{/if}}
     </div>
   </section>
+  <div class="ls-flex-row ls-left-pad ls-bot-labels">
+    {{#if average}}
+    <span class="label">
+      {{ i18n __ "pages.bots.rated" "rating" average}}
+    </span>
+    {{/if}}
+    {{#if item.count}}
+    <span class="label">
+      {{ i18ns __n "pages.bots.count" item.count}}
+    </span>
+    {{/if}}
+  </div>
+</div>
+<div class="ls-main-content container box-shadow ls-round">
   {{#if item.pageDisplayedLanguage}}<p><i>{{i18n __ "errors.bots.no_suitable_lang" "language" (i18n __ (concat "locales." item.pageDisplayedLanguage))}}</i></p>{{/if}}
   <div id="ls-short-description" class="ls-custom-content ls-script">
     {{item.contents.description}}

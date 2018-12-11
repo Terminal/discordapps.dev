@@ -94,7 +94,12 @@
       "offeredby": "Proposé par :",
       "modified": "Dernière modification: {{{ date }}}",
       "created": "Publication: {{{ date }}}",
-      "category": "Catégorie: {{{ category }}}"
+      "category": "Catégorie: {{{ category }}}",
+      "count": {
+        "one": "%s servers",
+        "other": "%s server"
+      },
+      "rated": "{{ rating }}/5"
     },
     "configuration": {
       "token": "Jeton",

@@ -95,7 +95,12 @@
       "modified": "Zuletzt bearbeitet: {{{ date }}}",
       "created": "Zuerst veröffentlicht: {{{ date }}}",
       "category": "Kategorie: {{{ category }}}",
-      "ownerFilter": "Bots von {{{ name }}}"
+      "ownerFilter": "Bots von {{{ name }}}",
+      "count": {
+        "one": "%s servers",
+        "other": "%s server"
+      },
+      "rated": "{{ rating }}/5"
     },
     "configuration": {
       "token": "Token",

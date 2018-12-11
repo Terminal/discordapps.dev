@@ -51,7 +51,6 @@
   }
 
   .ls-custom-content {
-    padding-top: 2em;
     padding-bottom: 2em;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -83,6 +82,10 @@
       max-height: 40vh;
       object-fit: contain;
     }
+  }
+
+  .ls-bot-labels {
+    margin-top: 1em;
   }
 
   /**
