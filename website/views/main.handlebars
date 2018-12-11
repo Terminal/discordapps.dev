@@ -1,20 +1,22 @@
-<div class="ls-main-content container box-shadow center ls-round">
-  <div id="ls-carousel">
-    {{#each slider}}
-    {{#if this.cachedImages.cover}}
-    <div class="ls-carousel-item" style="background-image: url({{this.cachedImages.cover}})">
-      <a href="{{../languagePrefix}}/bots/{{this.id}}">
-      <div class="ls-carousel-item-content">
-        <img class="ls-carousel-item-content-avatar" src="{{this.cachedImages.avatar}}">
-        <h4>{{this.contents.name}}</h4>
-        <p class="white-text">{{this.contents.description}}</p>
+{{#if slider.length}}
+  <div class="ls-main-content container box-shadow center ls-round">
+    <div id="ls-carousel">
+      {{#each slider}}
+      {{#if this.cachedImages.cover}}
+      <div class="ls-carousel-item" style="background-image: url({{this.cachedImages.cover}})">
+        <a href="{{../languagePrefix}}/bots/{{this.id}}">
+        <div class="ls-carousel-item-content">
+          <img class="ls-carousel-item-content-avatar" src="{{this.cachedImages.avatar}}">
+          <h4>{{this.contents.name}}</h4>
+          <p class="white-text">{{this.contents.description}}</p>
+        </div>
+        </a>
       </div>
-      </a>
+      {{/if}}
+      {{/each}}
     </div>
-    {{/if}}
-    {{/each}}
   </div>
-</div>
+{{/if}}
 
 <div class="center-text container card-container">
   {{#each cards}}
