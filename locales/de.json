@@ -72,7 +72,7 @@
       "invite": "Diesen Bot hinzufügen",
       "support": "Technischer Support",
       "website": "Webseite",
-      "shortname": "Discord Bots",
+      "shortname": "Discord Botliste",
       "mentionable": "Erwähnbar",
       "customisable": "Änderbar",
       "delete": "Löschen",
@@ -169,7 +169,7 @@
       "languages": {
         "add": "Sprache hinzufügen",
         "delete": "Diese Sprache löschen",
-        "modal": "Du kannst verschiedensprachige Beschreibungen hinzufügen, wenn von der Webseite unterstützt, um deine Audienz besser anzusprechen. Um eine Sprache hinzuzufügen, wähle deine Sprache und klicke auf \"Sprache hinzufügen\". Du kannst dann die Details für diese Sprache ausfüllen.",
+        "modal": "Schreibe deine Botseite in jede unterstützte Sprache. Wähle eine Sprache und klicke auf den 'Sprache hinzufügen' Knopf.",
         "title": "Sprachen"
       },
       "mentionable": {
@@ -345,7 +345,7 @@
     "reviews": {
       "rating": "Bitte wähle eine Bewertung, befor du fortfährst",
       "text": "Bitte gib an, warum du diesem Bot diese Anzahl an Sternen gegeben hast.",
-      "self": "Du kannst deinen eigenen Bot nicht reviewen"
+      "self": "Du kannst deinen eigenen Bot nicht bewerten"
     },
     "api": {
       "500": "Ein interner Server-error ist aufgetreten.",
