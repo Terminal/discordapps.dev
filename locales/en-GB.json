@@ -95,6 +95,7 @@
       "modified": "Last modified: {{{ date }}}",
       "created": "First published: {{{ date }}}",
       "category": "Category: {{{ category }}}",
+      "initiateCategoryFilter": "Find bots for...",
       "ownerFilter": "Bots by {{{ name }}}",
       "count": {
         "one": "Installed in a single server",
