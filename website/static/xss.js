@@ -32,6 +32,12 @@ module.exports = {
         h4: ['id'],
         h5: ['id'],
         h6: ['id'],
+        table: [],
+        thead: [],
+        tbody: [],
+        tr: [],
+        td: [],
+        hr: [],
         blockquote: []
       }
     });
