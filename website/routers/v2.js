@@ -5,6 +5,8 @@ const config = require('../config');
 const joi = require('../schemas/joi');
 const botSchema = require('../schemas/bots');
 
+const { unflatten } = require('flat');
+
 const router = express.Router();
 
 const checkToken = (req, res, next) => {
@@ -90,8 +92,9 @@ router
   //     });
   // })
   .post('/bots/:id', checkToken, (req, res, next) => {
+    const body = unflatten(req.body);
     // Does not work for nested items
-    const bot = Object.assign(req.bot, req.body.bot);
+    const bot = Object.assign(req.bot, body.bot);
     delete bot.cachedImages;
     delete bot.created;
     delete bot.edited;
