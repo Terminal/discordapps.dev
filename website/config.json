@@ -1,0 +1,44 @@
+{
+  "rethinkdb": {
+    "db": "test",
+    "servers": [
+      {
+        "host": "127.0.0.1",
+        "port": 28015
+      }
+    ],
+    "silent": true
+  },
+  "webserver": {
+    "secret": "chuu 츄 :3",
+    "location": "http://127.0.0.1:8000",
+    "host": "127.0.0.1:8000",
+    "protocol": "http",
+    "port": 8000
+  },
+  "proxy": {
+    "host": "http://img.ls.terminal.ink",
+    "authorization": "abcdefghijklmnopqrstuvwxyz"
+  },
+  "owners": [
+    "190519304972664832"
+  ],
+  "discord": {
+    "clientID": "473861594749861909",
+    "clientSecret": "abcdefghijklmnopqrstuvwxyz",
+    "token": "abcdefghijklmnopqrstuvwxyz.abcdef.abcdefghijklmnopqrstuvwxyz",
+    "webhook": "https://canary.discordapp.com/api/webhooks/513364290552463360/abcdefghijklmnopqrstuvwxyz0123456789",
+    "scope": [
+      "identify"
+    ],
+    "api": "https://discordapp.com/api/v6",
+    "cdn": "https://cdn.discordapp.com"
+  },
+  "links": {
+    "docs": "https://docs.terminal.ink/ls10"
+  },
+  "default": {
+    "language": "en-GB",
+    "image": "/img/logo/logo.svg"
+  }
+}
