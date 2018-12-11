@@ -30,6 +30,7 @@ const schema = joi.object({
     inAppPurchases: joi.bool().error(new Error('errors.bots.inAppPurchases')),
     adverts: joi.bool().error(new Error('errors.bots.adverts'))
   }),
+  count: joi.number().integer().min(0).max(5000000).error(new Error('errors.bots.count')).allow(null), // Maximum of 5 Million bots... b'cus why not?
   contents: joi.object().pattern(joi.string().valid(Object.keys(languages)), joi.object({
     name: joi.string().min(4).max(32).required().error(new Error('errors.bots.name')),
     description: joi.string().min(10).max(100).required().error(new Error('errors.bots.description')),

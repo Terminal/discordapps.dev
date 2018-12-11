@@ -26,7 +26,11 @@ const joi = originaljoi.extend({
     if (typeof value === 'number') {
       return value;
     }
-    return parseInt(value, 10);
+    const numberwang = parseInt(value, 10);
+    if (isNaN(numberwang)) {
+      return null;
+    }
+    return numberwang;
   }
 });
 

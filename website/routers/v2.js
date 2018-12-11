@@ -2,7 +2,32 @@ const express = require('express');
 const r = require('../rethinkdb');
 const config = require('../config');
 
+const joi = require('../schemas/joi');
+const botSchema = require('../schemas/bots');
+
 const router = express.Router();
+
+const checkToken = (req, res, next) => {
+  r.table('bots')
+    .get(req.params.id)
+    .then((bot) => {
+      if (!bot.id) {
+        res.status(404)
+          .json({
+            ok: false
+          });
+      } else if (bot.token !== req.get('Authorization')) {
+        res.status(400)
+          .json({
+            ok: false,
+            message: res.__('errors.api.400')
+          });
+      } else {
+        req.bot = bot;
+        next();
+      }
+    });
+};
 
 router
   .get('/bots', (req, res, next) => {
@@ -35,7 +60,7 @@ router
       .then((bot) => {
         if (!bot.id) res.status(404);
         res.json({
-          ok: !bot.id,
+          ok: !!bot.id,
           data: bot
         });
       })
@@ -64,6 +89,50 @@ router
   //       next(err);
   //     });
   // })
+  .post('/bots/:id', checkToken, (req, res, next) => {
+    // Does not work for nested items
+    const bot = Object.assign(req.bot, req.body.bot);
+    delete bot.cachedImages;
+    delete bot.created;
+    delete bot.edited;
+    delete bot.hide;
+    delete bot.legacy;
+    delete bot.random;
+    delete bot.token;
+    delete bot.verified;
+    joi.validate(bot, botSchema.options({
+      presence: 'optional'
+    }), {
+      abortEarly: true
+    }, (err, value) => {
+      if (err) {
+        res.json({
+          ok: false,
+          message: res.__(err.message)
+        });
+      } else if (value.id !== req.params.id) {
+        res.json({
+          ok: false,
+          data: value,
+          message: res.__('errors.api.idchange')
+        });
+      } else {
+        // Update the value in the database
+        r.table('bots')
+          .update(value)
+          .then(() => {
+            // Return the updated value
+            res.json({
+              ok: true,
+              data: value
+            });
+          })
+          .catch((err1) => {
+            next(err1);
+          });
+      }
+    });
+  })
   .get('/oops', (req, res, next) => {
     next(new Error(res.__('errors.api.test')));
   })

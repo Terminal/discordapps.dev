@@ -13,6 +13,8 @@ const v2Router = require('./v2');
 const { localise } = require('../static/list');
 const manifest = require('../static/manifest');
 
+const categories = require('../data/categories.json');
+
 const router = express.Router();
 
 router
@@ -45,13 +47,14 @@ router
         nsfw: false,
         hide: false
       })
-      .limit(12)
+      .limit(18)
       .then((list) => {
         const localised = list.map(item => localise(item, res));
         const slider = localised.splice(0, 6);
         res.render('main', {
           slider,
-          cards: localised
+          cards: localised,
+          categories
         });
       })
       .catch((err) => {

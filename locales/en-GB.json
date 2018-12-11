@@ -323,6 +323,7 @@
       "notfound": "The ID provided was not found by Discord.",
       "add_success": "Added bot to the bot list queue.",
       "edit_success": "Edited bot successfully.",
+      "count": "The guild count for a bot must be between 0 and 5000000 servers",
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
@@ -344,8 +345,10 @@
     "api": {
       "500": "An internal server error occured.",
       "404": "This endpoint was not found, or the method used to request this page is not compatible.",
+      "400": "You are unauthorised to use this endpoint. Check your token is correct.",
       "test": "An error was thrown for development purposes.",
-      "no_bot": "Bot not found"
+      "no_bot": "Bot not found",
+      "idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support"
     }
   },
   "site": {

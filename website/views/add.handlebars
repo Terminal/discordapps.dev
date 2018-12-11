@@ -45,7 +45,7 @@
           <select name="bot.category" class="full-width" value="{{item.support}}">
             <option disabled {{#unless item.category}}selected{{/unless}}>{{ i18n __ "forms.select" }}</option>
             {{#each categories}}
-            <option value={{this}} {{#if (isEqual this ../item.category)}}selected{{/if}}>{{ i18n ../__ (concat "categories." this) }}</option>
+              <option value={{this}} {{#if (isEqual this ../item.category)}}selected{{/if}}>{{ i18n ../__ (concat "categories." this) }}</option>
             {{/each}}
           </select>
         </div>

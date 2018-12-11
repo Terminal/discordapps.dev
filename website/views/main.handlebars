@@ -1,3 +1,14 @@
+<div class="container">
+  <h5>Find bots for...</h5>
+  <div>
+    {{#each categories}}
+      <a class="btn white black-text ls-homepage-category" href="{{languagePrefix}}/bots/category/{{this}}">
+        {{ i18n ../__ (concat "categories." this) }}
+      </a>
+    {{/each}}
+  </div>
+</div>
+
 {{#if slider.length}}
   <div class="ls-main-content container box-shadow center ls-round">
     <div id="ls-carousel">
@@ -5,11 +16,13 @@
       {{#if this.cachedImages.cover}}
       <div class="ls-carousel-item" style="background-image: url({{this.cachedImages.cover}})">
         <a href="{{../languagePrefix}}/bots/{{this.id}}">
-        <div class="ls-carousel-item-content">
-          <img class="ls-carousel-item-content-avatar" src="{{this.cachedImages.avatar}}">
-          <h4>{{this.contents.name}}</h4>
-          <p class="white-text">{{this.contents.description}}</p>
-        </div>
+          <div class="ls-carousel-item-content">
+            <img class="ls-carousel-item-content-avatar" src="{{this.cachedImages.avatar}}">
+            <div>
+              <h4>{{this.contents.name}}</h4>
+              <p class="white-text">{{this.contents.description}}</p>
+            </div>
+          </div>
         </a>
       </div>
       {{/if}}
