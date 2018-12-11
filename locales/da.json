@@ -71,7 +71,7 @@
       "description": "An application store for Discord bots",
       "invite": "Tilføj denne bot",
       "support": "Teknisk Support",
-      "website": "Website",
+      "website": "Webside",
       "shortname": "Discord Bots",
       "mentionable": "Kan nævnes",
       "customisable": "Customisable",
@@ -113,7 +113,7 @@
       "hide": {
         "title": "Skjul bot",
         "description": "You can hide your bot from the front page of the website, in case you don't need to be there.",
-        "disable": "Unhide",
+        "disable": "Skjul ikke",
         "enable": "Skjul"
       }
     },
@@ -126,10 +126,10 @@
       "authors": {
         "modal": "Enter a single ID of an owner of the bot.",
         "placeholder": "ID of a single owner",
-        "title": "Bot Authors",
+        "title": "Fortattere af botten",
         "add": "Tilføj en anden"
       },
-      "basicinfo": "Basic Information",
+      "basicinfo": "Grundlæggende oplysninger",
       "nsfw": {
         "title": "Not Safe For Work"
       },
@@ -223,10 +223,10 @@
         "placeholder": "A HTTPS link to your website"
       },
       "sourcecode": "Kildekode",
-      "title": "Add or Edit an Application",
+      "title": "Tilføj eller rediger en applikation",
       "triggermethods": "Trigger Methods",
       "deleteLanguage": "Slet et sprog",
-      "required": "Fields marked with * are required.",
+      "required": "Felter markeret med * er påkrævet.",
       "updates": "It is highly recommended you join the Terminal.ink Discord Server by clicking 'Discord' in the footer, to view service updates, view your bot verification status, and also recieve direct messages from staff about your application."
     },
     "error": {
@@ -256,10 +256,10 @@
       "title": "Anmeldelser",
       "my": "Min anmeldelse",
       "write": "Skriv en anmeldelse",
-      "placeholder": "Please enter a reason for your review.",
+      "placeholder": "Angiv venligst en begrundelse for din anmeldelse.",
       "number": {
-        "one": "%s review",
-        "other": "%s reviews"
+        "one": "%s anmeldelse",
+        "other": "%s anmeldelser"
       },
       "delete": "Slet anmeldelse",
       "all": "Vis alle anmeldelser"
@@ -312,7 +312,7 @@
   "errors": {
     "bots": {
       "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
-      "category": "You must select a category for your bot",
+      "category": "Du skal vælge en kategori for din bot",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",
       "description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
       "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
@@ -322,22 +322,22 @@
       "website": "The Website URL needs to be a valid HTTPS link",
       "languages": "You must add a single language. Click the language you want your bot page to be in, and select the 'Add a language' button",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
-      "name": "The bot must have a name of length between 4 and 32.",
+      "name": "Botten skal have et navn der har en længde på mellem 4 og 32 tegn.",
       "nsfw": "The NSFW status must be either ticked, or unticked",
-      "oauth": "The OAuth ID needs to be numeric",
+      "oauth": "OAuth-ID'et skal være numerisk",
       "page": "The long description must have a length between 20 and 10000",
       "prefix": "You must have at least 1 prefix, of max length 10.",
       "support": "The Support URL needs to be a valid HTTPS link",
       "exists": "The bot already exists in the database, and you do not have permission to overwrite this.",
       "notabot": "The ID provided was not a bot account.",
       "notfound": "The ID provided was not found by Discord.",
-      "add_success": "Added bot to the bot list queue.",
-      "edit_success": "Edited bot successfully.",
+      "add_success": "Tilføjede botten til botlistekøen.",
+      "edit_success": "Botten blev redigeret.",
       "count": "The guild count for a bot must be between 0 and 5000000 servers",
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
-      "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead."
+      "no_suitable_lang": "Denne side findes ikke på engelsk. '{{ language }}' bruges istedet."
     },
     "permissions": {
       "login": "Du er ikke logget ind",
@@ -345,12 +345,12 @@
     },
     "website": {
       "noscript": "JavaScript er deaktiveret. Funktionaliteten kan være nedsat.",
-      "print": "JavaScript is not compatible with paper printouts."
+      "print": "JavaScript er ikke kompatibel med papir udskrivninger."
     },
     "reviews": {
-      "rating": "Please select a rating before continuing",
-      "text": "Please enter why you gave this number of stars for this bot.",
-      "self": "You cannot review your own bot!"
+      "rating": "Venligst vælg hvor godt du synes om denne bot før du fortsætter!",
+      "text": "Angiv venligst hvorfor du gav dette antal stjerner til botten.",
+      "self": "Du kan ikke anmelde din egen bot!"
     },
     "api": {
       "500": "Der opstod en intern serverfejl.",
