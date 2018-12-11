@@ -105,8 +105,8 @@
     "configuration": {
       "token": {
         "title": "Token",
-        "description": "Click 'Docs' in the footer for help",
-        "docs": "View Documentation"
+        "description": "Klicke 'Doks' im Footer für Hilfe",
+        "docs": "Zeige Dokumentation"
       },
       "renew": "Token erneuern",
       "hide": {
