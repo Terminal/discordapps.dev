@@ -206,11 +206,11 @@
         },
         "cover": {
           "title": "Cover Image",
-          "placeholder": "A HTTPS link to a large image"
+          "placeholder": "Et HTTPS-link til et stort billede"
         },
         "preview": {
           "title": "Preview Images",
-          "placeholder": "A HTTPS link to a single screenshot",
+          "placeholder": "Et HTTPS-link til et enkelt skærmbillede",
           "add": "Tilføj et andet billede"
         },
         "youtube": {
@@ -220,7 +220,7 @@
       },
       "website": {
         "title": "Webside",
-        "placeholder": "A HTTPS link to your website"
+        "placeholder": "Et HTTPS-link til din webside"
       },
       "sourcecode": "Kildekode",
       "title": "Tilføj eller rediger en applikation",
@@ -301,12 +301,12 @@
     "entertainment": "Underholdning",
     "productivity": "Produktivitet",
     "education": "Uddannelse",
-    "image": "Image Manipulation",
+    "image": "Billedmanipulation",
     "news": "Nyheder",
     "music": "Musik",
     "moderation": "Moderation",
     "utility": "Utility",
-    "notifications": "Notifications",
+    "notifications": "Notifikationer",
     "other": "Andet"
   },
   "errors": {
@@ -320,13 +320,13 @@
       "id": "The Bot ID needs to be filled out, and numeric",
       "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
       "website": "The Website URL needs to be a valid HTTPS link",
-      "languages": "You must add a single language. Click the language you want your bot page to be in, and select the 'Add a language' button",
+      "languages": "Du skal tilføje et enkelt sprog. Tryk på det sprog du ønsker din botside skal være i, og vælg 'Tilføj et sprog' knappen",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
       "name": "Botten skal have et navn der har en længde på mellem 4 og 32 tegn.",
       "nsfw": "The NSFW status must be either ticked, or unticked",
       "oauth": "OAuth-ID'et skal være numerisk",
       "page": "The long description must have a length between 20 and 10000",
-      "prefix": "You must have at least 1 prefix, of max length 10.",
+      "prefix": "Du skal have mindst et præfiks med en maksimal længde på 10 tegn.",
       "support": "The Support URL needs to be a valid HTTPS link",
       "exists": "The bot already exists in the database, and you do not have permission to overwrite this.",
       "notabot": "The ID provided was not a bot account.",
@@ -357,7 +357,7 @@
       "404": "This endpoint was not found, or the method used to request this page is not compatible.",
       "400": "You are unauthorised to use this endpoint. Check your token is correct.",
       "test": "An error was thrown for development purposes.",
-      "no_bot": "Bot not found",
+      "no_bot": "Botten blev ikke fundet",
       "idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support"
     }
   },
