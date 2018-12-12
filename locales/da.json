@@ -127,7 +127,7 @@
         "modal": "Indtast et enkelt ID på en ejer til botten.",
         "placeholder": "ID på en enkelt ejer",
         "title": "Fortattere til botten",
-        "add": "Tilføj en anden"
+        "add": "Tilføj en mere"
       },
       "basicinfo": "Grundlæggende oplysninger",
       "nsfw": {
@@ -194,7 +194,7 @@
           "small": "Tick this box if you have features behind a paywall"
         },
         "adverts": {
-          "title": "Advertisments",
+          "title": "Reklamer",
           "small": "Afkryds denne boks hvis du har funktioner der er låst bag andre tjenester"
         }
       },
@@ -202,7 +202,7 @@
         "title": "Udseende",
         "avatar": {
           "title": "Avatar URL",
-          "placeholder": "A HTTPS link to an avatar image"
+          "placeholder": "Et HTTPS-link til et billede der bruges som avatar"
         },
         "cover": {
           "title": "Cover Image",
@@ -342,7 +342,7 @@
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
-      "no_suitable_lang": "Denne side findes ikke på engelsk. '{{ language }}' bruges istedet."
+      "no_suitable_lang": "Denne side findes ikke på engelsk. '{{ language }}' anvendes istedet."
     },
     "permissions": {
       "login": "Du er ikke logget ind",
