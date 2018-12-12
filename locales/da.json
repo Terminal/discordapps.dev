@@ -89,9 +89,9 @@
       "less": "Vis mindre",
       "adverts": "Indeholder funktioner der er låst bag andre tjenester",
       "inAppPurchases": "Has in-app purchases",
-      "unverified": "Unverified",
+      "unverified": "Ikke verificeret",
       "nsfw": "NSFW",
-      "offeredby": "Offered By:",
+      "offeredby": "Indsendt af:",
       "modified": "Sidst redigeret: {{{ date }}}",
       "created": "Først udgivet: {{{ date }}}",
       "category": "Kategori: {{{ category }}}",
@@ -120,7 +120,7 @@
     "edit": {
       "application_id": {
         "modal": "The OAuth ID is the ID which is used when users invite your bot via the OAuth workflow. In almost all cases, this ID is the same as your Bot ID. You will only need to take action if your bot has a difference between the two.",
-        "placeholder": "The ID used in the OAuth link.",
+        "placeholder": "ID'et brugt i OAuth-linket.",
         "title": "OAuth-ID"
       },
       "authors": {
@@ -155,7 +155,7 @@
       },
       "github_owner": {
         "placeholder": "I stil med: ry00001",
-        "title": "GitHub User / Organisation"
+        "title": "GitHub bruger / organisation"
       },
       "github_repo": {
         "placeholder": "I stil med: Tuxedo",
@@ -328,9 +328,9 @@
       "page": "The long description must have a length between 20 and 10000",
       "prefix": "Du skal have mindst et præfiks med en maksimal længde på 10 tegn.",
       "support": "The Support URL needs to be a valid HTTPS link",
-      "exists": "The bot already exists in the database, and you do not have permission to overwrite this.",
-      "notabot": "The ID provided was not a bot account.",
-      "notfound": "The ID provided was not found by Discord.",
+      "exists": "Botten findes allerede i databasen, og du har ikke tilladelse til at overskrive dette.",
+      "notabot": "Det ID du angav var ikke en botkonto.",
+      "notfound": "Det ID du angav blev ikke genkendt af Discord.",
       "add_success": "Tilføjede botten til botlistekøen.",
       "edit_success": "Botten blev redigeret.",
       "count": "The guild count for a bot must be between 0 and 5000000 servers",
