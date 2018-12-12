@@ -265,10 +265,10 @@
       "all": "Vis alle anmeldelser"
     },
     "admin": {
-      "title": "Administration Console",
-      "avatars": "Download all avatars",
-      "tokens": "Reset all tokens",
-      "queue": "View queue"
+      "title": "Administrationskonsol",
+      "avatars": "Download alle avatarer",
+      "tokens": "Nulstil alle tokens",
+      "queue": "Vis kø"
 	},
   "permission": {
     "ADD_REACTIONS": "Tilføj Reaktioner",
