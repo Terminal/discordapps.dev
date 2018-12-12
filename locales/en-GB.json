@@ -263,6 +263,12 @@
       },
       "delete": "Delete review",
       "all": "View all reviews"
+    },
+    "admin": {
+      "title": "Administration Console",
+      "avatars": "Download all avatars",
+      "tokens": "Reset all tokens",
+      "queue": "View queue"
     }
   },
   "permission": {
