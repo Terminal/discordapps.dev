@@ -1,12 +1,12 @@
 {
   "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord is a trademark of Discord Inc.",
   "footer": {
-    "attribution": "Attribution",
+    "attribution": "Tilskrivning",
     "licence": "GNU AGPLv3",
     "source": "GitHub",
     "discord": "Discord",
     "terminal": "Terminal.ink",
-    "docs": "Docs",
+    "docs": "Dokumentation",
     "view": "Vis denne side på Github"
   },
   "forms": {
@@ -109,7 +109,7 @@
         "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints.",
         "docs": "Vis dokumentation"
       },
-      "renew": "Renew Token",
+      "renew": "Forny token",
       "hide": {
         "title": "Skjul bot",
         "description": "Du kan skjule din bot fra forsiden, i tilfælde af at du ikke behøver, den skal være der.",
@@ -265,7 +265,7 @@
       "all": "Vis alle anmeldelser"
     },
     "admin": {
-      "title": "Administrationskonsol",
+      "title": "Administratorkonsol",
       "avatars": "Download alle avatarer",
       "tokens": "Nulstil alle tokens",
       "queue": "Vis kø"
