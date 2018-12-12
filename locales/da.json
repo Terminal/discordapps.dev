@@ -263,8 +263,13 @@
       },
       "delete": "Slet anmeldelse",
       "all": "Vis alle anmeldelser"
-    }
-  },
+    },
+    "admin": {
+      "title": "Administration Console",
+      "avatars": "Download all avatars",
+      "tokens": "Reset all tokens",
+      "queue": "View queue"
+	},
   "permission": {
     "ADD_REACTIONS": "Tilføj Reaktioner",
     "ADMINISTRATOR": "Administrator",
