@@ -101,7 +101,7 @@
         "one": "Installeret på en enkelt server",
         "other": "Installeret på %s servere"
       },
-      "rated": "Bedømt {{ rating }}/5"
+      "rated": "Bedømmelse {{ rating }}/5"
     },
     "configuration": {
       "token": {
@@ -214,7 +214,7 @@
           "add": "Tilføj et andet billede"
         },
         "youtube": {
-          "title": "YouTube ID",
+          "title": "YouTube-ID",
           "placeholder": "An ID to a YouTube video demonstrating your bot"
         }
       },
@@ -292,7 +292,7 @@
     "SEND_TTS_MESSAGES": "Send TTS Beskeder",
     "SPEAK": "Tal",
     "USE_EXTERNAL_EMOJIS": "Brug Eksterne Emojis",
-    "USE_VAD": "Use Voice Activity",
+    "USE_VAD": "Brug Stemmeaktivitet",
     "VIEW_AUDIT_LOG": "View Audit Log"
   },
   "categories": {
@@ -317,7 +317,7 @@
       "description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
       "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
       "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
-      "id": "The Bot ID needs to be filled out, and numeric",
+      "id": "Bot-ID'et skal være udfyldt samt numerisk",
       "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
       "website": "The Website URL needs to be a valid HTTPS link",
       "languages": "Du skal tilføje et enkelt sprog. Tryk på det sprog du ønsker din botside skal være i, og vælg 'Tilføj et sprog' knappen",
