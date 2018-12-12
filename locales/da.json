@@ -112,7 +112,7 @@
       "renew": "Renew Token",
       "hide": {
         "title": "Skjul bot",
-        "description": "You can hide your bot from the front page of the website, in case you don't need to be there.",
+        "description": "Du kan skjule din bot fra forsiden, i tilfælde af at du ikke behøver, den skal være der.",
         "disable": "Skjul ikke",
         "enable": "Skjul"
       }
@@ -148,7 +148,7 @@
         "title": "Bot-ID"
       },
       "customisable": {
-        "title": "Customisable prefix"
+        "title": "Præfiks der kan tilpasses"
       },
       "description": {
         "title": "Kort beskrivelse"
@@ -170,7 +170,7 @@
       "languages": {
         "add": "Tilføj et sprog",
         "delete": "Slet dette sprog",
-        "modal": "Write your bot page in any supported language. Select a language, and click the 'Add a language' button.",
+        "modal": "Skriv din botside på ethvert af de understøttede sprog. Vælg dit sprog og tryk på 'Tilføj et sprog' knappen.",
         "title": "Sprog for botside"
       },
       "mentionable": {
@@ -215,7 +215,7 @@
         },
         "youtube": {
           "title": "YouTube-ID",
-          "placeholder": "An ID to a YouTube video demonstrating your bot"
+          "placeholder": "Et ID til en YouTube-video der demonstrerer din bot"
         }
       },
       "website": {
@@ -311,7 +311,7 @@
   },
   "errors": {
     "bots": {
-      "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
+      "authors": "Du skal have mindst 1 forfatter til botten, alle forfatter-ID'er skal være numeriske",
       "category": "Du skal vælge en kategori for din bot",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",
       "description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
@@ -323,7 +323,7 @@
       "languages": "Du skal tilføje et enkelt sprog. Tryk på det sprog du ønsker din botside skal være i, og vælg 'Tilføj et sprog' knappen",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
       "name": "Botten skal have et navn der har en længde på mellem 4 og 32 tegn.",
-      "nsfw": "The NSFW status must be either ticked, or unticked",
+      "nsfw": "NSFW-statussen skal være enten afkrydset eller ikke afkrydset",
       "oauth": "OAuth-ID'et skal være numerisk",
       "page": "The long description must have a length between 20 and 10000",
       "prefix": "Du skal have mindst et præfiks med en maksimal længde på 10 tegn.",
