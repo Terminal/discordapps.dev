@@ -27,14 +27,7 @@ router
     }
     res.locals.url = req.url;
     res.locals.languagePrefix = res.getLocale() === config.default.language ? '' : `/${res.getLocale()}`;
-
-    if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
-      res.redirect(config.webserver.location);
-    } else if (config.webserver.host !== req.get('host')) {
-      res.redirect(config.webserver.location);
-    } else {
-      next();
-    }
+    next();
   })
   .get('/', (req, res, next) => {
     r.table('bots')

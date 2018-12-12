@@ -68,10 +68,11 @@
     "bots": {
       "add": "Ajouter votre propre bot",
       "backgroundAlt": "Logo pour ls.terminal.ink",
-      "description": "Un magasin d'applications pour des bots Discord",
+      "description": "Une boutique d'applications pour des bots Discord",
       "invite": "Inviter ce bot",
       "support": "Support technique",
       "website": "Site Internet",
+      "shortname": "Bots Discord",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
       "delete": "Supprimer",
@@ -84,7 +85,6 @@
         "one": "Préfixe",
         "other": "Préfixes"
       },
-      "shortname": "Bots",
       "more": "Voir plus",
       "less": "Voir moins",
       "adverts": "Contient de la publicité",
@@ -95,11 +95,13 @@
       "modified": "Dernière modification: {{{ date }}}",
       "created": "Publication: {{{ date }}}",
       "category": "Catégorie: {{{ category }}}",
+      "initiateCategoryFilter": "Find bots for...",
+      "ownerFilter": "Bots by {{{ name }}}",
       "count": {
-        "one": "%s servers",
-        "other": "%s server"
+        "one": "Installé dans un seul serveur",
+        "other": "Installé dans un %s serveurs"
       },
-      "rated": "{{ rating }}/5"
+      "rated": "Noté {{ rating }}/5"
     },
     "configuration": {
       "token": {
@@ -128,15 +130,6 @@
         "add": "Ajouter un(e) autre"
       },
       "basicinfo": "Informations Basiques",
-      "invite": {
-        "generate": "Générer une URL",
-        "placeholder": "https://discordapp.com/oauth/ ou autre URL compatible",
-        "title": "URL d'invitation"
-      },
-      "website": {
-        "title": "Site Internet",
-        "placeholder": "Un lien HTTPS vers votre site Internet"
-      },
       "nsfw": {
         "title": "Non adapté pour toutes les audiences"
       },
@@ -168,12 +161,17 @@
         "title": "Répertoire",
         "placeholder": "Quelque chose comme Tuxedo"
       },
-      "information": "Information",
+      "information": "Page de votre bot",
+      "invite": {
+        "modal": "Veuillez vérifier que \"ID du bot\" a été rempli avec l'ID du bot Discord",
+        "title": "URL d'invitation",
+        "generate": "Générer une URL"
+      },
       "languages": {
         "add": "Ajouter une langue",
         "delete": "Supprimer cette langue",
-        "modal": "Vous pouvez ajouter d'autres descriptions pour les différentes langues supportées par ce site, afin de mieux cibler votre audience. Pour ajouter une langue, sélectionnez votre langue et cliquez sur \"Ajouter cette langue\". Vous pourrez ensuite remplir les détails pour cette langue.",
-        "title": "Langues"
+        "modal": "Écrivez la page de votre bot dans n'importe quelle langue prise en charge. Sélectionnez une langue, et cliquez sur \"Ajouter cette langue\".",
+        "title": "Langues de la page du bot"
       },
       "mentionable": {
         "title": "Possibilité de mentionner le bot pour le déclencher"
@@ -187,7 +185,7 @@
       "prefix": {
         "placeholder": "Un seul préfixe",
         "title": "Préfixe",
-        "add": "Ajouter un(e) autre"
+        "add": "Ajouter un autre préfixe"
       },
       "flags": {
         "title": "Notification de publicité et/ou de monétisation",
@@ -213,12 +211,16 @@
         "preview": {
           "title": "Images d'aperçu",
           "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot",
-          "add": "Ajouter un(e) autre"
+          "add": "Ajouter une autre image"
         },
         "youtube": {
           "title": "ID YouTube",
           "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
         }
+      },
+      "website": {
+        "title": "Site Internet",
+        "placeholder": "Un lien HTTPS vers votre site Internet"
       },
       "sourcecode": "Code Source",
       "title": "Ajouter ou Modifier une Application",
@@ -310,6 +312,7 @@
   "errors": {
     "bots": {
       "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
+      "category": "Vous devez sélectionner une catégorie pour votre bot",
       "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",
       "description": "La description courte doit avoir une taille entre 10 et 100 caractères",
       "githubowner": "Le propriétaire GitHub doit être un utilisateur GitHub valide. Laissez vide si vous n'avez pas de compte GitHub.",
@@ -317,7 +320,7 @@
       "id": "L'ID du bot doit être renseigné, et numerique",
       "invite": "L'URL d'invitation needs doit être renseignée, et avec un lien HTTPS valide",
       "website": "L'URL du site web doit être un lien HTTPS valide",
-      "languages": "Vous devez ajouter une langue avant de continuer",
+      "languages": "Vous devez ajouter au moins une langue. Sélectionnez le langue dans laquelle vous voulez que vote page de bot soie, et cliquez sur le bouton 'Ajouter cette langue'",
       "mentionable": "la mentionnabilité du préfixe doit être soit coché, ou décoché",
       "name": "Le bot doit avoir un nom d'une longueur entre 4 et 32 caractères.",
       "nsfw": "Le status NSFW doit être soit coché, ou décoché",
@@ -330,6 +333,7 @@
       "notfound": "L'ID fourni n'a pas été trouvé par Discord.",
       "add_success": "Le bot a été ajouté à la liste d'attente des bots.",
       "edit_success": "Bot édité avec succès.",
+      "count": "Le nombre de guildes pour le bot doit être entre 0 et 5000000 serveurs",
       "avatar": "L'URL de l'avatar doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
       "cover": "L'URL de la couverture doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
       "preview": "Toutes les URL d'aperçu doivent être des liens HTTPS valides, avec une longueur maximale de 2000 caractères chacun, avec un maximum de 20 liens",
@@ -340,16 +344,25 @@
       "denied": "Vous n'avez pas les permissions adéquates afin d'accéder à cela"
     },
     "website": {
-      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites."
+      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites.",
+      "print": "JavaScript n'est pas compatible avec les impressions papier."
     },
     "reviews": {
       "rating": "Veuillez sélectionner une note avant de continuer",
       "text": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
       "self": "Vous ne pouvez pas critiquer votre propre bot!"
+    },
+    "api": {
+      "500": "Une erreur interne au serveur est survenue.",
+      "404": "Ce chemin n'a pas été trouvé, ou la méthode utilisée pour effectuer cette requête n'est pas supportée.",
+      "400": "Vous n'êtes pas autorisé à utiliser ce chemin. Vérifiez la validité du jeton.",
+      "test": "Une erreur a été lancée à des fins de développement.",
+      "no_bot": "Bot introuvable",
+      "idchange": "L'ID du bot ne peut être changé pour un autre ID. Veuillez contacter le support de Terminal pour une assistance technique"
     }
   },
   "site": {
-    "name": "ls.terminal.ink",
+    "name": "Liste de bots Discord par ls.terminal.ink",
     "description": "ls.terminal.ink est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des informations, pour modérer et plus pour votre serveur."
   }
 }

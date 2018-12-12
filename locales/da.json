@@ -7,31 +7,31 @@
     "discord": "Discord",
     "terminal": "Terminal.ink",
     "docs": "Docs",
-    "view": "Vis denne side på Github"
+    "view": "Vis denne side pÃ¥ Github"
   },
   "forms": {
-    "add": "Tilføj en anden",
+    "add": "TilfÃ¸j en anden",
     "apply": "Apply",
     "close": "Luk",
     "delete": "Slet",
     "help": "ðŸ¤”",
-    "select": "Vælg venligst...",
+    "select": "VÃ¦lg venligst...",
     "submit": "Indsend",
     "wait": "Vent venligst..."
   },
   "pagination": {
     "image": {
       "prev": "Tilbage",
-      "next": "Næste"
+      "next": "NÃ¦ste"
     },
     "page": {
       "prev": "Forrige",
-      "next": "Næste side"
+      "next": "NÃ¦ste side"
     },
     "currentPage": "Side {{{ number }}}"
   },
   "intro": {
-    "login": "Log på",
+    "login": "Log pÃ¥",
     "logout": "Log af",
     "search": "Hvad leder du efter?",
     "admin": "Admin",
@@ -41,7 +41,7 @@
     "ar": "Arabisk",
     "da": "Dansk",
     "de": "Tysk",
-    "el": "Græsk",
+    "el": "GrÃ¦sk",
     "en-GB": "Engelsk (United Kingdom)",
     "es": "Spansk",
     "et": "Estonian",
@@ -66,42 +66,42 @@
   },
   "pages": {
     "bots": {
-      "add": "Tilføj en applikation",
+      "add": "TilfÃ¸j en applikation",
       "backgroundAlt": "Logoet for ls.terminal.ink",
       "description": "Et sted hvor du kan finde Discord bots",
-      "invite": "Tilføj denne bot",
+      "invite": "TilfÃ¸j denne bot",
       "support": "Teknisk Support",
       "website": "Webside",
       "shortname": "Discord Bots",
-      "mentionable": "Kan nævnes",
+      "mentionable": "Kan nÃ¦vnes",
       "customisable": "Customisable",
       "delete": "Slet",
       "edit": "Rediger",
       "configure": "Konfigurer",
-      "github": "Vis på GitHub",
+      "github": "Vis pÃ¥ GitHub",
       "approve": "Godkend",
       "deny": "Afvis",
       "prefix": {
-        "one": "Præfiks",
-        "other": "Præfikser"
+        "one": "PrÃ¦fiks",
+        "other": "PrÃ¦fikser"
       },
       "more": "Vis mere",
       "less": "Vis mindre",
-      "adverts": "Indeholder funktioner der er låst bag andre tjenester",
+      "adverts": "Indeholder funktioner der er lÃ¥st bag andre tjenester",
       "inAppPurchases": "Has in-app purchases",
       "unverified": "Unverified",
       "nsfw": "NSFW",
       "offeredby": "Offered By:",
       "modified": "Sidst redigeret: {{{ date }}}",
-      "created": "Først udgivet: {{{ date }}}",
+      "created": "FÃ¸rst udgivet: {{{ date }}}",
       "category": "Kategori: {{{ category }}}",
       "initiateCategoryFilter": "Find botter for...",
       "ownerFilter": "Botter af {{{ name }}}",
       "count": {
-        "one": "Installeret på en enkelt server",
-        "other": "Installeret på %s servere"
+        "one": "Installeret pÃ¥ en enkelt server",
+        "other": "Installeret pÃ¥ %s servere"
       },
-      "rated": "Bedømt {{ rating }}/5"
+      "rated": "BedÃ¸mt {{ rating }}/5"
     },
     "configuration": {
       "token": {
@@ -124,18 +124,18 @@
         "title": "OAuth-ID"
       },
       "authors": {
-        "modal": "Indtast et enkelt ID på en ejer til botten.",
-        "placeholder": "ID på en enkelt ejer",
+        "modal": "Indtast et enkelt ID pÃ¥ en ejer til botten.",
+        "placeholder": "ID pÃ¥ en enkelt ejer",
         "title": "Fortattere til botten",
-        "add": "Tilføj en anden"
+        "add": "TilfÃ¸j en anden"
       },
-      "basicinfo": "Grundlæggende oplysninger",
+      "basicinfo": "GrundlÃ¦ggende oplysninger",
       "nsfw": {
         "title": "Not Safe For Work"
       },
       "support": {
 		"placeholder": "I stil med: https://discord.gg/8uC6aKZ",
-        "small": "Lad dette felt stå tomt hvis du ikke ønsker at hjælpe folk",
+        "small": "Lad dette felt stÃ¥ tomt hvis du ikke Ã¸nsker at hjÃ¦lpe folk",
         "title": "Support URL"
       },
       "category": {
@@ -168,7 +168,7 @@
         "generate": "Generer et invitationslink"
       },
       "languages": {
-        "add": "Tilføj et sprog",
+        "add": "TilfÃ¸j et sprog",
         "delete": "Slet dette sprog",
         "modal": "Write your bot page in any supported language. Select a language, and click the 'Add a language' button.",
         "title": "Sprog for botside"
@@ -183,9 +183,9 @@
         "title": "Udvidet beskrivelse"
       },
       "prefix": {
-        "placeholder": "Et enkelt præfiks",
-        "title": "Præfiks",
-        "add": "Tilføj et andet præfiks"
+        "placeholder": "Et enkelt prÃ¦fiks",
+        "title": "PrÃ¦fiks",
+        "add": "TilfÃ¸j et andet prÃ¦fiks"
       },
       "flags": {
         "title": "Funding and Advertising Decleration",
@@ -211,7 +211,7 @@
         "preview": {
           "title": "Preview Images",
           "placeholder": "A HTTPS link to a single screenshot",
-          "add": "Tilføj et andet billede"
+          "add": "TilfÃ¸j et andet billede"
         },
         "youtube": {
           "title": "YouTube ID",
@@ -223,16 +223,16 @@
         "placeholder": "A HTTPS link to your website"
       },
       "sourcecode": "Kildekode",
-      "title": "Tilføj eller rediger en applikation",
+      "title": "TilfÃ¸j eller rediger en applikation",
       "triggermethods": "Trigger Methods",
       "deleteLanguage": "Slet et sprog",
-      "required": "Felter markeret med * er påkrævet.",
+      "required": "Felter markeret med * er pÃ¥krÃ¦vet.",
       "updates": "It is highly recommended you join the Terminal.ink Discord Server by clicking 'Discord' in the footer, to view service updates, view your bot verification status, and also recieve direct messages from staff about your application."
     },
     "error": {
       "notfound": "Siden blev ikke fundet...",
       "server": "Unexpected rapid disassembly encountered",
-      "github": "Rapporter denne fejl på GitHub.com",
+      "github": "Rapporter denne fejl pÃ¥ GitHub.com",
       "report": "Thanks for taking the time to report this error. Please type in what you were doing before the incident."
     },
     "list": {
@@ -240,17 +240,17 @@
       "empty": "Der er ingen botter"
     },
     "locale": {
-      "choose": "Vælg venlist et sprog.",
-      "pleasehelp": "Er du en god oversætter? Klik her."
+      "choose": "VÃ¦lg venlist et sprog.",
+      "pleasehelp": "Er du en god oversÃ¦tter? Klik her."
     },
     "notfound": {
-      "gohome": "Gå tilbage til forsiden",
+      "gohome": "GÃ¥ tilbage til forsiden",
       "message": "Siden blev ikke fundet"
     },
     "sure": {
       "title": "Er du sikker?",
       "ok": "Ok",
-      "no": "Gå tilbage"
+      "no": "GÃ¥ tilbage"
     },
     "reviews": {
       "title": "Anmeldelser",
@@ -266,14 +266,14 @@
     }
   },
   "permission": {
-    "ADD_REACTIONS": "Tilføj Reaktioner",
+    "ADD_REACTIONS": "TilfÃ¸j Reaktioner",
     "ADMINISTRATOR": "Administrator",
-    "ATTACH_FILES": "Vedhæft Filer",
+    "ATTACH_FILES": "VedhÃ¦ft Filer",
     "BAN_MEMBERS": "Ban Members",
     "CHANGE_NICKNAME": "Change Nickname",
     "CONNECT": "Tilslut",
-    "CREATE_INSTANT_INVITE": "Opret Øjeblikkelig Invitation",
-    "DEAFEN_MEMBERS": "Gør Medlemmer Døve",
+    "CREATE_INSTANT_INVITE": "Opret Ã˜jeblikkelig Invitation",
+    "DEAFEN_MEMBERS": "GÃ¸r Medlemmer DÃ¸ve",
     "EMBED_LINKS": "Integrer Links",
     "KICK_MEMBERS": "Smid Melemmer Ud",
     "MANAGE_CHANNELS": "Administrer Kanaler",
@@ -283,11 +283,11 @@
     "MANAGE_NICKNAMES": "Manage Nicknames",
     "MANAGE_ROLES": "Administrer Roller",
     "MANAGE_WEBHOOKS": "Administrer Webhooks",
-    "MENTION_EVERYONE": "Nævn Alle",
+    "MENTION_EVERYONE": "NÃ¦vn Alle",
     "MOVE_MEMBERS": "Flyt Medlemmer",
-    "MUTE_MEMBERS": "Gør Medlemmer Stumme",
+    "MUTE_MEMBERS": "GÃ¸r Medlemmer Stumme",
     "READ_MESSAGE_HISTORY": "Read Message History",
-    "READ_MESSAGES": "Læs Beskeder",
+    "READ_MESSAGES": "LÃ¦s Beskeder",
     "SEND_MESSAGES": "Send Beskeder",
     "SEND_TTS_MESSAGES": "Send TTS Beskeder",
     "SPEAK": "Tal",
@@ -312,9 +312,9 @@
   "errors": {
     "bots": {
       "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
-      "category": "Du skal vælge en kategori for din bot",
+      "category": "Du skal vÃ¦lge en kategori for din bot",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",
-      "description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
+      "description": "Den korte beskrivelse skal vÃ¦re mellem 10 og 1000 tegn",
       "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
       "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
       "id": "The Bot ID needs to be filled out, and numeric",
@@ -322,33 +322,33 @@
       "website": "The Website URL needs to be a valid HTTPS link",
       "languages": "You must add a single language. Click the language you want your bot page to be in, and select the 'Add a language' button",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
-      "name": "Botten skal have et navn der har en længde på mellem 4 og 32 tegn.",
+      "name": "Botten skal have et navn der har en lÃ¦ngde pÃ¥ mellem 4 og 32 tegn.",
       "nsfw": "The NSFW status must be either ticked, or unticked",
-      "oauth": "OAuth-ID'et skal være numerisk",
+      "oauth": "OAuth-ID'et skal vÃ¦re numerisk",
       "page": "The long description must have a length between 20 and 10000",
       "prefix": "You must have at least 1 prefix, of max length 10.",
       "support": "The Support URL needs to be a valid HTTPS link",
       "exists": "The bot already exists in the database, and you do not have permission to overwrite this.",
       "notabot": "The ID provided was not a bot account.",
       "notfound": "The ID provided was not found by Discord.",
-      "add_success": "Tilføjede botten til botlistekøen.",
+      "add_success": "TilfÃ¸jede botten til botlistekÃ¸en.",
       "edit_success": "Botten blev redigeret.",
       "count": "The guild count for a bot must be between 0 and 5000000 servers",
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
-      "no_suitable_lang": "Denne side findes ikke på engelsk. '{{ language }}' bruges istedet."
+      "no_suitable_lang": "Denne side findes ikke pÃ¥ engelsk. '{{ language }}' bruges istedet."
     },
     "permissions": {
       "login": "Du er ikke logget ind",
-      "denied": "Du har ikke tilstrækkelige rettigheder til at kunne tilgå dette"
+      "denied": "Du har ikke tilstrÃ¦kkelige rettigheder til at kunne tilgÃ¥ dette"
     },
     "website": {
-      "noscript": "JavaScript er deaktiveret. Funktionaliteten kan være nedsat.",
+      "noscript": "JavaScript er deaktiveret. Funktionaliteten kan vÃ¦re nedsat.",
       "print": "JavaScript er ikke kompatibel med papir udskrivninger."
     },
     "reviews": {
-      "rating": "Venligst vælg hvor godt du synes om denne bot før du fortsætter!",
+      "rating": "Venligst vÃ¦lg hvor godt du synes om denne bot fÃ¸r du fortsÃ¦tter!",
       "text": "Angiv venligst hvorfor du gav dette antal stjerner til botten.",
       "self": "Du kan ikke anmelde din egen bot!"
     },

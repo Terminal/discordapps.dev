@@ -110,7 +110,8 @@ const listMiddleware = options => (req, res, next) => {
   } else if (options.filter === 'category') {
     if (categories.includes(req.params.category)) {
       filter = {
-        category: req.params.category
+        category: req.params.category,
+        verified: true
       };
       title = res.__(`categories.${req.params.category}`);
       checkDatabase();
@@ -129,7 +130,7 @@ const listMiddleware = options => (req, res, next) => {
             .or(bot('contents')(selectableLanguages[i])('description').default('').match(sanitise(query)));
         }
 
-        return chain;
+        return bot('verified').eq(true).and(chain);
       };
 
       checkDatabase();
