@@ -87,6 +87,15 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   }))
   .use(passport.initialize())
   .use(passport.session())
+  .use((req, res, next) => {
+    if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
+      res.redirect(config.webserver.location + req.url);
+    } else if (config.webserver.host !== req.get('host')) {
+      res.redirect(config.webserver.location + req.url);
+    } else {
+      next();
+    }
+  })
   .use(sass({ // Turns SASS to CSS in real time
     src: path.join(__dirname, 'sass'),
     dest: path.join(__dirname, 'www-root', 'css'),
