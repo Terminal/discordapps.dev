@@ -342,7 +342,7 @@
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
-      "no_suitable_lang": "Denne side findes ikke på engelsk. '{{ language }}' anvendes istedet."
+      "no_suitable_lang": "Der findes ingen engelsk version af denne side. '{{ language }}' anvendes istedet."
     },
     "permissions": {
       "login": "Du er ikke logget ind",
