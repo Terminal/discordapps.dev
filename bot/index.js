@@ -60,10 +60,10 @@ client.on('message', (msg) => {
 app
   .set('json spaces', 4)
   .use(i18n.init)
-  .use('/users/online', botOnline, (req, res) => {
+  .use('/users/:filter', botOnline, (req, res) => {
     res.json({
       ok: true,
-      data: client.users.filter(user => user.presence.equals('online')).array().map(user => user.id)
+      data: client.users.filter(user => user.presence.equals(req.params.filter)).array().map(user => user.id)
     });
   })
 
