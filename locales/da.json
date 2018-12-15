@@ -300,20 +300,6 @@
 			"USE_VAD": "Brug Stemmeaktivitet",
 			"VIEW_AUDIT_LOG": "View Audit Log"
 		},
-		"categories": {
-			"fun": "Sjov",
-			"games": "Spil",
-			"entertainment": "Underholdning",
-			"productivity": "Produktivitet",
-			"education": "Uddannelse",
-			"image": "Billedmanipulation",
-			"news": "Nyheder",
-			"music": "Musik",
-			"moderation": "Moderation",
-			"utility": "Utility",
-			"notifications": "Notifikationer",
-			"other": "Andet"
-		},
 		"errors": {
 			"bots": {
 				"authors": "Du skal have mindst 1 forfatter til botten, alle forfatter-ID'er skal være numeriske",
@@ -370,5 +356,19 @@
 			"name": "Discord Botliste af Terminal.ink",
 			"description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
 		}
-	}
+  },
+  "categories": {
+    "fun": "Sjov",
+    "games": "Spil",
+    "entertainment": "Underholdning",
+    "productivity": "Produktivitet",
+    "education": "Uddannelse",
+    "image": "Billedmanipulation",
+    "news": "Nyheder",
+    "music": "Musik",
+    "moderation": "Moderation",
+    "utility": "Utility",
+    "notifications": "Notifikationer",
+    "other": "Andet"
+  }
 }
