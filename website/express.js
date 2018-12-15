@@ -1,4 +1,4 @@
-const i18n = require('./static/i18n');
+const i18n = require('../global/i18n');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
@@ -103,7 +103,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     debug: false,
   }))
   .use(express.static(path.join(__dirname, 'www-root')))
-  .use('/node_modules/', express.static(path.join(__dirname, 'node_modules')))
+  .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
   .use('/css/images/', express.static(path.join(__dirname, 'www-root', 'ModestaCSS', 'css', 'images')))
   .use('/sitemap.xml', sitemapRouter)
   .use('/de/', languageMiddleware('de'), websiteRouter) // Can't use `:lang`, will explode

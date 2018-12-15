@@ -2,5 +2,6 @@ node_modules/
 rethinkdb_data/
 website/config/*.json
 proxy/config/*.json
+bot/config/*.json
 website/www-root/appdata/*
 website/www-root/css/*

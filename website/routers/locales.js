@@ -1,5 +1,5 @@
 const express = require('express');
-const i18n = require('../static/i18n');
+const i18n = require('../../global/i18n');
 const config = require('../config');
 const languages = require('../data/languages');
 
