@@ -18,6 +18,7 @@ const languageMiddleware = require('./middleware/language');
 // const getBetterLanguageMiddleware = require('./middleware/getBetterLanguage');
 
 const dateformat = require('./data/dateformat.json');
+const selectableStates = require('./data/states.json');
 
 require('./static/banner');
 
@@ -27,6 +28,7 @@ const app = express();
 app.locals.links = config.links;
 app.locals.defaultLanguage = config.default.language;
 app.locals.defaultImage = config.default.image;
+app.locals.selectableStates = selectableStates;
 
 app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')

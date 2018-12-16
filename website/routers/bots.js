@@ -1,5 +1,5 @@
 const express = require('express');
-const { isOwnerOfBot, isLoggedIn, isLoggedInButJSON, isAdmin } = require('../static/middleware');
+const { isOwnerOfBot, isLoggedIn, isLoggedInButJSON, isAdmin, botExists } = require('../static/middleware');
 const botSchema = require('../schemas/bots');
 
 const reviewsRouter = require('./reviews');
@@ -20,6 +20,7 @@ const reviewToJsonLd = require('../static/reviewToJsonLd');
 const languages = require('../data/languages.json');
 const categories = require('../data/categories.json');
 const dateformat = require('../data/dateformat.json');
+const selectableStates = require('../data/states.json');
 
 const router = express.Router();
 const reader = multer();
@@ -40,12 +41,7 @@ const selectableLanguages = Object.keys(languages).sort((a, b) => {
 router
   .get('/', listMiddleware({
     filter: {
-      verified: true
-    }
-  }))
-  .get('/unverified', listMiddleware({
-    filter: {
-      verified: false
+      state: 'approved'
     }
   }))
   .get('/search', listMiddleware({
@@ -58,7 +54,7 @@ router
     filter: 'category'
   }))
   .use('/:id/reviews', reviewsRouter)
-  .get('/:id', (req, res, next) => {
+  .get('/:id', botExists, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .merge(bot => ({
@@ -250,38 +246,28 @@ router
         next(err);
       });
   })
-  .post('/:id/approve', isLoggedIn, isAdmin, (req, res, next) => {
-    r.table('bots')
-      .get(req.params.id)
-      .update({
-        verified: true
-      })
-      .then((result) => {
-        if (result.replaced === 1) {
-          discordWebhooks(`<@${req.user.id}> approved <@${req.params.id}>`);
-        }
-        res.redirect(`${res.locals.languagePrefix}/bots/unverified`);
-      })
-      .catch((err) => {
-        next(err);
-      });
-  })
-  .get('/:id/deny', isLoggedIn, isAdmin, (req, res) => {
-    res.render('sure', {
-      reason: true
-    });
-  })
-  .post('/:id/deny', isLoggedIn, isAdmin, (req, res, next) => {
-    r.table('bots')
-      .get(req.params.id)
-      .delete()
-      .then(() => {
-        discordWebhooks(`<@${req.user.id}> denied <@${req.params.id}>\n${req.body.reason}`);
-        res.redirect(`${res.locals.languagePrefix}/bots/unverified`);
-      })
-      .catch((err) => {
-        next(err);
-      });
+  .post('/:id/state', isLoggedIn, isAdmin, reader.none(), (req, res, next) => {
+    if (selectableStates.includes(req.body.state)) {
+      r.table('bots')
+        .get(req.params.id)
+        .update({
+          state: req.body.state
+        }, {
+          returnChanges: true
+        })
+        .then((result) => {
+          if (result.replaced === 1) {
+            const newVal = result.changes[0].new_val;
+            discordWebhooks(`<@${req.user.id}> moved <@${req.params.id}> to \`${req.body.state}\`\n${newVal.authors.map(owner => `<@${owner}>`).join(', ')}\n\n${req.body.reason}`);
+          }
+          res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}`);
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      next(new Error('State not found'));
+    }
   })
   .get('/add', isLoggedIn, (req, res) => {
     res.render('add', {
@@ -382,7 +368,7 @@ router
             if (existingBot) {
               if (existingBot.authors.includes(req.user.id) || req.user.admin) {
                 // Copy over some stuff while overwriting
-                value.verified = existingBot.verified;
+                value.state = existingBot.state;
                 value.legacy = existingBot.legacy;
                 value.random = existingBot.random;
                 value.token = existingBot.token;
@@ -397,7 +383,7 @@ router
                 });
               }
             } else {
-              value.verified = false;
+              value.state = 'queue';
               value.legacy = false;
               value.random = Math.random();
               value.token = crypto.randomBytes(20).toString('hex');

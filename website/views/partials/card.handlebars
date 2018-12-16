@@ -9,9 +9,12 @@
         {{#if item.nsfw}}
           <span class="ls-list-nsfw">{{i18n __ "pages.bots.nsfw"}}</span>
         {{/if}}
-        {{#unless item.verified}}
-          <span class="ls-list-nsfw">{{i18n __ "pages.bots.unverified"}}</span>
-        {{/unless}}
+        {{#if (isEqual item.state 'queue')}}
+          <span class="ls-list-nsfw">{{i18n __ "states.queue"}}</span>
+        {{/if}}
+        {{#if (isEqual item.state 'denied')}}
+          <span class="ls-list-nsfw">{{i18n __ "states.denied"}}</span>
+        {{/if}}
       </h4>
     </a>
     <span class="description">{{item.contents.description}}</span>

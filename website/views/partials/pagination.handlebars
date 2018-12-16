@@ -8,7 +8,7 @@
     {{ next }}
   </span>
   {{#if (isEqual list.length (add limit 1))}}
-  <a class="btn white black-text" href="?page={{next}}&limit={{limit}}{{#if query}}&q={{query}}{{/if}}">
+  <a class="btn white black-text" href="?page={{next}}&limit={{limit}}{{#if query}}&q={{query}}{{/if}}{{#if state}}&state={{state}}{{/if}}">
     {{ i18n __ 'pagination.page.next' }}
   </a>
   {{/if}}

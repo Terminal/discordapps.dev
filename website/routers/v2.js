@@ -102,7 +102,7 @@ router
     delete bot.legacy;
     delete bot.random;
     delete bot.token;
-    delete bot.verified;
+    delete bot.state;
     joi.validate(bot, botSchema.options({
       presence: 'optional'
     }), {

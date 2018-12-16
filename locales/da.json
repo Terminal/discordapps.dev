@@ -1,5 +1,71 @@
 {
+	"categories": {
+		"fun": "Sjov",
+		"games": "Spil",
+		"entertainment": "Underholdning",
+		"productivity": "Produktivitet",
+		"education": "Uddannelse",
+		"image": "Billedmanipulation",
+		"news": "Nyheder",
+		"music": "Musik",
+		"moderation": "Moderation",
+		"utility": "Utility",
+		"notifications": "Notifikationer",
+		"other": "Andet"
+	},
 	"copyright": "Copyright 2017 - 2018, Terminal.ink; Discord is a trademark of Discord Inc.",
+	"errors": {
+		"bots": {
+			"authors": "Du skal have mindst 1 forfatter til botten, alle forfatter-ID'er skal være numeriske",
+			"category": "Du skal vælge en kategori for din bot",
+			"customisable": "The customisability of the prefix must be either ticked, or unticked",
+			"description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
+			"githubowner": "GitHub ejeren skal være en gyldige GitHub bruger. Lad dette stå tomt hvis du ikke har en GitHub konto.",
+			"githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
+			"id": "Bot-ID'et skal være udfyldt samt numerisk",
+			"invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
+			"website": "The Website URL needs to be a valid HTTPS link",
+			"languages": "Du skal tilføje et enkelt sprog. Tryk på det sprog du ønsker din botside skal være i, og vælg 'Tilføj et sprog' knappen",
+			"mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
+			"name": "Botten skal have et navn der har en længde på mellem 4 og 32 tegn.",
+			"nsfw": "NSFW-statussen skal være enten afkrydset eller ikke afkrydset",
+			"oauth": "OAuth-ID'et skal være numerisk",
+			"page": "The long description must have a length between 20 and 10000",
+			"prefix": "Du skal have mindst et præfiks med en maksimal længde på 10 tegn.",
+			"support": "The Support URL needs to be a valid HTTPS link",
+			"exists": "Botten findes allerede i databasen, og du har ikke tilladelse til at overskrive dette.",
+			"notabot": "Det ID du angav var ikke en botkonto.",
+			"notfound": "Det ID du angav blev ikke genkendt af Discord.",
+			"add_success": "Tilføjede botten til botlistekøen.",
+			"edit_success": "Botten blev redigeret.",
+			"count": "The guild count for a bot must be between 0 and 5000000 servers",
+			"avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
+			"cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
+			"preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
+			"no_suitable_lang": "Der findes ingen dansk version af denne side. '{{ language }}' anvendes istedet."
+		},
+		"permissions": {
+			"login": "Du er ikke logget ind",
+			"denied": "Du har ikke tilstrækkelige rettigheder til at kunne tilgå dette"
+		},
+		"website": {
+			"noscript": "JavaScript er deaktiveret. Funktionaliteten kan være nedsat.",
+			"print": "JavaScript er ikke kompatibel med papir udskrivninger."
+		},
+		"reviews": {
+			"rating": "Venligst vælg hvor godt du synes om denne bot før du fortsætter!",
+			"text": "Angiv venligst hvorfor du gav dette antal stjerner til botten.",
+			"self": "Du kan ikke skrive en anmeldelse for din egen bot!"
+		},
+		"api": {
+			"400": "You are unauthorised to use this endpoint. Check your token is correct.",
+			"404": "This endpoint was not found, or the method used to request this page is not compatible.",
+			"500": "Der opstod en intern serverfejl.",
+			"test": "An error was thrown for development purposes.",
+			"no_bot": "Botten blev ikke fundet",
+			"idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support"
+		}
+	},
 	"footer": {
 		"attribution": "Tilskrivning",
 		"licence": "GNU AGPLv3",
@@ -18,17 +84,6 @@
 		"select": "Vælg venligst...",
 		"submit": "Indsend",
 		"wait": "Vent venligst..."
-	},
-	"pagination": {
-		"image": {
-			"prev": "Tilbage",
-			"next": "Næste"
-		},
-		"page": {
-			"prev": "Forrige",
-			"next": "Næste side"
-		},
-		"currentPage": "Side {{{ number }}}"
 	},
 	"intro": {
 		"login": "Log på",
@@ -89,7 +144,6 @@
 			"less": "Vis mindre",
 			"adverts": "Indeholder funktioner der er låst bag andre tjenester",
 			"inAppPurchases": "Has in-app purchases",
-			"unverified": "Ikke verificeret",
 			"nsfw": "NSFW",
 			"offeredby": "Indsendt af:",
 			"modified": "Sidst redigeret: {{{ date }}}",
@@ -270,105 +324,53 @@
 			"tokens": "Nulstil alle tokens",
 			"queue": "Vis kø"
 		}
-  },
-  "categories": {
-    "fun": "Sjov",
-    "games": "Spil",
-    "entertainment": "Underholdning",
-    "productivity": "Produktivitet",
-    "education": "Uddannelse",
-    "image": "Billedmanipulation",
-    "news": "Nyheder",
-    "music": "Musik",
-    "moderation": "Moderation",
-    "utility": "Utility",
-    "notifications": "Notifikationer",
-    "other": "Andet"
-  },
-  "site": {
-    "name": "Discord Botliste af Terminal.ink",
-    "description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
-  },
-  "errors": {
-    "bots": {
-      "authors": "Du skal have mindst 1 forfatter til botten, alle forfatter-ID'er skal være numeriske",
-      "category": "Du skal vælge en kategori for din bot",
-      "customisable": "The customisability of the prefix must be either ticked, or unticked",
-      "description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
-      "githubowner": "GitHub ejeren skal være en gyldige GitHub bruger. Lad dette stå tomt hvis du ikke har en GitHub konto.",
-      "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
-      "id": "Bot-ID'et skal være udfyldt samt numerisk",
-      "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
-      "website": "The Website URL needs to be a valid HTTPS link",
-      "languages": "Du skal tilføje et enkelt sprog. Tryk på det sprog du ønsker din botside skal være i, og vælg 'Tilføj et sprog' knappen",
-      "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
-      "name": "Botten skal have et navn der har en længde på mellem 4 og 32 tegn.",
-      "nsfw": "NSFW-statussen skal være enten afkrydset eller ikke afkrydset",
-      "oauth": "OAuth-ID'et skal være numerisk",
-      "page": "The long description must have a length between 20 and 10000",
-      "prefix": "Du skal have mindst et præfiks med en maksimal længde på 10 tegn.",
-      "support": "The Support URL needs to be a valid HTTPS link",
-      "exists": "Botten findes allerede i databasen, og du har ikke tilladelse til at overskrive dette.",
-      "notabot": "Det ID du angav var ikke en botkonto.",
-      "notfound": "Det ID du angav blev ikke genkendt af Discord.",
-      "add_success": "Tilføjede botten til botlistekøen.",
-      "edit_success": "Botten blev redigeret.",
-      "count": "The guild count for a bot must be between 0 and 5000000 servers",
-      "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
-      "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
-      "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
-      "no_suitable_lang": "Der findes ingen dansk version af denne side. '{{ language }}' anvendes istedet."
-    },
-    "permissions": {
-      "login": "Du er ikke logget ind",
-      "denied": "Du har ikke tilstrækkelige rettigheder til at kunne tilgå dette"
-    },
-    "website": {
-      "noscript": "JavaScript er deaktiveret. Funktionaliteten kan være nedsat.",
-      "print": "JavaScript er ikke kompatibel med papir udskrivninger."
-    },
-    "reviews": {
-      "rating": "Venligst vælg hvor godt du synes om denne bot før du fortsætter!",
-      "text": "Angiv venligst hvorfor du gav dette antal stjerner til botten.",
-      "self": "Du kan ikke skrive en anmeldelse for din egen bot!"
-    },
-    "api": {
-      "500": "Der opstod en intern serverfejl.",
-      "404": "This endpoint was not found, or the method used to request this page is not compatible.",
-      "400": "You are unauthorised to use this endpoint. Check your token is correct.",
-      "test": "An error was thrown for development purposes.",
-      "no_bot": "Botten blev ikke fundet",
-      "idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support"
-    }
-  },
-  "permission": {
-    "ADD_REACTIONS": "Tilføj Reaktioner",
-    "ADMINISTRATOR": "Administrator",
-    "ATTACH_FILES": "Vedhæft Filer",
-    "BAN_MEMBERS": "Ban Members",
-    "CHANGE_NICKNAME": "Change Nickname",
-    "CONNECT": "Tilslut",
-    "CREATE_INSTANT_INVITE": "Opret Øjeblikkelig Invitation",
-    "DEAFEN_MEMBERS": "Gør Medlemmer Døve",
-    "EMBED_LINKS": "Integrer Links",
-    "KICK_MEMBERS": "Smid Medlemmer Ud",
-    "MANAGE_CHANNELS": "Administrer Kanaler",
-    "MANAGE_EMOJIS": "Administrer Emojis",
-    "MANAGE_GUILD": "Administrer Server",
-    "MANAGE_MESSAGES": "Administrer Beskeder",
-    "MANAGE_NICKNAMES": "Manage Nicknames",
-    "MANAGE_ROLES": "Administrer Roller",
-    "MANAGE_WEBHOOKS": "Administrer Webhooks",
-    "MENTION_EVERYONE": "Nævn Alle",
-    "MOVE_MEMBERS": "Flyt Medlemmer",
-    "MUTE_MEMBERS": "Gør Medlemmer Stumme",
-    "READ_MESSAGE_HISTORY": "Read Message History",
-    "READ_MESSAGES": "Læs Beskeder",
-    "SEND_MESSAGES": "Send Beskeder",
-    "SEND_TTS_MESSAGES": "Send TTS Beskeder",
-    "SPEAK": "Tal",
-    "USE_EXTERNAL_EMOJIS": "Brug Eksterne Emojis",
-    "USE_VAD": "Brug Stemmeaktivitet",
-    "VIEW_AUDIT_LOG": "View Audit Log"
-  }
+	},
+	"pagination": {
+		"image": {
+			"prev": "Tilbage",
+			"next": "Næste"
+		},
+		"page": {
+			"prev": "Forrige",
+			"next": "Næste side"
+		},
+		"currentPage": "Side {{{ number }}}"
+	},
+	"permission": {
+		"ADD_REACTIONS": "Tilføj Reaktioner",
+		"ADMINISTRATOR": "Administrator",
+		"ATTACH_FILES": "Vedhæft Filer",
+		"BAN_MEMBERS": "Ban Members",
+		"CHANGE_NICKNAME": "Change Nickname",
+		"CONNECT": "Tilslut",
+		"CREATE_INSTANT_INVITE": "Opret Øjeblikkelig Invitation",
+		"DEAFEN_MEMBERS": "Gør Medlemmer Døve",
+		"EMBED_LINKS": "Integrer Links",
+		"KICK_MEMBERS": "Smid Medlemmer Ud",
+		"MANAGE_CHANNELS": "Administrer Kanaler",
+		"MANAGE_EMOJIS": "Administrer Emojis",
+		"MANAGE_GUILD": "Administrer Server",
+		"MANAGE_MESSAGES": "Administrer Beskeder",
+		"MANAGE_NICKNAMES": "Manage Nicknames",
+		"MANAGE_ROLES": "Administrer Roller",
+		"MANAGE_WEBHOOKS": "Administrer Webhooks",
+		"MENTION_EVERYONE": "Nævn Alle",
+		"MOVE_MEMBERS": "Flyt Medlemmer",
+		"MUTE_MEMBERS": "Gør Medlemmer Stumme",
+		"READ_MESSAGE_HISTORY": "Read Message History",
+		"READ_MESSAGES": "Læs Beskeder",
+		"SEND_MESSAGES": "Send Beskeder",
+		"SEND_TTS_MESSAGES": "Send TTS Beskeder",
+		"SPEAK": "Tal",
+		"USE_EXTERNAL_EMOJIS": "Brug Eksterne Emojis",
+		"USE_VAD": "Brug Stemmeaktivitet",
+		"VIEW_AUDIT_LOG": "View Audit Log"
+	},
+	"site": {
+		"name": "Discord Botliste af Terminal.ink",
+		"description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
+	},
+	"states": {
+		"queue": "Ikke verificeret"
+	}
 }

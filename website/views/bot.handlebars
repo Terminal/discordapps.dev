@@ -7,9 +7,12 @@
         {{#if item.nsfw}}
           <span class="ls-list-nsfw">{{i18n __ "pages.bots.nsfw"}}</span>
         {{/if}}
-        {{#unless item.verified}}
-          <span class="ls-list-nsfw">{{i18n __ "pages.bots.unverified"}}</span>
-        {{/unless}}
+        {{#if (isEqual item.state 'queue')}}
+          <span class="ls-list-nsfw">{{i18n __ "states.queue"}}</span>
+        {{/if}}
+        {{#if (isEqual item.state 'denied')}}
+          <span class="ls-list-nsfw">{{i18n __ "states.denied"}}</span>
+        {{/if}}
       </h1>
       <p>
         {{#if item.trigger.prefix.length}}
@@ -56,6 +59,23 @@
     {{/if}}
   </div>
 </div>
+
+{{#if user.admin}}
+<div class="ls-main-content container box-shadow ls-round">
+  <form method="POST" action="{{languagePrefix}}/bots/{{item.id}}/state">
+    <select name="state" class="full-width">
+      {{#each selectableStates}}
+        <option value="{{this}}" {{#if (isEqual this ../item.state)}}selected{{/if}}>{{i18n ../__ (concat "states." this)}}</option>
+      {{/each}}
+    </select>
+    <textarea name="reason" class="full-width" placeholder="{{i18n __ 'pages.admin.state.reason'}}"></textarea>
+    <button>
+      {{i18n __ 'pages.admin.state.change'}}
+    </button>
+  </form>
+</div>
+{{/if}}
+
 <div class="ls-main-content container box-shadow ls-round">
   {{#if item.pageDisplayedLanguage}}<p><i>{{i18n __ "errors.bots.no_suitable_lang" "language" (i18n __ (concat "locales." item.pageDisplayedLanguage))}}</i></p>{{/if}}
   <div id="ls-short-description" class="ls-custom-content ls-script">
@@ -137,8 +157,6 @@
     <a class="btn white black-text" href="{{languagePrefix}}/bots/{{item.id}}/reviews">{{i18n __ 'pages.reviews.all'}}</a>
   </div>
 </div>
-
-
 
 <div class="ls-main-content container box-shadow ls-round">
   {{#if item.authors.length}}

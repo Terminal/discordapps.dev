@@ -36,7 +36,7 @@ router
       }, {}))
       .orderBy(r.desc('random'))
       .filter({
-        verified: true,
+        state: 'approved',
         nsfw: false,
         hide: false
       })

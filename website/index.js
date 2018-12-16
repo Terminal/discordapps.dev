@@ -1,5 +1,6 @@
 const r = require('./rethinkdb');
 const config = require('./config');
+const banner = require('./static/banner');
 const app = require('./express');
 const autoinitTables = require('./data/autoinitTables.json');
 
@@ -32,6 +33,8 @@ const checkDatabase = () => r.dbList()
     // Otherwise, waits for tables to create
     return Promise.all(promises);
   });
+
+console.log(banner);
 
 checkDatabase()
   .then(() => {

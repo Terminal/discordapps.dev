@@ -27,16 +27,4 @@
       {{i18n __ "pages.bots.configure"}}
     </a>
   {{/if}}
-  {{#unless item.verified}}
-  {{#if user.admin}}
-    <form method="POST" action="{{languagePrefix}}/bots/{{item.id}}/approve">
-      <button class="ls-not-a-button">
-        {{i18n __ "pages.bots.approve"}}
-      </button>
-    </form>
-    <a href="{{languagePrefix}}/bots/{{item.id}}/deny">
-      {{i18n __ "pages.bots.deny"}}
-    </a>
-  {{/if}}
-  {{/unless}}
 </div>

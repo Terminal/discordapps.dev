@@ -37,7 +37,8 @@ const sanitise = string => `(?i)${string.trim().toLowerCase().replace(operators,
 
 const listMiddleware = options => (req, res, next) => {
   let filter = options.filter || {};
-  const query = req.query.q;
+  const query = req.query.q || '';
+  const state = req.query.state || 'approved';
   let title = null;
   let avatar = null;
 
@@ -70,6 +71,7 @@ const listMiddleware = options => (req, res, next) => {
           limit,
           previous: page - 1,
           next: page + 1,
+          state,
           title,
           avatar,
           query
@@ -111,7 +113,7 @@ const listMiddleware = options => (req, res, next) => {
     if (categories.includes(req.params.category)) {
       filter = {
         category: req.params.category,
-        verified: true
+        state
       };
       title = res.__(`categories.${req.params.category}`);
       checkDatabase();
@@ -119,24 +121,20 @@ const listMiddleware = options => (req, res, next) => {
       next();
     }
   } else if (options.filter === 'search') {
-    if (query) {
-      filter = (bot) => {
-        let chain = r.expr(sanitise(query)).match(bot('category'))
-          .or(bot('nsfw').and(r.expr(sanitise(query)).match('nsfw')));
+    filter = (bot) => {
+      let chain = r.expr(sanitise(query)).match(bot('category'))
+        .or(bot('nsfw').and(r.expr(sanitise(query)).match('nsfw')));
 
-        for (let i = 0; i < selectableLanguages.length; i += 1) {
-          chain = chain.or(bot('contents')(selectableLanguages[i])('page').default('').match(sanitise(query)))
-            .or(bot('contents')(selectableLanguages[i])('name').default('').match(sanitise(query)))
-            .or(bot('contents')(selectableLanguages[i])('description').default('').match(sanitise(query)));
-        }
+      for (let i = 0; i < selectableLanguages.length; i += 1) {
+        chain = chain.or(bot('contents')(selectableLanguages[i])('page').default('').match(sanitise(query)))
+          .or(bot('contents')(selectableLanguages[i])('name').default('').match(sanitise(query)))
+          .or(bot('contents')(selectableLanguages[i])('description').default('').match(sanitise(query)));
+      }
 
-        return bot('verified').eq(true).and(chain);
-      };
+      return bot('state').eq(state).and(chain);
+    };
 
-      checkDatabase();
-    } else {
-      res.redirect('/');
-    }
+    checkDatabase();
   } else {
     checkDatabase();
   }
