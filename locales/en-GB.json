@@ -142,7 +142,7 @@
       },
       "more": "View more",
       "less": "View less",
-      "adverts": "Contains features locked behind other services",
+      "adverts": "Contains adverts and features locked behind other services",
       "inAppPurchases": "Has in-app purchases",
       "nsfw": "NSFW",
       "offeredby": "Offered By:",
@@ -249,7 +249,7 @@
         },
         "adverts": {
           "title": "Advertisments",
-          "small": "Tick this box if you have features that are locked behind other services"
+          "small": "Tick this box if you have advertising and/or features that are locked behind other services"
         }
       },
       "images": {
