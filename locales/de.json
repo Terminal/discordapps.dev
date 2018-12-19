@@ -136,7 +136,7 @@
       },
       "more": "Zeige mehr",
       "less": "Zeige weniger",
-      "adverts": "Enthält Werbung",
+      "adverts": "Enthält Werbung und/oder Features hinter einem anderen Service",
       "inAppPurchases": "Hat in-app Käufe",
       "nsfw": "NSFW",
       "offeredby": "Angeboten von:",
@@ -242,7 +242,7 @@
         },
         "adverts": {
           "title": "Werbung",
-          "small": "Aktiviere dieses Kontrollkästchen, wenn dein Bot Werbung anzeigt (Auch andere Botlists)"
+          "small": "Aktiviere dieses Kontrollkästchen, wenn dein Bot Werbung und/oder Features hinter einem externen service hat"
         }
       },
       "images": {
