@@ -12,6 +12,7 @@ const router = express.Router();
 const checkToken = (req, res, next) => {
   r.table('bots')
     .get(req.params.id)
+    .default({})
     .then((bot) => {
       if (!bot.id) {
         res.status(404)
