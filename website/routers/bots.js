@@ -212,6 +212,9 @@ router
   .get('/search', listMiddleware({
     filter: 'search'
   }))
+  .get('/kiosk', listMiddleware({
+    filter: 'kiosk'
+  }))
   .get('/by/:id', listMiddleware({
     filter: 'owner'
   }))
@@ -318,6 +321,9 @@ router
     } else {
       next(new Error('State not found'));
     }
+  })
+  .get('/unverified', (req, res) => {
+    res.redirect('/bots/search?state=queue');
   })
   .get('/:id', botExists, (req, res, next) => {
     r.table('bots')

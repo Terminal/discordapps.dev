@@ -53,6 +53,12 @@
   .ls-center {
     text-align: center;
   }
+
+  .ls-kiosk-layout {
+    .ls-nav-container, .ls-footer, .card-content {
+      pointer-events: none;
+    }
+  }
 }
 
 @media print {
