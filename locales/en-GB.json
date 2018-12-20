@@ -13,7 +13,7 @@
     "notifications": "Notifications",
     "other": "Other"
   },
-  "copyright": "Copyright 2017 - 2018, Terminal.ink; Discord is a trademark of Discord Inc.",
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
   "errors": {
     "bots": {
       "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
