@@ -5,7 +5,7 @@ module.exports = class Middleware {
     if (req.user) {
       next();
     } else {
-      res.status(400).render('error', {
+      res.status(401).render('error', {
         message: res.__('errors.permissions.login'),
       });
     }
@@ -22,7 +22,7 @@ module.exports = class Middleware {
     if (req.user) {
       next();
     } else {
-      res.status(400).json({
+      res.status(401).json({
         err: true,
         message: res.__('errors.permissions.login')
       });
@@ -43,7 +43,7 @@ module.exports = class Middleware {
     if (req.user.admin) {
       next();
     } else if (!req.user) {
-      res.status(400).render('error', {
+      res.status(401).render('error', {
         message: res.__('errors.permissions.login'),
       });
     } else {
@@ -55,7 +55,7 @@ module.exports = class Middleware {
           } else if (bot.authors.includes(req.user.id)) {
             next();
           } else {
-            res.status(400).render('error', {
+            res.status(401).render('error', {
               message: res.__('errors.permissions.denied'),
             });
           }
@@ -106,7 +106,7 @@ module.exports = class Middleware {
     if (req.user.admin) {
       next();
     } else if (!req.user) {
-      res.status(400).render('error', {
+      res.status(401).render('error', {
         message: res.__('errors.permissions.login'),
       });
     } else {
@@ -118,7 +118,7 @@ module.exports = class Middleware {
           } else if (review.author === req.user.id) {
             next();
           } else {
-            res.status(400).render('error', {
+            res.status(401).render('error', {
               message: res.__('errors.permissions.denied'),
             });
           }
