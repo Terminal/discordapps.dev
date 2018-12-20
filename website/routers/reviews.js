@@ -7,6 +7,7 @@ const multer = require('multer');
 const r = require('../rethinkdb');
 const { localise } = require('../static/list');
 const reviewSchema = require('../schemas/reviews');
+const checkParamsLength = require('../middleware/checkParamsLength');
 
 const router = express.Router({
   mergeParams: true
@@ -144,7 +145,7 @@ router.get('/', (req, res, next) => {
         }
       });
   })
-  .post('/:review/delete', isLoggedInButJSON, isOwnerOfReview, (req, res, next) => {
+  .post('/:review/delete', checkParamsLength, isLoggedInButJSON, isOwnerOfReview, (req, res, next) => {
     r.table('reviews')
       .get(req.params.review)
       .delete()

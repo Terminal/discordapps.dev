@@ -1,6 +1,7 @@
 const express = require('express');
 const r = require('../rethinkdb');
 const config = require('../config');
+const checkParamsLength = require('../middleware/checkParamsLength');
 
 const router = express.Router();
 
@@ -15,7 +16,7 @@ router
         next(err);
       });
   })
-  .get('/bots/:id', (req, res, next) => {
+  .get('/bots/:id', checkParamsLength, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .merge(bot => ({

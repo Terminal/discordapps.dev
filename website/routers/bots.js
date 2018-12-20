@@ -14,6 +14,7 @@ const xss = require('../static/xss');
 const ImageCache = require('../class/ImageCache');
 const crypto = require('crypto');
 const discordWebhooks = require('../static/discordWebhook');
+const checkParamsLength = require('../middleware/checkParamsLength');
 const fetch = require('node-fetch');
 const { localise, listMiddleware } = require('../static/list');
 const reviewToJsonLd = require('../static/reviewToJsonLd');
@@ -215,14 +216,14 @@ router
   .get('/kiosk', listMiddleware({
     filter: 'kiosk'
   }))
-  .get('/by/:id', listMiddleware({
+  .get('/by/:id', checkParamsLength, listMiddleware({
     filter: 'owner'
   }))
-  .get('/category/:category', listMiddleware({
+  .get('/category/:category', checkParamsLength, listMiddleware({
     filter: 'category'
   }))
-  .use('/:id/reviews', reviewsRouter)
-  .get('/:id/edit', isLoggedIn, (req, res, next) => {
+  .use('/:id/reviews', checkParamsLength, reviewsRouter)
+  .get('/:id/edit', checkParamsLength, isLoggedIn, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .then((item) => {
@@ -242,10 +243,10 @@ router
         next(err);
       });
   })
-  .get('/:id/delete', isLoggedIn, (req, res) => {
+  .get('/:id/delete', checkParamsLength, isLoggedIn, (req, res) => {
     res.render('sure');
   })
-  .post('/:id/delete', isLoggedIn, isOwnerOfBot, (req, res, next) => {
+  .post('/:id/delete', checkParamsLength, isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .delete()
@@ -257,7 +258,7 @@ router
         next(err);
       });
   })
-  .get('/:id/configure', isLoggedIn, isOwnerOfBot, (req, res, next) => {
+  .get('/:id/configure', checkParamsLength, isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .then((item) => {
@@ -273,7 +274,7 @@ router
         next(err);
       });
   })
-  .post('/:id/token', isLoggedIn, isOwnerOfBot, (req, res, next) => {
+  .post('/:id/token', checkParamsLength, isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .update({
         id: req.params.id,
@@ -286,7 +287,7 @@ router
         next(err);
       });
   })
-  .post('/:id/hide', isLoggedIn, isOwnerOfBot, (req, res, next) => {
+  .post('/:id/hide', checkParamsLength, isLoggedIn, isOwnerOfBot, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .update({
@@ -299,7 +300,7 @@ router
         next(err);
       });
   })
-  .post('/:id/state', isLoggedIn, isAdmin, reader.none(), (req, res, next) => {
+  .post('/:id/state', checkParamsLength, isLoggedIn, isAdmin, reader.none(), (req, res, next) => {
     if (selectableStates.includes(req.body.state)) {
       r.table('bots')
         .get(req.params.id)
@@ -325,7 +326,7 @@ router
   .get('/unverified', (req, res) => {
     res.redirect('/bots/search?state=queue');
   })
-  .get('/:id', botExists, (req, res, next) => {
+  .get('/:id', checkParamsLength, botExists, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .merge(bot => ({

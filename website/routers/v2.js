@@ -1,6 +1,7 @@
 const express = require('express');
 const r = require('../rethinkdb');
 const config = require('../config');
+const checkParamsLength = require('../middleware/checkParamsLength');
 
 const joi = require('../schemas/joi');
 const botSchema = require('../schemas/bots');
@@ -46,7 +47,7 @@ router
         next(err);
       });
   })
-  .get('/bots/:id', (req, res, next) => {
+  .get('/bots/:id', checkParamsLength, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
       .merge(bot => ({
@@ -92,7 +93,7 @@ router
   //       next(err);
   //     });
   // })
-  .post('/bots/:id', checkToken, (req, res, next) => {
+  .post('/bots/:id', checkParamsLength, checkToken, (req, res, next) => {
     const body = unflatten(req.body);
     // Does not work for nested items
     const bot = Object.assign(req.bot, body.bot);
