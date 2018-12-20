@@ -30,10 +30,10 @@ module.exports = class Middleware {
   }
 
   static isAdmin(req, res, next) {
-    if (req.user.admin) {
+    if (req.user && req.user.admin) {
       next();
     } else {
-      res.status(400).render('error', {
+      res.status(401).render('error', {
         message: res.__('errors.permissions.denied'),
       });
     }
