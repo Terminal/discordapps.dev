@@ -12,7 +12,7 @@
     {{i18n __ "intro.logout"}}
   </a>
 {{else}}
-  <a class="{{class}}" href="{{languagePrefix}}/auth">
+  <a class="{{class}}" href="{{languagePrefix}}/auth?to={{encodeURIComponent url}}">
     {{i18n __ "intro.login"}}
   </a>
 {{/if}}

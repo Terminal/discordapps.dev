@@ -1,13 +1,33 @@
 const express = require('express');
 const passport = require('../static/passport');
+const config = require('../config');
 
 const router = express.Router();
 
 router
   .use('/callback', passport.authenticate('discord'), (req, res) => {
-    res.redirect('/');
+    if (req.session.return) {
+      const lang = res.getLocale();
+      console.log(req.session);
+      try {
+        const languagePrefix = lang === config.default.language ? '' : `/${lang}`;
+        const url = new URL(config.webserver.location + languagePrefix + req.session.return);
+        if (url.origin === config.webserver.location) {
+          res.redirect(url.pathname);
+        } else {
+          res.redirect('/');
+        }
+      } catch (e) {
+        res.redirect('/');
+      }
+    } else {
+      res.redirect('/');
+    }
   })
-  .get('/', passport.authenticate('discord'))
+  .get('/', (req, res, next) => {
+    req.session.return = req.query.to || '/';
+    next();
+  }, passport.authenticate('discord'))
   .get('/info', (req, res) => {
     if (req.user && req.user.id) {
       res.json(req.user);
