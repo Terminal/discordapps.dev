@@ -8,7 +8,6 @@ router
   .use('/callback', passport.authenticate('discord'), (req, res) => {
     if (req.session.return) {
       const lang = res.getLocale();
-      console.log(req.session);
       try {
         const languagePrefix = lang === config.default.language ? '' : `/${lang}`;
         const url = new URL(config.webserver.location + languagePrefix + req.session.return);
