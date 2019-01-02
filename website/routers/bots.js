@@ -389,10 +389,6 @@ router
               average = (sum / numberOfRatings).toPrecision(2);
             }
 
-            marked.setOptions({
-              sanitize: !item.legacy
-            });
-
             const contents = xss[item.legacy ? 'lenient' : 'strict'](marked(bot.contents.page));
             res.render('bot', {
               item: bot,
