@@ -46,7 +46,8 @@
       "denied": "Du hast nicht die richtigen Berechtigungen um darauf zugreiffen zu können"
     },
     "website": {
-      "noscript": "JavaScript wurde deaktiviert. Funktionalität könnte beinträchtigt sein."
+      "noscript": "JavaScript wurde deaktiviert. Funktionalität könnte beinträchtigt sein.",
+      "print": "JavaScript ist nicht kompatibel mit Papierausdrucke."
     },
     "reviews": {
       "rating": "Bitte wähle eine Bewertung, befor du fortfährst",
@@ -54,10 +55,12 @@
       "self": "Du kannst deinen eigenen Bot nicht bewerten"
     },
     "api": {
+      "400": "Du bist nicht berechtigt zum verwenden dieses Endpoints. Überprüfe, ob dein Token korrekt ist.",
       "404": "Dieser Endpunkt konnte nicht gefunden werden, oder die Methode um diese Seite anzufordern ist nicht kompatibel.",
       "500": "Ein interner Server-error ist aufgetreten.",
       "test": "Ein Fehler wurde aus Entwickler-Gründen ausgelöst.",
-      "no_bot": "Bot nicht gefunden."
+      "no_bot": "Bot nicht gefunden.",
+      "idchange": "Die ID des Bots kann nicht geändert werden. Bitte kontaktiere den Support von Terminal für technische unterstützung."
     }
   },
   "footer": {
@@ -76,7 +79,7 @@
     "delete": "Löschen",
     "help": "🤔",
     "select": "Bitte wählen...",
-    "submit": "Einreichen",
+    "submit": "Senden",
     "wait": "Bitte warten..."
   },
   "intro": {
@@ -136,7 +139,7 @@
       },
       "more": "Zeige mehr",
       "less": "Zeige weniger",
-      "adverts": "Enthält Werbung und/oder Features hinter einem anderen Service",
+      "adverts": "Enthält Werbung und Features hinter einem anderen Service",
       "inAppPurchases": "Hat in-app Käufe",
       "nsfw": "NSFW",
       "offeredby": "Angeboten von:",
@@ -145,15 +148,15 @@
       "category": "Kategorie: {{{ category }}}",
       "ownerFilter": "Bots von {{{ name }}}",
       "count": {
-        "one": "%s Server",
-        "other": "%s Server"
+        "one": "In einem einzigen Server",
+        "other": "In %s Server"
       },
-      "rated": "{{ rating }}/5.0"
+      "rated": "Bewertung: {{ rating }}/5.0"
     },
     "configuration": {
       "token": {
         "title": "Token",
-        "description": "Klicke 'Doks' im Footer für Hilfe",
+        "description": "Das ist der Token welcher zum bearbeiten deines Bots auf dieser Liste benötigt wird. Bitte schaue dir die Developer Dokumentation für verfügbare Endpoints an.",
         "docs": "Zeige Dokumentation"
       },
       "renew": "Token erneuern",
@@ -177,11 +180,6 @@
         "add": "Weitere hinzufügen"
       },
       "basicinfo": "Einfache informationen",
-      "invite": {
-        "generate": "Erstelle eine URL",
-        "placeholder": "https://discordapp.com/oauth/ oder ein ähnlicher Link",
-        "title": "Einladungs URL"
-      },
       "nsfw": {
         "title": "Nicht sicher für die Arbeit"
       },
@@ -203,7 +201,7 @@
         "title": "Prefix änderbar"
       },
       "description": {
-        "title": "Beschreibung"
+        "title": "Kurze Beschreibung"
       },
       "github_owner": {
         "placeholder": "Etwas wie: ry00001",
@@ -214,6 +212,11 @@
         "title": "GitHub Repository"
       },
       "information": "Information",
+      "invite": {
+        "modal": "Stelle sicher \"Bot ID\" enthält die ID deines Bots",
+        "title": "Einladungs URL",
+        "generate": "Erstelle einen Link",
+      },
       "languages": {
         "add": "Sprache hinzufügen",
         "delete": "Diese Sprache löschen",
@@ -227,7 +230,7 @@
         "title": "Name"
       },
       "page": {
-        "title": "Seite"
+        "title": "Längere Beschreibung"
       },
       "prefix": {
         "placeholder": "Ein einzelner Prefix",
@@ -258,7 +261,7 @@
         "preview": {
           "title": "Vorschaubilder",
           "placeholder": "Ein HTTPS Link zu einem einzelnen Screenshot",
-          "add": "Weitere hinzufügen"
+          "add": "Weiteres Bild hinzufügen"
         },
         "youtube": {
           "title": "YouTube ID",
@@ -310,12 +313,23 @@
       },
       "delete": "Review löschen",
       "all": "Alle Reviews ansehen"
+    },
+    "admin": {
+      "title": "Administrator Konsole",
+      "avatars": "Downloade alle Avatara",
+      "tokens": "Alle Token resetten",
+      "queue": "Warteschlange ansehen",
+      "denied": "Zeige abgelehnte",
+      "state": {
+        "reason": "Gib einen Grund für das ändern des Statuses von dem Bot ein",
+        "change": "Status ändern"
+      }
     }
   },
   "pagination": {
     "image": {
-      "prev": "Zurück",
-      "next": "Vorwärts"
+      "prev": "Vorherige",
+      "next": "Nächste"
     },
     "page": {
       "prev": "Vorherige",
@@ -354,10 +368,12 @@
     "VIEW_AUDIT_LOG": "Auditlogs ansehen"
   },
   "site": {
-    "name": "Discord Bots von terminal.ink",
-    "description": "ls.terminal.ink ist eine Open source Webseite, wo du Bots für deinen Server finden kannst."
+    "name": "Discord Bot Liste von terminal.ink",
+    "description": "ls.terminal.ink ist ein applikations-store für Discord Bots. Installiere applikationen für Musik, News, Moderation und mehr für deinen Server."
   },
   "states": {
-    "queue": "Unbestätigt"
+    "approved": "Genehmigt",
+    "denied": "Abgelehnt",
+    "queue": "In Warteschlange"
   }
 }
