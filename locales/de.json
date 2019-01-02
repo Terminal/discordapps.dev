@@ -148,7 +148,7 @@
         "one": "%s Server",
         "other": "%s Server"
       },
-      "rated": "{{ rating }}/5"
+      "rated": "{{ rating }}/5.0"
     },
     "configuration": {
       "token": {

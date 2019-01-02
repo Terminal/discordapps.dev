@@ -155,7 +155,7 @@
         "one": "Installeret på en enkelt server",
         "other": "Installeret på %s servere"
       },
-      "rated": "Bedømmelse {{ rating }}/5"
+      "rated": "Bedømmelse {{ rating }}/5.0"
     },
     "configuration": {
       "token": {

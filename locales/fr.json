@@ -155,7 +155,7 @@
         "one": "Installé dans un seul serveur",
         "other": "Installé dans un %s serveurs"
       },
-      "rated": "Noté {{ rating }}/5"
+      "rated": "Noté {{ rating }}/5.0"
     },
     "configuration": {
       "token": {
