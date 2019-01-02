@@ -1,9 +1,9 @@
 <section class="card">
-  <div class="avatar">
-    <img src="{{item.cachedImages.avatar}}" />
-  </div>
-  <div class="card-content">
-    <a href="{{languagePrefix}}/bots/{{item.id}}">
+  <a href="{{languagePrefix}}/bots/{{item.id}}">
+    <div class="avatar">
+      <img src="{{item.cachedImages.avatar}}" />
+    </div>
+    <div class="card-content">
       <h4 class="title">
         {{item.contents.name}}
         {{#if item.nsfw}}
@@ -16,12 +16,7 @@
           <span class="ls-list-nsfw">{{i18n __ "states.denied"}}</span>
         {{/if}}
       </h4>
-    </a>
-    <span class="description">{{item.contents.description}}</span>
-  </div>
-  <div class="footer">
-    {{#if item.invite}}
-      <a href="{{item.invite}}">{{i18n __ "pages.list.invite"}}</a>
-    {{/if}}
-  </div>
+      <span class="description">{{item.contents.description}}</span>
+    </div>
+  </a>
 </section>
