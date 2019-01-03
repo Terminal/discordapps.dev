@@ -90,7 +90,9 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use(passport.initialize())
   .use(passport.session())
   .use((req, res, next) => {
-    if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
+    if (req.get('host') === '127.0.0.1') {
+      next();
+    } else if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
       res.redirect(config.webserver.location + req.url);
     } else if (config.webserver.host !== req.get('host')) {
       res.redirect(config.webserver.location + req.url);
