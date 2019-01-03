@@ -215,7 +215,7 @@
       "invite": {
         "modal": "Stelle sicher \"Bot ID\" enthält die ID deines Bots",
         "title": "Einladungs URL",
-        "generate": "Erstelle einen Link",
+        "generate": "Erstelle einen Link"
       },
       "languages": {
         "add": "Sprache hinzufügen",
