@@ -22,6 +22,7 @@ const languages = require('../data/languages.json');
 const categories = require('../data/categories.json');
 const dateformat = require('../data/dateformat.json');
 const selectableStates = require('../data/states.json');
+const { fixRoles } = require('../static/bot');
 
 const router = express.Router();
 const reader = multer();
@@ -120,6 +121,7 @@ router
                 })
                 .then(() => {
                   discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.location}${res.locals.languagePrefix}/bots/${value.id}`);
+                  fixRoles();
                   res.json({
                     ok: true,
                     message: res.__(message),
@@ -253,6 +255,7 @@ router
       .then(() => {
         res.redirect(`${res.locals.languagePrefix}/`);
         discordWebhooks(`<@${req.user.id}> deleted <@${req.params.id}>`);
+        fixRoles();
       })
       .catch((err) => {
         next(err);
@@ -315,6 +318,7 @@ router
             discordWebhooks(`<@${req.user.id}> moved <@${req.params.id}> to \`${req.body.state}\`\n${newVal.authors.map(owner => `<@${owner}>`).join(', ')}\n\n${req.body.reason}`);
           }
           res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}`);
+          fixRoles();
         })
         .catch((err) => {
           next(err);
