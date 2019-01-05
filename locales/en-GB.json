@@ -46,7 +46,8 @@
     },
     "permissions": {
       "login": "You are not logged in",
-      "denied": "You do not have the adequate permissions to access this"
+      "denied": "You do not have the adequate permissions to access this",
+      "banned": "You have been denied access to this resource"
     },
     "website": {
       "noscript": "JavaScript has been disabled. Functionality may be reduced.",
@@ -321,10 +322,9 @@
     },
     "admin": {
       "title": "Administration Console",
-      "avatars": "Download all avatars",
-      "tokens": "Reset all tokens",
       "queue": "View queue",
       "denied": "View denied",
+      "banned": "View banned",
       "state": {
         "reason": "Enter reason for changing the state of the bot",
         "change": "Change state"
@@ -379,6 +379,7 @@
   "states": {
     "approved": "Approved",
     "denied": "Denied",
-    "queue": "In Queue"
+    "queue": "In Queue",
+    "banned": "Banned"
   }
 }

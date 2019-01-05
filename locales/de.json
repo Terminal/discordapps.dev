@@ -316,8 +316,6 @@
     },
     "admin": {
       "title": "Administrator Konsole",
-      "avatars": "Downloade alle Avatara",
-      "tokens": "Alle Token resetten",
       "queue": "Warteschlange ansehen",
       "denied": "Zeige abgelehnte",
       "state": {

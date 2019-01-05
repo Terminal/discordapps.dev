@@ -1,13 +1,8 @@
 <div class="ls-main-content container box-shadow ls-round">
   <h2>{{ i18n __ 'pages.admin.title' }}</h2>
   <div class="ls-flex-row">
-    <form method="POST" action="{{languagePrefix}}/admin/avatars">
-      <button class="btn white black-text">{{ i18n __ 'pages.admin.avatars' }}</button>
-    </form>
-    <form method="POST" action="{{languagePrefix}}/admin/tokens">
-      <button class="btn white black-text">{{ i18n __ 'pages.admin.tokens' }}</button>
-    </form>
     <a class="btn white black-text" href="{{languagePrefix}}/bots/search?state=queue">{{ i18n __ 'pages.admin.queue' }}</a>
     <a class="btn white black-text" href="{{languagePrefix}}/bots/search?state=denied">{{ i18n __ 'pages.admin.denied' }}</a>
+    <a class="btn white black-text" href="{{languagePrefix}}/bots/search?state=banned">{{ i18n __ 'pages.admin.banned' }}</a>
   </div>
 </div>

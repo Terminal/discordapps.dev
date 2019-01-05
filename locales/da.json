@@ -320,8 +320,6 @@
     },
     "admin": {
       "title": "Administratorkonsol",
-      "avatars": "Download alle avatarer",
-      "tokens": "Nulstil alle tokens",
       "queue": "Vis kø"
     }
   },

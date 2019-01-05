@@ -7,12 +7,9 @@
         {{#if item.nsfw}}
           <span class="ls-list-nsfw">{{i18n __ "pages.bots.nsfw"}}</span>
         {{/if}}
-        {{#if (isEqual item.state 'queue')}}
-          <span class="ls-list-nsfw">{{i18n __ "states.queue"}}</span>
-        {{/if}}
-        {{#if (isEqual item.state 'denied')}}
-          <span class="ls-list-nsfw">{{i18n __ "states.denied"}}</span>
-        {{/if}}
+        {{#unless (isEqual item.state 'approved')}}
+          <span class="ls-list-nsfw">{{i18n __ (concat "states." item.state)}}</span>
+        {{/unless}}
       </h1>
       <p>
         {{#if item.trigger.prefix.length}}

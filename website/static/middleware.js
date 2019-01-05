@@ -52,6 +52,10 @@ module.exports = class Middleware {
         .then((bot) => {
           if (!bot) {
             next('router');
+          } else if (bot.state === 'banned') {
+            res.status(403).render('error', {
+              message: res.__('errors.permissions.banned'),
+            });
           } else if (bot.authors.includes(req.user.id)) {
             next();
           } else {

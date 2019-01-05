@@ -144,8 +144,7 @@ router
           .get(value.id)
           .then((existingBot) => {
             if (existingBot) {
-              if (existingBot.authors.includes(req.user.id) || req.user.admin) {
-                // Copy over some stuff while overwriting
+              const useExistingData = () => {
                 value.state = existingBot.state;
                 value.legacy = existingBot.legacy;
                 value.random = existingBot.random;
@@ -153,6 +152,18 @@ router
                 value.created = existingBot.created || (new Date()).getTime();
                 value.edited = (new Date()).getTime();
                 value.hide = existingBot.hide;
+              };
+              if (req.user.admin) {
+                useExistingData();
+                insert('edited', 'errors.bots.edit_success');
+              } else if (existingBot.state === 'banned') {
+                res.json({
+                  ok: false,
+                  message: res.__('errors.permissions.banned')
+                });
+              } else if (existingBot.authors.includes(req.user.id)) {
+                // Copy over some stuff while overwriting
+                useExistingData();
                 insert('edited', 'errors.bots.edit_success');
               } else {
                 res.json({
@@ -397,8 +408,8 @@ router
             res.render('bot', {
               item: bot,
               contents,
-              canEdit: req.user ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
-              isOwner: req.user ? bot.authors.some(owner => owner.id === req.user.id) : false,
+              canEdit: req.user && bot.state !== 'banned' ? bot.authors.some(owner => owner.id === req.user.id) || req.user.admin : false,
+              isOwner: req.user && bot.state !== 'banned' ? bot.authors.some(owner => owner.id === req.user.id) : false,
               cover: bot.cachedImages ? bot.cachedImages.cover : null,
               edited: (new Date(item.edited)).toLocaleDateString(res.getLocale(), dateformat),
               created: (new Date(item.created)).toLocaleDateString(res.getLocale(), dateformat),
