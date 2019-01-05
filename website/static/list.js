@@ -123,6 +123,7 @@ const listMiddleware = options => (req, res, next) => {
       next();
     }
   } else if (options.filter === 'search') {
+    title = res.__('pages.bots.search');
     filter = (bot) => {
       let chain = r.expr(sanitise(query)).match(bot('category'))
         .or(bot('nsfw').and(r.expr(sanitise(query)).match('nsfw')));

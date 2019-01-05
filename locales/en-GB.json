@@ -153,6 +153,7 @@
       "category": "Category: {{{ category }}}",
       "initiateCategoryFilter": "Find bots for...",
       "ownerFilter": "Bots by {{{ name }}}",
+      "search": "Search",
       "count": {
         "one": "Installed in a single server",
         "other": "Installed in %s servers"
