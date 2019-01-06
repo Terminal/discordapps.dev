@@ -43,7 +43,8 @@
     },
     "permissions": {
       "login": "Du bist nicht eingeloggt",
-      "denied": "Du hast nicht die richtigen Berechtigungen um darauf zugreiffen zu können"
+      "denied": "Du hast nicht die richtigen Berechtigungen um darauf zugreiffen zu können",
+      "banned": "Dir wurde der Zugang zu dieser Ressourse verwehrt"
     },
     "website": {
       "noscript": "JavaScript wurde deaktiviert. Funktionalität könnte beinträchtigt sein.",
@@ -147,6 +148,7 @@
       "created": "Zuerst veröffentlicht: {{{ date }}}",
       "category": "Kategorie: {{{ category }}}",
       "ownerFilter": "Bots von {{{ name }}}",
+      "search": "Suche",
       "count": {
         "one": "In einem einzigen Server",
         "other": "In %s Server"
@@ -318,6 +320,7 @@
       "title": "Administrator Konsole",
       "queue": "Warteschlange ansehen",
       "denied": "Zeige abgelehnte",
+      "banned": "Zeige gebannte",
       "state": {
         "reason": "Gib einen Grund für das ändern des Statuses von dem Bot ein",
         "change": "Status ändern"
@@ -372,6 +375,7 @@
   "states": {
     "approved": "Genehmigt",
     "denied": "Abgelehnt",
-    "queue": "In Warteschlange"
+    "queue": "In Warteschlange",
+    "banned": "Gebannt"
   }
 }
