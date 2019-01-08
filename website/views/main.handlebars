@@ -13,8 +13,7 @@
   <div class="ls-main-content container box-shadow center ls-round">
     <div id="ls-carousel">
       {{#each slider}}
-      {{#if this.cachedImages.cover}}
-      <div class="ls-carousel-item" style="background-image: url({{this.cachedImages.cover}})">
+      <div class="ls-carousel-item" {{#if this.cachedImages.cover}}style="background-image: url({{this.cachedImages.cover}})"{{/if}}>
         <a href="{{../languagePrefix}}/bots/{{this.id}}">
           <div class="ls-carousel-item-content">
             <img class="ls-carousel-item-content-avatar" src="{{this.cachedImages.avatar}}">
@@ -25,7 +24,6 @@
           </div>
         </a>
       </div>
-      {{/if}}
       {{/each}}
     </div>
   </div>
