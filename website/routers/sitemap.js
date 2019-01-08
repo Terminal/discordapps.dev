@@ -35,7 +35,10 @@ module.exports = (req, res) => {
     });
   });
 
-  r.table('bots')('id')
+  r.table('bots')
+    .filter({
+      state: 'approved'
+    })('id')
     .then((ids) => {
       i18n.getLocales().forEach((lang) => {
         const prefix = lang === config.default.language ? '' : `/${lang}`;
