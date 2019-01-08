@@ -1,10 +1,12 @@
+const config = require('../config');
+
 module.exports = (item, average, count) => {
   const template = {
     '@context': 'http://schema.org',
     '@type': 'Product',
     description: item.contents.description,
     name: item.contents.name,
-    image: item.cachedImages.avatar
+    image: `${config.webserver.location}${item.cachedImages.avatar}`
   };
 
   if (typeof average === 'string' && typeof count === 'number') {
