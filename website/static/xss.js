@@ -39,7 +39,9 @@ module.exports = {
         th: [],
         td: [],
         hr: [],
-        blockquote: []
+        blockquote: [],
+        br: [],
+        a: ['href']
       }
     });
   },
