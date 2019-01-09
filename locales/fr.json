@@ -296,6 +296,12 @@
       "choose": "Sélectionnez une langue.",
       "pleasehelp": "Êtes-vous un bon traducteur ? Cliquez ici."
     },
+    "langdev": {
+      "title": "Voir les clés des langages",
+      "compare": "Comparer les langages sélectionnés",
+      "key": "Clé JSON",
+      "notfound": "Clé introuvable !"
+    },
     "notfound": {
       "gohome": "Aller à l'accueil",
       "message": "Page introuvable"
