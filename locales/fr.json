@@ -151,20 +151,20 @@
       "modified": "Dernière modification: {{{ date }}}",
       "created": "Publication: {{{ date }}}",
       "category": "Catégorie: {{{ category }}}",
-      "initiateCategoryFilter": "Find bots for...",
-      "ownerFilter": "Bots by {{{ name }}}",
+      "initiateCategoryFilter": "Chercher des bots pour ...",
+      "ownerFilter": "Bots triés par {{{ name }}}",
       "search": "Rechercher",
       "count": {
         "one": "Installé dans un seul serveur",
-        "other": "Installé dans un %s serveurs"
+        "other": "Installé dans %s serveurs"
       },
       "rated": "Noté {{ rating }}/5.0"
     },
     "configuration": {
       "token": {
         "title": "Jeton",
-        "description": "Click 'Docs' in the footer for help",
-        "docs": "View Documentation"
+        "description": "Cliquez sur 'Docs' en bas de page pour voir l'aide",
+        "docs": "Voir la documentation"
       },
       "renew": "Renouveler le jeton",
       "hide": {
