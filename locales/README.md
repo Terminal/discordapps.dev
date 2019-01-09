@@ -1,9 +1,18 @@
 # Translations
+Welcome to `Terminal.ink`!
+We're dedicated to making software accessable and open to greater audiences for free.
 
-## 1. Make a file
-Name it one of the following KEYS.
-If your language is not there, please contact Terminal.ink via Discord.
+There are 3 Discord Nitro Classics (as of writing) up for grabs, for any of the following languages
 
+`Arabic`, `Greek`, `Spanish`, `Estonian`, `Finnish`, `Fijian`, `Gaelic (Scottish)`, `Hindi`, `Italian`, `Japanese`, `Korean`, `Latin`, `Dutch`, `Norwegian`, `Portuguese`, `Russian`, `Swedish`, `Turkish`, `Vietnamese`, `Chinese (Simplified)`, `Chinese (Traditional)`
+
+If a popular language is missing here, you may still be eligible.
+Please ask a `sudoer` at [discord](https://discord.gg/DwBCgta) for information about translating ls.terminal.ink.
+
+## Instructions
+You're ready to translate.
+
+### 1. Copy `en-GB`
 ```json
 "locales": {
   "ar": "Arabic",
@@ -34,8 +43,16 @@ If your language is not there, please contact Terminal.ink via Discord.
 }
 ```
 
-## 2. Copy `en-GB` (or any other) and edit
-Idek what else there is to do.
+Rename the `en-gb.json` file to any of the keys.
+For instance, if you're translating Russian, rename to `ru.json`
 
-## 3. (optionally) Test the website
+![How to rename a JSON file](/.github/rename.gif)
+
+### 2. Open the file and edit.
+If there are features of your language which cannot be represented in English (such as gender for specific buttons), please contact at [discord](https://discord.gg/DwBCgta).
+
+### 3. (optionally) Test the website
 Follow the instructions on [setup](/docs/setup.md)
+
+### 4. Send a pull request
+Go to GitHub and initiate a pull request.
