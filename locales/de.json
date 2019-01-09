@@ -84,10 +84,7 @@
     "wait": "Bitte warten..."
   },
   "intro": {
-    "login": "Einloggen",
-    "logout": "Ausloggen",
     "search": "Nach was suchst du?",
-    "admin": "Admin",
     "docs": "Dokumentation"
   },
   "locales": {
@@ -119,7 +116,6 @@
   },
   "pages": {
     "bots": {
-      "add": "App hinzufügen",
       "backgroundAlt": "Das Logo für ls.terminal.ink",
       "description": "Ein Applikations-Laden für Discord Bots",
       "invite": "Diesen Bot hinzufügen",
@@ -378,5 +374,11 @@
     "denied": "Abgelehnt",
     "queue": "In Warteschlange",
     "banned": "Gebannt"
+  },
+  "navbar": {
+    "add": "App hinzufügen",
+    "login": "Einloggen",
+    "logout": "Ausloggen",
+    "admin": "Admin"
   }
 }

@@ -3,21 +3,21 @@
 </a>
 {{#if user.id}}
   <a class="{{class}} ls-script" href="{{languagePrefix}}/bots/add">
-    {{i18n __ "pages.bots.add"}}
+    {{i18n __ "navbar.add"}}
   </a>
   <a class="{{class}}" href="{{languagePrefix}}/bots/by/{{user.id}}">
     {{user.username}}
   </a>
   <a class="{{class}}" href="{{languagePrefix}}/auth/logout">
-    {{i18n __ "intro.logout"}}
+    {{i18n __ "navbar.logout"}}
   </a>
 {{else}}
   <a class="{{class}}" href="{{languagePrefix}}/auth?to={{encodeURIComponent url}}">
-    {{i18n __ "intro.login"}}
+    {{i18n __ "navbar.login"}}
   </a>
 {{/if}}
 {{#if user.admin}}
   <a class="{{class}}" href="{{languagePrefix}}/admin">
-    {{i18n __ "intro.admin"}}
+    {{i18n __ "navbar.admin"}}
   </a>
 {{/if}}

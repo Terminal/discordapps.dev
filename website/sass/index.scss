@@ -59,6 +59,11 @@
       pointer-events: none;
     }
   }
+
+  .table-container table {
+    max-width: unset;
+    white-space: unset;
+  }
 }
 
 @media print {

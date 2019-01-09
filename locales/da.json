@@ -86,10 +86,7 @@
     "wait": "Vent venligst..."
   },
   "intro": {
-    "login": "Log på",
-    "logout": "Log af",
     "search": "Hvad leder du efter?",
-    "admin": "Administrator",
     "docs": "Dokumentation"
   },
   "locales": {
@@ -121,7 +118,6 @@
   },
   "pages": {
     "bots": {
-      "add": "Tilføj en applikation",
       "backgroundAlt": "Logoet for ls.terminal.ink",
       "description": "Et sted hvor du kan finde Discord bots",
       "invite": "Tilføj denne bot",
@@ -370,5 +366,11 @@
   },
   "states": {
     "queue": "Ikke verificeret"
+  },
+  "navbar": {
+    "login": "Log på",
+    "logout": "Log af",
+    "admin": "Administrator",
+    "add": "Tilføj en applikation"
   }
 }

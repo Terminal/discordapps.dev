@@ -87,10 +87,7 @@
     "wait": "Please wait..."
   },
   "intro": {
-    "login": "Login",
-    "logout": "Logout",
     "search": "What are you looking for?",
-    "admin": "Admin",
     "docs": "Documentation"
   },
   "locales": {
@@ -123,7 +120,6 @@
   },
   "pages": {
     "bots": {
-      "add": "Add an app",
       "backgroundAlt": "The logo for ls.terminal.ink",
       "description": "An application store for Discord bots",
       "invite": "Add this bot",
@@ -300,6 +296,12 @@
       "choose": "Please select a language.",
       "pleasehelp": "Are you a good translator? Click here."
     },
+    "langdev": {
+      "title": "Look at all language keys",
+      "compare": "Compare selected languages",
+      "key": "JSON Key",
+      "notfound": "Key not found!"
+    },
     "notfound": {
       "gohome": "Go Home",
       "message": "Page not found"
@@ -331,6 +333,12 @@
         "change": "Change state"
       }
     }
+  },
+  "navbar": {
+    "add": "Add an app",
+    "login": "Login",
+    "logout": "Logout",
+    "admin": "Admin"
   },
   "pagination": {
     "image": {

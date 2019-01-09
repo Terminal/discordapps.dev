@@ -87,10 +87,7 @@
     "wait": "Veuillez patienter ..."
   },
   "intro": {
-    "login": "Se connecter",
-    "logout": "Déconnexion",
     "search": "Que recherchez vous?",
-    "admin": "Admin",
     "docs": "Documentation"
   },
   "locales": {
@@ -123,7 +120,6 @@
   },
   "pages": {
     "bots": {
-      "add": "Ajouter votre propre bot",
       "backgroundAlt": "Logo pour ls.terminal.ink",
       "description": "Une boutique d'applications pour des bots Discord",
       "invite": "Inviter ce bot",
@@ -382,5 +378,11 @@
     "denied": "Refusé",
     "queue": "En attente",
     "banned": "Banni"
+  },
+  "navbar": {
+    "add": "Ajouter votre propre bot",
+    "login": "Se connecter",
+    "logout": "Déconnexion",
+    "admin": "Admin"
   }
 }

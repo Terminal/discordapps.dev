@@ -2,6 +2,7 @@ const express = require('express');
 const i18n = require('../../global/i18n');
 const config = require('../config');
 const languages = require('../data/languages');
+const { flatten } = require('flat');
 
 const router = express.Router();
 
@@ -39,6 +40,30 @@ router.get('/', (req, res) => {
     } else {
       next();
     }
+  })
+  .get('/dev', (req, res) => {
+    const languageData = i18n.getCatalog();
+    let displayedLanguages = [];
+    const returnedData = {};
+    const keys = {};
+
+    if (Array.isArray(req.query.lang)) {
+      displayedLanguages = req.query.lang.filter(language => Object.keys(languageData).includes(language));
+    } else {
+      displayedLanguages = Object.keys(languageData);
+    }
+
+    displayedLanguages.forEach((language) => {
+      returnedData[language] = flatten(languageData[language]);
+      Object.keys(returnedData[language]).forEach((key) => {
+        keys[key] = true;
+      });
+    });
+
+    res.render('langdev', {
+      data: returnedData,
+      keys: Object.keys(keys)
+    });
   });
 
 module.exports = router;

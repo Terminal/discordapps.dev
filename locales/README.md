@@ -56,3 +56,9 @@ Follow the instructions on [setup](/docs/setup.md)
 
 ### 4. Send a pull request
 Go to GitHub and initiate a pull request.
+
+## Tools
+Updating a language?
+You can now use the key comparison tool to compare what keys are missing between languages!
+
+https://ls.terminal.ink/locale/dev
