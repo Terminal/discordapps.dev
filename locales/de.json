@@ -147,6 +147,7 @@
       "modified": "Zuletzt bearbeitet: {{{ date }}}",
       "created": "Zuerst veröffentlicht: {{{ date }}}",
       "category": "Kategorie: {{{ category }}}",
+      "initiateCategoryFilter": "Finde Bots für...",
       "ownerFilter": "Bots von {{{ name }}}",
       "search": "Suche",
       "count": {
