@@ -30,7 +30,7 @@
               {{this}}
             </td>
             {{#each ../data}}
-              <td>
+              <td data-locale="{{@key}}" data-key="{{../this}}">
                 {{#with (lookup this ../this)}}
                   {{this}}
                 {{else}}
