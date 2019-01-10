@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   const languageData = i18n.getLocales()
     .map(language => ({
       name: language,
-      flag: languages[language].flag
+      flag: languages[language].flag.split(',')
     }));
 
   // Send the list of selectable locales

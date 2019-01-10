@@ -4,9 +4,11 @@
   </div>
   <div class="ls-locale-flags">
     {{#each languageData}}
-      <a href="{{languagePrefix}}locale/{{this.name}}?to={{encodeURIComponent ../to}}" title="{{i18n ../__ (concat "locales." this.name)}}">
-        <i aria-label="{{i18n ../__ (concat "locales." this.name)}}" class="emoji {{this.flag}}"></i>
-      </a>
+      {{#each this.flag}}
+        <a href="{{languagePrefix}}locale/{{../this.name}}?to={{encodeURIComponent ../../to}}" title="{{i18n ../../__ (concat "locales." ../this.name)}}">
+          <i aria-label="{{i18n ../../__ (concat "locales." ../this.name)}}" class="emoji {{this}}"></i>
+        </a>
+      {{/each}}
     {{/each}}
   </div>
   <div class="center">

@@ -90,42 +90,42 @@
     "priority": 11
   },
   "no": {
-    "flag": "",
+    "flag": "twa-flag-no",
     "top": false,
     "priority": 10
   },
   "pt": {
-    "flag": "",
+    "flag": "twa-flag-pt",
     "top": false,
     "priority": 23
   },
   "ru": {
-    "flag": "",
+    "flag": "twa-ru",
     "top": false,
     "priority": 6
   },
   "sv": {
-    "flag": "",
+    "flag": "twa-flag-sv",
     "top": false,
     "priority": 7
   },
   "tr": {
-    "flag": "",
+    "flag": "twa-flag-tr",
     "top": false,
     "priority": 24
   },
   "vi": {
-    "flag": "",
+    "flag": "twa-flag-vi",
     "top": false,
     "priority": 25
   },
   "zh-cn": {
-    "flag": "",
+    "flag": "twa-cn",
     "top": false,
     "priority": 9
   },
   "zh-tw": {
-    "flag": "",
+    "flag": "twa-flag-tw",
     "top": false,
     "priority": 8
   }

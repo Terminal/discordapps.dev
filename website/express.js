@@ -116,6 +116,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/fr', languageMiddleware('fr'), websiteRouter)
   .use('/da/', languageMiddleware('da'), websiteRouter)
   .use('/da', languageMiddleware('da'), websiteRouter)
+  .use('/zh-cn/', languageMiddleware('zh-cn'), websiteRouter)
+  .use('/zh-cn', languageMiddleware('zh-cn'), websiteRouter)
   .use('/', websiteRouter)
   .use((err, req, res, next) => {
     if (err) {
