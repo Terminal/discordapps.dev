@@ -11,8 +11,16 @@
   const getExtendedHeight = () => [...custom.children]
     .map((elem) => {
       const height = elem.clientHeight;
-      const topMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-top'), 10);
-      const bottomMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-bottom'), 10);
+      let topMargin = 2;
+      let bottomMargin = 2;
+
+      try {
+        topMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-top'), 10);
+        bottomMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-bottom'), 10);
+      } catch (e) {
+        // Do nothing!
+        // Too bad other browsers
+      }
 
       return topMargin + height + bottomMargin;
     })
@@ -20,33 +28,39 @@
 
   // Set the height, if the contents is extended
   const setExtendedHeight = () => {
-    if (allowExtension) {
-      custom.style.height = `${getExtendedHeight()}px`;
-    }
+    custom.style.height = `${getExtendedHeight()}px`;
   };
 
+  // If unextended, extend
   more.addEventListener('click', () => {
-    allowExtension = true;
-    setExtendedHeight();
-    more.classList.add('hidden');
-    less.classList.remove('hidden');
+    if (allowExtension) {
+      setExtendedHeight();
+      allowExtension = false;
+      more.classList.add('hidden');
+      less.classList.remove('hidden');
+    }
   });
 
-  // When shrinking, unextend
+  // If extended, shrink
   less.addEventListener('click', () => {
-    allowExtension = false;
-    custom.style.height = '150px';
-    less.classList.add('hidden');
-    more.classList.remove('hidden');
+    if (!allowExtension) {
+      allowExtension = false;
+      custom.style.height = '150px';
+      less.classList.add('hidden');
+      more.classList.remove('hidden');
+    }
   });
 
   window.addEventListener('resize', () => {
-    setExtendedHeight();
+    // If extended and resize occurs, resize the box
+    if (!allowExtension) {
+      setExtendedHeight();
+    }
   });
 
   window.addEventListener('load', () => {
     if (getExtendedHeight() < 150) {
-      allowExtension = true;
+      allowExtension = false;
       less.classList.add('hidden');
       more.classList.add('hidden');
       setExtendedHeight();
