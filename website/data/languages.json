@@ -94,6 +94,11 @@
     "top": false,
     "priority": 10
   },
+  "pl": {
+    "flag": "twa-flag-pl",
+    "top": false,
+    "priority": 27
+  },
   "pt": {
     "flag": "twa-flag-pt",
     "top": false,
