@@ -26,6 +26,10 @@ const schema = joi.object({
     cover: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null).error(new Error('errors.bots.cover')),
     preview: joi.array().items(joi.string().uri({ scheme: ['https'] }).max(2000)).max(20).error(new Error('errors.bots.preview'))
   }),
+  videos: joi.object({
+    youtube: joi.string().regex(/[a-zA-Z0-9_]{11}/, 'YouTube ID').max(15).allow(null).error(new Error('errors.bots.youtube')), // Youtube currently automatically cuts off over 11 chars. Maybe in the future...
+    youku: joi.string().regex(/[a-zA-Z0-9_=]{15}/, 'Alibaba YOUKU ID').max(20).allow(null).error(new Error('errors.bots.youku')) // Need to serve the mainland.
+  }),
   flags: joi.object({
     inAppPurchases: joi.bool().error(new Error('errors.bots.inAppPurchases')),
     adverts: joi.bool().error(new Error('errors.bots.adverts'))

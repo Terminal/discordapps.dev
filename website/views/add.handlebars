@@ -73,6 +73,25 @@
           <input name="bot.images.cover" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.images.cover.placeholder"}}" value="{{item.images.cover}}">
         </div>
       </div>
+      <div class="row">
+        <div class="one-half column">
+          <label for="bot.videos.youtube">{{ i18n __ "pages.edit.youtube.title"}}</label>
+          <span class="ls-no-wrap">
+            youtube.com/watch?v=
+          </span>
+          <input name="bot.videos.youtube" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.youtube.placeholder"}}" value="{{item.videos.youtube}}">
+        </div>
+        <div class="one-half column">
+          <label for="bot.videos.youku">{{ i18n __ "pages.edit.youku.title"}}</label>
+          <span class="ls-no-wrap">
+            v.youku.com/v_show/id_
+          </span>
+          <input name="bot.videos.youku" type="text" class="full-width no-margin" placeholder="{{ i18n __ "pages.edit.youku.placeholder"}}" value="{{item.videos.youku}}">
+          <span class="ls-no-wrap">
+            .html
+          </span>
+        </div>
+      </div>
       {{> listinput name="bot.images.preview[]" label="pages.edit.images.preview.title" placeholder="pages.edit.images.preview.placeholder" add="pages.edit.images.preview.add" value=item.images.preview}}
     </div>
     <div class="ls-main-content container box-shadow ls-round">

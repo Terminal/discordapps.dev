@@ -42,7 +42,9 @@
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
-      "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead."
+      "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead.",
+      "youtube": "The YouTube ID needs to look like an ID",
+      "youku": "The Alibaba YOUKU ID needs to look like an ID"
     },
     "permissions": {
       "login": "You are not logged in",
@@ -265,11 +267,15 @@
           "title": "Preview Images",
           "placeholder": "A HTTPS link to a single screenshot",
           "add": "Add another image"
-        },
-        "youtube": {
-          "title": "YouTube ID",
-          "placeholder": "An ID to a YouTube video demonstrating your bot"
         }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "An ID to a YouTube video"
+      },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "An ID to a YOUKU video"
       },
       "website": {
         "title": "Website",

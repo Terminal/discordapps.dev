@@ -262,11 +262,11 @@
           "title": "Preview Images",
           "placeholder": "Et HTTPS-link til et enkelt skærmbillede",
           "add": "Tilføj et andet billede"
-        },
-        "youtube": {
-          "title": "YouTube-ID",
-          "placeholder": "Et ID til en YouTube-video der demonstrerer din bot"
         }
+      },
+      "youtube": {
+        "title": "YouTube-ID",
+        "placeholder": "Et ID til en YouTube-video der demonstrerer din bot"
       },
       "website": {
         "title": "Webside",

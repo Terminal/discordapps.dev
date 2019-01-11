@@ -261,11 +261,11 @@
           "title": "Vorschaubilder",
           "placeholder": "Ein HTTPS Link zu einem einzelnen Screenshot",
           "add": "Weiteres Bild hinzufügen"
-        },
-        "youtube": {
-          "title": "YouTube ID",
-          "placeholder": "Eine ID zu einem YouTube-Video, welche eine Demonstration deines Bots zeigt"
         }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "Eine ID zu einem YouTube-Video, welche eine Demonstration deines Bots zeigt"
       },
       "website": {
         "title": "Webseite",

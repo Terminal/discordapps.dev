@@ -89,9 +89,15 @@
   </div>
 </div>
 
-{{#if item.cachedImages.preview.length}}
+{{#if (or item.cachedImages.preview.length (or item.videos.youtube item.videos.youku))}}
 <div class="ls-main-content container box-shadow ls-center ls-round">
   <div id="ls-carousel" class="ls-image-slider">
+    {{#if item.videos.youtube}}
+      <iframe src="https://www.youtube-nocookie.com/embed/{{item.videos.youtube}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {{/if}}
+    {{#if item.videos.youku}}
+      <iframe src='http://player.youku.com/embed/{{item.videos.youku}}' frameborder="0" allowfullscreen></iframe>
+    {{/if}}
     {{#each item.cachedImages.preview}}
       <img src="{{this}}">
     {{/each}}

@@ -265,11 +265,11 @@
           "title": "Images d'aperçu",
           "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot",
           "add": "Ajouter une autre image"
-        },
-        "youtube": {
-          "title": "ID YouTube",
-          "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
         }
+      },
+      "youtube": {
+        "title": "ID YouTube",
+        "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
       },
       "website": {
         "title": "Site Internet",

@@ -265,11 +265,11 @@
           "title": "预览图",
           "placeholder": "单一截图的HTTPS链接",
           "add": "添加其他图片"
-        },
-        "youtube": {
-          "title": "YouTube ID",
-          "placeholder": "一个示范机器人的影片的Youtube ID"
         }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "一个示范机器人的影片的Youtube ID"
       },
       "website": {
         "title": "网站",
