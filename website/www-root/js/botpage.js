@@ -3,6 +3,7 @@
   const less = document.getElementById('ls-less');
   const custom = document.getElementById('ls-custom-content');
 
+  // When true, it is closed.
   let allowExtension = true;
 
   // Calculate the height required to display the children.
@@ -33,22 +34,18 @@
 
   // If unextended, extend
   more.addEventListener('click', () => {
-    if (allowExtension) {
-      setExtendedHeight();
-      allowExtension = false;
-      more.classList.add('hidden');
-      less.classList.remove('hidden');
-    }
+    allowExtension = false;
+    setExtendedHeight();
+    more.classList.add('hidden');
+    less.classList.remove('hidden');
   });
 
   // If extended, shrink
   less.addEventListener('click', () => {
-    if (!allowExtension) {
-      allowExtension = false;
-      custom.style.height = '150px';
-      less.classList.add('hidden');
-      more.classList.remove('hidden');
-    }
+    allowExtension = true;
+    custom.style.height = '150px';
+    less.classList.add('hidden');
+    more.classList.remove('hidden');
   });
 
   window.addEventListener('resize', () => {
@@ -60,7 +57,7 @@
 
   window.addEventListener('load', () => {
     if (getExtendedHeight() < 150) {
-      allowExtension = false;
+      allowExtension = true;
       less.classList.add('hidden');
       more.classList.add('hidden');
       setExtendedHeight();
