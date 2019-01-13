@@ -39,7 +39,6 @@ const listMiddleware = options => (req, res, next) => {
   let filter = options.filter || {};
   const query = req.query.q || '';
   const state = req.query.state || 'approved';
-  let layout = req.query.layout || 'main';
   let title = null;
   let avatar = null;
 
@@ -75,8 +74,7 @@ const listMiddleware = options => (req, res, next) => {
           state,
           title,
           avatar,
-          query,
-          layout
+          query
         });
       })
       .catch((err) => {
@@ -139,7 +137,6 @@ const listMiddleware = options => (req, res, next) => {
 
     checkDatabase();
   } else if (options.filter === 'kiosk') {
-    layout = 'kiosk';
     filter = {
       state: 'queue'
     };

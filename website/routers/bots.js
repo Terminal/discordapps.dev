@@ -50,7 +50,6 @@ router
     res.render('add', {
       selectableLanguages,
       categories,
-      layout: 'docs',
       item: {},
     });
   })
@@ -245,8 +244,7 @@ router
           res.render('add', {
             selectableLanguages: remainingLanguages,
             categories,
-            item,
-            layout: 'docs',
+            item
           });
         } else {
           next();

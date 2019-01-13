@@ -1,0 +1,106 @@
+@media screen {
+  @import '../www-root/ModestaCSS/scss/modesta.scss';
+  @import '../www-root/ModestaCSS/scss/twemoji.scss';
+  @import '../../node_modules/tiny-slider/src/tiny-slider.scss';
+
+  .ls-print {
+    display: none;
+  }
+
+  .main-window {
+    height: 100vh;
+  }
+
+  pre {
+    overflow-x: auto;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .ls-main-content {
+    background-color: #222;
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
+  .ls-wrap {
+    flex-wrap: wrap;
+  }
+
+  .ls-center {
+    text-align: center;
+  }
+
+  .modal {
+    z-index: 200;
+    padding-bottom: 100px;
+    box-sizing: border-box;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .ls-left-pad *:not(:first-child) {
+    margin-left: 10px;
+  }
+
+  .ls-round {
+    border-radius: 6px;
+  }
+
+  .ls-center {
+    text-align: center;
+  }
+
+  .ls-no-wrap {
+    white-space: nowrap;
+  }
+
+  .ls-kiosk-layout {
+    .ls-nav-container, .ls-footer, .card-content {
+      pointer-events: none;
+    }
+  }
+
+  .table-container table {
+    max-width: unset;
+    white-space: unset;
+  }
+
+  code {
+    font-family: 'Courier New', Courier, monospace;
+  }
+}
+
+@media print {
+  html, body {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .ls-screen {
+    display: none;
+  }
+
+  html, body {
+    color: #000;
+  }
+}
+
+.ls-flex-row {
+  display: flex;
+  &.wrap {
+    flex-wrap: wrap;
+  }
+}
+
+@import 'modesta-intro.scss';
+@import 'modesta-footer.scss';
+@import 'modesta-error.scss';
+@import 'modesta-list.scss';
+@import 'modesta-edit.scss';
+@import 'modesta-bot.scss';
+@import 'modesta-nav.scss';
+@import 'modesta-buttons.scss';
+@import 'modesta-locales.scss';

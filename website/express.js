@@ -34,7 +34,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')
   .set('json spaces', 4)
   .engine('handlebars', handlebars({
-    defaultLayout: 'main',
+    defaultLayout: 'modesta',
     layoutsDir: path.join(path.dirname(__filename), 'views', 'layouts'),
     partialsDir: path.join(path.dirname(__filename), 'views', 'partials'),
     helpers: {
@@ -106,6 +106,16 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     prefix: '/css',
     debug: false,
   }))
+  .use((req, res, next) => {
+    const theme = req.query.layout ? req.query.layout.replace(/\W/g, '') : 'modesta';
+    const temp = res.render;
+
+    res.locals.layout = theme;
+    res.render = function render(view, ...args) {
+      temp.call(this, `${theme}/${view}`, ...args);
+    };
+    next();
+  })
   .use(express.static(path.join(__dirname, 'www-root')))
   .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
   .use('/css/images/', express.static(path.join(__dirname, 'www-root', 'ModestaCSS', 'css', 'images')))

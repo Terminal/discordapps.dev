@@ -3,7 +3,7 @@
     {{#if (isEqual @index ../limit)}}
 
     {{else}}
-      {{> card __=../__ item=this languagePrefix=../languagePrefix}}
+      {{> modesta-card __=../__ item=this languagePrefix=../languagePrefix}}
     {{/if}}
   {{else}}
   <div class="ls-main-content container box-shadow ls-round">
@@ -11,4 +11,4 @@
   </div>
   {{/each}}
 </div>
-{{>pagination}}
+{{> modesta-pagination}}

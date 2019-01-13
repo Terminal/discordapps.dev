@@ -25,7 +25,7 @@
           <code class="ls-bot-prefix label midnight-blue">{{i18n __ "pages.bots.customisable"}}</code>
         {{/if}}
       </p>
-      {{> botlinks item=item canEdit=canEdit }}
+      {{> modesta-botlinks item=item canEdit=canEdit }}
       <div class="ls-left-pad">
         {{#if item.flags.inAppPurchases}}
           <span>{{i18n __ "pages.bots.inAppPurchases"}}</span>
@@ -130,7 +130,7 @@
       {{#if userReview}}
         <div class="secondary ls-main-content container box-shadow ls-round">
           <h4>{{ i18n __ "pages.reviews.my" }}</h4>
-          {{>reviewcard review=userReview user=user item=item}}
+          {{> modesta-reviewcard review=userReview user=user item=item}}
         </div>
       {{else}}
         <div class="secondary ls-main-content container box-shadow ls-round ls-script ls-write-a-review">
@@ -153,7 +153,7 @@
       {{/if}}
     {{/unless}}
   {{/if}}
-  {{>reviews}}
+  {{> modesta-reviews}}
   <div class="center">
     <a class="btn white black-text" href="{{languagePrefix}}/bots/{{item.id}}/reviews">{{i18n __ 'pages.reviews.all'}}</a>
   </div>

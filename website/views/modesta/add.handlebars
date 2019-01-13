@@ -9,7 +9,7 @@
       <h2>{{ i18n __ "pages.edit.basicinfo"}}</h2>
       <div class="row">
         <div class="one-half column">
-          <label for="bot.id">{{ i18n __ "pages.edit.client_id.title"}}{{> required }}</label>
+          <label for="bot.id">{{ i18n __ "pages.edit.client_id.title"}}{{> modesta-required }}</label>
           <div class="ls-flex-row">
             <input id="id" name="bot.id" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.client_id.placeholder"}}" value="{{item.id}}">
             <button type="button" id="id-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "forms.help"}}</button>
@@ -25,14 +25,14 @@
       </div>
       <div class="row">
         <div class="one-half column">
-          <label for="bot.invite">{{ i18n __ "pages.edit.invite.title"}}{{> required }}</label>
+          <label for="bot.invite">{{ i18n __ "pages.edit.invite.title"}}{{> modesta-required }}</label>
           <div class="ls-flex-row">
             <input id="invite" name="bot.invite" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.invite.title"}}" value="{{item.invite}}">
             <button type="button" id="invite-modal-button" onclick="openModal(this)" class="ls-button">{{ i18n __ "pages.edit.invite.generate"}}</button>
           </div>
         </div>
         <div class="one-half column">
-          {{> listinput name="bot.authors[]" label="pages.edit.authors.title" placeholder="pages.edit.authors.placeholder" add="pages.edit.authors.add" modal="authors" value=item.authors default=user.id required=true}}
+          {{> modesta-listinput name="bot.authors[]" label="pages.edit.authors.title" placeholder="pages.edit.authors.placeholder" add="pages.edit.authors.add" modal="authors" value=item.authors default=user.id required=true}}
         </div>
       </div>
       <div class="row">
@@ -41,7 +41,7 @@
           <input name="bot.support" type="text" class="full-width" placeholder="{{ i18n __ "pages.edit.support.placeholder"}}" value="{{item.support}}">
         </div>
         <div class="one-half column">
-          <label for="bot.category">{{ i18n __ "pages.edit.category.title"}}{{> required }}</label>
+          <label for="bot.category">{{ i18n __ "pages.edit.category.title"}}{{> modesta-required }}</label>
           <select name="bot.category" class="full-width" value="{{item.support}}">
             <option disabled {{#unless item.category}}selected{{/unless}}>{{ i18n __ "forms.select" }}</option>
             {{#each categories}}
@@ -92,11 +92,11 @@
           </span>
         </div>
       </div>
-      {{> listinput name="bot.images.preview[]" label="pages.edit.images.preview.title" placeholder="pages.edit.images.preview.placeholder" add="pages.edit.images.preview.add" value=item.images.preview}}
+      {{> modesta-listinput name="bot.images.preview[]" label="pages.edit.images.preview.title" placeholder="pages.edit.images.preview.placeholder" add="pages.edit.images.preview.add" value=item.images.preview}}
     </div>
     <div class="ls-main-content container box-shadow ls-round">
       <h2>{{ i18n __ "pages.edit.triggermethods"}}</h2>
-      {{> listinput name="bot.trigger.prefix[]" label="pages.edit.prefix.title" placeholder="pages.edit.prefix.placeholder" add="pages.edit.prefix.add" value=item.trigger.prefix required=true}}
+      {{> modesta-listinput name="bot.trigger.prefix[]" label="pages.edit.prefix.title" placeholder="pages.edit.prefix.placeholder" add="pages.edit.prefix.add" value=item.trigger.prefix required=true}}
       <div class="row">
         <div class="one-half column">
           <label for="bot.trigger.customisable">{{ i18n __ "pages.edit.customisable.title"}}</label>
@@ -141,7 +141,7 @@
       <p>{{ i18n __ "pages.edit.languages.modal"}}</p>
       <div class="row">
         <div class="column">
-          <label>{{ i18n __ "pages.edit.languages.title"}}{{> required }}</label>
+          <label>{{ i18n __ "pages.edit.languages.title"}}{{> modesta-required }}</label>
           <div class="ls-flex-row">
             <select form="null" id="language" class="full-width">
               <option value="null" disabled selected>{{ i18n __ "forms.select" }}</option>

@@ -21,14 +21,14 @@
     {{> head avatar=avatar title=title description=description url=url languages=languages}}
   </head>
   <body class="ls-bots-layout">
-    {{> intro cover=cover }}
+    {{> modesta-intro cover=cover }}
     <div class="main-window">
-      {{> navigation }}
-      {{> search query=query }}
+      {{> modesta-navigation }}
+      {{> modesta-search query=query }}
       <div class="ls-container">
         {{{body}}}
       </div>
-      {{> footer}}
+      {{> modesta-footer}}
     </div>
     <script src="/js/navbar.js"></script>
   </body>

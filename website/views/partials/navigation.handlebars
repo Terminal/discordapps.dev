@@ -1,15 +1,20 @@
-<div id="ls-navbar" class="ls-nav-container nav-container">
-  <span id="menu-icon" class="ls-script">
-  </span>
-  <h3 class="nav-title">
-    <a href="{{languagePrefix}}/">
-      {{i18n __ "site.name"}}
-    </a>
-  </h3>
-  <div id="ls-navside" class="sidenav" style="transform: translateX(-250px);">
-    {{>links}}
+<nav class="ls-navbar row">
+  <div class="nav-wrapper col s12">
+    <a href="#!" class="brand-logo">Logo</a>
+    <a href="#" data-target="ls-navbar" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      {{> navigation-links }}
+    </ul>
   </div>
-  <div class="sidenav">
-    {{>links}}
-  </div>
-</div>
+</nav>
+
+<ul class="sidenav" id="ls-navbar">
+  <li class="ls-navbar-search">
+    <form class="input-field">
+      <input id="search" type="search" required>
+      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+      <i class="material-icons">close</i>
+    </form>
+  </li>
+  {{> navigation-links }}
+</ul>
