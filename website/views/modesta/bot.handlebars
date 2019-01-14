@@ -166,7 +166,7 @@
       <p>
         {{i18n __ "pages.bots.offeredby"}}
         {{#each item.authors}}
-        <a href="/bots/by/{{this.id}}"><span class="ls-bot-prefix label asbestos">{{this.username}}#{{this.discriminator}}</span></a>
+        <a href="/bots?owners[]={{this.id}}"><span class="ls-bot-prefix label asbestos">{{this.username}}#{{this.discriminator}}</span></a>
         {{/each}}
       </p>
     </div>

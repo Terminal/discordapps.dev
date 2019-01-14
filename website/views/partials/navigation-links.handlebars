@@ -2,7 +2,7 @@
 <li><a class="{{class}}" href="{{languagePrefix}}/locale?to={{encodeURIComponent url}}"><i class="material-icons">language</i></a></li>
 {{#if user.id}}
   <li><a class="{{class}} ls-script" href="{{languagePrefix}}/bots/add">{{i18n __ "navbar.add"}}</a></li>
-  <li><a class="{{class}}" href="{{languagePrefix}}/bots/by/{{user.id}}">{{user.username}}</a></li>
+  <li><a class="{{class}}" href="{{languagePrefix}}/bots?owners[]={{user.id}}">{{user.username}}</a></li>
   <li><a class="{{class}}" href="{{languagePrefix}}/auth/logout">{{i18n __ "navbar.logout"}}</a></li>
 {{else}}
   <li><a class="{{class}}" href="{{languagePrefix}}/auth?to={{encodeURIComponent url}}">{{i18n __ "navbar.login"}}</a></li>

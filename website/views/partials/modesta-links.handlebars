@@ -5,7 +5,7 @@
   <a class="{{class}} ls-script" href="{{languagePrefix}}/bots/add">
     {{i18n __ "navbar.add"}}
   </a>
-  <a class="{{class}}" href="{{languagePrefix}}/bots/by/{{user.id}}">
+  <a class="{{class}}" href="{{languagePrefix}}/bots?owners[]={{user.id}}">
     {{user.username}}
   </a>
   <a class="{{class}}" href="{{languagePrefix}}/auth/logout">
