@@ -1,9 +1,9 @@
-<label for="{{ name }}">{{ i18n __ label }}{{#if required}}{{> required }}{{/if}}</label>
+<label for="{{ name }}">{{ i18n __ label }}{{#if required}}{{> modesta-required }}{{/if}}</label>
 <div class="ls-flex-column">
   {{#if (isArray value)}}
     {{#each value}}
       {{#if @first}}
-        {{>input value=this name=../name modal=../modal __=../__ placeholder=../placeholder add=../add}}
+        {{> modesta-input value=this name=../name modal=../modal __=../__ placeholder=../placeholder add=../add}}
       {{else}}
         <div class="ls-flex-row">
           <input name="{{../name}}" type="text" class="full-width" value={{this}}>
@@ -13,9 +13,9 @@
         </div>
       {{/if}}
     {{else}}
-      {{>input name=name modal=modal __=__ placeholder=placeholder}}
+      {{> modesta-input name=name modal=modal __=__ placeholder=placeholder}}
     {{/each}}
   {{else}}
-    {{>input value=default name=name modal=modal __=__ placeholder=placeholder}}
+    {{> modesta-input value=default name=name modal=modal __=__ placeholder=placeholder}}
   {{/if}}
 </div>

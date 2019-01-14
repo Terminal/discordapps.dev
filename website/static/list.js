@@ -1,6 +1,4 @@
 const r = require('../rethinkdb');
-const ImageCache = require('../class/ImageCache');
-
 const languages = require('../data/languages.json');
 const categories = require('../data/categories.json');
 
@@ -39,9 +37,9 @@ const listMiddleware = options => (req, res, next) => {
   let filter = options.filter || {};
   const query = req.query.q || '';
   const state = req.query.state || 'approved';
-  let layout = req.query.layout || 'main';
+  const category = req.query.category || '';
+  const owners = req.query.owners || [];
   let title = null;
-  let avatar = null;
 
   const checkDatabase = () => {
     const limit = parseInt(req.query.limit, 10) > 0 ? parseInt(req.query.limit, 10) : 12;
@@ -74,9 +72,8 @@ const listMiddleware = options => (req, res, next) => {
           next: page + 1,
           state,
           title,
-          avatar,
           query,
-          layout
+          category
         });
       })
       .catch((err) => {
@@ -84,65 +81,31 @@ const listMiddleware = options => (req, res, next) => {
       });
   };
 
-  if (options.filter === 'owner') {
-    r.table('users')
-      .get(req.params.id)
-      .then((user) => {
-        if (user) {
-          filter = bot => bot('authors').contains(req.params.id);
-          title = res.__('pages.bots.ownerFilter', {
-            name: `${user.username}#${user.discriminator}`
-          });
-          const cache = new ImageCache({
-            url: `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`
-          });
-          // Don't cache the image. Image should already be cached on login
-          cache.getRecord()
-            .then((record) => {
-              if (record) {
-                avatar = cache.permalink;
-              }
-              checkDatabase();
-            })
-            .catch((err) => {
-              next(err);
-            });
-        } else {
-          next();
-        }
-      });
-  } else if (options.filter === 'category') {
-    if (categories.includes(req.params.category)) {
-      filter = {
-        category: req.params.category,
-        state
-      };
-      title = res.__(`categories.${req.params.category}`);
-      checkDatabase();
-    } else {
-      next();
-    }
-  } else if (options.filter === 'search') {
+  if (options.filter === 'search') {
     title = res.__('pages.bots.search');
     filter = (bot) => {
-      let chain = r.expr(sanitise(query)).match(bot('category'))
+      let orChain = r.expr(sanitise(query)).match(bot('category'))
         .or(bot('nsfw').and(r.expr(sanitise(query)).match('nsfw')));
 
       for (let i = 0; i < selectableLanguages.length; i += 1) {
-        chain = chain.or(bot('contents')(selectableLanguages[i])('page').default('').match(sanitise(query)))
+        orChain = orChain.or(bot('contents')(selectableLanguages[i])('page').default('').match(sanitise(query)))
           .or(bot('contents')(selectableLanguages[i])('name').default('').match(sanitise(query)))
           .or(bot('contents')(selectableLanguages[i])('description').default('').match(sanitise(query)));
       }
 
-      return bot('state').eq(state).and(chain);
+      let databaseQuery = bot('state').eq(state).and(orChain);
+
+      if (categories.includes(category)) {
+        databaseQuery = databaseQuery.and(bot('category').eq(category));
+      }
+
+      for (let i = 0; i < owners.length; i += 1) {
+        databaseQuery = databaseQuery.and(bot('authors').contains(owners[i]));
+      }
+
+      return databaseQuery;
     };
 
-    checkDatabase();
-  } else if (options.filter === 'kiosk') {
-    layout = 'kiosk';
-    filter = {
-      state: 'queue'
-    };
     checkDatabase();
   } else {
     checkDatabase();

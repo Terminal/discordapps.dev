@@ -1,106 +1,11 @@
-@media screen {
-  @import '../www-root/ModestaCSS/scss/modesta.scss';
-  @import '../www-root/ModestaCSS/scss/twemoji.scss';
-  @import '../../node_modules/tiny-slider/src/tiny-slider.scss';
+@import '../../node_modules/materialize-css/sass/materialize.scss';
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
-  .ls-print {
-    display: none;
-  }
-
-  .main-window {
-    height: 100vh;
-  }
-
-  pre {
-    overflow-x: auto;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .ls-main-content {
-    background-color: #222;
-    padding-top: 2em;
-    padding-bottom: 2em;
-  }
-
-  .ls-wrap {
-    flex-wrap: wrap;
-  }
-
-  .ls-center {
-    text-align: center;
-  }
-
-  .modal {
-    z-index: 200;
-    padding-bottom: 100px;
-    box-sizing: border-box;
-    img {
-      max-width: 100%;
-    }
-  }
-
-  .ls-left-pad *:not(:first-child) {
-    margin-left: 10px;
-  }
-
-  .ls-round {
-    border-radius: 6px;
-  }
-
-  .ls-center {
-    text-align: center;
-  }
-
-  .ls-no-wrap {
-    white-space: nowrap;
-  }
-
-  .ls-kiosk-layout {
-    .ls-nav-container, .ls-footer, .card-content {
-      pointer-events: none;
-    }
-  }
-
-  .table-container table {
-    max-width: unset;
-    white-space: unset;
-  }
-
-  code {
-    font-family: 'Courier New', Courier, monospace;
-  }
+.ls-navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
 }
 
-@media print {
-  html, body {
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  .ls-screen {
-    display: none;
-  }
-
-  html, body {
-    color: #000;
-  }
+.ls-parallax-content {
+  margin-top: 100px;
 }
-
-.ls-flex-row {
-  display: flex;
-  &.wrap {
-    flex-wrap: wrap;
-  }
-}
-
-@import 'intro.scss';
-@import 'footer.scss';
-@import 'error.scss';
-@import 'list.scss';
-@import 'edit.scss';
-@import 'bot.scss';
-@import 'nav.scss';
-@import 'buttons.scss';
-@import 'locales.scss';

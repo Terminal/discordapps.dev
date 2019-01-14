@@ -27,6 +27,8 @@ const { fixRoles } = require('../static/bot');
 const router = express.Router();
 const reader = multer();
 
+const botserverError = () => console.log('Failed to update roles! Is webserver down?');
+
 const selectableLanguages = Object.keys(languages).sort((a, b) => {
   if (languages[a].top) {
     return -1;
@@ -42,15 +44,12 @@ const selectableLanguages = Object.keys(languages).sort((a, b) => {
 
 router
   .get('/', listMiddleware({
-    filter: {
-      state: 'approved'
-    }
+    filter: 'search'
   }))
   .get('/add', isLoggedIn, (req, res) => {
     res.render('add', {
       selectableLanguages,
       categories,
-      layout: 'docs',
       item: {},
     });
   })
@@ -121,7 +120,8 @@ router
                 })
                 .then(() => {
                   discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.location}${res.locals.languagePrefix}/bots/${value.id}`);
-                  fixRoles();
+                  fixRoles()
+                    .catch(botserverError);
                   res.json({
                     ok: true,
                     message: res.__(message),
@@ -223,18 +223,22 @@ router
       next();
     }
   })
-  .get('/search', listMiddleware({
-    filter: 'search'
-  }))
-  .get('/kiosk', listMiddleware({
-    filter: 'kiosk'
-  }))
-  .get('/by/:id', checkParamsLength, listMiddleware({
-    filter: 'owner'
-  }))
-  .get('/category/:category', checkParamsLength, listMiddleware({
-    filter: 'category'
-  }))
+  .get('/by/:id', checkParamsLength, (req, res) => {
+    res.redirect(`${res.locals.languagePrefix}/bots?owners[]=${encodeURIComponent(req.params.id)}`);
+  })
+  .get('/category/:category', checkParamsLength, (req, res) => {
+    res.redirect(`${res.locals.languagePrefix}/bots?category=${encodeURIComponent(req.params.category)}`);
+  })
+  .get('/unverified', (req, res) => {
+    res.redirect(`${res.locals.languagePrefix}/bots?state=queue`);
+  })
+  .get('/search', checkParamsLength, (req, res) => {
+    const query = [];
+    Object.keys(req.query).forEach((param) => {
+      query.push(`${encodeURIComponent(param)}=${encodeURIComponent(req.query[param])}`);
+    });
+    res.redirect(`${res.locals.languagePrefix}/bots?${query.join('&')}`);
+  })
   .use('/:id/reviews', checkParamsLength, reviewsRouter)
   .get('/:id/edit', checkParamsLength, isLoggedIn, (req, res, next) => {
     r.table('bots')
@@ -245,8 +249,7 @@ router
           res.render('add', {
             selectableLanguages: remainingLanguages,
             categories,
-            item,
-            layout: 'docs',
+            item
           });
         } else {
           next();
@@ -266,7 +269,8 @@ router
       .then(() => {
         res.redirect(`${res.locals.languagePrefix}/`);
         discordWebhooks(`<@${req.user.id}> deleted <@${req.params.id}>`);
-        fixRoles();
+        fixRoles()
+          .catch(botserverError);
       })
       .catch((err) => {
         next(err);
@@ -329,7 +333,8 @@ router
             discordWebhooks(`<@${req.user.id}> moved <@${req.params.id}> to \`${req.body.state}\`\n${newVal.authors.map(owner => `<@${owner}>`).join(', ')}\n\n${req.body.reason}`);
           }
           res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}`);
-          fixRoles();
+          fixRoles()
+            .catch(botserverError);
         })
         .catch((err) => {
           next(err);
@@ -337,9 +342,6 @@ router
     } else {
       next(new Error('State not found'));
     }
-  })
-  .get('/unverified', (req, res) => {
-    res.redirect('/bots/search?state=queue');
   })
   .get('/:id', checkParamsLength, botExists, (req, res, next) => {
     r.table('bots')

@@ -1,0 +1,14 @@
+<div class="ls-search-container container ls-center">
+  <div>
+    <form action="{{languagePrefix}}/bots">
+      <input name="q" class="ls-search" placeholder="{{ or query (i18n __ "intro.search") }}" autocomplete="off" required>
+      <button class="ls-button">Search</button>
+    </form>
+  </div>
+  <noscript>
+    {{i18n __ "errors.website.noscript"}}
+  </noscript>
+</div>
+<div class="container ls-center ls-print" aria-hidden="true">
+  {{i18n __ "errors.website.print"}}
+</div>

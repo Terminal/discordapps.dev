@@ -86,7 +86,6 @@ router.get('/', (req, res, next) => {
 
         res.render('reviews', {
           item,
-          layout: 'docs',
           limit,
           previous: page - 1,
           next: page + 1,

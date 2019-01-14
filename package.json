@@ -37,6 +37,7 @@
     "js2xmlparser": "^3.0.0",
     "jsonwebtoken": "^8.4.0",
     "marked": "^0.3.19",
+    "materialize-css": "^1.0.0-rc.2",
     "monaco-editor": "^0.14.3",
     "multer": "^1.4.1",
     "mustache": "^2.3.2",
