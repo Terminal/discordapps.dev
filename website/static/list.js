@@ -1,6 +1,4 @@
 const r = require('../rethinkdb');
-const ImageCache = require('../class/ImageCache');
-
 const languages = require('../data/languages.json');
 const categories = require('../data/categories.json');
 
@@ -42,7 +40,6 @@ const listMiddleware = options => (req, res, next) => {
   const category = req.query.category || '';
   const owners = req.query.owners || [];
   let title = null;
-  let avatar = null;
 
   const checkDatabase = () => {
     const limit = parseInt(req.query.limit, 10) > 0 ? parseInt(req.query.limit, 10) : 12;
@@ -75,7 +72,6 @@ const listMiddleware = options => (req, res, next) => {
           next: page + 1,
           state,
           title,
-          avatar,
           query,
           category
         });
