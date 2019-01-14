@@ -107,7 +107,23 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     debug: false,
   }))
   .use((req, res, next) => {
-    const theme = req.query.layout ? req.query.layout.replace(/\W/g, '') : 'modesta';
+    // Temporary theme switcher
+    // Delete when Material is complete
+    let theme;
+
+    if (typeof req.query.theme !== 'undefined' && req.query.theme === 'material') {
+      theme = 'material';
+    } else if (typeof req.query.theme !== 'undefined' && req.query.theme === 'modesta') {
+      theme = 'modesta';
+    } else if (typeof req.cookies.theme !== 'undefined' && req.cookies.theme === 'material') {
+      theme = 'material';
+    } else if (typeof req.cookies.theme !== 'undefined' && req.cookies.theme === 'modesta') {
+      theme = 'modesta';
+    } else {
+      theme = 'modesta';
+    }
+
+    res.cookie('theme', theme);
     const temp = res.render;
 
     res.locals.layout = theme;
