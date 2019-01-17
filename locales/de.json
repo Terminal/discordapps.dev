@@ -276,7 +276,7 @@
       "triggermethods": "Trigger Methoden",
       "deleteLanguage": "Eine Sprache löschen",
       "required": "Mit * markierte Felder sind auszufüllen.",
-      "updates": "Es ist empfohlen, demn Terminal.ink Discordserver beizutreten in dem du auf 'Discord' im Footer klickst, um Service updates zu erhalten, den aktuellen Verifizierungs-Status deines Bots zu sehen und um direkte Nachrichten vom Team über deine Applikation zu kriegen.",
+      "updates": "Es ist empfohlen, dem Terminal.ink Discord beizutreten um Service updates, Nachrichten über den Status deines Bots und direkte Nachrichten von Team-Mitgliedern zu erhalten.",
       "discord": "Terminal.ink beitreten"
     },
     "error": {
