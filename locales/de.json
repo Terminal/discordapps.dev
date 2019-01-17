@@ -276,7 +276,8 @@
       "triggermethods": "Trigger Methoden",
       "deleteLanguage": "Eine Sprache löschen",
       "required": "Mit * markierte Felder sind auszufüllen.",
-      "updates": "Es ist empfohlen, demn Terminal.ink Discordserver beizutreten in dem du auf 'Discord' im Footer klickst, um Service updates zu erhalten, den aktuellen Verifizierungs-Status deines Bots zu sehen und um direkte Nachrichten vom Team über deine Applikation zu kriegen."
+      "updates": "Es ist empfohlen, demn Terminal.ink Discordserver beizutreten in dem du auf 'Discord' im Footer klickst, um Service updates zu erhalten, den aktuellen Verifizierungs-Status deines Bots zu sehen und um direkte Nachrichten vom Team über deine Applikation zu kriegen.",
+      "discord": "Terminal.ink beitreten"
     },
     "error": {
       "notfound": "Seite nicht gefunden...",
@@ -302,16 +303,16 @@
       "no": "Zurück gehen"
     },
     "reviews": {
-      "title": "Reviews",
-      "my": "Meine Review",
-      "write": "Schreibe eine Review",
-      "placeholder": "Bitte gib einen Grund für deine Review ein.",
+      "title": "Bewertungen",
+      "my": "Meine Bewertung",
+      "write": "Schreibe eine Bewertung",
+      "placeholder": "Bitte gib einen Grund für deine Bewertung ein.",
       "number": {
-        "one": "%s Review",
-        "other": "%s Reviews"
+        "one": "%s Bewertung",
+        "other": "%s Bewertungen"
       },
-      "delete": "Review löschen",
-      "all": "Alle Reviews ansehen"
+      "delete": "Bewertung löschen",
+      "all": "Alle Bewertungen ansehen"
     },
     "admin": {
       "title": "Administrator Konsole",
