@@ -328,7 +328,8 @@
       "prev": "Forrige",
       "next": "Næste side"
     },
-    "currentPage": "Side {{{ number }}}"
+    "currentPage": "Side {{{ number }}}",
+    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
   },
   "permission": {
     "ADD_REACTIONS": "Tilføj Reaktioner",

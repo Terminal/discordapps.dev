@@ -357,7 +357,8 @@
       "prev": "Previous",
       "next": "Next Page"
     },
-    "currentPage": "Page {{{ number }}}"
+    "currentPage": "Page {{{ number }}}",
+    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
   },
   "permission": {
     "ADD_REACTIONS": "Add Reactions",

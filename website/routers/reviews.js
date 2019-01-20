@@ -17,11 +17,6 @@ const reader = multer();
 router.get('/', (req, res, next) => {
   const limit = parseInt(req.query.limit, 10) > 0 ? parseInt(req.query.limit, 10) : 4;
   const page = parseInt(req.query.page, 10) >= 0 ? parseInt(req.query.page, 10) : 0;
-  let title = null;
-
-  const pageString = res.__('pagination.currentPage', {
-    number: page + 1
-  });
 
   r.table('bots')
     .get(req.params.id)
@@ -56,11 +51,10 @@ router.get('/', (req, res, next) => {
           return max;
         }, 0);
 
-        if (bot.contents.name) {
-          title = `${bot.contents.name} - ${pageString}`;
-        } else {
-          title = pageString;
-        }
+        const title = res.__('pagination.reviews', {
+          number: page + 1,
+          name: bot.contents.name
+        });
 
         // The maximum rating is 5.
         // Loop from 1 to including 5

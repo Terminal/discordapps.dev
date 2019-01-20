@@ -349,7 +349,8 @@
       "prev": "上一页",
       "next": "下一页"
     },
-    "currentPage": "第 {{{ number }}} 页"
+    "currentPage": "第 {{{ number }}} 页",
+    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
   },
   "permission": {
     "ADD_REACTIONS": "添加反应",

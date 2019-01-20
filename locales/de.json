@@ -333,7 +333,8 @@
       "prev": "Vorherige",
       "next": "Nächste Seite"
     },
-    "currentPage": "Seite {{{ number }}}"
+    "currentPage": "Seite {{{ number }}}",
+    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
   },
   "permission": {
     "ADD_REACTIONS": "Reactionen hinzufügen",
