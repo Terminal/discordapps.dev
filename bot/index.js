@@ -141,4 +141,15 @@ app
   });
 
 client.login(config.token);
-app.listen(config.webserver.port);
+
+const http = app.listen(config.webserver.port);
+
+// When CTRL+C is caught...
+process.on('SIGINT', () => {
+  console.log('Goodnight!');
+
+  // Close the Express.js server
+  http.close(() => {
+    console.log('No longer listening');
+  });
+});
