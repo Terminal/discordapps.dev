@@ -20,6 +20,9 @@ For licencing without the GNU AGPL, contact `7coil#3175` or email at `admin@mous
 - `/website/www-root/js/modalPerms.js` is licenced under the MIT licence.
 - `/website/class/ImageCache.js` is licenced under the MIT licence.
 
+### Dependencies
+- [This project has AlexFlipnote/ModestaCSS as a dependency, which is licenced under the GNU GPL v3](https://github.com/AlexFlipnote/ModestaCSS/blob/master/LICENSE)
+
 ## Deployment
 - `npm i`
 - `npm start`
