@@ -7,7 +7,10 @@
     "test": "eslint .",
     "start": "node --icu-data-dir=node_modules/full-icu website/index.js",
     "bot": "node --icu-data-dir=node_modules/full-icu bot/index.js",
-    "sass": "sass --watch src/static/css/"
+    "frontend:start": "node frontend/index.js",
+    "frontend:pack": "webpack --config frontend/webpack.config.js",
+    "frontend:babel": "babel frontend/src -d frontend/views",
+    "frontend:build": "npm-run-all frontend:pack frontend:babel"
   },
   "repository": {
     "type": "git",
@@ -45,6 +48,11 @@
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.3.2",
     "passport-discord": "^0.1.3",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "request": "^2.88.0",
     "rethinkdbdash": "^2.3.31",
     "session-rethinkdb": "^2.0.1",
@@ -54,9 +62,18 @@
     "xss": "^1.0.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^11.3.2",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-react": "^7.12.4",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
   },
   "eslintConfig": {
     "extends": "airbnb-base",
@@ -73,11 +90,17 @@
       "no-console": 0,
       "no-param-reassign": 0,
       "no-underscore-dangle": 0,
-      "newline-per-chained-call": 0
+      "newline-per-chained-call": 0,
+      "linebreak-style": [2, "unix"]
     },
     "env": {
       "node": true,
       "browser": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
     }
   }
 }
