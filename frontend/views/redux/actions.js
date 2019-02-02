@@ -26,7 +26,7 @@ function receiveApps(json) {
 function fetchApps() {
   return function (dispatch) {
     dispatch(requestApps());
-    return fetch("assets/data.json").then(function (response) {
+    return fetch('assets/data.json').then(function (response) {
       return response.json();
     }).then(function (json) {
       return dispatch(receiveApps(json));
@@ -37,7 +37,7 @@ function fetchApps() {
 function shouldFetchApps(state) {
   var apps = state.apps;
 
-  if (apps.length == 0) {
+  if (apps.length === 0) {
     return true;
   } else if (state.isFetching) {
     return false;

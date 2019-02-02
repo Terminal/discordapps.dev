@@ -47,8 +47,8 @@ function (_Component) {
   _createClass(Card, [{
     key: "Cardbaker",
     value: function Cardbaker(props) {
-      var cards = [],
-          cardNumber = 1;
+      var cards = [];
+      var cardNumber = 1;
       var _iteratorNormalCompletion = true;
       var _didIteratorError = false;
       var _iteratorError = undefined;

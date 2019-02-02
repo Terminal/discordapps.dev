@@ -1,0 +1,8 @@
+@media screen {
+  .modesta {
+    @import './ModestaCSS/scss/modesta.scss';
+  }
+  .twemoji {
+    @import './ModestaCSS/scss/twemoji.scss';
+  }
+}

@@ -69,14 +69,14 @@ function (_Component) {
   return App;
 }(_react.Component);
 
-function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(state) {
   var isFetching = state.isFetching,
       apps = state.apps;
   return {
     isFetching: isFetching,
     apps: apps
   };
-}
+};
 
 var _default = (0, _reactRedux.connect)(mapStateToProps)(App);
 

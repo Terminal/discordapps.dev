@@ -47,9 +47,9 @@ function (_Component) {
         }, "by "), _react.default.createElement("span", {
           className: "publisher"
         }, this.props.publisher), " ");
-      } else {
-        return _react.default.createElement("h3", null, this.props.name);
       }
+
+      return _react.default.createElement("h3", null, this.props.name);
     }
   }]);
 

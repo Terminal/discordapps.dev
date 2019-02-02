@@ -8,7 +8,7 @@ var _reactRedux = require("react-redux");
 
 var _configureStore = _interopRequireDefault(require("./redux/configureStore"));
 
-var _app = _interopRequireDefault(require("./components/app"));
+var _App = _interopRequireDefault(require("./components/App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -18,7 +18,7 @@ module.exports = function render(initialState) {
 
   var content = (0, _server.renderToString)(_react.default.createElement(_reactRedux.Provider, {
     store: store
-  }, _react.default.createElement(_app.default, null))); // Get a copy of store data to create the same store on client side 
+  }, _react.default.createElement(_App.default, null))); // Get a copy of store data to create the same store on client side
 
   var preloadedState = store.getState();
   return {

@@ -8,7 +8,7 @@ var _reactRedux = require("react-redux");
 
 var _configureStore = _interopRequireDefault(require("./redux/configureStore"));
 
-var _app = _interopRequireDefault(require("./components/app"));
+var _App = _interopRequireDefault(require("./components/App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,4 +26,4 @@ var store = (0, _configureStore.default)(state);
 
 (0, _reactDom.hydrate)(_react.default.createElement(_reactRedux.Provider, {
   store: store
-}, _react.default.createElement(_app.default, null)), document.querySelector('#app'));
+}, _react.default.createElement(_App.default, null)), document.querySelector('#app'));
