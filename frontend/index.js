@@ -2,11 +2,10 @@ const express = require('express');
 const template = require('./views/template');
 const path = require('path');
 const ssr = require('./views/server');
-const data = require('./assets/data.json');
 
 const initialState = {
   isFetching: false,
-  apps: data
+  apps: []
 };
 
 const app = express();

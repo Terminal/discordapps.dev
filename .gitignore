@@ -5,3 +5,6 @@ proxy/config/*.json
 bot/config/*.json
 website/www-root/appdata/*
 website/www-root/css/*
+
+frontend/views/
+frontend/build/

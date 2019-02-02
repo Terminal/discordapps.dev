@@ -1,6 +1,6 @@
 const path = require('path');
 
-module.exports = {
+const client = {
   entry: {
     client: path.join(__dirname, 'src', 'client.js'),
     bundle: path.join(__dirname, 'src', 'bundle.js')
@@ -35,10 +35,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
-              includePaths: [
-                '/ModestaCSS/css/images'
-              ]
+              sourceMap: true
             }
           } // compiles Sass to CSS, using Node Sass by default
         ]
@@ -51,3 +48,8 @@ module.exports = {
     ]
   }
 };
+
+
+module.exports = [
+  client
+];

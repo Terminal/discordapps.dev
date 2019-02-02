@@ -6,7 +6,7 @@ function template(title, initialState = {}, content = '') {
 <script>
   window.__STATE__ = ${JSON.stringify(initialState)}
 </script>
-<script src="build/client.js"></script>
+<script src="build/bundle.js"></script>
 `;
   } else {
     scripts = '<script src="build/bundle.js"></script>';
