@@ -1,13 +1,14 @@
 const path = require('path');
 
-const client = {
+const config = {
   entry: {
     client: path.join(__dirname, 'src', 'client.js'),
     bundle: path.join(__dirname, 'src', 'bundle.js')
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].js'
+    filename: '[name].js',
+    publicPath: 'build/'
   },
   module: {
     rules: [
@@ -50,6 +51,10 @@ const client = {
 };
 
 
-module.exports = [
-  client
-];
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map';
+  }
+
+  return config;
+};

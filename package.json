@@ -8,9 +8,11 @@
     "start": "node --icu-data-dir=node_modules/full-icu website/index.js",
     "bot": "node --icu-data-dir=node_modules/full-icu bot/index.js",
     "frontend:start": "node frontend/index.js",
-    "frontend:pack": "webpack --config frontend/webpack.config.js",
     "frontend:babel": "cross-env BABEL_ENV=node babel frontend/src --out-dir frontend/views --copy-files",
-    "frontend:build": "npm-run-all frontend:pack frontend:babel"
+    "frontend:pack": "webpack --config frontend/webpack.config.js",
+    "frontend:packDev": "webpack --config frontend/webpack.config.js --mode=development",
+    "frontend:build": "npm-run-all frontend:pack frontend:babel",
+    "frontend:dev": "npm-run-all frontend:packDev frontend:babel frontend:start"
   },
   "repository": {
     "type": "git",
