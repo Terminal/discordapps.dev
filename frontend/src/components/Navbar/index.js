@@ -7,7 +7,7 @@ class Navbar extends Component {
         <span id="menu-icon"></span>
 
         <div className="nav-content">
-          <h4>Nice stuff</h4>
+          <h4>Nice stuff!</h4>
         </div>
 
         <div id="navside" className="sidenav">

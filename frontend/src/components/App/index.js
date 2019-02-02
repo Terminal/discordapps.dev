@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { hot } from 'react-hot-loader/root';
 import { fetchAppsIfNeeded } from '../../redux/actions';
 
 import Navbar from '../Navbar';
@@ -23,7 +24,7 @@ class App extends Component {
         {isFetching && apps.length === 0 && <h2>Loading...</h2>}
         {!isFetching && apps.length === 0 && <h2>Empty.</h2>}
         {JSON.stringify(apps)}
-        <p>Hello world!</p>
+        <p>You&apos;re a gay</p>
       </div>
     );
   }
@@ -38,4 +39,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(hot(App));

@@ -1,14 +1,19 @@
+const webpack = require('webpack');
 const path = require('path');
 
 const config = {
   entry: {
-    client: path.join(__dirname, 'src', 'client.js'),
-    bundle: path.join(__dirname, 'src', 'bundle.js')
+    client: [
+      path.join(__dirname, 'src', 'client.js')
+    ],
+    bundle: [
+      path.join(__dirname, 'src', 'bundle.js')
+    ]
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js',
-    publicPath: 'build/'
+    publicPath: '/build/'
   },
   module: {
     rules: [
@@ -47,13 +52,17 @@ const config = {
         loader: 'babel-loader'
       }
     ]
-  }
+  },
+  plugins: []
 };
 
 
 module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     config.devtool = 'source-map';
+    config.mode = 'development';
+    config.entry.bundle.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000');
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
   }
 
   return config;
