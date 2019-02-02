@@ -1,13 +1,15 @@
-const i18n = require('../global/i18n');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express = require('express');
-const session = require('express-session');
+const cors = require('cors');
 const path = require('path');
-const handlebars = require('express-handlebars');
+const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const sass = require('node-sass-middleware');
+const cookieParser = require('cookie-parser');
 const RDBStore = require('session-rethinkdb')(session);
+const handlebars = require('express-handlebars');
+
 const r = require('./rethinkdb');
+const i18n = require('../global/i18n');
 const passport = require('./static/passport');
 const config = require('./config');
 const periodical = require('./static/periodical');
@@ -74,6 +76,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       }
     },
   }))
+  .use(cors())
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
     extended: true
