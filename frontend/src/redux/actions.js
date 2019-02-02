@@ -19,7 +19,7 @@ function receiveApps(json) {
 function fetchApps() {
   return (dispatch) => {
     dispatch(requestApps());
-    return fetch('assets/data.json')
+    return fetch('https://ls.terminal.ink/api/v2/bots')
       .then(response => response.json())
       .then(json => dispatch(receiveApps(json)));
   };
