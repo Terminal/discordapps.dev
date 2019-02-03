@@ -1,6 +1,7 @@
 ![Project Forklift](.github/fancypants.png)
 
 - [Website](website)
+- [React Frontend Rewrite](frontend)
 - [Image Proxy Server](proxy)
 - [Discord Bot](bot)
 
