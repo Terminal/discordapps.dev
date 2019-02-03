@@ -6,10 +6,10 @@ function template(title, initialState = {}, content = '') {
 <script>
   window.__STATE__ = ${JSON.stringify(initialState)}
 </script>
-<script src="build/bundle.js"></script>
+<script src="/build/bundle.js"></script>
 `;
   } else {
-    scripts = '<script src="build/bundle.js"></script>';
+    scripts = '<script src="/build/bundle.js"></script>';
   }
   const page = `
 <!DOCTYPE html>
@@ -17,6 +17,7 @@ function template(title, initialState = {}, content = '') {
   <head>
     <meta charset="utf-8">
     <title>${title}</title>
+    <link href="/build/bundle.css" rel="stylesheet"></link>
   </head>
   <body>
     <div id="app">

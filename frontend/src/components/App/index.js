@@ -4,6 +4,7 @@ import { hot } from 'react-hot-loader/root';
 import { fetchAppsIfNeeded } from '../../redux/actions';
 
 import Navbar from '../Navbar';
+import Routes from '../Routes';
 
 import './index.scss';
 
@@ -21,10 +22,14 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        {isFetching && apps.length === 0 && <h2>Loading...</h2>}
+        <noscript>
+          <p>JavaScript is required to view this page</p>
+        </noscript>
+        <Routes />
+        {/* {isFetching && apps.length === 0 && <h2>Loading...</h2>}
         {!isFetching && apps.length === 0 && <h2>Empty.</h2>}
         {JSON.stringify(apps)}
-        <p>You&apos;re a gay</p>
+        <p>You&apos;re a gay</p> */}
       </div>
     );
   }

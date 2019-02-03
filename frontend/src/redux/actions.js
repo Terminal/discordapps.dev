@@ -21,7 +21,7 @@ function fetchApps() {
     dispatch(requestApps());
     return fetch('https://ls.terminal.ink/api/v2/bots')
       .then(response => response.json())
-      .then(json => dispatch(receiveApps(json)));
+      .then(json => dispatch(receiveApps(json.data)));
   };
 }
 

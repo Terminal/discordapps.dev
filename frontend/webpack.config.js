@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -27,11 +28,11 @@ const config = {
         test: /\.scss$/,
         use: [
           {
-            loader: 'style-loader',
+            loader: MiniCssExtractPlugin.loader,
             options: {
               sourceMap: true
             }
-          }, // creates style nodes from JS strings
+          },
           {
             loader: 'css-loader',
             options: {
@@ -47,13 +48,29 @@ const config = {
         ]
       },
       {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+        ]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       }
     ]
   },
-  plugins: []
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    })
+  ]
 };
 
 

@@ -39,6 +39,7 @@
     "http-proxy-agent": "^2.1.0",
     "https-proxy-agent": "^2.2.1",
     "i18n": "^0.8.3",
+    "isomorphic-style-loader": "^4.0.0",
     "joi": "^14.0.4",
     "js2xmlparser": "^3.0.0",
     "jsonwebtoken": "^8.4.0",
@@ -55,6 +56,7 @@
     "react-dom": "^16.7.0",
     "react-hot-loader": "^4.6.5",
     "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "request": "^2.88.0",
@@ -79,6 +81,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^3.0.1",
+    "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
     "npm-run-all": "^4.1.5",
     "object-assign-deep": "^0.4.0",
@@ -114,7 +117,8 @@
         2,
         "unix"
       ],
-      "consistent-return": 0
+      "consistent-return": 0,
+      "react/prop-types": 0
     },
     "env": {
       "node": true,

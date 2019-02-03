@@ -1,3 +1,15 @@
 @media screen {
   @import './ModestaCSS/scss/modesta.scss';
 }
+
+.ls-mobile {
+  @media (min-width: 651px) {
+    display: none !important;
+  }
+}
+
+.ls-desktop {
+  @media (max-width: 650px) {
+    display: none !important;
+  }
+}
