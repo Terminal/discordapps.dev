@@ -1,3 +1,5 @@
+- [Terms and Conditions](https://github.com/Terminal/ls.terminal.ink/wiki/Terms-and-Conditions)
+
 # Project Forklift Development
 
 - [Setting up](/docs/setup.md)
