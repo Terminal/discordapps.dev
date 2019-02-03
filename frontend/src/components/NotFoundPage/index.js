@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import PageContainer from '../PageContainer';
 
 class NotFoundPage extends Component {
@@ -9,7 +10,7 @@ class NotFoundPage extends Component {
 
     return (
       <PageContainer>
-        <p>Not found!</p>
+        <p><FormattedMessage id="pages.notfound.message" /></p>
       </PageContainer>
     );
   }

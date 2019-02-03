@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 import NavbarLinks from '../NavbarLinks';
 import './index.scss';
 
@@ -42,7 +43,9 @@ class Navbar extends Component {
     return (
       <div>
         <div className="ls-desktop nav-container default">
-          <h1 className="nav-title">Cool website</h1>
+          <h1 className="nav-title">
+            <FormattedMessage id="site.name" />
+          </h1>
 
           <NavbarLinks />
         </div>
@@ -50,7 +53,7 @@ class Navbar extends Component {
           <span ref={this.open} id="menu-icon"></span>
 
           <div className="nav-content">
-            <h4>Nice stuff</h4>
+            <h4><FormattedMessage id="site.name" /></h4>
           </div>
 
           <NavbarLinks ref={this.navside} />

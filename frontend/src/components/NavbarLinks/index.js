@@ -1,12 +1,50 @@
 import React, { forwardRef } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const NavbarLinks = forwardRef((props, ref) => (
   <div ref={ref} className="sidenav">
-    <a href="#" className="current">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    <FormattedMessage id="navbar.languages">
+      {message => (
+        <a aria-label={message} href="#">
+          <span className="emoji twa-globe-showing-europe-africa" />
+        </a>
+      )}
+    </FormattedMessage>
+    <FormattedMessage id="navbar.add">
+      {message => (
+        <a aria-label={message} href="#">
+          {message}
+        </a>
+      )}
+    </FormattedMessage>
+    <FormattedMessage id="navbar.user">
+      {message => (
+        <a aria-label={message} href="#">
+          {message}
+        </a>
+      )}
+    </FormattedMessage>
+    <FormattedMessage id="navbar.logout">
+      {message => (
+        <a aria-label={message} href="#">
+          {message}
+        </a>
+      )}
+    </FormattedMessage>
+    <FormattedMessage id="navbar.login">
+      {message => (
+        <a aria-label={message} href="#">
+          {message}
+        </a>
+      )}
+    </FormattedMessage>
+    <FormattedMessage id="navbar.admin">
+      {message => (
+        <a aria-label={message} href="#">
+          {message}
+        </a>
+      )}
+    </FormattedMessage>
   </div>
 ));
 

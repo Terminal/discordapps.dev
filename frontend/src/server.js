@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import configureStore from './redux/configureStore';
-import App from './components/App';
+import LocaleRoutes from './components/LocaleRoutes';
 
 
 module.exports = function render(initialState, url) {
@@ -16,7 +16,7 @@ module.exports = function render(initialState, url) {
   const content = renderToString(
     <Provider store={store} >
       <StaticRouter location={url} context={context}>
-        <App />
+        <LocaleRoutes />
       </StaticRouter>
     </Provider>
   );

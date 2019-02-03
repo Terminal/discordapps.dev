@@ -3,7 +3,7 @@ import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureStore from './redux/configureStore';
-import App from './components/App';
+import LocaleRoutes from './components/LocaleRoutes';
 
 // Read the state sent with markup
 const state = window.__STATE__;
@@ -23,7 +23,7 @@ const store = configureStore(state);
 hydrate(
   <Provider store={store} >
     <BrowserRouter>
-      <App />
+      <LocaleRoutes />
     </BrowserRouter>
   </Provider>,
   document.querySelector('#app')
