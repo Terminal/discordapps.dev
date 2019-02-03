@@ -1,6 +1,8 @@
 # ls.terminal.ink Frontend
 Serverside Clientside ReactJS Redux Summer Magic Velvet SASS ESLint Chancey XML Mustache Monaco-editor Babel Bot List Frontend
 
+See it here: https://dev.discordbots.co.uk/
+
 ## Licence
 This project is not licenced for use at the moment.
 
