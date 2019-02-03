@@ -8,3 +8,4 @@ website/www-root/css/*
 
 frontend/views/
 frontend/build/
+frontend/config.json

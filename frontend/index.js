@@ -2,6 +2,7 @@ const express = require('express');
 const template = require('./views/template');
 const path = require('path');
 const ssr = require('./views/server');
+const config = require('./config.json');
 
 const initialState = {
   isFetching: false,
@@ -24,8 +25,8 @@ const webserver = (app) => {
       res.setHeader('Cache-Control', 'assets, max-age=604800');
       res.send(response);
     })
-    .listen(3000, () => {
-      console.log('Listening to port 3000');
+    .listen(config.port, () => {
+      console.log(`Listening to port ${config.port}`);
     });
 };
 
