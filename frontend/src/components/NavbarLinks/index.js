@@ -1,13 +1,14 @@
 import React, { forwardRef } from 'react';
 import { FormattedMessage } from 'react-intl';
+import LocalLink from '../LocalLink';
 
 const NavbarLinks = forwardRef((props, ref) => (
   <div ref={ref} className="sidenav">
     <FormattedMessage id="navbar.languages">
       {message => (
-        <a aria-label={message} href="#">
+        <LocalLink aria-label={message} to="/locale">
           <span className="emoji twa-globe-showing-europe-africa" />
-        </a>
+        </LocalLink>
       )}
     </FormattedMessage>
     <FormattedMessage id="navbar.add">

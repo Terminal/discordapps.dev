@@ -14,3 +14,15 @@
     display: none !important;
   }
 }
+
+.ls-no-filter {
+  filter: unset !important;
+}
+
+html, body {
+  color: unset;
+}
+
+body {
+  background: unset;
+}

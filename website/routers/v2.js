@@ -72,27 +72,6 @@ router
         next(err);
       });
   })
-  // .get('/bots/:id/embed', (req, res, next) => {
-  //   r.table('bots')
-  //     .get(req.params.id)
-  //     .default({})
-  //     .without('token')
-  //     .then((bot) => {
-  //       if (!bot.id) {
-  //         res.json({
-  //           ok: false,
-  //           message: res.__('errors.api.no_bot')
-  //         });
-  //       } else {
-  //         res.json({
-  //           ok: true
-  //         });
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       next(err);
-  //     });
-  // })
   .post('/bots/:id', checkParamsLength, checkToken, (req, res, next) => {
     const body = unflatten(req.body);
     // Does not work for nested items

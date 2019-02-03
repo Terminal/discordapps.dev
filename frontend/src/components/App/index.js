@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import flat from 'flat';
 
@@ -15,15 +14,15 @@ import deLocale from '../../../../locales/de.json';
 import daLocale from '../../../../locales/da.json';
 import zhCnLocale from '../../../../locales/zh-cn.json';
 
-import { fetchAppsIfNeeded } from '../../redux/actions';
 import './index.scss';
 import Navbar from '../Navbar';
 import Routes from '../Routes';
+import Footer from '../Footer/index.js';
 
 addLocaleData([...enData, ...frData, ...deData, ...daData, ...zhData]);
 
 const messages = {
-  'en-GB': flat(enLocale),
+  en: flat(enLocale),
   fr: flat(frLocale),
   de: flat(deLocale),
   da: flat(daLocale),
@@ -31,40 +30,22 @@ const messages = {
 };
 
 class App extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchAppsIfNeeded());
-  }
-
   render() {
-    // const { isFetching, apps } = this.props;
-    // const totalapps = apps.length;
+    const locale = this.props.locale || this.props.match.params.lang;
 
     return (
-      <IntlProvider locale={this.props.locale || this.props.match.params.lang} messages={messages[this.props.locale || this.props.match.params.lang]}>
+      <IntlProvider locale={locale} messages={messages[locale]}>
         <div>
           <Navbar />
           <noscript>
             <p>JavaScript is required to view this page</p>
           </noscript>
           <Routes />
-          {/* {isFetching && apps.length === 0 && <h2>Loading...</h2>}
-          {!isFetching && apps.length === 0 && <h2>Empty.</h2>}
-          {JSON.stringify(apps)}
-          <p>You&apos;re a gay</p> */}
+          <Footer />
         </div>
       </IntlProvider>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const { isFetching, apps } = state;
-
-  return {
-    isFetching,
-    apps
-  };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

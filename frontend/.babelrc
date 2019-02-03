@@ -9,6 +9,9 @@
           {
             "extensions": [".scss"]
           }
+        ],
+        [
+          "babel-plugin-import-static-files"
         ]
       ]
     }

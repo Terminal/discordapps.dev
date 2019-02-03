@@ -42,14 +42,14 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <div className="ls-desktop nav-container default">
+        <div className="ls-desktop ls-nav-desktop nav-container default">
           <h1 className="nav-title">
             <FormattedMessage id="site.name" />
           </h1>
 
           <NavbarLinks />
         </div>
-        <div className="ls-mobile nav-container">
+        <div className="ls-mobile ls-nav-mobile nav-container">
           <span ref={this.open} id="menu-icon"></span>
 
           <div className="nav-content">

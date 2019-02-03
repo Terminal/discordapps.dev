@@ -10,3 +10,12 @@
   opacity: 0;
   z-index: 99;
 }
+
+.ls-nav-desktop, .ls-nav-mobile {
+  color: #fff;
+}
+
+.ls-nav-desktop {
+  background-color: #282828 !important;
+  max-width: unset !important;
+}

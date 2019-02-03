@@ -348,7 +348,9 @@
     "add": "Add an app",
     "login": "Login",
     "logout": "Logout",
-    "admin": "Admin"
+    "admin": "Admin",
+    "languages": "Languages",
+    "user": "My Bots"
   },
   "pagination": {
     "image": {
