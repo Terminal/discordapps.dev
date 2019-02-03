@@ -18,6 +18,9 @@ const webserver = (app) => {
     // })
     .use('/assets', express.static(path.resolve(__dirname, 'assets')))
     .use('/build', express.static(path.resolve(__dirname, 'build')))
+    .get('/robots.txt', (req, res) => {
+      res.send('User-agent: *\nDisallow: /\n');
+    })
     .get('/*', (req, res) => {
       const { preloadedState, content, context } = ssr(initialState, req.url);
       const response = template('Server Rendered Page', preloadedState, content);
