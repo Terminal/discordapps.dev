@@ -129,4 +129,12 @@ module.exports = class Middleware {
         });
     }
   }
+
+  static getCategories(req, res, next) {
+    r.table('categories')
+      .then((categories) => {
+        req.categories = categories;
+        next();
+      });
+  }
 };

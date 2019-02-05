@@ -11,7 +11,11 @@
           }
         ],
         [
-          "babel-plugin-import-static-files"
+          "babel-plugin-import-static-files",
+          {
+            "baseDir": "/",
+            "outDir": "./frontend/build/"
+          }
         ]
       ]
     }
