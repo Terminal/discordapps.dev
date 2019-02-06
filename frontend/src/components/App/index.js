@@ -17,7 +17,7 @@ import zhCnLocale from '../../../../locales/zh-cn.json';
 import './index.scss';
 import Navbar from '../Navbar';
 import Routes from '../Routes';
-import Footer from '../Footer/index.js';
+import Footer from '../Footer';
 
 addLocaleData([...enData, ...frData, ...deData, ...daData, ...zhData]);
 
@@ -37,9 +37,6 @@ class App extends Component {
       <IntlProvider locale={locale} messages={messages[locale]}>
         <div>
           <Navbar />
-          <noscript>
-            <p>JavaScript is required to view this page</p>
-          </noscript>
           <Routes />
           <Footer />
         </div>

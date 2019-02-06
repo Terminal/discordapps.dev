@@ -7,8 +7,7 @@ import FlexColumns from '../FlexColumns';
 import PageContainer from '../PageContainer';
 import HalfscreenFullscreen from '../HalfscreenFullscreen';
 
-
-class App extends Component {
+class HomePagePage extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchAppsIfNeeded());
@@ -29,14 +28,17 @@ class App extends Component {
               Flex
             </FlexColumns>
             <FlexColumns columns={8}>
-              Flex
+              {
+                apps.map(app => (
+                  <h3 key={app.id}>{app.name}</h3>
+                ))
+              }
             </FlexColumns>
           </FlexGrid>
 
           {isFetching && totalapps === 0 && <h2>Loading...</h2>}
           {!isFetching && totalapps === 0 && <h2>Empty.</h2>}
           {JSON.stringify(apps)}
-          <p>You&apos;re a gay</p>
         </PageContainer>
       </div>
     );
@@ -52,4 +54,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(HomePagePage);

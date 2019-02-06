@@ -5,7 +5,7 @@ import App from '../App';
 
 const LocaleRoutes = () => (
   <Switch>
-    <Route path="/:lang(en|fr|de|da|zh-cn)" component={App} />
+    <Route path="/:lang(en|fr|de|da|zh-cn)/" component={App} />
     <Route path="/" component={() => (<Redirect to="/en"/>)} />
   </Switch>
 );

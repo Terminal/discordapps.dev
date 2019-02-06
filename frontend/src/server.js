@@ -5,7 +5,6 @@ import { StaticRouter } from 'react-router-dom';
 import configureStore from './redux/configureStore';
 import LocaleRoutes from './components/LocaleRoutes';
 
-
 module.exports = function render(initialState, url) {
   // Configure the store with the initial state provided
   const store = configureStore(initialState);

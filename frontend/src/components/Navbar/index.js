@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import NavbarLinks from '../NavbarLinks';
 import './index.scss';
+import LocalLink from '../LocalLink';
 
 class Navbar extends Component {
   constructor(props) {
@@ -44,7 +45,9 @@ class Navbar extends Component {
       <div>
         <div className="ls-desktop ls-nav-desktop nav-container default">
           <h1 className="nav-title">
-            <FormattedMessage id="site.name" />
+            <LocalLink to="/">
+              <FormattedMessage id="site.name" />
+            </LocalLink>
           </h1>
 
           <NavbarLinks />
@@ -56,7 +59,7 @@ class Navbar extends Component {
             <h4><FormattedMessage id="site.name" /></h4>
           </div>
 
-          <NavbarLinks ref={this.navside} />
+          <NavbarLinks innerRef={this.navside} />
         </div>
         <div ref={this.darken} className="ls-mobile ls-navbar-darken"></div>
       </div>
