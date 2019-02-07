@@ -1,5 +1,9 @@
 // html skeleton provider
-function template(title, initialState = {}, content = '') {
+function template({
+  initialState = {},
+  content = '',
+  helmet
+}) {
   let scripts = ''; // Dynamically ship scripts based on render type
   if (content) {
     scripts = `
@@ -15,9 +19,9 @@ function template(title, initialState = {}, content = '') {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>${title}</title>
-    <link href="/bundle.css" rel="stylesheet"></link>
+    ${helmet ? helmet.title.toString() : ''}
+    ${helmet ? helmet.meta.toString() : ''}
+    ${helmet ? helmet.link.toString() : ''}
   </head>
   <body>
     <div id="app">

@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
+import Helmet from 'react-helmet';
 import configureStore from './redux/configureStore';
 import LocaleRoutes from './components/LocaleRoutes';
 
@@ -20,8 +21,10 @@ module.exports = function render(initialState, url) {
     </Provider>
   );
 
+  const helmet = Helmet.renderStatic();
+
   // Get a copy of store data to create the same store on client side
   const preloadedState = store.getState();
 
-  return { content, preloadedState, context };
+  return { content, preloadedState, context, helmet };
 };

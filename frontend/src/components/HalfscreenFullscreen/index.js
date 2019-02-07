@@ -5,7 +5,7 @@ import './index.scss';
 
 const HalfscreenFullscreen = ({ children, className }) => (
   <section className="fullscreen ls-halfscreen">
-    <div className="background" style={{ backgroundImage: `url('${background}')` }} />
+    <div className="background ls-no-filter" style={{ backgroundImage: `url('${background}')` }} />
     <div className="ls-halfscreen-contents">
       <section className={className}>
         {children}

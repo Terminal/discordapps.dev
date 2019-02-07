@@ -11,7 +11,8 @@ const RDBStore = require('session-rethinkdb')(session);
 const passport = require('./static/passport');
 
 const initialState = {
-  isFetching: false,
+  isFetchingApps: false,
+  isFetchingAuth: false,
   apps: [],
   auth: false
 };
@@ -42,8 +43,12 @@ const webserver = (app) => {
     .use(express.static(path.resolve(__dirname, 'build')))
     .use('/auth', authRouter)
     .get('/*', (req, res) => {
-      const { preloadedState, content, context } = ssr(initialState, req.url);
-      const response = template('Server Rendered Page', preloadedState, content);
+      const { preloadedState, content, context, helmet } = ssr(initialState, req.url);
+      const response = template({
+        initialState: preloadedState,
+        content,
+        helmet
+      });
       if (context.statusCode) res.status(context.statusCode);
       res.setHeader('Cache-Control', 'assets, max-age=604800');
       res.send(response);

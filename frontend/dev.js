@@ -19,14 +19,10 @@ const devMiddleware = webpackDevMiddleware(compiler, {
 });
 
 app
-  .use(
-    devMiddleware
-  )
+  .use(devMiddleware)
   .use(webpackHotMiddleware(compiler));
 
 process.on('SIGINT', () => {
-  console.log('Goodnight!');
-
   // Close stuff
   devMiddleware.close();
 });

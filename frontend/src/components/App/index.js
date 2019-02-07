@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import flat from 'flat';
+import Helmet from 'react-helmet';
 
 import enData from 'react-intl/locale-data/en';
 import frData from 'react-intl/locale-data/fr';
@@ -15,6 +16,7 @@ import daLocale from '../../../../locales/da.json';
 import zhCnLocale from '../../../../locales/zh-cn.json';
 
 import './index.scss';
+import modesta from './ModestaCSS/scss/modesta.scss';
 import Navbar from '../Navbar';
 import Routes from '../Routes';
 import Footer from '../Footer';
@@ -36,6 +38,9 @@ class App extends Component {
     return (
       <IntlProvider locale={locale} messages={messages[locale]}>
         <div>
+          <Helmet>
+            <link href="/bundle.css" rel="stylesheet"></link>
+          </Helmet>
           <Navbar />
           <Routes />
           <Footer />

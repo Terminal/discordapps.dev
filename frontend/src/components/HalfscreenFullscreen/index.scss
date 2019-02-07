@@ -1,15 +1,16 @@
 .ls-halfscreen {
   height: 50vh;
-  .ls-halfscreen-contents {
-    color: #FFF;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
+}
+
+.ls-halfscreen-contents {
+  color: white;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
 }

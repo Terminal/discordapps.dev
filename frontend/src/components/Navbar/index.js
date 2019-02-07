@@ -16,12 +16,12 @@ class Navbar extends Component {
 
   componentDidMount() {
     this.open.current.addEventListener('click', this.openNavbar);
-    document.addEventListener('click', this.closeNavbar);
+    this.darken.current.addEventListener('click', this.closeNavbar);
   }
 
   componentWillUnmount() {
     this.open.current.removeEventLister('click', this.openNavbar);
-    document.removeEventListener('click', this.closeNavbar);
+    this.darken.current.removeEventLister('click', this.closeNavbar);
   }
 
   openNavbar() {
@@ -32,12 +32,10 @@ class Navbar extends Component {
     }
   }
 
-  closeNavbar(e) {
-    if (!e.target.closest('.nav-container') && this.navside.current && this.navside.current.style) {
-      this.navside.current.style.transform = 'translateX(-250px)';
-      this.darken.current.style.opacity = '0';
-      this.darken.current.style.pointerEvents = 'none';
-    }
+  closeNavbar() {
+    this.navside.current.style.transform = 'translateX(-250px)';
+    this.darken.current.style.opacity = '0';
+    this.darken.current.style.pointerEvents = 'none';
   }
 
   render() {

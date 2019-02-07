@@ -5,9 +5,13 @@ const path = require('path');
 const config = {
   entry: {
     client: [
+      '@babel/polyfill',
+      'whatwg-fetch',
       path.join(__dirname, 'src', 'client.js')
     ],
     bundle: [
+      '@babel/polyfill',
+      'whatwg-fetch',
       path.join(__dirname, 'src', 'bundle.js')
     ]
   },
@@ -45,17 +49,6 @@ const config = {
               sourceMap: true
             }
           } // compiles Sass to CSS, using Node Sass by default
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true
-            }
-          },
         ]
       },
       {
