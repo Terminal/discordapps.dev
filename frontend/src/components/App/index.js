@@ -15,8 +15,9 @@ import deLocale from '../../../../locales/de.json';
 import daLocale from '../../../../locales/da.json';
 import zhCnLocale from '../../../../locales/zh-cn.json';
 
+import './ModestaCSS/scss/modesta.scss';
+import './ModestaCSS/scss/twemoji.scss';
 import './index.scss';
-import modesta from './ModestaCSS/scss/modesta.scss';
 import Navbar from '../Navbar';
 import Routes from '../Routes';
 import Footer from '../Footer';

@@ -12,7 +12,15 @@
     [
       "react-css-modules",
       {
-        "removeImport": true
+        "removeImport": true,
+        "webpackHotModuleReloading": true,
+        "generateScopedName": "[hash:base64]",
+        "context": "./src",
+        "filetypes": {
+          ".scss": {
+            "syntax": "postcss-scss"
+          }
+        }
       }
     ]
   ],
@@ -20,12 +28,12 @@
     "node": {
       "plugins": [
         "react-hot-loader/babel",
-        [
-          "babel-plugin-transform-require-ignore",
-          {
-            "extensions": [".scss"]
-          }
-        ],
+        // [
+        //   "babel-plugin-transform-require-ignore",
+        //   {
+        //     "extensions": [".scss"]
+        //   }
+        // ],
         [
           "babel-plugin-import-static-files",
           {

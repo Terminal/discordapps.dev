@@ -24,7 +24,9 @@ app
 
 process.on('SIGINT', () => {
   // Close stuff
-  devMiddleware.close();
+  devMiddleware.close(() => {
+    console.log('Webpack stopped listening');
+  });
 });
 
 webserver(app);

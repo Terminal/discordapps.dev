@@ -64,6 +64,10 @@ const webserver = (app) => {
     // Close stuff
     http.close();
     r.getPoolMaster().drain();
+
+    setTimeout(() => {
+      process.exit(0);
+    }, 1000);
   });
 };
 

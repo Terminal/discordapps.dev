@@ -20,6 +20,7 @@ const config = {
     filename: '[name].js',
     publicPath: '/'
   },
+  context: path.resolve(__dirname, 'src'),
   module: {
     rules: [
       {
@@ -31,6 +32,15 @@ const config = {
       {
         test: /\.scss$/,
         use: [
+          {
+            loader: 'css-hot-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'style-loader',
+          },
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
