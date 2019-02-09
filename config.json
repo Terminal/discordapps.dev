@@ -35,7 +35,7 @@
     "cdn": "https://cdn.discordapp.com"
   },
   "links": {
-    "docs": "https://docs.terminal.ink/ls10"
+    "docs": "https://github.com/Terminal/ls.terminal.ink/wiki"
   },
   "default": {
     "language": "en-GB",
