@@ -24,7 +24,7 @@
       "githubrepo": "Repozytorium GitHub musi być poprawne. Pozostaw puste, jeśli nie masz repozytorium GitHub.",
       "id": "ID Bota musi być wypełnione i numeryczne",
       "invite": "Adres URL zaproszenia musi zostać wypełniony i jako poprawny link HTTPS",
-      "website": "Adres URL witryny musi być prawidłowym linkiem HTTPS",
+      "website": "Adres URL strony musi być prawidłowym linkiem HTTPS",
       "languages": "Musisz dodać jeden język. Kliknij język, w którym chcesz umieścić stronę swojego robota, i wybierz przycisk 'Dodaj język'",
       "mentionable": "Opcjonalność wzmiankowa prefiksa musi być zaznaczona lub usunięta",
       "name": "Bot musi mieć nazwę o długości od 4 do 32 znaków.",
@@ -149,7 +149,7 @@
       "nsfw": "NSFW",
       "offeredby": "Stworzony przez:",
       "modified": "Ostatnio zmodyfikowany: {{{ date }}}",
-      "created": "Opublikowane po raz pierwszy: {{{ date }}}",
+      "created": "Opublikowany po raz pierwszy: {{{ date }}}",
       "category": "Kategoria: {{{ category }}}",
       "initiateCategoryFilter": "Znajdź boty dla...",
       "ownerFilter": "Boty przez {{{ name }}}",
@@ -215,12 +215,12 @@
         "title": "Organizacja/Użytkownik GitHuba"
       },
       "github_repo": {
-        "placeholder": "Coś jak: ",
+        "placeholder": "Coś jak: Tuxedo",
         "title": "Repozytorium GitHuba"
       },
       "information": "Twoja strona z botem",
       "invite": {
-        "modal": "Proszę upewnij się \"ID bota\" został wypełniony ID bota Discord",
+        "modal": "Proszę upewnij się, że \"ID bota\" został wypełniony numerem ID bota Discord",
         "title": "Adres URL zaproszenia",
         "generate": "Wygeneruj link do zaproszenia"
       },
@@ -228,7 +228,7 @@
         "add": "Dodaj język",
         "delete": "Usuń ten język",
         "modal": "Napisz stronę swojego bota w dowolnym obsługiwanym języku. Wybierz język i kliknij przycisk 'Dodaj język'.",
-        "title": "Języki stron botów"
+        "title": "Języki stron bota"
       },
       "mentionable": {
         "title": "Można wzmiankować aby uruchomić bota"
@@ -258,7 +258,7 @@
       "images": {
         "title": "Wygląd",
         "avatar": {
-          "title": "Adres URL avatara",
+          "title": "Adres URL awatara",
           "placeholder": "Link HTTPS do obrazu awatara"
         },
         "cover": {
@@ -281,20 +281,20 @@
       },
       "website": {
         "title": "Strona internetowa",
-        "placeholder": "Link HTTPS do Twojej witryny"
+        "placeholder": "Link HTTPS do Twojej strony"
       },
       "sourcecode": "Kod źródłowy",
       "title": "Dodaj lub edytuj aplikację",
       "triggermethods": "Metody wyzwalania",
       "deleteLanguage": "Usuń język",
       "required": "Pola zaznaczone * są wymagane.",
-      "updates": "Zaleca się dołączenie do Terminal.ink Serwera Discorda aby wyświetlić aktualizacje, zobaczyć status weryfikacji bota a także otrzymywać bezpośrednie wiadomości od pracowników dotyczące twojej aplikacji.",
-      "discord": "Dołącz Terminal.ink"
+      "updates": "Zaleca się dołączenie na serwer Discord Terminal.ink aby wyświetlić aktualizacje, zobaczyć status weryfikacji bota a także otrzymywać bezpośrednie wiadomości od pracowników dotyczące twojej aplikacji.",
+      "discord": "Dołącz na serwer Terminal.ink"
     },
     "error": {
       "notfound": "Strona nie znaleziona...",
       "server": "Wewnętrzny błąd serwera",
-      "github": "Zgłoś ten błąd GitHub.com",
+      "github": "Zgłoś ten błąd na GitHub.com",
       "report": "Dziękuje za poświęcenie Twojego czasu żeby zgłosić ten błąd. Proszę wpisz co robiłeś/aś przed incydentem.",
       "snarky": "Z pewnością musiało tak się stać..."
     },
@@ -303,8 +303,8 @@
       "empty": "Nie ma botów"
     },
     "locale": {
-      "choose": "Proszę wybierać język.",
-      "pleasehelp": "Jesteś dobrym transkryptą? Kliknij tutaj."
+      "choose": "Proszę wybrać język.",
+      "pleasehelp": "Jesteś dobrym tłumaczem? Kliknij tutaj."
     },
     "langdev": {
       "title": "Zobacz na wszystkie klucze języków",
@@ -314,7 +314,7 @@
     },
     "notfound": {
       "gohome": "Strona główna",
-      "message": "Strona nie znaleziona"
+      "message": "Strona nie została znaleziona"
     },
     "sure": {
       "title": "Czy jesteś pewny?",
@@ -328,7 +328,7 @@
       "placeholder": "Proszę wpisać powód Twojej recenzji.",
       "number": {
         "one": "%s recenzja",
-        "other": "%s recenzje"
+        "other": "%s recenzji(e)"
       },
       "delete": "Usuń wszystkie recenzje",
       "all": "Zobacz wszystkie recenzje"
