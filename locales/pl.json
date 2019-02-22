@@ -76,7 +76,7 @@
     "discord": "Discord",
     "terminal": "Terminal.ink",
     "terms": "Regulamin",
-    "docs": "Docs",
+    "docs": "Dokumentacja",
     "view": "Wyświetl tę stronę na GitHubie"
   },
   "forms": {
@@ -90,7 +90,7 @@
     "wait": "Proszę czekać..."
   },
   "intro": {
-    "search": "What are you looking for?",
+    "search": "Czego szukasz?",
     "docs": "Dokumentacja"
   },
   "locales": {
@@ -119,13 +119,13 @@
     "sv": "Szwedzki",
     "tr": "Turecki",
     "vi": "Wietnamski",
-    "zh-cn": "Chiński (Ułatwiony)",
+    "zh-cn": "Chiński (Uproszczony)",
     "zh-tw": "Chiński (Tradycyjny)"
   },
   "pages": {
     "bots": {
       "backgroundAlt": "Logo dla ls.terminal.ink",
-      "description": "Zbiór aplikacji dla robotów Discord",
+      "description": "Zbiór aplikacji dla botów Discord",
       "invite": "Dodaj tego bota",
       "support": "Pomoc techniczna",
       "website": "Strona internetowa",
@@ -166,7 +166,7 @@
         "description": "To jest token wymagany do edycji twojego bota na tej liście. Informacje na temat dostępnych punktów końcowych można znaleźć w dokumentacji dla programistów.",
         "docs": "Zobacz dokumentację"
       },
-      "renew": "Odnów tokena",
+      "renew": "Odnów token",
       "hide": {
         "title": "Ukryj bota",
         "description": "Możesz ukryć swojego bota z pierwszej strony, na wypadek, gdybyś nie chciał by tam był.",
@@ -231,7 +231,7 @@
         "title": "Języki stron botów"
       },
       "mentionable": {
-        "title": "Można wspomnieć żeby wyzwolić bota"
+        "title": "Można wzmiankować aby uruchomić bota"
       },
       "name": {
         "title": "Nazwa"
@@ -390,9 +390,9 @@
     "SEND_MESSAGES": "Wysyłanie wiadomości",
     "SEND_TTS_MESSAGES": "Wysyłanie wiadomości TTS",
     "SPEAK": "Rozmawianie",
-    "USE_EXTERNAL_EMOJIS": "Użycie zewnętrznych emotek",
-    "USE_VAD": "Użycie funkcji głosowych",
-    "VIEW_AUDIT_LOG": "Wyświetl dziennik audytu"
+    "USE_EXTERNAL_EMOJIS": "Użycie zewnętrznych emoji",
+    "USE_VAD": "Użycie aktywacji głosowej",
+    "VIEW_AUDIT_LOG": "Wyświetl dziennik zdarzeń"
   },
   "site": {
     "name": "Discordowa Lista Botów przez Terminal.ink",
