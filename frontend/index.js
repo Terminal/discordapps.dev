@@ -71,8 +71,10 @@ const webserver = (app) => {
   });
 };
 
+// If this was called by itself, make a new express
 if (require.main === module) {
   webserver(express());
 }
 
+// Otherwise, allow modules to pass in express before
 module.exports = webserver;

@@ -81,7 +81,7 @@ module.exports = (env, argv) => {
     config.devtool = 'source-map';
     config.mode = 'development';
     config.entry.bundle.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000');
-    config.plugins.push(new webpack.HotModuleReplacementPlugin());
+    config.plugins.unshift(new webpack.HotModuleReplacementPlugin());
   }
 
   return config;
