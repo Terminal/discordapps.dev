@@ -54,12 +54,12 @@ router
   })
   .get('/bots/:id', checkParamsLength, (req, res, next) => {
     r.table('bots')
+      .get(req.params.id)
       .merge(bot => r.branch(bot('contents').contains(contents =>
         contents('locale').eq(res.getLocale())
       ), {
         random: bot('random').add(10)
       }, {}))
-      .get(req.params.id)
       .merge(bot => ({
         reviews: r.table('reviews')
           .filter({

@@ -2,8 +2,6 @@ const r = require('../rethinkdb');
 const languages = require('../data/languages.json');
 const categories = require('../data/categories.json');
 
-const selectableLanguages = Object.keys(languages);
-
 const localise = (item, res) => {
   let localisedContents = item.contents.find(content => content.locale === res.getLocale());
   if (localisedContents) {
