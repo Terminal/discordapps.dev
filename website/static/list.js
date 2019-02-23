@@ -86,14 +86,13 @@ const listMiddleware = options => (req, res, next) => {
   if (options.filter === 'search') {
     title = res.__('pages.bots.search');
     filter = (bot) => {
-      let orChain = r.expr(sanitise(query)).match(bot('category'))
-        .or(bot('nsfw').and(r.expr(sanitise(query)).match('nsfw')));
-
-      for (let i = 0; i < selectableLanguages.length; i += 1) {
-        orChain = orChain.or(bot('contents')(selectableLanguages[i])('page').default('').match(sanitise(query)))
-          .or(bot('contents')(selectableLanguages[i])('name').default('').match(sanitise(query)))
-          .or(bot('contents')(selectableLanguages[i])('description').default('').match(sanitise(query)));
-      }
+      const orChain = r.expr(sanitise(query)).match(bot('category'))
+        .or(bot('nsfw').and(r.expr(sanitise(query)).match('nsfw')))
+        .or(bot('contents').contains(contents =>
+          contents('page').default('').match(sanitise(query))
+            .or(contents('name').default('').match(sanitise(query)))
+            .or(contents('description').default('').match(sanitise(query)))
+        ));
 
       let databaseQuery = bot('state').eq(state).and(orChain);
 
