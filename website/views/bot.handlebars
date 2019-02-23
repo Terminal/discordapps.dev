@@ -75,7 +75,13 @@
 
 
 <div class="ls-main-content container box-shadow ls-round {{#unless contents}}hidden{{/unless}}">
-  {{#if item.pageDisplayedLanguage}}<p><i>{{i18n __ "errors.bots.no_suitable_lang" "language" (i18n __ (concat "locales." item.pageDisplayedLanguage))}}</i></p>{{/if}}
+  {{#unless (isEqual item.contents.locale (i18n getLocale))}}
+    <p>
+      <i>
+        {{i18n __ "errors.bots.no_suitable_lang" "language" (i18n __ (concat "locales." item.contents.locale))}}
+      </i>
+    </p>
+  {{/unless}}
   <div id="ls-custom-content" class="ls-custom-content ls-noscript">
     {{{contents}}}
   </div>

@@ -48,5 +48,9 @@ checkDatabase()
       http.close(() => {
         console.log('No longer listening');
       });
+      setTimeout(() => {
+        console.log('Failed to exit on time');
+        process.exit(1);
+      }, 1000);
     });
   });

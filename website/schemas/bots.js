@@ -17,7 +17,7 @@ const schema = joi.object({
     repo: joi.string().allow(null).error(new Error('errors.bots.githubrepo')),
   }),
   trigger: joi.object({
-    prefix: joi.array().items(joi.string().min(1).max(10)).required().min(1).max(10).required().error(new Error('errors.bots.prefix')),
+    prefix: joi.array().items(joi.string().min(1).max(10)).required().min(1).max(10).error(new Error('errors.bots.prefix')),
     customisable: joi.bool().error(new Error('errors.bots.customisable')),
     mentionable: joi.bool().error(new Error('errors.bots.mentionable')),
   }),
@@ -35,16 +35,12 @@ const schema = joi.object({
     adverts: joi.bool().error(new Error('errors.bots.adverts'))
   }),
   count: joi.number().integer().min(0).max(5000000).error(new Error('errors.bots.count')).allow(null), // Maximum of 5 Million bots... b'cus why not?
-  contents: joi.object().pattern(joi.string().valid(Object.keys(languages)), joi.object({
+  contents: joi.array().items(joi.object({
+    locale: joi.string().valid(Object.keys(languages)).required().error(new Error('errors.bots.languages')),
     name: joi.string().min(4).max(32).required().error(new Error('errors.bots.name')),
     description: joi.string().min(10).max(100).required().error(new Error('errors.bots.description')),
     page: joi.string().min(20).max(10000).required().error(new Error('errors.bots.page')),
-  })).required().error((errors) => {
-    if (errors.some(e => e.context.key === 'contents')) {
-      return new Error('errors.bots.languages');
-    }
-    return errors;
-  })
+  })).required()
 }).required();
 
 module.exports = schema;

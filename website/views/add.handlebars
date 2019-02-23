@@ -156,20 +156,21 @@
     </div>
     <div id="languages-box" data-delete="{{i18n __ "pages.edit.deleteLanguage"}}" data-name="{{i18n __ "pages.edit.name.title"}}" data-description="{{i18n __ "pages.edit.description.title"}}" data-page="{{i18n __ "pages.edit.page.title"}}">
       {{#each item.contents}}
-        <div class="ls-main-content container box-shadow ls-round github" data-title="{{i18n ../__ (concat "locales." @key)}}" id="{{@key}}">
+        <div class="ls-main-content container box-shadow ls-round github" data-title="{{i18n ../__ (concat "locales." this.locale)}}" id="{{this.locale}}">
           <div class="ls-flex-row">
-            <h3>{{i18n ../__ (concat "locales." @key)}}</h3>
-            <button type="button" onclick="deleteLanguage('{{@key}}')" class="ls-button">
+            <h3>{{i18n ../__ (concat "locales." this.locale)}}</h3>
+            <button type="button" onclick="deleteLanguage('{{this.locale}}')" class="ls-button">
               {{i18n ../__ "pages.edit.deleteLanguage"}}
             </button>
           </div>
-          <label for="bot.contents.{{@key}}.name">{{i18n ../__ "pages.edit.name.title"}}</label>
-          <input name="bot.contents.{{@key}}.name" type="text" class="full-width" value="{{this.name}}">
-          <label for="bot.contents.{{@key}}.description">{{i18n ../__ "pages.edit.description.title"}}</label>
-          <input name="bot.contents.{{@key}}.description" type="text" class="full-width" value="{{this.description}}">
-          <label for="bot.contents.{{@key}}.page">{{i18n ../__ "pages.edit.page.title"}}</label>
-          <textarea name="bot.contents.{{@key}}.page" id="bot.contents.{{@key}}.page" class="full-width ls-edit-page">{{this.page}}</textarea>
+          <label for="bot.contents[{{@index}}][name]">{{i18n ../__ "pages.edit.name.title"}}</label>
+          <input name="bot.contents[{{@index}}][name]" type="text" class="full-width" value="{{this.name}}">
+          <label for="bot.contents[{{@index}}][description]">{{i18n ../__ "pages.edit.description.title"}}</label>
+          <input name="bot.contents[{{@index}}][description]" type="text" class="full-width" value="{{this.description}}">
+          <label for="bot.contents[{{@index}}][page]">{{i18n ../__ "pages.edit.page.title"}}</label>
+          <textarea name="bot.contents[{{@index}}][page]" id="textarea-{{this.locale}}" class="full-width ls-edit-page">{{this.page}}</textarea>
           <div class="ls-edit-monaco"></div>
+          <input name="bot.contents[{{@index}}][locale]" type="text" class="invisible" value="{{this.locale}}">
         </div>
       {{/each}}
     </div>

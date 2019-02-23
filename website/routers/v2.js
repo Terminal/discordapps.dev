@@ -36,6 +36,11 @@ const checkToken = (req, res, next) => {
 router
   .get('/bots', (req, res, next) => {
     r.table('bots')
+      .merge(bot => r.branch(bot('contents').contains(contents =>
+        contents('locale').eq(res.getLocale())
+      ), {
+        random: bot('random').add(10)
+      }, {}))
       .without('token')
       .then((bots) => {
         res.json({
@@ -49,6 +54,11 @@ router
   })
   .get('/bots/:id', checkParamsLength, (req, res, next) => {
     r.table('bots')
+      .merge(bot => r.branch(bot('contents').contains(contents =>
+        contents('locale').eq(res.getLocale())
+      ), {
+        random: bot('random').add(10)
+      }, {}))
       .get(req.params.id)
       .merge(bot => ({
         reviews: r.table('reviews')

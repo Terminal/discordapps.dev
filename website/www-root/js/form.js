@@ -49,6 +49,8 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
     const descriptionLocalised = languagesBox.dataset.description;
     const pageLocalised = languagesBox.dataset.page;
 
+    const numberOfLanguages = languagesBox.children.length;
+
     if (selectedLanguageCode !== 'null') {
       const selectedLanguageOption = languageOptionsBox.children[languageOptionsBox.selectedIndex];
       const selectedLanguageName = selectedLanguageOption.innerText;
@@ -71,27 +73,32 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
       deleteLanguageButton.setAttribute('class', 'ls-button');
       deleteLanguageButton.innerText = deleteLocalised;
 
+      const localeInput = document.createElement('input');
+      localeInput.setAttribute('value', selectedLanguageCode);
+      localeInput.setAttribute('name', `bot.contents[${numberOfLanguages}][locale]`);
+      localeInput.setAttribute('type', 'text');
+      localeInput.setAttribute('class', 'invisible');
       const nameLabel = document.createElement('label');
       const nameInput = document.createElement('input');
-      nameLabel.setAttribute('for', `bot.contents.${selectedLanguageCode}.name`);
+      nameLabel.setAttribute('for', `bot.contents[${numberOfLanguages}][name]`);
       nameLabel.innerText = nameLocalised;
-      nameInput.setAttribute('name', `bot.contents.${selectedLanguageCode}.name`);
+      nameInput.setAttribute('name', `bot.contents[${numberOfLanguages}][name]`);
       nameInput.setAttribute('type', 'text');
       nameInput.setAttribute('class', 'full-width');
       const descriptionLabel = document.createElement('label');
       const descriptionInput = document.createElement('input');
-      descriptionLabel.setAttribute('for', `bot.contents.${selectedLanguageCode}.description`);
+      descriptionLabel.setAttribute('for', `bot.contents[${numberOfLanguages}][description]`);
       descriptionLabel.innerText = descriptionLocalised;
-      descriptionInput.setAttribute('name', `bot.contents.${selectedLanguageCode}.description`);
+      descriptionInput.setAttribute('name', `bot.contents[${numberOfLanguages}][description]`);
       descriptionInput.setAttribute('type', 'text');
       descriptionInput.setAttribute('class', 'full-width');
       const pageLabel = document.createElement('label');
       const pageInput = document.createElement('textarea');
       const monacoInput = document.createElement('div');
-      pageLabel.setAttribute('for', `bot.contents.${selectedLanguageCode}.page`);
+      pageLabel.setAttribute('for', `bot.contents[${numberOfLanguages}][page]`);
       pageLabel.innerText = pageLocalised;
-      pageInput.setAttribute('name', `bot.contents.${selectedLanguageCode}.page`);
-      pageInput.id = `bot.contents.${selectedLanguageCode}.page`;
+      pageInput.setAttribute('name', `bot.contents[${numberOfLanguages}][page]`);
+      pageInput.setAttribute('id', `textarea-${selectedLanguageCode}`);
       pageInput.classList.add('full-width', 'ls-edit-page');
       monacoInput.classList.add('ls-edit-monaco');
 
@@ -105,6 +112,7 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
       languageRow.appendChild(pageLabel);
       languageRow.appendChild(pageInput);
       languageRow.appendChild(monacoInput);
+      languageRow.appendChild(localeInput);
 
       languagesBox.appendChild(languageRow);
 
@@ -121,7 +129,7 @@ require(['vs/editor/editor.main'], () => { // eslint-disable-line
   window.addEventListener('load', () => {
     const monacos = [...document.getElementsByClassName('ls-edit-monaco')];
     monacos.forEach((div) => {
-      const textarea = document.getElementById(`bot.contents.${div.parentElement.id}.page`);
+      const textarea = div.previousElementSibling;
       const editor = monaco.editor.create(div, { // eslint-disable-line
         language: 'markdown',
         automaticLayout: true,
@@ -163,7 +171,7 @@ window.deleteLanguage = (id) => {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     Object.keys(window.editors).forEach((languageCode) => {
-      const textarea = document.getElementById(`bot.contents.${languageCode}.page`);
+      const textarea = document.getElementById(`textarea-${languageCode}`);
       const value = window.editors[languageCode].getValue();
       if (value.length > 0) {
         textarea.value = value;

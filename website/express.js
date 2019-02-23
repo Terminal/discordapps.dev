@@ -36,7 +36,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .set('view engine', 'handlebars')
   .set('json spaces', 4)
   .engine('handlebars', handlebars({
-    defaultLayout: 'modesta',
+    defaultLayout: 'main',
     layoutsDir: path.join(path.dirname(__filename), 'views', 'layouts'),
     partialsDir: path.join(path.dirname(__filename), 'views', 'partials'),
     helpers: {
@@ -64,6 +64,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       or: (var1, var2) => var1 || var2,
       and: (var1, var2) => var1 && var2,
       isEqual: (var1, var2) => var1 === var2,
+      not: var1 => !var1,
       add: (var1, var2) => var1 + var2,
       languages: () => i18n.getLocales(),
       webserverLocation: () => config.webserver.location,
@@ -109,32 +110,6 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     prefix: '/css',
     debug: false,
   }))
-  .use((req, res, next) => {
-    // Temporary theme switcher
-    // Delete when Material is complete
-    let theme;
-
-    if (typeof req.query.theme !== 'undefined' && req.query.theme === 'material') {
-      theme = 'material';
-    } else if (typeof req.query.theme !== 'undefined' && req.query.theme === 'modesta') {
-      theme = 'modesta';
-    } else if (typeof req.cookies.theme !== 'undefined' && req.cookies.theme === 'material') {
-      theme = 'material';
-    } else if (typeof req.cookies.theme !== 'undefined' && req.cookies.theme === 'modesta') {
-      theme = 'modesta';
-    } else {
-      theme = 'modesta';
-    }
-
-    res.cookie('theme', theme);
-    const temp = res.render;
-
-    res.locals.layout = theme;
-    res.render = function render(view, ...args) {
-      temp.call(this, `${theme}/${view}`, ...args);
-    };
-    next();
-  })
   .use(express.static(path.join(__dirname, 'www-root')))
   .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
   .use('/css/images/', express.static(path.join(__dirname, 'www-root', 'ModestaCSS', 'css', 'images')))

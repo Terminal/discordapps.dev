@@ -17,7 +17,9 @@ const joi = originaljoi.extend({
   base: originaljoi.array(),
   name: 'array',
   coerce: (values, state, options) => { // eslint-disable-line
-    return values.filter(value => value !== '');
+    if (typeof values === 'object' && Array.isArray(values)) return values.filter(value => value !== '');
+    if (typeof values === 'undefined') return [];
+    return [];
   }
 }, {
   base: originaljoi.number(),

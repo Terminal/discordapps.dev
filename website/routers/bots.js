@@ -245,7 +245,7 @@ router
       .get(req.params.id)
       .then((item) => {
         if (item) {
-          const remainingLanguages = selectableLanguages.filter(language => !Object.keys(item.contents).includes(language));
+          const remainingLanguages = selectableLanguages.filter(language => item.contents.find(contents => contents.locale !== language));
           res.render('add', {
             selectableLanguages: remainingLanguages,
             categories,

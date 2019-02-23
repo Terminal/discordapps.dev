@@ -31,7 +31,9 @@ router
   })
   .get('/', (req, res, next) => {
     r.table('bots')
-      .merge(bot => r.branch(bot('contents').hasFields(res.getLocale()), {
+      .merge(bot => r.branch(bot('contents').contains(contents =>
+        contents('locale').eq(res.getLocale())
+      ), {
         random: bot('random').add(10)
       }, {}))
       .orderBy(r.desc('random'))

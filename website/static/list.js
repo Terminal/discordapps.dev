@@ -5,8 +5,9 @@ const categories = require('../data/categories.json');
 const selectableLanguages = Object.keys(languages);
 
 const localise = (item, res) => {
-  if (item.contents[res.getLocale()]) {
-    item.contents = item.contents[res.getLocale()];
+  let localisedContents = item.contents.find(content => content.locale === res.getLocale());
+  if (localisedContents) {
+    item.contents = localisedContents;
     return item;
   }
   const availableLanguages = Object.keys(languages).sort((a, b) => {
@@ -19,10 +20,9 @@ const localise = (item, res) => {
   });
 
   for (let i = 0; i < availableLanguages.length; i += 1) {
-    // Try all languages in priority order.
-    if (item.contents[availableLanguages[i]]) {
-      item.contents = item.contents[availableLanguages[i]];
-      item.pageDisplayedLanguage = availableLanguages[i];
+    localisedContents = item.contents.find(content => content.locale === availableLanguages[i]);
+    if (localisedContents) {
+      item.contents = localisedContents;
       return item;
     }
   }
@@ -56,7 +56,9 @@ const listMiddleware = options => (req, res, next) => {
     }
 
     r.table('bots')
-      .merge(bot => r.branch(bot('contents').hasFields(res.getLocale()), {
+      .merge(bot => r.branch(bot('contents').contains(contents =>
+        contents('locale').eq(res.getLocale())
+      ), {
         random: bot('random').add(10)
       }, {}))
       .orderBy(r.desc('random'))
