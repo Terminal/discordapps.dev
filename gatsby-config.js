@@ -6,7 +6,14 @@ const botSchema = {
     preview: [],
   },
   category: 'other',
-  contents: {},
+  contents: [
+    {
+      locale: 'String',
+      name: 'String',
+      description: 'String',
+      page: 'String'
+    }
+  ],
   count: 0,
   created: 0,
   edited: 0,
@@ -32,12 +39,6 @@ const botSchema = {
   website: 'String',
   id: 'String'
 };
-
-const locales = ['ar','da','de','el','en-GB','es','et','fi','fj','fr','gd','he','hi','it','ja','ko','la','nl','no','pl','pt','ru','sv','tr','vi','zh-cn','zh-tw'];
-
-locales.forEach((locale) => {
-  botSchema.contents[locale] = {};
-});
 
 module.exports = {
   siteMetadata: {

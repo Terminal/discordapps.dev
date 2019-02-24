@@ -2,21 +2,22 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import LocalLink from '../LocalLink';
 
+import styles from './style.module.scss';
+
 class Footer extends React.Component {
   render() {
     return (
-      <footer className="box-container primary-flat no-border-radius no-margin">
+      <footer className={styles.footer}>
         <div className="center">
-          <LocalLink className="btn white black-text bold" to="/bots">
+          <LocalLink to="/bots">
             <FormattedMessage id="pages.bots.shortname" />
           </LocalLink>
-          <LocalLink className="btn white black-text bold" to="/servers">
+          <LocalLink to="/servers">
             <FormattedMessage id="pages.servers.shortname" />
           </LocalLink>
-          <LocalLink className="btn white black-text bold" to="/docs">
+          <LocalLink to="/docs">
             <FormattedMessage id="pages.docs.shortname" />
           </LocalLink>
-          <hr />
           <p>
             {/* Use a full width Vertical pipe: `｜` */}
             <a href="https://github.com/Terminal/Discord_Fork/blob/v2/LICENCE">

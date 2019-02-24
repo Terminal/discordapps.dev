@@ -1,55 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './style.scss';
 import LocalLink from '../LocalLink';
 import { FormattedMessage } from 'react-intl';
+import NavigationLinks from './links';
+
+import styles from './style.module.scss';
+import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 
 class Navigation extends React.Component {
+  constructor(stuff) {
+    super(...stuff);
+
+    this.open = React.createRef();
+    this.navside = React.createRef();
+  }
   componentDidMount() {
-    this.open.addEventListener('click', () => {
-      if (this.navside && this.navside.style) {
-        this.navside.style.transform = 'translateX(0px)';
+    this.open.current.addEventListener('click', () => {
+      if (this.navside.current) {
+        this.navside.current.style.transform = 'translateX(0px)';
       }
     });
 
     document.addEventListener('click', (e) => {
-      if (!e.target.closest('.nav-container') && this.navside && this.navside.style) {
-        this.navside.style.transform = 'translateX(-250px)';
+      if (!e.target.closest(modesta.navContainer) && this.navside.current.style) {
+        this.navside.current.style.transform = 'translateX(-250px)';
       }
     });
   }
 
   render() {
     return (
-      <div className="nav-container">
-        <span ref={elem => this.open = elem} id="menu-icon"></span>
-      
-        <div className="nav-content">
-          <h4 className="center">
-            <FormattedMessage id="pages.docs.pagename">
-              {(title) => (
-                <LocalLink to="/docs/">
-                  { this.props.title || title }
-                </LocalLink>
-              )}
-            </FormattedMessage>
-          </h4>
+      <div>
+        <div className={modesta.navContainer}>
+          <span ref={this.open} className={modesta.menuIcon}></span>
+          <h1 className={`${modesta.navTitle} ${styles.title}`}>
+            <LocalLink to="/">
+              <FormattedMessage id="site.name" />
+            </LocalLink>
+          </h1>
+          <div ref={this.navside} className={modesta.sidenav} style={({transform: 'translateX(-250px)'})}>
+            <NavigationLinks />
+          </div>
         </div>
-      
-        <div ref={elem => this.navside = elem} className="sidenav" style={({transform: 'translateX(-250px)'})}>
-          <LocalLink to="/">
-            <FormattedMessage id="pages.bots.pagename" />
-          </LocalLink>
-          <LocalLink to="/bots/">
-            <FormattedMessage id="pages.bots.shortname" />
-          </LocalLink>
-          <LocalLink to="/servers/">
-            <FormattedMessage id="pages.servers.shortname" />
-          </LocalLink>
-          <LocalLink to="/docs/">
-            <FormattedMessage id="pages.docs.shortname" />
-          </LocalLink>
+        <div className={styles.navContainerContainer}>
+          <div className="nav-container default">
+            <h1 className="nav-title">
+              <LocalLink to="/">
+                <FormattedMessage id="site.name" />
+              </LocalLink>
+            </h1>
+            <div className="sidenav">
+              <NavigationLinks />
+            </div>
+          </div>
         </div>
       </div>
     );

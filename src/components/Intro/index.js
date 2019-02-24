@@ -13,21 +13,6 @@ class Intro extends React.Component {
         <div className="background" style={({backgroundImage: `url(${this.props.image || background})`})}>
         </div>
         <div className="center-object">
-          <div className="center-items">
-            <LocalLink to="/">
-              <section className="me unset">
-                <img alt="The logo for Discord_Fork" draggable="false" className="image-title" src="/assets/images/logo/logo.svg" style={({width: '7em', height: '7em'})}></img>
-                <div>
-                  <h1 className="title no-margin white-text">
-                    <FormattedMessage id={`pages.${this.props.type}.pagename`} />
-                  </h1>
-                  <span className="undertitle white-text">
-                    <FormattedMessage id={`pages.${this.props.type}.description`} />
-                  </span>
-                </div>
-              </section>
-            </LocalLink>
-          </div>
           <div className="center">
             <FormattedMessage id="intro.language">
               {(language) => (
