@@ -95,6 +95,7 @@ app
       })
       .then((users) => {
         const [add, remove] = req.guild.members
+          .filter(member => !member.user.bot)
           .partition(member => users.includes(member.user.id));
 
         return Promise.all(
