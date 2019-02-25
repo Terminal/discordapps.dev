@@ -42,7 +42,7 @@
       "avatar": "Adres URL awatara musi być prawidłowym linkiem HTTPS i nie może przekraczać 2000 znaków",
       "cover": "Adres URL strony tytułowej musi być prawidłowym linkiem HTTPS, maksymalnie 2000 znaków",
       "preview": "Wszystkie adresy URL podglądu muszą być poprawnym linkiem HTTPS, maksymalnie 2000 znaków każdy, maksymalnie 20 linków",
-      "no_suitable_lang": "Ta strona nie ma wersji angielskiej. '{{ language }}' jest wyświetlany zamiast tego.",
+      "no_suitable_lang": "Ta strona nie ma wersji polskiej, wyświetlanie w języku '{{ language }}'",
       "youtube": "YouTube ID musi wyglądać jak ID",
       "youku": "Alibaba YOUKU ID musi wyglądać jak ID"
     },
