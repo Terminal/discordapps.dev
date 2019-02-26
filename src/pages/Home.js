@@ -11,7 +11,7 @@ export default () => (
       <ContentBox>
         <FormattedMessage id="site.name" />
       </ContentBox>
-      <Flex>
+      <Flex backwardsMobile="yesnt">
         <Flex columns="3">
           <ContentBox>
             <ul>
