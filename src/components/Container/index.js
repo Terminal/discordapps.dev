@@ -7,8 +7,10 @@ import styles from './index.module.scss';
 class Container extends Component {
   render() {
     return (
-      <div className={`${modesta.container} ${modesta['box-shadow']} ${colours.container} ${elements.roundedCorners} ${styles.container} ${this.props.className}`}>
-        {this.props.children}
+      <div className={styles.containerContainer}>
+        <div className={`${modesta.container} ${modesta['box-shadow']} ${colours.container} ${elements.roundedCorners} ${styles.container} ${this.props.className}`}>
+          {this.props.children}
+        </div>
       </div>
     )
   }
