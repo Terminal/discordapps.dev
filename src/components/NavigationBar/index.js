@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import displayCSS from '../../scss/display.module.scss';
+import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import styles from './index.module.scss';
 import NavbarLinks from './links';
 import LocalisedHyperlink from '../LocalisedHyperlink';
@@ -44,7 +44,7 @@ class NavigationBar extends Component {
   render() {
     return (
       <div>
-        <div className={`${modesta['nav-container']} ${displayCSS.desktop} ${styles.desktopNavbar} ${modesta.default}`}>
+        <div className={`${displayCSS.desktop} ${modesta['nav-container']} ${styles.desktopNavbar} ${modesta.default}`}>
           <h1 className={modesta['nav-title']}>
             <LocalisedHyperlink to="/">
               <FormattedMessage id="site.name" />
@@ -55,11 +55,11 @@ class NavigationBar extends Component {
             <NavbarLinks />
           </div>
         </div>
-        <div className={`${modesta['nav-container']} ${displayCSS.mobile}`}>
+        <div className={`${displayCSS.mobile} ${modesta['nav-container']} ${styles.mobileNavbar}`}>
           <span ref={this.open} className={modesta['menu-icon']}></span>
 
-          <div className={modesta['nav-content']}>
-            <h4>
+          <div className={`${styles.mobileNavContent} ${modesta['nav-content']}`}>
+            <h4 className={styles.mobileHeading}>
               <FormattedMessage id="site.name" />
             </h4>
           </div>

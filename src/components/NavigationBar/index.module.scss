@@ -3,6 +3,27 @@
   max-width: unset !important;
 }
 
+.mobileNavContent {
+  padding-left: 0 !important;
+  min-height: 4em;
+  height: auto !important;
+}
+
+.mobileNavbar {
+  display: block;
+  min-height: 4em;
+  height: auto;
+}
+
+.mobileHeading {
+  text-align: right;
+  display: block;
+  width: fit-content;
+  margin-left: auto !important;
+  padding-left: 62px;
+  margin-right: 1em !important;
+}
+
 .darken {
   position: absolute;
   background-color: black;
