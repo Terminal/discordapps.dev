@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import displayCSS from '../../scss/display.module.scss';
 import modesta from '../../ModestaCSS/scss/modesta.module.scss';
+import displayCSS from '../../scss/display.module.scss';
+import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
 import NavbarLinks from './links';
-import LocalisedHyperlink from '../LocalisedHyperlink';
 
 class NavigationBar extends Component {
   constructor(props) {

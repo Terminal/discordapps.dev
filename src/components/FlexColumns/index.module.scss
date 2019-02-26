@@ -1,0 +1,14 @@
+.flexGrid {
+  & > div {
+    padding-left: .5em !important;
+    padding-right: .5em !important;
+  }
+
+  & > div:first-child {
+    padding-left: 0 !important;
+  }
+
+  & > div:last-child {
+    padding-right: 0 !important;
+  }
+}

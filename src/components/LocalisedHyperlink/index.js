@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { injectIntl } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 const LocalizedLink = ({ to, intl: { locale }, ...props }) => {
   const path = `/${locale}${to}`;

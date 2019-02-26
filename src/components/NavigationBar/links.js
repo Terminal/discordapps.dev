@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-
 import { connect } from 'react-redux';
-import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import twitterEmojis from '../../ModestaCSS/scss/twemoji.module.scss';
+import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 
 class NavbarLinks extends Component {

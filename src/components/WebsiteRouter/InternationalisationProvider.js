@@ -1,12 +1,9 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { IntlProvider, addLocaleData } from 'react-intl';
-import { connect } from 'react-redux';
 import flat from 'flat';
-
-import { setLocaleHandler } from '../../redux/actions/locale';
-
+import React, { Component } from 'react';
+import { addLocaleData, IntlProvider } from 'react-intl';
+import { connect } from 'react-redux';
 import languages from '../../locales';
+import { setLocaleHandler } from '../../redux/actions/locale';
 
 const messages = languages
   .filter(language => language.translations)

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-
-import InternationalisationProvider from './InternationalisationProvider';
-
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import Home from '../../pages/Home';
 import Locale from '../../pages/Locale';
+import InternationalisationProvider from './InternationalisationProvider';
 
 class WebsiteRouter extends Component {
   render() {

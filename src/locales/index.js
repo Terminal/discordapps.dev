@@ -1,16 +1,15 @@
-import enLocale from './en-GB.json';
-import daLocale from './da.json';
-import deLocale from './de.json';
-import frLocale from './fr.json';
-import plLocale from './pl.json';
-import zhCnLocale from './zh-cn.json';
-
-import enData from 'react-intl/locale-data/en';
 import daData from 'react-intl/locale-data/da';
 import deData from 'react-intl/locale-data/de';
+import enData from 'react-intl/locale-data/en';
 import frData from 'react-intl/locale-data/fr';
 import plData from 'react-intl/locale-data/pl';
 import zhData from 'react-intl/locale-data/zh';
+import daLocale from './da.json';
+import deLocale from './de.json';
+import enLocale from './en-GB.json';
+import frLocale from './fr.json';
+import plLocale from './pl.json';
+import zhCnLocale from './zh-cn.json';
 
 export default [
   {

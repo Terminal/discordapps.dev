@@ -1,12 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-
+import { Link } from 'react-router-dom';
+import languages from '../../locales';
 import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import twitterEmojis from '../../ModestaCSS/scss/twemoji.module.scss';
 import styles from './index.module.scss';
-
-import languages from '../../locales';
 
 export default () => (
   <div className={styles.flags}>
