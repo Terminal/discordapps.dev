@@ -1,5 +1,9 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import Layout from '../components/Layout';
 
 export default () => (
-  <p>Welcome to ls.terminal.ink homepage!</p>
+  <Layout>
+    <FormattedMessage id="site.name" />
+  </Layout>
 );

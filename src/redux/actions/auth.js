@@ -17,16 +17,15 @@ function receiveAuth(json) {
 function fetchAuth() {
   return (dispatch) => {
     dispatch(requestAuth());
-    return fetch('/auth/info')
+    return fetch('https://ls.terminal.ink/auth/info')
       .then(res => res.json())
       .then(json => dispatch(receiveAuth(json)));
   };
 }
 
 function shouldFetchAuth(state) {
-  if (state.isFetchingAuth) {
-    return false;
-  }
+  if (state.auth.fetching) return false;
+  if (state.auth.fetched) return false;
   return true;
 }
 

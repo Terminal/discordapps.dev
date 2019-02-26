@@ -1,9 +1,9 @@
-import enLocale from './locales/en-GB.json';
-import daLocale from './locales/da.json';
-import deLocale from './locales/de.json';
-import frLocale from './locales/fr.json';
-import plLocale from './locales/pl.json';
-import zhCnLocale from './locales/zh-cn.json';
+import enLocale from './en-GB.json';
+import daLocale from './da.json';
+import deLocale from './de.json';
+import frLocale from './fr.json';
+import plLocale from './pl.json';
+import zhCnLocale from './zh-cn.json';
 
 import enData from 'react-intl/locale-data/en';
 import daData from 'react-intl/locale-data/da';
@@ -12,146 +12,179 @@ import frData from 'react-intl/locale-data/fr';
 import plData from 'react-intl/locale-data/pl';
 import zhData from 'react-intl/locale-data/zh';
 
-export default {
-  ar: {
+export default [
+  {
+    code: 'ar',
     flag: '',
     top: false,
     priority: 22
   },
-  da: {
+  {
+    code: 'da',
     flag: 'twa-flag-dk',
     top: false,
     priority: 21,
-    translations: daLocale
+    translations: daLocale,
+    reactIntl: daData
   },
-  de: {
+  {
+    code: 'de',
     flag: 'twa-de',
     top: false,
     priority: 3,
-    translations: deLocale
+    translations: deLocale,
+    reactIntl: deData
   },
-  el: {
+  {
+    code: 'el',
     flag: '',
     top: false,
     priority: 20
   },
-  'en-GB': {
+  {
+    code: 'en-GB',
     flag: 'twa-gb',
     top: true,
     priority: 1,
-    translations: enLocale
+    translations: enLocale,
+    reactIntl: enData
   },
-  es: {
+  {
+    code: 'es',
     flag: '',
     top: false,
     priority: 4
   },
-  et: {
+  {
+    code: 'et',
     flag: '',
     top: false,
     priority: 19
   },
-  fi: {
+  {
+    code: 'fi',
     flag: '',
     top: false,
     priority: 18
   },
-  fj: {
+  {
+    code: 'fj',
     flag: '',
     top: false,
     priority: 17
   },
-  fr: {
+  {
+    code: 'fr',
     flag: 'twa-fr',
     top: false,
     priority: 2,
-    translations: frLocale
+    translations: frLocale,
+    reactIntl: frData
   },
-  gd: {
+  {
+    code: 'gd',
     flag: '',
     top: false,
     priority: 16
   },
-  he: {
+  {
+    code: 'he',
     flag: '',
     top: false,
     priority: 26
   },
-  hi: {
+  {
+    code: 'hi',
     flag: '',
     top: false,
     priority: 15
   },
-  it: {
+  {
+    code: 'it',
     flag: '',
     top: false,
     priority: 5
   },
-  ja: {
+  {
+    code: 'ja',
     flag: '',
     top: false,
     priority: 14
   },
-  ko: {
+  {
+    code: 'ko',
     flag: '',
     top: false,
     priority: 13
   },
-  la: {
+  {
+    code: 'la',
     flag: '',
     top: false,
     priority: 12
   },
-  nl: {
+  {
+    code: 'nl',
     flag: '',
     top: false,
     priority: 11
   },
-  no: {
+  {
+    code: 'no',
     flag: 'twa-flag-no',
     top: false,
     priority: 10
   },
-  pl: {
+  {
+    code: 'pl',
     flag: 'twa-flag-pl',
     top: false,
     priority: 27,
-    translations: plLocale
+    translations: plLocale,
+    reactIntl: plData
   },
-  pt: {
+  {
+    code: 'pt',
     flag: 'twa-flag-pt',
     top: false,
     priority: 23
   },
-  ru: {
+  {
+    code: 'ru',
     flag: 'twa-ru',
     top: false,
     priority: 6
   },
-  sv: {
+  {
+    code: 'sv',
     flag: 'twa-flag-sv',
     top: false,
     priority: 7
   },
-  tr: {
+  {
+    code: 'tr',
     flag: 'twa-flag-tr',
     top: false,
     priority: 24
   },
-  vi: {
+  {
+    code: 'vi',
     flag: 'twa-flag-vi',
     top: false,
     priority: 25
   },
-  'zh-cn': {
+  {
+    code: 'zh-cn',
     flag: 'twa-cn',
     top: false,
     priority: 9,
-    translations: zhCnLocale
+    translations: zhCnLocale,
+    reactIntl: zhData
   },
-  'zh-tw': {
+  {
+    code: 'zh-tw',
     flag: 'twa-flag-tw',
     top: false,
     priority: 8
   }
-}
+]
