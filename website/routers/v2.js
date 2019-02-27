@@ -2,6 +2,7 @@ const express = require('express');
 const r = require('../rethinkdb');
 const config = require('../config');
 const checkParamsLength = require('../middleware/checkParamsLength');
+const categories = require('../data/categories.json');
 
 const joi = require('../schemas/joi');
 const botSchema = require('../schemas/bots');
@@ -125,6 +126,12 @@ router
             next(err1);
           });
       }
+    });
+  })
+  .get('/categories', (req, res) => {
+    res.json({
+      ok: true,
+      data: categories
     });
   })
   .get('/oops', (req, res, next) => {
