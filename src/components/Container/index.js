@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import modesta from '../../ModestaCSS/scss/modesta.module.scss';
-import styles from './index.module.scss';
 
 class Container extends Component {
   render() {
     return (
-      <div className={`${styles.containerContainer} ${modesta.container}`}>
+      <div className={`${modesta.container} ${this.props.className ? this.props.className : ''}`}>
         {this.props.children}
       </div>
     )

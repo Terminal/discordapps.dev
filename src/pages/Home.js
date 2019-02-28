@@ -11,14 +11,17 @@ class Home extends Component {
     return (
       <Layout>
         <Container>
-          <ContentBox>
+          <h1>
             <FormattedMessage id="site.name" />
-          </ContentBox>
+          </h1>
           <Flex backwardsMobile="yesnt">
             <Flex columns="3">
               <CategoriesLinksList />
             </Flex>
             <Flex columns="9">
+              <ContentBox>
+                
+              </ContentBox>
               <ContentBox>
                 Hi
               </ContentBox>
