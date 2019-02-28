@@ -296,7 +296,7 @@
       "server": "Internal Server Error",
       "github": "Report this error at GitHub.com",
       "report": "Thanks for taking the time to report this error. Please type in what you were doing before the incident.",
-      "snarky": "It was bound to happen anyway..."
+      "snarky": "This error was going to happen anyway."
     },
     "list": {
       "invite": "Invite",
@@ -395,7 +395,8 @@
     "VIEW_AUDIT_LOG": "View Audit Log"
   },
   "site": {
-    "name": "Discord Bot List by Terminal.ink",
+    "name": "Discord Bots Marketplace",
+    "subheading": "Find bots to enhance your server",
     "description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
   },
   "states": {

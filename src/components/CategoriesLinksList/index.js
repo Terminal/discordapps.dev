@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import styles from './index.module.scss';
 import LoadingText from '../LoadingText';
+import LocalisedHyperlink from '../LocalisedHyperlink';
 
 class CategoriesLinksList extends Component {
   constructor(props) {
@@ -33,7 +34,9 @@ class CategoriesLinksList extends Component {
             {
               this.state.categories.map((x) => (
                 <li key={x} className={styles.item}>
-                  <FormattedMessage id={`categories.${x}`} />
+                  <LocalisedHyperlink to={"/bots"} query={{ category: x }}>
+                    <FormattedMessage id={`categories.${x}`} />
+                  </LocalisedHyperlink>
                 </li>
               ))
             }

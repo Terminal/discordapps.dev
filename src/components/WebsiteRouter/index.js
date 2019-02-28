@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import Home from '../../pages/Home';
 import Locale from '../../pages/Locale';
+import NotFound from '../../pages/NotFound';
 import InternationalisationProvider from './InternationalisationProvider';
 
 class WebsiteRouter extends Component {
@@ -21,6 +22,11 @@ class WebsiteRouter extends Component {
           <Route path="/:locale/locale" exact component={({ match }) => (
             <InternationalisationProvider match={match}>
               <Locale />
+            </InternationalisationProvider>
+          )} />
+          <Route path="/:locale" component={({ match }) => (
+            <InternationalisationProvider match={match}>
+              <NotFound />
             </InternationalisationProvider>
           )} />
         </Switch>
