@@ -9,6 +9,14 @@ There are 3 Discord Nitro Classics (as of writing) up for grabs, for any of the 
 If a popular language is missing here, you may still be eligible.
 Please ask a `sudoer` at [discord](https://discord.gg/DwBCgta) for information about translating ls.terminal.ink.
 
+## Note to React Rewrite
+Please place keys based on the pathname of where the string will be used, in all lowercase.
+
+- For the 404 error text, try `pages.notfound.title`
+- For a footer LICENCE, try `components.footer.licence`
+
+Anything that doesn't fit... well just put it anywhere.
+
 ## Instructions
 You're ready to translate.
 
