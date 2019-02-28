@@ -73,7 +73,7 @@
     "attribution": "Attribution",
     "licence": "GNU AGPLv3",
     "source": "GitHub",
-    "discord": "Discord",
+    "discord": "Discord Server",
     "terminal": "Terminal.ink",
     "terms": "Terms and Conditions",
     "docs": "Docs",
@@ -395,7 +395,7 @@
     "VIEW_AUDIT_LOG": "View Audit Log"
   },
   "site": {
-    "name": "Discord Bots Marketplace",
+    "name": "Discord Apps Marketplace",
     "subheading": "Find bots to enhance your server",
     "description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
   },
@@ -404,5 +404,18 @@
     "denied": "Denied",
     "queue": "In Queue",
     "banned": "Banned"
+  },
+  "components": {
+    "pleaseaddyourbotpleasethanks": {
+      "title": "Get started with Discord Bots",
+      "innovate": {
+        "heading": "Start Innovating",
+        "content": "Learn to create your own Discord application for your own personal server"
+      },
+      "add": {
+        "heading": "Add your bot",
+        "content": "Share your creation to the world; Let others enhance their server experience with your applications"
+      }
+    }
   }
 }

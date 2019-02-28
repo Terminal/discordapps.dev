@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import ContentBox from '../ContentBox';
 import Flex from '../FlexColumns';
+import { FormattedMessage } from 'react-intl';
 
 class PleaseAddYourBotPleaseThanks extends Component {
   render() {
@@ -9,24 +10,25 @@ class PleaseAddYourBotPleaseThanks extends Component {
       <ContentBox>
         <Flex>
           <Flex columns="4">
-            <h4>Get started with Discord Bots</h4>
+            <h4>
+              <FormattedMessage id="components.pleaseaddyourbotpleasethanks.title" />
+            </h4>
           </Flex>
           <Flex columns="4">
             <h5>
               <a href="https://github.com/Terminal/ls.terminal.ink/wiki">
-                Start Innovating
+                <FormattedMessage id="components.pleaseaddyourbotpleasethanks.innovate.heading" />
               </a>
             </h5>
-            Learn to create your own Discord bot for your own personal server.
+            <FormattedMessage id="components.pleaseaddyourbotpleasethanks.innovate.content" />
           </Flex>
           <Flex columns="4">
             <h5>
               <LocalisedHyperlink to="/add">
-                Add your bot
+                <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.heading" />
               </LocalisedHyperlink>
             </h5>
-            Share your creation to the world:
-            Let others enhance their server experience with your bot.
+              <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.content" />
           </Flex>
         </Flex>
       </ContentBox>
