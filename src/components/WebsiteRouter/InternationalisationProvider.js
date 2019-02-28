@@ -21,7 +21,7 @@ class InternationalisationProvider extends Component {
     return (
       <IntlProvider
         locale={match.params.locale}
-        messages={Object.assign(messages['en-GB'], messages[match.params.locale])}
+        messages={Object.assign({}, messages['en-GB'], messages[match.params.locale])}
         defaultLocale="en-GB">
         <>
           <FormattedMessage id="site.name">
