@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import ContentBox from '../components/ContentBox';
+import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
 
 class NotFound extends Component {
   render() {
@@ -17,6 +18,7 @@ class NotFound extends Component {
               <FormattedMessage id="pages.error.snarky" />
             </p>
           </ContentBox>
+          <PleaseAddYourBotPleaseThanks />
         </Container>
       </Layout>
     );

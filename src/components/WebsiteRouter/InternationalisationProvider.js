@@ -1,9 +1,10 @@
 import flat from 'flat';
 import React, { Component } from 'react';
-import { addLocaleData, IntlProvider } from 'react-intl';
+import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import languages from '../../locales';
 import { setLocaleHandler } from '../../redux/actions/locale';
+import { Helmet } from 'react-helmet';
 
 const messages = languages
   .filter(language => language.translations)
@@ -20,9 +21,21 @@ class InternationalisationProvider extends Component {
     return (
       <IntlProvider
         locale={match.params.locale}
-        messages={messages[match.params.locale]}
+        messages={Object.assign(messages['en-GB'], messages[match.params.locale])}
         defaultLocale="en-GB">
-        {this.props.children}
+        <>
+          <FormattedMessage id="site.name">
+            {(title) => (
+              <Helmet
+                titleTemplate={`%s - ${title}`}
+                defaultTitle={title}
+                >
+                <html lang={match.params.locale} />
+              </Helmet>
+            )}
+          </FormattedMessage>
+          {this.props.children}
+        </>
       </IntlProvider>
     )
   }
