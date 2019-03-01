@@ -22,6 +22,8 @@ const languageMiddleware = require('./middleware/language');
 const dateformat = require('./data/dateformat.json');
 const selectableStates = require('./data/states.json');
 
+const alternativeSites = require('./data/sites.json');
+
 require('./static/banner');
 
 const store = new RDBStore(r);
@@ -98,6 +100,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       next();
     } else if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
       res.redirect(config.webserver.location + req.url);
+    } else if (alternativeSites[req.get('host')]) {
+      res.redirect(config.webserver.location + alternativeSites[req.get('host')] + req.url);
     } else if (config.webserver.host !== req.get('host')) {
       res.redirect(config.webserver.location + req.url);
     } else {
