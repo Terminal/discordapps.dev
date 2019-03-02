@@ -21,7 +21,7 @@ class Home extends Component {
           </h2>
         </Container>
         <Container>
-          <Flex backwardsMobile="yesnt" padding="yesnt">
+          <Flex padding="yesnt">
             <Flex columns="3">
               <CategoriesLinksList />
             </Flex>

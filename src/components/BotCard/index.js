@@ -10,7 +10,7 @@ class BotCard extends Component {
     const { bot } = this.props
     return (
       <div className={styles.card}>
-        <LocalisedHyperlink className={styles.link}>
+        <LocalisedHyperlink to={`/bots/${bot.id}`} className={styles.link}>
           <FormattedMessage id="alt.avatar" values={{name: bot.contents.name}}>
             {(message) => (
               <img className={styles.avatar} alt={message} src={`${Configuration.server}${bot.cachedImages.avatar}` || Configuration.logo} />
