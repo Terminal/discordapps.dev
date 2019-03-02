@@ -9,6 +9,7 @@ const adminRouter = require('./admin');
 const docsRouter = require('./docs');
 const v1Router = require('./v1');
 const v2Router = require('./v2');
+const reactv1Router = require('./react-v1');
 
 const { localise } = require('../static/list');
 const manifest = require('../static/manifest');
@@ -72,6 +73,7 @@ router
   })
   .use('/api/v1', v1Router)
   .use('/api/v2', v2Router)
+  .use('/reactjs/v1', reactv1Router)
   .use('/api', v1Router)
   .use('/manifest.json', (req, res) => {
     res.json(manifest(res));

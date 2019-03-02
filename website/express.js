@@ -118,6 +118,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
   .use('/css/images/', express.static(path.join(__dirname, 'www-root', 'ModestaCSS', 'css', 'images')))
   .use('/sitemap.xml', sitemapRouter)
+  .use('/en-GB/', languageMiddleware('en-GB'), websiteRouter) // Can't use `:lang`, will explode
+  .use('/en-GB', languageMiddleware('en-GB'), websiteRouter)
   .use('/de/', languageMiddleware('de'), websiteRouter) // Can't use `:lang`, will explode
   .use('/de', languageMiddleware('de'), websiteRouter)
   .use('/da/', languageMiddleware('da'), websiteRouter)
