@@ -1,3 +1,5 @@
+import Configuration from "../../data/Configuration";
+
 export const REQUEST_AUTH = 'REQUEST_AUTH';
 export const RECEIVE_AUTH = 'RECEIVE_AUTH';
 
@@ -17,7 +19,7 @@ function receiveAuth(json) {
 function fetchAuth() {
   return (dispatch) => {
     dispatch(requestAuth());
-    return fetch('https://ls.terminal.ink/auth/info')
+    return fetch(`${Configuration.server}/auth/info`)
       .then(res => res.json())
       .then(json => dispatch(receiveAuth(json)));
   };

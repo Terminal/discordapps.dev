@@ -2,6 +2,7 @@ import flat from 'flat';
 import React, { Component } from 'react';
 import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import languages from '../../locales';
 import { setLocaleHandler } from '../../redux/actions/locale';
 import { Helmet } from 'react-helmet';
@@ -16,7 +17,12 @@ const messages = languages
 
 class InternationalisationProvider extends Component {
   render() {
-    const { dispatch, match } = this.props;
+    const { dispatch, match, location } = this.props;
+
+    if (!messages[match.params.locale]) return (
+      <Redirect to={`/en-GB${location.pathname}`} />
+    )
+
     dispatch(setLocaleHandler(match.params.locale));
     return (
       <IntlProvider

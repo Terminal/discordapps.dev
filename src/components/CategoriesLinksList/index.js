@@ -1,38 +1,31 @@
 import React, { Component } from 'react';
 import ContentBox from '../ContentBox';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
 
 import styles from './index.module.scss';
 import LoadingText from '../LoadingText';
 import LocalisedHyperlink from '../LocalisedHyperlink';
+import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 
 class CategoriesLinksList extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      categories: [],
-    };
-  }
   componentDidMount() {
-    fetch('https://ls.terminal.ink/api/v2/categories')
-      .then(res => res.json())
-      .then(data => this.setState({
-          categories: data.data
-      }));
+    const { dispatch } = this.props;
+    dispatch(fetchCategoriesIfNeeded());
   }
   render() {
+    const categories = this.props.categories.data
     return (
       <ContentBox>
         <h4>
           <FormattedMessage id="pages.bots.initiateCategoryFilter" />
         </h4>
         {
-          this.state.categories.length === 0 ?
+          categories.length === 0 ?
           <LoadingText /> :
           <ul className={styles.list}>
             {
-              this.state.categories.map((x) => (
+              categories.map((x) => (
                 <li key={x} className={styles.item}>
                   <LocalisedHyperlink to={"/bots"} query={{ category: x }}>
                     <FormattedMessage id={`categories.${x}`} />
@@ -47,4 +40,9 @@ class CategoriesLinksList extends Component {
   }
 }
 
-export default CategoriesLinksList;
+const mapStateToProps = (state) => {
+  const { categories } = state;
+  return { categories };
+}
+
+export default connect(mapStateToProps)(CategoriesLinksList);

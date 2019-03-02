@@ -1,19 +1,24 @@
 .flexGrid {
   & > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  &.padding > div {
     padding-left: .5em !important;
     padding-right: .5em !important;
   }
 
-  & > div:first-child {
+  &.padding > div:first-child {
     padding-left: 0 !important;
   }
 
-  & > div:last-child {
+  &.padding > div:last-child {
     padding-right: 0 !important;
   }
 
   @media (max-width: 550px) {
-    & > div {
+    &.padding > div {
       padding-left: 0 !important;
       padding-right: 0 !important;
     }

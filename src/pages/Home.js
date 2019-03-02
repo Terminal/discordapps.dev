@@ -6,6 +6,7 @@ import Flex from '../components/FlexColumns';
 import Layout from '../components/Layout';
 import CategoriesLinksList from '../components/CategoriesLinksList';
 import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
+import CategoryCollection from '../components/CategoryCollection';
 
 class Home extends Component {
   render() {
@@ -20,17 +21,12 @@ class Home extends Component {
           </h2>
         </Container>
         <Container>
-          <Flex backwardsMobile="yesnt">
+          <Flex backwardsMobile="yesnt" padding="yesnt">
             <Flex columns="3">
               <CategoriesLinksList />
             </Flex>
             <Flex columns="9">
-              <ContentBox>
-                
-              </ContentBox>
-              <ContentBox>
-                Hi
-              </ContentBox>
+              <CategoryCollection />
             </Flex>
           </Flex>
           <PleaseAddYourBotPleaseThanks />

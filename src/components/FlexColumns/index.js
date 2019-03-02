@@ -10,7 +10,13 @@ class FlexColumns extends Component {
       </div>
     )
     return (
-      <div className={`${modesta['flex-grid']} ${styles.flexGrid} ${this.props.backwardsMobile ? styles.flexBackwards : ''} ${this.props.className ? this.props.className : ''}`}>
+      <div className={`\
+        ${modesta['flex-grid']} \
+        ${styles.flexGrid} \
+        ${this.props.backwardsMobile ? styles.flexBackwards : ''} \
+        ${this.props.padding ? styles.padding : ''} \
+        ${this.props.className ? this.props.className : ''}`}>
+
         {this.props.children}
       </div>
     )

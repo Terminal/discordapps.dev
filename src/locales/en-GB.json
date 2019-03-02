@@ -13,6 +13,9 @@
     "notifications": "Notifications",
     "other": "Other"
   },
+  "alt": {
+    "avatar": "Avatar for {name}"
+  },
   "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
   "errors": {
     "bots": {
@@ -416,6 +419,9 @@
         "heading": "Add your bot",
         "content": "Share your creation to the world; Let others enhance their server experience with your applications"
       }
+    },
+    "categorycollection": {
+      "morebots": "See more"
     }
   }
 }

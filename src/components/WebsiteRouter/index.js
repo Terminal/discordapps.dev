@@ -4,6 +4,8 @@ import Home from '../../pages/Home';
 import Locale from '../../pages/Locale';
 import NotFound from '../../pages/NotFound';
 import InternationalisationProvider from './InternationalisationProvider';
+import AuthenticateRedirect from '../AuthenticateRedirect';
+import AuthenticateCallback from '../AuthenticateCallback';
 
 class WebsiteRouter extends Component {
   render() {
@@ -11,21 +13,27 @@ class WebsiteRouter extends Component {
       <Router>
         {/* Locale needed cus React Router 4 uses exact path */}
         <Switch>
-          <Route path="/" exact component={() => (
-            <Redirect from="/" exact to="/en-GB" />
+          <Route path="/auth" exact component={() => (
+            <AuthenticateRedirect />
           )} />
-          <Route path="/:locale/" exact component={({ match }) => (
-            <InternationalisationProvider match={match}>
+          <Route path="/auth/callback" exact component={() => (
+            <AuthenticateCallback />
+          )} />
+          <Route path="/" exact component={() => (
+            <Redirect to="/en-GB" />
+          )} />
+          <Route path="/:locale/" exact component={({ match, location }) => (
+            <InternationalisationProvider match={match} location={location}>
               <Home />
             </InternationalisationProvider>
           )} />
-          <Route path="/:locale/locale" exact component={({ match }) => (
-            <InternationalisationProvider match={match}>
+          <Route path="/:locale/locale" exact component={({ match, location }) => (
+            <InternationalisationProvider match={match} location={location}>
               <Locale />
             </InternationalisationProvider>
           )} />
-          <Route path="/:locale" component={({ match }) => (
-            <InternationalisationProvider match={match}>
+          <Route path="/:locale" component={({ match, location }) => (
+            <InternationalisationProvider match={match} location={location}>
               <NotFound />
             </InternationalisationProvider>
           )} />

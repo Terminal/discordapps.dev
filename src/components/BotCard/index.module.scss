@@ -1,0 +1,34 @@
+.card {
+  max-width: 33%;
+  flex-basis: 33%;
+  padding: .5em;
+  box-sizing: border-box;
+
+  @media (max-width: 1000px) {
+    max-width: 50%;
+    flex-basis: 50%;
+  }
+
+  @media (max-width: 650px) {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+.link {
+  display: flex;
+}
+
+.avatar {
+  width: 4em;
+  height: 4em;
+  margin-right: 0.5em;
+  border-radius: 1em;
+  flex-shrink: 0;
+  background-color: #4a4a4a;
+}
+
+.description {
+  font-size: 10pt;
+  color: #cccccc;
+}
