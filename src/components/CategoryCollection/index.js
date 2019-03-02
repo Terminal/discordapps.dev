@@ -44,36 +44,43 @@ class CategoryCollection extends Component {
           categories
             // List categories that are not empty
             .filter(category => bots.filter(bot => bot.category === category).length)
-            .map(category => (
-              <ContentBox key={category}>
-                <div className={styles.heading}>
-                  <h4 className={styles.grow}>
-                    <LocalisedHyperlink to="/bots" query={{category}}>
-                      <FormattedMessage id={`categories.${category}`} />
-                    </LocalisedHyperlink>
-                  </h4>
-                  <LocalisedHyperlink to="/bots" query={{category}}>
-                    <FormattedMessage id="components.categorycollection.morebots" />
-                  </LocalisedHyperlink>
-                </div>
-                <div className={styles.collection}>
-                  {
-                    bots
-                      .filter(bot => bot.category === category) // Find bots that fit in the category
-                      .filter(bot => bot.contents.length > 0) // Remove bots without contents
-                      .filter(bot => bot.hide === false) // Remove hidden bots
-                      .slice(0, 8)
-                      .map(bot => {
-                        bot.contents = bot.contents[this.props.intl.locale] ? bot.contents[this.props.intl.locale] : bot.contents[0];
-                        return bot;
-                      })
-                      .map(bot => (
-                        <BotCard key={bot.id} bot={bot} />
-                      ))
-                  }
-                </div>
-              </ContentBox>
-            ))
+            .map(category => {
+              const botsInCategory = bots
+                .filter(bot => bot.category === category)
+              return (
+                <ContentBox key={category}>
+                  <div className={styles.heading}>
+                    <h4 className={styles.grow}>
+                      <LocalisedHyperlink to="/bots" query={{category}}>
+                        <FormattedMessage id={`categories.${category}`} />
+                      </LocalisedHyperlink>
+                    </h4>
+                    { botsInCategory.length > 8 ?
+                      <LocalisedHyperlink to="/bots" query={{category}}>
+                        <FormattedMessage id="components.categorycollection.morebots" />
+                      </LocalisedHyperlink> :
+                      null
+                    }
+                  </div>
+                  <div className={styles.collection}>
+                    {
+                      // Find bots that fit in the category
+                      botsInCategory
+                        .filter(bot => bot.contents.length > 0) // Remove bots without contents
+                        .filter(bot => bot.hide === false) // Remove hidden bots
+                        .slice(0, 8)
+                        .map(bot => {
+                          bot.contents = bot.contents[this.props.intl.locale] ? bot.contents[this.props.intl.locale] : bot.contents[0];
+                          return bot;
+                        })
+                        .map(bot => (
+                          <BotCard key={bot.id} bot={bot} />
+                        ))
+                    }
+                  </div>
+                </ContentBox>
+              )
+            })
         }
       </div>
     )
