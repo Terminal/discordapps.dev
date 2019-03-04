@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 
 import ReduxProvider from './components/ReduxProvider';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './components/Routes';
 import { Helmet } from 'react-helmet';
 import App from './App';
 
