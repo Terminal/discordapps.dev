@@ -87,7 +87,8 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       } else {
         callback(null, false);
       }
-    }
+    },
+    credentials: true
   }))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
