@@ -40,7 +40,7 @@ const schema = joi.object({
     name: joi.string().min(4).max(32).required().error(new Error('errors.bots.name')),
     description: joi.string().min(10).max(100).required().error(new Error('errors.bots.description')),
     page: joi.string().min(20).max(10000).required().error(new Error('errors.bots.page')),
-  })).min(1).required()
+  })).min(1).required().error(new Error('errors.bots.contents'))
 }).required();
 
 module.exports = schema;
