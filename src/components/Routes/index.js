@@ -4,18 +4,18 @@ import Home from '../../pages/Home';
 import Locale from '../../pages/Locale';
 import NotFound from '../../pages/NotFound';
 import InternationalisationProvider from '../InternationalisationProvider';
-import AuthenticateRedirect from '../AuthenticateRedirect';
 import AuthenticateCallback from '../AuthenticateCallback';
+import AuthenticateLogout from '../AuthenticateLogout';
 
 class WebsiteRouter extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/auth" exact component={() => (
-          <AuthenticateRedirect />
+        <Route path="/auth/callback" exact component={({ location }) => (
+          <AuthenticateCallback location={location} />
         )} />
-        <Route path="/auth/callback" exact component={() => (
-          <AuthenticateCallback />
+        <Route path="/auth/logout" exact component={({ location }) => (
+          <AuthenticateLogout />
         )} />
         <Route path="/" exact component={() => (
           <Redirect to="/en-GB" />

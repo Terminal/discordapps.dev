@@ -1,13 +1,34 @@
 import React, { Component } from 'react';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
+import { Redirect } from 'react-router-dom';
 
 class AuthenticateCallback extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      done: false
+    }
+  }
+  componentDidMount() {
+    if (this.props.location.search) {
+      fetch(`https://ls.terminal.ink/auth/callback${this.props.location.search}`, {
+        credentials: 'include'
+      })
+        .then(() => {
+          this.setState({
+            done: true
+          })
+        })
+    }
+  }
   render() {
-    return (
-      <div className={`${modesta.container} ${this.props.className ? this.props.className : ''}`}>
-        callback
-      </div>
-    )
+    if (this.state.done) {
+      return (<Redirect to="/" />)
+    } else {
+      return (
+        <p>please wait</p>
+      )
+    }
   }
 }
 

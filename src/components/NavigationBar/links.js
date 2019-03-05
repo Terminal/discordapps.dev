@@ -13,7 +13,8 @@ class NavbarLinks extends Component {
     dispatch(fetchAuthIfNeeded());
   }
   render() {
-    const { auth } = this.props
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://discordapps.dev';
+    const { auth } = this.props;
     return (
       <>
         <FormattedMessage id="navbar.languages">
@@ -35,7 +36,7 @@ class NavbarLinks extends Component {
             <FormattedMessage id="navbar.user">
               {message => (
                 <a aria-label={message} href="#">
-                  {auth.username}
+                  {auth.data.username}
                 </a>
               )}
             </FormattedMessage>
@@ -48,18 +49,18 @@ class NavbarLinks extends Component {
             </FormattedMessage>
             <FormattedMessage id="navbar.admin">
               {message => (
-                <a aria-label={message} href="#">
+                <LocalisedHyperlink to="/admin">
                   {message}
-                </a>
+                </LocalisedHyperlink>
               )}
             </FormattedMessage>
           </> :
           <>
             <FormattedMessage id="navbar.login">
               {message => (
-                <Link aria-label={message} to="/auth">
+                <a aria-label={message} href={`https://discordapp.com/oauth2/authorize?response_type=code&redirect_uri=${encodeURIComponent(origin)}%2Fauth%2Fcallback&scope=identify&client_id=473861594749861909`}>
                   {message}
-                </Link>
+                </a>
               )}
             </FormattedMessage>
           </>

@@ -19,7 +19,9 @@ function receiveCategories(json) {
 function fetchCategories() {
   return (dispatch) => {
     dispatch(requestCategories());
-    return fetch(`${Configuration.server}/reactjs/v1/categories`)
+    return fetch(`${Configuration.server}/reactjs/v1/categories`, {
+      credentials: 'include'
+    })
       .then(res => res.json())
       .then(json => dispatch(receiveCategories(json)));
   };

@@ -19,7 +19,9 @@ function receiveAuth(json) {
 function fetchAuth() {
   return (dispatch) => {
     dispatch(requestAuth());
-    return fetch(`${Configuration.server}/auth/info`)
+    return fetch(`${Configuration.server}/auth/info`, {
+      credentials: 'include'
+    })
       .then(res => res.json())
       .then(json => dispatch(receiveAuth(json)));
   };
