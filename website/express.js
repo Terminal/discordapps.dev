@@ -23,6 +23,7 @@ const dateformat = require('./data/dateformat.json');
 const selectableStates = require('./data/states.json');
 
 const alternativeSites = require('./data/sites.json');
+const allowedCors = require('./data/cors.json');
 
 require('./static/banner');
 
@@ -79,7 +80,15 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
       }
     },
   }))
-  .use(cors())
+  .use(cors({
+    origin(origin, callback) {
+      if (allowedCors.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(null, false);
+      }
+    }
+  }))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({
     extended: true
