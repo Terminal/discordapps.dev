@@ -2,6 +2,8 @@ const express = require('express');
 const passport = require('../static/passport');
 const config = require('../config');
 
+const allowedCors = require('../data/cors.json');
+
 const router = express.Router();
 
 router
@@ -25,6 +27,12 @@ router
   })
   .get('/', (req, res, next) => {
     req.session.return = req.query.to || '/';
+    next();
+  }, passport.authenticate('discord'))
+  .get('/to/:site', (req, res, next) => {
+    if (allowedCors.indexOf(req.params.site) !== -1) {
+      req.session.return = req.params.site;
+    }
     next();
   }, passport.authenticate('discord'))
   .get('/info', (req, res) => {
