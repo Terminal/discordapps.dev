@@ -17,13 +17,16 @@ const messages = languages
 
 class InternationalisationProvider extends Component {
   render() {
-    const { dispatch, match, location } = this.props;
+    const { dispatch, match, location, locale } = this.props;
 
     if (!messages[match.params.locale]) return (
       <Redirect to={`/en-GB${location.pathname}`} />
     )
 
-    dispatch(setLocaleHandler(match.params.locale));
+    if (locale !== match.params.locale) {
+      dispatch(setLocaleHandler(match.params.locale));
+    }
+
     return (
       <IntlProvider
         locale={match.params.locale}
@@ -47,5 +50,10 @@ class InternationalisationProvider extends Component {
   }
 }
 
-export default connect()(InternationalisationProvider);
+const mapStateToProps = (state) => {
+  const { locale } = state;
+  return { locale };
+}
+
+export default connect(mapStateToProps)(InternationalisationProvider);
 

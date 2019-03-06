@@ -12,11 +12,10 @@ export default () => (
       languages
         .filter(language => language.translations)
         .map(language => (
-          <FormattedMessage id={`locales.${language.code}`}>
+          <FormattedMessage id={`locales.${language.code}`} key={language.code}>
             {(message) => (
               <Link
                 to={`/${language.code}`}
-                key={language.code}
                 className={`${modesta.emoji} ${twitterEmojis[language.flag]} ${styles.flag}`}
                 aria-label={message}
                 title={message}></Link>
