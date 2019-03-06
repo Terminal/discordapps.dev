@@ -11,7 +11,7 @@
     "moderation": "Moderation",
     "utility": "Utility",
     "notifications": "Notifications",
-    "other": "Other"
+    "other": "Miscellaneous"
   },
   "alt": {
     "avatar": "Avatar for {name}"

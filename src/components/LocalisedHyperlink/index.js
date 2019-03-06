@@ -1,6 +1,6 @@
 import React from 'react';
 import { injectIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 const LocalizedLink = ({ to, intl: { locale }, query, ...props }) => {
   let querylink = '';

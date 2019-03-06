@@ -27,7 +27,7 @@ class CategoriesLinksList extends Component {
             {
               categories.map((x) => (
                 <li key={x} className={styles.item}>
-                  <LocalisedHyperlink to={"/bots"} query={{ category: x }}>
+                  <LocalisedHyperlink to={`#${x}`}>
                     <FormattedMessage id={`categories.${x}`} />
                   </LocalisedHyperlink>
                 </li>

@@ -6,6 +6,7 @@ import twitterEmojis from '../../ModestaCSS/scss/twemoji.module.scss';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import { Link } from 'react-router-dom';
+import Configuration from '../../data/Configuration';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -13,7 +14,7 @@ class NavbarLinks extends Component {
     dispatch(fetchAuthIfNeeded());
   }
   render() {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://discordapps.dev';
+    const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
     const { auth } = this.props;
     return (
       <>
@@ -58,7 +59,7 @@ class NavbarLinks extends Component {
           <>
             <FormattedMessage id="navbar.login">
               {message => (
-                <a aria-label={message} href={`https://discordapp.com/oauth2/authorize?response_type=code&redirect_uri=${encodeURIComponent(origin)}%2Fauth%2Fcallback&scope=identify&client_id=473861594749861909`}>
+                <a aria-label={message} href={`${Configuration.server}/auth/site?to=${encodeURIComponent(href)}`}>
                   {message}
                 </a>
               )}

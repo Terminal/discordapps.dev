@@ -50,7 +50,7 @@ class CategoryCollection extends Component {
               return (
                 <ContentBox key={category}>
                   <div className={styles.heading}>
-                    <h4 className={styles.grow}>
+                    <h4 className={styles.grow} id={category}>
                       <LocalisedHyperlink to="/bots" query={{category}}>
                         <FormattedMessage id={`categories.${category}`} />
                       </LocalisedHyperlink>

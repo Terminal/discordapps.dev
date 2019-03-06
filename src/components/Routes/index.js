@@ -4,16 +4,13 @@ import Home from '../../pages/Home';
 import Locale from '../../pages/Locale';
 import NotFound from '../../pages/NotFound';
 import InternationalisationProvider from '../InternationalisationProvider';
-import AuthenticateCallback from '../AuthenticateCallback';
 import AuthenticateLogout from '../AuthenticateLogout';
+import BotPage from '../../pages/BotPage';
 
 class WebsiteRouter extends Component {
   render() {
     return (
       <Switch>
-        <Route path="/auth/callback" exact component={({ location }) => (
-          <AuthenticateCallback location={location} />
-        )} />
         <Route path="/auth/logout" exact component={({ location }) => (
           <AuthenticateLogout />
         )} />
@@ -23,6 +20,11 @@ class WebsiteRouter extends Component {
         <Route path="/:locale/" exact component={({ match, location }) => (
           <InternationalisationProvider match={match} location={location}>
             <Home />
+          </InternationalisationProvider>
+        )} />
+        <Route path="/:locale/bots/:id" exact component={({ match, location }) => (
+          <InternationalisationProvider match={match} location={location}>
+            <BotPage match={match} location={location} />
           </InternationalisationProvider>
         )} />
         <Route path="/:locale/locale" exact component={({ match, location }) => (
