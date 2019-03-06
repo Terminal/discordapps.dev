@@ -4,6 +4,7 @@ website/config/*.json
 proxy/config/*.json
 bot/config/*.json
 website/www-root/appdata/*
+!website/www-root/appdata/.exist
 website/www-root/css/*
 
 frontend/views/

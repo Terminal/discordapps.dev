@@ -1,6 +1,3 @@
 [submodule "website/www-root/ModestaCSS"]
 	path = website/www-root/ModestaCSS
 	url = https://github.com/AlexFlipnote/ModestaCSS.git
-[submodule "frontend/src/components/App/ModestaCSS"]
-	path = frontend/src/components/App/ModestaCSS
-	url = https://github.com/AlexFlipnote/ModestaCSS
