@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 class AuthenticateLogout extends Component {
   render() {
-    if (fetch) {
+    if (typeof fetch !== 'undefined') {
       fetch('https://ls.terminal.ink/auth/logout', {
         credentials: 'include'
       })
