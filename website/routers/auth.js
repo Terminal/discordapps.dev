@@ -29,7 +29,6 @@ router
     } else {
       req.session.return = '/';
     }
-    console.log(req.session);
     next();
   }, passport.authenticate('discord'))
   .get('/', (req, res, next) => {
