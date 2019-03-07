@@ -19,6 +19,7 @@
       "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
       "category": "You must select a category for your bot",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",
+      "contents": "You must select at least one language for your bot to be in. Click a language, and then click \"Add a language\"",
       "description": "The short description must have a length between 10 and 100",
       "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
       "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",

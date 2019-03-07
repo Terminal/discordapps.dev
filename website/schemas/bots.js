@@ -40,7 +40,16 @@ const schema = joi.object({
     name: joi.string().min(4).max(32).required().error(new Error('errors.bots.name')),
     description: joi.string().min(10).max(100).required().error(new Error('errors.bots.description')),
     page: joi.string().min(20).max(10000).required().error(new Error('errors.bots.page')),
-  })).min(1).required().error(new Error('errors.bots.contents'))
+  }))
+    .min(1)
+    .required()
+    .error((errors) => {
+      // If the error is about contents, return the error about contents
+      if (errors.some(e => e.context.key === 'contents')) {
+        return new Error('errors.bots.contents');
+      }
+      return errors;
+    })
 }).required();
 
 module.exports = schema;
