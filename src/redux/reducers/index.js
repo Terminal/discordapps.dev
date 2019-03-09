@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
-import locale from './locale';
+import options from './options';
 import categories from './categories';
 
 export default combineReducers({
   auth,
-  locale,
+  options,
   categories
 });

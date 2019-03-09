@@ -1,4 +1,4 @@
-import Configuration from "../../data/Configuration";
+import Locations from "../../data/Locations";
 
 export const REQUEST_CATEGORIES = 'REQUEST_CATEGORIES';
 export const RECIEVE_CATEGORIES = 'RECIEVE_CATEGORIES';
@@ -19,7 +19,7 @@ function receiveCategories(json) {
 function fetchCategories() {
   return (dispatch) => {
     dispatch(requestCategories());
-    return fetch(`${Configuration.server}/reactjs/v1/categories`, {
+    return fetch(`${Locations.server}/reactjs/v1/categories`, {
       credentials: 'include'
     })
       .then(res => res.json())

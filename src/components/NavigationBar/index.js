@@ -60,7 +60,9 @@ class NavigationBar extends Component {
 
           <div className={`${styles.mobileNavContent} ${modesta['nav-content']}`}>
             <h4 className={styles.mobileHeading}>
-              <FormattedMessage id="site.name" />
+              <LocalisedHyperlink to="/">
+                <FormattedMessage id="site.name" />
+              </LocalisedHyperlink>
             </h4>
           </div>
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import Container from '../components/Container';
-import ContentBox from '../components/ContentBox';
 import Flex from '../components/FlexColumns';
 import Layout from '../components/Layout';
 import CategoriesLinksList from '../components/CategoriesLinksList';
@@ -21,7 +20,7 @@ class Home extends Component {
           </h2>
         </Container>
         <Container>
-          <Flex padding="yesnt">
+          <Flex padding={true}>
             <Flex columns="3">
               <CategoriesLinksList />
             </Flex>

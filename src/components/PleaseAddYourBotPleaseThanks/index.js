@@ -3,6 +3,7 @@ import LocalisedHyperlink from '../LocalisedHyperlink';
 import ContentBox from '../ContentBox';
 import Flex from '../FlexColumns';
 import { FormattedMessage } from 'react-intl';
+import Locations from '../../data/Locations';
 
 class PleaseAddYourBotPleaseThanks extends Component {
   render() {
@@ -16,7 +17,7 @@ class PleaseAddYourBotPleaseThanks extends Component {
           </Flex>
           <Flex columns="4">
             <h5>
-              <a href="https://github.com/Terminal/ls.terminal.ink/wiki">
+              <a href={Locations.wiki}>
                 <FormattedMessage id="components.pleaseaddyourbotpleasethanks.innovate.heading" />
               </a>
             </h5>

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import styles from './index.module.scss';
 import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
-import Configuration from '../../data/Configuration';
+import Locations from '../../data/Locations';
 
 import { injectIntl } from 'react-intl';
 import BotCard from '../BotCard';
@@ -23,7 +23,7 @@ class CategoryCollection extends Component {
     const { dispatch } = this.props;
     dispatch(fetchCategoriesIfNeeded());
 
-    fetch(`${Configuration.server}/${this.props.intl.locale}/reactjs/v1/bots`)
+    fetch(`${Locations.server}/${this.props.intl.locale}/reactjs/v1/bots`)
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {

@@ -3,8 +3,8 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Home from '../../pages/Home';
 import Locale from '../../pages/Locale';
 import NotFound from '../../pages/NotFound';
+import AuthenticateLogout from '../../pages/LogOut';
 import InternationalisationProvider from '../InternationalisationProvider';
-import AuthenticateLogout from '../AuthenticateLogout';
 import BotPage from '../../pages/BotPage';
 
 class WebsiteRouter extends Component {

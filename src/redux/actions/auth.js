@@ -1,4 +1,4 @@
-import Configuration from "../../data/Configuration";
+import Locations from "../../data/Locations";
 
 export const REQUEST_AUTH = 'REQUEST_AUTH';
 export const RECEIVE_AUTH = 'RECEIVE_AUTH';
@@ -19,7 +19,7 @@ function receiveAuth(json) {
 function fetchAuth() {
   return (dispatch) => {
     dispatch(requestAuth());
-    return fetch(`${Configuration.server}/auth/info`, {
+    return fetch(`${Locations.server}/auth/info`, {
       credentials: 'include'
     })
       .then(res => res.json())
@@ -39,4 +39,8 @@ export function fetchAuthIfNeeded() {
       return dispatch(fetchAuth());
     }
   };
+}
+
+export function forceFetchAuth() {
+  return (dispatch) => dispatch(fetchAuth());
 }

@@ -13,3 +13,8 @@ Location                                  | Description
 
 Present your ideas in more than just English.
 Make your bot page in multiple languages to target many more users.
+
+<!--
+## Sponsors
+This project is funded by people who keep the open source community alive.
+-->

@@ -6,7 +6,7 @@ import twitterEmojis from '../../ModestaCSS/scss/twemoji.module.scss';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import { Link } from 'react-router-dom';
-import Configuration from '../../data/Configuration';
+import Locations from '../../data/Locations';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -43,9 +43,9 @@ class NavbarLinks extends Component {
             </FormattedMessage>
             <FormattedMessage id="navbar.logout">
               {message => (
-                <a aria-label={message} href="/auth/logout">
+                <Link aria-label={message} to="/auth/logout">
                   {message}
-                </a>
+                </Link>
               )}
             </FormattedMessage>
             <FormattedMessage id="navbar.admin">
@@ -59,7 +59,7 @@ class NavbarLinks extends Component {
           <>
             <FormattedMessage id="navbar.login">
               {message => (
-                <a aria-label={message} href={`${Configuration.server}/auth/site?to=${encodeURIComponent(href)}`}>
+                <a aria-label={message} href={`${Locations.server}/auth/site?to=${encodeURIComponent(href)}`}>
                   {message}
                 </a>
               )}
