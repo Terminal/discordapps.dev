@@ -9,10 +9,10 @@ class Layout extends Component {
     return (
       <div>
         <NavigationBar />
+        {this.props.children}
         <Container>
           <WereNotReadyToGoLiveBox />
         </Container>
-        {this.props.children}
         <Footer />
       </div>
     )
