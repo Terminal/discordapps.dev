@@ -6,23 +6,21 @@ class LazyImage extends Component {
     super(props);
 
     this.state = {
-      src: null
+      loaded: false
     };
+
+    this.load = this.load.bind(this);
+    this.image = React.createRef();
   }
-  componentDidMount() {
-    fetch(this.props.src)
-      .then(res => res.blob())
-      .then((data) => {
-        const objectURL = URL.createObjectURL(data);
-        this.setState({
-          src: objectURL
-        });
-      })
+  load() {
+    this.setState({
+      loaded: true
+    });
   }
   render() {
     return (
-      <img src={this.state.src} className={`${styles.image} ${this.state.src ? styles.loaded : ''} ${this.props.className}`} alt={this.props.alt}></img>
-    )
+      <img src={this.props.src} className={`${styles.image} ${this.state.loaded ? styles.loaded : ''} ${this.props.className}`} alt={this.props.alt} ref={this.image} onLoad={this.load}></img>
+    );
   }
 }
 

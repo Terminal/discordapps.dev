@@ -32,18 +32,7 @@ class BotPage extends Component {
             const bot = data.data;
             this.setState({
               bot
-            })
-            
-            if (bot.cachedImages.cover) {
-              fetch(`${Locations.server}${bot.cachedImages.cover}`)
-                .then(res => res.blob())
-                .then((data) => {
-                  const objectURL = URL.createObjectURL(data);
-                  this.setState({
-                    cover: objectURL
-                  });
-                })
-            }
+            });
           }
         })
     }
@@ -60,11 +49,15 @@ class BotPage extends Component {
       )
     }
 
-    const { bot, cover } = this.state
+    const { bot } = this.state
 
     return (
       <Layout>
-        <BtecParallax src={cover}/>
+        { 
+          bot.cachedImages.cover ?
+          <BtecParallax src={`${Locations.server}${bot.cachedImages.cover}`}/> :
+          null
+        }
         <Container>
           <BotPageInfoBox bot={bot}/>
           <BotPageImagesBox images={bot.cachedImages.preview}>
