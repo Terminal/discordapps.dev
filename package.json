@@ -12,6 +12,7 @@
     "express": "^4.16.4",
     "flat": "^4.1.0",
     "ignore-styles": "^5.0.1",
+    "marked": "^0.6.1",
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
@@ -21,8 +22,11 @@
     "react-router-dom": "^4.3.1",
     "react-router-hash-link": "^1.2.1",
     "react-scripts": "2.1.5",
+    "react-slick": "^0.23.2",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "slick-carousel": "^1.8.1",
+    "xss": "^1.0.3"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

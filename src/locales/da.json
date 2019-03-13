@@ -51,7 +51,7 @@
     "website": {
       "noscript": "JavaScript er deaktiveret. Funktionaliteten kan være nedsat.",
       "print": "JavaScript er ikke kompatibel med papir udskrivninger."
-    },
+  },
     "reviews": {
       "rating": "Venligst vælg hvor godt du synes om denne bot før du fortsætter!",
       "text": "Angiv venligst hvorfor du gav dette antal stjerner til botten.",
@@ -136,8 +136,6 @@
         "one": "Præfiks",
         "other": "Præfikser"
       },
-      "more": "Vis mere",
-      "less": "Vis mindre",
       "adverts": "Indeholder funktioner der er låst bag andre tjenester",
       "inAppPurchases": "Has in-app purchases",
       "nsfw": "NSFW",
@@ -373,5 +371,12 @@
     "logout": "Log af",
     "admin": "Administrator",
     "add": "Tilføj en applikation"
+  },
+  "components": {
+    "botpagecontentbox": {
+      "toggle": "Toggle arrow",
+      "more": "Vis mere",
+      "less": "Vis mindre"
+    }
   }
 }

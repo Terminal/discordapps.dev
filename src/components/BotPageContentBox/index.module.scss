@@ -1,0 +1,21 @@
+.description {
+  overflow: hidden;
+  transition: height 0.5s;
+}
+
+.button {
+  text-align: center;
+  user-select: none;
+  padding: 3px;
+  p {
+    margin: 0;
+  }
+}
+
+.arrow {
+  height: 2em;
+  transition: transform 0.3s;
+  &.upsidedown {
+    transform: rotate(180deg);
+  }
+}

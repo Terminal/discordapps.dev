@@ -145,8 +145,6 @@
         "one": "Prefix",
         "other": "Prefixes"
       },
-      "more": "View more",
-      "less": "View less",
       "adverts": "Contains adverts and features locked behind other services",
       "inAppPurchases": "Has in-app purchases",
       "nsfw": "NSFW",
@@ -422,6 +420,11 @@
     },
     "categorycollection": {
       "morebots": "See more"
+    },
+    "botpagecontentbox": {
+      "toggle": "Toggle arrow",
+      "more": "View more",
+      "less": "View less"
     }
   }
 }

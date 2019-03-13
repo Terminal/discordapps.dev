@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Locations from '../data/Locations';
 import BtecParallax from '../components/BtecParallax';
 import ContentBox from '../components/ContentBox';
+import BotPageContentBox from '../components/BotPageContentBox';
+import LazyImage from '../components/LazyImage';
+import FlexContainer from '../components/FlexContainer';
+import BotPageImagesBox from '../components/BotPageImagesBox';
+import BotPageInfoBox from '../components/BotPageInfoBox';
+import YouTube from '../components/YouTube';
 
 class BotPage extends Component {
   constructor(props) {
@@ -60,14 +66,11 @@ class BotPage extends Component {
       <Layout>
         <BtecParallax src={cover}/>
         <Container>
-          <ContentBox>
-            <h1>
-              {bot.contents[0].name}
-            </h1>
-            <h2>
-              {bot.contents[0].description}
-            </h2>
-          </ContentBox>
+          <BotPageInfoBox bot={bot}/>
+          <BotPageImagesBox images={bot.cachedImages.preview}>
+            {bot.videos.youtube ? <YouTube video={bot.videos.youtube} /> : null}
+          </BotPageImagesBox>
+          <BotPageContentBox page={bot.contents[0].page}/>
         </Container>
       </Layout>
     );
