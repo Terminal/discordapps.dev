@@ -10,6 +10,7 @@ import BotPageInfoBox from '../components/BotPageInfoBox';
 import YouTube from '../components/YouTube';
 import { Helmet } from 'react-helmet';
 import BotPageLinks from '../components/BotPageLinks';
+import NotFound from './NotFound';
 
 class BotPage extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class BotPage extends Component {
 
     this.state = {
       bot: null,
-      cover: null
+      notFound: false
     };
   }
 
@@ -25,7 +26,14 @@ class BotPage extends Component {
     // Check if the bot has been injected
     if (!this.state.bot) {
       fetch(`${Locations.server}/${this.props.intl.locale}/reactjs/v1/bots/id/${this.props.match.params.id}`)
-        .then(res => res.json())
+        .then(res => {
+          if (res.status === 404) {
+            this.setState({
+              notFound: true
+            });
+          }
+          return res.json()
+        })
         .then((data) => {
           if (data.ok) {
             const bot = data.data;
@@ -38,6 +46,12 @@ class BotPage extends Component {
   }
 
   render() {
+    if (this.state.notFound) {
+      return (
+        <NotFound />
+      );
+    }
+    
     if (!this.state.bot) {
       return (
         <Layout>
@@ -45,7 +59,7 @@ class BotPage extends Component {
             <p>loading...</p>
           </Container>
         </Layout>
-      )
+      );
     }
 
     const { bot } = this.state

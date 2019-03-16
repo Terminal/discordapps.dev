@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
-import twitterEmojis from '../../ModestaCSS/scss/twemoji.module.scss';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import { Link } from 'react-router-dom';
 import Locations from '../../data/Locations';
+import Modesta, { TwitterEmojis } from '../../data/Modesta';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -21,7 +20,7 @@ class NavbarLinks extends Component {
         <FormattedMessage id="navbar.languages">
           {message => (
             <LocalisedHyperlink aria-label={message} to="/locale">
-              <span className={`${modesta.emoji} ${twitterEmojis['twa-globe-showing-europe-africa']}`} />
+              <span className={`${Modesta.emoji} ${TwitterEmojis.twaGlobeShowingEuropeAfrica}`} />
             </LocalisedHyperlink>
           )}
         </FormattedMessage>

@@ -4,6 +4,7 @@ import Home from '../../pages/Home';
 import Locale from '../../pages/Locale';
 import NotFound from '../../pages/NotFound';
 import AuthenticateLogout from '../../pages/LogOut';
+import EditBot from '../../pages/EditBot';
 import InternationalisationProvider from '../InternationalisationProvider';
 import BotPage from '../../pages/BotPage';
 
@@ -20,6 +21,11 @@ class WebsiteRouter extends Component {
         <Route path="/:locale/" exact component={({ match, location }) => (
           <InternationalisationProvider match={match} location={location}>
             <Home />
+          </InternationalisationProvider>
+        )} />
+        <Route path="/:locale/bots/add" exact component={({ match, location }) => (
+          <InternationalisationProvider match={match} location={location}>
+            <EditBot match={match} location={location} />
           </InternationalisationProvider>
         )} />
         <Route path="/:locale/bots/:id" exact component={({ match, location }) => (

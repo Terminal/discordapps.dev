@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import ContentBox from '../ContentBox';
 import marked from 'marked';
 import xss from 'xss';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import arrow from '../../ModestaCSS/css/images/arrow.png';
 import styles from './index.module.scss';
 import { FormattedMessage } from 'react-intl';
+import Modesta from '../../data/Modesta';
 
 class BotPageContentBox extends Component {
   constructor(props) {
@@ -54,6 +54,8 @@ class BotPageContentBox extends Component {
   }
 
   componentDidMount() {
+    // If the description's size is greater than 300, display the button
+    // Otherwise, just display the entire description
     if (this.getExtendedHeight() > 300) {
       this.setState({
         smallEnough: false
@@ -112,13 +114,13 @@ class BotPageContentBox extends Component {
           {this.state.smallEnough ? null : // if not small enough, show the buttons
             <div ref={this.button} onClick={this.toggle}>
               { this.state.open === false ?
-                <ContentBox className={`${modesta.secondary} ${styles.button}`}>
+                <ContentBox className={`${Modesta.secondary} ${styles.button}`}>
                   <p><FormattedMessage id="components.botpagecontentbox.more" /></p>
                   <FormattedMessage id="components.botpagecontentbox.toggle">
                     {message => <img className={styles.arrow} src={arrow} alt={message}/>}
                   </FormattedMessage>
                 </ContentBox> :
-                <ContentBox className={`${modesta.secondary} ${styles.button}`}>
+                <ContentBox className={`${Modesta.secondary} ${styles.button}`}>
                   <p><FormattedMessage id="components.botpagecontentbox.less" /></p>
                   <FormattedMessage id="components.botpagecontentbox.toggle">
                     {message => <img className={`${styles.arrow} ${styles.upsidedown}`} src={arrow} alt={message}/>}

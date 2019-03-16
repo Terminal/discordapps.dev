@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import styles from './index.module.scss';
 import LazyImage from '../LazyImage';
 import elementStyles from '../../scss/elements.module.scss';
+import Modesta from '../../data/Modesta';
 
 class ModalImage extends Component {
   constructor(props) {
@@ -40,8 +40,8 @@ class ModalImage extends Component {
     return (
       <div>
         <LazyImage src={this.props.src} className={this.props.className} onClick={this.open} />
-        <div onClick={this.close} className={`${modesta.modal} ${this.state.closing ? modesta['modal--close'] : ''}`} style={this.state.opened ? { display: 'block' } : {}}>
-          <div className={`${modesta['modal-content']} ${elementStyles.roundedCorners} ${styles.modalContent}`}>
+        <div onClick={this.close} className={`${Modesta.modal} ${this.state.closing ? Modesta.modalClose : ''}`} style={this.state.opened ? { display: 'block' } : {}}>
+          <div className={`${Modesta.modalContent} ${elementStyles.roundedCorners} ${styles.modalContent}`}>
             <LazyImage src={this.props.src} onClick={this.open} className={styles.modalImage} />
           </div>
         </div>

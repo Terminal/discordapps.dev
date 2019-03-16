@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import displayCSS from '../../scss/display.module.scss';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
 import NavbarLinks from './links';
+import Modesta from '../../data/Modesta';
 
 class NavigationBar extends Component {
   constructor(props) {
@@ -44,21 +44,21 @@ class NavigationBar extends Component {
   render() {
     return (
       <div>
-        <div className={`${displayCSS.desktop} ${modesta['nav-container']} ${styles.desktopNavbar} ${modesta.default}`}>
-          <h1 className={modesta['nav-title']}>
+        <div className={`${displayCSS.desktop} ${Modesta.navContainer} ${styles.desktopNavbar} ${Modesta.default}`}>
+          <h1 className={Modesta.navTitle}>
             <LocalisedHyperlink to="/">
               <FormattedMessage id="site.name" />
             </LocalisedHyperlink>
           </h1>
 
-          <div className={modesta.sidenav}>
+          <div className={Modesta.sidenav}>
             <NavbarLinks />
           </div>
         </div>
-        <div className={`${displayCSS.mobile} ${modesta['nav-container']} ${styles.mobileNavbar}`}>
-          <span ref={this.open} className={modesta['menu-icon']}></span>
+        <div className={`${displayCSS.mobile} ${Modesta.navContainer} ${styles.mobileNavbar}`}>
+          <span ref={this.open} className={Modesta.menuIcon}></span>
 
-          <div className={`${styles.mobileNavContent} ${modesta['nav-content']}`}>
+          <div className={`${styles.mobileNavContent} ${Modesta.navContent}`}>
             <h4 className={styles.mobileHeading}>
               <LocalisedHyperlink to="/">
                 <FormattedMessage id="site.name" />
@@ -66,7 +66,7 @@ class NavigationBar extends Component {
             </h4>
           </div>
 
-          <div className={modesta.sidenav} ref={this.navside}>
+          <div className={Modesta.sidenav} ref={this.navside}>
             <NavbarLinks />
           </div>
         </div>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import Locations from '../../data/Locations';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import ContentBox from '../ContentBox';
 import FlexColumns from '../FlexColumns';
 import FlexContainer from '../FlexContainer';
@@ -11,6 +10,7 @@ import styles from './index.module.scss';
 import PrefixLabel from './PrefixLabel';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
+import Modesta from '../../data/Modesta';
 
 class BotPageInfoBox extends Component {
   componentDidMount() {
@@ -41,8 +41,8 @@ class BotPageInfoBox extends Component {
                 count: bot.trigger.prefix.length
               }} />
               {bot.trigger.prefix.map(prefix => <PrefixLabel>{prefix}</PrefixLabel>)}
-              {bot.trigger.customisable ? <PrefixLabel className={modesta['midnight-blue']}><FormattedMessage id="pages.bots.customisable" /></PrefixLabel> : null}
-              {bot.trigger.mentionable ? <PrefixLabel className={modesta['midnight-blue']}><FormattedMessage id="pages.bots.mentionable" /></PrefixLabel> : null}
+              {bot.trigger.customisable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.customisable" /></PrefixLabel> : null}
+              {bot.trigger.mentionable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.mentionable" /></PrefixLabel> : null}
             </div>
             <div className={styles.links}>
               {bot.support ? <a href={bot.support}><FormattedMessage id="pages.bots.support" /></a> : null}
@@ -63,8 +63,8 @@ class BotPageInfoBox extends Component {
               : null
             }
           </FlexColumns>
-          <FlexColumns columns={4} className={modesta['right-text']}>
-            <a className={`${modesta.btn} ${modesta.discord}`} href={bot.invite}>
+          <FlexColumns columns={4} className={Modesta.rightText}>
+            <a className={`${Modesta.btn} ${Modesta.discord}`} href={bot.invite}>
               <FormattedMessage id="pages.bots.invite" />
             </a>
           </FlexColumns>

@@ -4,12 +4,12 @@ import Container from '../components/Container';
 import ContentBox from '../components/ContentBox';
 import FlagLinks from '../components/FlagLinks';
 import Layout from '../components/Layout';
-import modesta from '../ModestaCSS/scss/modesta.module.scss';
+import Modesta from '../data/Modesta';
 
 export default () => (
   <Layout>
     <Container>
-      <ContentBox className={modesta.center}>
+      <ContentBox className={Modesta.center}>
         <h2><FormattedMessage id="pages.locale.choose" /></h2>
         <FlagLinks />
         <p>

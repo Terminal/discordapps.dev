@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Modesta from '../../data/Modesta';
 
-class Container extends Component {
+class Row extends Component {
   render() {
     return (
-      <div className={`${Modesta.container} ${this.props.className ? this.props.className : ''}`}>
+      <div className={Modesta.row}>
         {this.props.children}
       </div>
     )
   }
 }
 
-export default Container;
+export default Row;
