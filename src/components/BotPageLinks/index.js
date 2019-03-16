@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ContentBox from '../ContentBox';
-import styles from './index.module.scss';
-import modesta from '../../ModestaCSS/scss/modesta.module.scss';
 import FlexColumns from '../FlexColumns';
 import { FormattedMessage } from 'react-intl';
 import { injectIntl } from 'react-intl';
