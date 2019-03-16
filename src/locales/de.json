@@ -140,11 +140,11 @@
       "inAppPurchases": "Hat in-app Käufe",
       "nsfw": "NSFW",
       "offeredby": "Angeboten von:",
-      "modified": "Zuletzt bearbeitet: {{{ date }}}",
-      "created": "Zuerst veröffentlicht: {{{ date }}}",
-      "category": "Kategorie: {{{ category }}}",
+      "modified": "Zuletzt bearbeitet: { date }",
+      "created": "Zuerst veröffentlicht: { date }",
+      "category": "Kategorie: { category }",
       "initiateCategoryFilter": "Finde Bots für...",
-      "ownerFilter": "Bots von {{{ name }}}",
+      "ownerFilter": "Bots von { name }",
       "search": "Suche",
       "count": {
         "one": "In einem einzigen Server",
@@ -334,8 +334,8 @@
       "prev": "Vorherige",
       "next": "Nächste Seite"
     },
-    "currentPage": "Seite {{{ number }}}",
-    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
+    "currentPage": "Seite { number }",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
   },
   "permission": {
     "ADD_REACTIONS": "Reactionen hinzufügen",

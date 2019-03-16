@@ -144,11 +144,11 @@
       "inAppPurchases": "Achats dans l'application",
       "nsfw": "NSFW",
       "offeredby": "Proposé par :",
-      "modified": "Dernière modification: {{{ date }}}",
-      "created": "Publication: {{{ date }}}",
-      "category": "Catégorie: {{{ category }}}",
+      "modified": "Dernière modification: { date }",
+      "created": "Publication: { date }",
+      "category": "Catégorie: { category }",
       "initiateCategoryFilter": "Chercher des bots pour ...",
-      "ownerFilter": "Bots triés par {{{ name }}}",
+      "ownerFilter": "Bots triés par { name }",
       "search": "Rechercher",
       "count": {
         "one": "Installé dans un seul serveur",
@@ -343,8 +343,8 @@
       "prev": "Précédente",
       "next": "Suivante"
     },
-    "currentPage": "Page {{{ number }}}",
-    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
+    "currentPage": "Page { number }",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
   },
   "permission": {
     "ADD_REACTIONS": "Ajouter des réactions",

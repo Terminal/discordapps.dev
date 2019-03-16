@@ -140,11 +140,11 @@
       "inAppPurchases": "Has in-app purchases",
       "nsfw": "NSFW",
       "offeredby": "Indsendt af:",
-      "modified": "Sidst redigeret: {{{ date }}}",
-      "created": "Først udgivet: {{{ date }}}",
-      "category": "Kategori: {{{ category }}}",
+      "modified": "Sidst redigeret: { date }",
+      "created": "Først udgivet: { date }",
+      "category": "Kategori: { category }",
       "initiateCategoryFilter": "Find botter for...",
-      "ownerFilter": "Botter af {{{ name }}}",
+      "ownerFilter": "Botter af { name }",
       "count": {
         "one": "Installeret på en enkelt server",
         "other": "Installeret på %s servere"
@@ -326,8 +326,8 @@
       "prev": "Forrige",
       "next": "Næste side"
     },
-    "currentPage": "Side {{{ number }}}",
-    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
+    "currentPage": "Side { number }",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
   },
   "permission": {
     "ADD_REACTIONS": "Tilføj Reaktioner",

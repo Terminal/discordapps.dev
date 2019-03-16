@@ -150,7 +150,7 @@
       "created": "First published: { date }",
       "category": "Category: { category }",
       "initiateCategoryFilter": "Find bots for...",
-      "ownerFilter": "Bots by {{{ name }}}",
+      "ownerFilter": "Bots by { name }",
       "search": "Search",
       "count": {
         "one": "Installed in a single server",
@@ -359,8 +359,8 @@
       "prev": "Previous",
       "next": "Next Page"
     },
-    "currentPage": "Page {{{ number }}}",
-    "reviews": "User reviews for '{{ name }}' - Page {{{ number }}}"
+    "currentPage": "Page { number }",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
   },
   "permission": {
     "ADD_REACTIONS": "Add Reactions",

@@ -148,11 +148,11 @@
       "inAppPurchases": "Ma zakupy w aplikacji",
       "nsfw": "NSFW",
       "offeredby": "Stworzony przez:",
-      "modified": "Ostatnio zmodyfikowany: {{{ date }}}",
-      "created": "Opublikowany po raz pierwszy: {{{ date }}}",
-      "category": "Kategoria: {{{ category }}}",
+      "modified": "Ostatnio zmodyfikowany: { date }",
+      "created": "Opublikowany po raz pierwszy: { date }",
+      "category": "Kategoria: { category }",
       "initiateCategoryFilter": "Znajdź boty dla...",
-      "ownerFilter": "Boty przez {{{ name }}}",
+      "ownerFilter": "Boty przez { name }",
       "search": "Szukaj",
       "count": {
         "one": "Zainstalowany na jednym serwerze",
@@ -361,8 +361,8 @@
       "prev": "Poprzednia strona",
       "next": "Następna strona"
     },
-    "currentPage": "Strona {{{ number }}}",
-    "reviews": "Recenzje użytkowników dla '{{ name }}' - Strona {{{ number }}}"
+    "currentPage": "Strona { number }",
+    "reviews": "Recenzje użytkowników dla '{{ name }}' - Strona { number }"
   },
   "permission": {
     "ADD_REACTIONS": "Dodawanie reakcji",
