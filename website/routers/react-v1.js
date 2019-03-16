@@ -13,6 +13,9 @@ router
       ), {
         random: bot('random').add(10)
       }, {}))
+      .merge(bot => ({
+        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+      }))
       .without('token')
       .then((bots) => {
         res.json({
@@ -34,6 +37,9 @@ router
       ), {
         random: bot('random').add(10)
       }, {}))
+      .merge(bot => ({
+        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+      }))
       .default([])
       .without('token')
       .then((bots) => {
@@ -54,6 +60,9 @@ router
       ), {
         random: bot('random').add(10)
       }, {}))
+      .merge(bot => ({
+        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+      }))
       .merge(bot => ({
         reviews: r.table('reviews')
           .filter({
@@ -81,9 +90,6 @@ router
       ok: true,
       data: categories
     });
-  })
-  .get('/oauth', (req, res) => {
-    
   })
   .use((req, res) => {
     res.status(404).json({
