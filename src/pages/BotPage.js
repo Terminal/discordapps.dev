@@ -4,13 +4,12 @@ import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Locations from '../data/Locations';
 import BtecParallax from '../components/BtecParallax';
-import ContentBox from '../components/ContentBox';
 import BotPageContentBox from '../components/BotPageContentBox';
-import LazyImage from '../components/LazyImage';
-import FlexContainer from '../components/FlexContainer';
 import BotPageImagesBox from '../components/BotPageImagesBox';
 import BotPageInfoBox from '../components/BotPageInfoBox';
 import YouTube from '../components/YouTube';
+import { Helmet } from 'react-helmet';
+import BotPageLinks from '../components/BotPageLinks';
 
 class BotPage extends Component {
   constructor(props) {
@@ -53,6 +52,10 @@ class BotPage extends Component {
 
     return (
       <Layout>
+        <Helmet>
+          <title>{bot.contents[0].name}</title>
+          {bot.cachedImages.avatar ? <link rel="shortcut icon" href={`${Locations.server}${bot.cachedImages.avatar}`} /> : null}
+        </Helmet>
         { 
           bot.cachedImages.cover ?
           <BtecParallax src={`${Locations.server}${bot.cachedImages.cover}`}/> :
@@ -64,6 +67,7 @@ class BotPage extends Component {
             {bot.videos.youtube ? <YouTube video={bot.videos.youtube} /> : null}
           </BotPageImagesBox>
           <BotPageContentBox page={bot.contents[0].page}/>
+          <BotPageLinks bot={bot} />
         </Container>
       </Layout>
     );

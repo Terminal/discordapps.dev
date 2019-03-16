@@ -27,10 +27,10 @@ class CategoryCollection extends Component {
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {
-          const sorted = data.data
-            .sort((a, b) => b.random - a.random)
           this.setState({
-            bots: sorted
+            bots: data.data
+              .filter(bot => bot.state === 'approved')
+              .sort((a, b) => b.random - a.random)
           })
         }
       });

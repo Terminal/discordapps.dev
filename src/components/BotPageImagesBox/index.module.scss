@@ -1,6 +1,30 @@
+.sliderContainer {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  border-radius: 5px;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  & > * {
+    max-height: 30vh;
+    border-radius: 5px;
+    margin-left: 10px;
+    flex-shrink: 0;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.botListDotSpace {
+  height: 10px;
+}
+
 .image {
   max-height: 30vh;
-  margin: 0;
+  border-radius: 5px;
 }
 
 .dots {

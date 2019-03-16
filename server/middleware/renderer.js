@@ -25,12 +25,11 @@ export default (req, res, next) => {
       status: 200,
     };
 
+    const store = configureStore();
+
     // render the app as a string
     const html = ReactDOMServer.renderToString(
-      <ReduxProvider store={configureStore()}>
-        <Helmet>
-          <meta charSet="utf-8" />
-        </Helmet>
+      <ReduxProvider store={store}>
         <StaticRouter location={req.baseUrl} context={context}>
           <App />
         </StaticRouter>
@@ -45,6 +44,14 @@ export default (req, res, next) => {
         .replace(
           '<div id="root"></div>',
           `<div id="root">${html}</div>`
+        )
+        .replace(
+          '<!-- State -->',
+          `
+<script>
+  window.REDUX_STATE = ${JSON.stringify(store.getState())}
+</script>
+          `
         )
         .replace(
           '<!doctype html>',

@@ -21,10 +21,10 @@ class Home extends Component {
         </Container>
         <Container>
           <Flex padding={true}>
-            <Flex columns="3">
+            <Flex columns={3}>
               <CategoriesLinksList />
             </Flex>
-            <Flex columns="9">
+            <Flex columns={9}>
               <CategoryCollection />
             </Flex>
           </Flex>

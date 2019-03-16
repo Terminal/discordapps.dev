@@ -19,7 +19,7 @@ class LazyImage extends Component {
   }
   render() {
     return (
-      <img src={this.props.src} className={`${styles.image} ${this.state.loaded ? styles.loaded : ''} ${this.props.className}`} alt={this.props.alt} ref={this.image} onLoad={this.load}></img>
+      <img src={this.props.src} className={`${styles.image} ${this.state.loaded ? styles.loaded : ''} ${this.props.className}`} alt={this.props.alt} ref={this.image} onLoad={this.load} {...this.props}></img>
     );
   }
 }

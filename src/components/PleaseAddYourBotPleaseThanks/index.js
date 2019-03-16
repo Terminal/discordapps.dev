@@ -10,12 +10,12 @@ class PleaseAddYourBotPleaseThanks extends Component {
     return (
       <ContentBox>
         <Flex>
-          <Flex columns="4">
+          <Flex columns={4}>
             <h4>
               <FormattedMessage id="components.pleaseaddyourbotpleasethanks.title" />
             </h4>
           </Flex>
-          <Flex columns="4">
+          <Flex columns={4}>
             <h5>
               <a href={Locations.wiki}>
                 <FormattedMessage id="components.pleaseaddyourbotpleasethanks.innovate.heading" />
@@ -23,7 +23,7 @@ class PleaseAddYourBotPleaseThanks extends Component {
             </h5>
             <FormattedMessage id="components.pleaseaddyourbotpleasethanks.innovate.content" />
           </Flex>
-          <Flex columns="4">
+          <Flex columns={4}>
             <h5>
               <LocalisedHyperlink to="/add">
                 <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.heading" />

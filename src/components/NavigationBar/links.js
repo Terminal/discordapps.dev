@@ -29,16 +29,16 @@ class NavbarLinks extends Component {
           <>
             <FormattedMessage id="navbar.add">
               {message => (
-                <a aria-label={message} href="#">
+                <Link aria-label={message} to="/bots/add">
                   {message}
-                </a>
+                </Link>
               )}
             </FormattedMessage>
             <FormattedMessage id="navbar.user">
               {message => (
-                <a aria-label={message} href="#">
+                <Link aria-label={message} to="/me">
                   {auth.data.username}
-                </a>
+                </Link>
               )}
             </FormattedMessage>
             <FormattedMessage id="navbar.logout">
@@ -48,13 +48,19 @@ class NavbarLinks extends Component {
                 </Link>
               )}
             </FormattedMessage>
-            <FormattedMessage id="navbar.admin">
-              {message => (
-                <LocalisedHyperlink to="/admin">
-                  {message}
-                </LocalisedHyperlink>
-              )}
-            </FormattedMessage>
+            {
+              auth.data.admin ?
+              <>
+                <FormattedMessage id="navbar.admin">
+                  {message => (
+                    <LocalisedHyperlink to="/admin">
+                      {message}
+                    </LocalisedHyperlink>
+                  )}
+                </FormattedMessage>
+              </>
+              : null
+            }
           </> :
           <>
             <FormattedMessage id="navbar.login">

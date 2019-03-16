@@ -10,6 +10,7 @@ class YouTube extends Component {
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
         className={styles.video}
+        title={this.props.title}
       ></iframe>
     )
   }

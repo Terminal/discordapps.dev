@@ -10,9 +10,8 @@ class BtecParallax extends Component {
         style={this.props.src ? {
           backgroundImage: `url('${this.props.src}')`
         }: {}} />
-        <div className={modesta['center-object']}>
-          ree
-        </div>
+        {/* <div className={modesta['center-object']}>
+        </div> */}
       </div>
     )
   }

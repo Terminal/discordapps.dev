@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom';
 
 import ReduxProvider from './components/ReduxProvider';
 import { BrowserRouter } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
 import App from './App';
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render((
   <ReduxProvider>
-    <Helmet>
-      <meta charSet="utf-8" />
-    </Helmet>
     <BrowserRouter>
       <App />
     </BrowserRouter>
