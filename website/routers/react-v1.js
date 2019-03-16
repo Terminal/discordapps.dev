@@ -14,7 +14,7 @@ router
         random: bot('random').add(10)
       }, {}))
       .merge(bot => ({
-        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+        authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
       }))
       .without('token')
       .then((bots) => {
@@ -38,7 +38,7 @@ router
         random: bot('random').add(10)
       }, {}))
       .merge(bot => ({
-        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+        authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
       }))
       .default([])
       .without('token')
@@ -61,7 +61,7 @@ router
         random: bot('random').add(10)
       }, {}))
       .merge(bot => ({
-        authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array')
+        authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
       }))
       .merge(bot => ({
         reviews: r.table('reviews')
