@@ -19,6 +19,7 @@
       "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
       "category": "Vous devez sélectionner une catégorie pour votre bot",
       "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",
+      "contents": "Vous devez sélectionner au moins une langue pour que votre bot soit disponible. Cliquez sur une langue, puis cliquez sur \"Ajouter une langue\"",
       "description": "La description courte doit avoir une taille entre 10 et 100 caractères",
       "githubowner": "Le propriétaire GitHub doit être un utilisateur GitHub valide. Laissez vide si vous n'avez pas de compte GitHub.",
       "githubrepo": "le répertoire GitHub doit être une chaine de caractères valide. Laissez vide si vous n'avez pas de répertoire GitHub.",
@@ -73,6 +74,7 @@
     "source": "GitHub",
     "discord": "Discord",
     "terminal": "Terminal.ink",
+    "terms": "Conditions d'utilisation",
     "docs": "Docs",
     "view": "Voir cette page sur GitHub"
   },
@@ -271,6 +273,10 @@
         "title": "ID YouTube",
         "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
       },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "Un ID d'une vidéo YOUKU"
+      },
       "website": {
         "title": "Site Internet",
         "placeholder": "Un lien HTTPS vers votre site Internet"
@@ -280,7 +286,8 @@
       "triggermethods": "Méthodes de déclenchement",
       "deleteLanguage": "Supprimer une langue",
       "required": "Les champs marqués d'un * sont requis.",
-      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le statut de la vérification de votre bot, ainsi que recevoir des messages privés de la part du staff à propos de votre application."
+      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le statut de la vérification de votre bot, ainsi que recevoir des messages privés de la part du staff à propos de votre application.",
+      "discord": "Rejoindre Terminal.ink"
     },
     "error": {
       "notfound": "Page introuvable...",
