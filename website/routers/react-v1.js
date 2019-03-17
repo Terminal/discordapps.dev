@@ -8,11 +8,6 @@ const router = express.Router();
 router
   .get('/bots', (req, res, next) => {
     r.table('bots')
-      .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.getLocale())
-      ), {
-        random: bot('random').add(10)
-      }, {}))
       .merge(bot => ({
         authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
       }))
@@ -32,11 +27,6 @@ router
       .filter({
         category: req.params.category
       })
-      .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.getLocale())
-      ), {
-        random: bot('random').add(10)
-      }, {}))
       .merge(bot => ({
         authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
       }))
@@ -55,11 +45,6 @@ router
   .get('/bots/id/:id', checkParamsLength, (req, res, next) => {
     r.table('bots')
       .get(req.params.id)
-      .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.getLocale())
-      ), {
-        random: bot('random').add(10)
-      }, {}))
       .merge(bot => ({
         authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
       }))
