@@ -182,7 +182,8 @@
         "modal": "Enter a single ID of an owner of the bot.",
         "placeholder": "ID of a single owner",
         "title": "Bot Authors",
-        "add": "Add another"
+        "add": "Add another",
+        "delete": "Remove author"
       },
       "basicinfo": "Basic Information",
       "nsfw": {
@@ -194,7 +195,8 @@
         "title": "Support URL"
       },
       "category": {
-        "title": "Category"
+        "title": "Category",
+        "placeholder": "Select a category"
       },
       "client_id": {
         "modal1": "The bot ID is a number which uniquely identifies the bot user. You can retrieve it by clicking the \"Copy\" button within the Discord Developer portal.",
@@ -220,7 +222,8 @@
       "invite": {
         "modal": "Please make sure \"Bot ID\" has been filled in with your Discord bot's ID",
         "title": "Invite URL",
-        "generate": "Generate invite link"
+        "generate": "Generate invite link",
+        "placeholder": "Enter a link to invite your bot"
       },
       "languages": {
         "add": "Add a language",
@@ -266,7 +269,8 @@
         "preview": {
           "title": "Preview Images",
           "placeholder": "A HTTPS link to a single screenshot",
-          "add": "Add another image"
+          "add": "Add another image",
+          "delete": "Delete"
         }
       },
       "youtube": {

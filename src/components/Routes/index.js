@@ -28,6 +28,11 @@ class WebsiteRouter extends Component {
             <EditBot match={match} location={location} />
           </InternationalisationProvider>
         )} />
+        <Route path="/:locale/bots/:id/edit" exact component={({ match, location }) => (
+          <InternationalisationProvider match={match} location={location}>
+            <EditBot match={match} location={location} />
+          </InternationalisationProvider>
+        )} />
         <Route path="/:locale/bots/:id" exact component={({ match, location }) => (
           <InternationalisationProvider match={match} location={location}>
             <BotPage match={match} location={location} />

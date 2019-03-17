@@ -32,6 +32,14 @@ class BotPageInfoBox extends Component {
             <p>
               {bot.contents[0].description}
             </p>
+            <p>
+              {bot.nsfw ? <>
+                <PrefixLabel className={Modesta.alizarin}><FormattedMessage id="pages.bots.nsfw" /></PrefixLabel>
+              </> : null}
+              {bot.state !== 'approved' ? <>
+                <PrefixLabel className={Modesta.alizarin}><FormattedMessage id={`states.${bot.state}`} /></PrefixLabel>
+              </> : null}
+            </p>
           </div>
         </FlexContainer>
         <FlexColumns>
@@ -40,7 +48,7 @@ class BotPageInfoBox extends Component {
               <FormattedMessage id="pages.bots.prefix" values={{
                 count: bot.trigger.prefix.length
               }} />
-              {bot.trigger.prefix.map(prefix => <PrefixLabel>{prefix}</PrefixLabel>)}
+              {bot.trigger.prefix.map((prefix, index) => <PrefixLabel key={index}>{prefix}</PrefixLabel>)}
               {bot.trigger.customisable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.customisable" /></PrefixLabel> : null}
               {bot.trigger.mentionable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.mentionable" /></PrefixLabel> : null}
             </div>
@@ -48,20 +56,15 @@ class BotPageInfoBox extends Component {
               {bot.support ? <a href={bot.support}><FormattedMessage id="pages.bots.support" /></a> : null}
               {bot.website ? <a href={bot.website}><FormattedMessage id="pages.bots.website" /></a> : null}
               {bot.github && bot.github.owner && bot.github.repo ? <a href={`https://github.com/${bot.github.owner}/${bot.github.repo}`}><FormattedMessage id="pages.bots.github" /></a> : null}
-            </div>
-            { auth.data !== null ?
-              <div className={styles.links}>
-                {auth.data.admin || bot.authors.some(author => author.id === auth.data.id) ?
-                  <>
-                    <LocalisedHyperlink to={`/bots/${bot.id}/edit`}><FormattedMessage id="pages.bots.edit" /></LocalisedHyperlink>
-                    <LocalisedHyperlink to={`/bots/${bot.id}/delete`}><FormattedMessage id="pages.bots.delete" /></LocalisedHyperlink>
-                    <LocalisedHyperlink to={`/bots/${bot.id}/configure`}><FormattedMessage id="pages.bots.configure" /></LocalisedHyperlink>
-                  </>
+              { auth.data !== null && (auth.data.admin || bot.authors.some(author => author.id === auth.data.id)) ?
+                <>
+                  <LocalisedHyperlink to={`/bots/${bot.id}/edit`}><FormattedMessage id="pages.bots.edit" /></LocalisedHyperlink>
+                  <LocalisedHyperlink to={`/bots/${bot.id}/delete`}><FormattedMessage id="pages.bots.delete" /></LocalisedHyperlink>
+                  <LocalisedHyperlink to={`/bots/${bot.id}/configure`}><FormattedMessage id="pages.bots.configure" /></LocalisedHyperlink>
+                </>
                 : null
-                }
-              </div>
-              : null
-            }
+              }
+            </div>
           </FlexColumns>
           <FlexColumns columns={4} className={Modesta.rightText}>
             <a className={`${Modesta.btn} ${Modesta.discord}`} href={bot.invite}>
