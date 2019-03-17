@@ -62,7 +62,8 @@ router
       if (err) {
         res.json({
           ok: false,
-          message: res.__(err.message)
+          message: res.__(err.message),
+          language: err.message
         });
       } else {
         const insert = (type, message) => {
@@ -125,6 +126,7 @@ router
                   res.json({
                     ok: true,
                     message: res.__(message),
+                    language: message,
                     redirect: `/bots/${value.id}`
                   });
                 })
@@ -159,7 +161,8 @@ router
               } else if (existingBot.state === 'banned') {
                 res.json({
                   ok: false,
-                  message: res.__('errors.permissions.banned')
+                  message: res.__('errors.permissions.banned'),
+                  language: 'errors.permissions.banned'
                 });
               } else if (existingBot.authors.includes(req.user.id)) {
                 // Copy over some stuff while overwriting
@@ -168,7 +171,8 @@ router
               } else {
                 res.json({
                   ok: false,
-                  message: res.__('errors.bots.exists')
+                  message: res.__('errors.bots.exists'),
+                  language: 'errors.bots.exists'
                 });
               }
             } else {
@@ -194,7 +198,8 @@ router
                   } else if (result.code === 10013) {
                     res.json({
                       ok: false,
-                      message: res.__('errors.bots.notfound')
+                      message: res.__('errors.bots.notfound'),
+                      language: 'errors.bots.notfound'
                     });
                   } else if (result.bot) {
                     if (!value.images.avatar && result.avatar) value.images.avatar = `${config.discord.cdn}/avatars/${value.id}/${result.avatar}.png`;
@@ -202,7 +207,8 @@ router
                   } else {
                     res.json({
                       ok: false,
-                      message: res.__('errors.bots.notabot')
+                      message: res.__('errors.bots.notabot'),
+                      language: 'errors.bots.notabot'
                     });
                   }
                 });
