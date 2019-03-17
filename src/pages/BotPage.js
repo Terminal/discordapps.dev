@@ -70,7 +70,6 @@ class BotPage extends Component {
       <Layout>
         <Helmet>
           <title>{contents.name}</title>
-          {bot.cachedImages.avatar ? <link rel="shortcut icon" href={`${Locations.server}${bot.cachedImages.avatar}`} /> : null}
         </Helmet>
         { 
           bot.cachedImages.cover ?

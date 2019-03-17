@@ -44,6 +44,7 @@ class InputField extends Component {
         <FlexContainer>
           {input}
         </FlexContainer>
+        {this.props.smallText ? <small><FormattedMessage id={`${this.props.id}.small`} /></small>: null}
       </Column>
     )
   }
