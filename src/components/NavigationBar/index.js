@@ -43,7 +43,7 @@ class NavigationBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.navbar}>
         <div className={`${displayCSS.desktop} ${Modesta.navContainer} ${styles.desktopNavbar} ${Modesta.default}`}>
           <h1 className={Modesta.navTitle}>
             <LocalisedHyperlink to="/">

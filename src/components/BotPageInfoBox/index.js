@@ -18,7 +18,7 @@ class BotPageInfoBox extends Component {
     dispatch(fetchAuthIfNeeded());
   }
   render() {
-    const { bot, auth } = this.props;
+    const { bot, auth, contents } = this.props;
     return (
       <ContentBox>
         <FlexContainer>
@@ -27,10 +27,10 @@ class BotPageInfoBox extends Component {
           </div>
           <div>
             <h3>
-              {bot.contents[0].name}
+              {contents.name}
             </h3>
             <p>
-              {bot.contents[0].description}
+              {contents.description}
             </p>
             <p>
               {bot.nsfw ? <>

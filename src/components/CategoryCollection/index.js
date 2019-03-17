@@ -10,6 +10,7 @@ import Locations from '../../data/Locations';
 import { injectIntl } from 'react-intl';
 import BotCard from '../BotCard';
 import LocalisedHyperlink from '../LocalisedHyperlink';
+import { getMasterLanguage } from '../../locales';
 
 class CategoryCollection extends Component {
   constructor(props) {
@@ -23,13 +24,19 @@ class CategoryCollection extends Component {
     const { dispatch } = this.props;
     dispatch(fetchCategoriesIfNeeded());
 
-    fetch(`${Locations.server}/${this.props.intl.locale}/reactjs/v1/bots`)
+    fetch(`${Locations.server}/reactjs/v1/bots`)
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {
           this.setState({
             bots: data.data
               .filter(bot => bot.state === 'approved')
+              .map(bot => {
+                if (bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === getMasterLanguage(this.props.intl.locale))) {
+                  bot.random += 10;
+                }
+                return bot;
+              })
               .sort((a, b) => b.random - a.random)
           })
         }

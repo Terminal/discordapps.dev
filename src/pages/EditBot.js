@@ -26,7 +26,7 @@ class EditBot extends Component {
     
     // Check if the bot has been injected
     if (!this.state.bot && this.props.match.params.id) {
-      fetch(`${Locations.server}/${this.props.intl.locale}/reactjs/v1/bots/id/${this.props.match.params.id}`)
+      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}`)
         .then(res => {
           return res.json()
         })

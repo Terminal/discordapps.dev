@@ -11,6 +11,7 @@ import YouTube from '../components/YouTube';
 import { Helmet } from 'react-helmet';
 import BotPageLinks from '../components/BotPageLinks';
 import NotFound from './NotFound';
+import { Localise } from '../locales';
 
 class BotPage extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class BotPage extends Component {
   componentDidMount() {
     // Check if the bot has been injected
     if (!this.state.bot) {
-      fetch(`${Locations.server}/${this.props.intl.locale}/reactjs/v1/bots/id/${this.props.match.params.id}`)
+      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}`)
         .then(res => {
           if (res.status === 404) {
             this.setState({
@@ -63,11 +64,12 @@ class BotPage extends Component {
     }
 
     const { bot } = this.state
+    const contents = Localise(this.state.bot.contents, this.props.intl.locale);
 
     return (
       <Layout>
         <Helmet>
-          <title>{bot.contents[0].name}</title>
+          <title>{contents.name}</title>
           {bot.cachedImages.avatar ? <link rel="shortcut icon" href={`${Locations.server}${bot.cachedImages.avatar}`} /> : null}
         </Helmet>
         { 
@@ -76,11 +78,11 @@ class BotPage extends Component {
           null
         }
         <Container>
-          <BotPageInfoBox bot={bot}/>
+          <BotPageInfoBox bot={bot} contents={contents}/>
           <BotPageImagesBox images={bot.cachedImages.preview}>
             {bot.videos.youtube ? <YouTube video={bot.videos.youtube} /> : null}
           </BotPageImagesBox>
-          <BotPageContentBox page={bot.contents[0].page}/>
+          <BotPageContentBox page={contents.page}/>
           <BotPageLinks bot={bot} />
         </Container>
       </Layout>

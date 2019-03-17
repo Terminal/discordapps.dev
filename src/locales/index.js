@@ -7,11 +7,12 @@ import zhData from 'react-intl/locale-data/zh';
 import daLocale from './da.json';
 import deLocale from './de.json';
 import enLocale from './en-GB.json';
+import enUSLocale from './en-US.json';
 import frLocale from './fr.json';
 import plLocale from './pl.json';
 import zhCnLocale from './zh-cn.json';
 
-export default [
+const languages = [
   {
     code: 'ar',
     flag: '',
@@ -46,6 +47,15 @@ export default [
     top: true,
     priority: 1,
     translations: enLocale,
+    reactIntl: enData
+  },
+  {
+    code: 'en-US',
+    flag: 'twa-us',
+    master: 'en-GB',
+    top: true,
+    priority: 1.1,
+    translations: enUSLocale,
     reactIntl: enData
   },
   {
@@ -186,4 +196,41 @@ export default [
     top: false,
     priority: 8
   }
-]
+];
+
+const Localise = (contents, locale) => {
+  let localisedContents = contents.find(content => content.locale === locale);
+  if (localisedContents) {
+    return localisedContents
+  }
+  const availableLanguages = languages.sort((a, b) => {
+    if (a.priority < b.priority) {
+      return -1;
+    } else if (a.priority > b.priority) {
+      return 1;
+    }
+    return 0;
+  });
+
+  for (let i = 0; i < availableLanguages.length; i += 1) {
+    localisedContents = contents.find(content => content.locale === availableLanguages[i].code);
+    if (localisedContents) {
+      return localisedContents
+    }
+  }
+
+  throw new Error('Cannot find any languages for this bot!');
+};
+
+// Get the language that the bots can be in
+const getMasterLanguage = (locale) => {
+  const language = languages.find(language => language.code === locale);
+  if (language && language.master) return language.master;
+  return null;
+}
+
+export default languages;
+export {
+  Localise,
+  getMasterLanguage
+};

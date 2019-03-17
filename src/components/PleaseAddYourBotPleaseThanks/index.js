@@ -14,7 +14,7 @@ class PleaseAddYourBotPleaseThanks extends Component {
     dispatch(fetchAuthIfNeeded());
   }
   render() {
-    const href = typeof window !== 'undefined' ? `${window.location.origin}/${this.props.intl.locale}/bots/add` : 'https://discordapps.dev';
+    const href = typeof window !== 'undefined' ? `${window.location.origin}/bots/add` : 'https://discordapps.dev';
 
     return (
       <ContentBox>
