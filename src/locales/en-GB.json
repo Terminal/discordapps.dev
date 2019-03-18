@@ -430,6 +430,11 @@
       "toggle": "Toggle arrow",
       "more": "View more",
       "less": "View less"
+    },
+    "helpusimprove": {
+      "title": "Help us",
+      "text": "Please comment with feedback on this website via the issues tab on GitHub.",
+      "issues": "GitHub Issues"
     }
   }
 }

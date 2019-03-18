@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import CategoriesLinksList from '../components/CategoriesLinksList';
 import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
 import CategoryCollection from '../components/CategoryCollection';
+import HelpUsImprove from '../components/HelpUsImprove';
 
 class Home extends Component {
   render() {
@@ -23,6 +24,7 @@ class Home extends Component {
           <Flex padding={true}>
             <Flex columns={3}>
               <CategoriesLinksList />
+              <HelpUsImprove />
             </Flex>
             <Flex columns={9}>
               <CategoryCollection />

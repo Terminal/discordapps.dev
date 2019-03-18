@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Locations from '../../data/Locations';
 import styles from './index.module.scss';
 import { FormattedMessage } from 'react-intl';
-import LocalisedHyperlink from '../LocalisedHyperlink';
 import LazyImage from '../LazyImage';
 import FlexContainer from '../FlexContainer';
 
