@@ -112,7 +112,8 @@ router.get('/', (req, res, next) => {
             if (err) {
               res.json({
                 ok: false,
-                message: res.__(err.message)
+                message: res.__(err.message),
+                language: err.message
               });
             } else {
               value.date = new Date();
@@ -133,7 +134,8 @@ router.get('/', (req, res, next) => {
         } else {
           res.json({
             ok: false,
-            message: res.__('errors.reviews.self')
+            message: res.__('errors.reviews.self'),
+            language: 'errors.reviews.self'
           });
         }
       });
