@@ -10,7 +10,7 @@ import Locations from '../../data/Locations';
 import { injectIntl } from 'react-intl';
 import BotCard from '../BotCard';
 import LocalisedHyperlink from '../LocalisedHyperlink';
-import { getMasterLanguage } from '../../locales';
+import { getMasterLanguage, Localise } from '../../locales';
 
 class CategoryCollection extends Component {
   constructor(props) {
@@ -77,11 +77,11 @@ class CategoryCollection extends Component {
                         .filter(bot => bot.hide === false) // Remove hidden bots
                         .slice(0, 8)
                         .map(bot => {
-                          bot.contents = bot.contents[this.props.intl.locale] ? bot.contents[this.props.intl.locale] : bot.contents[0];
-                          return bot;
+                          const contents = Localise(bot.contents, this.props.intl.locale);
+                          return [bot, contents];
                         })
-                        .map(bot => (
-                          <BotCard key={bot.id} bot={bot} />
+                        .map(([bot, contents]) => (
+                          <BotCard key={bot.id} bot={bot} contents={contents} />
                         ))
                     }
                   </div>

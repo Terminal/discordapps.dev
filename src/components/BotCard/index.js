@@ -7,18 +7,18 @@ import LazyImage from '../LazyImage';
 
 class BotCard extends Component {
   render() {
-    const { bot } = this.props
+    const { bot, contents } = this.props
     return (
       <div className={styles.card}>
         <LocalisedHyperlink to={`/bots/${bot.id}`} className={styles.link}>
-          <FormattedMessage id="alt.avatar" values={{name: bot.contents.name}}>
+          <FormattedMessage id="alt.avatar" values={{name: contents.name}}>
             {(message) => (
               <LazyImage className={styles.avatar} alt={message} src={`${Locations.server}${bot.cachedImages.avatar}` || Locations.logo} />
             )}
           </FormattedMessage>
           <div>
-            <h6>{bot.contents.name}</h6>
-            <p className={styles.description}>{bot.contents.description}</p>
+            <h6>{contents.name}</h6>
+            <p className={styles.description}>{contents.description}</p>
           </div>
         </LocalisedHyperlink>
       </div>
