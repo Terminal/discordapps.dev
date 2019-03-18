@@ -53,8 +53,11 @@ router
           .filter({
             bot: bot('id')
           })
+          .merge(reviewer => r.table('users').get(reviewer('author')).pluck('discriminator', 'username', 'cachedAvatar'))
           .default([])
           .without('id')
+          .without('bot')
+          .without('author')
           .coerceTo('array')
       }))
       .default({})
