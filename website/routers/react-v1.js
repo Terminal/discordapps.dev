@@ -58,7 +58,6 @@ router
             isCurrentUserOwner: req.user ? r.eq(reviewer('author'), req.user.id) : false
           }))
           .default([])
-          .without('id')
           .without('bot')
           .without('author')
           .coerceTo('array')
