@@ -1,7 +1,7 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
-const loaderUtils = require('loader-utils');
 const nodeExternals = require('webpack-node-externals');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 
 const postCSSLoader = {
   loader: 'postcss-loader',
@@ -72,14 +72,7 @@ module.exports = {
               modules: true,
               importLoaders: 1,
               sourceMap: true,
-              getLocalIdent: (context, localIdentName, localName, options) => {
-                // Replicate `create-react-app`'s getLocalIdent
-                const fileNameOrFolder = /index.module.(sass|scss|css)$/.test(context.resourcePath) ? '[folder]' : '[name]';
-                const hash = loaderUtils.getHashDigest(context.resourcePath + localName, 'md5', 'base64', 5);
-
-                const className = loaderUtils.interpolateName(context, `${fileNameOrFolder}_${localName}__${hash}`, options);
-                return className.replace('.module_', '_')
-              }
+              getLocalIdent: getCSSModuleLocalIdent
             }
           },
           postCSSLoader,
