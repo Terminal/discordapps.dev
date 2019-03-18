@@ -6,7 +6,7 @@ const app = express();
 
 app
   .use('^/$', serverRenderer) // Render ROOT with the server
-  .use(express.static(
+  .use((req, res, next) => {console.log(path.resolve(__dirname, '..', 'build'));next()}, express.static(
     path.resolve(__dirname, '..', 'build'),
     { maxAge: '30d' }
   ))

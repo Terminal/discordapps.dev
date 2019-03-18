@@ -3,59 +3,52 @@ import ReactDOMServer from 'react-dom/server'
 
 import { Provider as ReduxProvider } from 'react-redux'
 import { StaticRouter } from 'react-router';
-import { Helmet } from 'react-helmet';
 import configureStore from '../../src/redux/store';
+
+import htmlData from '../../build/index.html';
 
 // import our main App component
 import App from '../../src/App';
 
-const path = require("path");
 const fs = require("fs");
 
 export default (req, res, next) => {
   // point to the html file created by CRA's build tool
-  const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
+  const context = {
+    status: 200,
+  };
 
-  fs.readFile(filePath, 'utf8', (err, htmlData) => {
-    if (err) {
-      next(err);
-    }
+  const store = configureStore();
 
-    const context = {
-      status: 200,
-    };
+  // render the app as a string
+  const html = ReactDOMServer.renderToString(
+    <ReduxProvider store={store}>
+      <StaticRouter location={req.baseUrl} context={context}>
+        <App />
+      </StaticRouter>
+    </ReduxProvider>
+  );
 
-    const store = configureStore();
+  res.status(context.status);
 
-    // render the app as a string
-    const html = ReactDOMServer.renderToString(
-      <ReduxProvider store={store}>
-        <StaticRouter location={req.baseUrl} context={context}>
-          <App />
-        </StaticRouter>
-      </ReduxProvider>
-    );
-
-    res.status(context.status);
-
-    // inject the rendered app into our html and send it
-    res.send(
-      htmlData
-        .replace(
-          '<div id="root"></div>',
-          `<div id="root">${html}</div>`
-        )
-        .replace(
-          '<!-- State -->',
-          `
+  // inject the rendered app into our html and send it
+  res.send(
+    htmlData
+      .replace(
+        '<div id="root"></div>',
+        `<div id="root">${html}</div>`
+      )
+      .replace(
+        '<!-- State -->',
+        `
 <script>
   window.REDUX_STATE = ${JSON.stringify(store.getState())}
 </script>
-          `
-        )
-        .replace(
-          '<!doctype html>',
-          `<!doctype html>
+        `
+      )
+      .replace(
+        '<!doctype html>',
+        `<!doctype html>
 <!--
   ls.terminal.ink Version 13
   Copyright (C) 2019 Terminal.ink
@@ -74,7 +67,6 @@ export default (req, res, next) => {
   You should have received a copy of the GNU Affero General Public License
   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 -->`
-        )
-    );
-  });
+      )
+  );
 }
