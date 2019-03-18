@@ -10,6 +10,8 @@ import BotPage from '../../pages/BotPage';
 
 class WebsiteRouter extends Component {
   render() {
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') window.location.href = `http://127.0.0.1:3000${window.location.pathname}`;
+
     return (
       <Switch>
         <Route path="/auth/logout" exact component={({ location }) => (

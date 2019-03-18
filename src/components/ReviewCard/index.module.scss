@@ -1,0 +1,33 @@
+.card {
+  padding-top: .5em;
+  padding-bottom: .5em;
+  &:first-child {
+    padding-top: 0;
+  }
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.link {
+  display: flex;
+}
+
+.avatar {
+  width: 4em;
+  height: 4em;
+  margin-right: 0.5em;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background-color: #4a4a4a;
+}
+
+.discriminator {
+  font-size: 8pt;
+  color: #ccc;
+}
+
+.description {
+  font-size: 10pt;
+  color: #ccc;
+}

@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet';
 import BotPageLinks from '../components/BotPageLinks';
 import NotFound from './NotFound';
 import { Localise } from '../locales';
+import BotPageReviewsBox from '../components/BotPageReviewsBox';
 
 class BotPage extends Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class BotPage extends Component {
             {bot.videos.youtube ? <YouTube video={bot.videos.youtube} /> : null}
           </BotPageImagesBox>
           <BotPageContentBox page={contents.page}/>
+          <BotPageReviewsBox bot={bot} />
           <BotPageLinks bot={bot} />
         </Container>
       </Layout>
