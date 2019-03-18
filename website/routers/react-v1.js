@@ -54,6 +54,9 @@ router
             bot: bot('id')
           })
           .merge(reviewer => r.table('users').get(reviewer('author')).pluck('discriminator', 'username', 'cachedAvatar'))
+          .merge(reviewer => ({
+            isCurrentUserOwner: req.user ? r.eq(reviewer('author'), req.user.id) : false
+          }))
           .default([])
           .without('id')
           .without('bot')
