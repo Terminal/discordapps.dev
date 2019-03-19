@@ -5,6 +5,9 @@ const categories = require('../data/categories.json');
 
 const router = express.Router();
 
+const operators = /[|\\{}()[\]^$+*?.]/g;
+const sanitise = string => `(?i)${string.trim().toLowerCase().replace(operators, '\\$&')}`;
+
 router
   .get('/bots', (req, res, next) => {
     r.table('bots')
@@ -69,6 +72,56 @@ router
         res.json({
           ok: !!bot.id,
           data: bot
+        });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
+  .get('/bots/search', (req, res, next) => {
+    const query = typeof req.query.q === 'string' ? req.query.q : '';
+    const state = typeof req.query.state === 'string' ? req.query.state : 'approved';
+    const category = typeof req.query.category === 'string' ? req.query.category : '';
+    const nsfw = req.query.nsfw === 'true';
+    const owners = Array.isArray(req.query.owners) ? req.query.owners : [];
+
+    const filter = (bot) => {
+      let databaseQuery = bot('state').eq(state);
+
+      if (query) {
+        databaseQuery = databaseQuery.and(
+          bot('contents').contains(contents =>
+            contents('page').default('').match(sanitise(query))
+              .or(contents('name').default('').match(sanitise(query)))
+              .or(contents('description').default('').match(sanitise(query)))
+          )
+        );
+      }
+
+      // If NSFW bots are requested, add that to the query
+      if (nsfw) {
+        databaseQuery = databaseQuery.and(r.expr(sanitise(query)).match('nsfw'));
+      }
+
+      // If a query is requested, add that to the query
+      if (categories.includes(category)) {
+        databaseQuery = databaseQuery.and(bot('category').eq(category));
+      }
+
+      // If there's an array of owners, add that to the query
+      for (let i = 0; i < owners.length; i += 1) {
+        databaseQuery = databaseQuery.and(bot('authors').contains(owners[i]));
+      }
+
+      return databaseQuery;
+    };
+
+    r.table('bots')
+      .filter(filter)
+      .then((bots) => {
+        res.json({
+          ok: true,
+          data: bots
         });
       })
       .catch((err) => {
