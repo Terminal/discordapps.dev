@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import Locations from '../../data/Locations';
 import ContentBox from '../ContentBox';
 import FlexColumns from '../FlexColumns';
@@ -11,13 +12,47 @@ import PrefixLabel from './PrefixLabel';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import Modesta from '../../data/Modesta';
+import NotALink from '../NotALink';
 
 class BotPageInfoBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sure: false,
+      deleted: false
+    }
+
+    this.openSure = this.openSure.bind(this);
+    this.delete = this.delete.bind(this);
+  }
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchAuthIfNeeded());
   }
+  openSure() {
+    this.setState({
+      sure: true
+    });
+  }
+  delete() {
+    fetch(`${Locations.server}/bots/${this.props.bot.id}/delete`, {
+      method: 'POST',
+      credentials: 'include'
+    })
+      .then(() => {
+        this.setState({
+          deleted: true
+        })
+      })
+  }
   render() {
+    if (this.state.deleted) {
+      return (
+        <Redirect to="/" />
+      )
+    }
+
     const { bot, auth, contents } = this.props;
     return (
       <ContentBox>
@@ -59,7 +94,13 @@ class BotPageInfoBox extends Component {
               { auth.data !== null && (auth.data.admin || bot.authors.some(author => author.id === auth.data.id)) ?
                 <>
                   <LocalisedHyperlink to={`/bots/${bot.id}/edit`}><FormattedMessage id="pages.bots.edit" /></LocalisedHyperlink>
-                  <LocalisedHyperlink to={`/bots/${bot.id}/delete`}><FormattedMessage id="pages.bots.delete" /></LocalisedHyperlink>
+                  {
+                    this.state.sure ?
+                      <>
+                        <NotALink onClick={this.delete}><FormattedMessage id="pages.bots.reallyDelete" /></NotALink>
+                      </> :
+                      <NotALink onClick={this.openSure}><FormattedMessage id="pages.bots.delete" /></NotALink>
+                  }
                   <LocalisedHyperlink to={`/bots/${bot.id}/configure`}><FormattedMessage id="pages.bots.configure" /></LocalisedHyperlink>
                 </>
                 : null

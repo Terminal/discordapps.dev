@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
-import { injectIntl } from 'react-intl';
+import { Helmet } from 'react-helmet';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Locations from '../data/Locations';
-import BtecParallax from '../components/BtecParallax';
-import BotPageContentBox from '../components/BotPageContentBox';
-import BotPageImagesBox from '../components/BotPageImagesBox';
-import BotPageInfoBox from '../components/BotPageInfoBox';
-import YouTube from '../components/YouTube';
-import { Helmet } from 'react-helmet';
-import BotPageLinks from '../components/BotPageLinks';
 import NotFound from './NotFound';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import { Localise } from '../locales';
-import BotPageReviewsBox from '../components/BotPageReviewsBox';
+import ContentBox from '../components/ContentBox';
+import Modesta from '../data/Modesta';
 import LoadingContainer from '../components/LoadingContainer';
 
-class BotPage extends Component {
+class ConfigurePage extends Component {
   constructor(props) {
     super(props);
 
@@ -28,7 +23,7 @@ class BotPage extends Component {
   componentDidMount() {
     // Check if the bot has been injected
     if (!this.state.bot) {
-      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}`, {
+      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}/configure`, {
         credentials: 'include'
       })
         .then(res => {
@@ -73,23 +68,21 @@ class BotPage extends Component {
         <Helmet>
           <title>{contents.name}</title>
         </Helmet>
-        { 
-          bot.cachedImages.cover ?
-          <BtecParallax src={`${Locations.server}${bot.cachedImages.cover}`}/> :
-          null
-        }
         <Container>
-          <BotPageInfoBox bot={bot} contents={contents}/>
-          <BotPageImagesBox images={bot.cachedImages.preview}>
-            {bot.videos.youtube ? <YouTube video={bot.videos.youtube} /> : null}
-          </BotPageImagesBox>
-          <BotPageContentBox page={contents.page}/>
-          <BotPageReviewsBox bot={bot} />
-          <BotPageLinks bot={bot} />
+          <ContentBox>
+            <h2><FormattedMessage id="pages.configuration.token.title" /></h2>
+            <p><FormattedMessage id="pages.configuration.token.description" /></p>
+            <ContentBox className={Modesta.secondary}>
+              <code>
+                {bot.token}
+              </code>
+            </ContentBox>
+            <a className={`${Modesta.btn} ${Modesta.github}`} href={Locations.wiki} target="_blank" rel="noopener noreferrer"><FormattedMessage id="pages.configuration.token.docs" /></a>
+          </ContentBox>
         </Container>
       </Layout>
     );
   }
 }
 
-export default injectIntl(BotPage);
+export default injectIntl(ConfigurePage);

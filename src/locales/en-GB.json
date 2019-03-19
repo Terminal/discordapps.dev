@@ -138,6 +138,7 @@
       "mentionable": "Mentionable",
       "customisable": "Customisable",
       "delete": "Delete",
+      "reallyDelete": "Sure?",
       "edit": "Edit",
       "configure": "Configure",
       "github": "View on GitHub",
@@ -154,10 +155,7 @@
       "initiateCategoryFilter": "Find bots for...",
       "ownerFilter": "Bots by { name }",
       "search": "Search",
-      "count": {
-        "one": "Installed in a single server",
-        "other": "Installed in %s servers"
-      },
+      "count": "Installed in {guilds, plural, one {a server} other {{guilds} servers}}",
       "rated": "Rated {{ rating }}/5.0"
     },
     "configuration": {

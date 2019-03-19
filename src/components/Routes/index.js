@@ -8,6 +8,7 @@ import EditBot from '../../pages/EditBot';
 import InternationalisationProvider from '../InternationalisationProvider';
 import BotPage from '../../pages/BotPage';
 import FilterPage from '../../pages/FilterPage';
+import ConfigurePage from '../../pages/ConfigurePage';
 
 class WebsiteRouter extends Component {
   render() {
@@ -36,6 +37,11 @@ class WebsiteRouter extends Component {
         <Route path="/:locale/bots/filter" exact component={({ match, location }) => (
           <InternationalisationProvider match={match} location={location}>
             <FilterPage match={match} location={location} />
+          </InternationalisationProvider>
+        )} />
+        <Route path="/:locale/bots/:id/configure" exact component={({ match, location }) => (
+          <InternationalisationProvider match={match} location={location}>
+            <ConfigurePage match={match} location={location} />
           </InternationalisationProvider>
         )} />
         <Route path="/:locale/bots/:id/edit" exact component={({ match, location }) => (

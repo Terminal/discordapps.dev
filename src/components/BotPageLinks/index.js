@@ -46,6 +46,17 @@ class BotPageLinks extends Component {
               }
             </FormattedMessage>
           </FlexColumns>
+          {
+            bot.count ?
+            <FlexColumns columns={6}>
+              <p>
+                <FormattedMessage id="pages.bots.count" values={{
+                  guilds: bot.count
+                }}/>
+              </p>
+            </FlexColumns> :
+            null
+          }
         </FlexColumns>
       </ContentBox>
     )
