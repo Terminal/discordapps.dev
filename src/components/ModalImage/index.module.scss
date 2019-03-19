@@ -2,8 +2,17 @@
   text-align: center;
 }
 
+.modalClose {
+  pointer-events: none;
+}
+
 .modalImage {
   width: 100%;
   height: 80vh;
   object-fit: contain;
+  cursor: zoom-out;
+}
+
+.zoomIn {
+  cursor: zoom-in;
 }

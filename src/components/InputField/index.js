@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import FlexContainer from '../FlexContainer';
 import Column from '../Column';
 import Modesta from '../../data/Modesta';
+import styles from './index.module.scss';
 
 class InputField extends Component {
   render() {
@@ -27,6 +28,14 @@ class InputField extends Component {
     } else if (this.props.toggle) {
       input = (
         <input name={this.props.name} type="checkbox" defaultChecked={value} />
+      )
+    } else if (this.props.textarea) {
+      input = (
+        <FormattedMessage id={`${this.props.id}.placeholder`}>
+          {placeholder =>
+            <textarea name={this.props.name} className={`${Modesta.fullWidth} ${styles.textarea}`} placeholder={placeholder} defaultValue={value || undefined}/>
+          }
+        </FormattedMessage>
       )
     } else {
       input = (

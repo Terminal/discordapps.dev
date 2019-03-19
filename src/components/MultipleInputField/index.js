@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import FlexContainer from '../FlexContainer';
 import Column from '../Column';
 import Modesta from '../../data/Modesta';
-import styles from './index.module.scss';
+import elementStyles from '../../scss/elements.module.scss';
 
 class MultipleInputField extends Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class MultipleInputField extends Component {
         <label htmlFor={this.props.name}><FormattedMessage id={`${this.props.id}.title`} /></label>
         <FlexContainer>
           {input(values.shift(), 0)}
-          <button className={styles.button} onClick={this.add}>
+          <button className={elementStyles.button} onClick={this.add}>
             <FormattedMessage id={`${this.props.id}.add`} />
           </button> 
         </FlexContainer>
@@ -68,7 +68,7 @@ class MultipleInputField extends Component {
             <FlexContainer key={index}>
               {input(value, index + 1)}
               {
-                <button className={styles.button} onClick={() => this.remove(index + 1)}>
+                <button className={elementStyles.button} onClick={() => this.remove(index + 1)}>
                   <FormattedMessage id={`${this.props.id}.delete`} />
                 </button>
               }

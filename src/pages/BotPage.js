@@ -27,7 +27,9 @@ class BotPage extends Component {
   componentDidMount() {
     // Check if the bot has been injected
     if (!this.state.bot) {
-      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}`)
+      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}`, {
+        credentials: 'include'
+      })
         .then(res => {
           if (res.status === 404) {
             this.setState({

@@ -6,22 +6,45 @@ import FlexColumns from '../FlexColumns';
 import ProgressBar from '../ProgressBar';
 import styles from './index.module.scss';
 import FlexContainer from '../FlexContainer';
+import { connect } from 'react-redux';
+import { fetchAuthIfNeeded } from '../../redux/actions/auth';
+import Modesta from '../../data/Modesta';
+import ReviewForm from '../ReviewForm';
 
 class BotPageReviewsBox extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      myReview: null
+    }
+    this.setMyReview = this.setMyReview.bind(this);
+  }
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchAuthIfNeeded());
+  }
+  setMyReview(review) {
+    this.setState({
+      myReview: review
+    });
+  }
   render() {
-    const reviews = this.props.bot.reviews;
+    const { bot } = this.props;
+    const { reviews } = bot;
     const average = reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length;
 
     const counts = [0, 0, 0, 0, 0];
     reviews.forEach(review => counts[review.rating - 1]++);
     const proportions = counts.map(count => count / reviews.length);
 
+    const myReview = reviews.find(review => review.isCurrentUserOwner);
+
     return (
       <ContentBox>
         <h3><FormattedMessage id="pages.reviews.title" /></h3>
         <FlexColumns>
           <FlexColumns columns={4} className={styles.averageContainer}>
-            <span className={styles.average}>{Number.isNaN(average.toFixed(1)) ? average.toFixed(1) : null}</span>
+            <span className={styles.average}>{average.toFixed(1) !== 'NaN' ? average.toFixed(1) : null}</span>
           </FlexColumns>
           <FlexColumns columns={8}>
             <FlexContainer><span className={styles.progressText}>5</span><ProgressBar className={styles.progress} colour="emerald"   proportion={proportions[4]} /></FlexContainer>
@@ -33,9 +56,16 @@ class BotPageReviewsBox extends Component {
         </FlexColumns>
         <div>
           {
+            // If there's a review by the owner, show it.
+            this.state.myReview || myReview ?
+              <ReviewCard review={this.state.myReview || myReview} bot={bot} /> :
+              <ReviewForm setMyReview={this.setMyReview} bot={bot} />
+          }
+          {
             reviews
               .slice(0, 8)
-              .map((review, index) => <ReviewCard key={index} review={review} />)
+              .filter(review => !review.isCurrentUserOwner)
+              .map((review, index) => <ReviewCard key={index} review={review} bot={bot} />)
           }
         </div>
       </ContentBox>
@@ -43,4 +73,9 @@ class BotPageReviewsBox extends Component {
   }
 }
 
-export default BotPageReviewsBox;
+const mapStateToProps = (state) => {
+  const { auth } = state;
+  return { auth };
+}
+
+export default connect(mapStateToProps)(BotPageReviewsBox);

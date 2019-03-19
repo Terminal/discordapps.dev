@@ -39,8 +39,8 @@ class ModalImage extends Component {
   render() {
     return (
       <div>
-        <LazyImage src={this.props.src} className={this.props.className} onClick={this.open} />
-        <div onClick={this.close} className={`${Modesta.modal} ${this.state.closing ? Modesta.modalClose : ''}`} style={this.state.opened ? { display: 'block' } : {}}>
+        <LazyImage src={this.props.src} className={`${this.props.className} ${styles.zoomIn}`} onClick={this.open} />
+        <div onClick={this.close} className={`${Modesta.modal} ${this.state.closing ? `${Modesta.modalClose} ${styles.modalClose}` : ''}`} style={this.state.opened ? { display: 'block' } : {}}>
           <div className={`${Modesta.modalContent} ${elementStyles.roundedCorners} ${styles.modalContent}`}>
             <LazyImage src={this.props.src} onClick={this.open} className={styles.modalImage} />
           </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Prompt } from 'react-router-dom';
+import { Prompt, Redirect } from 'react-router-dom';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
 import Locations from '../data/Locations';
@@ -11,6 +11,10 @@ import Row from '../components/Row';
 import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
 import MultipleInputField from '../components/MultipleInputField';
 import Modesta from '../data/Modesta';
+import languages from '../locales';
+import FlexContainer from '../components/FlexContainer';
+import displayStyles from '../scss/display.module.scss';
+import elementStyles from '../scss/elements.module.scss';
 
 class EditBot extends Component {
   constructor(props) {
@@ -22,11 +26,18 @@ class EditBot extends Component {
       edited: true,
       message: null,
       unlocalised: null,
-      ok: null
+      ok: null,
+      unusedLanguages: languages
+        .filter(language => language.botPageLanguage)
+        .map(language => language.code),
+      usedLanguages: [],
+      redirect: null
     };
 
     this.form = React.createRef();
+    this.languagesSelect = React.createRef();
     this.submit = this.submit.bind(this);
+    this.addLanguage = this.addLanguage.bind(this);
   }
 
   componentDidMount() {
@@ -42,11 +53,43 @@ class EditBot extends Component {
         .then((data) => {
           if (data.ok) {
             const bot = data.data;
+            
             this.setState({
-              bot
+              bot,
+              unusedLanguages: languages
+                .filter(language => language.botPageLanguage)
+                .filter(language => (bot && bot.contents) ? !bot.contents.some(content => content.locale === language.code) : true)
+                .map(language => language.code),
+              usedLanguages: languages
+                .filter(language => language.botPageLanguage)
+                .filter(language => (bot && bot.contents) ? bot.contents.some(content => content.locale === language.code) : true)
+                .map(language => language.code)
             });
           }
         })
+    }
+  }
+
+  addLanguage(e) {
+    e.preventDefault();
+    const selected = this.languagesSelect.current.value;
+
+    if (selected !== 'null') {
+      this.setState({
+        unusedLanguages: this.state.unusedLanguages.filter(language => language !== selected),
+        usedLanguages: [...this.state.usedLanguages, selected]
+      })
+    }
+  }
+
+  removeLanguage(e, selected) {
+    e.preventDefault();
+
+    if (selected !== 'null') {
+      this.setState({
+        usedLanguages: this.state.usedLanguages.filter(language => language !== selected),
+        unusedLanguages: [...this.state.unusedLanguages, selected]
+      })
     }
   }
 
@@ -70,7 +113,15 @@ class EditBot extends Component {
         if (data.ok) {
           this.setState({
             edited: false
-          })
+          });
+        }
+
+        if (data.redirect) {
+          setTimeout(() => {
+            this.setState({
+              redirect: data.redirect
+            });
+          }, 500);
         }
       })
   }
@@ -78,6 +129,12 @@ class EditBot extends Component {
   render() {
     const { bot } = this.state
     const categories = this.props.categories.data
+
+    if (this.state.redirect) {
+      return (
+        <Redirect to={`/${this.props.intl.locale}${this.state.redirect}`} />
+      )
+    }
 
     return (
       <Layout>
@@ -148,7 +205,51 @@ class EditBot extends Component {
             <ContentBox>
               <h2><FormattedMessage id="pages.edit.information" /></h2>
               <p><FormattedMessage id="pages.edit.languages.modal" /></p>
+              <Row>
+                <FlexContainer>
+                  <select form="null" className={Modesta.fullWidth} defaultValue="null" ref={this.languagesSelect}>
+                    <FormattedMessage id="forms.select">
+                      {select => <option value="null" disabled>{select}</option>}
+                    </FormattedMessage>
+                    {
+                      this.state.unusedLanguages.map(language => (
+                        <FormattedMessage key={language} id={`locales.${language}`}>
+                          {name => <option value={language}>{name}</option>}
+                        </FormattedMessage>
+                      ))
+                    }
+                  </select>
+                  <button onClick={this.addLanguage} className={elementStyles.button}>
+                    <FormattedMessage id="pages.edit.languages.add" />
+                  </button>
+                </FlexContainer>
+              </Row>
             </ContentBox>
+            {
+              this.state.usedLanguages.map((language, index) => {
+                const contents = bot && bot.contents && bot.contents.find(content => content.locale === language);
+                return (
+                  <ContentBox key={language}>
+                    <FlexContainer>
+                      <h3><FormattedMessage key={language} id={`locales.${language}`} /></h3>
+                      <button onClick={(e) => this.removeLanguage(e, language)} className={elementStyles.button}>
+                        <FormattedMessage id="pages.edit.deleteLanguage" />
+                      </button>
+                    </FlexContainer>
+                    <Row>
+                      <InputField name={`bot.contents[${index}][name]`} id="pages.edit.name" value={contents && contents.name} className={Modesta.fullWidth} />
+                    </Row>
+                    <Row>
+                      <InputField name={`bot.contents[${index}][description]`} id="pages.edit.description" value={contents && contents.description} className={Modesta.fullWidth} />
+                    </Row>
+                    <Row>
+                      <InputField name={`bot.contents[${index}][page]`} id="pages.edit.page" value={contents && contents.page} textarea={true} className={Modesta.fullWidth} />
+                    </Row>
+                    <input name={`bot.contents[${index}][locale]`} type="text" className={displayStyles.hidden} value={language}></input>
+                  </ContentBox>
+                )
+              })
+            }
             <ContentBox>
               {
                 this.state.message || this.state.unlocalised ?
@@ -166,7 +267,9 @@ class EditBot extends Component {
                     <a className={`${Modesta.discord} ${Modesta.btn}`} target="_blank" rel="noopener noreferrer" href={Locations.discordServer}><FormattedMessage id="pages.edit.discord" /></a>
                   </div>
               }
-              <button className={`${Modesta.discord} ${Modesta.btn}`}>Submit!</button>
+              <button className={`${Modesta.discord} ${Modesta.btn}`}>
+                <FormattedMessage id="forms.submit" />
+              </button>
             </ContentBox>
           </Container>
         </form>
@@ -181,4 +284,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(injectIntl(EditBot));
-

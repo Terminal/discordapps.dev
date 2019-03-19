@@ -17,7 +17,8 @@ const languages = [
     code: 'ar',
     flag: '',
     top: false,
-    priority: 22
+    priority: 22,
+    botPageLanguage: true,
   },
   {
     code: 'da',
@@ -25,7 +26,8 @@ const languages = [
     top: false,
     priority: 21,
     translations: daLocale,
-    reactIntl: daData
+    reactIntl: daData,
+    botPageLanguage: true,
   },
   {
     code: 'de',
@@ -33,13 +35,15 @@ const languages = [
     top: false,
     priority: 3,
     translations: deLocale,
-    reactIntl: deData
+    reactIntl: deData,
+    botPageLanguage: true,
   },
   {
     code: 'el',
     flag: '',
     top: false,
-    priority: 20
+    priority: 20,
+    botPageLanguage: true,
   },
   {
     code: 'en-GB',
@@ -47,7 +51,8 @@ const languages = [
     top: true,
     priority: 1,
     translations: enLocale,
-    reactIntl: enData
+    reactIntl: enData,
+    botPageLanguage: true,
   },
   {
     code: 'en-US',
@@ -56,31 +61,36 @@ const languages = [
     top: true,
     priority: 1.1,
     translations: enUSLocale,
-    reactIntl: enData
+    reactIntl: enData,
+    botPageLanguage: false,
   },
   {
     code: 'es',
     flag: '',
     top: false,
-    priority: 4
+    priority: 4,
+    botPageLanguage: true,
   },
   {
     code: 'et',
     flag: '',
     top: false,
-    priority: 19
+    priority: 19,
+    botPageLanguage: true,
   },
   {
     code: 'fi',
     flag: '',
     top: false,
-    priority: 18
+    priority: 18,
+    botPageLanguage: true,
   },
   {
     code: 'fj',
     flag: '',
     top: false,
-    priority: 17
+    priority: 17,
+    botPageLanguage: true,
   },
   {
     code: 'fr',
@@ -88,61 +98,71 @@ const languages = [
     top: false,
     priority: 2,
     translations: frLocale,
-    reactIntl: frData
+    reactIntl: frData,
+    botPageLanguage: true,
   },
   {
     code: 'gd',
     flag: '',
     top: false,
-    priority: 16
+    priority: 16,
+    botPageLanguage: true,
   },
   {
     code: 'he',
     flag: '',
     top: false,
-    priority: 26
+    priority: 26,
+    botPageLanguage: true,
   },
   {
     code: 'hi',
     flag: '',
     top: false,
-    priority: 15
+    priority: 15,
+    botPageLanguage: true,
   },
   {
     code: 'it',
     flag: '',
     top: false,
-    priority: 5
+    priority: 5,
+    botPageLanguage: true,
   },
   {
     code: 'ja',
     flag: '',
     top: false,
-    priority: 14
+    priority: 14,
+    botPageLanguage: true,
   },
   {
     code: 'ko',
     flag: '',
     top: false,
-    priority: 13
+    priority: 13,
+    botPageLanguage: true,
   },
   {
     code: 'la',
     flag: '',
     top: false,
-    priority: 12
+    priority: 12,
+    botPageLanguage: true,
   },
   {
     code: 'nl',
     flag: '',
     top: false,
-    priority: 11
+    priority: 11,
+    botPageLanguage: true,
   },
   {
     code: 'no',
     flag: 'twa-flag-no',
     top: false,
-    priority: 10
+    priority: 10,
+    botPageLanguage: true,
   },
   {
     code: 'pl',
@@ -150,37 +170,43 @@ const languages = [
     top: false,
     priority: 27,
     translations: plLocale,
-    reactIntl: plData
+    reactIntl: plData,
+    botPageLanguage: true,
   },
   {
     code: 'pt',
     flag: 'twa-flag-pt',
     top: false,
-    priority: 23
+    priority: 23,
+    botPageLanguage: true,
   },
   {
     code: 'ru',
     flag: 'twa-ru',
     top: false,
-    priority: 6
+    priority: 6,
+    botPageLanguage: true,
   },
   {
     code: 'sv',
     flag: 'twa-flag-sv',
     top: false,
-    priority: 7
+    priority: 7,
+    botPageLanguage: true,
   },
   {
     code: 'tr',
     flag: 'twa-flag-tr',
     top: false,
-    priority: 24
+    priority: 24,
+    botPageLanguage: true,
   },
   {
     code: 'vi',
     flag: 'twa-flag-vi',
     top: false,
-    priority: 25
+    priority: 25,
+    botPageLanguage: true,
   },
   {
     code: 'zh-cn',
@@ -188,13 +214,15 @@ const languages = [
     top: false,
     priority: 9,
     translations: zhCnLocale,
-    reactIntl: zhData
+    reactIntl: zhData,
+    botPageLanguage: true,
   },
   {
     code: 'zh-tw',
     flag: 'twa-flag-tw',
     top: false,
-    priority: 8
+    priority: 8,
+    botPageLanguage: true,
   }
 ];
 

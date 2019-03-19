@@ -6,6 +6,14 @@
   animation: loading 2s infinite ease-in-out;
 }
 
+.button {
+  height: 38px;
+  border-radius: 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
 @keyframes loading {
   0% {
     opacity: 1;
