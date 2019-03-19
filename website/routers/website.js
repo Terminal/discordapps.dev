@@ -37,6 +37,24 @@ router
       ), {
         random: bot('random').add(10)
       }, {}))
+      .merge(bot => r.branch(bot.hasFields({ // A cover image adds 0.5 to the score
+        cachedImages: {
+          cover: true
+        }
+      }), {
+        random: bot('random').add(0.5)
+      }, {}))
+      .merge(bot => r.branch(bot.hasFields({ // A GitHub bot adds 0.1 to the score
+        github: {
+          repo: true,
+          owner: true
+        }
+      }), {
+        random: bot('random').add(0.1)
+      }, {}))
+      .merge(bot => ({
+        random: bot('random').add(bot('cachedImages')('preview').count().mul(0.05)) // Each example image adds 0.05 to the score
+      }))
       .orderBy(r.desc('random'))
       .filter({
         state: 'approved',
