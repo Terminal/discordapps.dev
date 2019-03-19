@@ -118,6 +118,7 @@ router
 
     r.table('bots')
       .filter(filter)
+      .without('token')
       .then((bots) => {
         res.json({
           ok: true,
