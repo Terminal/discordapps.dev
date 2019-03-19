@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import LocalisedHyperlink from '../LocalisedHyperlink';
-import { Link } from 'react-router-dom';
 import Locations from '../../data/Locations';
 import Modesta, { TwitterEmojis } from '../../data/Modesta';
-import languages, { getMasterLanguage } from '../../locales';
+import { getMasterLanguage } from '../../locales';
+import { fetchAuthIfNeeded } from '../../redux/actions/auth';
+import LocalisedHyperlink from '../LocalisedHyperlink';
 
 class NavbarLinks extends Component {
   componentDidMount() {

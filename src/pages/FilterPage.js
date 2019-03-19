@@ -1,5 +1,8 @@
+import qs from 'qs';
 import React, { Component } from 'react';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
+import BotCollection from '../components/BotCollection';
 import Container from '../components/Container';
 import ContentBox from '../components/ContentBox';
 import InputField from '../components/InputField';
@@ -8,12 +11,7 @@ import MultipleInputField from '../components/MultipleInputField';
 import Row from '../components/Row';
 import Welcome from '../components/Welcome';
 import Locations from '../data/Locations';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Localise } from '../locales';
-import BotCard from '../components/BotCard';
-import BotCollection from '../components/BotCollection';
 import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
-import qs from 'qs';
 
 class FilterPage extends Component {
   constructor(props) {
@@ -82,7 +80,7 @@ class FilterPage extends Component {
   }
   render() {
     const categories = this.props.categories.data;
-    const { results, message, owners, category, nsfw, query } = this.state;
+    const { results, owners, category, nsfw, query } = this.state;
     return (
       <Layout>
         <Welcome />

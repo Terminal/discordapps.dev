@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import NavigationBar from '../NavigationBar';
 import Footer from '../Footer';
-import WereNotReadyToGoLiveBox from '../WereNotReadyToGoLiveBox';
-import Container from '../Container';
 import { Helmet } from 'react-helmet';
 
 class Layout extends Component {
@@ -15,9 +13,9 @@ class Layout extends Component {
         </Helmet>
         <NavigationBar />
         {this.props.children}
-        <Container>
+        {/* <Container>
           <WereNotReadyToGoLiveBox />
-        </Container>
+        </Container> */}
         <Footer />
       </div>
     )

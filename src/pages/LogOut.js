@@ -7,7 +7,7 @@ import { injectIntl } from 'react-intl';
 
 class AuthenticateLogout extends Component {
   componentDidMount() {
-    const { dispatch, intl } = this.props;
+    const { dispatch } = this.props;
 
     fetch(`${Locations.server}/auth/logout`, {
       credentials: 'include'
@@ -17,7 +17,8 @@ class AuthenticateLogout extends Component {
       })
   }
   render() {
-    return (<Redirect to={`/${this.props.intl.locale}`} />)
+    const { intl } = this.props;
+    return (<Redirect to={`/${intl.locale}`} />)
   }
 }
 

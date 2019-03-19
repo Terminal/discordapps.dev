@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import ContentBox from '../ContentBox';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-
-import styles from './index.module.scss';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import Locations from '../../data/Locations';
-
-import { injectIntl } from 'react-intl';
-import BotCard from '../BotCard';
-import LocalisedHyperlink from '../LocalisedHyperlink';
-import { getMasterLanguage, Localise } from '../../locales';
+import { getMasterLanguage } from '../../locales';
+import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import BotCollection from '../BotCollection';
+import ContentBox from '../ContentBox';
+import LocalisedHyperlink from '../LocalisedHyperlink';
+import styles from './index.module.scss';
+
+
 
 class CategoryCollection extends Component {
   constructor(props) {

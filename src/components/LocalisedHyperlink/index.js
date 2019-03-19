@@ -9,15 +9,13 @@ const LocalizedLink = ({ to, intl: { locale }, query, ...props }) => {
     querylink = '?' +
     Object.keys(query)
       .map(key => {
-        if (typeof query[key] === 'string') {
-          return `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`
-        }
-
         if (Array.isArray(query[key])) {
           return query[key]
             .map(value => `${encodeURIComponent(key)}[]=${encodeURIComponent(value)}`)
             .join('&')
         }
+
+        return `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`
       })
       .join('&');
   }
