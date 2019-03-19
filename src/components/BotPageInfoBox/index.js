@@ -106,6 +106,20 @@ class BotPageInfoBox extends Component {
                 : null
               }
             </div>
+            {
+              bot.flags && bot.flags.adverts ?
+                <div>
+                  <FormattedMessage id="pages.bots.adverts" />
+                </div> :
+                null
+            }
+            {
+              bot.flags && bot.flags.inAppPurchases ?
+                <div>
+                  <FormattedMessage id="pages.bots.inAppPurchases" />
+                </div> :
+                null
+            }
           </FlexColumns>
           <FlexColumns columns={4} className={Modesta.rightText}>
             <a className={`${Modesta.btn} ${Modesta.discord}`} href={bot.invite}>

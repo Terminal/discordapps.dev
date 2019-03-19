@@ -7,6 +7,9 @@ import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseTh
 import CategoryCollection from '../components/CategoryCollection';
 import HelpUsImprove from '../components/HelpUsImprove';
 import Welcome from '../components/Welcome';
+import LocalisedHyperlink from '../components/LocalisedHyperlink';
+import { FormattedMessage } from 'react-intl';
+import ContentBox from '../components/ContentBox';
 
 class Home extends Component {
   render() {
@@ -16,6 +19,11 @@ class Home extends Component {
         <Container>
           <Flex padding={true}>
             <Flex columns={3}>
+              <ContentBox>
+                <LocalisedHyperlink to="/bots/filter">
+                  <FormattedMessage id="pages.bots.search" />
+                </LocalisedHyperlink>
+              </ContentBox>
               <CategoriesLinksList />
               <HelpUsImprove />
             </Flex>

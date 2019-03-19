@@ -4,13 +4,13 @@ import ContentBox from '../ContentBox';
 import Container from '../Container';
 import { FormattedMessage } from 'react-intl';
 
-class PleaseLogin extends Component {
+class PermissionDenied extends Component {
   render() {
     return (
       <Layout>
         <Container>
           <ContentBox>
-            <h2><FormattedMessage id="errors.permissions.login" /></h2>
+            <h2><FormattedMessage id="errors.permissions.denied" /></h2>
           </ContentBox>
         </Container>
       </Layout>
@@ -18,4 +18,4 @@ class PleaseLogin extends Component {
   }
 }
 
-export default PleaseLogin;
+export default PermissionDenied;

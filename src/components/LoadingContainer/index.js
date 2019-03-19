@@ -8,7 +8,7 @@ class LoadingContainer extends Component {
     return (
       <Container>
         <ContentBox>
-          <div class={Modesta.loader}>Loading...</div>
+          <div className={Modesta.loader}>Loading...</div>
         </ContentBox>
       </Container>
     )

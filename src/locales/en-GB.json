@@ -152,11 +152,9 @@
       "modified": "Last modified: { date }",
       "created": "First published: { date }",
       "category": "Category: { category }",
-      "initiateCategoryFilter": "Find bots for...",
-      "ownerFilter": "Bots by { name }",
+      "initiateCategoryFilter": "Categories",
       "search": "Search",
-      "count": "Installed in {guilds, plural, one {a server} other {{guilds} servers}}",
-      "rated": "Rated {{ rating }}/5.0"
+      "count": "Installed in {guilds, plural, one {a server} other {{guilds} servers}}"
     },
     "configuration": {
       "token": {

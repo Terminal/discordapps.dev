@@ -9,6 +9,7 @@ import { Localise } from '../locales';
 import ContentBox from '../components/ContentBox';
 import Modesta from '../data/Modesta';
 import LoadingContainer from '../components/LoadingContainer';
+import PermissionDenied from '../components/PermissionDenied';
 
 class ConfigurePage extends Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class ConfigurePage extends Component {
 
     this.state = {
       bot: null,
-      notFound: false
+      notFound: false,
+      notAllowed: false
     };
   }
 
@@ -30,6 +32,10 @@ class ConfigurePage extends Component {
           if (res.status === 404) {
             this.setState({
               notFound: true
+            });
+          } else if (res.status === 401) {
+            this.setState({
+              notAllowed: true
             });
           }
           return res.json()
@@ -50,6 +56,12 @@ class ConfigurePage extends Component {
       return (
         <NotFound />
       );
+    }
+
+    if(this.state.notAllowed) {
+      return (
+        <PermissionDenied />
+      )
     }
     
     if (!this.state.bot) {

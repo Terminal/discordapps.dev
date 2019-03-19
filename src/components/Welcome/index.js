@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import Container from '../Container';
+import Modesta from '../../data/Modesta';
 
 // import robot from './robot.png';
 
