@@ -1,6 +1,8 @@
 const express = require('express');
 const r = require('../rethinkdb');
 const checkParamsLength = require('../middleware/checkParamsLength');
+
+const { isOwnerOfBot } = require('../static/middleware');
 const categories = require('../data/categories.json');
 
 const router = express.Router();
@@ -67,6 +69,20 @@ router
       }))
       .default({})
       .without('token')
+      .then((bot) => {
+        if (!bot.id) res.status(404);
+        res.json({
+          ok: !!bot.id,
+          data: bot
+        });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
+  .get('/bots/id/:id/configure', isOwnerOfBot, (req, res, next) => {
+    r.table('bots')
+      .get(req.params.id)
       .then((bot) => {
         if (!bot.id) res.status(404);
         res.json({
