@@ -26,12 +26,14 @@ class MultipleInputField extends Component {
       values
     })
   }
-  add() {
+  add(e) {
+    e.preventDefault();
     this.setState({
       values: [...this.state.values, '']
     })
   }
-  remove(index) {
+  remove(e, index) {
+    e.preventDefault();
     this.setState({
       values: this.state.values.filter((x, i) => i !== index)
     })
@@ -49,7 +51,10 @@ class MultipleInputField extends Component {
     const input = (value, index) => (
       <FormattedMessage id={`${this.props.id}.placeholder`}>
         {placeholder =>
-          <input name={this.props.name} type="text" className={Modesta.fullWidth} placeholder={placeholder} style={{flexGrow: '1'}} value={value || ''} onChange={(e) => this.handleChange(e, index)}/>
+          <input name={this.props.name} type="text" className={Modesta.fullWidth} placeholder={placeholder} style={{flexGrow: '1'}} value={value || ''} onChange={(e) => {
+            this.handleChange(e, index);
+            if (this.props.onChange) this.props.onChange(e);
+          }}/>
         }
       </FormattedMessage>
     )
@@ -68,7 +73,7 @@ class MultipleInputField extends Component {
             <FlexContainer key={index}>
               {input(value, index + 1)}
               {
-                <button className={elementStyles.button} onClick={() => this.remove(index + 1)}>
+                <button className={elementStyles.button} onClick={(e) => this.remove(e, index + 1)}>
                   <FormattedMessage id={`${this.props.id}.delete`} />
                 </button>
               }

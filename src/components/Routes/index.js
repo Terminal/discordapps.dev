@@ -7,6 +7,7 @@ import AuthenticateLogout from '../../pages/LogOut';
 import EditBot from '../../pages/EditBot';
 import InternationalisationProvider from '../InternationalisationProvider';
 import BotPage from '../../pages/BotPage';
+import FilterPage from '../../pages/FilterPage';
 
 class WebsiteRouter extends Component {
   render() {
@@ -14,9 +15,6 @@ class WebsiteRouter extends Component {
 
     return (
       <Switch>
-        <Route path="/auth/logout" exact component={({ location }) => (
-          <AuthenticateLogout />
-        )} />
         <Route path="/" exact component={() => (
           <Redirect to="/en-GB" />
         )} />
@@ -25,9 +23,19 @@ class WebsiteRouter extends Component {
             <Home />
           </InternationalisationProvider>
         )} />
+        <Route path="/:locale/auth/logout" exact component={({ match, location }) => (
+          <InternationalisationProvider match={match} location={location}>
+            <AuthenticateLogout />
+          </InternationalisationProvider>
+        )} />
         <Route path="/:locale/bots/add" exact component={({ match, location }) => (
           <InternationalisationProvider match={match} location={location}>
             <EditBot match={match} location={location} />
+          </InternationalisationProvider>
+        )} />
+        <Route path="/:locale/bots/filter" exact component={({ match, location }) => (
+          <InternationalisationProvider match={match} location={location}>
+            <FilterPage match={match} location={location} />
           </InternationalisationProvider>
         )} />
         <Route path="/:locale/bots/:id/edit" exact component={({ match, location }) => (

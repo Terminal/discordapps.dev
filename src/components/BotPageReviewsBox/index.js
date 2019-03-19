@@ -8,7 +8,6 @@ import styles from './index.module.scss';
 import FlexContainer from '../FlexContainer';
 import { connect } from 'react-redux';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import Modesta from '../../data/Modesta';
 import ReviewForm from '../ReviewForm';
 
 class BotPageReviewsBox extends Component {

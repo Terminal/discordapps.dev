@@ -11,6 +11,7 @@ import { injectIntl } from 'react-intl';
 import BotCard from '../BotCard';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import { getMasterLanguage, Localise } from '../../locales';
+import BotCollection from '../BotCollection';
 
 class CategoryCollection extends Component {
   constructor(props) {
@@ -58,33 +59,22 @@ class CategoryCollection extends Component {
                 <ContentBox key={category}>
                   <div className={styles.heading}>
                     <h4 className={styles.grow} id={category}>
-                      <LocalisedHyperlink to="/bots" query={{category}}>
+                      <LocalisedHyperlink to="/bots/filter" query={{
+                        category
+                      }}>
                         <FormattedMessage id={`categories.${category}`} />
                       </LocalisedHyperlink>
                     </h4>
                     { botsInCategory.length > 8 ?
-                      <LocalisedHyperlink to="/bots" query={{category}}>
+                      <LocalisedHyperlink to="/bots/filter" query={{
+                        category
+                      }}>
                         <FormattedMessage id="components.categorycollection.morebots" />
                       </LocalisedHyperlink> :
                       null
                     }
                   </div>
-                  <div className={styles.collection}>
-                    {
-                      // Find bots that fit in the category
-                      botsInCategory
-                        .filter(bot => bot.contents.length > 0) // Remove bots without contents
-                        .filter(bot => bot.hide === false) // Remove hidden bots
-                        .slice(0, 8)
-                        .map(bot => {
-                          const contents = Localise(bot.contents, this.props.intl.locale);
-                          return [bot, contents];
-                        })
-                        .map(([bot, contents]) => (
-                          <BotCard key={bot.id} bot={bot} contents={contents} />
-                        ))
-                    }
-                  </div>
+                  <BotCollection bots={botsInCategory} limit={8} />
                 </ContentBox>
               )
             })

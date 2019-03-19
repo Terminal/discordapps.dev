@@ -15,6 +15,8 @@ import languages from '../locales';
 import FlexContainer from '../components/FlexContainer';
 import displayStyles from '../scss/display.module.scss';
 import elementStyles from '../scss/elements.module.scss';
+import { fetchAuthIfNeeded } from '../redux/actions/auth';
+import PleaseLogin from '../components/PleaseLogIn';
 
 class EditBot extends Component {
   constructor(props) {
@@ -43,6 +45,7 @@ class EditBot extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchCategoriesIfNeeded());
+    dispatch(fetchAuthIfNeeded());
     
     // Check if the bot has been injected
     if (!this.state.bot && this.props.match.params.id) {
@@ -129,6 +132,13 @@ class EditBot extends Component {
   render() {
     const { bot } = this.state
     const categories = this.props.categories.data
+    const auth = this.props.auth.data
+
+    if (!auth || !auth.id) {
+      return (
+        <PleaseLogin />
+      )
+    }
 
     if (this.state.redirect) {
       return (
@@ -157,7 +167,7 @@ class EditBot extends Component {
               </Row>
               <Row>
                 <InputField name="bot.support" id="pages.edit.support" value={bot && bot.support} />
-                <InputField name="bot.category" id="pages.edit.category" options={categories || []} value={bot && bot.category} />
+                <InputField name="bot.category" id="pages.edit.category" localiseOptions="categories" options={categories || []} value={bot && bot.category} />
               </Row>
               <Row>
                 <InputField name="bot.website" id="pages.edit.website" value={bot && bot.website} />
@@ -279,8 +289,8 @@ class EditBot extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { categories } = state;
-  return { categories };
+  const { categories, auth } = state;
+  return { categories, auth };
 }
 
 export default connect(mapStateToProps)(injectIntl(EditBot));

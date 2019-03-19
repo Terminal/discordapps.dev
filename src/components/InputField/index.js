@@ -16,10 +16,21 @@ class InputField extends Component {
       input = (
         <FormattedMessage id={`${this.props.id}.placeholder`}>
           {placeholder =>
-            <select name={this.props.name} className={Modesta.fullWidth} defaultValue={value}>
-              <option disabled selected={!this.props.options.some(option => value === option)}>{placeholder}</option>
+            <select name={this.props.name} className={Modesta.fullWidth} defaultValue={value} onChange={this.props.onChange}>
+              <option disabled={!this.props.allowNone} selected={!this.props.options.some(option => value === option)} value="">{placeholder}</option>
               {
-                this.props.options.map(option => <option value={option} selected={value === option} key={option}>{option}</option>)
+                this.props.options.map(option => {
+                  if (this.props.localiseOptions) {
+                    return (
+                      <FormattedMessage id={`${this.props.localiseOptions}.${option}`} key={option}>
+                        {formattedOption => <option value={option} selected={value === option}>{formattedOption}</option>}
+                      </FormattedMessage>
+                    )
+                  }
+                  return (
+                    <option value={option} selected={value === option} key={option}>{option}</option>
+                  )
+                })
               }
             </select>
           }
@@ -27,13 +38,13 @@ class InputField extends Component {
       )
     } else if (this.props.toggle) {
       input = (
-        <input name={this.props.name} type="checkbox" defaultChecked={value} />
+        <input name={this.props.name} type="checkbox" defaultChecked={value} onChange={this.props.onChange} />
       )
     } else if (this.props.textarea) {
       input = (
         <FormattedMessage id={`${this.props.id}.placeholder`}>
           {placeholder =>
-            <textarea name={this.props.name} className={`${Modesta.fullWidth} ${styles.textarea}`} placeholder={placeholder} defaultValue={value || undefined}/>
+            <textarea name={this.props.name} className={`${Modesta.fullWidth} ${styles.textarea}`} placeholder={placeholder} defaultValue={value || undefined} onChange={this.props.onChange} />
           }
         </FormattedMessage>
       )
@@ -41,7 +52,7 @@ class InputField extends Component {
       input = (
         <FormattedMessage id={`${this.props.id}.placeholder`}>
           {placeholder =>
-            <input name={this.props.name} type="text" className={Modesta.fullWidth} placeholder={placeholder} style={{flexGrow: '1'}} defaultValue={value || undefined}/>
+            <input name={this.props.name} type="text" className={Modesta.fullWidth} placeholder={placeholder} style={{flexGrow: '1'}} defaultValue={value || undefined} onChange={this.props.onChange} />
           }
         </FormattedMessage>
       )

@@ -254,7 +254,7 @@ const Localise = (contents, locale) => {
 const getMasterLanguage = (locale) => {
   const language = languages.find(language => language.code === locale);
   if (language && language.master) return language.master;
-  return null;
+  return language.code;
 }
 
 export default languages;

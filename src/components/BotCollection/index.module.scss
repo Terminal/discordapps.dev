@@ -1,8 +1,5 @@
-.heading {
+.collection {
   display: flex;
   flex-direction: row;
-}
-
-.grow {
-  flex-grow: 1;
+  flex-wrap: wrap;
 }

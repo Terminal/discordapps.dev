@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import { Link } from 'react-router-dom';
 import Locations from '../../data/Locations';
 import Modesta, { TwitterEmojis } from '../../data/Modesta';
+import languages, { getMasterLanguage } from '../../locales';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -14,7 +15,7 @@ class NavbarLinks extends Component {
   }
   render() {
     const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
-    const { auth } = this.props;
+    const { auth, intl } = this.props;
     return (
       <>
         <FormattedMessage id="navbar.languages">
@@ -28,23 +29,25 @@ class NavbarLinks extends Component {
           <>
             <FormattedMessage id="navbar.add">
               {message => (
-                <Link aria-label={message} to="/bots/add">
+                <LocalisedHyperlink aria-label={message} to="/bots/add">
                   {message}
-                </Link>
+                </LocalisedHyperlink>
               )}
             </FormattedMessage>
             <FormattedMessage id="navbar.user">
               {message => (
-                <Link aria-label={message} to="/me">
+                <LocalisedHyperlink aria-label={message} to="/bots/filter" query={{
+                  owners: [auth.data.id]
+                }}>
                   {auth.data.username}
-                </Link>
+                </LocalisedHyperlink>
               )}
             </FormattedMessage>
             <FormattedMessage id="navbar.logout">
               {message => (
-                <Link aria-label={message} to="/auth/logout">
+                <LocalisedHyperlink aria-label={message} to="/auth/logout">
                   {message}
-                </Link>
+                </LocalisedHyperlink>
               )}
             </FormattedMessage>
             {
@@ -52,9 +55,9 @@ class NavbarLinks extends Component {
               <>
                 <FormattedMessage id="navbar.admin">
                   {message => (
-                    <LocalisedHyperlink to="/admin">
+                    <a aria-label={message} href={`${Locations.server}/${getMasterLanguage(intl.locale)}/admin`} target="_blank" rel="noopener noreferrer">
                       {message}
-                    </LocalisedHyperlink>
+                    </a>
                   )}
                 </FormattedMessage>
               </>
@@ -81,4 +84,4 @@ const mapStateToProps = (state) => {
   return { auth };
 }
 
-export default connect(mapStateToProps)(NavbarLinks);
+export default connect(mapStateToProps)(injectIntl(NavbarLinks));

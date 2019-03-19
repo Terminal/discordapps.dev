@@ -16,7 +16,13 @@ class BotPageLinks extends Component {
           <p><FormattedMessage id="pages.bots.offeredby"/></p>
           <ul>
             {bot.authors.map((author) => (
-              <li key={author.id}><LocalisedHyperlink to={`/users/${author.id}`}>{author.username}#{author.discriminator}</LocalisedHyperlink></li>
+              <li key={author.id}>
+                <LocalisedHyperlink aria-label={`${author.username}#${author.discriminator}`} to="/bots/filter" query={{
+                  owners: [author.id]
+                }}>
+                  {author.username}#{author.discriminator}
+                </LocalisedHyperlink>
+              </li>
             ))}
           </ul>
           </FlexColumns>

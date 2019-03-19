@@ -348,6 +348,29 @@
         "reason": "Enter reason for changing the state of the bot",
         "change": "Change state"
       }
+    },
+    "filter": {
+      "authors": {
+        "modal": "Enter a single ID of an owner of the bot.",
+        "placeholder": "ID of a single owner",
+        "title": "Bot Authors",
+        "add": "Add another",
+        "delete": "Remove author"
+      },
+      "category": {
+        "title": "Category",
+        "placeholder": "All categories"
+      },
+      "query": {
+        "title": "Search",
+        "placeholder": "Enter text"
+      },
+      "nsfw": {
+        "title": "Not Safe For Work",
+        "placeholder": "Do not filter",
+        "nsfw": "Not Safe for Work",
+        "sfw": "Safe For Work"
+      }
     }
   },
   "navbar": {
