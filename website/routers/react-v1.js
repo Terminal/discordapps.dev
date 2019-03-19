@@ -82,7 +82,7 @@ router
     const query = typeof req.query.q === 'string' ? req.query.q : '';
     const state = typeof req.query.state === 'string' ? req.query.state : 'approved';
     const category = typeof req.query.category === 'string' ? req.query.category : '';
-    const nsfw = req.query.nsfw === 'true';
+    const nsfw = typeof req.query.nsfw === 'string' ? req.query.nsfw : '';
     const owners = Array.isArray(req.query.owners) ? req.query.owners : [];
 
     const filter = (bot) => {
@@ -99,8 +99,10 @@ router
       }
 
       // If NSFW bots are requested, add that to the query
-      if (nsfw) {
-        databaseQuery = databaseQuery.and(r.expr(sanitise(query)).match('nsfw'));
+      if (nsfw === 'nsfw') {
+        databaseQuery = databaseQuery.and(bot('nsfw').eq(true));
+      } else if (nsfw === 'sfw') {
+        databaseQuery = databaseQuery.and(bot('nsfw').eq(false));
       }
 
       // If a query is requested, add that to the query
