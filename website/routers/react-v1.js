@@ -111,8 +111,11 @@ router
       }
 
       // If there's an array of owners, add that to the query
+      // but only if it is not empty
       for (let i = 0; i < owners.length; i += 1) {
-        databaseQuery = databaseQuery.and(bot('authors').contains(owners[i]));
+        if (owners[i] !== '') {
+          databaseQuery = databaseQuery.and(bot('authors').contains(owners[i]));
+        }
       }
 
       return databaseQuery;
