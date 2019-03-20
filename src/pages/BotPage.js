@@ -14,6 +14,7 @@ import NotFound from './NotFound';
 import { Localise } from '../locales';
 import BotPageReviewsBox from '../components/BotPageReviewsBox';
 import LoadingContainer from '../components/LoadingContainer';
+import Youku from '../components/Youku';
 
 class BotPage extends Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class BotPage extends Component {
           <BotPageInfoBox bot={bot} contents={contents}/>
           <BotPageImagesBox images={bot.cachedImages.preview}>
             {bot.videos.youtube ? <YouTube video={bot.videos.youtube} /> : null}
+            {bot.videos.youku ? <Youku video={bot.videos.youku} /> : null}
           </BotPageImagesBox>
           <BotPageContentBox page={contents.page}/>
           <BotPageReviewsBox bot={bot} />
