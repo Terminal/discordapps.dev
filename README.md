@@ -1,18 +1,34 @@
 # terminal.ink v13
-
-## Development Previews
-Location                                  | Description
------------------------------------------ | -----------------
-[netlify](https://twink.netlify.com/)     | In case you need the latest of the latest. You must always navigate back to `/` on refresh
-[SSR Rendering](https://discordapps.dev/) | Serverside rendered. Usually the newest.
-[Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8) | Not related. Stan LOONA.
-
 ## Features
 ### Multilanguage support
 ![i18n](.github/languages.gif)
-
 Present your ideas in more than just English.
 Make your bot page in multiple languages to target many more users.
+
+### Images, YouTube and YOUKU video embed
+![embeds](.github/embeds.gif)
+
+### Multiprefix
+![prefixes](.github/prefixes.png)
+Add multiple prefixes with available flags for if the bot can be mentioned or customised.
+
+## Development Previews
+Location                                                  | Description
+--------------------------------------------------------- | -----------------
+[netlify](https://twink.netlify.com/)                     | In case you need the latest of the latest. You must always navigate back to `/` on refresh
+[SSR Rendering](https://discordapps.dev/)                 | Serverside rendered. Usually the newest.
+[Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8) | Not related. Stan LOONA.
+
+## Command Information
+Command            | Description
+------------------ | ---------------
+yarn               | Download dependencies
+yarn start         | Run the development server
+yarn build         | Build a version of Discord Apps Marketplace
+yarn test          | Test (there are no tests written)
+yarn eject         | Eject from `create-react-app`. Don't do this.
+yarn webpack       | Pack the built version for use on the server. You must run `yarn build` before running
+yarn server        | Run the production server. You must run `yarn build` then `yarn webpack` before running
 
 <!--
 ## Sponsors
