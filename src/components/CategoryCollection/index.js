@@ -8,6 +8,8 @@ import BotCollection from '../BotCollection';
 import ContentBox from '../ContentBox';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
+import LoadingContainer from '../LoadingContainer';
+import LoadingContentBox from '../LoadingContentBox';
 
 
 
@@ -47,35 +49,37 @@ class CategoryCollection extends Component {
     return (
       <div>
         {
-          categories
+          categories.length > 0 ?
             // List categories that are not empty
-            .filter(category => bots.filter(bot => bot.category === category).length)
-            .map(category => {
-              const botsInCategory = bots
-                .filter(bot => bot.category === category)
-              return (
-                <ContentBox key={category}>
-                  <div className={styles.heading}>
-                    <h4 className={styles.grow} id={category}>
-                      <LocalisedHyperlink to="/bots/filter" query={{
-                        category
-                      }}>
-                        <FormattedMessage id={`categories.${category}`} />
-                      </LocalisedHyperlink>
-                    </h4>
-                    { botsInCategory.length > 8 ?
-                      <LocalisedHyperlink to="/bots/filter" query={{
-                        category
-                      }}>
-                        <FormattedMessage id="components.categorycollection.morebots" />
-                      </LocalisedHyperlink> :
-                      null
-                    }
-                  </div>
-                  <BotCollection bots={botsInCategory} limit={8} />
-                </ContentBox>
-              )
-            })
+            categories
+              .filter(category => bots.filter(bot => bot.category === category).length)
+              .map(category => {
+                const botsInCategory = bots
+                  .filter(bot => bot.category === category)
+                return (
+                  <ContentBox key={category}>
+                    <div className={styles.heading}>
+                      <h4 className={styles.grow} id={category}>
+                        <LocalisedHyperlink to="/bots/filter" query={{
+                          category
+                        }}>
+                          <FormattedMessage id={`categories.${category}`} />
+                        </LocalisedHyperlink>
+                      </h4>
+                      { botsInCategory.length > 8 ?
+                        <LocalisedHyperlink to="/bots/filter" query={{
+                          category
+                        }}>
+                          <FormattedMessage id="components.categorycollection.morebots" />
+                        </LocalisedHyperlink> :
+                        null
+                      }
+                    </div>
+                    <BotCollection bots={botsInCategory} limit={8} />
+                  </ContentBox>
+                )
+            }) :
+            <LoadingContentBox />
         }
       </div>
     )

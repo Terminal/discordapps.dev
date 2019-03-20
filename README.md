@@ -1,4 +1,6 @@
-# terminal.ink v13
+# Discord Apps Marketplace
+_curated by Terminal.ink_
+
 ## Features
 ### Multilanguage support
 ![i18n](.github/languages.gif)
