@@ -36,15 +36,10 @@ export default (req, res, next) => {
     htmlData
       .replace(
         '<div id="root"></div>',
-        `<div id="root">${html}</div>`
-      )
-      .replace(
-        '<!-- State -->',
-        `
+        `<div id="root">${html}</div>
 <script>
   window.REDUX_STATE = ${JSON.stringify(store.getState())}
-</script>
-        `
+</script>`
       )
       .replace(
         '<!doctype html>',
