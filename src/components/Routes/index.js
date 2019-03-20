@@ -9,6 +9,7 @@ import InternationalisationProvider from '../InternationalisationProvider';
 import BotPage from '../../pages/BotPage';
 import FilterPage from '../../pages/FilterPage';
 import ConfigurePage from '../../pages/ConfigurePage';
+import Game from '../../pages/Game';
 
 class WebsiteRouter extends Component {
   render() {
@@ -22,6 +23,11 @@ class WebsiteRouter extends Component {
         <Route path="/:locale/" exact component={({ match, location }) => (
           <InternationalisationProvider match={match} location={location}>
             <Home />
+          </InternationalisationProvider>
+        )} />
+        <Route path="/:locale/game" exact component={({ match, location }) => (
+          <InternationalisationProvider match={match} location={location}>
+            <Game />
           </InternationalisationProvider>
         )} />
         <Route path="/:locale/auth/logout" exact component={({ match, location }) => (

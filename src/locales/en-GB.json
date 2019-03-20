@@ -367,6 +367,12 @@
         "nsfw": "Not Safe for Work",
         "sfw": "Safe For Work"
       }
+    },
+    "game": {
+      "title": "Terminal.ink Game",
+      "description": "Click the button to get points!",
+      "leave": "Are you sure you want to leave? You will lose all your points.",
+      "score": "You have {kliksphilip, plural, =0 {no points} one {one point} other {{kliksphilip} points}}."
     }
   },
   "navbar": {
