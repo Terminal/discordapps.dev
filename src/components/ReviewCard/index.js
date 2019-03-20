@@ -76,7 +76,9 @@ class ReviewCard extends Component {
         {
           // Allow the review to be deleted by the owner, or by an admin
           review.isCurrentUserOwner || (auth && auth.data && auth.data.admin) ?
-            <NotALink onClick={this.deleteReview}>Delete</NotALink> :
+            <NotALink onClick={this.deleteReview}>
+              <FormattedMessage id="pages.reviews.delete" />
+            </NotALink> :
             null
         }
       </FlexContainer>

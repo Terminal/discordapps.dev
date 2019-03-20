@@ -55,10 +55,6 @@
       "denied": "You do not have the adequate permissions to access this",
       "banned": "You have been denied access to this resource"
     },
-    "website": {
-      "noscript": "JavaScript has been disabled. Functionality may be reduced.",
-      "print": "JavaScript is not compatible with paper printouts."
-    },
     "reviews": {
       "rating": "Please select a rating before continuing",
       "text": "Please enter why you gave this number of stars for this bot.",
@@ -80,15 +76,9 @@
     "discord": "Discord Server",
     "terminal": "Terminal.ink",
     "terms": "Terms and Conditions",
-    "docs": "Docs",
-    "view": "View this page in GitHub"
+    "docs": "Docs"
   },
   "forms": {
-    "add": "Add another",
-    "apply": "Apply",
-    "close": "Close",
-    "delete": "Delete",
-    "help": "🤔",
     "select": "Please select...",
     "submit": "Submit",
     "wait": "Please wait..."
@@ -172,12 +162,10 @@
     },
     "edit": {
       "application_id": {
-        "modal": "The OAuth ID is the ID which is used when users invite your bot via the OAuth workflow. In almost all cases, this ID is the same as your Bot ID. You will only need to take action if your bot has a difference between the two.",
         "placeholder": "The ID used in the OAuth link.",
         "title": "OAuth ID"
       },
       "authors": {
-        "modal": "Enter a single ID of an owner of the bot.",
         "placeholder": "ID of a single owner",
         "title": "Bot Authors",
         "add": "Add another",
@@ -197,8 +185,6 @@
         "placeholder": "Select a category"
       },
       "client_id": {
-        "modal1": "The bot ID is a number which uniquely identifies the bot user. You can retrieve it by clicking the \"Copy\" button within the Discord Developer portal.",
-        "modal2": "You can also find the ID by enabling \"Developer Mode\" in the Discord settings, and then right clicking your bot and pressing \"Copy ID\". Be sure not to copy the ID of the message.",
         "placeholder": "The ID of the bot user",
         "title": "Bot ID"
       },
@@ -206,7 +192,8 @@
         "title": "Customisable prefix"
       },
       "description": {
-        "title": "Short Descripion"
+        "title": "Short Descripion",
+        "placeholder": "Enter a shorter description, shown on the home page."
       },
       "github_owner": {
         "placeholder": "Something like: ry00001",
@@ -218,26 +205,25 @@
       },
       "information": "Your Bot Page",
       "invite": {
-        "modal": "Please make sure \"Bot ID\" has been filled in with your Discord bot's ID",
         "title": "Invite URL",
-        "generate": "Generate invite link",
         "placeholder": "Enter a link to invite your bot"
       },
       "languages": {
+        "modal": "Write your bot page in many supported languages. Select a language, then click the \"Add a language\" button to the right.",
         "add": "Add a language",
-        "delete": "Delete this language",
-        "modal": "Write your bot page in any supported language. Select a language, and click the 'Add a language' button.",
-        "title": "Bot Page Languages"
+        "delete": "Delete this language"
       },
       "leave": "Are you sure you want to leave? Unmodified changes will not be saved.",
       "mentionable": {
         "title": "Can mention to trigger bot"
       },
       "name": {
-        "title": "Name"
+        "title": "Name",
+        "placeholder": "Enter the name of the bot."
       },
       "page": {
-        "title": "Extended Description"
+        "title": "Extended Description",
+        "placeholder": "Enter useful information about your bot, like commands, features and updates."
       },
       "prefix": {
         "placeholder": "A single prefix",
@@ -301,7 +287,6 @@
       "snarky": "This error was going to happen anyway."
     },
     "list": {
-      "invite": "Invite",
       "empty": "There are no bots"
     },
     "locale": {
@@ -314,26 +299,11 @@
       "key": "JSON Key",
       "notfound": "Key not found!"
     },
-    "notfound": {
-      "gohome": "Go Home",
-      "message": "Page not found"
-    },
-    "sure": {
-      "title": "Are you sure?",
-      "ok": "Ok",
-      "no": "Go back"
-    },
     "reviews": {
       "title": "Reviews",
-      "my": "My Review",
       "write": "Write a review",
       "placeholder": "Please enter a reason for your review.",
-      "number": {
-        "one": "%s review",
-        "other": "%s reviews"
-      },
-      "delete": "Delete review",
-      "all": "View all reviews"
+      "delete": "Delete review"
     },
     "admin": {
       "title": "Administration Console",
@@ -347,7 +317,6 @@
     },
     "filter": {
       "authors": {
-        "modal": "Enter a single ID of an owner of the bot.",
         "placeholder": "ID of a single owner",
         "title": "Bot Authors",
         "add": "Add another",
@@ -384,10 +353,6 @@
     "user": "My Bots"
   },
   "pagination": {
-    "image": {
-      "prev": "Back",
-      "next": "Next"
-    },
     "page": {
       "prev": "Previous",
       "next": "Next Page"
