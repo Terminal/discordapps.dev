@@ -1,23 +1,15 @@
-![Project Forklift](.github/fancypants.png)
+# Discord Apps Marketplace API Server
+_curated by Terminal.ink_
 
-- [Website](website)
-- [React Frontend Rewrite](frontend)
-- [Image Proxy Server](proxy)
-- [Discord Bot](bot)
+[This is the backend for `discordapps.dev`. See the frontend here.](https://github.com/Terminal/ls.terminal.ink/tree/ls13)
 
-## Features
-### Multilanguage support
-![i18n](.github/multilanguage/result.gif)
-Present your ideas in more than just English.
-Make your bot page in multiple languages to target many more users.
+## Development Previews
+Location                                                  | Description
+--------------------------------------------------------- | -----------------
+[ls.terminal.ink](https:/ls.terminal.ink/)                | API server
 
-### Images, YouTube and YOUKU video embed
-![embed](.github/embed.gif)
-Embed demonstration images and videos for your bot to reduce technical support calls for your bot.
 
-### Multiprefix
-![prefix](.github/multiprefix.png)
-Add multiple prefixes with available flags for if the bot can be mentioned or customised.
-
-## Dependencies
-- [View `npm` dependencies](https://github.com/Terminal/ls.terminal.ink/network/dependencies)
+<!--
+## Sponsors
+This project is funded by people who keep the open source community alive.
+-->
