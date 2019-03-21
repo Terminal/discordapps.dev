@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Modesta from '../../data/Modesta';
-import ContentBox from '../ContentBox';
 import Container from '../Container';
 import LoadingContentBox from '../LoadingContentBox';
 

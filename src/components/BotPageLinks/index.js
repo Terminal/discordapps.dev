@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import { injectIntl } from 'react-intl';
 import DateFormat from '../../data/DateFormat';
 import LocalisedHyperlink from '../LocalisedHyperlink';
+import States from '../../data/States';
 
 class BotPageLinks extends Component {
   render() {
@@ -18,7 +19,8 @@ class BotPageLinks extends Component {
             {bot.authors.map((author) => (
               <li key={author.id}>
                 <LocalisedHyperlink aria-label={`${author.username}#${author.discriminator}`} to="/bots/filter" query={{
-                  owners: [author.id]
+                  owners: [author.id],
+                  state: States.APPROVED
                 }}>
                   {author.username}#{author.discriminator}
                 </LocalisedHyperlink>

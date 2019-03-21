@@ -1,6 +1,6 @@
 import qs from 'qs';
 import React, { Component } from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import BotCollection from '../components/BotCollection';
 import Container from '../components/Container';
@@ -24,7 +24,8 @@ class FilterPage extends Component {
       nsfw: null,
       query: null,
       timeout: null,
-      hidden: true
+      hidden: true,
+      state: null
     }
     this.form = React.createRef();
     this.onChange = this.onChange.bind(this);

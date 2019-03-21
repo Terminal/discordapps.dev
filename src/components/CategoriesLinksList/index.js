@@ -7,6 +7,7 @@ import styles from './index.module.scss';
 import LoadingText from '../LoadingText';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
+import States from '../../data/States';
 
 class CategoriesLinksList extends Component {
   componentDidMount() {
@@ -28,7 +29,8 @@ class CategoriesLinksList extends Component {
               categories.map((x) => (
                 <li key={x} className={styles.item}>
                   <LocalisedHyperlink to="/bots/filter" query={{
-                    category: x
+                    category: x,
+                    state: States.APPROVED
                   }}>
                     <FormattedMessage id={`categories.${x}`} />
                   </LocalisedHyperlink>

@@ -6,10 +6,10 @@ import { getMasterLanguage } from '../../locales';
 import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import BotCollection from '../BotCollection';
 import ContentBox from '../ContentBox';
+import LoadingContentBox from '../LoadingContentBox';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
-import LoadingContainer from '../LoadingContainer';
-import LoadingContentBox from '../LoadingContentBox';
+import States from '../../data/States';
 
 
 
@@ -61,14 +61,16 @@ class CategoryCollection extends Component {
                     <div className={styles.heading}>
                       <h4 className={styles.grow} id={category}>
                         <LocalisedHyperlink to="/bots/filter" query={{
-                          category
+                          category,
+                          state: States.APPROVED
                         }}>
                           <FormattedMessage id={`categories.${category}`} />
                         </LocalisedHyperlink>
                       </h4>
                       { botsInCategory.length > 8 ?
                         <LocalisedHyperlink to="/bots/filter" query={{
-                          category
+                          category,
+                          state: States.APPROVED
                         }}>
                           <FormattedMessage id="components.categorycollection.morebots" />
                         </LocalisedHyperlink> :

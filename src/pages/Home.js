@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
+import CategoriesLinksList from '../components/CategoriesLinksList';
+import CategoryCollection from '../components/CategoryCollection';
 import Container from '../components/Container';
 import Flex from '../components/FlexColumns';
-import Layout from '../components/Layout';
-import CategoriesLinksList from '../components/CategoriesLinksList';
-import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
-import CategoryCollection from '../components/CategoryCollection';
 import HelpUsImprove from '../components/HelpUsImprove';
+import Layout from '../components/Layout';
+import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
 import Welcome from '../components/Welcome';
-import LocalisedHyperlink from '../components/LocalisedHyperlink';
-import { FormattedMessage } from 'react-intl';
-import ContentBox from '../components/ContentBox';
 
 class Home extends Component {
   render() {
@@ -19,11 +16,6 @@ class Home extends Component {
         <Container>
           <Flex padding={true}>
             <Flex columns={3}>
-              <ContentBox>
-                <LocalisedHyperlink to="/bots/filter">
-                  <FormattedMessage id="pages.bots.search" />
-                </LocalisedHyperlink>
-              </ContentBox>
               <CategoriesLinksList />
               <HelpUsImprove />
             </Flex>

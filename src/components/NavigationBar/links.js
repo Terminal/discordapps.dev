@@ -6,6 +6,7 @@ import Modesta, { TwitterEmojis } from '../../data/Modesta';
 import { getMasterLanguage } from '../../locales';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
+import States from '../../data/States';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -21,6 +22,15 @@ class NavbarLinks extends Component {
           {message => (
             <LocalisedHyperlink aria-label={message} to="/locale">
               <span className={`${Modesta.emoji} ${TwitterEmojis.twaGlobeShowingEuropeAfrica}`} />
+            </LocalisedHyperlink>
+          )}
+        </FormattedMessage>
+        <FormattedMessage id="navbar.languages">
+          {message => (
+            <LocalisedHyperlink aria-label={message} to="/bots/filter" query={{
+              state: States.APPROVED
+            }}>
+              <span className={`${Modesta.emoji} ${TwitterEmojis.twaRightPointingMagnifyingGlass}`} />
             </LocalisedHyperlink>
           )}
         </FormattedMessage>
