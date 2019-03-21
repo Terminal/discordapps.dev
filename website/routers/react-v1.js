@@ -102,7 +102,12 @@ router
     const owners = Array.isArray(req.query.owners) ? req.query.owners : [];
 
     const filter = (bot) => {
-      let databaseQuery = bot('state').eq(state);
+      // Bodge for chaining
+      let databaseQuery = bot.hasFields('id');
+
+      if (state) {
+        databaseQuery = databaseQuery.and(bot('state').eq(state));
+      }
 
       if (query) {
         databaseQuery = databaseQuery.and(
