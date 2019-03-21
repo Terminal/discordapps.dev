@@ -350,6 +350,7 @@
     "logout": "Logout",
     "admin": "Admin",
     "languages": "Languages",
+    "search": "Search for bots",
     "user": "My Bots"
   },
   "pagination": {

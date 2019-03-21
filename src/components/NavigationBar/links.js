@@ -25,7 +25,7 @@ class NavbarLinks extends Component {
             </LocalisedHyperlink>
           )}
         </FormattedMessage>
-        <FormattedMessage id="navbar.languages">
+        <FormattedMessage id="navbar.search">
           {message => (
             <LocalisedHyperlink aria-label={message} to="/bots/filter" query={{
               state: States.APPROVED
