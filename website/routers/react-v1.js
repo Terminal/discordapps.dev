@@ -96,7 +96,7 @@ router
   })
   .get('/bots/search', (req, res, next) => {
     const query = typeof req.query.q === 'string' ? req.query.q : '';
-    const state = typeof req.query.state === 'string' ? req.query.state : 'approved';
+    const state = typeof req.query.state === 'string' ? req.query.state : '';
     const category = typeof req.query.category === 'string' ? req.query.category : '';
     const nsfw = typeof req.query.nsfw === 'string' ? req.query.nsfw : '';
     const owners = Array.isArray(req.query.owners) ? req.query.owners : [];
