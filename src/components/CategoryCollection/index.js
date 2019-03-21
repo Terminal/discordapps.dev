@@ -75,7 +75,7 @@ class CategoryCollection extends Component {
                         null
                       }
                     </div>
-                    <BotCollection bots={botsInCategory} limit={8} />
+                    <BotCollection bots={botsInCategory} limit={8} hidden={true}/>
                   </ContentBox>
                 )
             }) :

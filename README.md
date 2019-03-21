@@ -2,7 +2,7 @@
 _curated by Terminal.ink_
 
 ## Features
-### Multilanguage support
+### Multi Language support
 ![i18n](.github/languages.gif)
 Present your ideas in more than just English.
 Make your bot page in multiple languages to target many more users.
@@ -10,7 +10,7 @@ Make your bot page in multiple languages to target many more users.
 ### Images, YouTube and YOUKU video embed
 ![embeds](.github/embeds.gif)
 
-### Multiprefix
+### Multi Prefix
 ![prefixes](.github/prefixes.png)
 Add multiple prefixes with available flags for if the bot can be mentioned or customised.
 
@@ -18,7 +18,7 @@ Add multiple prefixes with available flags for if the bot can be mentioned or cu
 Location                                                  | Description
 --------------------------------------------------------- | -----------------
 [netlify](https://twink.netlify.com/)                     | In case you need the latest of the latest. You must always navigate back to `/` on refresh
-[SSR Rendering](https://discordapps.dev/)                 | Serverside rendered. Usually the newest.
+[SSR Rendering](https://discordapps.dev/)                 | Server side rendered. Usually the newest.
 [Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8) | Not related. Stan LOONA.
 
 ## Command Information

@@ -26,7 +26,7 @@ class PleaseAddYourBotPleaseThanks extends Component {
           </Flex>
           <Flex columns={4}>
             <h5>
-              <a href={Locations.wiki}>
+              <a href={Locations.tutorials}>
                 <FormattedMessage id="components.pleaseaddyourbotpleasethanks.innovate.heading" />
               </a>
             </h5>

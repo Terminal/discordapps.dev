@@ -6,6 +6,7 @@ export default {
   sourceLicence: 'https://github.com/Terminal/ls.terminal.ink/blob/ls13/LICENCE',
   sourceIssues: 'https://github.com/Terminal/ls.terminal.ink/issues',
   wiki: 'https://github.com/Terminal/ls.terminal.ink/wiki',
+  tutorials: 'https://github.com/Terminal/ls.terminal.ink/wiki/Tutorials-Home',
   termsAndConditions: 'https://github.com/Terminal/ls.terminal.ink/wiki/Terms-and-Conditions',
   terminalInk: 'https://terminal.ink',
   discordServer: 'https://discord.gg/8uC6aKZ'

@@ -36,7 +36,8 @@ class NavbarLinks extends Component {
             <FormattedMessage id="navbar.user">
               {message => (
                 <LocalisedHyperlink aria-label={message} to="/bots/filter" query={{
-                  owners: [auth.data.id]
+                  owners: [auth.data.id],
+                  hidden: false
                 }}>
                   {auth.data.username}
                 </LocalisedHyperlink>

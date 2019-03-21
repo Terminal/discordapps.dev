@@ -23,7 +23,8 @@ class FilterPage extends Component {
       category: null,
       nsfw: null,
       query: null,
-      timeout: null
+      timeout: null,
+      hidden: true
     }
     this.form = React.createRef();
     this.onChange = this.onChange.bind(this);
@@ -61,7 +62,8 @@ class FilterPage extends Component {
       owners: query.owners,
       category: query.category,
       nsfw: query.nsfw,
-      query: query.q
+      query: query.q,
+      hidden: !(query.hidden === 'false')
     })
   }
   onChange(e) {
@@ -80,7 +82,7 @@ class FilterPage extends Component {
   }
   render() {
     const categories = this.props.categories.data;
-    const { results, owners, category, nsfw, query } = this.state;
+    const { results, owners, category, nsfw, query, hidden } = this.state;
     return (
       <Layout>
         <Welcome />
@@ -100,11 +102,7 @@ class FilterPage extends Component {
           {
             Array.isArray(results) ?
               <ContentBox>
-                {
-                  results.length === 0 ?
-                    <FormattedMessage id="pages.list.empty" /> :
-                    <BotCollection bots={results} />
-                }
+                {<BotCollection bots={results} hidden={hidden} />}
               </ContentBox> :
               null
           }
