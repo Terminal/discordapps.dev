@@ -13,8 +13,8 @@ import redirects from '../../src/data/redirects';
 export default (req, res, next) => {
   // If a redirect is required, return the redirect.
   for (let i = 0; i < redirects.length; i += 1) {
-    const match = matchPath(req.baseUrl, routes[i]);
-    const route = routes[i];
+    const match = matchPath(req.baseUrl, redirects[i]);
+    const route = redirects[i];
     if (match) {
       return res.redirect(route.to({match}))
     }
