@@ -18,6 +18,7 @@ import { Localise } from '../locales';
 import NotFound from './NotFound';
 import { fetchABot } from '../redux/actions/bot';
 import BotPageSetStateBox from '../components/BotPageSetStateBox';
+import reviewToJsonLd from '../helpers/reviewToJsonLd';
 
 class BotPage extends Component {
   constructor(props) {
@@ -63,6 +64,9 @@ class BotPage extends Component {
           <meta property="og:description" content={contents.description}/>
           <meta name="description" content={contents.description}/>
           <meta property="og:image" content={`${Locations.server}${bot.cachedImages.avatar}`} />
+          <script type="application/ld+json">
+            {reviewToJsonLd(contents, bot)}
+          </script>
         </Helmet>
         { 
           bot.cachedImages.cover ?
