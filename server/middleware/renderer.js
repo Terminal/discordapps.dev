@@ -57,10 +57,15 @@ export default (req, res, next) => {
       res.send(
         htmlData
           .replace(
+            '<html lang="en">',
+            `<html ${helmet.htmlAttributes.toString()}>`
+          )
+          .replace(
             '<title>Discord Apps Marketplace</title>',
             helmet.title.toString() +
             helmet.meta.toString() +
-            helmet.link.toString()
+            helmet.link.toString() + 
+            helmet.script.toString()
           )
           .replace(
             '<div id="root"></div>',
