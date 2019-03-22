@@ -44,7 +44,7 @@ function fetchBot(id) {
 }
 
 function shouldFetchBot(state, id) {
-  if (state.bot.id === id) return false;
+  // if (state.bot.id === id) return false;
   return true;
 }
 
