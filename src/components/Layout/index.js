@@ -12,7 +12,6 @@ class Layout extends Component {
 
     const unlocalisedPath = location.url.substr(location.params.locale.length + 1);
 
-    console.log(location);
     return (
       <div>
         <FormattedMessage id="site.name">

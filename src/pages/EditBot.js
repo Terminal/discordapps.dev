@@ -65,8 +65,6 @@ class EditBot extends Component {
   loadExistingLanguages() {
     const bot = this.props.bot.data;
 
-    console.log(bot);
-
     if (!this.state.loadedExistingLanguages && bot && bot.contents) {
       console.log('reloading languages');
 
