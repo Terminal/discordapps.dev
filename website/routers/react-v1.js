@@ -64,7 +64,6 @@ router
           }))
           .default([])
           .without('bot')
-          .without('author')
           .coerceTo('array')
       }))
       .default({})
