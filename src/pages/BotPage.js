@@ -42,7 +42,7 @@ class BotPage extends Component {
     if (status === 404) {
       if (this.props.staticContext) this.props.staticContext.status = 404;
       return (
-        <NotFound />
+        <NotFound match={this.props.match}/>
       );
     }
     

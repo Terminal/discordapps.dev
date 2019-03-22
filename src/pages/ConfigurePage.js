@@ -54,13 +54,13 @@ class ConfigurePage extends Component {
   render() {
     if (this.state.notFound) {
       return (
-        <NotFound />
+        <NotFound match={this.props.match}/>
       );
     }
 
     if(this.state.notAllowed) {
       return (
-        <PermissionDenied />
+        <PermissionDenied match={this.props.match}/>
       )
     }
     
