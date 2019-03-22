@@ -60,7 +60,7 @@ class BotPage extends Component {
           <meta property="og:title" content={contents.name}/>
           <meta property="og:description" content={contents.description}/>
           <meta name="description" content={contents.description}/>
-          <meta property="og:image" content={bot.cachedImages.avatar}/>
+          <meta property="og:image" content={`${Locations.server}${bot.cachedImages.avatar}`} />
         </Helmet>
         { 
           bot.cachedImages.cover ?
