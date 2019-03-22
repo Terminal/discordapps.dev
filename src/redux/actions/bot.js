@@ -1,4 +1,5 @@
 import Locations from "../../data/Locations";
+import { isNull } from "util";
 
 export const REQUEST_BOT = 'REQUEST_BOT';
 export const RECIEVE_BOT = 'RECIEVE_BOT';
@@ -17,10 +18,11 @@ function resetBot() {
 }
 
 
-function recieveBot(json) {
+function recieveBot(json, status) {
   return {
     type: RECIEVE_BOT,
-    data: json.data
+    data: json.data,
+    status
   };
 }
 
@@ -30,12 +32,17 @@ function fetchBot(id) {
     return fetch(`${Locations.server}/reactjs/v1/bots/id/${id}`, {
       credentials: 'include'
     })
-      .then(res => res.json())
-      .then(json => dispatch(recieveBot(json)));
+      .then(res => {
+        res.json()
+          .then((json) => {
+            dispatch(recieveBot(json, res.status))
+          })
+      })
   };
 }
 
 function shouldFetchBot(state, id) {
+  if (state.bot.fetched && isNull(state.bot.data)) return true;
   if (state.bot.data && state.bot.data.id !== id) return true;
   if (state.bot.fetching) return false;
   if (state.bot.fetched) return false;

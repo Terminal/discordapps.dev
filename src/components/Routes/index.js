@@ -13,7 +13,7 @@ class WebsiteRouter extends Component {
       <Switch>
         {
           redirects.map(route => (
-            <Route path={route.path} exact={route.exact} component={({match, location, staticContext}) => (
+            <Route key={route.path} path={route.path} exact={route.exact} component={({match, location, staticContext}) => (
               <Redirect to={route.to({match, location, staticContext})} />
             )} />
           ))

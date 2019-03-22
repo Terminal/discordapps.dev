@@ -24,8 +24,7 @@ class BotPage extends Component {
     super(props);
 
     this.state = {
-      bot: null,
-      notFound: false
+      bot: null
     };
   }
 
@@ -37,8 +36,9 @@ class BotPage extends Component {
 
   render() {
     const bot = this.props.bot.data
+    const status = this.props.bot.status
 
-    if (this.state.notFound) {
+    if (status === 404) {
       if (this.props.staticContext) this.props.staticContext.status = 404;
       return (
         <NotFound />
