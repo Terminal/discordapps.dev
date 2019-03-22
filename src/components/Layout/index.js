@@ -28,7 +28,7 @@ class Layout extends Component {
                 {
                   languages
                     .filter(language => language.translations)
-                    .map(language => <link rel="alternate" href={`${Locations.domain}/${language.code}${unlocalisedPath}`} hreflang={language.code} />)
+                    .map(language => <link key={language.code} rel="alternate" href={`${Locations.domain}/${language.code}${unlocalisedPath}`} hreflang={language.code} />)
                 }
               </Helmet>
             )}

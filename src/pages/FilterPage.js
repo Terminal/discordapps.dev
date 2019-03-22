@@ -35,8 +35,8 @@ class FilterPage extends Component {
     const { dispatch } = this.props;
     dispatch(fetchCategoriesIfNeeded());
     
-    if (window.location.search) {
-      this.search(window.location.search)
+    if (this.props.location.search) {
+      this.search(this.props.location.search)
     }
   }
   componentWillUnmount() {
@@ -103,7 +103,7 @@ class FilterPage extends Component {
           {
             Array.isArray(results) ?
               <ContentBox>
-                {<BotCollection bots={results} hidden={hidden} />}
+                <BotCollection bots={results} hidden={hidden} />
               </ContentBox> :
               null
           }
