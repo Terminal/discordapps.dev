@@ -1,5 +1,4 @@
 import Locations from "../../data/Locations";
-import { isNull } from "util";
 
 export const REQUEST_BOT = 'REQUEST_BOT';
 export const RECIEVE_BOT = 'RECIEVE_BOT';
@@ -35,9 +34,9 @@ function fetchBot(id) {
       credentials: 'include'
     })
       .then(res => {
-        res.json()
+        return res.json()
           .then((json) => {
-            dispatch(recieveBot(json, res.status, id))
+            return dispatch(recieveBot(json, res.status, id))
           })
       })
   };
