@@ -2,8 +2,16 @@ const express = require('express');
 const r = require('../rethinkdb');
 const checkParamsLength = require('../middleware/checkParamsLength');
 
-const { isOwnerOfBot } = require('../static/middleware');
+const { isOwnerOfBot, isLoggedIn, isAdmin } = require('../static/middleware');
+const selectableStates = require('../data/states.json');
 const categories = require('../data/categories.json');
+const discordWebhooks = require('../static/discordWebhook');
+const { fixRoles } = require('../static/bot');
+const multer = require('multer');
+
+const reader = multer();
+
+const botserverError = () => console.log('Failed to update roles! Is webserver down?');
 
 const router = express.Router();
 
@@ -92,6 +100,40 @@ router
       .catch((err) => {
         next(err);
       });
+  })
+  .post('/bots/id/:id/state', checkParamsLength, isLoggedIn, isAdmin, reader.none(), (req, res, next) => {
+    if (selectableStates.includes(req.body.state)) {
+      r.table('bots')
+        .get(req.params.id)
+        .update({
+          state: req.body.state
+        }, {
+          returnChanges: true
+        })
+        .then((result) => {
+          if (result.replaced === 1) {
+            const newVal = result.changes[0].new_val;
+            discordWebhooks(`<@${req.user.id}> changed state of <@${req.params.id}> to \`${req.body.state}\`\n${newVal.authors.map(owner => `<@${owner}>`).join(', ')}\n\n${req.body.reason}`);
+          }
+          res.send({
+            ok: true
+          });
+          fixRoles()
+            .catch(botserverError);
+        })
+        .catch((err) => {
+          next(err);
+          res.send({
+            ok: false,
+            message: err.message
+          });
+        });
+    } else {
+      res.send({
+        ok: false,
+        message: 'State not found'
+      });
+    }
   })
   .get('/bots/search', (req, res, next) => {
     const query = typeof req.query.q === 'string' ? req.query.q : '';

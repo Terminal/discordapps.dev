@@ -5,7 +5,6 @@ const joi = require('../schemas/joi');
 const { unflatten } = require('flat');
 const multer = require('multer');
 const r = require('../rethinkdb');
-const { localise } = require('../static/list');
 const reviewSchema = require('../schemas/reviews');
 const checkParamsLength = require('../middleware/checkParamsLength');
 
@@ -14,88 +13,7 @@ const router = express.Router({
 });
 const reader = multer();
 
-router.get('/', (req, res, next) => {
-  const limit = parseInt(req.query.limit, 10) > 0 ? parseInt(req.query.limit, 10) : 4;
-  const page = parseInt(req.query.page, 10) >= 0 ? parseInt(req.query.page, 10) : 0;
-
-  r.table('bots')
-    .get(req.params.id)
-    .merge(bot => ({
-      authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array'),
-      reviews: r.table('reviews')
-        .filter(review => review('bot').eq(bot('id')))
-        .skip(limit * page)
-        .limit(limit + 1)
-        .merge(review => ({
-          author: r.table('users').get(review('author'))
-        }))
-        .coerceTo('array'),
-      ratings: r.table('reviews')
-        .group('rating')
-        .filter(review => review('bot').eq(bot('id')))
-        .count()
-        .ungroup()
-    }))
-    .default(null)
-    .then((item) => {
-      if (!item) {
-        next();
-      } else {
-        const bot = localise(item, res);
-        const ratings = {};
-        const numberOfRatings = bot.ratings.reduce((sum, rating) => sum + rating.reduction, 0);
-        const maximumNumber = bot.ratings.reduce((max, rating) => {
-          if (rating.reduction > max) {
-            return rating.reduction;
-          }
-          return max;
-        }, 0);
-
-        const title = res.__('pagination.reviews', {
-          number: page + 1,
-          name: bot.contents.name
-        });
-
-        // The maximum rating is 5.
-        // Loop from 1 to including 5
-        for (let i = 1; i <= 5; i += 1) {
-          const rating = bot.ratings.find(groupedRating => groupedRating.group === i);
-
-          if (rating) {
-            ratings[i] = {
-              count: rating.reduction,
-              proportion: rating.reduction / numberOfRatings,
-              percentage: (rating.reduction / numberOfRatings) * 100,
-              sliderWidth: (rating.reduction / maximumNumber) * 100
-            };
-          } else {
-            ratings[i] = {
-              count: 0,
-              proportion: 0,
-              percentage: 0,
-              sliderWidth: 0
-            };
-          }
-        }
-
-        res.render('reviews', {
-          item,
-          limit,
-          previous: page - 1,
-          next: page + 1,
-          page,
-          isOwnerOfBot: req.user ? bot.authors.some(owner => owner.id === req.user.id) : false,
-          cover: bot.cachedImages ? bot.cachedImages.cover : null,
-          title,
-          ratings,
-          numberOfRatings
-        });
-      }
-    })
-    .catch((err) => {
-      next(err);
-    });
-})
+router
   .post('/', isLoggedIn, botExists, reviewDoesntExist, reader.none(), (req, res, next) => {
     req.body['review.bot'] = req.params.id;
     req.body['review.author'] = req.user.id;

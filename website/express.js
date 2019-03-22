@@ -105,28 +105,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
   }))
   .use(passport.initialize())
   .use(passport.session())
-  .use((req, res, next) => {
-    if (req.get('host') === '127.0.0.1') {
-      next();
-    } else if (req.get('x-forwarded-proto') && req.get('x-forwarded-proto') !== config.webserver.protocol) {
-      res.redirect(config.webserver.location + req.url);
-    } else if (alternativeSites[req.get('host')]) {
-      res.redirect(config.webserver.location + alternativeSites[req.get('host')] + req.url);
-    } else if (config.webserver.host !== req.get('host')) {
-      res.redirect(config.webserver.location + req.url);
-    } else {
-      next();
-    }
-  })
-  .use(sass({ // Turns SASS to CSS in real time
-    src: path.join(__dirname, 'sass'),
-    dest: path.join(__dirname, 'www-root', 'css'),
-    prefix: '/css',
-    debug: false,
-  }))
   .use(express.static(path.join(__dirname, 'www-root')))
-  .use('/node_modules/', express.static(path.join(__dirname, '..', 'node_modules')))
-  .use('/css/images/', express.static(path.join(__dirname, 'www-root', 'ModestaCSS', 'css', 'images')))
   .use('/sitemap.xml', sitemapRouter)
   .use('/en-GB/', languageMiddleware('en-GB'), websiteRouter) // Can't use `:lang`, will explode
   .use('/en-GB', languageMiddleware('en-GB'), websiteRouter)
@@ -154,9 +133,7 @@ app.set('views', path.join(path.dirname(__filename), 'views'))
     }
   })
   .use((req, res) => {
-    res.status(404).render('error', {
-      message: res.__('pages.error.notfound')
-    });
+    res.redirect(`${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
   });
 
 periodical();
