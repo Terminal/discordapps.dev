@@ -161,7 +161,7 @@ class EditBot extends Component {
     }
 
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <FormattedMessage id="pages.edit.leave">
           {message => <Prompt when={this.state.edited} message={message} />}
         </FormattedMessage>

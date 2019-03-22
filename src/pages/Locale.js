@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 import Modesta from '../data/Modesta';
 
 export default () => (
-  <Layout>
+  <Layout match={this.props.match}>
     <Container>
       <ContentBox className={Modesta.center}>
         <h2><FormattedMessage id="pages.locale.choose" /></h2>

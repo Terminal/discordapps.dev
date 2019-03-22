@@ -48,7 +48,7 @@ class BotPage extends Component {
     
     if (!bot) {
       return (
-        <Layout>
+        <Layout match={this.props.match}>
           <LoadingContainer />
         </Layout>
       );
@@ -57,7 +57,7 @@ class BotPage extends Component {
     const contents = Localise(bot.contents, this.props.intl.locale);
 
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <Helmet>
           <title>{contents.name}</title>
           <meta property="og:title" content={contents.name}/>

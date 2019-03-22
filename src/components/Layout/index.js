@@ -3,9 +3,16 @@ import NavigationBar from '../NavigationBar';
 import Footer from '../Footer';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
+import Locations from '../../data/Locations';
+import languages from '../../locales';
 
 class Layout extends Component {
   render() {
+    const location = this.props.match;
+
+    const unlocalisedPath = location.url.substr(location.params.locale.length + 1);
+
+    console.log(location);
     return (
       <div>
         <FormattedMessage id="site.name">
@@ -19,6 +26,11 @@ class Layout extends Component {
                 <meta property="og:site_name" content={siteName} />
                 <meta property="og:description" content={siteDescription} />
                 <meta name="description" content={siteDescription} />
+                {
+                  languages
+                    .filter(language => language.translations)
+                    .map(language => <link rel="alternate" href={`${Locations.domain}/${language.code}${unlocalisedPath}`} hreflang={language.code} />)
+                }
               </Helmet>
             )}
           </FormattedMessage>

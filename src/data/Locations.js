@@ -1,5 +1,6 @@
 export default {
   server: 'https://ls.terminal.ink',
+  domain: 'https://discordapps.dev',
   logo: 'https://ls.terminal.ink/img/logo/logo.svg',
   sourceCode: 'https://github.com/Terminal/ls.terminal.ink/tree/ls13',
   sourceDependencies: 'https://github.com/Terminal/ls.terminal.ink/network/dependencies',

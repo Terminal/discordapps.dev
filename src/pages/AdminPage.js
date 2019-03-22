@@ -32,7 +32,7 @@ class AdminPage extends Component {
     }
 
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <Welcome />
         <Container>
           <ContentBox>

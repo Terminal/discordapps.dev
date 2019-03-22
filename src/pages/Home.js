@@ -11,7 +11,7 @@ import Welcome from '../components/Welcome';
 class Home extends Component {
   render() {
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <Welcome />
         <Container>
           <Flex padding={true}>

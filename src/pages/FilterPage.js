@@ -85,7 +85,7 @@ class FilterPage extends Component {
     const categories = this.props.categories.data;
     const { results, owners, category, nsfw, query, hidden } = this.state;
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <Welcome />
         <Container>
           <form ref={this.form}>

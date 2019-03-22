@@ -23,7 +23,7 @@ class Game extends Component {
   }
   render() {
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <FormattedMessage id="pages.game.title">
           {gameName => (
             <FormattedMessage id="pages.game.description">

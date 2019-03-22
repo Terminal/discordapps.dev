@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 class PleaseLogin extends Component {
   render() {
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <Container>
           <ContentBox>
             <h2><FormattedMessage id="errors.permissions.login" /></h2>

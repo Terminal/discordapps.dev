@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 class PermissionDenied extends Component {
   render() {
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <Container>
           <ContentBox>
             <h2><FormattedMessage id="errors.permissions.denied" /></h2>

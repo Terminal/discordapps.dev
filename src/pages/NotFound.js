@@ -8,7 +8,7 @@ import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseTh
 class NotFound extends Component {
   render() {
     return (
-      <Layout>
+      <Layout match={this.props.match}>
         <Container>
           <ContentBox>
             <h1>
