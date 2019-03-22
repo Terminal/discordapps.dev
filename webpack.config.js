@@ -2,6 +2,7 @@ const path = require('path');
 const autoprefixer = require('autoprefixer');
 const nodeExternals = require('webpack-node-externals');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
+const webpack = require('webpack');
 
 const postCSSLoader = {
   loader: 'postcss-loader',
@@ -88,5 +89,10 @@ module.exports = {
         use: 'raw-loader'
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      fetch: 'node-fetch'
+    })
+  ]
 };

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Locations from '../data/Locations';
-import { connect } from 'react-redux';
 import { forceFetchAuth } from '../redux/actions/auth';
-import { injectIntl } from 'react-intl';
 
 class AuthenticateLogout extends Component {
   componentDidMount() {

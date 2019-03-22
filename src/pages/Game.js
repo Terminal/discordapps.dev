@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import Container from '../components/Container';
-import Layout from '../components/Layout';
-import ContentBox from '../components/ContentBox';
-import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
 import { Prompt } from 'react-router-dom';
+import Container from '../components/Container';
+import ContentBox from '../components/ContentBox';
+import Layout from '../components/Layout';
+import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
 
 class Game extends Component {
   constructor(props) {
@@ -23,6 +24,20 @@ class Game extends Component {
   render() {
     return (
       <Layout>
+        <FormattedMessage id="pages.game.title">
+          {gameName => (
+            <FormattedMessage id="pages.game.description">
+              {gameDescription => (
+                <Helmet>
+                  <title>{gameName}</title>
+                  <meta property="og:title" content={gameName}/>
+                  <meta property="og:description" content={gameDescription}/>
+                  <meta name="description" content={gameDescription}/>
+                </Helmet>
+              )}
+            </FormattedMessage>
+          )}
+        </FormattedMessage>
         <Container>
           <FormattedMessage id="pages.game.leave">
             {message => <Prompt message={message} />}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import Container from '../components/Container';
-import Layout from '../components/Layout';
 import ContentBox from '../components/ContentBox';
+import Layout from '../components/Layout';
 import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
 
 class NotFound extends Component {

@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import Home from '../../pages/Home';
-import Locale from '../../pages/Locale';
-import NotFound from '../../pages/NotFound';
-import AuthenticateLogout from '../../pages/LogOut';
-import EditBot from '../../pages/EditBot';
+import routes from '../../data/routes';
 import InternationalisationProvider from '../InternationalisationProvider';
-import BotPage from '../../pages/BotPage';
-import FilterPage from '../../pages/FilterPage';
-import ConfigurePage from '../../pages/ConfigurePage';
-import Game from '../../pages/Game';
 
 class WebsiteRouter extends Component {
   render() {
@@ -21,62 +13,24 @@ class WebsiteRouter extends Component {
         <Route path="/" exact component={() => (
           <Redirect to="/en-GB" />
         )} />
-        <Route path="/:locale/" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <Home />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/game" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <Game />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/auth/logout" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <AuthenticateLogout />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/bots/add" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <EditBot match={match} location={location} />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/bots/filter" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <FilterPage match={match} location={location} />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/bots/:id/configure" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <ConfigurePage match={match} location={location} />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/bots/:id/edit" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <EditBot match={match} location={location} />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/bots/:id" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <BotPage match={match} location={location} />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale/locale" exact component={({ match, location }) => (
-          <InternationalisationProvider match={match} location={location}>
-            <Locale />
-          </InternationalisationProvider>
-        )} />
-        <Route path="/:locale" component={({ match, location, staticContext }) => {
-          if (staticContext) {
-            staticContext.status = 404;
-          }
+        {
+          routes.map(route => {
+            const RouteComponent = route.component;
+            return (
+              <Route key={route.path} path={route.path} exact={route.exact} component={({ match, location, staticContext }) => {
+                if (staticContext) {
+                  staticContext.status = route.status;
+                }
 
-          return (
-            <InternationalisationProvider match={match} location={location}>
-              <NotFound />
-            </InternationalisationProvider>
-          )
-        }} />
+                return (
+                  <InternationalisationProvider match={match} location={location}>
+                    <RouteComponent match={match} location={location} />
+                  </InternationalisationProvider>
+                );
+              }} />
+            )
+          })
+        }
       </Switch>
     )
   }

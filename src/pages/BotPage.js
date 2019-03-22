@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import { injectIntl } from 'react-intl';
-import Container from '../components/Container';
-import Layout from '../components/Layout';
-import Locations from '../data/Locations';
-import BtecParallax from '../components/BtecParallax';
+import { connect } from 'react-redux';
 import BotPageContentBox from '../components/BotPageContentBox';
 import BotPageImagesBox from '../components/BotPageImagesBox';
 import BotPageInfoBox from '../components/BotPageInfoBox';
-import YouTube from '../components/YouTube';
-import { Helmet } from 'react-helmet';
 import BotPageLinks from '../components/BotPageLinks';
-import NotFound from './NotFound';
-import { Localise } from '../locales';
 import BotPageReviewsBox from '../components/BotPageReviewsBox';
+import BtecParallax from '../components/BtecParallax';
+import Container from '../components/Container';
+import Layout from '../components/Layout';
 import LoadingContainer from '../components/LoadingContainer';
 import Youku from '../components/Youku';
+import YouTube from '../components/YouTube';
+import Locations from '../data/Locations';
+import { Localise } from '../locales';
+import NotFound from './NotFound';
+import { fetchABot } from '../redux/actions/bot';
 
 class BotPage extends Component {
   constructor(props) {
@@ -27,38 +29,21 @@ class BotPage extends Component {
   }
 
   componentDidMount() {
+    const { dispatch, match } = this.props;
     // Check if the bot has been injected
-    if (!this.state.bot) {
-      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}`, {
-        credentials: 'include'
-      })
-        .then(res => {
-          if (res.status === 404) {
-            this.setState({
-              notFound: true
-            });
-          }
-          return res.json()
-        })
-        .then((data) => {
-          if (data.ok) {
-            const bot = data.data;
-            this.setState({
-              bot
-            });
-          }
-        })
-    }
+    dispatch(fetchABot({match}));
   }
 
   render() {
+    const bot = this.props.bot.data
+
     if (this.state.notFound) {
       return (
         <NotFound />
       );
     }
     
-    if (!this.state.bot) {
+    if (!bot) {
       return (
         <Layout>
           <LoadingContainer />
@@ -66,13 +51,16 @@ class BotPage extends Component {
       );
     }
 
-    const { bot } = this.state
-    const contents = Localise(this.state.bot.contents, this.props.intl.locale);
+    const contents = Localise(bot.contents, this.props.intl.locale);
 
     return (
       <Layout>
         <Helmet>
           <title>{contents.name}</title>
+          <meta property="og:title" content={contents.name}/>
+          <meta property="og:description" content={contents.description}/>
+          <meta name="description" content={contents.description}/>
+          <meta property="og:image" content={bot.cachedImages.avatar}/>
         </Helmet>
         { 
           bot.cachedImages.cover ?
@@ -94,4 +82,12 @@ class BotPage extends Component {
   }
 }
 
-export default injectIntl(BotPage);
+const mapStateToProps = (state) => {
+  const { bot } = state;
+  return { bot };
+}
+
+const exportedComponent = connect(mapStateToProps)(injectIntl(BotPage))
+exportedComponent.serverFetch = fetchABot;
+
+export default exportedComponent;

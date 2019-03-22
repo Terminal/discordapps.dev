@@ -29,6 +29,7 @@ class BotPageReviewsBox extends Component {
   }
   render() {
     const { bot } = this.props;
+    const auth = this.props.auth.data
     const { reviews } = bot;
     const average = reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length;
 
@@ -36,7 +37,7 @@ class BotPageReviewsBox extends Component {
     reviews.forEach(review => counts[review.rating - 1]++);
     const proportions = counts.map(count => count / reviews.length);
 
-    const myReview = reviews.find(review => review.isCurrentUserOwner);
+    const myReview = auth ? reviews.find(review => review.author === auth.id) : null;
 
     return (
       <ContentBox>
@@ -63,7 +64,7 @@ class BotPageReviewsBox extends Component {
           {
             reviews
               .slice(0, 8)
-              .filter(review => !review.isCurrentUserOwner)
+              .filter(review => auth ? review.author !== auth.id : true)
               .map((review, index) => <ReviewCard key={index} review={review} bot={bot} />)
           }
         </div>

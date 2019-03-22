@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 import { Prompt, Redirect } from 'react-router-dom';
 import Container from '../components/Container';
-import Layout from '../components/Layout';
-import Locations from '../data/Locations';
 import ContentBox from '../components/ContentBox';
-import { connect } from 'react-redux';
+import FlexContainer from '../components/FlexContainer';
 import InputField from '../components/InputField';
-import Row from '../components/Row';
-import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
+import Layout from '../components/Layout';
 import MultipleInputField from '../components/MultipleInputField';
+import PleaseLogin from '../components/PleaseLogIn';
+import Row from '../components/Row';
+import Locations from '../data/Locations';
 import Modesta from '../data/Modesta';
 import languages from '../locales';
-import FlexContainer from '../components/FlexContainer';
+import { fetchAuthIfNeeded } from '../redux/actions/auth';
+import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
 import displayStyles from '../scss/display.module.scss';
 import elementStyles from '../scss/elements.module.scss';
-import { fetchAuthIfNeeded } from '../redux/actions/auth';
-import PleaseLogin from '../components/PleaseLogIn';
+import { fetchABot, resetTheBot } from '../redux/actions/bot';
 
 class EditBot extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      bot: null,
       notFound: false,
       edited: true,
       message: null,
@@ -33,43 +33,54 @@ class EditBot extends Component {
         .filter(language => language.botPageLanguage)
         .map(language => language.code),
       usedLanguages: [],
-      redirect: null
+      redirect: null,
+      loadedExistingLanguages: false
     };
 
     this.form = React.createRef();
     this.languagesSelect = React.createRef();
     this.submit = this.submit.bind(this);
     this.addLanguage = this.addLanguage.bind(this);
+    this.loadExistingLanguages = this.loadExistingLanguages.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.match.params.id) {
+      this.loadExistingLanguages();
+    }
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, match } = this.props;
     dispatch(fetchCategoriesIfNeeded());
     dispatch(fetchAuthIfNeeded());
-    
-    // Check if the bot has been injected
-    if (!this.state.bot && this.props.match.params.id) {
-      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}`)
-        .then(res => {
-          return res.json()
-        })
-        .then((data) => {
-          if (data.ok) {
-            const bot = data.data;
-            
-            this.setState({
-              bot,
-              unusedLanguages: languages
-                .filter(language => language.botPageLanguage)
-                .filter(language => (bot && bot.contents) ? !bot.contents.some(content => content.locale === language.code) : true)
-                .map(language => language.code),
-              usedLanguages: languages
-                .filter(language => language.botPageLanguage)
-                .filter(language => (bot && bot.contents) ? bot.contents.some(content => content.locale === language.code) : true)
-                .map(language => language.code)
-            });
-          }
-        })
+
+    // If editing a bot
+    if (match.params.id) {
+      dispatch(fetchABot({match}));
+      this.loadExistingLanguages();
+    }
+  }
+
+  loadExistingLanguages() {
+    const bot = this.props.bot.data;
+
+    console.log(bot);
+
+    if (!this.state.loadedExistingLanguages && bot && bot.contents) {
+      console.log('reloading languages');
+
+      this.setState({
+        loadedExistingLanguages: true,
+        unusedLanguages: languages
+          .filter(language => language.botPageLanguage)
+          .filter(language => !bot.contents.some(content => content.locale === language.code))
+          .map(language => language.code),
+        usedLanguages: languages
+          .filter(language => language.botPageLanguage)
+          .filter(language => bot.contents.some(content => content.locale === language.code))
+          .map(language => language.code)
+      });
     }
   }
 
@@ -120,6 +131,8 @@ class EditBot extends Component {
         }
 
         if (data.redirect) {
+          const { dispatch } = this.props;
+          dispatch(resetTheBot());
           setTimeout(() => {
             this.setState({
               redirect: data.redirect
@@ -130,7 +143,8 @@ class EditBot extends Component {
   }
 
   render() {
-    const { bot } = this.state
+    // Do not use redux bot if not editing
+    const bot = this.props.match.params.id ? this.props.bot.data : null;
     const categories = this.props.categories.data
     const auth = this.props.auth.data
 
@@ -163,7 +177,7 @@ class EditBot extends Component {
               </Row>
               <Row>
                 <InputField name="bot.invite" id="pages.edit.invite" value={bot && bot.invite} />
-                <MultipleInputField name="bot.authors[]" id="pages.edit.authors" multiple={true} value={bot && bot.authors.map(author => author.id)} />
+                <MultipleInputField name="bot.authors[]" id="pages.edit.authors" multiple={true} value={bot && bot.authors && bot.authors.map(author => author.id)} />
               </Row>
               <Row>
                 <InputField name="bot.support" id="pages.edit.support" value={bot && bot.support} />
@@ -177,25 +191,25 @@ class EditBot extends Component {
             <ContentBox>
               <h2><FormattedMessage id="pages.edit.images.title" /></h2>
               <Row>
-                <InputField name="bot.images.avatar" id="pages.edit.images.avatar" value={bot && bot.images.avatar}/>
-                <InputField name="bot.images.cover" id="pages.edit.images.cover" value={bot && bot.images.cover}/>
+                <InputField name="bot.images.avatar" id="pages.edit.images.avatar" value={bot && bot.images && bot.images.avatar}/>
+                <InputField name="bot.images.cover" id="pages.edit.images.cover" value={bot && bot.images && bot.images.cover}/>
               </Row>
               <Row>
-                <InputField name="bot.videos.youtube" id="pages.edit.youtube" value={bot && bot.videos.youtube}/>
-                <InputField name="bot.videos.youku" id="pages.edit.youku" value={bot && bot.videos.youku}/>
+                <InputField name="bot.videos.youtube" id="pages.edit.youtube" value={bot && bot.videos && bot.videos.youtube}/>
+                <InputField name="bot.videos.youku" id="pages.edit.youku" value={bot && bot.videos && bot.videos.youku}/>
               </Row>
               <Row>
-                <MultipleInputField name="bot.images.preview[]" id="pages.edit.images.preview" value={bot && bot.images.preview} />
+                <MultipleInputField name="bot.images.preview[]" id="pages.edit.images.preview" value={bot && bot.images && bot.images.preview} />
               </Row>
             </ContentBox>
             <ContentBox>
               <h2><FormattedMessage id="pages.edit.triggermethods" /></h2>
               <Row>
-                <MultipleInputField name="bot.trigger.prefix[]" id="pages.edit.prefix" value={bot && bot.trigger.prefix} />
+                <MultipleInputField name="bot.trigger.prefix[]" id="pages.edit.prefix" value={bot && bot.trigger && bot.trigger.prefix} />
               </Row>
               <Row>
-                <InputField name="bot.trigger.customisable" id="pages.edit.customisable" value={bot && bot.trigger.customisable} toggle={true} />
-                <InputField name="bot.trigger.mentionable" id="pages.edit.mentionable" value={bot && bot.trigger.mentionable} toggle={true} />
+                <InputField name="bot.trigger.customisable" id="pages.edit.customisable" value={bot && bot.trigger && bot.trigger.customisable} toggle={true} />
+                <InputField name="bot.trigger.mentionable" id="pages.edit.mentionable" value={bot && bot.trigger && bot.trigger.mentionable} toggle={true} />
               </Row>
             </ContentBox>
             <ContentBox>
@@ -208,8 +222,8 @@ class EditBot extends Component {
             <ContentBox>
               <h2><FormattedMessage id="pages.edit.sourcecode" /></h2>
               <Row>
-                <InputField name="bot.github.owner" id="pages.edit.github_owner" value={bot && bot.github.owner} />
-                <InputField name="bot.github.repo" id="pages.edit.github_repo" value={bot && bot.github.repo} />
+                <InputField name="bot.github.owner" id="pages.edit.github_owner" value={bot && bot.github && bot.github.owner} />
+                <InputField name="bot.github.repo" id="pages.edit.github_repo" value={bot && bot.github && bot.github.repo} />
               </Row>
             </ContentBox>
             <ContentBox>
@@ -289,8 +303,8 @@ class EditBot extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { categories, auth } = state;
-  return { categories, auth };
+  const { categories, auth, bot } = state;
+  return { categories, auth, bot };
 }
 
 export default connect(mapStateToProps)(injectIntl(EditBot));
