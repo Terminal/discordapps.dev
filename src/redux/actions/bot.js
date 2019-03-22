@@ -5,9 +5,10 @@ export const REQUEST_BOT = 'REQUEST_BOT';
 export const RECIEVE_BOT = 'RECIEVE_BOT';
 export const RESET_BOT = 'RESET_BOT';
 
-function requestBot() {
+function requestBot(id) {
   return {
-    type: REQUEST_BOT
+    type: REQUEST_BOT,
+    id
   };
 }
 
@@ -18,34 +19,32 @@ function resetBot() {
 }
 
 
-function recieveBot(json, status) {
+function recieveBot(json, status, id) {
   return {
     type: RECIEVE_BOT,
     data: json.data,
-    status
+    status,
+    id
   };
 }
 
 function fetchBot(id) {
   return (dispatch) => {
-    dispatch(requestBot());
+    dispatch(requestBot(id));
     return fetch(`${Locations.server}/reactjs/v1/bots/id/${id}`, {
       credentials: 'include'
     })
       .then(res => {
         res.json()
           .then((json) => {
-            dispatch(recieveBot(json, res.status))
+            dispatch(recieveBot(json, res.status, id))
           })
       })
   };
 }
 
 function shouldFetchBot(state, id) {
-  if (state.bot.fetched && isNull(state.bot.data)) return true;
-  if (state.bot.data && state.bot.data.id !== id) return true;
-  if (state.bot.fetching) return false;
-  if (state.bot.fetched) return false;
+  if (state.bot.id === id) return false;
   return true;
 }
 

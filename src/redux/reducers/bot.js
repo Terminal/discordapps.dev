@@ -4,14 +4,16 @@ function bot(state = {
   fetching: false,
   fetched: false,
   data: null,
-  status: null
+  status: null,
+  id: null
 }, action) {
   switch (action.type) {
     case REQUEST_BOT:
       return Object.assign({}, state, {
         fetching: true,
         fetched: false,
-        data: null
+        data: null,
+        id: action.id
       });
     case RESET_BOT:
       return Object.assign({}, state, {
