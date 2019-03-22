@@ -18,6 +18,7 @@
     "ignore-styles": "^5.0.1",
     "isomorphic-style-loader": "^5.0.1",
     "marked": "^0.6.1",
+    "node-fetch": "^2.3.0",
     "node-sass": "^4.11.0",
     "qs": "^6.6.0",
     "raw-loader": "^1.0.0",
