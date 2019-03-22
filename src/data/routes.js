@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Locale from "../pages/Locale";
 import LogOut from "../pages/LogOut";
 import NotFound from "../pages/NotFound";
+import AdminPage from "../pages/AdminPage";
 
 const routes = [
   {
@@ -53,6 +54,11 @@ const routes = [
     path: '/:locale/locale',
     exact: true,
     component: Locale,
+    status: 200,
+  }, {
+    path: '/:locale/admin',
+    exact: true,
+    component: AdminPage,
     status: 200,
   }, {
     path: '/:locale',

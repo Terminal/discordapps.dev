@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import routes from '../../data/routes';
 import InternationalisationProvider from '../InternationalisationProvider';
+import redirects from '../../data/redirects';
 
 class WebsiteRouter extends Component {
   render() {
@@ -10,9 +11,13 @@ class WebsiteRouter extends Component {
 
     return (
       <Switch>
-        <Route path="/" exact component={() => (
-          <Redirect to="/en-GB" />
-        )} />
+        {
+          redirects.map(route => (
+            <Route path={route.path} exact={route.exact} component={({match, location, staticContext}) => (
+              <Redirect to={route.to({match, location, staticContext})} />
+            )} />
+          ))
+        }
         {
           routes.map(route => {
             const RouteComponent = route.component;
@@ -24,7 +29,7 @@ class WebsiteRouter extends Component {
 
                 return (
                   <InternationalisationProvider match={match} location={location}>
-                    <RouteComponent match={match} location={location} />
+                    <RouteComponent match={match} location={location} staticContext={staticContext} />
                   </InternationalisationProvider>
                 );
               }} />

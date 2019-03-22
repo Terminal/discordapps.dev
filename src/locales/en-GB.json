@@ -306,14 +306,7 @@
       "delete": "Delete review"
     },
     "admin": {
-      "title": "Administration Console",
-      "queue": "View queue",
-      "denied": "View denied",
-      "banned": "View banned",
-      "state": {
-        "reason": "Enter reason for changing the state of the bot",
-        "change": "Change state"
-      }
+      "title": "Administration Console"
     },
     "filter": {
       "authors": {
@@ -426,6 +419,17 @@
       "title": "Help us",
       "text": "Please comment with feedback on this website via the issues tab on GitHub.",
       "issues": "GitHub Issues"
+    },
+    "botpagesetstatebox": {
+      "state": {
+        "title": "Set state",
+        "placeholder": "Please select a state"
+      },
+      "reason": {
+        "title": "Reason",
+        "placeholder": "Reason for changing the state. (optional)"
+      },
+      "submit": "Update State"
     }
   }
 }

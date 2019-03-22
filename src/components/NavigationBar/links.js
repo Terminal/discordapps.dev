@@ -3,10 +3,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import Locations from '../../data/Locations';
 import Modesta, { TwitterEmojis } from '../../data/Modesta';
-import { getMasterLanguage } from '../../locales';
+import States from '../../data/States';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
-import States from '../../data/States';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -15,7 +14,7 @@ class NavbarLinks extends Component {
   }
   render() {
     const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
-    const { auth, intl } = this.props;
+    const { auth } = this.props;
     return (
       <>
         <FormattedMessage id="navbar.languages">
@@ -65,9 +64,9 @@ class NavbarLinks extends Component {
               <>
                 <FormattedMessage id="navbar.admin">
                   {message => (
-                    <a aria-label={message} href={`${Locations.server}/${getMasterLanguage(intl.locale)}/admin`} target="_blank" rel="noopener noreferrer">
+                    <LocalisedHyperlink aria-label={message} to="/admin">
                       {message}
-                    </a>
+                    </LocalisedHyperlink>
                   )}
                 </FormattedMessage>
               </>

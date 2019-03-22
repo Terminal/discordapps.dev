@@ -40,10 +40,11 @@ class BotPageInfoBox extends Component {
       method: 'POST',
       credentials: 'include'
     })
-      .then(() => {
-        this.setState({
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) this.setState({
           deleted: true
-        })
+        });
       })
   }
   render() {

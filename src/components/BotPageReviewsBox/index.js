@@ -38,6 +38,7 @@ class BotPageReviewsBox extends Component {
     const proportions = counts.map(count => count / reviews.length);
 
     const myReview = auth ? reviews.find(review => review.author === auth.id) : null;
+    const isOwner = auth ? bot.authors.some(author => author.id === auth.id) : false;
 
     return (
       <ContentBox>
@@ -59,7 +60,11 @@ class BotPageReviewsBox extends Component {
             // If there's a review by the owner, show it.
             this.state.myReview || myReview ?
               <ReviewCard review={this.state.myReview || myReview} bot={bot} /> :
-              <ReviewForm setMyReview={this.setMyReview} bot={bot} />
+              (
+                isOwner ?
+                  null :
+                  <ReviewForm setMyReview={this.setMyReview} bot={bot} />
+              )
           }
           {
             reviews

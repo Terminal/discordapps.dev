@@ -17,6 +17,7 @@ import Locations from '../data/Locations';
 import { Localise } from '../locales';
 import NotFound from './NotFound';
 import { fetchABot } from '../redux/actions/bot';
+import BotPageSetStateBox from '../components/BotPageSetStateBox';
 
 class BotPage extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class BotPage extends Component {
     const bot = this.props.bot.data
 
     if (this.state.notFound) {
+      if (this.props.staticContext) this.props.staticContext.status = 404;
       return (
         <NotFound />
       );
@@ -76,6 +78,7 @@ class BotPage extends Component {
           <BotPageContentBox page={contents.page}/>
           <BotPageReviewsBox bot={bot} />
           <BotPageLinks bot={bot} />
+          <BotPageSetStateBox bot={bot} />
         </Container>
       </Layout>
     );

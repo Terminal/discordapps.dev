@@ -8,8 +8,18 @@ import App from '../../src/App';
 import routes from '../../src/data/routes';
 import configureStore from '../../src/redux/store';
 import copyright from '../data/copyright.html';
+import redirects from '../../src/data/redirects';
 
 export default (req, res, next) => {
+  // If a redirect is required, return the redirect.
+  for (let i = 0; i < redirects.length; i += 1) {
+    const match = matchPath(req.baseUrl, routes[i]);
+    const route = routes[i];
+    if (match) {
+      return res.redirect(route.to({match}))
+    }
+  }
+
   const context = {
     status: 200,
   };
