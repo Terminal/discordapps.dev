@@ -43,7 +43,8 @@ function fetchBot(id) {
 }
 
 function shouldFetchBot(state, id) {
-  // if (state.bot.id === id) return false;
+  // If the data has already been fetched, do not fetch it
+  if (state.bot.data && state.bot.data.id === id && state.bot.id === id) return false;
   return true;
 }
 
