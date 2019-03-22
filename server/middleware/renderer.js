@@ -28,8 +28,6 @@ export default (req, res, next) => {
     }
   }
   
-  console.log(promises);
-  
   // After redux finishes, then send the HTML
   Promise.all(promises)
     .then(() => {
