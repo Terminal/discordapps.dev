@@ -63,10 +63,15 @@ router
       .get(req.params.review)
       .delete()
       .then(() => {
-        res.redirect(`${res.locals.languagePrefix}/bots/${req.params.id}/`);
+        res.json({
+          ok: true
+        });
       })
       .catch((err) => {
-        next(err);
+        res.json({
+          ok: false,
+          message: err.message
+        });
       });
   });
 
