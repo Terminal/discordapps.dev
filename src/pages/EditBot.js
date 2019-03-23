@@ -236,20 +236,14 @@ class EditBot extends Component {
                     </FormattedMessage>
                     {
                       this.state.unusedLanguages
-                        .map(language => {
-                          return {
-                            language,
-                            message: intl.formatMessage({
-                              id: `locales.${language}`
-                            })
-                          }
-                        })
+                        .map(language => ({
+                          language,
+                          message: intl.formatMessage({
+                            id: `locales.${language}`
+                          })
+                        }))
                         .sort((a, b) => a.message.localeCompare(b.message))
-                        .map(({language, message}) => {
-                          return (
-                            <option value={language}>{message || ''}</option>
-                          )
-                        })
+                        .map(({language, message}) => <option key={language} value={language}>{message || ''}</option>)
                     }
                   </select>
                   <button onClick={this.addLanguage} className={elementStyles.button}>
