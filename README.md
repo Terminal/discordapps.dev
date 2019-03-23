@@ -15,11 +15,12 @@ Make your bot page in multiple languages to target many more users.
 Add multiple prefixes with available flags for if the bot can be mentioned or customised.
 
 ## Development Previews
-Location                                                  | Description
---------------------------------------------------------- | -----------------
-[netlify](https://twink.netlify.com/)                     | In case you need the latest of the latest. You must always navigate back to `/` on refresh
-[SSR Rendering](https://discordapps.dev/)                 | Server side rendered. Usually the newest.
-[Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8) | Not related. Stan LOONA.
+Location                                                          | Description
+----------------------------------------------------------------- | -----------------
+[netlify](https://twink.netlify.com/)                             | In case you need the latest of the latest. You must always navigate back to `/` on refresh
+[SSR Rendering](https://discordapps.dev/)                         | Server side rendered. Usually the newest.
+[Fog Creek Software's Glitch](https://discordapps-dev.glitch.me/) | I'm not even going to be sorry for this.
+[Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8)         | Not related. Stan LOONA.
 
 ## Command Information
 Command            | Description
