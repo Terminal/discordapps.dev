@@ -53,6 +53,9 @@ class CategoryCollection extends Component {
             // List categories that are not empty
             categories
               .filter(category => bots.filter(bot => bot.category === category).length)
+              .map(a => [a, Math.random()])
+              .sort((a, b) => a[1] - b[1])
+              .map(a => a[0])
               .map(category => {
                 const botsInCategory = bots
                   .filter(bot => bot.category === category)
