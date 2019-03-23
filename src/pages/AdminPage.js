@@ -21,13 +21,13 @@ class AdminPage extends Component {
 
     if (!auth || !auth.id) {
       return (
-        <PleaseLogin />
+        <PleaseLogin match={this.props.match}/>
       )
     }
 
     if (!auth.admin) {
       return (
-        <PermissionDenied />
+        <PermissionDenied match={this.props.match}/>
       )
     }
 

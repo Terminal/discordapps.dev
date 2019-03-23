@@ -145,16 +145,17 @@ class EditBot extends Component {
     const bot = this.props.match.params.id ? this.props.bot.data : null;
     const categories = this.props.categories.data
     const auth = this.props.auth.data
+    const { intl } = this.props
 
     if (!auth || !auth.id) {
       return (
-        <PleaseLogin />
+        <PleaseLogin match={this.props.match}/>
       )
     }
 
     if (this.state.redirect) {
       return (
-        <Redirect to={`/${this.props.intl.locale}${this.state.redirect}`} />
+        <Redirect to={`/${intl.locale}${this.state.redirect}`} />
       )
     }
 
@@ -234,11 +235,21 @@ class EditBot extends Component {
                       {select => <option value="null" disabled>{select}</option>}
                     </FormattedMessage>
                     {
-                      this.state.unusedLanguages.map(language => (
-                        <FormattedMessage key={language} id={`locales.${language}`}>
-                          {name => <option value={language}>{name}</option>}
-                        </FormattedMessage>
-                      ))
+                      this.state.unusedLanguages
+                        .map(language => {
+                          return {
+                            language,
+                            message: intl.formatMessage({
+                              id: `locales.${language}`
+                            })
+                          }
+                        })
+                        .sort((a, b) => a.message.localeCompare(b.message))
+                        .map(({language, message}) => {
+                          return (
+                            <option value={language}>{message || ''}</option>
+                          )
+                        })
                     }
                   </select>
                   <button onClick={this.addLanguage} className={elementStyles.button}>
