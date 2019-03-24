@@ -72,7 +72,8 @@ class FilterPage extends Component {
       category: query.category,
       nsfw: query.nsfw,
       query: query.q,
-      hidden: !(query.hidden === 'false')
+      hidden: !(query.hidden === 'false'),
+      state: query.state
     })
   }
   onChange(e) {
