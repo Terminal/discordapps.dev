@@ -49,11 +49,20 @@ class CategoryCollection extends Component {
     return (
       <div>
         {
+          getMasterLanguage(this.props.intl.locale) === 'en-GB' ? null :
+            <ContentBox>
+              <h4><FormattedMessage id="pages.bots.inMyLanguage" /></h4>
+              <BotCollection bots={
+                bots
+                  .filter(bot => bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === getMasterLanguage(this.props.intl.locale)))
+              } limit={9} hidden={true}/>
+            </ContentBox>
+        }
+        {
           categories.length > 0 ?
-            // List categories that are not empty
             categories
-              .filter(category => bots.filter(bot => bot.category === category).length)
-              .map(a => [a, Math.random()])
+              .filter(category => bots.filter(bot => bot.category === category).length) // List categories that are not empty
+              .map(a => [a, Math.random()]) // Randomise the order of the categories
               .sort((a, b) => a[1] - b[1])
               .map(a => a[0])
               .map(category => {
@@ -80,7 +89,7 @@ class CategoryCollection extends Component {
                         null
                       }
                     </div>
-                    <BotCollection bots={botsInCategory} limit={8} hidden={true}/>
+                    <BotCollection bots={botsInCategory} limit={9} hidden={true}/>
                   </ContentBox>
                 )
             }) :
