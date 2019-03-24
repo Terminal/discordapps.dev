@@ -86,7 +86,7 @@ class EditBot extends Component {
     e.preventDefault();
     const selected = this.languagesSelect.current.value;
 
-    if (selected !== 'null') {
+    if (selected !== 'null' && this.state.unusedLanguages.includes(selected)) {
       this.setState({
         unusedLanguages: this.state.unusedLanguages.filter(language => language !== selected),
         usedLanguages: [...this.state.usedLanguages, selected]
@@ -171,12 +171,12 @@ class EditBot extends Component {
             <ContentBox>
               <h2><FormattedMessage id="pages.edit.basicinfo" /></h2>
               <Row>
-                <InputField name="bot.id" id="pages.edit.client_id" value={bot && bot.id}/>
+                <InputField name="bot.id" id="pages.edit.client_id" value={bot && bot.id} required={true} />
                 <InputField name="bot.oauth" id="pages.edit.application_id" value={bot && bot.oauth} />
               </Row>
               <Row>
-                <InputField name="bot.invite" id="pages.edit.invite" value={bot && bot.invite} />
-                <MultipleInputField name="bot.authors[]" id="pages.edit.authors" multiple={true} value={bot && bot.authors && bot.authors.map(author => author.id)} />
+                <InputField name="bot.invite" id="pages.edit.invite" value={bot && bot.invite} required={true} />
+                <MultipleInputField name="bot.authors[]" id="pages.edit.authors" multiple={true} value={bot && bot.authors && bot.authors.map(author => author.id)} required={true} />
               </Row>
               <Row>
                 <InputField name="bot.support" id="pages.edit.support" value={bot && bot.support} />
@@ -204,7 +204,7 @@ class EditBot extends Component {
             <ContentBox>
               <h2><FormattedMessage id="pages.edit.triggermethods" /></h2>
               <Row>
-                <MultipleInputField name="bot.trigger.prefix[]" id="pages.edit.prefix" value={bot && bot.trigger && bot.trigger.prefix} />
+                <MultipleInputField name="bot.trigger.prefix[]" id="pages.edit.prefix" value={bot && bot.trigger && bot.trigger.prefix} required={true} />
               </Row>
               <Row>
                 <InputField name="bot.trigger.customisable" id="pages.edit.customisable" value={bot && bot.trigger && bot.trigger.customisable} toggle={true} />
@@ -264,13 +264,13 @@ class EditBot extends Component {
                       </button>
                     </FlexContainer>
                     <Row>
-                      <InputField name={`bot.contents[${index}][name]`} id="pages.edit.name" value={contents && contents.name} className={Modesta.fullWidth} />
+                      <InputField name={`bot.contents[${index}][name]`} id="pages.edit.name" value={contents && contents.name} className={Modesta.fullWidth} required={true} />
                     </Row>
                     <Row>
-                      <InputField name={`bot.contents[${index}][description]`} id="pages.edit.description" value={contents && contents.description} className={Modesta.fullWidth} />
+                      <InputField name={`bot.contents[${index}][description]`} id="pages.edit.description" value={contents && contents.description} className={Modesta.fullWidth} required={true} />
                     </Row>
                     <Row>
-                      <InputField name={`bot.contents[${index}][page]`} id="pages.edit.page" value={contents && contents.page} textarea={true} className={Modesta.fullWidth} />
+                      <InputField name={`bot.contents[${index}][page]`} id="pages.edit.page" value={contents && contents.page} textarea={true} className={Modesta.fullWidth} required={true} />
                     </Row>
                     <input name={`bot.contents[${index}][locale]`} type="text" className={displayStyles.hidden} value={language}></input>
                   </ContentBox>

@@ -60,7 +60,10 @@ class InputField extends Component {
 
     return (
       <Column className={this.props.className || Modesta.oneHalf}>
-        <label htmlFor={this.props.name}><FormattedMessage id={`${this.props.id}.title`} /></label>
+        <label htmlFor={this.props.name}>
+          <FormattedMessage id={`${this.props.id}.title`} />
+          {this.props.required ? '*' : null}
+        </label>
         <FlexContainer>
           {input}
         </FlexContainer>
