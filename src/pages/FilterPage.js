@@ -12,6 +12,8 @@ import Row from '../components/Row';
 import Welcome from '../components/Welcome';
 import Locations from '../data/Locations';
 import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
+import States from '../data/States';
+import { getMasterLanguage } from '../locales';
 
 class FilterPage extends Component {
   constructor(props) {
@@ -49,6 +51,12 @@ class FilterPage extends Component {
         if (data.ok) {
           this.setState({
             results: data.data
+              .map(bot => {
+                if (bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === getMasterLanguage(this.props.intl.locale))) {
+                  bot.random += 10;
+                }
+                return bot;
+              })
           });
         } else {
           this.setState({
@@ -84,6 +92,7 @@ class FilterPage extends Component {
   render() {
     const categories = this.props.categories.data;
     const { results, owners, category, nsfw, query, hidden } = this.state;
+
     return (
       <Layout match={this.props.match}>
         <Welcome />
@@ -103,7 +112,13 @@ class FilterPage extends Component {
           {
             Array.isArray(results) ?
               <ContentBox>
-                <BotCollection bots={results} hidden={hidden} />
+                <BotCollection bots={
+                  results
+                    .sort((a, b) => {
+                      if (this.state.state === States.APPROVED) return b.random - a.random;
+                      return b.edited - a.edited;
+                    })
+                } hidden={hidden} />
               </ContentBox> :
               null
           }
