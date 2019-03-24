@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import Locations from '../../data/Locations';
 import languages from '../../locales';
+import Container from '../Container';
 
 class Layout extends Component {
   render() {
@@ -36,9 +37,11 @@ class Layout extends Component {
         )}
         </FormattedMessage>
         <NavigationBar />
-        <noscript>
-          <p><FormattedMessage id="pages.website.noscript" /></p>
-        </noscript>
+        <Container>
+          <noscript>
+            <p><FormattedMessage id="errors.website.noscript" /></p>
+          </noscript>
+        </Container>
         {this.props.children}
         <Footer />
       </div>

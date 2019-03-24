@@ -67,6 +67,9 @@
       "test": "An error was thrown for development purposes.",
       "no_bot": "Bot not found",
       "idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support"
+    },
+    "website": {
+      "noscript": "JavaScript must be enabled to use this website effectively."
     }
   },
   "footer": {
@@ -335,9 +338,6 @@
       "description": "Click the button to get points!",
       "leave": "Are you sure you want to leave? You will lose all your points.",
       "score": "You have {kliksphilip, plural, =0 {no points :heejintears:} one {1 point} other {{kliksphilip} points}}."
-    },
-    "website": {
-      "noscript": "JavaScript must be enabled to use this website effectively."
     }
   },
   "navbar": {
