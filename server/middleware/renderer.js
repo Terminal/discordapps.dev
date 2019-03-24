@@ -34,7 +34,10 @@ export default (req, res, next) => {
     const match = matchPath(req.baseUrl, routes[i]);
     const route = routes[i];
     if (match && route.component.serverFetch) {
-      promises.push(store.dispatch(route.component.serverFetch({match})))
+      for (let j = 0; j < route.component.serverFetch.length; j += 1) {
+        const serverFetch = route.component.serverFetch[j];
+        promises.push(store.dispatch(serverFetch({match})));
+      }
     }
   }
   

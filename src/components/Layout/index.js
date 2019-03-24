@@ -36,10 +36,10 @@ class Layout extends Component {
         )}
         </FormattedMessage>
         <NavigationBar />
+        <noscript>
+          <p><FormattedMessage id="pages.website.noscript" /></p>
+        </noscript>
         {this.props.children}
-        {/* <Container>
-          <WereNotReadyToGoLiveBox />
-        </Container> */}
         <Footer />
       </div>
     )

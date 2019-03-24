@@ -95,6 +95,6 @@ const mapStateToProps = (state) => {
 }
 
 const exportedComponent = connect(mapStateToProps)(injectIntl(BotPage))
-exportedComponent.serverFetch = fetchABot;
+exportedComponent.serverFetch = [fetchABot];
 
 export default exportedComponent;

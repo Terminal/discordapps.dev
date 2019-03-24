@@ -7,6 +7,7 @@ import HelpUsImprove from '../components/HelpUsImprove';
 import Layout from '../components/Layout';
 import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
 import Welcome from '../components/Welcome';
+import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
 
 class Home extends Component {
   render() {
@@ -29,5 +30,9 @@ class Home extends Component {
     );
   }
 }
+
+Home.serverFetch = [
+  fetchCategoriesIfNeeded
+]
 
 export default Home;
