@@ -11,8 +11,6 @@ import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
 import States from '../../data/States';
 
-
-
 class CategoryCollection extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +30,7 @@ class CategoryCollection extends Component {
           this.setState({
             bots: data.data
               .filter(bot => bot.state === 'approved')
+              .filter(bot => bot.hide !== true)
               .map(bot => {
                 if (bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === getMasterLanguage(this.props.intl.locale))) {
                   bot.random += 10;
@@ -46,17 +45,21 @@ class CategoryCollection extends Component {
   render() {
     const categories = this.props.categories.data
     const { bots } = this.state
+
+    const botsInMyLanguage = bots
+      .filter(bot => bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === getMasterLanguage(this.props.intl.locale)));
+
     return (
       <div>
         {
-          getMasterLanguage(this.props.intl.locale) === 'en-GB' ? null :
+          botsInMyLanguage.length !== 0 && getMasterLanguage(this.props.intl.locale) !== 'en-GB' ?
             <ContentBox>
               <h4><FormattedMessage id="pages.bots.inMyLanguage" /></h4>
               <BotCollection bots={
-                bots
-                  .filter(bot => bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === getMasterLanguage(this.props.intl.locale)))
+                botsInMyLanguage
               } limit={9} hidden={true}/>
-            </ContentBox>
+            </ContentBox> :
+            null
         }
         {
           categories.length > 0 ?
