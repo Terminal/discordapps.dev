@@ -122,6 +122,7 @@
     "bots": {
       "backgroundAlt": "Logo pour ls.terminal.ink",
       "description": "Une boutique d'applications pour des bots Discord",
+      "inMyLanguage": "Bots dans ma langue",
       "invite": "Inviter ce bot",
       "support": "Support technique",
       "website": "Site Internet",
