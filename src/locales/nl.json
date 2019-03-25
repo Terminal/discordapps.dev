@@ -13,6 +13,9 @@
     "notifications": "Notificaties",
     "other": "Anders"
   },
+  "alt": {
+    "avatar": "Profielfoto voor {name}"
+  },
   "copyright": "Auteursrecht 2017 - 2019, Terminal.ink; Discord is een handelsmerk van Discord Inc.",
   "errors": {
     "bots": {
@@ -53,8 +56,7 @@
       "banned": "Je bent de toegang tot deze bron ontzegd"
     },
     "website": {
-      "noscript": "JavaScript is uitgeschakeld. De site kan minder goed functioneren.",
-      "print": "JavaScript is niet compatible met pagina-afdrukken."
+      "noscript": "JavaScript is uitgeschakeld. De site kan minder goed functioneren."
     },
     "reviews": {
       "rating": "Selecteer een waardering voordat je verder gaat",
@@ -77,15 +79,9 @@
     "discord": "Discord",
     "terminal": "Terminal.ink",
     "terms": "Algemene Voorwaarden",
-    "docs": "Documentatie",
-    "view": "Zie deze pagina op GitHub"
+    "docs": "Documentatie"
   },
   "forms": {
-    "add": "Voeg een andere toe",
-    "apply": "Aanmelden",
-    "close": "Sluiten",
-    "delete": "Verwijderen",
-    "help": "🤔",
     "select": "Selecteer alstublieft...",
     "submit": "Verzenden",
     "wait": "Even geduld alstublieft..."
@@ -126,8 +122,9 @@
   },
   "pages": {
     "bots": {
-      "backgroundAlt": "Het logo voor ls.terminal.ink",
+      "backgroundAlt": "Het logo voor discordapps.dev",
       "description": "Een applicatiewinkel voor Discord bots",
+      "inMyLanguage": "Bots in mijn taal",
       "invite": "Voeg deze bot toe",
       "support": "Technische Ondersteuning",
       "website": "Website",
@@ -135,17 +132,13 @@
       "mentionable": "Vermeldbaar",
       "customisable": "Aanpasbaar",
       "delete": "Verwijderen",
+      "reallyDelete": "Zeker weten?",
       "edit": "Aanpassen",
       "configure": "Configureren",
       "github": "Bekijk op GitHub",
       "approve": "Goedkeuren",
       "deny": "Weigeren",
-      "prefix": {
-        "one": "Prefix",
-        "other": "Prefixes"
-      },
-      "more": "Bezichtig meer",
-      "less": "Bezichtig minder",
+      "prefix": "{count, plural, one {Prefix:} other {Prefixes:}}",
       "adverts": "Bevat advertenties en/of diensten die ontgrendeld worden door andere integraties",
       "inAppPurchases": "Heeft in-app aankopen",
       "nsfw": "NSFW",
@@ -154,9 +147,8 @@
       "created": "Eerste uitgavedatum: { date }",
       "category": "Categorie: { category }",
       "initiateCategoryFilter": "Vind bots voor...",
-      "ownerFilter": "Bots door { name }",
       "search": "Zoeken",
-      "count": "Geïnstalleerd in {guilds, plural, one {een enkele server} other {{guilds} servers}}"
+      "count": "Geïnstalleerd in {guilds, plural, one {1 server} other {{guilds} servers}}"
     },
     "configuration": {
       "token": {
@@ -174,15 +166,14 @@
     },
     "edit": {
       "application_id": {
-        "modal": "Het OAuth ID is het ID dat gebruikt wordt wanneer gebruikers je bot uitnodigen via de OAuth flow. In bijna alle gevallen is dit ID hetzelfde als de Bot ID. Je hoeft alleen actie te ondernemen als er een verschil is tussen die twee.",
         "placeholder": "Het ID dat gebruikt wordt in de OAuth link.",
         "title": "OAuth ID"
       },
       "authors": {
-        "modal": "Voeg een enkel ID toe als eigenaar van de bot.",
         "placeholder": "ID van een enkele eigenaar",
         "title": "Bot Auteurs",
-        "add": "Andere toevoegen"
+        "add": "Andere toevoegen",
+        "delete": "Verwijder auteur"
       },
       "basicinfo": "Basis Informatie",
       "nsfw": {
@@ -194,11 +185,10 @@
         "title": "Ondersteunings URL"
       },
       "category": {
-        "title": "Categorie"
+        "title": "Categorie",
+        "placeholder": "Please select a category"
       },
       "client_id": {
-        "modal1": "De Bot ID is een number dat de bot identificeert. Je kan dit verkrijgen door op \"Kopieëren\" te drukken in het Discord Ontwikkelaarsportaal.",
-        "modal2": "Je kan dit ID ook vinden door \"Ontwikkelaarshulpmiddelen\" in the schakelen in Discord's instellingen, en dan rechts te klikken op jouw bot, om vervolgens op \"Kopieer ID\". Let op dat je niet het ID van een bericht kopieert.",
         "placeholder": "Het ID van de bot gebruiker",
         "title": "Bot ID"
       },
@@ -206,7 +196,8 @@
         "title": "Aanpasbare prefix"
       },
       "description": {
-        "title": "Korte Beschrijving"
+        "title": "Korte Beschrijving",
+        "placeholder": "Voeg een kleine beschrijving toe voor de voorpagina."
       },
       "github_owner": {
         "placeholder": "Iets als: ry00001",
@@ -218,29 +209,31 @@
       },
       "information": "Jouw Bot Pagina",
       "invite": {
-        "modal": "Controleer alstublieft of de \"Bot ID\" is ingevuld met het ID van jouw Discord bot",
         "title": "Uitnodigings URL",
         "generate": "Genereer uitnodigingslink"
       },
       "languages": {
         "add": "Voeg een taal toe",
         "delete": "Verwijder deze taal",
-        "modal": "Schrijf je bot pagina in elke taal die je ondersteunt. Selecteer een taal, en klik op de 'Voeg een taal toe' knop.",
-        "title": "Bot Pagina Talen"
+        "modal": "Schrijf je bot pagina in elke taal die je ondersteunt. Selecteer een taal, en klik op de 'Voeg een taal toe' knop."
       },
+      "leave": "Weet je zeker dat je de pagina wilt verlaten? Veranderingen zullen niet opgeslagen worden",
       "mentionable": {
         "title": "Kan de bot aanroepen door middel van een vermelding"
       },
       "name": {
-        "title": "Naam"
+        "title": "Naam",
+        "placeholder": "Voer de naam van de bot in."
       },
       "page": {
-        "title": "Uitgebreide Beschrijving"
+        "title": "Uitgebreide Beschrijving",
+        "placeholder": "Voeg handige informatie over jouw bot toe, zoals commandos, functies en updates."
       },
       "prefix": {
         "placeholder": "Een enkele prefix",
         "title": "Prefix",
-        "add": "Voeg een andere prefix toe"
+        "add": "Voeg een andere prefix toe",
+        "delete": "Verwijder prefix"
       },
       "flags": {
         "title": "Inkomsten en advertentie declaratie",
@@ -297,7 +290,6 @@
       "snarky": "Foutje moet kunnen baas..."
     },
     "list": {
-      "invite": "Uitnodigen",
       "empty": "Er zijn geen bots"
     },
     "locale": {
@@ -310,36 +302,42 @@
       "key": "JSON Sleutel",
       "notfound": "Sleutel niet gevonden!"
     },
-    "notfound": {
-      "gohome": "Ga naar de homepage",
-      "message": "Pagina niet gevonden"
-    },
-    "sure": {
-      "title": "Weet je dit zeker?",
-      "ok": "Ok",
-      "no": "Ga terug"
-    },
     "reviews": {
       "title": "Recensies",
-      "my": "Mijn Recensie",
       "write": "Schrijf een recensie",
       "placeholder": "Voer een reden voor jouw recensie in.",
-      "number": {
-        "one": "%s recensie",
-        "other": "%s recensies"
-      },
-      "delete": "Verwijder recensie",
-      "all": "Bekijk alle recensies"
+      "delete": "Verwijder recensie"
     },
     "admin": {
-      "title": "Administratiepaneel",
-      "queue": "Bekijk wachtrij",
-      "denied": "Bekijk geweigerd",
-      "banned": "Bekijk verbannen",
-      "state": {
-        "reason": "Voer een reden in voor het wijzigen van de status van deze bot",
-        "change": "Verander status"
+      "title": "Administratiepaneel"
+    },
+    "filter": {
+      "authors": {
+        "placeholder": "ID van een enkele eigenaar",
+        "title": "Bot Auteurs",
+        "add": "Voeg er nog een toe",
+        "delete": "Verwijder auteur"
+      },
+      "category": {
+        "title": "Categorie",
+        "placeholder": "Alle categorieën"
+      },
+      "query": {
+        "title": "Zoeken",
+        "placeholder": "Voer tekst in"
+      },
+      "nsfw": {
+        "title": "Niet Veilig Voor Werk",
+        "placeholder": "Niet filteren",
+        "nsfw": "Niet Veilig Voor Werk",
+        "sfw": "Veilig Voor Werk"
       }
+  },
+  "game": {
+    "title": "Terminal.ink Videospel",
+    "description": "Klik op de knop om punten te krijgen!",
+    "leave": "Weet je zeker dat je de pagina wilt verlaten? Je zal al je punten verliezen.",
+    "score": "Je hebt {kliksphilip, plural, =0 {geen punten :heejintears:} one {1 punt} other {{kliksphilip} punten}}."
     }
   },
   "navbar": {
@@ -348,13 +346,10 @@
     "logout": "Uitloggen",
     "admin": "Admin",
     "languages": "Talen",
+    "search": "Zoek voor bots",
     "user": "Mijn Bots"
   },
   "pagination": {
-    "image": {
-      "prev": "Vorige",
-      "next": "Volgende"
-    },
     "page": {
       "prev": "Vorige",
       "next": "Volgende pagina"
@@ -394,12 +389,50 @@
   },
   "site": {
     "name": "Discord Bot List",
-    "description": "ls.terminal.ink is een applicatie winkel voor Discord bots. Installeer applicaties voor muziek, nieuws, moderatie en meer in jouw server."
+    "subheading": "Vind bots om je server op te fleuren",
+    "description": "discordapps.dev is een applicatie winkel voor Discord bots. Installeer applicaties voor muziek, nieuws, moderatie en meer in jouw server."
   },
   "states": {
     "approved": "Goedgekeurd",
     "denied": "Geweigerd",
     "queue": "In Wachtrij",
     "banned": "Verbannen"
+  },
+  "components": {
+    "pleaseaddyourbotpleasethanks": {
+      "title": "Starten met Discord Bots",
+      "innovate": {
+        "heading": "Start met innoveren",
+        "content": "Leer je eigen Discord applicatie te maken voor jouw privéserver"
+      },
+      "add": {
+        "heading": "Voeg je bot toe",
+        "content": "Deel je creatie met de wereld; Laat anderen hun server verbeteren met jouw applicaties"
+      }
+    },
+    "categorycollection": {
+      "morebots": "Zie meer"
+    },
+    "botpagecontentbox": {
+      "toggle": "Zet pijl aan/uit",
+      "more": "Zie meer",
+      "less": "Zie minder"
+    },
+    "helpusimprove": {
+      "title": "Help ons",
+      "text": "Reageer met feedback over deze website via de issues tab op GitHub.",
+      "issues": "GitHub Issues"
+    },
+    "botpagesetstatebox": {
+      "state": {
+        "title": "Geef status aan",
+        "placeholder": "Selecteer alstublieft een status"
+      },
+      "reason": {
+        "title": "Reden",
+        "placeholder": "Reden voor het wijzigen van de status. (optioneel)"
+      },
+      "submit": "Verander Status"
+    }
   }
 }
