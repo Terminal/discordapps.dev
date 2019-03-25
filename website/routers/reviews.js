@@ -17,7 +17,7 @@ router
   .post('/', isLoggedIn, botExists, reviewDoesntExist, reader.none(), (req, res, next) => {
     req.body['review.bot'] = req.params.id;
     req.body['review.author'] = req.user.id;
-    req.body['review.language'] = res.getLocale();
+    req.body['review.language'] = res.locals.languagePrefix;
     const body = unflatten(req.body);
     r.table('bots')
       .get(req.params.id)
@@ -52,7 +52,7 @@ router
         } else {
           res.json({
             ok: false,
-            message: res.__('errors.reviews.self'),
+            message: 'errors.reviews.self',
             language: 'errors.reviews.self'
           });
         }

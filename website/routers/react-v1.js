@@ -205,20 +205,20 @@ router
   .use((req, res) => {
     res.status(404).json({
       ok: false,
-      message: res.__('errors.api.404')
+      message: 'errors.api.404'
     });
   })
   .use((err, req, res, next) => { // eslint-disable-line
     if (err) {
       res.status(500).json({
         ok: false,
-        message: res.__('errors.api.500'),
+        message: 'errors.api.500',
         data: err.stack
       });
     } else {
       res.status(500).json({
         ok: false,
-        message: res.__('errors.api.500')
+        message: 'errors.api.500'
       });
     }
   });

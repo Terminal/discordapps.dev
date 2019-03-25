@@ -25,7 +25,7 @@ const checkToken = (req, res, next) => {
         res.status(400)
           .json({
             ok: false,
-            message: res.__('errors.api.400')
+            message: 'errors.api.400'
           });
       } else {
         req.bot = bot;
@@ -38,7 +38,7 @@ router
   .get('/bots', (req, res, next) => {
     r.table('bots')
       .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.getLocale())
+        contents('locale').eq(res.locals.languagePrefix)
       ), {
         random: bot('random').add(10)
       }, {}))
@@ -57,7 +57,7 @@ router
     r.table('bots')
       .get(req.params.id)
       .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.getLocale())
+        contents('locale').eq(res.locals.languagePrefix)
       ), {
         random: bot('random').add(10)
       }, {}))
@@ -111,7 +111,7 @@ router
         res.json({
           ok: false,
           data: value,
-          message: res.__('errors.api.idchange')
+          message: 'errors.api.idchange'
         });
       } else {
         // Update the value in the database
@@ -137,7 +137,7 @@ router
     });
   })
   .get('/oops', (req, res, next) => {
-    next(new Error(res.__('errors.api.test')));
+    next(new Error('errors.api.test'));
   })
   .use('/', (req, res) => {
     res.redirect(config.links.docs);
@@ -145,20 +145,20 @@ router
   .use((req, res) => {
     res.status(404).json({
       ok: false,
-      message: res.__('errors.api.404')
+      message: 'errors.api.404'
     });
   })
   .use((err, req, res, next) => { // eslint-disable-line
     if (err) {
       res.status(500).json({
         ok: false,
-        message: res.__('errors.api.500'),
+        message: 'errors.api.500',
         data: err.stack
       });
     } else {
       res.status(500).json({
         ok: false,
-        message: res.__('errors.api.500')
+        message: 'errors.api.500'
       });
     }
   });

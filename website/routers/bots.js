@@ -130,7 +130,7 @@ router
               } else if (existingBot.state === 'banned') {
                 res.json({
                   ok: false,
-                  message: res.__('errors.permissions.banned'),
+                  message: 'errors.permissions.banned',
                   language: 'errors.permissions.banned'
                 });
               } else if (existingBot.authors.includes(req.user.id)) {
@@ -140,7 +140,7 @@ router
               } else {
                 res.json({
                   ok: false,
-                  message: res.__('errors.bots.exists'),
+                  message: 'errors.bots.exists',
                   language: 'errors.bots.exists'
                 });
               }
@@ -167,7 +167,7 @@ router
                   } else if (result.code === 10013) {
                     res.json({
                       ok: false,
-                      message: res.__('errors.bots.notfound'),
+                      message: 'errors.bots.notfound',
                       language: 'errors.bots.notfound'
                     });
                   } else if (result.bot) {
@@ -176,7 +176,7 @@ router
                   } else {
                     res.json({
                       ok: false,
-                      message: res.__('errors.bots.notabot'),
+                      message: 'errors.bots.notabot',
                       language: 'errors.bots.notabot'
                     });
                   }

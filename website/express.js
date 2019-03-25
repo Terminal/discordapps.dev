@@ -7,18 +7,15 @@ const cookieParser = require('cookie-parser');
 const RDBStore = require('session-rethinkdb')(session);
 
 const r = require('./rethinkdb');
-const i18n = require('../global/i18n');
 const passport = require('./static/passport');
 const config = require('./config');
 const periodical = require('./static/periodical');
 
 const websiteRouter = require('./routers/website');
-const sitemapRouter = require('./routers/sitemap');
-const languageMiddleware = require('./middleware/language');
-// const getBetterLanguageMiddleware = require('./middleware/getBetterLanguage');
 
 const selectableStates = require('./data/states.json');
 const allowedCors = require('./data/cors.json');
+const languages = require('./data/languages.json');
 
 require('./static/banner');
 
@@ -47,7 +44,6 @@ app
     extended: true
   }))
   .use(cookieParser(config.webserver.secret))
-  .use(i18n.init)
   .use(session({
     secret: config.webserver.secret,
     resave: true,
@@ -58,27 +54,24 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .use(express.static(path.join(__dirname, 'www-root')))
-  .use('/sitemap.xml', sitemapRouter)
-  .use('/en-GB/', languageMiddleware('en-GB'), websiteRouter) // Can't use `:lang`, will explode
-  .use('/en-GB', languageMiddleware('en-GB'), websiteRouter)
-  .use('/de/', languageMiddleware('de'), websiteRouter) // Can't use `:lang`, will explode
-  .use('/de', languageMiddleware('de'), websiteRouter)
-  .use('/da/', languageMiddleware('da'), websiteRouter)
-  .use('/da', languageMiddleware('da'), websiteRouter)
-  .use('/fr/', languageMiddleware('fr'), websiteRouter)
-  .use('/fr', languageMiddleware('fr'), websiteRouter)
-  .use('/pl/', languageMiddleware('pl'), websiteRouter)
-  .use('/pl', languageMiddleware('pl'), websiteRouter)
-  .use('/zh-cn/', languageMiddleware('zh-cn'), websiteRouter)
-  .use('/zh-cn', languageMiddleware('zh-cn'), websiteRouter)
-  .use('/', websiteRouter)
+  .use('/', (req, res, next) => {
+    res.locals.languagePrefix = 'en-GB';
+    next();
+  }, websiteRouter)
+  .use('/:locale/', (req, res, next) => {
+    res.locals.languagePrefix = req.params.locale;
+    if (languages.map(lang => lang.toLowerCase()).includes(req.params.locale.toLowerCase())) {
+      next();
+    } else {
+      res.redirect(`${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
+    }
+  }, websiteRouter)
   .use((err, req, res, next) => {
     if (err) {
-      res.status(500).render('error', {
-        message: res.__('pages.error.server'),
-        err,
-        githubTitle: `Error with ${req.method} with link ${req.originalURL || req.url}`,
-        githubBody: encodeURIComponent(`${res.__('pages.error.report')}\n\n\n\n---\nURL: ${req.originalURL || req.url}\nMETHOD: ${req.method}\n\n\`\`\`\n${err.stack}\n\`\`\``)
+      res.json({
+        ok: false,
+        message: 'pages.error.server',
+        data: err.stack
       });
     } else {
       next();

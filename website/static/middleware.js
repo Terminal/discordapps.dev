@@ -2,13 +2,7 @@ const r = require('../rethinkdb');
 
 module.exports = class Middleware {
   static isLoggedIn(req, res, next) {
-    if (req.user) {
-      next();
-    } else {
-      res.status(401).render('error', {
-        message: res.__('errors.permissions.login'),
-      });
-    }
+    this.isLoggedInButJSON(req, res, next);
   }
 
   /**
@@ -24,7 +18,7 @@ module.exports = class Middleware {
     } else {
       res.status(401).json({
         err: true,
-        message: res.__('errors.permissions.login')
+        message: 'errors.permissions.login'
       });
     }
   }
@@ -33,8 +27,9 @@ module.exports = class Middleware {
     if (req.user && req.user.admin) {
       next();
     } else {
-      res.status(401).render('error', {
-        message: res.__('errors.permissions.denied'),
+      res.json({
+        ok: false,
+        message: 'errors.permissions.denied',
       });
     }
   }
@@ -43,8 +38,9 @@ module.exports = class Middleware {
     if (req.user.admin) {
       next();
     } else if (!req.user) {
-      res.status(401).render('error', {
-        message: res.__('errors.permissions.login'),
+      res.json({
+        ok: false,
+        message: 'errors.permissions.login',
       });
     } else {
       r.table('bots')
@@ -54,13 +50,14 @@ module.exports = class Middleware {
             next('router');
           } else if (bot.state === 'banned') {
             res.status(403).render('error', {
-              message: res.__('errors.permissions.banned'),
+              message: 'errors.permissions.banned',
             });
           } else if (bot.authors.includes(req.user.id)) {
             next();
           } else {
-            res.status(401).render('error', {
-              message: res.__('errors.permissions.denied'),
+            res.json({
+              ok: false,
+              message: 'errors.permissions.denied',
             });
           }
         });
@@ -110,8 +107,9 @@ module.exports = class Middleware {
     if (req.user.admin) {
       next();
     } else if (!req.user) {
-      res.status(401).render('error', {
-        message: res.__('errors.permissions.login'),
+      res.json({
+        ok: false,
+        message: 'errors.permissions.login',
       });
     } else {
       r.table('reviews')
@@ -122,8 +120,9 @@ module.exports = class Middleware {
           } else if (review.author === req.user.id) {
             next();
           } else {
-            res.status(401).render('error', {
-              message: res.__('errors.permissions.denied'),
+            res.json({
+              ok: false,
+              message: 'errors.permissions.denied',
             });
           }
         });

@@ -2,7 +2,6 @@ const { Client } = require('discord.js');
 const express = require('express');
 const fetch = require('node-fetch');
 
-const i18n = require('../global/i18n');
 const config = require('./config');
 
 const app = express();
@@ -16,7 +15,8 @@ const botOnline = (req, res, next) => {
   } else {
     res.json({
       ok: false,
-      message: res.__('errors.botserver.offline')
+      message: 'The Discord bot is offline',
+      languages: 'errors.botserver.offline'
     });
   }
 };
@@ -27,7 +27,8 @@ const isAuthenticated = (req, res, next) => {
   } else {
     res.status(400).json({
       ok: false,
-      message: res.__('errors.botserver.unauthorised')
+      message: 'You are not allowed to fetch the Bot server',
+      languages: 'errors.botserver.unauthorised'
     });
   }
 };
@@ -40,7 +41,8 @@ const userExists = (req, res, next) => {
   } else {
     res.json({
       ok: false,
-      message: res.__('errors.botserver.usernotfound')
+      message: 'The user was not found by the server',
+      languages: 'errors.botserver.usernotfound'
     });
   }
 };
@@ -51,7 +53,6 @@ client.on('ready', () => {
 
 app
   .set('json spaces', 4)
-  .use(i18n.init)
   .use(botOnline)
   .use(isAuthenticated)
   .use((req, res, next) => {
@@ -61,7 +62,8 @@ app
     } else {
       res.json({
         ok: false,
-        message: res.__('errors.botserver.guildnotfound')
+        message: 'The guild was not found by the server',
+        languages: 'errors.botserver.guildnotfound'
       });
     }
   })

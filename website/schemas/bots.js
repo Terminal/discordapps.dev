@@ -36,7 +36,7 @@ const schema = joi.object({
   }),
   count: joi.number().integer().min(0).max(5000000).error(new Error('errors.bots.count')).allow(null), // Maximum of 5 Million bots... b'cus why not?
   contents: joi.array().items(joi.object({
-    locale: joi.string().valid(Object.keys(languages)).required().error(new Error('errors.bots.languages')),
+    locale: joi.string().valid(languages).required().error(new Error('errors.bots.languages')),
     name: joi.string().min(4).max(32).required().error(new Error('errors.bots.name')),
     description: joi.string().min(10).max(100).required().error(new Error('errors.bots.description')),
     page: joi.string().min(20).max(10000).required().error(new Error('errors.bots.page')),

@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
   if (fail) {
     // Send a 404 error if any params are too long
     res.status(404).render('error', {
-      message: res.__('pages.error.notfound')
+      message: 'pages.error.notfound'
     });
   } else {
     next();
