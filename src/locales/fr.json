@@ -100,7 +100,7 @@
     "de": "Allemand",
     "el": "Grec",
     "en-GB": "Anglais (Royaume Uni)",
-    "en-GB": "Anglais (États-Unis)",
+    "en-US": "Anglais (États-Unis)",
     "es": "Espagnol",
     "et": "Estonien",
     "fi": "Finlandais",
@@ -128,6 +128,7 @@
     "bots": {
       "backgroundAlt": "Logo pour ls.terminal.ink",
       "description": "Une boutique d'applications pour des bots Discord",
+      "inMyLanguage": "Bots dans ma langue",
       "invite": "Inviter ce bot",
       "support": "Support technique",
       "website": "Site Internet",
@@ -397,7 +398,7 @@
     "VIEW_AUDIT_LOG": "Voir les logs du serveur"
   },
   "site": {
-    "name": "Liste de bots Discord par ls.terminal.ink",
+    "name": "Liste d'applications Discord par ls.terminal.ink",
     "description": "ls.terminal.ink est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des nouvelles, pour modérer et plus pour votre serveur."
   },
   "states": {
