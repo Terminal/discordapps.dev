@@ -8,6 +8,7 @@ import Locale from "../pages/Locale";
 import LogOut from "../pages/LogOut";
 import NotFound from "../pages/NotFound";
 import AdminPage from "../pages/AdminPage";
+import LanguagesComparisonPage from "../pages/LanguagesComparisonPage";
 
 const routes = [
   {
@@ -61,11 +62,16 @@ const routes = [
     component: AdminPage,
     status: 200,
   }, {
+    path: '/:locale/languagescomparisontool',
+    exact: true,
+    component: LanguagesComparisonPage,
+    status: 200
+  }, {
     path: '/:locale',
     exact: false,
     component: NotFound,
     status: 404,
-  }
+  },
 ];
 
 export default routes;

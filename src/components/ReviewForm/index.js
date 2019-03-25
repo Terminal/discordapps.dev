@@ -26,7 +26,7 @@ class ReviewForm extends Component {
       const formdata = new FormData(this.form.current);
       const { auth, intl } = this.props;
 
-      fetch(`${Locations.server}/bots/${this.props.bot.id}/reviews`, {
+      fetch(`${Locations.server}/${intl.locale}/bots/${this.props.bot.id}/reviews`, {
         credentials: 'include',
         body: formdata,
         method: 'POST'
