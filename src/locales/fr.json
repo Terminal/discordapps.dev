@@ -126,7 +126,7 @@
   },
   "pages": {
     "bots": {
-      "backgroundAlt": "Logo pour ls.terminal.ink",
+      "backgroundAlt": "Logo pour discordapps.dev",
       "description": "Une boutique d'applications pour des bots Discord",
       "inMyLanguage": "Bots dans ma langue",
       "invite": "Inviter ce bot",
@@ -157,11 +157,7 @@
       "initiateCategoryFilter": "Chercher des bots pour ...",
       "ownerFilter": "Bots triés par { name }",
       "search": "Rechercher",
-      "count": {
-        "one": "Installé dans un seul serveur",
-        "other": "Installé dans %s serveurs"
-      },
-      "rated": "Noté {{ rating }}/5.0"
+      "count": "Installé dans {guilds, plural, one {un seul serveur} other {{guilds} serveurs}}"
     },
     "configuration": {
       "token": {
@@ -355,18 +351,6 @@
     "languages": "Langages",
     "user": "Mes Bots"
   },
-  "pagination": {
-    "image": {
-      "prev": "Précédent",
-      "next": "Suivant"
-    },
-    "page": {
-      "prev": "Précédente",
-      "next": "Suivante"
-    },
-    "currentPage": "Page { number }",
-    "reviews": "Critiques d'utilisateurs de '{{ name }}' - Page { number }"
-  },
   "permission": {
     "ADD_REACTIONS": "Ajouter des réactions",
     "ADMINISTRATOR": "Administrateur",
@@ -398,8 +382,8 @@
     "VIEW_AUDIT_LOG": "Voir les logs du serveur"
   },
   "site": {
-    "name": "Liste d'applications Discord par ls.terminal.ink",
-    "description": "ls.terminal.ink est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des nouvelles, pour modérer et plus pour votre serveur."
+    "name": "Liste d'applications Discord",
+    "description": "discordapps.dev est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des nouvelles, pour modérer et plus pour votre serveur."
   },
   "states": {
     "approved": "Approuvé",
