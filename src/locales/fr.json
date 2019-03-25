@@ -6,31 +6,32 @@
     "productivity": "Productivité",
     "education": "Éducation",
     "image": "Manipulation d'images",
-    "news": "Informations",
+    "news": "Nouvelles",
     "music": "Musique",
     "moderation": "Modération",
     "utility": "Utilitaire",
     "notifications": "Notifications",
     "other": "Autre"
   },
-  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord est une marque déposée Discord Inc.\nTraduction en français par iDroid27, Bowser65 et blue.",
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord est une marque appartenant Discord Inc.\nTraduction en français par iDroid27, Bowser65, blue et Lionir.",
   "errors": {
     "bots": {
       "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
       "category": "Vous devez sélectionner une catégorie pour votre bot",
       "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",
+      "contents": "Vous devez sélectionner au moins une langue pour que votre bot soit disponible. Cliquez sur une langue, puis cliquez sur \"Ajouter une langue\"",
       "description": "La description courte doit avoir une taille entre 10 et 100 caractères",
       "githubowner": "Le propriétaire GitHub doit être un utilisateur GitHub valide. Laissez vide si vous n'avez pas de compte GitHub.",
       "githubrepo": "le répertoire GitHub doit être une chaine de caractères valide. Laissez vide si vous n'avez pas de répertoire GitHub.",
       "id": "L'ID du bot doit être renseigné, et numerique",
-      "invite": "L'URL d'invitation needs doit être renseignée, et avec un lien HTTPS valide",
+      "invite": "L'URL d'invitation needs doit être remplis, et avec un lien HTTPS valide",
       "website": "L'URL du site web doit être un lien HTTPS valide",
       "languages": "Vous devez ajouter au moins une langue. Sélectionnez le langue dans laquelle vous voulez que vote page de bot soie, et cliquez sur le bouton 'Ajouter cette langue'",
       "mentionable": "la mentionnabilité du préfixe doit être soit coché, ou décoché",
       "name": "Le bot doit avoir un nom d'une longueur entre 4 et 32 caractères.",
       "nsfw": "Le status NSFW doit être soit coché, ou décoché",
       "oauth": "L'ID OAuth doit être numerique",
-      "page": "la longue description dout avoir une longueur entre 20 et 10000 caractères.",
+      "page": "la longue description doit avoir une longueur entre 20 et 10000 caractères.",
       "prefix": "Vous devez avoir au moins un prefixe, d'une longueur maximale de 10 caractères.",
       "support": "L'URL d'assistance doit être un lien HTTPS valide",
       "exists": "Le bot existe déjà dans la base de données, et vous n'avez pas la permissions d'écraser cela.",
@@ -42,7 +43,9 @@
       "avatar": "L'URL de l'avatar doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
       "cover": "L'URL de la couverture doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
       "preview": "Toutes les URL d'aperçu doivent être des liens HTTPS valides, avec une longueur maximale de 2000 caractères chacun, avec un maximum de 20 liens",
-      "no_suitable_lang": "Cette page n'a pas de version Française. La version en {{ language }} est affiché à la place."
+      "no_suitable_lang": "Cette page n'a pas de version Française. La version en {{ language }} est affiché à la place.",
+      "youtube": "L'ID Youtube doit ressembler à un ID",
+      "youku": "L'ID d'Alibaba's YOUKU doit ressembler à un ID"
     },
     "permissions": {
       "login": "Vous n'êtes pas connecté",
@@ -73,6 +76,7 @@
     "source": "GitHub",
     "discord": "Discord",
     "terminal": "Terminal.ink",
+    "terms": "Conditions d'utilisation",
     "docs": "Docs",
     "view": "Voir cette page sur GitHub"
   },
@@ -96,6 +100,7 @@
     "de": "Allemand",
     "el": "Grec",
     "en-GB": "Anglais (Royaume Uni)",
+    "en-GB": "Anglais (États-Unis)",
     "es": "Espagnol",
     "et": "Estonien",
     "fi": "Finlandais",
@@ -110,6 +115,7 @@
     "la": "Latin",
     "nl": "Néerlandais",
     "no": "Norvégien",
+    "pl": "Polonais",
     "pt": "Portugais",
     "ru": "Russe",
     "sv": "Suédois",
@@ -122,7 +128,6 @@
     "bots": {
       "backgroundAlt": "Logo pour ls.terminal.ink",
       "description": "Une boutique d'applications pour des bots Discord",
-      "inMyLanguage": "Bots dans ma langue",
       "invite": "Inviter ce bot",
       "support": "Support technique",
       "website": "Site Internet",
@@ -141,7 +146,7 @@
       },
       "more": "Voir plus",
       "less": "Voir moins",
-      "adverts": "Contient de la publicité",
+      "adverts": "Contient de la publicité et des fonctionalités cachées par d'autres services",
       "inAppPurchases": "Achats dans l'application",
       "nsfw": "NSFW",
       "offeredby": "Proposé par :",
@@ -160,7 +165,7 @@
     "configuration": {
       "token": {
         "title": "Jeton",
-        "description": "Cliquez sur 'Docs' en bas de page pour voir l'aide",
+        "description": "Ceci est le jeton requis pour modifier votre bot sur la liste. Veuillez vous refferer à la documentation pour developers pour les endpoints disponibles.",
         "docs": "Voir la documentation"
       },
       "renew": "Renouveler le jeton",
@@ -205,15 +210,15 @@
         "title": "Préfixe customisable"
       },
       "description": {
-        "title": "Description"
+        "title": "Description courte"
       },
       "github_owner": {
-        "title": "Utilisateur ou Organisation",
-        "placeholder": "Quelque chose comme ry00001"
+        "placeholder": "Quelque chose comme ry00001",
+        "title": "Utilisateur ou Organisation"
       },
       "github_repo": {
-        "title": "Répertoire",
-        "placeholder": "Quelque chose comme Tuxedo"
+        "placeholder": "Quelque chose comme Tuxedo",
+        "title": "Répertoire"
       },
       "information": "Page de votre bot",
       "invite": {
@@ -234,7 +239,7 @@
         "title": "Nom"
       },
       "page": {
-        "title": "Page"
+        "title": "Description extensive"
       },
       "prefix": {
         "placeholder": "Un seul préfixe",
@@ -272,6 +277,10 @@
         "title": "ID YouTube",
         "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
       },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "Un ID d'une vidéo YOUKU"
+      },
       "website": {
         "title": "Site Internet",
         "placeholder": "Un lien HTTPS vers votre site Internet"
@@ -281,13 +290,15 @@
       "triggermethods": "Méthodes de déclenchement",
       "deleteLanguage": "Supprimer une langue",
       "required": "Les champs marqués d'un * sont requis.",
-      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le statut de la vérification de votre bot, ainsi que recevoir des messages privés de la part du staff à propos de votre application."
+      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le statut de la vérification de votre bot, ainsi que recevoir des messages privés de la part du staff à propos de votre application.",
+      "discord": "Rejoindre Terminal.ink"
     },
     "error": {
       "notfound": "Page introuvable...",
       "server": "Problème inattendu rencontré",
       "github": "Rapporter ce bug sur GitHub.com",
-      "report": "Merci de prendre le temps de nous signaler cette erreur. Veuillez mentionner ce que vous étiez en train de faire avant l'incident."
+      "report": "Merci de prendre le temps de nous signaler cette erreur. Veuillez mentionner ce que vous étiez en train de faire avant l'incident.",
+      "snarky": "C'était sûr d'arriver..."
     },
     "list": {
       "invite": "Inviter",
@@ -308,7 +319,7 @@
       "message": "Page introuvable"
     },
     "sure": {
-      "title": "Êtes-vous sur ?",
+      "title": "Êtes-vous sûr?",
       "ok": "Ok",
       "no": "Retour"
     },
@@ -335,6 +346,14 @@
       }
     }
   },
+  "navbar": {
+    "add": "Ajouter votre application",
+    "login": "Se connecter",
+    "logout": "Déconnexion",
+    "admin": "Administration",
+    "languages": "Langages",
+    "user": "Mes Bots"
+  },
   "pagination": {
     "image": {
       "prev": "Précédent",
@@ -345,7 +364,7 @@
       "next": "Suivante"
     },
     "currentPage": "Page { number }",
-    "reviews": "User reviews for '{{ name }}' - Page { number }"
+    "reviews": "Critiques d'utilisateurs de '{{ name }}' - Page { number }"
   },
   "permission": {
     "ADD_REACTIONS": "Ajouter des réactions",
@@ -379,18 +398,12 @@
   },
   "site": {
     "name": "Liste de bots Discord par ls.terminal.ink",
-    "description": "ls.terminal.ink est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des informations, pour modérer et plus pour votre serveur."
+    "description": "ls.terminal.ink est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des nouvelles, pour modérer et plus pour votre serveur."
   },
   "states": {
     "approved": "Approuvé",
     "denied": "Refusé",
     "queue": "En attente",
     "banned": "Banni"
-  },
-  "navbar": {
-    "add": "Ajouter votre propre bot",
-    "login": "Se connecter",
-    "logout": "Déconnexion",
-    "admin": "Admin"
   }
 }
