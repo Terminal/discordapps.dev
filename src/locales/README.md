@@ -20,6 +20,9 @@ Anything that doesn't fit... well just put it anywhere.
 ## Instructions
 You're ready to translate.
 
+You may want to read [how to do plurals](https://formatjs.io/guides/message-syntax/#plural-format).
+For additional help, contact on Discord.
+
 ### 1. Copy `en-GB`
 ```json
 "locales": {

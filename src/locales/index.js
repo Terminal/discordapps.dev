@@ -4,6 +4,7 @@ import enData from 'react-intl/locale-data/en';
 import frData from 'react-intl/locale-data/fr';
 import plData from 'react-intl/locale-data/pl';
 import zhData from 'react-intl/locale-data/zh';
+import nlData from 'react-intl/locale-data/nl';
 import daLocale from './da.json';
 import deLocale from './de.json';
 import enLocale from './en-GB.json';
@@ -11,6 +12,7 @@ import enUSLocale from './en-US.json';
 import frLocale from './fr.json';
 import plLocale from './pl.json';
 import zhCnLocale from './zh-cn.json';
+import nlLocale from './nl.json';
 
 const languages = [
   {
@@ -152,9 +154,11 @@ const languages = [
   },
   {
     code: 'nl',
-    flag: '',
+    flag: 'twa-flag-nl',
     top: false,
     priority: 11,
+    translations: nlLocale,
+    reactIntl: nlData,
     botPageLanguage: true,
   },
   {
@@ -225,6 +229,8 @@ const languages = [
     botPageLanguage: true,
   }
 ];
+
+// console.log(JSON.stringify(languages.map(x => x.code)))
 
 const Localise = (contents, locale) => {
   let localisedContents = contents.find(content => content.locale === locale);

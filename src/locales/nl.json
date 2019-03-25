@@ -1,0 +1,405 @@
+{
+  "categories": {
+    "fun": "Plezier",
+    "games": "Spellen",
+    "entertainment": "Entertainment",
+    "productivity": "Productiviteit",
+    "education": "Onderwijs",
+    "image": "Afbeeldingsmanipulatie",
+    "news": "Nieuws",
+    "music": "Muziek",
+    "moderation": "Moderatie",
+    "utility": "Gereedschappen",
+    "notifications": "Notificaties",
+    "other": "Anders"
+  },
+  "copyright": "Auteursrecht 2017 - 2019, Terminal.ink; Discord is een handelsmerk van Discord Inc.",
+  "errors": {
+    "bots": {
+      "authors": "De bot moet op zijn minst 1 auteur hebben, en ID's van de auteurs moeten numeriek zijn",
+      "category": "Je moet een categorie kiezen voor de bot",
+      "customisable": "Aanpasbaarheid van de prefix moet aangevinkt, of niet aangevinkt zijn",
+      "contents": "Je moet tenminste 1 taal aanbieden voor jouw bot. Klik op een taal, en klik dan op \"Taal toevoegen\"",
+      "description": "De korte beschrijving moet een lengte hebben tussen 10 en 100",
+      "githubowner": "De GitHub eigenaar moet een valide GitHub lid zijn. Laat dit veld leeg als je geen GitHub account hebt.",
+      "githubrepo": "De GitHub repository moet een valide string zijn. Laat dit veld blank als je geen GitHub repository hebt.",
+      "id": "De Bot ID moet ingevuld worden, en numeriek zijn.",
+      "invite": "De uitnodigings URL moet ingevuld worden, en moet een valide HTTPS link zijn",
+      "website": "De website URL moet een valide HTTPS link zijn.",
+      "languages": "Je moet tenminste 1 taal toevoegen. Klik op de taal waarin je je pagina wilt schrijven, en selecteer de 'Taal toevoegen' knop",
+      "mentionable": "De 'vermeldbare prefix' knop moet aangevinkt, of niet aangevinkt zijn",
+      "name": "De naam van de bot moet tussen de 4 en 32 karakters zijn.",
+      "nsfw": "De NSFW status van de bot moet aangevinkt, of niet aangevinkt zijn.",
+      "oauth": "Het OAuth ID moet numeriek zijn",
+      "page": "De lange beschrijven moet een lengte tussen 20 en 10000 tekens hebben.",
+      "prefix": "Je moet tenminste 1 prefix hebben, met een maximale lengte van 10 tekens",
+      "support": "De Support URL moet een valide HTTPS link zijn",
+      "exists": "Deze bot bestaat al in de database, en je hebt geen toestemming dit te overschrijven.",
+      "notabot": "Het gegeven ID was geen bot account.",
+      "notfound": "Het gegeven ID kon niet gevonden worden op Discord.",
+      "add_success": "Bot met success aan de wachtrij toegevoegd.",
+      "edit_success": "Bot succesvol aangepast.",
+      "count": "De servercount van de bot moet tussen de 0 en 5000000 servers zijn",
+      "avatar": "De avatar URL moet een valide HTTPS link zijn, met een maximum van 2000 karakters",
+      "cover": "De omslag URL oet een valide HTTPS link zijn, met een maximum van 2000 karakters",
+      "preview": "Alle voorbeeld URLs moeten valide HTTPS links zijn, met een maximum van 2000 karakters per stuk, met een maximum van 20 links",
+      "no_suitable_lang": "Deze pagina heeft geen Nederlandse versie. '{{ language }}' wordt in plaats daarvan weergegeven.",
+      "youtube": "Het YouTube ID moet lijken op een geldig ID",
+      "youku": "Het Alibaba YOUKU ID moet lijken op een geldig ID"
+    },
+    "permissions": {
+      "login": "Je bent niet ingelogd",
+      "denied": "Je hebt niet de benodige toestemming om dit aan te passen",
+      "banned": "Je bent de toegang tot deze bron ontzegd"
+    },
+    "website": {
+      "noscript": "JavaScript is uitgeschakeld. De site kan minder goed functioneren.",
+      "print": "JavaScript is niet compatible met pagina-afdrukken."
+    },
+    "reviews": {
+      "rating": "Selecteer een waardering voordat je verder gaat",
+      "text": "Geef een reden aan voor deze hoeveelheid sterren.",
+      "self": "Je kan je eigen bot niet recenseren!"
+    },
+    "api": {
+      "400": "Je hebt geen toestemming om deze bron te bezichtigen. Controleer of je de juiste authorizatie hebt.",
+      "404": "Deze bron kon niet worden gevonden, of de verzoeksmethode wordt niet ondersteund.",
+      "500": "Een interne server fout is opgetreden.",
+      "test": "Een foutcode is opgeroepen voor ontwikkelingsdoeleinden.",
+      "no_bot": "Bot niet gevonden",
+      "idchange": "Het ID van de bot kan niet worden gewijzigd in een ander ID. Neem contact op met Terminal ondersteuning voor technische ondersteuning"
+    }
+  },
+  "footer": {
+    "attribution": "Attributie",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "terms": "Algemene Voorwaarden",
+    "docs": "Documentatie",
+    "view": "Zie deze pagina op GitHub"
+  },
+  "forms": {
+    "add": "Voeg een andere toe",
+    "apply": "Aanmelden",
+    "close": "Sluiten",
+    "delete": "Verwijderen",
+    "help": "🤔",
+    "select": "Selecteer alstublieft...",
+    "submit": "Verzenden",
+    "wait": "Even geduld alstublieft..."
+  },
+  "intro": {
+    "search": "Waar ben je naar op zoek?",
+    "docs": "Documentatie"
+  },
+  "locales": {
+    "ar": "Arabisch",
+    "da": "Deens",
+    "de": "Duits",
+    "el": "Grieks",
+    "en-GB": "Engels (Verenigd Koninkrijk)",
+    "en-US": "Engels (Verenigde Staten)",
+    "es": "Spaans",
+    "et": "Estlands",
+    "fi": "Fins",
+    "fj": "Fijian",
+    "fr": "Frans",
+    "gd": "Keltisch (Schotland)",
+    "hi": "Hindi",
+    "he": "Hebreeuws",
+    "it": "Italiaans",
+    "ja": "Japans",
+    "ko": "Koreaans",
+    "la": "Latijn",
+    "nl": "Nederlands",
+    "no": "Noorweegs",
+    "pl": "Pools",
+    "pt": "Portugees",
+    "ru": "Russisch",
+    "sv": "Zweeds",
+    "tr": "Turks",
+    "vi": "Vietnamees",
+    "zh-cn": "Chinees (Vereenvoudigd)",
+    "zh-tw": "Chinees (Traditioneel)"
+  },
+  "pages": {
+    "bots": {
+      "backgroundAlt": "Het logo voor ls.terminal.ink",
+      "description": "Een applicatiewinkel voor Discord bots",
+      "invite": "Voeg deze bot toe",
+      "support": "Technische Ondersteuning",
+      "website": "Website",
+      "shortname": "Discord Bots",
+      "mentionable": "Vermeldbaar",
+      "customisable": "Aanpasbaar",
+      "delete": "Verwijderen",
+      "edit": "Aanpassen",
+      "configure": "Configureren",
+      "github": "Bekijk op GitHub",
+      "approve": "Goedkeuren",
+      "deny": "Weigeren",
+      "prefix": {
+        "one": "Prefix",
+        "other": "Prefixes"
+      },
+      "more": "Bezichtig meer",
+      "less": "Bezichtig minder",
+      "adverts": "Bevat advertenties en/of diensten die ontgrendeld worden door andere integraties",
+      "inAppPurchases": "Heeft in-app aankopen",
+      "nsfw": "NSFW",
+      "offeredby": "Aangeboden Door:",
+      "modified": "Laatst gemodificeerd: { date }",
+      "created": "Eerste uitgavedatum: { date }",
+      "category": "Categorie: { category }",
+      "initiateCategoryFilter": "Vind bots voor...",
+      "ownerFilter": "Bots door { name }",
+      "search": "Zoeken",
+      "count": "Geïnstalleerd in {guilds, plural, one {een enkele server} other {{guilds} servers}}"
+    },
+    "configuration": {
+      "token": {
+        "title": "Authorizatietoken",
+        "description": "Deze token is verplicht om je bot aan te passen op de site. Refereer naar de ontwikkelaarsdocumentatie voor mogelijke bronnen.",
+        "docs": "Bekijk Documentatie"
+      },
+      "renew": "Vernieuw Token",
+      "hide": {
+        "title": "Verberg bot",
+        "description": "Je kan je bot verbergen van de voorpagina van de site, indien je daar niet aanwezig wilt zijn.",
+        "disable": "Maak zichtbaar",
+        "enable": "Verberg"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "modal": "Het OAuth ID is het ID dat gebruikt wordt wanneer gebruikers je bot uitnodigen via de OAuth flow. In bijna alle gevallen is dit ID hetzelfde als de Bot ID. Je hoeft alleen actie te ondernemen als er een verschil is tussen die twee.",
+        "placeholder": "Het ID dat gebruikt wordt in de OAuth link.",
+        "title": "OAuth ID"
+      },
+      "authors": {
+        "modal": "Voeg een enkel ID toe als eigenaar van de bot.",
+        "placeholder": "ID van een enkele eigenaar",
+        "title": "Bot Auteurs",
+        "add": "Andere toevoegen"
+      },
+      "basicinfo": "Basis Informatie",
+      "nsfw": {
+        "title": "Niet Veilig Voor Werk"
+      },
+      "support": {
+        "placeholder": "Iets als: https://discord.gg/8uC6aKZ",
+        "small": "Laat dit veld leeg als je mensen niet wilt helpen",
+        "title": "Ondersteunings URL"
+      },
+      "category": {
+        "title": "Categorie"
+      },
+      "client_id": {
+        "modal1": "De Bot ID is een number dat de bot identificeert. Je kan dit verkrijgen door op \"Kopieëren\" te drukken in het Discord Ontwikkelaarsportaal.",
+        "modal2": "Je kan dit ID ook vinden door \"Ontwikkelaarshulpmiddelen\" in the schakelen in Discord's instellingen, en dan rechts te klikken op jouw bot, om vervolgens op \"Kopieer ID\". Let op dat je niet het ID van een bericht kopieert.",
+        "placeholder": "Het ID van de bot gebruiker",
+        "title": "Bot ID"
+      },
+      "customisable": {
+        "title": "Aanpasbare prefix"
+      },
+      "description": {
+        "title": "Korte Beschrijving"
+      },
+      "github_owner": {
+        "placeholder": "Iets als: ry00001",
+        "title": "GitHub Gebruiker / Organisatie"
+      },
+      "github_repo": {
+        "placeholder": "Iets als: Smoking",
+        "title": "GitHub Repository"
+      },
+      "information": "Jouw Bot Pagina",
+      "invite": {
+        "modal": "Controleer alstublieft of de \"Bot ID\" is ingevuld met het ID van jouw Discord bot",
+        "title": "Uitnodigings URL",
+        "generate": "Genereer uitnodigingslink"
+      },
+      "languages": {
+        "add": "Voeg een taal toe",
+        "delete": "Verwijder deze taal",
+        "modal": "Schrijf je bot pagina in elke taal die je ondersteunt. Selecteer een taal, en klik op de 'Voeg een taal toe' knop.",
+        "title": "Bot Pagina Talen"
+      },
+      "mentionable": {
+        "title": "Kan de bot aanroepen door middel van een vermelding"
+      },
+      "name": {
+        "title": "Naam"
+      },
+      "page": {
+        "title": "Uitgebreide Beschrijving"
+      },
+      "prefix": {
+        "placeholder": "Een enkele prefix",
+        "title": "Prefix",
+        "add": "Voeg een andere prefix toe"
+      },
+      "flags": {
+        "title": "Inkomsten en advertentie declaratie",
+        "inAppPurchases": {
+          "title": "In-App Aankopen",
+          "small": "Selecteer dit veld als jouw bot functies achter een betaalmuur aanbied"
+        },
+        "adverts": {
+          "title": "Advertenties",
+          "small": "Selecteer dit veld als jouw bot advertenties bevat of functies achter diensten van een derde partij vergrendelt"
+        }
+      },
+      "images": {
+        "title": "Uiterlijk",
+        "avatar": {
+          "title": "Avatar URL",
+          "placeholder": "Een HTTPS link naar een avatar afbeelding"
+        },
+        "cover": {
+          "title": "Omslag Afbeelding",
+          "placeholder": "Een HTTPS link naar een grote afbeelding"
+        },
+        "preview": {
+          "title": "Voorbeeld Afbeeldingen",
+          "placeholder": "Een HTTPS link naar een enkele schermafbeelding",
+          "add": "Voeg nog een afbeelding toe"
+        }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "Een ID naar een YouTube video"
+      },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "Een ID naar een YOUKU video"
+      },
+      "website": {
+        "title": "Website",
+        "placeholder": "Een HTTPS link naar jouw website"
+      },
+      "sourcecode": "Broncode",
+      "title": "Maak of wijzig een applicatie",
+      "triggermethods": "Aanroepmethodes",
+      "deleteLanguage": "Verwijder een taal",
+      "required": "Velden gemarkeerd met een * zijn vereist.",
+      "updates": "Het wordt sterk aanbevolen om de Terminal.ink Discord Server te bezoeken voor informatie en updates, het zien van de verificatie status en DMs te ontvangen van medewerkers met betrekking tot jouw bot.",
+      "discord": "Treed toe tot Terminal.ink"
+    },
+    "error": {
+      "notfound": "Pagina kon niet worden gevonden...",
+      "server": "Interne Server Fout",
+      "github": "Rapporteer deze error op GitHub.com",
+      "report": "Bedankt dat je de tijd hebt genomen dit foutreport in te vullen. Geef alstublieft aan waar je mee bezig was voor het incident.",
+      "snarky": "Foutje moet kunnen baas..."
+    },
+    "list": {
+      "invite": "Uitnodigen",
+      "empty": "Er zijn geen bots"
+    },
+    "locale": {
+      "choose": "Selecteer alstublieft een taal.",
+      "pleasehelp": "Ben je een goede vertaler? Klik hier."
+    },
+    "langdev": {
+      "title": "Kijk naar alle taalsleutels",
+      "compare": "Vergelijk geselecteerde talen",
+      "key": "JSON Sleutel",
+      "notfound": "Sleutel niet gevonden!"
+    },
+    "notfound": {
+      "gohome": "Ga naar de homepage",
+      "message": "Pagina niet gevonden"
+    },
+    "sure": {
+      "title": "Weet je dit zeker?",
+      "ok": "Ok",
+      "no": "Ga terug"
+    },
+    "reviews": {
+      "title": "Recensies",
+      "my": "Mijn Recensie",
+      "write": "Schrijf een recensie",
+      "placeholder": "Voer een reden voor jouw recensie in.",
+      "number": {
+        "one": "%s recensie",
+        "other": "%s recensies"
+      },
+      "delete": "Verwijder recensie",
+      "all": "Bekijk alle recensies"
+    },
+    "admin": {
+      "title": "Administratiepaneel",
+      "queue": "Bekijk wachtrij",
+      "denied": "Bekijk geweigerd",
+      "banned": "Bekijk verbannen",
+      "state": {
+        "reason": "Voer een reden in voor het wijzigen van de status van deze bot",
+        "change": "Verander status"
+      }
+    }
+  },
+  "navbar": {
+    "add": "Voeg een app toe",
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "admin": "Admin",
+    "languages": "Talen",
+    "user": "Mijn Bots"
+  },
+  "pagination": {
+    "image": {
+      "prev": "Vorige",
+      "next": "Volgende"
+    },
+    "page": {
+      "prev": "Vorige",
+      "next": "Volgende pagina"
+    },
+    "currentPage": "Pagina {{{ number }}}",
+    "reviews": "Gebruikersrecensies voor '{{ name }}' - Pagina {{{ number }}}"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Reacties toevoegen",
+    "ADMINISTRATOR": "Beheerder",
+    "ATTACH_FILES": "Bestand bijvoegen",
+    "BAN_MEMBERS": "Leden verbannen",
+    "CHANGE_NICKNAME": "Verander gebruikersnaam",
+    "CONNECT": "Verbinden",
+    "CREATE_INSTANT_INVITE": "Directe uitnodiging creëren",
+    "DEAFEN_MEMBERS": "Geluid van leden dempen",
+    "EMBED_LINKS": "Ingesloten links",
+    "KICK_MEMBERS": "Leden verwijderen",
+    "MANAGE_CHANNELS": "Kanalen beheren",
+    "MANAGE_EMOJIS": "Beheer Emojis",
+    "MANAGE_GUILD": "Server beheren",
+    "MANAGE_MESSAGES": "Berichten beheren",
+    "MANAGE_NICKNAMES": "Gebruikersnamen beheren",
+    "MANAGE_ROLES": "Rollen beheren",
+    "MANAGE_WEBHOOKS": "Webhooks beheren",
+    "MENTION_EVERYONE": "Iedereen noemen",
+    "MOVE_MEMBERS": "Leden verplaatsen",
+    "MUTE_MEMBERS": "Microfoon van leden dempen",
+    "READ_MESSAGE_HISTORY": "Berichtgeschiedenis lezen",
+    "READ_MESSAGES": "Berichten lezen",
+    "SEND_MESSAGES": "Berichten verzenden",
+    "SEND_TTS_MESSAGES": "TTS-berichten verzenden",
+    "SPEAK": "Spreken",
+    "USE_EXTERNAL_EMOJIS": "Gebruik externe Emoji's",
+    "USE_VAD": "Spraakactivatie gebruiken",
+    "VIEW_AUDIT_LOG": "Audit-logboek weergeven"
+  },
+  "site": {
+    "name": "Discord Bot List",
+    "description": "ls.terminal.ink is een applicatie winkel voor Discord bots. Installeer applicaties voor muziek, nieuws, moderatie en meer in jouw server."
+  },
+  "states": {
+    "approved": "Goedgekeurd",
+    "denied": "Geweigerd",
+    "queue": "In Wachtrij",
+    "banned": "Verbannen"
+  }
+}
