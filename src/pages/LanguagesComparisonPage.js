@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import Container from '../components/Container';
-import ContentBox from '../components/ContentBox';
-import Layout from '../components/Layout';
-
-import languages, { getMasterLanguage } from '../locales';
 import flat from 'flat';
-import { injectIntl, FormattedMessage } from 'react-intl';
-import Modesta from '../data/Modesta';
-import Row from '../components/Row';
+import React, { Component } from 'react';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import ContentBox from '../components/ContentBox';
 import FlexContainer from '../components/FlexContainer';
+import Layout from '../components/Layout';
+import Row from '../components/Row';
+import Modesta from '../data/Modesta';
+import languages, { getMasterLanguage } from '../locales';
 import elementStyles from '../scss/elements.module.scss';
+
 
 class LanguagesComparisonPage extends Component {
   constructor(props) {
