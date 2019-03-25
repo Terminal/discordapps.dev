@@ -105,13 +105,13 @@ router
       if (err) {
         res.json({
           ok: false,
-          message: res.__(err.message)
+          languages: err.message
         });
       } else if (value.id !== req.params.id) {
         res.json({
           ok: false,
           data: value,
-          message: 'errors.api.idchange'
+          languages: 'errors.api.idchange'
         });
       } else {
         // Update the value in the database

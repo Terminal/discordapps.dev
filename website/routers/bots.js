@@ -31,7 +31,6 @@ router
       if (err) {
         res.json({
           ok: false,
-          message: res.__(err.message),
           language: err.message
         });
       } else {
@@ -94,7 +93,6 @@ router
                     .catch(botserverError);
                   res.json({
                     ok: true,
-                    message: res.__(message),
                     language: message,
                     redirect: `/bots/${value.id}`
                   });

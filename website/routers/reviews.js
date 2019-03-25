@@ -30,7 +30,6 @@ router
             if (err) {
               res.json({
                 ok: false,
-                message: res.__(err.message),
                 language: err.message
               });
             } else {
