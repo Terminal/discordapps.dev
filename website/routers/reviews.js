@@ -57,7 +57,7 @@ router
         }
       });
   })
-  .post('/:review/delete', checkParamsLength, isLoggedInButJSON, isOwnerOfReview, (req, res, next) => {
+  .post('/:review/delete', checkParamsLength, isLoggedInButJSON, isOwnerOfReview, (req, res) => {
     r.table('reviews')
       .get(req.params.review)
       .delete()
