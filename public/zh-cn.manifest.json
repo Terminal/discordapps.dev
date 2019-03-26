@@ -6,6 +6,18 @@
       "src": "https://ls.terminal.ink/img/logo/logo.svg",
       "sizes": "256x256 128x128 64x64 32x32 24x24 16x16",
       "type": "image/svg"
+    },{
+      "src": "https://ls.terminal.ink/img/logo/logo256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },{
+      "src": "https://ls.terminal.ink/img/logo/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },{
+      "src": "https://ls.terminal.ink/img/logo/logo1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
     }
   ],
   "start_url": "/zn-cn/",
