@@ -6,7 +6,8 @@ const reviewToJsonLd = (contents, item) => {
     '@type': 'Product',
     description: contents.description,
     name: contents.name,
-    image: `${Locations.server}${item.cachedImages.avatar}`
+    image: `${Locations.server}${item.cachedImages.avatar}`,
+    sku: item.id
   };
 
   const average = item.reviews.reduce((prev, curr) => prev + curr.rating, 0) / item.reviews.length;
