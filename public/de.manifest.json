@@ -1,0 +1,15 @@
+{
+  "short_name": "Discord Bot Liste",
+  "name": "Discord Bot Liste",
+  "icons": [
+    {
+      "src": "https://ls.terminal.ink/img/logo/logo.svg",
+      "sizes": "256x256 128x128 64x64 32x32 24x24 16x16",
+      "type": "image/svg"
+    }
+  ],
+  "start_url": "/de/",
+  "display": "standalone",
+  "theme_color": "#282828",
+  "background_color": "#181818"
+}

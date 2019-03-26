@@ -116,7 +116,7 @@
   },
   "pages": {
     "bots": {
-      "backgroundAlt": "Das Logo für ls.terminal.ink",
+      "backgroundAlt": "Das Logo für discordapps.dev",
       "description": "Ein Applikations-Laden für Discord Bots",
       "invite": "Diesen Bot hinzufügen",
       "support": "Technischer Support",
@@ -369,7 +369,7 @@
   },
   "site": {
     "name": "Discord Bot Liste von terminal.ink",
-    "description": "ls.terminal.ink ist ein applikations-store für Discord Bots. Installiere applikationen für Musik, News, Moderation und mehr für deinen Server."
+    "description": "discordapps.dev ist ein applikations-store für Discord Bots. Installiere applikationen für Musik, News, Moderation und mehr für deinen Server."
   },
   "states": {
     "approved": "Genehmigt",

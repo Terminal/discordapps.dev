@@ -124,7 +124,7 @@
   },
   "pages": {
     "bots": {
-      "backgroundAlt": "Logo dla ls.terminal.ink",
+      "backgroundAlt": "Logo dla discordapps.dev",
       "description": "Zbiór aplikacji dla botów Discord",
       "invite": "Dodaj tego bota",
       "support": "Pomoc techniczna",
@@ -396,7 +396,7 @@
   },
   "site": {
     "name": "Discordowa Lista Botów przez Terminal.ink",
-    "description": "ls.terminal.ink to zbiór aplikacji dla Discordowych botów. Instaluj aplikacje dla muzyki, aktualności, moderacji i więcej dla Twojego serwera."
+    "description": "discordapps.dev to zbiór aplikacji dla Discordowych botów. Instaluj aplikacje dla muzyki, aktualności, moderacji i więcej dla Twojego serwera."
   },
   "states": {
     "approved": "Zatwierdzony",

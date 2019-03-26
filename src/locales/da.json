@@ -118,7 +118,7 @@
   },
   "pages": {
     "bots": {
-      "backgroundAlt": "Logoet for ls.terminal.ink",
+      "backgroundAlt": "Logoet for discordapps.dev",
       "description": "Et sted hvor du kan finde Discord bots",
       "invite": "Tilføj denne bot",
       "support": "Teknisk Support",
@@ -361,7 +361,7 @@
   },
   "site": {
     "name": "Discord Botliste af Terminal.ink",
-    "description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
+    "description": "discordapps.dev is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
   },
   "states": {
     "queue": "Ikke verificeret"

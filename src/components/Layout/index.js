@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import NavigationBar from '../NavigationBar';
 import Footer from '../Footer';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import Locations from '../../data/Locations';
 import languages from '../../locales';
 import Container from '../Container';
@@ -26,6 +26,7 @@ class Layout extends Component {
                 <meta property="og:site_name" content={siteName} />
                 <meta property="og:description" content={siteDescription} />
                 <meta name="description" content={siteDescription} />
+                <link rel="manifest" href={`/${this.props.intl.locale}.manifest.json`} />
                 {
                   languages
                     .filter(language => language.translations)
@@ -49,4 +50,4 @@ class Layout extends Component {
   }
 }
 
-export default Layout;
+export default injectIntl(Layout);

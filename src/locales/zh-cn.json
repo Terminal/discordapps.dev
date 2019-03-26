@@ -121,7 +121,7 @@
   "pages": {
     "bots": {
       "add": "添加一个应用",
-      "backgroundAlt": "ls.terminal.ink 的图标",
+      "backgroundAlt": "discordapps.dev 的图标",
       "description": "一个展示Discord机器人的应用商场",
       "invite": "添加这个机器人",
       "support": "技术支持",
@@ -384,7 +384,7 @@
   },
   "site": {
     "name": "Terminal.ink 的 Discord 机器人列表",
-    "description": "ls.terminal.ink 是一个用于陈列Discord机器人的程序商店。在您的服务器上安装用于音乐、新闻、管理等的程序吧！"
+    "description": "discordapps.dev 是一个用于陈列Discord机器人的程序商店。在您的服务器上安装用于音乐、新闻、管理等的程序吧！"
   },
   "states": {
     "approved": "已批准",
