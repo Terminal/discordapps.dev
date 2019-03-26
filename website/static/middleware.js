@@ -1,10 +1,6 @@
 const r = require('../rethinkdb');
 
 module.exports = class Middleware {
-  static isLoggedIn(req, res, next) {
-    this.isLoggedInButJSON(req, res, next);
-  }
-
   /**
    * A router which checks if the user is logged in or not.
    * If the user is not logged in, respond with JSON.
@@ -21,6 +17,10 @@ module.exports = class Middleware {
         message: 'errors.permissions.login'
       });
     }
+  }
+
+  static isLoggedIn(req, res, next) {
+    Middleware.isLoggedInButJSON(req, res, next);
   }
 
   static isAdmin(req, res, next) {
