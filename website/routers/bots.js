@@ -88,7 +88,7 @@ router
                   conflict: 'replace'
                 })
                 .then(() => {
-                  discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.react}${res.locals.languagePrefix}/bots/${value.id}`);
+                  discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.react}/${res.locals.languagePrefix}/bots/${value.id}`);
                   fixRoles()
                     .catch(botserverError);
                   res.json({
