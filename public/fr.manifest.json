@@ -21,6 +21,7 @@
     }
   ],
   "start_url": "/fr/",
+  "scope": "/",
   "display": "standalone",
   "theme_color": "#282828",
   "background_color": "#181818"
