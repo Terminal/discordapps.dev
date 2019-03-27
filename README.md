@@ -6,7 +6,7 @@ _curated by Terminal.ink_
 ## Development Previews
 Location                                                  | Description
 --------------------------------------------------------- | -----------------
-[ls.terminal.ink](https://ls.terminal.ink/)                | API server
+[ls.terminal.ink](https://ls.terminal.ink/)               | API server
 
 
 <!--
