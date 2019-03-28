@@ -136,9 +136,7 @@ class BotPageContentBox extends Component {
 
         return;
       }
-    })
-
-    console.log(page);
+    });
 
     return (
       <ContentBox>
