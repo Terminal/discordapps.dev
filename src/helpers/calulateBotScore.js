@@ -16,7 +16,7 @@ const calculateBotScore = ({
       bot.random -= .5;
     }
 
-    // Bots with competitors in the description lose 2 points.
+    // Bots with competitors in the bot page lose 2 points.
     Competitors.forEach((competitor) => {
       if (content.page.includes(competitor)) {
         bot.random -= 2;

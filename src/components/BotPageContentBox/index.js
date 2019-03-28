@@ -127,13 +127,18 @@ class BotPageContentBox extends Component {
         return '';
       },
       onTag: (tag, html, options) => {
-        if (tag === 'table' && options.isClosing === false) {
-          return `<div class="${Modesta.tableContainer} ${styles.tableContainer} ${elementsStyle.scrollbar}">${html}</div>`
+        if (tag === 'table') {
+          if (options.isClosing) {
+            return '</table></div>'
+          }
+          return `<div class="${Modesta.tableContainer} ${styles.tableContainer} ${elementsStyle.scrollbar}">${html}`
         }
 
         return;
       }
     })
+
+    console.log(page);
 
     return (
       <ContentBox>
