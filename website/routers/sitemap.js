@@ -1,7 +1,7 @@
 const r = require('../rethinkdb');
 const xmlify = require('js2xmlparser');
 const config = require('../config');
-const languages = require('../data/languages.json');
+const languages = require('../data/displayedLanguages.json');
 
 module.exports = (req, res) => {
   const sitemap = {
