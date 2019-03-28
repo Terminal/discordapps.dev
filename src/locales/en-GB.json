@@ -122,7 +122,7 @@
   },
   "pages": {
     "bots": {
-      "backgroundAlt": "The logo for ls.terminal.ink",
+      "backgroundAlt": "The logo for discordapps.dev",
       "description": "An application store for Discord bots",
       "inMyLanguage": "Bots in my Language",
       "invite": "Add this bot",
@@ -391,7 +391,7 @@
   "site": {
     "name": "Discord Apps Marketplace",
     "subheading": "Find bots to enhance your server",
-    "description": "ls.terminal.ink is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
+    "description": "discordapps.dev is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
   },
   "states": {
     "approved": "Approved",

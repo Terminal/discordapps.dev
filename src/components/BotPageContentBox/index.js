@@ -6,6 +6,7 @@ import arrow from '../../ModestaCSS/css/images/arrow.png';
 import styles from './index.module.scss';
 import { FormattedMessage } from 'react-intl';
 import Modesta from '../../data/Modesta';
+import elementsStyle from '../../scss/elements.module.scss';
 
 class BotPageContentBox extends Component {
   constructor(props) {
@@ -21,6 +22,15 @@ class BotPageContentBox extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.getExtendedHeight = this.getExtendedHeight.bind(this);
+  }
+
+  escape(unsafe) {
+    return unsafe
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
   }
 
   getExtendedHeight = () => [...this.description.current.children]
@@ -71,6 +81,7 @@ class BotPageContentBox extends Component {
         code: [],
         b: [],
         i: [],
+        u: [],
         li: [],
         ul: [],
         ol: [],
@@ -94,6 +105,35 @@ class BotPageContentBox extends Component {
         blockquote: [],
         br: [],
         a: ['href']
+      },
+      onIgnoreTag: (tag, html, options) => {
+        let extraNotes = '';
+
+        switch(tag) {
+          case 'img':
+            extraNotes = 'You should instead use the "preview images", found in the Appearance section of the edit page of your bot, or adopt the use of emojis.';
+            break;
+          case 'script':
+            extraNotes = 'You are too dangerous to use this tag!';
+            break;
+          case 'loona':
+            extraNotes = '<3 ily!!!!!';
+            break;
+          default:
+            extraNotes = 'Please adopt a tag which is allowed, or restrict yourself to Markdown only.'
+        }
+
+        console.error(`The <${tag}> tag is not allowed in the long description box.\n${extraNotes}`);
+        return '';
+      },
+      onTag: (tag, html, options) => {
+        console.log(tag, html);
+
+        if (tag === 'table' && options.isClosing === false) {
+          return `<div class="${Modesta.tableContainer} ${styles.tableContainer} ${elementsStyle.scrollbar}">${html}</div>`
+        }
+
+        return;
       }
     })
 
