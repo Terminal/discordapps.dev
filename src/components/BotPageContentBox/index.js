@@ -123,12 +123,10 @@ class BotPageContentBox extends Component {
             extraNotes = 'Please adopt a tag which is allowed, or restrict yourself to Markdown only.'
         }
 
-        console.error(`The <${tag}> tag is not allowed in the long description box.\n${extraNotes}`);
+        if (typeof window !== 'undefined') console.error(`The <${tag}> tag is not allowed in the long description box.\n${extraNotes}`);
         return '';
       },
       onTag: (tag, html, options) => {
-        console.log(tag, html);
-
         if (tag === 'table' && options.isClosing === false) {
           return `<div class="${Modesta.tableContainer} ${styles.tableContainer} ${elementsStyle.scrollbar}">${html}</div>`
         }

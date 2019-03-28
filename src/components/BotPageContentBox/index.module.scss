@@ -1,6 +1,13 @@
 .description {
   overflow: hidden;
   transition: height 0.5s;
+
+  code {
+    background: #303030;
+    border-radius: 3px;
+    padding: .2em .4em;
+    color: #d0d0d0;
+  }
 }
 
 .tableContainer {
