@@ -24,12 +24,13 @@ module.exports = (req, res) => {
   r.table('bots')
     .filter({
       state: 'approved'
-    })('id')
-    .then((ids) => {
+    })
+    .then((bots) => {
       languages.forEach((lang) => {
-        ids.forEach((id) => {
+        bots.forEach((bot) => {
           sitemap.url.push({
-            loc: `${config.webserver.react}/${lang}/bots/${id}`
+            loc: `${config.webserver.react}/${lang}/bots/${bot.id}`,
+            lastmod: (new Date(bot.edited)).toISOString().split('T')[0]
           });
         });
       });
