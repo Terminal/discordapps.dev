@@ -1,6 +1,10 @@
 import express from 'express';
 import serverRenderer from './middleware/renderer';
+
+import Locations from '../src/data/Locations';
+
 const path = require('path');
+const fetch = require('node-fetch');
 
 const app = express();
 
@@ -10,6 +14,16 @@ app
     path.resolve(__dirname, '..', 'build'),
     { maxAge: '30d' }
   ))
+  .get('/sitemap.xml', (req, res, next) => {
+    fetch(`${Locations.server}/ls13.xml`)
+      .then(result => result.text())
+      .then(text => 
+        res
+          .header('Content-Type', 'application/xml')
+          .send(text)
+      )
+      .catch(err => next(err));
+  })
   .use('*', serverRenderer) // Render non-static with the server
   .listen(3000, (error) => {
     if (error) {
