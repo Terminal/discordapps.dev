@@ -55,6 +55,7 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .use(express.static(path.join(__dirname, 'www-root')))
+  .use('/ls13.xml', sitemapRouter)
   .use('/', (req, res, next) => {
     res.locals.languagePrefix = 'en-GB';
     next();
@@ -67,7 +68,6 @@ app
       res.redirect(`${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
     }
   }, websiteRouter)
-  .use('/ls13.xml', sitemapRouter)
   .use((err, req, res, next) => {
     if (err) {
       res.json({
