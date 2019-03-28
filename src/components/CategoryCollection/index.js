@@ -10,6 +10,7 @@ import LoadingContentBox from '../LoadingContentBox';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
 import States from '../../data/States';
+import calculateBotScore from '../../helpers/calulateBotScore';
 
 class CategoryCollection extends Component {
   constructor(props) {
@@ -31,12 +32,10 @@ class CategoryCollection extends Component {
             bots: data.data
               .filter(bot => bot.state === 'approved')
               .filter(bot => bot.hide !== true)
-              .map(bot => {
-                if (bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === getMasterLanguage(this.props.intl.locale))) {
-                  bot.random += 10;
-                }
-                return bot;
-              })
+              .map(bot => calculateBotScore({
+                bot,
+                locale: this.props.intl.locale
+              }))
               .sort((a, b) => b.random - a.random)
           })
         }
