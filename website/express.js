@@ -12,6 +12,7 @@ const config = require('./config');
 const periodical = require('./static/periodical');
 
 const websiteRouter = require('./routers/website');
+const sitemapRouter = require('./routers/sitemap');
 
 const selectableStates = require('./data/states.json');
 const allowedCors = require('./data/cors.json');
@@ -66,6 +67,7 @@ app
       res.redirect(`${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
     }
   }, websiteRouter)
+  .use('/ls13.xml', sitemapRouter)
   .use((err, req, res, next) => {
     if (err) {
       res.json({
