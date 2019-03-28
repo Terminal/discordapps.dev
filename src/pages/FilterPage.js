@@ -13,7 +13,6 @@ import Welcome from '../components/Welcome';
 import Locations from '../data/Locations';
 import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
 import States from '../data/States';
-import { getMasterLanguage } from '../locales';
 import calculateBotScore from '../helpers/calulateBotScore';
 
 class FilterPage extends Component {
