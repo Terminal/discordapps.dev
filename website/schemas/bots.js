@@ -23,7 +23,7 @@ const schema = joi.object({
   }),
   images: joi.object({
     avatar: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null).error(new Error('errors.bots.avatar')),
-    cover: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null).error(new Error('errors.bots.cover')),
+    cover: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null).disallow(joi.ref('images.avatar')).error(new Error('errors.bots.cover')),
     preview: joi.array().items(joi.string().uri({ scheme: ['https'] }).max(2000)).max(20).error(new Error('errors.bots.preview'))
   }),
   videos: joi.object({
