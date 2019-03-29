@@ -13,25 +13,7 @@
 .tableContainer {
   overflow-x: auto;
   table {
-    margin-bottom: 0px;
-    @media screen and (max-width: 600px) {
-      border: 1px solid #303030;
-
-      thead {
-        display: table-header-group;
-      }
-
-      tr {
-        display: table-row;
-        border-color: inherit;
-      }
-
-      td {
-        font-weight: inherit;
-        border-bottom: unset;
-        display: table-cell;
-      }
-    }
+    margin-bottom: 0.5em;
   }
 }
 
