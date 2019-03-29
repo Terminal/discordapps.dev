@@ -33,6 +33,32 @@ yarn eject         | Eject from `create-react-app`. Don't do this.
 yarn webpack       | Pack the built version for use on the server. You must run `yarn build` before running
 yarn server        | Run the production server. You must run `yarn build` then `yarn webpack` before running
 
+## Set up Development environment
+**You will need:**
+- Node.js
+- Build tools
+  - Ubuntu: `sudo apt install build-essential`
+  - Windows: (as admin) `npm i -g windows-build-tools`
+- Yarn
+  - Ubuntu: `sudo npm i -g yarn`
+  - Windows: (as admin) `npm i -g yarn`
+
+**For building a server environment:**
+- Webpack
+  - Ubuntu: `sudo npm i -g webpack-cli`
+  - Windows: (as admin) `npm i -g webpack-cli`
+
+```bash
+// Clone the project
+git clone --recursive-submodules -j8 https://github.com/terminal/discordapps.dev.git
+
+// Install dependencies
+yarn
+
+// Start the project
+yarn start
+```
+
 <!--
 ## Sponsors
 This project is funded by people who keep the open source community alive.
