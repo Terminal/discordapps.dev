@@ -2,9 +2,9 @@
 Welcome to `Terminal.ink`!
 We're dedicated to making software accessable and open to greater audiences for free.
 
-There are 3 Discord Nitro Classics (as of writing) up for grabs, for any of the following languages
+There are 2 Discord Nitro Classics (as of writing) up for grabs, for any of the following languages
 
-`Arabic`, `Greek`, `Spanish`, `Estonian`, `Finnish`, `Fijian`, `Gaelic (Scottish)`, `Hindi`, `Italian`, `Japanese`, `Korean`, `Latin`, `Dutch`, `Norwegian`, `Portuguese`, `Russian`, `Swedish`, `Turkish`, `Vietnamese`, `Chinese (Simplified)`, `Chinese (Traditional)`
+`Arabic`, `Greek`, `Spanish`, `Estonian`, `Finnish`, `Fijian`, `Gaelic (Scottish)`, `Hindi`, `Italian`, `Japanese`, `Korean`, `Latin`, `Norwegian`, `Portuguese`, `Russian`, `Swedish`, `Turkish`, `Vietnamese`, `Chinese (Simplified)`, `Chinese (Traditional)`
 
 If a popular language is missing here, you may still be eligible.
 Please ask a `sudoer` at [discord](https://discord.gg/DwBCgta) for information about translating ls.terminal.ink.
@@ -67,3 +67,7 @@ Follow the instructions on [setup](/docs/setup.md)
 
 ### 4. Send a pull request
 Go to GitHub and initiate a pull request.
+
+# Tools
+- [Languages Comparison Tool](https://discordapps.dev/en-GB/languagescomparisontool)
+  - Compare English (United Kingdom) with your language to see what keys are missing
