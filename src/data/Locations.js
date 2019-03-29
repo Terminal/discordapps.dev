@@ -7,6 +7,7 @@ export default {
   sourceDependencies: 'https://github.com/Terminal/ls.terminal.ink/network/dependencies',
   sourceLicence: 'https://github.com/Terminal/ls.terminal.ink/blob/ls13/LICENCE',
   sourceIssues: 'https://github.com/Terminal/ls.terminal.ink/issues',
+  sourceTranslations: 'https://github.com/Terminal/discordapps.dev/tree/ls13/src/locales',
   wiki: 'https://github.com/Terminal/ls.terminal.ink/wiki',
   tutorials: 'https://github.com/Terminal/ls.terminal.ink/wiki/Tutorials-Home',
   termsAndConditions: 'https://github.com/Terminal/ls.terminal.ink/wiki/Terms-and-Conditions',
