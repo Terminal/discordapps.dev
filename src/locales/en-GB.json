@@ -395,7 +395,7 @@
   },
   "states": {
     "approved": "Approved",
-    "denied": "Denied",
+    "denied": "Changes required",
     "queue": "In Queue",
     "banned": "Banned"
   },
