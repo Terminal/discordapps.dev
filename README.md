@@ -1,7 +1,15 @@
 # Discord Apps Marketplace
 _curated by Terminal.ink_
 
+Discord Apps Marketplace is the next generation in Bot Listing technology,
+utilising the latest web technology for the bot list of tomorrow.
+
 ## Features
+### Progressive Web Application
+![pwa](.github/pwa.png)
+Install Discord Apps Marketplace in supported Google Chrome browsers.
+Service worker speeds up page loads for the fastest experience.
+
 ### Multi Language support
 ![i18n](.github/languages.gif)
 Present your ideas in more than just English.
@@ -17,9 +25,9 @@ Add multiple prefixes with available flags for if the bot can be mentioned or cu
 ## Development Previews
 Location                                                          | Description
 ----------------------------------------------------------------- | -----------------
-[netlify](https://twink.netlify.com/)                             | In case you need the latest of the latest. You must always navigate back to `/` on refresh
-[SSR Rendering](https://discordapps.dev/)                         | Server side rendered. Usually the newest.
-[Fog Creek Software's Glitch](https://discordapps-dev.glitch.me/) | I'm not even going to be sorry for this.
+[Discord Apps Marketplace](https://discordapps.dev/)              | Production instance
+[netlify](https://twink.netlify.com/)                             | Development instance - Always latest commit
+[Fog Creek Software's Glitch](https://discordapps-dev.glitch.me/) | Glitch is a great website
 [Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8)         | Not related. Stan LOONA.
 
 ## Command Information
