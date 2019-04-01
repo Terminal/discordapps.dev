@@ -1,0 +1,439 @@
+{
+  "categories": {
+    "fun": "Fun, hon hon 🥖",
+    "games": "Games, hon hon 🥖",
+    "entertainment": "Entertainment, hon hon 🥖",
+    "productivity": "Productivity, hon hon 🥖",
+    "education": "Education, hon hon 🥖",
+    "image": "Image Manipulation, hon hon 🥖",
+    "news": "News, hon hon 🥖",
+    "music": "Music, hon hon 🥖",
+    "moderation": "Moderation, hon hon 🥖",
+    "utility": "Utility, hon hon 🥖",
+    "notifications": "Notifications, hon hon 🥖",
+    "other": "Miscellaneous, hon hon 🥖"
+  },
+  "alt": {
+    "avatar": "Avatar for {name}, hon hon 🥖"
+  },
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc., hon hon 🥖",
+  "errors": {
+    "bots": {
+      "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric, hon hon 🥖",
+      "category": "You must select a category for your bot, hon hon 🥖",
+      "customisable": "The customisability of the prefix must be either ticked, or unticked, hon hon 🥖",
+      "contents": "You must select at least one language for your bot to be in. Click a language, and then click \"Add a language\", hon hon 🥖",
+      "description": "The short description must have a length between 10 and 100, hon hon 🥖",
+      "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account., hon hon 🥖",
+      "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository., hon hon 🥖",
+      "id": "The Bot ID needs to be filled out, and numeric, hon hon 🥖",
+      "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link, hon hon 🥖",
+      "website": "The Website URL needs to be a valid HTTPS link, hon hon 🥖",
+      "languages": "You must add a single language. Click the language you want your bot page to be in, and select the 'Add a language' button, hon hon 🥖",
+      "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked, hon hon 🥖",
+      "name": "The bot must have a name of length between 4 and 32., hon hon 🥖",
+      "nsfw": "The NSFW status must be either ticked, or unticked, hon hon 🥖",
+      "oauth": "The OAuth ID needs to be numeric, hon hon 🥖",
+      "page": "The long description must have a length between 20 and 10000, hon hon 🥖",
+      "prefix": "You must have at least 1 prefix, of max length 10., hon hon 🥖",
+      "support": "The Support URL needs to be a valid HTTPS link, hon hon 🥖",
+      "exists": "The bot already exists in the database, and you do not have permission to overwrite this., hon hon 🥖",
+      "notabot": "The ID provided was not a bot account., hon hon 🥖",
+      "notfound": "The ID provided was not found by Discord., hon hon 🥖",
+      "add_success": "Added bot to the bot list queue., hon hon 🥖",
+      "edit_success": "Edited bot successfully., hon hon 🥖",
+      "count": "The guild count for a bot must be between 0 and 5000000 servers, hon hon 🥖",
+      "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters, hon hon 🥖",
+      "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the cover URL may not be identical to the avatar URL., hon hon 🥖",
+      "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links, hon hon 🥖",
+      "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead., hon hon 🥖",
+      "youtube": "The YouTube ID needs to look like an ID, hon hon 🥖",
+      "youku": "The Alibaba YOUKU ID needs to look like an ID, hon hon 🥖"
+    },
+    "permissions": {
+      "login": "You are not logged in, hon hon 🥖",
+      "denied": "You do not have the adequate permissions to access this, hon hon 🥖",
+      "banned": "You have been denied access to this resource, hon hon 🥖"
+    },
+    "reviews": {
+      "rating": "Please select a rating before continuing, hon hon 🥖",
+      "text": "Please enter why you gave this number of stars for this bot., hon hon 🥖",
+      "self": "You cannot review your own bot!, hon hon 🥖"
+    },
+    "api": {
+      "400": "You are unauthorised to use this endpoint. Check your token is correct., hon hon 🥖",
+      "404": "This endpoint was not found, or the method used to request this page is not compatible., hon hon 🥖",
+      "500": "An internal server error occured., hon hon 🥖",
+      "test": "An error was thrown for development purposes., hon hon 🥖",
+      "no_bot": "Bot not found, hon hon 🥖",
+      "idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support, hon hon 🥖"
+    },
+    "website": {
+      "noscript": "JavaScript must be enabled to use this website effectively., hon hon 🥖"
+    }
+  },
+  "footer": {
+    "attribution": "Attribution, hon hon 🥖",
+    "licence": "GNU AGPLv3, hon hon 🥖",
+    "source": "GitHub, hon hon 🥖",
+    "discord": "Discord Server, hon hon 🥖",
+    "terminal": "Terminal.ink, hon hon 🥖",
+    "terms": "Terms and Conditions, hon hon 🥖",
+    "docs": "Docs, hon hon 🥖"
+  },
+  "forms": {
+    "select": "Please select..., hon hon 🥖",
+    "submit": "Submit, hon hon 🥖",
+    "wait": "Please wait..., hon hon 🥖"
+  },
+  "intro": {
+    "search": "What are you looking for?, hon hon 🥖",
+    "docs": "Documentation, hon hon 🥖"
+  },
+  "locales": {
+    "ar": "Arabic, hon hon 🥖",
+    "da": "Danish, hon hon 🥖",
+    "de": "German, hon hon 🥖",
+    "el": "Greek, hon hon 🥖",
+    "en-GB": "English (United Kingdom), hon hon 🥖",
+    "en-US": "English (United States), hon hon 🥖",
+    "es": "Spanish, hon hon 🥖",
+    "et": "Estonian, hon hon 🥖",
+    "fi": "Finnish, hon hon 🥖",
+    "fj": "Fijian, hon hon 🥖",
+    "fr": "French, hon hon 🥖",
+    "gd": "Gaelic (Scottish), hon hon 🥖",
+    "hi": "Hindi, hon hon 🥖",
+    "he": "Hebrew, hon hon 🥖",
+    "it": "Italian, hon hon 🥖",
+    "ja": "Japanese, hon hon 🥖",
+    "ko": "Korean, hon hon 🥖",
+    "la": "Latin, hon hon 🥖",
+    "nl": "Dutch, hon hon 🥖",
+    "no": "Norwegian, hon hon 🥖",
+    "pl": "Polish, hon hon 🥖",
+    "pt": "Portuguese, hon hon 🥖",
+    "ru": "Russian, hon hon 🥖",
+    "sv": "Swedish, hon hon 🥖",
+    "tr": "Turkish, hon hon 🥖",
+    "vi": "Vietnamese, hon hon 🥖",
+    "zh-cn": "Chinese (Simplified), hon hon 🥖",
+    "zh-tw": "Chinese (Traditional), hon hon 🥖"
+  },
+  "pages": {
+    "bots": {
+      "backgroundAlt": "The logo for discordapps.dev, hon hon 🥖",
+      "description": "An application store for Discord bots, hon hon 🥖",
+      "inMyLanguage": "Bots in my Language, hon hon 🥖",
+      "invite": "Add this bot, hon hon 🥖",
+      "support": "Technical Support, hon hon 🥖",
+      "website": "Website, hon hon 🥖",
+      "shortname": "Discord Bots, hon hon 🥖",
+      "mentionable": "Mentionable, hon hon 🥖",
+      "customisable": "Customisable, hon hon 🥖",
+      "delete": "Delete, hon hon 🥖",
+      "reallyDelete": "Sure?, hon hon 🥖",
+      "edit": "Edit, hon hon 🥖",
+      "configure": "Configure, hon hon 🥖",
+      "github": "View on GitHub, hon hon 🥖",
+      "approve": "Approve, hon hon 🥖",
+      "deny": "Deny, hon hon 🥖",
+      "prefix": "{count, plural, one {Prefix:} other {Prefixes:}}, hon hon 🥖",
+      "adverts": "Contains adverts and features locked behind other services, hon hon 🥖",
+      "inAppPurchases": "Has in-app purchases, hon hon 🥖",
+      "nsfw": "NSFW, hon hon 🥖",
+      "offeredby": "Offered By:, hon hon 🥖",
+      "modified": "Last modified: { date }, hon hon 🥖",
+      "created": "First published: { date }, hon hon 🥖",
+      "category": "Category: { category }, hon hon 🥖",
+      "initiateCategoryFilter": "Categories, hon hon 🥖",
+      "search": "Search, hon hon 🥖",
+      "count": "Installed in {guilds, plural, one {a server} other {{guilds} servers}}, hon hon 🥖"
+    },
+    "configuration": {
+      "token": {
+        "title": "Token, hon hon 🥖",
+        "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints., hon hon 🥖",
+        "docs": "View Documentation, hon hon 🥖"
+      },
+      "renew": "Renew Token, hon hon 🥖",
+      "hide": {
+        "title": "Hide bot, hon hon 🥖",
+        "description": "You can hide your bot from the front page of the website, in case you don't need to be there., hon hon 🥖",
+        "disable": "Unhide, hon hon 🥖",
+        "enable": "Hide, hon hon 🥖"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "placeholder": "The ID used in the OAuth link., hon hon 🥖",
+        "title": "OAuth ID, hon hon 🥖"
+      },
+      "authors": {
+        "placeholder": "ID of a single owner, hon hon 🥖",
+        "title": "Bot Authors, hon hon 🥖",
+        "add": "Add another, hon hon 🥖",
+        "delete": "Remove author, hon hon 🥖"
+      },
+      "basicinfo": "Basic Information, hon hon 🥖",
+      "nsfw": {
+        "title": "Not Safe For Work, hon hon 🥖"
+      },
+      "support": {
+        "placeholder": "Something like: https://discord.gg/8uC6aKZ, hon hon 🥖",
+        "small": "Leave this field empty if you don't like helping people, hon hon 🥖",
+        "title": "Support URL, hon hon 🥖"
+      },
+      "category": {
+        "title": "Category, hon hon 🥖",
+        "placeholder": "Select a category, hon hon 🥖"
+      },
+      "client_id": {
+        "placeholder": "The ID of the bot user, hon hon 🥖",
+        "title": "Bot ID, hon hon 🥖"
+      },
+      "customisable": {
+        "title": "Customisable prefix, hon hon 🥖"
+      },
+      "description": {
+        "title": "Short Descripion, hon hon 🥖",
+        "placeholder": "Enter a shorter description, shown on the home page., hon hon 🥖"
+      },
+      "github_owner": {
+        "placeholder": "Something like: ry00001, hon hon 🥖",
+        "title": "GitHub User / Organisation, hon hon 🥖"
+      },
+      "github_repo": {
+        "placeholder": "Something like: Tuxedo, hon hon 🥖",
+        "title": "GitHub Repository, hon hon 🥖"
+      },
+      "information": "Your Bot Page, hon hon 🥖",
+      "invite": {
+        "title": "Invite URL, hon hon 🥖",
+        "placeholder": "Enter a link to invite your bot, hon hon 🥖"
+      },
+      "languages": {
+        "modal": "Write your bot page in many supported languages. Select a language, then click the \"Add a language\" button to the right., hon hon 🥖",
+        "add": "Add a language, hon hon 🥖",
+        "delete": "Delete this language, hon hon 🥖"
+      },
+      "leave": "Are you sure you want to leave? Unmodified changes will not be saved., hon hon 🥖",
+      "mentionable": {
+        "title": "Can mention to trigger bot, hon hon 🥖"
+      },
+      "name": {
+        "title": "Name, hon hon 🥖",
+        "placeholder": "Enter the name of the bot., hon hon 🥖"
+      },
+      "page": {
+        "title": "Extended Description, hon hon 🥖",
+        "placeholder": "Enter useful information about your bot, like commands, features and updates., hon hon 🥖"
+      },
+      "prefix": {
+        "placeholder": "A single prefix, hon hon 🥖",
+        "title": "Prefix, hon hon 🥖",
+        "add": "Add another prefix, hon hon 🥖",
+        "delete": "Remove prefix, hon hon 🥖"
+      },
+      "flags": {
+        "title": "Funding and Advertising Decleration, hon hon 🥖",
+        "inAppPurchases": {
+          "title": "In App Purchases, hon hon 🥖",
+          "small": "Tick this box if you have features behind a paywall, such as donations, hon hon 🥖"
+        },
+        "adverts": {
+          "title": "Advertisments, hon hon 🥖",
+          "small": "Tick this box if your bot links to other bot lists, and/or have features that are locked behind other services/bot lists, hon hon 🥖"
+        }
+      },
+      "images": {
+        "title": "Appearance, hon hon 🥖",
+        "avatar": {
+          "title": "Avatar URL, hon hon 🥖",
+          "placeholder": "A HTTPS link to an avatar image, hon hon 🥖"
+        },
+        "cover": {
+          "title": "Cover Image, hon hon 🥖",
+          "placeholder": "A HTTPS link to a large image, hon hon 🥖"
+        },
+        "preview": {
+          "title": "Preview Images, hon hon 🥖",
+          "placeholder": "A HTTPS link to a single screenshot, hon hon 🥖",
+          "add": "Add another image, hon hon 🥖",
+          "delete": "Delete, hon hon 🥖"
+        }
+      },
+      "youtube": {
+        "title": "YouTube ID, hon hon 🥖",
+        "placeholder": "An ID to a YouTube video, hon hon 🥖"
+      },
+      "youku": {
+        "title": "Alibaba YOUKU ID, hon hon 🥖",
+        "placeholder": "An ID to a YOUKU video, hon hon 🥖"
+      },
+      "website": {
+        "title": "Website, hon hon 🥖",
+        "placeholder": "A HTTPS link to your website, hon hon 🥖"
+      },
+      "sourcecode": "Source Code, hon hon 🥖",
+      "title": "Add or Edit an Application, hon hon 🥖",
+      "triggermethods": "Trigger Methods, hon hon 🥖",
+      "deleteLanguage": "Delete a language, hon hon 🥖",
+      "required": "Fields marked with * are required., hon hon 🥖",
+      "updates": "It is highly recommended you join the Terminal.ink Discord Server to view service updates, view your bot verification status, and also recieve direct messages from staff about your application., hon hon 🥖",
+      "discord": "Join Terminal.ink, hon hon 🥖"
+    },
+    "error": {
+      "notfound": "Page not found..., hon hon 🥖",
+      "server": "Internal Server Error, hon hon 🥖",
+      "github": "Report this error at GitHub.com, hon hon 🥖",
+      "report": "Thanks for taking the time to report this error. Please type in what you were doing before the incident., hon hon 🥖",
+      "snarky": "This error was going to happen anyway., hon hon 🥖"
+    },
+    "list": {
+      "empty": "There are no bots, hon hon 🥖"
+    },
+    "locale": {
+      "choose": "Please select a language., hon hon 🥖",
+      "pleasehelp": "Are you a good translator? Click here., hon hon 🥖"
+    },
+    "langdev": {
+      "title": "Look at all language keys, hon hon 🥖",
+      "compare": "Compare selected languages, hon hon 🥖",
+      "key": "JSON Key, hon hon 🥖",
+      "notfound": "Key not found!, hon hon 🥖"
+    },
+    "reviews": {
+      "title": "Reviews, hon hon 🥖",
+      "write": "Write a review, hon hon 🥖",
+      "placeholder": "Please enter a reason for your review., hon hon 🥖",
+      "delete": "Delete review, hon hon 🥖"
+    },
+    "admin": {
+      "title": "Administration Console, hon hon 🥖"
+    },
+    "filter": {
+      "authors": {
+        "placeholder": "ID of a single owner, hon hon 🥖",
+        "title": "Bot Authors, hon hon 🥖",
+        "add": "Add another, hon hon 🥖",
+        "delete": "Remove author, hon hon 🥖"
+      },
+      "category": {
+        "title": "Category, hon hon 🥖",
+        "placeholder": "All categories, hon hon 🥖"
+      },
+      "query": {
+        "title": "Search, hon hon 🥖",
+        "placeholder": "Enter text, hon hon 🥖"
+      },
+      "nsfw": {
+        "title": "Not Safe For Work, hon hon 🥖",
+        "placeholder": "Do not filter, hon hon 🥖",
+        "nsfw": "Not Safe for Work, hon hon 🥖",
+        "sfw": "Safe For Work, hon hon 🥖"
+      }
+    },
+    "game": {
+      "title": "Terminal.ink Game, hon hon 🥖",
+      "description": "Click the button to get points!, hon hon 🥖",
+      "leave": "Are you sure you want to leave? You will lose all your points., hon hon 🥖",
+      "score": "You have {kliksphilip, plural, =0 {no points :heejintears:} one {1 point} other {{kliksphilip} points}}., hon hon 🥖"
+    }
+  },
+  "navbar": {
+    "add": "Add an app, hon hon 🥖",
+    "login": "Login, hon hon 🥖",
+    "logout": "Logout, hon hon 🥖",
+    "admin": "Admin, hon hon 🥖",
+    "languages": "Languages, hon hon 🥖",
+    "search": "Search for bots, hon hon 🥖",
+    "user": "My Bots, hon hon 🥖"
+  },
+  "pagination": {
+    "page": {
+      "prev": "Previous, hon hon 🥖",
+      "next": "Next Page, hon hon 🥖"
+    },
+    "currentPage": "Page { number }, hon hon 🥖",
+    "reviews": "User reviews for '{{ name }}' - Page { number }, hon hon 🥖"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Add Reactions, hon hon 🥖",
+    "ADMINISTRATOR": "Administrator, hon hon 🥖",
+    "ATTACH_FILES": "Attach Files, hon hon 🥖",
+    "BAN_MEMBERS": "Ban Members, hon hon 🥖",
+    "CHANGE_NICKNAME": "Change Nickname, hon hon 🥖",
+    "CONNECT": "Connect, hon hon 🥖",
+    "CREATE_INSTANT_INVITE": "Create Instant Invite, hon hon 🥖",
+    "DEAFEN_MEMBERS": "Deafen Members, hon hon 🥖",
+    "EMBED_LINKS": "Embed Links, hon hon 🥖",
+    "KICK_MEMBERS": "Kick Members, hon hon 🥖",
+    "MANAGE_CHANNELS": "Manage Channels, hon hon 🥖",
+    "MANAGE_EMOJIS": "Manage Emojis, hon hon 🥖",
+    "MANAGE_GUILD": "Manage Server, hon hon 🥖",
+    "MANAGE_MESSAGES": "Manage Messages, hon hon 🥖",
+    "MANAGE_NICKNAMES": "Manage Nicknames, hon hon 🥖",
+    "MANAGE_ROLES": "Manage Roles, hon hon 🥖",
+    "MANAGE_WEBHOOKS": "Manage Webhooks, hon hon 🥖",
+    "MENTION_EVERYONE": "Mention Everyone, hon hon 🥖",
+    "MOVE_MEMBERS": "Move Members, hon hon 🥖",
+    "MUTE_MEMBERS": "Mute Members, hon hon 🥖",
+    "READ_MESSAGE_HISTORY": "Read Message History, hon hon 🥖",
+    "READ_MESSAGES": "Read Messages, hon hon 🥖",
+    "SEND_MESSAGES": "Send Messages, hon hon 🥖",
+    "SEND_TTS_MESSAGES": "Send TTS Messages, hon hon 🥖",
+    "SPEAK": "Speak, hon hon 🥖",
+    "USE_EXTERNAL_EMOJIS": "Use External Emojis, hon hon 🥖",
+    "USE_VAD": "Use Voice Activity, hon hon 🥖",
+    "VIEW_AUDIT_LOG": "View Audit Log, hon hon 🥖"
+  },
+  "site": {
+    "name": "Discord Apps Marketplace, hon hon 🥖",
+    "subheading": "Find bots to enhance your server, hon hon 🥖",
+    "description": "discordapps.dev is an application store for Discord bots. Install applications for music, news, moderation and more for your server., hon hon 🥖"
+  },
+  "states": {
+    "approved": "Approved, hon hon 🥖",
+    "denied": "Changes required, hon hon 🥖",
+    "queue": "In Queue, hon hon 🥖",
+    "banned": "Banned, hon hon 🥖"
+  },
+  "components": {
+    "pleaseaddyourbotpleasethanks": {
+      "title": "Get started with Discord Bots, hon hon 🥖",
+      "innovate": {
+        "heading": "Start Innovating, hon hon 🥖",
+        "content": "Learn to create your own Discord application for your own personal server, hon hon 🥖"
+      },
+      "add": {
+        "heading": "Add your bot, hon hon 🥖",
+        "content": "Share your creation to the world; Let others enhance their server experience with your applications, hon hon 🥖"
+      }
+    },
+    "categorycollection": {
+      "morebots": "See more, hon hon 🥖"
+    },
+    "botpagecontentbox": {
+      "toggle": "Toggle arrow, hon hon 🥖",
+      "more": "View more, hon hon 🥖",
+      "less": "View less, hon hon 🥖"
+    },
+    "helpusimprove": {
+      "title": "Help us, hon hon 🥖",
+      "text": "Please comment with feedback on this website via the issues tab on GitHub., hon hon 🥖",
+      "issues": "GitHub Issues, hon hon 🥖"
+    },
+    "botpagesetstatebox": {
+      "state": {
+        "title": "Set state, hon hon 🥖",
+        "placeholder": "Please select a state, hon hon 🥖"
+      },
+      "reason": {
+        "title": "Reason, hon hon 🥖",
+        "placeholder": "Reason for changing the state. (optional), hon hon 🥖"
+      },
+      "submit": "Update State, hon hon 🥖"
+    }
+  }
+}
