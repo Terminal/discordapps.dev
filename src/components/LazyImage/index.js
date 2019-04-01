@@ -18,7 +18,6 @@ class LazyImage extends Component {
     });
   }
   render() {
-    console.log(this.state.loaded)
     return (
       <img {...this.props} src={this.props.src} className={`${styles.image} ${this.state.loaded && styles.loaded} ${this.props.className}`} alt={this.props.alt} ref={this.image} onLoad={this.load}></img>
     );
