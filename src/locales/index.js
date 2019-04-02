@@ -8,7 +8,6 @@ import nlData from 'react-intl/locale-data/nl';
 import daLocale from './da.json';
 import deLocale from './de.json';
 import enLocale from './en-GB.json';
-import baguetteLocale from './x-april-fools-baguette.json';
 import enUSLocale from './en-US.json';
 import frLocale from './fr.json';
 import plLocale from './pl.json';
