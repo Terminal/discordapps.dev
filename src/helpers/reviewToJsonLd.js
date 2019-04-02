@@ -40,6 +40,8 @@ const reviewToJsonLd = (contents, item) => {
         }
       });
     }
+  } else {
+    return null;
   }
 
   return JSON.stringify(template);

@@ -56,6 +56,8 @@ class BotPage extends Component {
 
     const contents = Localise(bot.contents, this.props.intl.locale);
 
+    const reviewJSON = reviewToJsonLd(contents, bot);
+
     return (
       <Layout match={this.props.match}>
         <Helmet>
@@ -64,9 +66,12 @@ class BotPage extends Component {
           <meta property="og:description" content={contents.description}/>
           <meta name="description" content={contents.description}/>
           <meta property="og:image" content={`${Locations.server}${bot.cachedImages.avatar}`} />
-          <script type="application/ld+json">
-            {reviewToJsonLd(contents, bot)}
-          </script>
+          {
+            reviewJSON &&
+              <script type="application/ld+json">
+                {reviewJSON}
+              </script>
+          }
         </Helmet>
         { 
           bot.cachedImages.cover ?
