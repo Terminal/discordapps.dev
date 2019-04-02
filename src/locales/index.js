@@ -58,16 +58,6 @@ const languages = [
     botPageLanguage: true,
   },
   {
-    code: 'en-baguette',
-    flag: 'twa-baguette-bread',
-    master: 'en-GB',
-    top: true,
-    priority: 1.5,
-    translations: baguetteLocale,
-    reactIntl: enData,
-    botPageLanguage: false,
-  },
-  {
     code: 'en-US',
     flag: 'twa-us',
     master: 'en-GB',

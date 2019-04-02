@@ -5,6 +5,11 @@ const redirects = [
     status: 301,
     to: () => '/en-GB'
   }, {
+    path: '/en-baguette',
+    exact: false,
+    status: 301,
+    to: () => '/en-GB'
+  }, {
     path: '/:locale/bots',
     exact: true,
     status: 301,
