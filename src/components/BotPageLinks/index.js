@@ -31,7 +31,7 @@ class BotPageLinks extends Component {
           <FlexColumns columns={6}>
             <p>
               <FormattedMessage id="pages.bots.created" values={{
-                date: (new Date(bot.edited)).toLocaleDateString(this.props.intl.locale, DateFormat)
+                date: (new Date(bot.created)).toLocaleDateString(this.props.intl.locale, DateFormat)
               }} /><br />
               <FormattedMessage id="pages.bots.modified" values={{
                 date: (new Date(bot.edited)).toLocaleDateString(this.props.intl.locale, DateFormat)
