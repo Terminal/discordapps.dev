@@ -4,6 +4,7 @@ import EditBot from "../pages/EditBot";
 import FilterPage from "../pages/FilterPage";
 import Game from "../pages/Game";
 import Home from "../pages/Home";
+import BotsHome from "../pages/BotsHome";
 import Locale from "../pages/Locale";
 import LogOut from "../pages/LogOut";
 import NotFound from "../pages/NotFound";
@@ -25,6 +26,11 @@ const routes = [
     path: '/:locale/auth/logout',
     exact: true,
     component: LogOut,
+    status: 200,
+  }, {
+    path: '/:locale/bots',
+    exact: true,
+    component: BotsHome,
     status: 200,
   }, {
     path: '/:locale/bots/add',

@@ -10,15 +10,15 @@ const redirects = [
     status: 301,
     to: () => '/en-GB'
   }, {
-    path: '/:locale/bots',
-    exact: true,
+    path: '/:locale/boats',
+    exact: false,
     status: 301,
-    to: ({match}) => `/${match.params.locale}`
+    to: ({match}) => `/${match.params.locale}/bots`
   }, {
     path: '/:locale/bot',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}`
+    to: ({match}) => `/${match.params.locale}/bots`
   }, {
     path: '/:locale/bot/:id',
     exact: true,
