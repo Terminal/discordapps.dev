@@ -80,14 +80,17 @@ class BotPageInfoBox extends Component {
         </FlexContainer>
         <FlexColumns>
           <FlexColumns columns={8}>
-            <div>
-              <FormattedMessage id="pages.bots.prefix" values={{
-                count: bot.trigger.prefix.length
-              }} />
-              {bot.trigger.prefix.map((prefix, index) => <PrefixLabel key={index}>{prefix}</PrefixLabel>)}
-              {bot.trigger.customisable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.customisable" /></PrefixLabel> : null}
-              {bot.trigger.mentionable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.mentionable" /></PrefixLabel> : null}
-            </div>
+            {
+              bot.trigger &&
+              <div>
+                <FormattedMessage id="pages.bots.prefix" values={{
+                  count: bot.trigger.prefix.length
+                }} />
+                {bot.trigger.prefix.map((prefix, index) => <PrefixLabel key={index}>{prefix}</PrefixLabel>)}
+                {bot.trigger.customisable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.customisable" /></PrefixLabel> : null}
+                {bot.trigger.mentionable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.mentionable" /></PrefixLabel> : null}
+              </div>
+            }
             <div className={styles.links}>
               {bot.support ? <a href={bot.support}><FormattedMessage id="pages.bots.support" /></a> : null}
               {bot.website ? <a href={bot.website}><FormattedMessage id="pages.bots.website" /></a> : null}

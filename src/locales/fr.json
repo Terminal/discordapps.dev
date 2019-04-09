@@ -15,7 +15,7 @@
   },
   "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord est une marque appartenant Discord Inc.\nTraduction en français par iDroid27, Bowser65, blue et Lionir.",
   "errors": {
-    "bots": {
+    "apps": {
       "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
       "category": "Vous devez sélectionner une catégorie pour votre bot",
       "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",

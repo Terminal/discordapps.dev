@@ -19,7 +19,7 @@ function receiveCategories(json) {
 function fetchCategories() {
   return (dispatch) => {
     dispatch(requestCategories());
-    return fetch(`${Locations.server}/reactjs/v1/categories`, {
+    return fetch(`${Locations.server}/reactjs/v2/categories`, {
       credentials: 'include'
     })
       .then(res => res.json())

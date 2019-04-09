@@ -30,7 +30,7 @@ function recieveBot(json, status, id) {
 function fetchBot(id) {
   return (dispatch) => {
     dispatch(requestBot(id));
-    return fetch(`${Locations.server}/reactjs/v1/bots/id/${id}`, {
+    return fetch(`${Locations.server}/reactjs/v2/apps/id/${id}`, {
       credentials: 'include'
     })
       .then(res => {

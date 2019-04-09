@@ -8,9 +8,10 @@ import LazyImage from '../LazyImage';
 class BotCard extends Component {
   render() {
     const { bot, contents } = this.props
+    const type = bot.type === 'bot' ? 'bots' : bot.type;
     return (
       <div className={styles.card}>
-        <LocalisedHyperlink to={`/bots/${bot.id}`} className={styles.link}>
+        <LocalisedHyperlink to={`/${type}/${bot.id}`} className={styles.link}>
           <FormattedMessage id="alt.avatar" values={{name: contents.name}}>
             {(message) => (
               <LazyImage className={styles.avatar} alt={message} src={`${Locations.server}${bot.cachedImages.avatar}` || Locations.logo} />

@@ -15,7 +15,7 @@
   },
   "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
   "errors": {
-    "bots": {
+    "apps": {
       "authors": "Du skal have mindst 1 forfatter til botten, alle forfatter-ID'er skal være numeriske",
       "category": "Du skal vælge en kategori for din bot",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",

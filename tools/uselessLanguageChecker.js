@@ -22,8 +22,8 @@ const walkSync = (dir, filelist = []) => {
 };
 
 let keys = {};
-const locales = ['da', 'de', 'en-GB', 'en-US', 'fr', 'pl', 'zh-cn']
-  .map((locale) => {
+['da', 'de', 'en-GB', 'en-US', 'fr', 'pl', 'zh-cn']
+  .forEach((locale) => {
     const data = require(`../src/locales/${locale}.json`);
     Object.keys(flatten(data)).forEach(key => keys[key] = false);
     return {
@@ -46,9 +46,8 @@ const unused = [];
 
 Object.keys(keys)
   .sort((a, b) => a.localeCompare(b))
-  .map(key => `- \`${key}\`\n`)
   .forEach((key) => {
-    if (!keys[key]) unused.push(key);
+    if (!keys[key]) unused.push(`- \`${key}\`\n`);
   })
 
 fs.writeFileSync('unused.md', note + unused.join(''));

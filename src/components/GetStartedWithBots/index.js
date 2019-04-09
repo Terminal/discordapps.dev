@@ -34,14 +34,9 @@ class PleaseAddYourBotPleaseThanks extends Component {
           </Flex>
           <Flex columns={4}>
             <h5>
-              {this.props.auth.data === null ?
-                <a href={`${Locations.server}/auth/site?to=${encodeURIComponent(href)}`}>
-                  <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.heading" />
-                </a> :
-                <LocalisedHyperlink to="/bots/add">
-                  <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.heading" />
-                </LocalisedHyperlink>
-              }
+              <a href={Locations.add}>
+                <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.heading" />
+              </a> 
             </h5>
               <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.content" />
           </Flex>

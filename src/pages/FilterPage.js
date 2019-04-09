@@ -44,7 +44,7 @@ class FilterPage extends Component {
     if (this.state.timeout) clearTimeout(this.state.timeout);
   }
   search(searchQuery) {
-    fetch(`${Locations.server}/reactjs/v1/bots/search${searchQuery}`)
+    fetch(`${Locations.server}/reactjs/v2/apps/search${searchQuery}`)
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {

@@ -18,7 +18,7 @@
   },
   "copyright": "Auteursrecht 2017 - 2019, Terminal.ink; Discord is een handelsmerk van Discord Inc.",
   "errors": {
-    "bots": {
+    "apps": {
       "authors": "De bot moet op zijn minst 1 auteur hebben, en ID's van de auteurs moeten numeriek zijn",
       "category": "Je moet een categorie kiezen voor de bot",
       "customisable": "Aanpasbaarheid van de prefix moet aangevinkt, of niet aangevinkt zijn",

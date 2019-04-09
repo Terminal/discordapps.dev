@@ -1,4 +1,4 @@
-import BotPage from "../pages/BotPage";
+import AppPage from "../pages/AppPage";
 import ConfigurePage from "../pages/ConfigurePage";
 import EditBot from "../pages/EditBot";
 import FilterPage from "../pages/FilterPage";
@@ -10,6 +10,8 @@ import LogOut from "../pages/LogOut";
 import NotFound from "../pages/NotFound";
 import AdminPage from "../pages/AdminPage";
 import LanguagesComparisonPage from "../pages/LanguagesComparisonPage";
+import RpcsPage from "../pages/RpcsPage";
+import EditRpc from "../pages/EditRpc";
 
 const routes = [
   {
@@ -33,9 +35,19 @@ const routes = [
     component: BotsHome,
     status: 200,
   }, {
+    path: '/:locale/rpc',
+    exact: true,
+    component: RpcsPage,
+    status: 200,
+  }, {
     path: '/:locale/bots/add',
     exact: true,
     component: EditBot,
+    status: 200,
+  }, {
+    path: '/:locale/rpc/add',
+    exact: true,
+    component: EditRpc,
     status: 200,
   }, {
     path: '/:locale/bots/filter',
@@ -53,9 +65,14 @@ const routes = [
     component: EditBot,
     status: 200,
   }, {
+    path: '/:locale/rpc/:id/edit',
+    exact: true,
+    component: EditRpc,
+    status: 200,
+  }, {
     path: '/:locale/bots/:id',
     exact: true,
-    component: BotPage,
+    component: AppPage,
     status: 200,
   }, {
     path: '/:locale/locale',

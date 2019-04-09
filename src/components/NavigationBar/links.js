@@ -42,6 +42,13 @@ class NavbarLinks extends Component {
                 </LocalisedHyperlink>
               )}
             </FormattedMessage>
+            <FormattedMessage id="navbar.addRpc">
+              {message => (
+                <LocalisedHyperlink aria-label={message} to="/rpc/add">
+                  {message}
+                </LocalisedHyperlink>
+              )}
+            </FormattedMessage>
             <FormattedMessage id="navbar.user">
               {message => (
                 <LocalisedHyperlink aria-label={message} to="/bots/filter" query={{
