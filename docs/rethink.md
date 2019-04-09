@@ -3,7 +3,7 @@
 ## Bots Page Query
 
 ```js
-r.table('bots')
+r.table('apps')
   .get('473861594749861909')
   .merge(bot => ({
     authors: r.table('users').getAll(r.args(bot('authors'))).coerceTo('array'),

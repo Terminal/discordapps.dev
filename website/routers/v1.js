@@ -7,7 +7,10 @@ const router = express.Router();
 
 router
   .get('/bots', (req, res, next) => {
-    r.table('bots')
+    r.table('apps')
+      .filter({
+        type: 'bot'
+      })
       .without('token')
       .then((bots) => {
         res.json(bots);
@@ -17,7 +20,10 @@ router
       });
   })
   .get('/bots/:id', checkParamsLength, (req, res, next) => {
-    r.table('bots')
+    r.table('apps')
+      .filter({
+        type: 'bot'
+      })
       .get(req.params.id)
       .merge(bot => ({
         reviews: r.table('reviews')

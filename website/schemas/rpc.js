@@ -1,27 +1,22 @@
 const joi = require('./joi');
 const githubUsernameRegex = require('github-username-regex');
 const languages = require('../data/languages.json');
-const categories = require('../data/categories.json');
 
 const schema = joi.object({
   id: joi.string().regex(/^[0-9]+$/, 'numbers').required().error(new Error('errors.apps.id')),
-  oauth: joi.string().regex(/^[0-9]+$/, 'numbers').allow(null).error(new Error('errors.apps.oauth')),
-  invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.apps.invite')),
+  oauth: joi.default(null).valid(null),
+  invite: joi.default(null).valid(null),
   website: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.website')),
   support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.support')),
-  type: joi.default('bot').valid('bot'),
+  type: joi.default('rpc').valid('rpc'),
   authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).min(1).max(10).required().error(new Error('errors.apps.authors')),
-  nsfw: joi.bool().error(new Error('errors.apps.nsfw')),
-  category: joi.string().valid(categories).required().error(new Error('errors.apps.category')),
+  nsfw: joi.default(false).valid(false),
+  category: joi.default(null).valid(null),
   github: joi.object({
     owner: joi.string().regex(githubUsernameRegex, 'github username').allow(null).error(new Error('errors.apps.githubowner')),
     repo: joi.string().allow(null).error(new Error('errors.apps.githubrepo')),
   }),
-  trigger: joi.object({
-    prefix: joi.array().items(joi.string().min(1).max(10)).required().min(1).max(10).error(new Error('errors.apps.prefix')),
-    customisable: joi.bool().error(new Error('errors.apps.customisable')),
-    mentionable: joi.bool().error(new Error('errors.apps.mentionable')),
-  }),
+  trigger: joi.object().valid(null),
   images: joi.object({
     avatar: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null).error(new Error('errors.apps.avatar')),
     cover: joi.string().uri({ scheme: ['https'] }).max(2000).allow(null).disallow(joi.ref('images.avatar')).error(new Error('errors.apps.cover')),
@@ -32,10 +27,13 @@ const schema = joi.object({
     youku: joi.string().regex(/[a-zA-Z0-9_=]{15}/, 'Alibaba YOUKU ID').max(20).allow(null).error(new Error('errors.apps.youku')) // Need to serve the mainland.
   }),
   flags: joi.object({
-    inAppPurchases: joi.bool().error(new Error('errors.apps.inAppPurchases')),
-    adverts: joi.bool().error(new Error('errors.apps.adverts'))
+    inAppPurchases: joi.default(null).valid(null),
+    adverts: joi.default(null).valid(null)
+  }).default({
+    inAppPurchases: null,
+    adverts: null
   }),
-  count: joi.number().integer().min(0).max(5000000).error(new Error('errors.apps.count')).allow(null), // Maximum of 5 Million bots... b'cus why not?
+  count: joi.default(null).valid(null),
   contents: joi.array().items(joi.object({
     locale: joi.string().valid(languages).required().error(new Error('errors.apps.languages')),
     name: joi.string().min(4).max(32).required().error(new Error('errors.apps.name')),

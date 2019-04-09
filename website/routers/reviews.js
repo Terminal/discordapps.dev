@@ -19,7 +19,7 @@ router
     req.body['review.author'] = req.user.id;
     req.body['review.language'] = res.locals.languagePrefix;
     const body = unflatten(req.body);
-    r.table('bots')
+    r.table('apps')
       .get(req.params.id)
       .then((bot) => {
         const isAuthor = req.user ? bot.authors.some(owner => owner === req.user.id) : false;

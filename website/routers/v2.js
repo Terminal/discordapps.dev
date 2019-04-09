@@ -12,7 +12,7 @@ const { unflatten } = require('flat');
 const router = express.Router();
 
 const checkToken = (req, res, next) => {
-  r.table('bots')
+  r.table('apps')
     .get(req.params.id)
     .default({})
     .then((bot) => {
@@ -36,7 +36,10 @@ const checkToken = (req, res, next) => {
 
 router
   .get('/bots', (req, res, next) => {
-    r.table('bots')
+    r.table('apps')
+      .filter({
+        type: 'bot'
+      })
       .merge(bot => r.branch(bot('contents').contains(contents =>
         contents('locale').eq(res.locals.languagePrefix)
       ), {
@@ -54,7 +57,7 @@ router
       });
   })
   .get('/bots/:id', checkParamsLength, (req, res, next) => {
-    r.table('bots')
+    r.table('apps')
       .get(req.params.id)
       .merge(bot => r.branch(bot('contents').contains(contents =>
         contents('locale').eq(res.locals.languagePrefix)
@@ -115,7 +118,7 @@ router
         });
       } else {
         // Update the value in the database
-        r.table('bots')
+        r.table('apps')
           .update(value)
           .then(() => {
             // Return the updated value

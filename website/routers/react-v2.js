@@ -19,30 +19,11 @@ const operators = /[|\\{}()[\]^$+*?.]/g;
 const sanitise = string => `(?i)${string.trim().toLowerCase().replace(operators, '\\$&')}`;
 
 router
-  .get('/bots', (req, res, next) => {
-    r.table('apps')
-      .filter({
-        type: 'bot'
-      })
-      .merge(bot => ({
-        authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
-      }))
-      .without('token')
-      .then((bots) => {
-        res.json({
-          ok: true,
-          data: bots
-        });
-      })
-      .catch((err) => {
-        next(err);
-      });
-  })
   .get('/bots/category/:category', checkParamsLength, (req, res, next) => {
     r.table('apps')
       .filter({
-        category: req.params.category,
-        type: 'bot'
+        type: 'bot',
+        category: req.params.category
       })
       .merge(bot => ({
         authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
@@ -59,7 +40,7 @@ router
         next(err);
       });
   })
-  .get('/bots/id/:id', checkParamsLength, (req, res, next) => {
+  .get('/apps/id/:id', checkParamsLength, (req, res, next) => {
     r.table('apps')
       .get(req.params.id)
       .merge(bot => ({
@@ -91,7 +72,7 @@ router
         next(err);
       });
   })
-  .get('/bots/id/:id/configure', isOwnerOfBot, (req, res, next) => {
+  .get('/apps/id/:id/configure', isOwnerOfBot, (req, res, next) => {
     r.table('apps')
       .get(req.params.id)
       .then((bot) => {
@@ -105,7 +86,7 @@ router
         next(err);
       });
   })
-  .post('/bots/id/:id/state', checkParamsLength, isLoggedIn, isAdmin, reader.none(), (req, res, next) => {
+  .post('/apps/id/:id/state', checkParamsLength, isLoggedIn, isAdmin, reader.none(), (req, res, next) => {
     if (selectableStates.includes(req.body.state)) {
       r.table('apps')
         .get(req.params.id)
@@ -139,16 +120,17 @@ router
       });
     }
   })
-  .get('/bots/search', (req, res, next) => {
+  .get('/apps/search', (req, res, next) => {
     const query = typeof req.query.q === 'string' ? req.query.q : '';
     const state = typeof req.query.state === 'string' ? req.query.state : '';
     const category = typeof req.query.category === 'string' ? req.query.category : '';
     const nsfw = typeof req.query.nsfw === 'string' ? req.query.nsfw : '';
+    const type = typeof req.query.type === 'string' ? req.query.type : '';
     const owners = Array.isArray(req.query.owners) ? req.query.owners : [];
 
     const filter = (bot) => {
       // Bodge for chaining
-      let databaseQuery = bot('type').eq('bot');
+      let databaseQuery = bot.hasFields('id');
 
       if (state) {
         databaseQuery = databaseQuery.and(bot('state').eq(state));
@@ -171,6 +153,10 @@ router
         databaseQuery = databaseQuery.and(bot('nsfw').eq(false));
       }
 
+      if (type) {
+        databaseQuery = databaseQuery.and(bot('type').eq(type));
+      }
+
       // If a query is requested, add that to the query
       if (categories.includes(category)) {
         databaseQuery = databaseQuery.and(bot('category').eq(category));
@@ -189,6 +175,17 @@ router
 
     r.table('apps')
       .filter(filter)
+      .merge(bot => ({
+        authors: r.table('users')
+          .getAll(r.args(bot('authors')))
+          .pluck('discriminator', 'username', 'cachedAvatar', 'id')
+          .default({
+            discriminator: null,
+            username: null,
+            cachedAvatar: null
+          })
+          .coerceTo('array')
+      }))
       .without('token')
       .then((bots) => {
         res.json({

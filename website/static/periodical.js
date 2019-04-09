@@ -1,15 +1,15 @@
 const r = require('../rethinkdb');
 
 module.exports = () => {
-  r.table('bots')
-    .then(bots => bots.map((bot) => {
+  r.table('apps')
+    .then(apps => apps.map((bot) => {
       const returned = {};
       returned.id = bot.id;
       returned.random = Math.random();
       return returned;
     }))
-    .then(bots => r.table('bots')
-      .insert(bots, {
+    .then(apps => r.table('apps')
+      .insert(apps, {
         conflict: 'update'
       }))
     .catch((err) => {

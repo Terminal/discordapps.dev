@@ -43,7 +43,7 @@ module.exports = class Middleware {
         message: 'errors.permissions.login',
       });
     } else {
-      r.table('bots')
+      r.table('apps')
         .get(req.params.id)
         .then((bot) => {
           if (!bot) {
@@ -65,7 +65,7 @@ module.exports = class Middleware {
   }
 
   static botExists(req, res, next) {
-    r.table('bots')
+    r.table('apps')
       .get(req.params.id)
       .then((bot) => {
         if (!bot) {

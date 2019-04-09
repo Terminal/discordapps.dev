@@ -21,7 +21,7 @@ module.exports = (req, res) => {
     );
   });
 
-  r.table('bots')
+  r.table('apps')
     .filter({
       state: 'approved'
     })
