@@ -9,7 +9,6 @@ import InputField from '../components/InputField';
 import Layout from '../components/Layout';
 import MultipleInputField from '../components/MultipleInputField';
 import Row from '../components/Row';
-import Welcome from '../components/Welcome';
 import Locations from '../data/Locations';
 import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
 import States from '../data/States';
@@ -94,7 +93,6 @@ class FilterPage extends Component {
 
     return (
       <Layout match={this.props.match}>
-        <Welcome />
         <Container>
           <form ref={this.form}>
             <ContentBox>

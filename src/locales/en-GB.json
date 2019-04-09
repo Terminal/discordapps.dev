@@ -399,6 +399,12 @@
     "queue": "In Queue",
     "banned": "Banned"
   },
+  "types": {
+    "all": "All Applications",
+    "bots": "Bots",
+    "rpc": "Rich Presence",
+    "webhooks": "Webhooks"
+  },
   "components": {
     "pleaseaddyourbotpleasethanks": {
       "title": "Get started with Discord Bots",
