@@ -75,6 +75,11 @@ const routes = [
     component: AppPage,
     status: 200,
   }, {
+    path: '/:locale/rpc/:id',
+    exact: true,
+    component: AppPage,
+    status: 200,
+  }, {
     path: '/:locale/locale',
     exact: true,
     component: Locale,
