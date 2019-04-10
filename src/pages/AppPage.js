@@ -55,7 +55,7 @@ class BotPage extends Component {
       );
     }
 
-    if (bot.type !== this.props.match.params.type) {
+    if (bot.id === this.props.match.params.id && bot.type !== this.props.match.params.type) {
       if (this.props.staticContext) this.props.staticContext.status = 301;
       return (
         <Redirect to={`/${this.props.match.params.locale}/${bot.type}/${bot.id}`} />
