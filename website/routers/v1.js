@@ -9,7 +9,7 @@ router
   .get('/bots', (req, res, next) => {
     r.table('apps')
       .filter({
-        type: 'bot'
+        type: 'bots'
       })
       .without('token')
       .then((bots) => {
@@ -22,7 +22,7 @@ router
   .get('/bots/:id', checkParamsLength, (req, res, next) => {
     r.table('apps')
       .filter({
-        type: 'bot'
+        type: 'bots'
       })
       .get(req.params.id)
       .merge(bot => ({

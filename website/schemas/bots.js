@@ -9,7 +9,7 @@ const schema = joi.object({
   invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.apps.invite')),
   website: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.website')),
   support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.support')),
-  type: joi.default('bot').valid('bot'),
+  type: joi.default('bots').valid('bots'),
   authors: joi.array().items(joi.string().regex(/^[0-9]+$/, 'numbers')).min(1).max(10).required().error(new Error('errors.apps.authors')),
   nsfw: joi.bool().error(new Error('errors.apps.nsfw')),
   category: joi.string().valid(categories).required().error(new Error('errors.apps.category')),

@@ -22,7 +22,7 @@ router
   .get('/bots/category/:category', checkParamsLength, (req, res, next) => {
     r.table('apps')
       .filter({
-        type: 'bot',
+        type: 'bots',
         category: req.params.category
       })
       .merge(bot => ({

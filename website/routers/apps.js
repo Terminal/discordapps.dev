@@ -28,7 +28,7 @@ router
     let schema = null;
 
     if (body.app) {
-      if (body.app.type === 'bot') {
+      if (body.app.type === 'bots') {
         schema = botSchema;
       } else if (body.app.type === 'rpc') {
         schema = rpcSchema;
@@ -169,7 +169,7 @@ router
 
             // If the user is adding a bot, check for if it exists
             // Also set an avatar for fun
-            if (body.type === 'bot') {
+            if (body.type === 'bots') {
               fetch(`${config.discord.api}/users/${value.id}`, {
                 headers: {
                   Authorization: `Bot ${config.discord.token}`

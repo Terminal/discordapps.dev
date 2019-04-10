@@ -38,7 +38,7 @@ router
   .get('/bots', (req, res, next) => {
     r.table('apps')
       .filter({
-        type: 'bot'
+        type: 'bots'
       })
       .merge(bot => r.branch(bot('contents').contains(contents =>
         contents('locale').eq(res.locals.languagePrefix)

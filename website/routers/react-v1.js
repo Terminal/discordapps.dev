@@ -22,7 +22,7 @@ router
   .get('/bots', (req, res, next) => {
     r.table('apps')
       .filter({
-        type: 'bot'
+        type: 'bots'
       })
       .merge(bot => ({
         authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
@@ -42,7 +42,7 @@ router
     r.table('apps')
       .filter({
         category: req.params.category,
-        type: 'bot'
+        type: 'bots'
       })
       .merge(bot => ({
         authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
@@ -148,7 +148,7 @@ router
 
     const filter = (bot) => {
       // Bodge for chaining
-      let databaseQuery = bot('type').eq('bot');
+      let databaseQuery = bot('type').eq('bots');
 
       if (state) {
         databaseQuery = databaseQuery.and(bot('state').eq(state));
