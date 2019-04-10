@@ -35,10 +35,49 @@ const checkToken = (req, res, next) => {
 };
 
 router
+  .get('/apps', (req, res, next) => {
+    r.table('apps')
+      .merge(bot => r.branch(bot('contents').contains(contents =>
+        contents('locale').eq(res.locals.languagePrefix)
+      ), {
+        random: bot('random').add(10)
+      }, {}))
+      .without('token')
+      .then((bots) => {
+        res.json({
+          ok: true,
+          data: bots
+        });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
   .get('/bots', (req, res, next) => {
     r.table('apps')
       .filter({
         type: 'bots'
+      })
+      .merge(bot => r.branch(bot('contents').contains(contents =>
+        contents('locale').eq(res.locals.languagePrefix)
+      ), {
+        random: bot('random').add(10)
+      }, {}))
+      .without('token')
+      .then((bots) => {
+        res.json({
+          ok: true,
+          data: bots
+        });
+      })
+      .catch((err) => {
+        next(err);
+      });
+  })
+  .get('/rpc', (req, res, next) => {
+    r.table('apps')
+      .filter({
+        type: 'rpc'
       })
       .merge(bot => r.branch(bot('contents').contains(contents =>
         contents('locale').eq(res.locals.languagePrefix)
