@@ -286,7 +286,7 @@ class EditRpc extends Component {
               </button>
             </ContentBox>
           </Container>
-          <input name="app.type" value="rpc"></input>
+          <input className={displayStyles.hidden} name="app.type" value="rpc"></input>
         </form>
       </Layout>
     );
