@@ -37,6 +37,12 @@ const schema = joi.object({
     win: joi.default(null).valid(null),
     mac: joi.default(null).valid(null),
     linux: joi.default(null).valid(null)
+  }).default({
+    inAppPurchases: false,
+    adverts: false,
+    win: null,
+    mac: null,
+    linux: null
   }),
   count: joi.number().integer().min(0).max(5000000).error(new Error('errors.apps.count')).allow(null), // Maximum of 5 Million bots... b'cus why not?
   contents: joi.array().items(joi.object({

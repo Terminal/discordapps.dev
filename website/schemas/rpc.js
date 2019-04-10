@@ -34,7 +34,10 @@ const schema = joi.object({
     linux: joi.bool().error(new Error('errors.apps.boolean'))
   }).default({
     inAppPurchases: null,
-    adverts: null
+    adverts: null,
+    win: false,
+    mac: false,
+    linux: false
   }),
   count: joi.default(null).valid(null),
   contents: joi.array().items(joi.object({

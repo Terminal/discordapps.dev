@@ -141,7 +141,7 @@ router
 
             if (req.user.admin) {
               useExistingData();
-              insert('edited', 'errors.bots.edit_success');
+              insert('edited', 'errors.apps.edit_success');
             } else if (existingBot.state === 'banned') {
               res.json({
                 ok: false,
@@ -151,12 +151,12 @@ router
             } else if (existingBot.authors.includes(req.user.id)) {
               // Copy over some stuff while overwriting
               useExistingData();
-              insert('edited', 'errors.bots.edit_success');
+              insert('edited', 'errors.apps.edit_success');
             } else {
               res.json({
                 ok: false,
                 message: 'This application already exists in the database',
-                language: 'errors.bots.exists'
+                language: 'errors.apps.exists'
               });
             }
           } else {
@@ -190,7 +190,7 @@ router
                     });
                   } else if (result.bot) {
                     if (!value.images.avatar && result.avatar) value.images.avatar = `${config.discord.cdn}/avatars/${value.id}/${result.avatar}.png`;
-                    insert('added', 'errors.bots.add_success');
+                    insert('added', 'errors.apps.add_success');
                   } else {
                     res.json({
                       ok: false,
@@ -200,7 +200,7 @@ router
                   }
                 });
             } else {
-              insert('added', 'errors.bots.add_success');
+              insert('added', 'errors.apps.add_success');
             }
           }
         })
