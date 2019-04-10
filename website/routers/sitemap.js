@@ -25,12 +25,12 @@ module.exports = (req, res) => {
     .filter({
       state: 'approved'
     })
-    .then((bots) => {
+    .then((apps) => {
       languages.forEach((lang) => {
-        bots.forEach((bot) => {
+        apps.forEach((app) => {
           sitemap.url.push({
-            loc: `${config.webserver.react}/${lang}/bots/${bot.id}`,
-            lastmod: (new Date(bot.edited)).toISOString().split('T')[0]
+            loc: `${config.webserver.react}/${lang}/${app.type}/${app.id}`,
+            lastmod: (new Date(app.edited)).toISOString().split('T')[0]
           });
         });
       });
