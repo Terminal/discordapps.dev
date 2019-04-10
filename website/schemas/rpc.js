@@ -5,7 +5,7 @@ const languages = require('../data/languages.json');
 const schema = joi.object({
   id: joi.string().regex(/^[0-9]+$/, 'numbers').required().error(new Error('errors.apps.id')),
   oauth: joi.default(null).valid(null),
-  invite: joi.default(null).valid(null),
+  invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.rpc.invite')),
   website: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.website')),
   support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.support')),
   type: joi.default('rpc').valid('rpc'),
@@ -28,7 +28,10 @@ const schema = joi.object({
   }),
   flags: joi.object({
     inAppPurchases: joi.default(null).valid(null),
-    adverts: joi.default(null).valid(null)
+    adverts: joi.default(null).valid(null),
+    win: joi.bool().error(new Error('errors.apps.boolean')),
+    mac: joi.bool().error(new Error('errors.apps.boolean')),
+    linux: joi.bool().error(new Error('errors.apps.boolean'))
   }).default({
     inAppPurchases: null,
     adverts: null

@@ -6,7 +6,7 @@ const categories = require('../data/categories.json');
 const schema = joi.object({
   id: joi.string().regex(/^[0-9]+$/, 'numbers').required().error(new Error('errors.apps.id')),
   oauth: joi.string().regex(/^[0-9]+$/, 'numbers').allow(null).error(new Error('errors.apps.oauth')),
-  invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.apps.invite')),
+  invite: joi.string().uri({ scheme: ['https'] }).required().error(new Error('errors.bots.invite')),
   website: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.website')),
   support: joi.string().uri({ scheme: ['https'] }).allow(null).error(new Error('errors.apps.support')),
   type: joi.default('bots').valid('bots'),
@@ -32,8 +32,11 @@ const schema = joi.object({
     youku: joi.string().regex(/[a-zA-Z0-9_=]{15}/, 'Alibaba YOUKU ID').max(20).allow(null).error(new Error('errors.apps.youku')) // Need to serve the mainland.
   }),
   flags: joi.object({
-    inAppPurchases: joi.bool().error(new Error('errors.apps.inAppPurchases')),
-    adverts: joi.bool().error(new Error('errors.apps.adverts'))
+    inAppPurchases: joi.bool().error(new Error('errors.apps.boolean')),
+    adverts: joi.bool().error(new Error('errors.apps.boolean')),
+    win: joi.default(null).valid(null),
+    mac: joi.default(null).valid(null),
+    linux: joi.default(null).valid(null)
   }),
   count: joi.number().integer().min(0).max(5000000).error(new Error('errors.apps.count')).allow(null), // Maximum of 5 Million bots... b'cus why not?
   contents: joi.array().items(joi.object({
