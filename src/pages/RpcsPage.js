@@ -20,7 +20,7 @@ class RpcsPage extends Component {
     }
   }
   componentDidMount() {
-    fetch(`${Locations.server}/reactjs/v2/apps/search?type=rpc`)
+    fetch(`${Locations.server}/reactjs/v2/apps/search?type=rpc&approved=${States.APPROVED}`)
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {

@@ -24,7 +24,7 @@ class CategoryCollection extends Component {
     const { dispatch } = this.props;
     dispatch(fetchCategoriesIfNeeded());
 
-    fetch(`${Locations.server}/reactjs/v2/apps/search?type=bots`)
+    fetch(`${Locations.server}/reactjs/v2/apps/search?type=bots&approved=${States.APPROVED}`)
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {
