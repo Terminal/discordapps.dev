@@ -15,7 +15,7 @@
   },
   "copyright": "Prawa autorskie 2017 - 2019, Terminal.ink; Discord jest znakiem towarowym Discord Inc.",
   "errors": {
-    "bots": {
+    "apps": {
       "authors": "Musisz mieć co najmniej jednego autora bota, a wszystkie jego ID muszą być numeryczne",
       "category": "Musisz wybrać kategorię dla swojego bota",
       "customisable": "Możliwość dostosowania prefiksa musi być zaznaczona lub usunięta",

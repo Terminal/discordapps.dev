@@ -24,7 +24,7 @@ class CategoryCollection extends Component {
     const { dispatch } = this.props;
     dispatch(fetchCategoriesIfNeeded());
 
-    fetch(`${Locations.server}/reactjs/v1/bots`)
+    fetch(`${Locations.server}/reactjs/v2/apps/search?type=bots`)
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {
@@ -74,7 +74,7 @@ class CategoryCollection extends Component {
                   <ContentBox key={category}>
                     <div className={styles.heading}>
                       <h4 className={styles.grow} id={category}>
-                        <LocalisedHyperlink to="/bots/filter" query={{
+                        <LocalisedHyperlink to="/filter" query={{
                           category,
                           state: States.APPROVED
                         }}>
@@ -82,7 +82,7 @@ class CategoryCollection extends Component {
                         </LocalisedHyperlink>
                       </h4>
                       { botsInCategory.length > 8 ?
-                        <LocalisedHyperlink to="/bots/filter" query={{
+                        <LocalisedHyperlink to="/filter" query={{
                           category,
                           state: States.APPROVED
                         }}>

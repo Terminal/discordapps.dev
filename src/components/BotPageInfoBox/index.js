@@ -80,21 +80,24 @@ class BotPageInfoBox extends Component {
         </FlexContainer>
         <FlexColumns>
           <FlexColumns columns={8}>
-            <div>
-              <FormattedMessage id="pages.bots.prefix" values={{
-                count: bot.trigger.prefix.length
-              }} />
-              {bot.trigger.prefix.map((prefix, index) => <PrefixLabel key={index}>{prefix}</PrefixLabel>)}
-              {bot.trigger.customisable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.customisable" /></PrefixLabel> : null}
-              {bot.trigger.mentionable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.mentionable" /></PrefixLabel> : null}
-            </div>
+            {
+              bot.trigger &&
+              <div>
+                <FormattedMessage id="pages.bots.prefix" values={{
+                  count: bot.trigger.prefix.length
+                }} />
+                {bot.trigger.prefix.map((prefix, index) => <PrefixLabel key={index}>{prefix}</PrefixLabel>)}
+                {bot.trigger.customisable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.customisable" /></PrefixLabel> : null}
+                {bot.trigger.mentionable ? <PrefixLabel className={Modesta.midnightBlue}><FormattedMessage id="pages.bots.mentionable" /></PrefixLabel> : null}
+              </div>
+            }
             <div className={styles.links}>
               {bot.support ? <a href={bot.support}><FormattedMessage id="pages.bots.support" /></a> : null}
               {bot.website ? <a href={bot.website}><FormattedMessage id="pages.bots.website" /></a> : null}
               {bot.github && bot.github.owner && bot.github.repo ? <a href={`https://github.com/${bot.github.owner}/${bot.github.repo}`}><FormattedMessage id="pages.bots.github" /></a> : null}
               { auth.data !== null && (auth.data.admin || bot.authors.some(author => author.id === auth.data.id)) ?
                 <>
-                  <LocalisedHyperlink to={`/bots/${bot.id}/edit`}><FormattedMessage id="pages.bots.edit" /></LocalisedHyperlink>
+                  <LocalisedHyperlink to={`/${bot.type}/${bot.id}/edit`}><FormattedMessage id={`pages.${bot.type}.edit`} /></LocalisedHyperlink>
                   {
                     this.state.sure ?
                       <>
@@ -124,7 +127,7 @@ class BotPageInfoBox extends Component {
           </FlexColumns>
           <FlexColumns columns={4} className={Modesta.rightText}>
             <a className={`${Modesta.btn} ${Modesta.discord}`} href={bot.invite}>
-              <FormattedMessage id="pages.bots.invite" />
+              <FormattedMessage id={`pages.${bot.type}.invite`} />
             </a>
           </FlexColumns>
         </FlexColumns>

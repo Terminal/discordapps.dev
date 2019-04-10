@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Container from '../components/Container';
 import Layout from '../components/Layout';
-import Welcome from '../components/Welcome';
 import { fetchAuthIfNeeded } from '../redux/actions/auth';
 import PleaseLogin from '../components/PleaseLogIn';
 import PermissionDenied from '../components/PermissionDenied';
@@ -33,7 +32,6 @@ class AdminPage extends Component {
 
     return (
       <Layout match={this.props.match}>
-        <Welcome />
         <Container>
           <ContentBox>
             <h1><FormattedMessage id="pages.admin.title" /></h1>
@@ -42,7 +40,7 @@ class AdminPage extends Component {
               Object.values(States)
                 .map(state =>
                   <li>
-                    <LocalisedHyperlink to="/bots/filter" query={{
+                    <LocalisedHyperlink to="/filter" query={{
                       state: state
                     }}>
                       <FormattedMessage id={`states.${state}`} />

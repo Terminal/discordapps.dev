@@ -4,6 +4,7 @@ import Container from '../Container';
 import { FormattedMessage } from 'react-intl';
 import Locations from '../../data/Locations';
 import ContentBox from '../ContentBox';
+import ConstructCSS from '../../helpers/ConstructCSS';
 
 class Footer extends Component {
   render() {
@@ -35,6 +36,9 @@ class Footer extends Component {
           </div>
           <p className={styles.copyright}>
             <FormattedMessage id="copyright" />
+          </p>
+          <p className={ConstructCSS(styles.copyright, styles.small)}>
+            <FormattedMessage id="footer.apple" />
           </p>
         </ContentBox>
       </Container>

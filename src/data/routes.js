@@ -1,20 +1,23 @@
-import BotPage from "../pages/BotPage";
+import AppPage from "../pages/AppPage";
 import ConfigurePage from "../pages/ConfigurePage";
 import EditBot from "../pages/EditBot";
 import FilterPage from "../pages/FilterPage";
 import Game from "../pages/Game";
-import Home from "../pages/Home";
+// import Home from "../pages/Home";
+import BotsHome from "../pages/BotsHome";
 import Locale from "../pages/Locale";
 import LogOut from "../pages/LogOut";
 import NotFound from "../pages/NotFound";
 import AdminPage from "../pages/AdminPage";
 import LanguagesComparisonPage from "../pages/LanguagesComparisonPage";
+import RpcsPage from "../pages/RpcsPage";
+import EditRpc from "../pages/EditRpc";
 
 const routes = [
   {
     path: '/:locale/',
     exact: true,
-    component: Home,
+    component: BotsHome,
     status: 200,
   }, {
     path: '/:locale/game',
@@ -26,13 +29,28 @@ const routes = [
     exact: true,
     component: LogOut,
     status: 200,
+  // }, {
+  //   path: '/:locale/bots',
+  //   exact: true,
+  //   component: BotsHome,
+  //   status: 200,
+  }, {
+    path: '/:locale/rpc',
+    exact: true,
+    component: RpcsPage,
+    status: 200,
   }, {
     path: '/:locale/bots/add',
     exact: true,
     component: EditBot,
     status: 200,
   }, {
-    path: '/:locale/bots/filter',
+    path: '/:locale/rpc/add',
+    exact: true,
+    component: EditRpc,
+    status: 200,
+  }, {
+    path: '/:locale/filter',
     exact: true,
     component: FilterPage,
     status: 200,
@@ -47,9 +65,19 @@ const routes = [
     component: EditBot,
     status: 200,
   }, {
-    path: '/:locale/bots/:id',
+    path: '/:locale/rpc/:id/edit',
     exact: true,
-    component: BotPage,
+    component: EditRpc,
+    status: 200,
+  }, {
+    path: '/:locale/:type/:id',
+    exact: true,
+    component: AppPage,
+    status: 200,
+  }, {
+    path: '/:locale/:type/:id',
+    exact: true,
+    component: AppPage,
     status: 200,
   }, {
     path: '/:locale/locale',

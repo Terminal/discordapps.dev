@@ -9,7 +9,6 @@ import InputField from '../components/InputField';
 import Layout from '../components/Layout';
 import MultipleInputField from '../components/MultipleInputField';
 import Row from '../components/Row';
-import Welcome from '../components/Welcome';
 import Locations from '../data/Locations';
 import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
 import States from '../data/States';
@@ -27,6 +26,7 @@ class FilterPage extends Component {
       query: null,
       timeout: null,
       hidden: true,
+      type: null,
       state: null
     }
     this.form = React.createRef();
@@ -45,7 +45,7 @@ class FilterPage extends Component {
     if (this.state.timeout) clearTimeout(this.state.timeout);
   }
   search(searchQuery) {
-    fetch(`${Locations.server}/reactjs/v1/bots/search${searchQuery}`)
+    fetch(`${Locations.server}/reactjs/v2/apps/search${searchQuery}`)
       .then(res => res.json())
       .then((data) => {
         if (data.ok) {
@@ -90,11 +90,10 @@ class FilterPage extends Component {
   }
   render() {
     const categories = this.props.categories.data;
-    const { results, owners, category, nsfw, query, hidden } = this.state;
+    const { results, owners, category, nsfw, type, query, hidden } = this.state;
 
     return (
       <Layout match={this.props.match}>
-        <Welcome />
         <Container>
           <form ref={this.form}>
             <ContentBox>
@@ -105,6 +104,9 @@ class FilterPage extends Component {
               <Row>
                 <InputField name="q" id="pages.filter.query" value={query} onChange={this.onChange}/>
                 <InputField name="nsfw" id="pages.filter.nsfw" localiseOptions="pages.filter.nsfw" allowNone={true} options={['sfw', 'nsfw']} value={nsfw} onChange={this.onChange}/>
+              </Row>
+              <Row>
+                <InputField name="type" id="pages.filter.type" localiseOptions="pages.filter.type" allowNone={true} options={['bots', 'rpc']} value={type} onChange={this.onChange}/>
               </Row>
             </ContentBox>
           </form>

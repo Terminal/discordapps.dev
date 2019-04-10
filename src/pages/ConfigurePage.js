@@ -25,7 +25,7 @@ class ConfigurePage extends Component {
   componentDidMount() {
     // Check if the bot has been injected
     if (!this.state.bot) {
-      fetch(`${Locations.server}/reactjs/v1/bots/id/${this.props.match.params.id}/configure`, {
+      fetch(`${Locations.server}/reactjs/v2/apps/id/${this.props.match.params.id}/configure`, {
         credentials: 'include'
       })
         .then(res => {

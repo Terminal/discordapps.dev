@@ -1,5 +1,5 @@
-const css = (...args) => args
+const ConstructCSS = (...args) => args
   .filter(argument => argument) // Get arguments that are truthy
   .join(' ');
 
-export default css;
+export default ConstructCSS;

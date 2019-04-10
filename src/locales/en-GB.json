@@ -18,30 +18,36 @@
   },
   "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
   "errors": {
+    "rpc": {
+      "invite": "The installation URL must filled out, and also be a valid HTTPS link"
+    },
     "bots": {
-      "authors": "You must have at least 1 author of the bot, and all Author IDs must be numeric",
-      "category": "You must select a category for your bot",
+      "invite": "The invite URL must be filled out, and also be a valid HTTPS link",
+      "notabot": "The ID provided was not a bot account.",
+      "notfound": "The ID provided was not found by Discord."
+    },
+    "apps": {
+      "authors": "You must have at least 1 author of the application, and all Author IDs must be numeric",
+      "boolean": "A non-boolean value was sent to the server. Please contact Terminal.ink support.",
+      "category": "You must select a category for your application",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",
-      "contents": "You must select at least one language for your bot to be in. Click a language, and then click \"Add a language\"",
+      "contents": "You must select at least one language for your application page to be displayed in. Click a language, and then click \"Add a language\"",
       "description": "The short description must have a length between 10 and 100",
       "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
       "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
-      "id": "The Bot ID needs to be filled out, and numeric",
-      "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
+      "id": "The Application ID needs to be filled out, and numeric",
       "website": "The Website URL needs to be a valid HTTPS link",
-      "languages": "You must add a single language. Click the language you want your bot page to be in, and select the 'Add a language' button",
+      "languages": "You must add a single language. Click the language you want your application page to be in, and select the 'Add a language' button",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
-      "name": "The bot must have a name of length between 4 and 32.",
+      "name": "The application must have a name of length between 4 and 32.",
       "nsfw": "The NSFW status must be either ticked, or unticked",
       "oauth": "The OAuth ID needs to be numeric",
       "page": "The long description must have a length between 20 and 10000",
       "prefix": "You must have at least 1 prefix, of max length 10.",
       "support": "The Support URL needs to be a valid HTTPS link",
-      "exists": "The bot already exists in the database, and you do not have permission to overwrite this.",
-      "notabot": "The ID provided was not a bot account.",
-      "notfound": "The ID provided was not found by Discord.",
-      "add_success": "Added bot to the bot list queue.",
-      "edit_success": "Edited bot successfully.",
+      "exists": "The application already exists in the database, and you do not have permission to overwrite this.",
+      "add_success": "Added application to the queue.",
+      "edit_success": "Edited application successfully.",
       "count": "The guild count for a bot must be between 0 and 5000000 servers",
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
       "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the cover URL may not be identical to the avatar URL.",
@@ -57,16 +63,16 @@
     },
     "reviews": {
       "rating": "Please select a rating before continuing",
-      "text": "Please enter why you gave this number of stars for this bot.",
-      "self": "You cannot review your own bot!"
+      "text": "Please enter why you gave this number of stars for this application.",
+      "self": "You cannot review your own application!"
     },
     "api": {
       "400": "You are unauthorised to use this endpoint. Check your token is correct.",
       "404": "This endpoint was not found, or the method used to request this page is not compatible.",
       "500": "An internal server error occured.",
       "test": "An error was thrown for development purposes.",
-      "no_bot": "Bot not found",
-      "idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support"
+      "no_bot": "Application not found",
+      "idchange": "The ID of the application cannot be changed to another ID. Please contact Terminal support for technical support"
     },
     "website": {
       "noscript": "JavaScript must be enabled to use this website effectively."
@@ -79,7 +85,8 @@
     "discord": "Discord Server",
     "terminal": "Terminal.ink",
     "terms": "Terms and Conditions",
-    "docs": "Docs"
+    "docs": "Docs",
+    "apple": "Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc."
   },
   "forms": {
     "select": "Please select...",
@@ -121,23 +128,33 @@
     "zh-tw": "Chinese (Traditional)"
   },
   "pages": {
+    "rpc": {
+      "index": {
+        "title": "Rich Presence",
+        "description": "Show off what you're doing, with a wide range of Discord RPC plugins for Windows, Mac or Linux software. Browse RPC and more at the Discord Apps Marketplace"
+      },
+      "edit": "Edit RPC Application",
+      "invite": "Install this application",
+      "supports": "Supports: {operatingSystems}"
+    },
     "bots": {
+      "index": {
+        "title": "Bots",
+        "description": "Find a Discord Bot for your server to improve your workflow, add a bit of fun or listen together with Discord Bots. Browse bots and more at the Discord Apps Marketplace"
+      },
       "backgroundAlt": "The logo for discordapps.dev",
-      "description": "An application store for Discord bots",
       "inMyLanguage": "Bots in my Language",
       "invite": "Add this bot",
       "support": "Technical Support",
       "website": "Website",
-      "shortname": "Discord Bots",
       "mentionable": "Mentionable",
       "customisable": "Customisable",
       "delete": "Delete",
       "reallyDelete": "Sure?",
+      "reclaim": "There is no author information for this bot. This may be because of loss of data between Discord_Fork and ls.terminal.ink migrations. If this is your bot, please join the Terminal.ink for reclaiming.",
       "edit": "Edit",
       "configure": "Configure",
       "github": "View on GitHub",
-      "approve": "Approve",
-      "deny": "Deny",
       "prefix": "{count, plural, one {Prefix:} other {Prefixes:}}",
       "adverts": "Contains adverts and features locked behind other services",
       "inAppPurchases": "Has in-app purchases",
@@ -147,16 +164,15 @@
       "created": "First published: { date }",
       "category": "Category: { category }",
       "initiateCategoryFilter": "Categories",
-      "search": "Search",
       "count": "Installed in {guilds, plural, one {a server} other {{guilds} servers}}"
     },
     "configuration": {
       "token": {
         "title": "Token",
         "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints.",
-        "docs": "View Documentation"
+        "docs": "View Documentation",
+        "renew": "Renew Token"
       },
-      "renew": "Renew Token",
       "hide": {
         "title": "Hide bot",
         "description": "You can hide your bot from the front page of the website, in case you don't need to be there.",
@@ -165,13 +181,36 @@
       }
     },
     "edit": {
+      "rpc": {
+        "invite": {
+          "title": "Installation URL",
+          "placeholder": "Enter a HTTPS link to your website to download your software"
+        },
+        "flags": {
+          "title": "Available Features",
+          "win": {
+            "title": "Supports Microsoft Windows"
+          },
+          "mac": {
+            "title": "Supports Apple MacOS X"
+          },
+          "linux": {
+            "title": "Supports Linux",
+            "small": "What you’re referring to as Linux, is in fact, GNU/Linux, or as I’ve recently taken to calling it, GNU plus Linux."
+          }
+        }
+      },
+      "invite": {
+        "title": "Invite URL",
+        "placeholder": "Enter a HTTPS link to invite your bot"
+      },
       "application_id": {
         "placeholder": "The ID used in the OAuth link.",
         "title": "OAuth ID"
       },
       "authors": {
         "placeholder": "ID of a single owner",
-        "title": "Bot Authors",
+        "title": "Authors",
         "add": "Add another",
         "delete": "Remove author"
       },
@@ -189,8 +228,8 @@
         "placeholder": "Select a category"
       },
       "client_id": {
-        "placeholder": "The ID of the bot user",
-        "title": "Bot ID"
+        "placeholder": "The ID of the application",
+        "title": "Application ID"
       },
       "customisable": {
         "title": "Customisable prefix"
@@ -200,20 +239,16 @@
         "placeholder": "Enter a shorter description, shown on the home page."
       },
       "github_owner": {
-        "placeholder": "Something like: ry00001",
+        "placeholder": "The owner of the GitHub repository",
         "title": "GitHub User / Organisation"
       },
       "github_repo": {
-        "placeholder": "Something like: Tuxedo",
+        "placeholder": "The name of the GitHub repository",
         "title": "GitHub Repository"
       },
-      "information": "Your Bot Page",
-      "invite": {
-        "title": "Invite URL",
-        "placeholder": "Enter a link to invite your bot"
-      },
+      "information": "Application Page Appearance",
       "languages": {
-        "modal": "Write your bot page in many supported languages. Select a language, then click the \"Add a language\" button to the right.",
+        "modal": "Write your application page in many supported languages. Select a language, then click the \"Add a language\" button to the right.",
         "add": "Add a language",
         "delete": "Delete this language"
       },
@@ -291,7 +326,7 @@
       "snarky": "This error was going to happen anyway."
     },
     "list": {
-      "empty": "There are no bots"
+      "empty": "There are no applications which matches the current filter."
     },
     "locale": {
       "choose": "Please select a language.",
@@ -332,6 +367,12 @@
         "placeholder": "Do not filter",
         "nsfw": "Not Safe for Work",
         "sfw": "Safe For Work"
+      },
+      "type": {
+        "title": "Application Type",
+        "placeholder": "All Applications",
+        "bots": "Bots",
+        "rpc": "Rich Presence"
       }
     },
     "game": {
@@ -342,7 +383,8 @@
     }
   },
   "navbar": {
-    "add": "Add an app",
+    "add": "Add a bot",
+    "addRpc": "Add RPC app",
     "login": "Login",
     "logout": "Logout",
     "admin": "Admin",
@@ -391,13 +433,19 @@
   "site": {
     "name": "Discord Apps Marketplace",
     "subheading": "Find bots to enhance your server",
-    "description": "discordapps.dev is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
+    "description": "discordapps.dev is an application store for Discord applications. Install bots for music, news, moderation and more for your server, or install RPC plugins to show off what you're doing."
   },
   "states": {
     "approved": "Approved",
     "denied": "Changes required",
     "queue": "In Queue",
     "banned": "Banned"
+  },
+  "types": {
+    "all": "All Applications",
+    "bots": "Bots",
+    "rpc": "Rich Presence",
+    "webhooks": "Webhooks"
   },
   "components": {
     "pleaseaddyourbotpleasethanks": {
@@ -407,7 +455,7 @@
         "content": "Learn to create your own Discord application for your own personal server"
       },
       "add": {
-        "heading": "Add your bot",
+        "heading": "Add your app",
         "content": "Share your creation to the world; Let others enhance their server experience with your applications"
       }
     },

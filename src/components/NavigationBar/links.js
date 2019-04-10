@@ -26,7 +26,7 @@ class NavbarLinks extends Component {
         </FormattedMessage>
         <FormattedMessage id="navbar.search">
           {message => (
-            <LocalisedHyperlink aria-label={message} to="/bots/filter" query={{
+            <LocalisedHyperlink aria-label={message} to="/filter" query={{
               state: States.APPROVED
             }}>
               <span className={`${Modesta.emoji} ${TwitterEmojis.twaRightPointingMagnifyingGlass}`} />
@@ -42,9 +42,16 @@ class NavbarLinks extends Component {
                 </LocalisedHyperlink>
               )}
             </FormattedMessage>
+            <FormattedMessage id="navbar.addRpc">
+              {message => (
+                <LocalisedHyperlink aria-label={message} to="/rpc/add">
+                  {message}
+                </LocalisedHyperlink>
+              )}
+            </FormattedMessage>
             <FormattedMessage id="navbar.user">
               {message => (
-                <LocalisedHyperlink aria-label={message} to="/bots/filter" query={{
+                <LocalisedHyperlink aria-label={message} to="/filter" query={{
                   owners: [auth.data.id],
                   hidden: false
                 }}>

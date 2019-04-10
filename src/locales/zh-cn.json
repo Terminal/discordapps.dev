@@ -15,7 +15,7 @@
   },
   "copyright": "2017 - 2019, Terminal.ink 版权所有; Discord 是 Discord Inc. 的商标。",
   "errors": {
-    "bots": {
+    "apps": {
       "authors": "至少需要一个用户是该机器人的作者，并且所有作者ID须为数字。",
       "category": "您必须为该机器人选择至少一项分类。",
       "customisable": "“前缀的可设置性”选项须为勾选或未勾选。",

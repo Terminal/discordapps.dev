@@ -12,5 +12,6 @@ export default {
   tutorials: 'https://github.com/Terminal/ls.terminal.ink/wiki/Tutorials-Home',
   termsAndConditions: 'https://github.com/Terminal/ls.terminal.ink/wiki/Terms-and-Conditions',
   terminalInk: 'https://terminal.ink',
-  discordServer: 'https://discord.gg/8uC6aKZ'
+  discordServer: 'https://discord.gg/8uC6aKZ',
+  add: 'https://github.com/Terminal/discordapps.dev/wiki#share-your-creation'
 }

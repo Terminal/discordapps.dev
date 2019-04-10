@@ -15,7 +15,7 @@
   },
   "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord ist eine eingetragene Marke von Discord Inc.",
   "errors": {
-    "bots": {
+    "apps": {
       "authors": "Du musst mindestens einen Autor haben und alle Autor IDs müssen nummerisch sein",
       "customisable": "Die änderbarkeit des Prefixes muss entweder ausgewählt oder nicht ausgewählt sein",
       "description": "Die kurze Beschreibung muss zwischen 10 und 64 Zeichen lang sein",

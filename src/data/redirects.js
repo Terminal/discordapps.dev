@@ -13,37 +13,42 @@ const redirects = [
     path: '/:locale/bots',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}`
+    to: ({match}) => `/${match.params.locale}/`
   }, {
-    path: '/:locale/bot',
+    path: '/:locale/bots/filter',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}`
+    to: ({match}) => `/${match.params.locale}/filter`
   }, {
-    path: '/:locale/bot/:id',
+    path: '/:locale/boats/',
+    exact: false,
+    status: 301,
+    to: ({match}) => `/${match.params.locale}/`
+  }, {
+    path: '/:locale/bot/',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}/bots/${match.params.id}`
+    to: ({match}) => `/${match.params.locale}/`
   }, {
     path: '/:locale/bots/by/:id',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}/bots/filter?owners[]=${encodeURIComponent(match.params.id)}`
+    to: ({match}) => `/${match.params.locale}/filter?owners[]=${encodeURIComponent(match.params.id)}`
   }, {
     path: '/:locale/bots/category/:category',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}/bots/filter?category=${encodeURIComponent(match.params.category)}&state=approved`
+    to: ({match}) => `/${match.params.locale}/filter?category=${encodeURIComponent(match.params.category)}&state=approved`
   }, {
     path: '/:locale/bots/unverified',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}/bots/filter?state=queue`
+    to: ({match}) => `/${match.params.locale}/filter?state=queue`
   }, {
     path: '/:locale/bots/search',
     exact: true,
     status: 301,
-    to: ({match}) => `/${match.params.locale}/bots/filter`
+    to: ({match}) => `/${match.params.locale}/filter`
   }
 ];
 

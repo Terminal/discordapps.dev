@@ -28,7 +28,7 @@ class CategoriesLinksList extends Component {
             {
               categories.map((x) => (
                 <li key={x} className={styles.item}>
-                  <LocalisedHyperlink to="/bots/filter" query={{
+                  <LocalisedHyperlink to="/filter" query={{
                     category: x,
                     state: States.APPROVED
                   }}>

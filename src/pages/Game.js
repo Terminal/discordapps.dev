@@ -5,7 +5,7 @@ import { Prompt } from 'react-router-dom';
 import Container from '../components/Container';
 import ContentBox from '../components/ContentBox';
 import Layout from '../components/Layout';
-import PleaseAddYourBotPleaseThanks from '../components/PleaseAddYourBotPleaseThanks';
+import PleaseAddYourBotPleaseThanks from '../components/GetStartedWithBots';
 
 class Game extends Component {
   constructor(props) {

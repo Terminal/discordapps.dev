@@ -19,6 +19,14 @@
   display: flex;
 }
 
+.supportList {
+  display: flex;
+  flex-direction: row;
+  font-size: 8pt;
+  color: #aaaaaa;
+  margin: 0;
+}
+
 .avatar {
   width: 4em;
   height: 4em;
@@ -31,4 +39,5 @@
 .description {
   font-size: 10pt;
   color: #cccccc;
+  margin-bottom: 2px;
 }

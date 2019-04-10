@@ -19,7 +19,7 @@ import displayStyles from '../scss/display.module.scss';
 import elementStyles from '../scss/elements.module.scss';
 import { fetchABot, resetTheBot } from '../redux/actions/bot';
 
-class EditBot extends Component {
+class EditRpc extends Component {
   constructor(props) {
     super(props);
 
@@ -143,7 +143,6 @@ class EditBot extends Component {
   render() {
     // Do not use redux bot if not editing
     const bot = this.props.match.params.id ? this.props.bot.data : null;
-    const categories = this.props.categories.data
     const auth = this.props.auth.data
     const { intl } = this.props
 
@@ -172,19 +171,14 @@ class EditBot extends Component {
               <h2><FormattedMessage id="pages.edit.basicinfo" /></h2>
               <Row>
                 <InputField name="app.id" id="pages.edit.client_id" value={bot && bot.id} required={true} />
-                <InputField name="app.oauth" id="pages.edit.application_id" value={bot && bot.oauth} />
-              </Row>
-              <Row>
-                <InputField name="app.invite" id="pages.edit.invite" value={bot && bot.invite} required={true} />
                 <MultipleInputField name="app.authors[]" id="pages.edit.authors" multiple={true} value={bot && bot.authors && bot.authors.map(author => author.id)} required={true} />
               </Row>
               <Row>
                 <InputField name="app.support" id="pages.edit.support" value={bot && bot.support} />
-                <InputField name="app.category" id="pages.edit.category" localiseOptions="categories" options={categories || []} value={bot && bot.category} />
+                <InputField name="app.website" id="pages.edit.website" value={bot && bot.website} />
               </Row>
               <Row>
-                <InputField name="app.website" id="pages.edit.website" value={bot && bot.website} />
-                <InputField name="app.nsfw" id="pages.edit.nsfw" value={bot && bot.nsfw} toggle={true} />
+                <InputField name="app.invite" id="pages.edit.rpc.invite" value={bot && bot.invite} required={true} />
               </Row>
             </ContentBox>
             <ContentBox>
@@ -202,20 +196,13 @@ class EditBot extends Component {
               </Row>
             </ContentBox>
             <ContentBox>
-              <h2><FormattedMessage id="pages.edit.triggermethods" /></h2>
+              <h2><FormattedMessage id="pages.edit.rpc.flags.title" /></h2>
               <Row>
-                <MultipleInputField name="app.trigger.prefix[]" id="pages.edit.prefix" value={bot && bot.trigger && bot.trigger.prefix} required={true} />
+                <InputField name="app.flags.win" id="pages.edit.rpc.flags.win" value={bot && bot.flags && bot.flags.win} toggle={true} />
+                <InputField name="app.flags.mac" id="pages.edit.rpc.flags.mac" value={bot && bot.flags && bot.flags.mac} toggle={true} />
               </Row>
               <Row>
-                <InputField name="app.trigger.customisable" id="pages.edit.customisable" value={bot && bot.trigger && bot.trigger.customisable} toggle={true} />
-                <InputField name="app.trigger.mentionable" id="pages.edit.mentionable" value={bot && bot.trigger && bot.trigger.mentionable} toggle={true} />
-              </Row>
-            </ContentBox>
-            <ContentBox>
-              <h2><FormattedMessage id="pages.edit.flags.title" /></h2>
-              <Row>
-                <InputField name="app.flags.inAppPurchases" id="pages.edit.flags.inAppPurchases" value={bot && bot.flags && bot.flags.inAppPurchases} toggle={true} smallText={true} />
-                <InputField name="app.flags.adverts" id="pages.edit.flags.adverts" value={bot && bot.flags && bot.flags.adverts} toggle={true} smallText={true} />
+                <InputField name="app.flags.linux" id="pages.edit.rpc.flags.linux" value={bot && bot.flags && bot.flags.linux} toggle={true} smallText={true} />
               </Row>
             </ContentBox>
             <ContentBox>
@@ -299,7 +286,7 @@ class EditBot extends Component {
               </button>
             </ContentBox>
           </Container>
-          <input name="app.type" value="bots"></input>
+          <input name="app.type" value="rpc"></input>
         </form>
       </Layout>
     );
@@ -311,4 +298,4 @@ const mapStateToProps = (state) => {
   return { categories, auth, bot };
 }
 
-export default connect(mapStateToProps)(injectIntl(EditBot));
+export default connect(mapStateToProps)(injectIntl(EditRpc));
