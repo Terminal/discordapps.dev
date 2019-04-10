@@ -25,19 +25,17 @@ const botserverError = () => console.log('Failed to update roles! Is webserver d
 router
   .post('/add', isLoggedInButJSON, reader.none(), (req, res, next) => {
     const body = unflatten(req.body);
-    let schema = null;
+    let schema = botSchema;
+    let type = 'bots';
 
     if (body.app) {
       if (body.app.type === 'bots') {
         schema = botSchema;
+        type = 'bots';
       } else if (body.app.type === 'rpc') {
         schema = rpcSchema;
+        type = 'rpc';
       }
-    }
-
-    // Default to the bot schema
-    if (!schema) {
-      schema = botSchema;
     }
 
     joi.validate(body.app || body.bot, schema, {
@@ -105,7 +103,7 @@ router
                 conflict: 'replace'
               })
               .then(() => {
-                discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.react}/${res.locals.languagePrefix}/bots/${value.id}`);
+                discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.react}/${res.locals.languagePrefix}/${type}/${value.id}`);
                 fixRoles()
                   .catch(botserverError);
                 res.json({
