@@ -299,7 +299,7 @@ class EditBot extends Component {
               </button>
             </ContentBox>
           </Container>
-          <input name="app.type" value="bot"></input>
+          <input name="app.type" value="bots"></input>
         </form>
       </Layout>
     );

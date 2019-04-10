@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import BotPageContentBox from '../components/BotPageContentBox';
 import BotPageImagesBox from '../components/BotPageImagesBox';
 import BotPageInfoBox from '../components/BotPageInfoBox';
@@ -52,6 +53,13 @@ class BotPage extends Component {
           <LoadingContainer />
         </Layout>
       );
+    }
+
+    if (bot.type !== this.props.match.params.type) {
+      if (this.props.staticContext) this.props.staticContext.status = 301;
+      return (
+        <Redirect to={`/${this.props.match.params.locale}/${bot.type}/${bot.id}`} />
+      )
     }
 
     const contents = Localise(bot.contents, this.props.intl.locale);

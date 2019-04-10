@@ -8,11 +8,28 @@ import Layout from '../components/Layout';
 import PleaseAddYourBotPleaseThanks from '../components/GetStartedWithBots';
 import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
 import WebsiteTypeButtons from '../components/WebsiteTypeButtons';
+// import { Helmet } from 'react-helmet';
+// import { FormattedMessage } from 'react-intl';
 
-class Home extends Component {
+class BotsHome extends Component {
   render() {
     return (
       <Layout match={this.props.match}>
+        {/* <FormattedMessage id="pages.bots.index.title">
+          {
+            title =>
+            <FormattedMessage id="pages.bots.index.description">
+              {description =>
+                <Helmet>
+                  <title>{title}</title>
+                  <meta property="og:title" content={title}/>
+                  <meta property="og:description" content={description}/>
+                  <meta name="description" content={description}/>
+                </Helmet>
+              }
+          </FormattedMessage>
+          }
+        </FormattedMessage> */}
         <Container>
           <Flex padding={true}>
             <Flex columns={3}>
@@ -31,8 +48,8 @@ class Home extends Component {
   }
 }
 
-Home.serverFetch = [
+BotsHome.serverFetch = [
   fetchCategoriesIfNeeded
 ]
 
-export default Home;
+export default BotsHome;

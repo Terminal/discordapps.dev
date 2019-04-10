@@ -6,6 +6,8 @@ import { injectIntl } from 'react-intl';
 import DateFormat from '../../data/DateFormat';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import States from '../../data/States';
+import Modesta from '../../data/Modesta';
+import FlexContainer from '../FlexContainer';
 
 class BotPageLinks extends Component {
   render() {
@@ -13,21 +15,27 @@ class BotPageLinks extends Component {
     return (
       <ContentBox>
         <FlexColumns>
-          <FlexColumns columns={6}>
-          <p><FormattedMessage id="pages.bots.offeredby"/></p>
-          <ul>
-            {bot.authors.map((author) => (
-              <li key={author.id}>
-                <LocalisedHyperlink aria-label={`${author.username}#${author.discriminator}`} to="/bots/filter" query={{
-                  owners: [author.id],
-                  state: States.APPROVED
-                }}>
-                  {author.username}#{author.discriminator}
-                </LocalisedHyperlink>
-              </li>
-            ))}
-          </ul>
-          </FlexColumns>
+          {
+            bot.authors.length > 0 ?
+            <FlexColumns columns={6}>
+              <p><FormattedMessage id="pages.bots.offeredby"/></p>
+              <ul>
+                {bot.authors.map((author) => (
+                  <li key={author.id}>
+                    <LocalisedHyperlink aria-label={`${author.username}#${author.discriminator}`} to="/filter" query={{
+                      owners: [author.id],
+                      state: States.APPROVED
+                    }}>
+                      {author.username}#{author.discriminator}
+                    </LocalisedHyperlink>
+                  </li>
+                ))}
+              </ul>
+            </FlexColumns> :
+            <FlexColumns columns={6}>
+              <FlexContainer className={Modesta.secondary} style={{margin: '5px', padding: '5px'}}><FormattedMessage id="pages.bots.reclaim"/></FlexContainer>
+            </FlexColumns>
+          }
           <FlexColumns columns={6}>
             <p>
               <FormattedMessage id="pages.bots.created" values={{
@@ -38,26 +46,28 @@ class BotPageLinks extends Component {
               }} />
             </p>
           </FlexColumns>
-          <FlexColumns columns={6}>
-            <FormattedMessage id={`categories.${bot.category}`}>
-              {
-                category =>
-                <FormattedMessage id="pages.bots.category" values={{
-                  category
-                }} />
-              }
-            </FormattedMessage>
-          </FlexColumns>
           {
-            bot.count ?
+            bot.category &&
+            <FlexColumns columns={6}>
+              <FormattedMessage id={`categories.${bot.category}`}>
+                {
+                  category =>
+                  <FormattedMessage id="pages.bots.category" values={{
+                    category
+                  }} />
+                }
+              </FormattedMessage>
+            </FlexColumns>
+          }
+          {
+            typeof bot.count === 'number' &&
             <FlexColumns columns={6}>
               <p>
                 <FormattedMessage id="pages.bots.count" values={{
                   guilds: bot.count
                 }}/>
               </p>
-            </FlexColumns> :
-            null
+            </FlexColumns>
           }
         </FlexColumns>
       </ContentBox>

@@ -18,8 +18,17 @@
   },
   "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
   "errors": {
+    "rpc": {
+      "invite": "The installation URL must filled out, and also be a valid HTTPS link"
+    },
+    "bots": {
+      "invite": "The invite URL must be filled out, and also be a valid HTTPS link",
+      "notabot": "The ID provided was not a bot account.",
+      "notfound": "The ID provided was not found by Discord."
+    },
     "apps": {
       "authors": "You must have at least 1 author of the application, and all Author IDs must be numeric",
+      "boolean": "A non-boolean value was sent to the server. Please contact Terminal.ink support.",
       "category": "You must select a category for your application",
       "customisable": "The customisability of the prefix must be either ticked, or unticked",
       "contents": "You must select at least one language for your application page to be displayed in. Click a language, and then click \"Add a language\"",
@@ -27,7 +36,6 @@
       "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
       "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
       "id": "The Application ID needs to be filled out, and numeric",
-      "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
       "website": "The Website URL needs to be a valid HTTPS link",
       "languages": "You must add a single language. Click the language you want your application page to be in, and select the 'Add a language' button",
       "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
@@ -38,8 +46,6 @@
       "prefix": "You must have at least 1 prefix, of max length 10.",
       "support": "The Support URL needs to be a valid HTTPS link",
       "exists": "The application already exists in the database, and you do not have permission to overwrite this.",
-      "notabot": "The ID provided was not a bot account.",
-      "notfound": "The ID provided was not found by Discord.",
       "add_success": "Added application to the queue.",
       "edit_success": "Edited application successfully.",
       "count": "The guild count for a bot must be between 0 and 5000000 servers",
@@ -79,7 +85,8 @@
     "discord": "Discord Server",
     "terminal": "Terminal.ink",
     "terms": "Terms and Conditions",
-    "docs": "Docs"
+    "docs": "Docs",
+    "apple": "Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc."
   },
   "forms": {
     "select": "Please select...",
@@ -121,7 +128,20 @@
     "zh-tw": "Chinese (Traditional)"
   },
   "pages": {
+    "rpc": {
+      "index": {
+        "title": "Rich Presence",
+        "description": "Show off what you're doing, with a wide range of Discord RPC plugins for Windows, Mac or Linux software. Browse RPC and more at the Discord Apps Marketplace"
+      },
+      "edit": "Edit RPC Application",
+      "invite": "Install this application",
+      "supports": "Supports: {operatingSystems}"
+    },
     "bots": {
+      "index": {
+        "title": "Bots",
+        "description": "Find a Discord Bot for your server to improve your workflow, add a bit of fun or listen together with Discord Bots. Browse bots and more at the Discord Apps Marketplace"
+      },
       "backgroundAlt": "The logo for discordapps.dev",
       "inMyLanguage": "Bots in my Language",
       "invite": "Add this bot",
@@ -131,6 +151,7 @@
       "customisable": "Customisable",
       "delete": "Delete",
       "reallyDelete": "Sure?",
+      "reclaim": "There is no author information for this bot. This may be because of loss of data between Discord_Fork and ls.terminal.ink migrations. If this is your bot, please join the Terminal.ink for reclaiming.",
       "edit": "Edit",
       "configure": "Configure",
       "github": "View on GitHub",
@@ -160,6 +181,29 @@
       }
     },
     "edit": {
+      "rpc": {
+        "invite": {
+          "title": "Installation URL",
+          "placeholder": "Enter a HTTPS link to your website to download your software"
+        },
+        "flags": {
+          "title": "Available Features",
+          "win": {
+            "title": "Supports Microsoft Windows"
+          },
+          "mac": {
+            "title": "Supports Apple MacOS X"
+          },
+          "linux": {
+            "title": "Supports Linux",
+            "small": "What you’re referring to as Linux, is in fact, GNU/Linux, or as I’ve recently taken to calling it, GNU plus Linux."
+          }
+        }
+      },
+      "invite": {
+        "title": "Invite URL",
+        "placeholder": "Enter a HTTPS link to invite your bot"
+      },
       "application_id": {
         "placeholder": "The ID used in the OAuth link.",
         "title": "OAuth ID"
@@ -203,10 +247,6 @@
         "title": "GitHub Repository"
       },
       "information": "Application Page Appearance",
-      "invite": {
-        "title": "Invite URL",
-        "placeholder": "Enter a link to invite your bot"
-      },
       "languages": {
         "modal": "Write your application page in many supported languages. Select a language, then click the \"Add a language\" button to the right.",
         "add": "Add a language",
@@ -286,7 +326,7 @@
       "snarky": "This error was going to happen anyway."
     },
     "list": {
-      "empty": "There are no bots"
+      "empty": "There are no applications which matches the current filter."
     },
     "locale": {
       "choose": "Please select a language.",
@@ -327,6 +367,12 @@
         "placeholder": "Do not filter",
         "nsfw": "Not Safe for Work",
         "sfw": "Safe For Work"
+      },
+      "type": {
+        "title": "Application Type",
+        "placeholder": "All Applications",
+        "bots": "Bots",
+        "rpc": "Rich Presence"
       }
     },
     "game": {
@@ -387,7 +433,7 @@
   "site": {
     "name": "Discord Apps Marketplace",
     "subheading": "Find bots to enhance your server",
-    "description": "discordapps.dev is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
+    "description": "discordapps.dev is an application store for Discord applications. Install bots for music, news, moderation and more for your server, or install RPC plugins to show off what you're doing."
   },
   "states": {
     "approved": "Approved",

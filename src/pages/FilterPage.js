@@ -26,6 +26,7 @@ class FilterPage extends Component {
       query: null,
       timeout: null,
       hidden: true,
+      type: null,
       state: null
     }
     this.form = React.createRef();
@@ -89,7 +90,7 @@ class FilterPage extends Component {
   }
   render() {
     const categories = this.props.categories.data;
-    const { results, owners, category, nsfw, query, hidden } = this.state;
+    const { results, owners, category, nsfw, type, query, hidden } = this.state;
 
     return (
       <Layout match={this.props.match}>
@@ -103,6 +104,9 @@ class FilterPage extends Component {
               <Row>
                 <InputField name="q" id="pages.filter.query" value={query} onChange={this.onChange}/>
                 <InputField name="nsfw" id="pages.filter.nsfw" localiseOptions="pages.filter.nsfw" allowNone={true} options={['sfw', 'nsfw']} value={nsfw} onChange={this.onChange}/>
+              </Row>
+              <Row>
+                <InputField name="type" id="pages.filter.type" localiseOptions="pages.filter.type" allowNone={true} options={['bots', 'rpc']} value={type} onChange={this.onChange}/>
               </Row>
             </ContentBox>
           </form>

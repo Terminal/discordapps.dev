@@ -9,6 +9,8 @@ import Locations from '../data/Locations';
 import ContentBox from '../components/ContentBox';
 import BotCollection from '../components/BotCollection';
 import States from '../data/States';
+import { FormattedMessage } from 'react-intl';
+import { Helmet } from 'react-helmet';
 
 class RpcsPage extends Component {
   constructor(props) {
@@ -36,6 +38,21 @@ class RpcsPage extends Component {
     const { results } = this.state;
     return (
       <Layout match={this.props.match}>
+        <FormattedMessage id="pages.rpc.index.title">
+          {
+            title =>
+            <FormattedMessage id="pages.rpc.index.description">
+              {description =>
+                <Helmet>
+                  <title>{title}</title>
+                  <meta property="og:title" content={title}/>
+                  <meta property="og:description" content={description}/>
+                  <meta name="description" content={description}/>
+                </Helmet>
+              }
+          </FormattedMessage>
+          }
+        </FormattedMessage>
         <Container>
           <Flex padding={true}>
             <Flex columns={3}>

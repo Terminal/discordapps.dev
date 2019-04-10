@@ -97,7 +97,7 @@ class BotPageInfoBox extends Component {
               {bot.github && bot.github.owner && bot.github.repo ? <a href={`https://github.com/${bot.github.owner}/${bot.github.repo}`}><FormattedMessage id="pages.bots.github" /></a> : null}
               { auth.data !== null && (auth.data.admin || bot.authors.some(author => author.id === auth.data.id)) ?
                 <>
-                  <LocalisedHyperlink to={`/bots/${bot.id}/edit`}><FormattedMessage id="pages.bots.edit" /></LocalisedHyperlink>
+                  <LocalisedHyperlink to={`/${bot.type}/${bot.id}/edit`}><FormattedMessage id={`pages.${bot.type}.edit`} /></LocalisedHyperlink>
                   {
                     this.state.sure ?
                       <>
@@ -127,7 +127,7 @@ class BotPageInfoBox extends Component {
           </FlexColumns>
           <FlexColumns columns={4} className={Modesta.rightText}>
             <a className={`${Modesta.btn} ${Modesta.discord}`} href={bot.invite}>
-              <FormattedMessage id="pages.bots.invite" />
+              <FormattedMessage id={`pages.${bot.type}.invite`} />
             </a>
           </FlexColumns>
         </FlexColumns>

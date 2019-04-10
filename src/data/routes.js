@@ -3,7 +3,7 @@ import ConfigurePage from "../pages/ConfigurePage";
 import EditBot from "../pages/EditBot";
 import FilterPage from "../pages/FilterPage";
 import Game from "../pages/Game";
-import Home from "../pages/Home";
+// import Home from "../pages/Home";
 import BotsHome from "../pages/BotsHome";
 import Locale from "../pages/Locale";
 import LogOut from "../pages/LogOut";
@@ -17,7 +17,7 @@ const routes = [
   {
     path: '/:locale/',
     exact: true,
-    component: Home,
+    component: BotsHome,
     status: 200,
   }, {
     path: '/:locale/game',
@@ -29,11 +29,11 @@ const routes = [
     exact: true,
     component: LogOut,
     status: 200,
-  }, {
-    path: '/:locale/bots',
-    exact: true,
-    component: BotsHome,
-    status: 200,
+  // }, {
+  //   path: '/:locale/bots',
+  //   exact: true,
+  //   component: BotsHome,
+  //   status: 200,
   }, {
     path: '/:locale/rpc',
     exact: true,
@@ -50,7 +50,7 @@ const routes = [
     component: EditRpc,
     status: 200,
   }, {
-    path: '/:locale/bots/filter',
+    path: '/:locale/filter',
     exact: true,
     component: FilterPage,
     status: 200,
@@ -70,12 +70,12 @@ const routes = [
     component: EditRpc,
     status: 200,
   }, {
-    path: '/:locale/bots/:id',
+    path: '/:locale/:type/:id',
     exact: true,
     component: AppPage,
     status: 200,
   }, {
-    path: '/:locale/rpc/:id',
+    path: '/:locale/:type/:id',
     exact: true,
     component: AppPage,
     status: 200,

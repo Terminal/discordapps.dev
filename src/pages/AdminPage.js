@@ -40,7 +40,7 @@ class AdminPage extends Component {
               Object.values(States)
                 .map(state =>
                   <li>
-                    <LocalisedHyperlink to="/bots/filter" query={{
+                    <LocalisedHyperlink to="/filter" query={{
                       state: state
                     }}>
                       <FormattedMessage id={`states.${state}`} />

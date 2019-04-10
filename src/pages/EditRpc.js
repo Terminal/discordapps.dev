@@ -177,6 +177,9 @@ class EditRpc extends Component {
                 <InputField name="app.support" id="pages.edit.support" value={bot && bot.support} />
                 <InputField name="app.website" id="pages.edit.website" value={bot && bot.website} />
               </Row>
+              <Row>
+                <InputField name="app.invite" id="pages.edit.rpc.invite" value={bot && bot.invite} required={true} />
+              </Row>
             </ContentBox>
             <ContentBox>
               <h2><FormattedMessage id="pages.edit.images.title" /></h2>
@@ -190,6 +193,16 @@ class EditRpc extends Component {
               </Row>
               <Row>
                 <MultipleInputField name="app.images.preview[]" id="pages.edit.images.preview" value={bot && bot.images && bot.images.preview} />
+              </Row>
+            </ContentBox>
+            <ContentBox>
+              <h2><FormattedMessage id="pages.edit.rpc.flags.title" /></h2>
+              <Row>
+                <InputField name="app.flags.win" id="pages.edit.rpc.flags.win" value={bot && bot.flags && bot.flags.win} toggle={true} />
+                <InputField name="app.flags.mac" id="pages.edit.rpc.flags.mac" value={bot && bot.flags && bot.flags.mac} toggle={true} />
+              </Row>
+              <Row>
+                <InputField name="app.flags.linux" id="pages.edit.rpc.flags.linux" value={bot && bot.flags && bot.flags.linux} toggle={true} smallText={true} />
               </Row>
             </ContentBox>
             <ContentBox>
