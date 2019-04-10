@@ -130,7 +130,7 @@
   "pages": {
     "rpc": {
       "index": {
-        "title": "Rich Presence",
+        "title": "Rich Presence List",
         "description": "Show off what you're doing, with a wide range of Discord RPC plugins for Windows, Mac or Linux software. Browse RPC and more at the Discord Apps Marketplace"
       },
       "edit": "Edit RPC Application",
