@@ -26,15 +26,15 @@ router
   .post('/add', isLoggedInButJSON, reader.none(), (req, res, next) => {
     const body = unflatten(req.body);
     let schema = botSchema;
-    let type = 'bots';
+    let appType = 'bots';
 
     if (body.app) {
       if (body.app.type === 'bots') {
         schema = botSchema;
-        type = 'bots';
+        appType = 'bots';
       } else if (body.app.type === 'rpc') {
         schema = rpcSchema;
-        type = 'rpc';
+        appType = 'rpc';
       }
     }
 
@@ -103,7 +103,7 @@ router
                 conflict: 'replace'
               })
               .then(() => {
-                discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.react}/${res.locals.languagePrefix}/${type}/${value.id}`);
+                discordWebhooks(`${req.user.username}#${req.user.discriminator} (${req.user.id}) ${type} <@${value.id}> - ${config.webserver.react}/${res.locals.languagePrefix}/${appType}/${value.id}`);
                 fixRoles()
                   .catch(botserverError);
                 res.json({
