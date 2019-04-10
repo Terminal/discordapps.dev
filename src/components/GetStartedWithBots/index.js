@@ -6,7 +6,6 @@ import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import { injectIntl } from 'react-intl';
 import ContentBox from '../ContentBox';
 import Flex from '../FlexColumns';
-import LocalisedHyperlink from '../LocalisedHyperlink';
 
 class PleaseAddYourBotPleaseThanks extends Component {
   componentDidMount() {
@@ -14,8 +13,6 @@ class PleaseAddYourBotPleaseThanks extends Component {
     dispatch(fetchAuthIfNeeded());
   }
   render() {
-    const href = typeof window !== 'undefined' ? `${window.location.origin}/bots/add` : 'https://discordapps.dev';
-
     return (
       <ContentBox>
         <Flex>

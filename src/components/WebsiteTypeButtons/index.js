@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import ContentBox from '../ContentBox';
 import { FormattedMessage } from 'react-intl';
-
 import styles from './index.module.scss';
 import LinkButton from '../LinkButton';
 import Modesta from '../../data/Modesta';

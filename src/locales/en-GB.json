@@ -258,11 +258,11 @@
       },
       "name": {
         "title": "Name",
-        "placeholder": "Enter the name of the bot."
+        "placeholder": "Enter the name of the application."
       },
       "page": {
         "title": "Extended Description",
-        "placeholder": "Enter useful information about your bot, like commands, features and updates."
+        "placeholder": "Enter useful information about your application, like commands, features and updates."
       },
       "prefix": {
         "placeholder": "A single prefix",
