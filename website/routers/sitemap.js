@@ -1,5 +1,5 @@
-const r = require('../rethinkdb');
 const xmlify = require('js2xmlparser');
+const r = require('../rethinkdb');
 const config = require('../config');
 const languages = require('../data/displayedLanguages.json');
 

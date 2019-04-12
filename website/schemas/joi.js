@@ -3,7 +3,7 @@ const originaljoi = require('joi');
 const joi = originaljoi.extend({
   base: originaljoi.string(),
   name: 'string',
-  coerce: (value, state, options) => {
+  coerce: (value, state, options) => { // eslint-disable-line
     if (value === '') return null;
     if (typeof value === 'string') return value;
     if (typeof value === 'number') return value.toString(10);
@@ -34,7 +34,7 @@ const joi = originaljoi.extend({
       return value;
     }
     const numberwang = parseInt(value, 10);
-    if (isNaN(numberwang)) {
+    if (Number.isNaN(numberwang)) {
       return null;
     }
     return numberwang;

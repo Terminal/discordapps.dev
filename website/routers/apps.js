@@ -1,4 +1,8 @@
 const express = require('express');
+const { unflatten } = require('flat');
+const multer = require('multer');
+const crypto = require('crypto');
+const fetch = require('node-fetch');
 const { isOwnerOfBot, isLoggedIn, isLoggedInButJSON } = require('../static/middleware');
 const botSchema = require('../schemas/bots');
 const rpcSchema = require('../schemas/rpc');
@@ -6,15 +10,11 @@ const rpcSchema = require('../schemas/rpc');
 const reviewsRouter = require('./reviews');
 
 const joi = require('../schemas/joi');
-const { unflatten } = require('flat');
-const multer = require('multer');
 const r = require('../rethinkdb');
 const config = require('../config');
 const ImageCache = require('../class/ImageCache');
-const crypto = require('crypto');
 const discordWebhooks = require('../static/discordWebhook');
 const checkParamsLength = require('../middleware/checkParamsLength');
-const fetch = require('node-fetch');
 const { fixRoles } = require('../static/bot');
 
 const router = express.Router();

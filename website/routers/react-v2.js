@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const r = require('../rethinkdb');
 const checkParamsLength = require('../middleware/checkParamsLength');
 
@@ -7,7 +8,6 @@ const selectableStates = require('../data/states.json');
 const categories = require('../data/categories.json');
 const discordWebhooks = require('../static/discordWebhook');
 const { fixRoles } = require('../static/bot');
-const multer = require('multer');
 
 const reader = multer();
 
@@ -138,11 +138,9 @@ router
 
       if (query) {
         databaseQuery = databaseQuery.and(
-          bot('contents').contains(contents =>
-            contents('page').default('').match(sanitise(query))
-              .or(contents('name').default('').match(sanitise(query)))
-              .or(contents('description').default('').match(sanitise(query)))
-          )
+          bot('contents').contains(contents => contents('page').default('').match(sanitise(query))
+            .or(contents('name').default('').match(sanitise(query)))
+            .or(contents('description').default('').match(sanitise(query))))
         );
       }
 

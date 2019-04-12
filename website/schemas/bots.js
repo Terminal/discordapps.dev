@@ -1,5 +1,5 @@
-const joi = require('./joi');
 const githubUsernameRegex = require('github-username-regex');
+const joi = require('./joi');
 const languages = require('../data/languages.json');
 const categories = require('../data/categories.json');
 

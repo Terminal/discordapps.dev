@@ -1,9 +1,11 @@
 const express = require('express');
-const { isOwnerOfReview, botExists, reviewDoesntExist, isLoggedIn, isLoggedInButJSON } = require('../static/middleware');
-
-const joi = require('../schemas/joi');
 const { unflatten } = require('flat');
 const multer = require('multer');
+const {
+  isOwnerOfReview, botExists, reviewDoesntExist, isLoggedIn, isLoggedInButJSON
+} = require('../static/middleware');
+
+const joi = require('../schemas/joi');
 const r = require('../rethinkdb');
 const reviewSchema = require('../schemas/reviews');
 const checkParamsLength = require('../middleware/checkParamsLength');

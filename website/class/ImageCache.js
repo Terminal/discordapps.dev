@@ -47,19 +47,24 @@ class ImageCache {
     this.blur = blur;
     this.avatar = avatar;
   }
+
   get hash() {
     return crypto.createHash('sha256').update(this.url + config.webserver.secret).digest('hex');
   }
+
   get permalink() {
     return `/appdata/${this.hash}.png`;
   }
+
   get storagePath() {
     return path.join(__dirname, '..', 'www-root', this.permalink);
   }
+
   errURL(err) {
     err.message = `${this.url} - ${err.message}`;
     return err;
   }
+
   useDefaultImage() {
     return sharp(defaultImage)
       .resize(this.x, this.y, {
@@ -68,6 +73,7 @@ class ImageCache {
       })
       .toFile(this.storagePath);
   }
+
   download() {
     // Fetch the URL of the image
     return fetch(`${config.proxy.host}/${this.url}`, {
@@ -98,6 +104,7 @@ class ImageCache {
         return Promise.reject(this.errURL(err));
       });
   }
+
   cache() {
     return this.getRecord()
       .then((record) => {
@@ -114,9 +121,9 @@ class ImageCache {
           time: new Date().getTime()
         }, {
           conflict: 'update'
-        })
-      );
+        }));
   }
+
   getRecord() {
     return r.table('images')
       .get(this.hash);

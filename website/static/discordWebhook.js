@@ -1,5 +1,5 @@
-const config = require('../config');
 const fetch = require('node-fetch');
+const config = require('../config');
 
 module.exports = (data) => {
   let payload = {};

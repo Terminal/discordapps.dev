@@ -101,12 +101,8 @@ app
           .partition(member => users.includes(member.user.id));
 
         return Promise.all(
-          add.map(member =>
-            member.addRole(config.roles.dev, 'ls.terminal.ink adjustments')
-          ),
-          remove.map(member =>
-            member.removeRole(config.roles.dev, 'ls.terminal.ink adjustments')
-          )
+          add.map(member => member.addRole(config.roles.dev, 'ls.terminal.ink adjustments')),
+          remove.map(member => member.removeRole(config.roles.dev, 'ls.terminal.ink adjustments'))
         );
       })
       .then(() => {

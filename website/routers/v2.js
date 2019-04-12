@@ -1,13 +1,12 @@
 const express = require('express');
+const { unflatten } = require('flat');
 const r = require('../rethinkdb');
 const config = require('../config');
 const checkParamsLength = require('../middleware/checkParamsLength');
 const categories = require('../data/categories.json');
-
 const joi = require('../schemas/joi');
 const botSchema = require('../schemas/bots');
 
-const { unflatten } = require('flat');
 
 const router = express.Router();
 
@@ -37,9 +36,7 @@ const checkToken = (req, res, next) => {
 router
   .get('/apps', (req, res, next) => {
     r.table('apps')
-      .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.locals.languagePrefix)
-      ), {
+      .merge(bot => r.branch(bot('contents').contains(contents => contents('locale').eq(res.locals.languagePrefix)), {
         random: bot('random').add(10)
       }, {}))
       .without('token')
@@ -58,9 +55,7 @@ router
       .filter({
         type: 'bots'
       })
-      .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.locals.languagePrefix)
-      ), {
+      .merge(bot => r.branch(bot('contents').contains(contents => contents('locale').eq(res.locals.languagePrefix)), {
         random: bot('random').add(10)
       }, {}))
       .without('token')
@@ -79,9 +74,7 @@ router
       .filter({
         type: 'rpc'
       })
-      .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.locals.languagePrefix)
-      ), {
+      .merge(bot => r.branch(bot('contents').contains(contents => contents('locale').eq(res.locals.languagePrefix)), {
         random: bot('random').add(10)
       }, {}))
       .without('token')
@@ -98,9 +91,7 @@ router
   .get('/bots/:id', checkParamsLength, (req, res, next) => {
     r.table('apps')
       .get(req.params.id)
-      .merge(bot => r.branch(bot('contents').contains(contents =>
-        contents('locale').eq(res.locals.languagePrefix)
-      ), {
+      .merge(bot => r.branch(bot('contents').contains(contents => contents('locale').eq(res.locals.languagePrefix)), {
         random: bot('random').add(10)
       }, {}))
       .merge(bot => ({

@@ -1,4 +1,6 @@
+const rethinkdb = require('rethinkdbdash');
 const config = require('../config');
-const r = require('rethinkdbdash')(config.rethinkdb);
+
+const r = rethinkdb(config.rethinkdb);
 
 module.exports = r;

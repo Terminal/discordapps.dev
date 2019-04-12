@@ -5,15 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "eslint .",
-    "start": "node --icu-data-dir=node_modules/full-icu website/index.js",
-    "bot": "node --icu-data-dir=node_modules/full-icu bot/index.js",
-    "frontend:start": "node frontend/index.js",
-    "frontend:startDev": "node frontend/dev.js",
-    "frontend:babel": "cross-env BABEL_ENV=node babel frontend/src --out-dir frontend/views --copy-files",
-    "frontend:pack": "webpack --config frontend/webpack.config.js",
-    "frontend:packDev": "webpack --config frontend/webpack.config.js --mode=development",
-    "frontend:build": "npm-run-all frontend:pack frontend:babel",
-    "frontend:dev": "cross-env NODE_ENV=development npm-run-all frontend:packDev frontend:babel frontend:startDev"
+    "start": "node website/index.js",
+    "bot": "node bot/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,47 +22,31 @@
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
-    "cross-env": "^5.2.0",
     "discord.js": "^11.4.2",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-react": "^7.12.4",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
-    "file-loader": "^3.0.1",
     "flat": "^4.1.0",
-    "full-icu": "^1.2.1",
     "github-username-regex": "^1.0.0",
     "i18n": "^0.8.3",
-    "isomorphic-style-loader": "^4.0.0",
     "joi": "^14.0.4",
-    "js2xmlparser": "^3.0.0",
-    "marked": "^0.3.19",
-    "materialize-css": "^1.0.0-rc.2",
-    "monaco-editor": "^0.14.3",
+    "js2xmlparser": "^4.0.0",
     "multer": "^1.4.1",
     "node-fetch": "^2.3.0",
-    "node-sass": "^4.11.0",
-    "node-sass-middleware": "^0.11.0",
-    "npm-run-all": "^4.1.5",
-    "object-assign-deep": "^0.4.0",
-    "passport": "^0.3.2",
+    "passport": "^0.4.0",
     "passport-discord": "^0.1.3",
     "request": "^2.88.0",
     "rethinkdbdash": "^2.3.31",
     "session-rethinkdb": "^2.0.1",
-    "sharp": "^0.21.3",
-    "tiny-slider": "^2.8.8",
-    "whatwg-fetch": "^3.0.0",
-    "xss": "^1.0.3"
+    "sharp": "^0.22.0"
   },
   "devDependencies": {},
   "eslintConfig": {
     "extends": [
       "airbnb-base",
-      "plugin:react/recommended",
       "plugin:import/recommended"
     ],
     "plugins": [
@@ -90,17 +67,10 @@
         2,
         "unix"
       ],
-      "consistent-return": 0,
-      "react/prop-types": 0
+      "consistent-return": 0
     },
     "env": {
-      "node": true,
-      "browser": true
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      }
+      "node": true
     }
   }
 }
