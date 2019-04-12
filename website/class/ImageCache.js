@@ -111,8 +111,7 @@ class ImageCache {
       .then(() => r.table('images') // Update the "last updated" time
         .insert({
           id: this.hash,
-          time: new Date().getTime(),
-          storagePath: this.storagePath
+          time: new Date().getTime()
         }, {
           conflict: 'update'
         })
