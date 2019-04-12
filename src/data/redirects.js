@@ -7,12 +7,12 @@ const redirects = [
   }, {
     path: '/en-baguette',
     exact: false,
-    status: 301,
+    status: 302,
     to: () => '/en-GB'
   }, {
     path: '/:locale/bots',
     exact: true,
-    status: 301,
+    status: 302,
     to: ({match}) => `/${match.params.locale}/`
   }, {
     path: '/:locale/bots/filter',
@@ -22,12 +22,12 @@ const redirects = [
   }, {
     path: '/:locale/boats/',
     exact: false,
-    status: 301,
+    status: 302,
     to: ({match}) => `/${match.params.locale}/`
   }, {
     path: '/:locale/bot/',
     exact: true,
-    status: 301,
+    status: 302,
     to: ({match}) => `/${match.params.locale}/`
   }, {
     path: '/:locale/bots/by/:id',

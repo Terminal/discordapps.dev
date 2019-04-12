@@ -16,7 +16,7 @@ export default (req, res, next) => {
     const match = matchPath(req.baseUrl, redirects[i]);
     const route = redirects[i];
     if (match) {
-      return res.redirect(route.to({match}))
+      return res.redirect(route.status || 302, route.to({match}))
     }
   }
 
