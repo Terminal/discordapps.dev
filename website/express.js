@@ -65,7 +65,7 @@ app
     if (languages.map(lang => lang.toLowerCase()).includes(req.params.locale.toLowerCase())) {
       next();
     } else {
-      res.redirect(`${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
+      res.redirect(301, `${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
     }
   }, websiteRouter)
   .use((err, req, res, next) => {
@@ -80,7 +80,7 @@ app
     }
   })
   .use((req, res) => {
-    res.redirect(`${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
+    res.redirect(301, `${config.webserver.react || 'https://discordapps.dev'}${req.originalUrl}`);
   });
 
 periodical();
