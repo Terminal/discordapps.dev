@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import Container from '../components/Container';
-import Layout from '../components/Layout';
-import Locations from '../data/Locations';
-import NotFound from './NotFound';
+import Container from '../../components/Container';
+import Layout from '../../components/Layout';
+import Locations from '../../data/Locations';
+import NotFound from '../NotFound';
 import { injectIntl, FormattedMessage } from 'react-intl';
-import { Localise } from '../locales';
-import ContentBox from '../components/ContentBox';
-import Modesta from '../data/Modesta';
-import LoadingContainer from '../components/LoadingContainer';
-import PermissionDenied from '../components/PermissionDenied';
+import { Localise } from '../../locales';
+import ContentBox from '../../components/ContentBox';
+import Modesta from '../../data/Modesta';
+import LoadingContainer from '../../components/LoadingContainer';
+import PermissionDenied from '../../components/PermissionDenied';
 
 class ConfigurePage extends Component {
   constructor(props) {

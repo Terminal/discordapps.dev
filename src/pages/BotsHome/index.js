@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import CategoriesLinksList from '../components/BotCategoriesLinksList';
-import CategoryCollection from '../components/BotCategoryCollection';
-import Container from '../components/Container';
-import Flex from '../components/FlexColumns';
-import HelpUsImprove from '../components/HelpUsImprove';
-import Layout from '../components/Layout';
-import PleaseAddYourBotPleaseThanks from '../components/GetStartedWithBots';
-import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
-import WebsiteTypeButtons from '../components/WebsiteTypeButtons';
+import CategoriesLinksList from '../../components/BotCategoriesLinksList';
+import CategoryCollection from '../../components/BotCategoryCollection';
+import Container from '../../components/Container';
+import Flex from '../../components/FlexColumns';
+import HelpUsImprove from '../../components/HelpUsImprove';
+import Layout from '../../components/Layout';
+import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
+import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
+import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
 // import { Helmet } from 'react-helmet';
 // import { FormattedMessage } from 'react-intl';
 

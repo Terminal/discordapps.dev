@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Container from '../components/Container';
-import Flex from '../components/FlexColumns';
-import HelpUsImprove from '../components/HelpUsImprove';
-import Layout from '../components/Layout';
-import PleaseAddYourBotPleaseThanks from '../components/GetStartedWithBots';
-import WebsiteTypeButtons from '../components/WebsiteTypeButtons';
-import Locations from '../data/Locations';
-import ContentBox from '../components/ContentBox';
-import BotCollection from '../components/BotCollection';
-import States from '../data/States';
+import Container from '../../components/Container';
+import Flex from '../../components/FlexColumns';
+import HelpUsImprove from '../../components/HelpUsImprove';
+import Layout from '../../components/Layout';
+import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
+import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
+import Locations from '../../data/Locations';
+import ContentBox from '../../components/ContentBox';
+import BotCollection from '../../components/BotCollection';
+import States from '../../data/States';
 import { FormattedMessage } from 'react-intl';
 import { Helmet } from 'react-helmet';
 

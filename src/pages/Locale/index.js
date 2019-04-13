@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Container from '../components/Container';
-import ContentBox from '../components/ContentBox';
-import FlagLinks from '../components/FlagLinks';
-import Layout from '../components/Layout';
-import Modesta from '../data/Modesta';
-import Locations from '../data/Locations';
+import Container from '../../components/Container';
+import ContentBox from '../../components/ContentBox';
+import FlagLinks from '../../components/FlagLinks';
+import Layout from '../../components/Layout';
+import Modesta from '../../data/Modesta';
+import Locations from '../../data/Locations';
 
 class Locale extends Component {
   render() {

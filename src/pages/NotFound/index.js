@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Container from '../components/Container';
-import ContentBox from '../components/ContentBox';
-import Layout from '../components/Layout';
-import PleaseAddYourBotPleaseThanks from '../components/GetStartedWithBots';
-import Flex from '../components/FlexColumns';
-import WebsiteTypeButtons from '../components/WebsiteTypeButtons';
-import HelpUsImprove from '../components/HelpUsImprove';
+import Container from '../../components/Container';
+import ContentBox from '../../components/ContentBox';
+import Layout from '../../components/Layout';
+import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
+import Flex from '../../components/FlexColumns';
+import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
+import HelpUsImprove from '../../components/HelpUsImprove';
 
 class NotFound extends Component {
   render() {

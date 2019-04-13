@@ -2,17 +2,17 @@ import qs from 'qs';
 import React, { Component } from 'react';
 import { injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import BotCollection from '../components/BotCollection';
-import Container from '../components/Container';
-import ContentBox from '../components/ContentBox';
-import InputField from '../components/InputField';
-import Layout from '../components/Layout';
-import MultipleInputField from '../components/MultipleInputField';
-import Row from '../components/Row';
-import Locations from '../data/Locations';
-import { fetchCategoriesIfNeeded } from '../redux/actions/categories';
-import States from '../data/States';
-import calculateBotScore from '../helpers/calulateBotScore';
+import BotCollection from '../../components/BotCollection';
+import Container from '../../components/Container';
+import ContentBox from '../../components/ContentBox';
+import InputField from '../../components/InputField';
+import Layout from '../../components/Layout';
+import MultipleInputField from '../../components/MultipleInputField';
+import Row from '../../components/Row';
+import Locations from '../../data/Locations';
+import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
+import States from '../../data/States';
+import calculateBotScore from '../../helpers/calulateBotScore';
 
 class FilterPage extends Component {
   constructor(props) {

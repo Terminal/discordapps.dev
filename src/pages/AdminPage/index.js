@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Container from '../components/Container';
-import Layout from '../components/Layout';
-import { fetchAuthIfNeeded } from '../redux/actions/auth';
-import PleaseLogin from '../components/PleaseLogIn';
-import PermissionDenied from '../components/PermissionDenied';
-import States from '../data/States';
-import LocalisedHyperlink from '../components/LocalisedHyperlink';
+import Container from '../../components/Container';
+import Layout from '../../components/Layout';
+import { fetchAuthIfNeeded } from '../../redux/actions/auth';
+import PleaseLogin from '../../components/PleaseLogIn';
+import PermissionDenied from '../../components/PermissionDenied';
+import States from '../../data/States';
+import LocalisedHyperlink from '../../components/LocalisedHyperlink';
 import { FormattedMessage } from 'react-intl';
-import ContentBox from '../components/ContentBox';
+import ContentBox from '../../components/ContentBox';
 
 class AdminPage extends Component {
   componentDidMount() {

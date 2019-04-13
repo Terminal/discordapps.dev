@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { Prompt } from 'react-router-dom';
-import Container from '../components/Container';
-import ContentBox from '../components/ContentBox';
-import Layout from '../components/Layout';
-import PleaseAddYourBotPleaseThanks from '../components/GetStartedWithBots';
+import Container from '../../components/Container';
+import ContentBox from '../../components/ContentBox';
+import Layout from '../../components/Layout';
+import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
 
 class Game extends Component {
   constructor(props) {
