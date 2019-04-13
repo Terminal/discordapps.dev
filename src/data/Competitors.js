@@ -21,6 +21,8 @@ const Competitors = [
   'discordbots.org',
   'divinediscordbots.com',
   'lbots.org',
+  'mythicalbots.xyz',
+  'portalmybot.com',
 ]
 
 export default Competitors;
