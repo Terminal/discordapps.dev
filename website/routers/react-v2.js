@@ -191,7 +191,18 @@ router
             username: null,
             cachedAvatar: null
           })
-          .coerceTo('array')
+          .coerceTo('array'),
+        rating: r.table('reviews')
+          .filter({
+            bot: bot('id')
+          })
+          .avg('rating')
+          .default(0),
+        reviewsCount: r.table('reviews')
+          .filter({
+            bot: bot('id')
+          })
+          .count()
       }))
       .without('token')
       .orderBy(r[order](sort))
