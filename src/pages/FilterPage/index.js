@@ -51,8 +51,6 @@ class FilterPage extends Component {
         if (data.ok) {
           this.setState({
             results: data.data
-              .filter(bot => bot.state === 'approved')
-              .filter(bot => bot.hide !== true)
               .map(bot => calculateBotScore({
                 bot,
                 locale: this.props.intl.locale
