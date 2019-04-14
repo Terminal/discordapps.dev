@@ -18,6 +18,13 @@ const router = express.Router();
 const operators = /[|\\{}()[\]^$+*?.]/g;
 const sanitise = string => `(?i)${string.trim().toLowerCase().replace(operators, '\\$&')}`;
 
+const sortKeys = [
+  'id',
+  'random',
+  'created',
+  'edited',
+];
+
 router
   .get('/bots/category/:category', checkParamsLength, (req, res, next) => {
     r.table('apps')
@@ -127,6 +134,8 @@ router
     const nsfw = typeof req.query.nsfw === 'string' ? req.query.nsfw : '';
     const type = typeof req.query.type === 'string' ? req.query.type : '';
     const owners = Array.isArray(req.query.owners) ? req.query.owners : [];
+    const sort = sortKeys.includes(req.query.sort) ? req.query.sort : 'random';
+    const order = req.query.order === 'asc' ? 'asc' : 'desc';
 
     const filter = (bot) => {
       // Bodge for chaining
@@ -185,6 +194,7 @@ router
           .coerceTo('array')
       }))
       .without('token')
+      .orderBy(r[order](sort))
       .then((bots) => {
         res.json({
           ok: true,
