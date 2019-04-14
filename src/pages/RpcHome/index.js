@@ -29,11 +29,6 @@ class RpcHome extends Component {
           this.setState({
             results: data.data
               .filter(bot => bot.state === 'approved')
-              .filter(bot => bot.hide !== true)
-              .map(bot => calculateBotScore({
-                bot,
-                locale: this.props.intl.locale
-              }))
               .sort((a, b) => b.random - a.random)
           });
         } else {
