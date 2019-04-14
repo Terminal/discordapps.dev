@@ -3,21 +3,21 @@ import ConfigurePage from "../pages/ConfigurePage";
 import EditBot from "../pages/EditBot";
 import FilterPage from "../pages/FilterPage";
 import Game from "../pages/Game";
-// import Home from "../pages/Home";
+import Home from "../pages/Home";
 import BotsHome from "../pages/BotsHome";
 import Locale from "../pages/Locale";
 import LogOut from "../pages/LogOut";
 import NotFound from "../pages/NotFound";
 import AdminPage from "../pages/AdminPage";
 import LanguagesComparisonPage from "../pages/LanguagesComparisonPage";
-import RpcsPage from "../pages/RpcsPage";
+import RpcHome from "../pages/RpcHome";
 import EditRpc from "../pages/EditRpc";
 
 const routes = [
   {
     path: '/:locale/',
     exact: true,
-    component: BotsHome,
+    component: Home,
     status: 200,
   }, {
     path: '/:locale/game',
@@ -29,15 +29,15 @@ const routes = [
     exact: true,
     component: LogOut,
     status: 200,
-  // }, {
-  //   path: '/:locale/bots',
-  //   exact: true,
-  //   component: BotsHome,
-  //   status: 200,
+  }, {
+    path: '/:locale/bots',
+    exact: true,
+    component: BotsHome,
+    status: 200,
   }, {
     path: '/:locale/rpc',
     exact: true,
-    component: RpcsPage,
+    component: RpcHome,
     status: 200,
   }, {
     path: '/:locale/bots/add',

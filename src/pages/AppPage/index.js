@@ -8,6 +8,7 @@ import BotPageImagesBox from '../../components/BotPageImagesBox';
 import BotPageInfoBox from '../../components/BotPageInfoBox';
 import BotPageLinks from '../../components/BotPageLinks';
 import BotPageReviewsBox from '../../components/BotPageReviewsBox';
+import BotPageSetStateBox from '../../components/BotPageSetStateBox';
 import BtecParallax from '../../components/BtecParallax';
 import Container from '../../components/Container';
 import Layout from '../../components/Layout';
@@ -15,11 +16,10 @@ import LoadingContainer from '../../components/LoadingContainer';
 import Youku from '../../components/Youku';
 import YouTube from '../../components/YouTube';
 import Locations from '../../data/Locations';
-import { Localise } from '../../locales';
-import NotFound from '../NotFound';
-import { fetchABot } from '../../redux/actions/bot';
-import BotPageSetStateBox from '../../components/BotPageSetStateBox';
 import reviewToJsonLd from '../../helpers/reviewToJsonLd';
+import { Localise } from '../../locales';
+import { fetchABot } from '../../redux/actions/bot';
+import NotFound from '../NotFound';
 
 class BotPage extends Component {
   constructor(props) {
@@ -73,7 +73,7 @@ class BotPage extends Component {
           <meta property="og:title" content={contents.name}/>
           <meta property="og:description" content={contents.description}/>
           <meta name="description" content={contents.description}/>
-          <meta property="og:image" content={`${Locations.server}${bot.cachedImages.avatar}`} />
+          <meta property="og:image" content={`${Locations.cdn}${bot.cachedImages.avatar}`} />
           {
             reviewJSON &&
               <script type="application/ld+json">
@@ -83,7 +83,7 @@ class BotPage extends Component {
         </Helmet>
         { 
           bot.cachedImages.cover ?
-          <BtecParallax src={`${Locations.server}${bot.cachedImages.cover}`}/> :
+          <BtecParallax src={`${Locations.cdn}${bot.cachedImages.cover}`}/> :
           null
         }
         <Container>
@@ -94,7 +94,7 @@ class BotPage extends Component {
           </BotPageImagesBox>
           <BotPageContentBox page={contents.page}/>
           <BotPageReviewsBox bot={bot} />
-          <BotPageLinks bot={bot} />
+          <BotPageLinks bot={bot} contents={contents} match={this.props.match} />
           <BotPageSetStateBox bot={bot} />
         </Container>
       </Layout>
@@ -108,6 +108,12 @@ const mapStateToProps = (state) => {
 }
 
 const exportedComponent = connect(mapStateToProps)(injectIntl(BotPage))
-exportedComponent.serverFetch = [fetchABot];
+exportedComponent.serverFetch = [
+  {
+    function: fetchABot,
+    pass: ['match'],
+    payload: {}
+  }
+];
 
 export default exportedComponent;

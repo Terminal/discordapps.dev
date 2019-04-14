@@ -18,15 +18,6 @@ class Footer extends Component {
             <a href={Locations.termsAndConditions} target="_blank" rel="noopener noreferrer">
               <FormattedMessage id="footer.terms" />
             </a>
-            <a href={Locations.sourceLicence} target="_blank" rel="noopener noreferrer">
-              <FormattedMessage id="footer.licence" />
-            </a>
-            <a href={Locations.sourceDependencies} target="_blank" rel="noopener noreferrer">
-              <FormattedMessage id="footer.attribution" />
-            </a>
-            <a href={Locations.sourceCode} target="_blank" rel="noopener noreferrer">
-              <FormattedMessage id="footer.source" />
-            </a>
             <a href={Locations.discordServer} target="_blank" rel="noopener noreferrer">
               <FormattedMessage id="footer.discord" />
             </a>
@@ -40,6 +31,22 @@ class Footer extends Component {
           <p className={ConstructCSS(styles.copyright, styles.small)}>
             <FormattedMessage id="footer.apple" />
           </p>
+        </ContentBox>
+        <ContentBox>
+          <p className={styles.copyright}>
+            <FormattedMessage id="footer.foss" />
+          </p>
+          <div className={styles.links}>
+            <a href={Locations.sourceLicence} target="_blank" rel="noopener noreferrer">
+              <FormattedMessage id="footer.licence" />
+            </a>
+            <a href={Locations.sourceDependencies} target="_blank" rel="noopener noreferrer">
+              <FormattedMessage id="footer.attribution" />
+            </a>
+            <a href={Locations.sourceCode} target="_blank" rel="noopener noreferrer">
+              <FormattedMessage id="footer.source" />
+            </a>
+          </div>
         </ContentBox>
       </Container>
     )

@@ -7,8 +7,8 @@ const reviewToJsonLd = (contents, item) => {
     description: contents.description,
     name: contents.name,
     image: [
-      `${Locations.server}${item.cachedImages.avatar}`,
-      ...item.cachedImages.preview.map(img => `${Locations.server}${img}`)
+      `${Locations.cdn}${item.cachedImages.avatar}`,
+      ...item.cachedImages.preview.map(img => `${Locations.cdn}${img}`)
     ],
     sku: item.id
   };

@@ -10,8 +10,8 @@ import Layout from '../../components/Layout';
 import MultipleInputField from '../../components/MultipleInputField';
 import Row from '../../components/Row';
 import Locations from '../../data/Locations';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import States from '../../data/States';
+import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import calculateBotScore from '../../helpers/calulateBotScore';
 
 class FilterPage extends Component {
@@ -51,10 +51,13 @@ class FilterPage extends Component {
         if (data.ok) {
           this.setState({
             results: data.data
+              .filter(bot => bot.state === 'approved')
+              .filter(bot => bot.hide !== true)
               .map(bot => calculateBotScore({
                 bot,
                 locale: this.props.intl.locale
               }))
+              .sort((a, b) => b.random - a.random)
           });
         } else {
           this.setState({
@@ -130,8 +133,14 @@ class FilterPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { categories } = state;
-  return { categories };
+  const { categories, bots } = state;
+  return { categories, bots };
 }
 
-export default connect(mapStateToProps)(injectIntl(FilterPage));
+const exportedComponent = connect(mapStateToProps)(injectIntl(FilterPage));
+
+exportedComponent.serverFetch = [
+
+]
+
+export default exportedComponent;

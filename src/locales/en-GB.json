@@ -79,13 +79,14 @@
     }
   },
   "footer": {
-    "attribution": "Attribution",
+    "attribution": "Dependencies",
     "licence": "GNU AGPLv3",
     "source": "GitHub",
     "discord": "Discord Server",
     "terminal": "Terminal.ink",
     "terms": "Terms and Conditions",
     "docs": "Docs",
+    "foss": "discordapps.dev is powered by the Terminal.ink Bot List Open Source Project",
     "apple": "Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc."
   },
   "forms": {
@@ -128,6 +129,28 @@
     "zh-tw": "Chinese (Traditional)"
   },
   "pages": {
+    "home": {
+      "bots": {
+        "title": "Bots",
+        "description": "Find the perfect bot for your Discord server",
+        "link": "Start exploring"
+      },
+      "rpc": {
+        "title": "Rich Presence Plugins",
+        "description": "Show off what you are doing in Discord with RPC applications",
+        "link": "Start sharing"
+      },
+      "discover": {
+        "title": "Discover Terminal.ink",
+        "description": "See how we work on improving the Terminal.ink Bot List Open Source Project",
+        "link": "Blog"
+      },
+      "topBots": "Top Rated Bots",
+      "newestBots": "Just Added",
+      "popularBots": "Most Installed",
+      "smallBots": "Growing Bots",
+      "topRPC": "RPC applications"
+    },
     "rpc": {
       "index": {
         "title": "Rich Presence List",
@@ -139,7 +162,7 @@
     },
     "bots": {
       "index": {
-        "title": "Bots",
+        "title": "Bot List",
         "description": "Find a Discord Bot for your server to improve your workflow, add a bit of fun or listen together with Discord Bots. Browse bots and more at the Discord Apps Marketplace"
       },
       "backgroundAlt": "The logo for discordapps.dev",
@@ -315,7 +338,7 @@
       "triggermethods": "Trigger Methods",
       "deleteLanguage": "Delete a language",
       "required": "Fields marked with * are required.",
-      "updates": "It is highly recommended you join the Terminal.ink Discord Server to view service updates, view your bot verification status, and also recieve direct messages from staff about your application.",
+      "updates": "It is highly recommended you join the Terminal.ink Discord Server to view service updates, view your application verification status, and also recieve direct messages from staff about your application.",
       "discord": "Join Terminal.ink"
     },
     "error": {
@@ -482,6 +505,13 @@
         "placeholder": "Reason for changing the state. (optional)"
       },
       "submit": "Update State"
+    },
+    "botpagelinks": {
+      "share": "You should check out '{name}' on the Discord Apps Marketplace"
+    },
+    "botcard": {
+      "rated": "Rated {score}/5.0 by {count} {count, plural, one {user} other {users}}",
+      "noRating": "No ratings"
     }
   }
 }

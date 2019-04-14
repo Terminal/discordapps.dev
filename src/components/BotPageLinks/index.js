@@ -1,19 +1,60 @@
 import React, { Component } from 'react';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { EmailIcon, EmailShareButton, FacebookIcon, FacebookShareButton, RedditIcon, RedditShareButton, TwitterIcon, TwitterShareButton } from 'react-share';
+import DateFormat from '../../data/DateFormat';
+import Locations from '../../data/Locations';
+import Modesta from '../../data/Modesta';
+import States from '../../data/States';
 import ContentBox from '../ContentBox';
 import FlexColumns from '../FlexColumns';
-import { FormattedMessage } from 'react-intl';
-import { injectIntl } from 'react-intl';
-import DateFormat from '../../data/DateFormat';
-import LocalisedHyperlink from '../LocalisedHyperlink';
-import States from '../../data/States';
-import Modesta from '../../data/Modesta';
 import FlexContainer from '../FlexContainer';
+import LocalisedHyperlink from '../LocalisedHyperlink';
+import styles from './index.module.scss';
+
+// Rest in peace Google+
+// :heejintears:
 
 class BotPageLinks extends Component {
   render() {
-    const { bot } = this.props
+    const { bot, contents, match } = this.props
     return (
       <ContentBox>
+        <FlexContainer className={styles.shareButtons}>
+          <FormattedMessage
+            id="components.botpagelinks.share"
+            values={{
+              name: contents.name
+            }}
+            >
+            {share => <>
+              <TwitterShareButton
+                url={`${Locations.domain}${match.url}`}
+                title={share}>
+                <TwitterIcon size={32} />
+              </TwitterShareButton>
+              {/* <GooglePlusShareButton
+                url={`${Locations.domain}${match.url}`}>
+                <GooglePlusIcon size={32} />
+              </GooglePlusShareButton> */}
+              <FacebookShareButton
+                url={`${Locations.domain}${match.url}`}
+                quote={share}>
+                <FacebookIcon size={32} />
+              </FacebookShareButton>
+              <RedditShareButton
+                url={`${Locations.domain}${match.url}`}
+                title={contents.name}>
+                <RedditIcon size={32} />
+              </RedditShareButton>
+              <EmailShareButton
+                url={`${Locations.domain}${match.url}`}
+                subject={contents.name}
+                body={share}>
+                <EmailIcon size={32} />
+              </EmailShareButton>
+            </>}
+          </FormattedMessage>
+        </FlexContainer>
         <FlexColumns>
           {
             bot.authors.length > 0 ?

@@ -28,7 +28,7 @@ class BotCard extends Component {
         <LocalisedHyperlink to={`/${bot.type}/${bot.id}`} className={styles.link}>
           <FormattedMessage id="alt.avatar" values={{name: contents.name}}>
             {(message) => (
-              <LazyImage className={styles.avatar} alt={message} src={`${Locations.server}${bot.cachedImages.avatar}` || Locations.logo} />
+              <LazyImage className={styles.avatar} alt={message} src={`${Locations.cdn}${bot.cachedImages.avatar}` || Locations.logo} />
             )}
           </FormattedMessage>
           <div>
@@ -43,6 +43,24 @@ class BotCard extends Component {
               </p>
               : null
             }
+            <p className={styles.supportList}>
+              {
+                this.props.metric === 'ratings' ? (
+                  bot.rating > 0 ?
+                  <FormattedMessage id="components.botcard.rated" values={{
+                    score: bot.rating.toFixed(1),
+                    count: bot.reviewsCount
+                  }}/> :
+                  <FormattedMessage id="components.botcard.noRating" />
+                ) : (
+                  bot.count ?
+                  <FormattedMessage id="pages.bots.count" values={{
+                    guilds: bot.count
+                  }}/>
+                  : null
+                )
+              }
+            </p>
           </div>
         </LocalisedHyperlink>
       </div>

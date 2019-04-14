@@ -12,7 +12,7 @@ class BotCollection extends Component {
       .filter(bot => bot.contents.length > 0);
     
     if (limit) {
-      listed = listed.slice(0, 8);
+      listed = listed.slice(0, limit);
     }
 
     // Remove hidden bots
@@ -31,7 +31,7 @@ class BotCollection extends Component {
                 return [bot, contents];
               })
               .map(([bot, contents]) => (
-                <BotCard key={bot.id} bot={bot} contents={contents} />
+                <BotCard key={bot.id} bot={bot} contents={contents} metric={this.props.metric || 'ratings'} />
               )) :
             <FormattedMessage id="pages.list.empty" />
         }

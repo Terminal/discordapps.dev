@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
 import CategoriesLinksList from '../../components/BotCategoriesLinksList';
 import CategoryCollection from '../../components/BotCategoryCollection';
 import Container from '../../components/Container';
 import Flex from '../../components/FlexColumns';
-import HelpUsImprove from '../../components/HelpUsImprove';
-import Layout from '../../components/Layout';
 import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
+import Layout from '../../components/Layout';
 import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
-// import { Helmet } from 'react-helmet';
-// import { FormattedMessage } from 'react-intl';
+import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 
 class BotsHome extends Component {
   render() {
     return (
       <Layout match={this.props.match}>
-        {/* <FormattedMessage id="pages.bots.index.title">
+        <FormattedMessage id="pages.bots.index.title">
           {
             title =>
             <FormattedMessage id="pages.bots.index.description">
@@ -29,13 +28,12 @@ class BotsHome extends Component {
               }
           </FormattedMessage>
           }
-        </FormattedMessage> */}
+        </FormattedMessage>
         <Container>
           <Flex padding={true}>
             <Flex columns={3}>
               <WebsiteTypeButtons />
               <CategoriesLinksList />
-              <HelpUsImprove />
             </Flex>
             <Flex columns={9}>
               <CategoryCollection />
@@ -49,7 +47,11 @@ class BotsHome extends Component {
 }
 
 BotsHome.serverFetch = [
-  fetchCategoriesIfNeeded
+  {
+    function: fetchCategoriesIfNeeded,
+    pass: [],
+    payload: {}
+  }
 ]
 
 export default BotsHome;

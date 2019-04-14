@@ -59,7 +59,7 @@ class BotPageInfoBox extends Component {
       <ContentBox>
         <FlexContainer>
           <div>
-            <LazyImage src={`${Locations.server}${bot.cachedImages.avatar}`} className={styles.avatar} />
+            <LazyImage src={`${Locations.cdn}${bot.cachedImages.avatar}`} className={styles.avatar} />
           </div>
           <div>
             <h3>

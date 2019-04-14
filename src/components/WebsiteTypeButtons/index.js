@@ -10,7 +10,7 @@ class WebsiteTypeButtons extends Component {
     return (
       <div className={styles.websiteTypeButtons}>
         {/* <LinkButton to="/" className={ConstructCSS(Modesta.secondary, styles.btn)}><FormattedMessage id="types.all" /></LinkButton> */}
-        <LinkButton to="/" className={ConstructCSS(Modesta.secondary, styles.btn)}><FormattedMessage id="types.bots" /></LinkButton>
+        <LinkButton to="/bots" className={ConstructCSS(Modesta.secondary, styles.btn)}><FormattedMessage id="types.bots" /></LinkButton>
         <LinkButton to="/rpc" className={ConstructCSS(Modesta.secondary, styles.btn)}><FormattedMessage id="types.rpc" /></LinkButton>
       </div>
     )

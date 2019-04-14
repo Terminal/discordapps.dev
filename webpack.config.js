@@ -28,6 +28,7 @@ module.exports = {
   node: {
     __dirname: false
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -45,6 +46,21 @@ module.exports = {
             ]
           }
         }
+      },
+      {
+        test: /\.css$/,
+        exclude: /\.module\.css$/,
+        sideEffects: true,
+        use: [
+          'isomorphic-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          postCSSLoader
+        ]
       },
       {
         test: /\.scss$/,

@@ -34,6 +34,14 @@ const calculateBotScore = ({
     bot.random += .1;
   }
 
+  if (bot.rating && bot.reviewsCount && bot.rating >= 1 && bot.reviewsCount >= 1) {
+    // *ring ring*
+    // me:   Yes can i speak to Matt Parker
+    // them: No they're too busy
+    // me:   Great time to do this the crap way
+    bot.random += bot.rating * Math.log10(bot.reviewsCount) / 5
+  }
+
   return bot;
 }
 

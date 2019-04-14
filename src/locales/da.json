@@ -275,7 +275,7 @@
       "triggermethods": "Trigger Methods",
       "deleteLanguage": "Slet et sprog",
       "required": "Felter markeret med * er påkrævet.",
-      "updates": "It is highly recommended you join the Terminal.ink Discord Server by clicking 'Discord' in the footer, to view service updates, view your bot verification status, and also recieve direct messages from staff about your application."
+      "updates": "It is highly recommended you join the Terminal.ink Discord Server by clicking 'Discord' in the footer, to view service updates, view your application verification status, and also recieve direct messages from staff about your application."
     },
     "error": {
       "notfound": "Siden blev ikke fundet...",

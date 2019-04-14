@@ -15,7 +15,7 @@ class BotPageContentBox extends Component {
           <div className={styles.slider}>
             {this.props.children}
             {this.props.images.map((image, index) => 
-              <ModalImage src={`${Locations.server}${image}`} className={styles.image} key={index}/>
+              <ModalImage src={`${Locations.cdn}${image}`} className={styles.image} key={index}/>
             )}
           </div>
           <div className={styles.botListDotSpace}>

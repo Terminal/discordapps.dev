@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import BotCollection from '../../components/BotCollection';
 import Container from '../../components/Container';
+import ContentBox from '../../components/ContentBox';
 import Flex from '../../components/FlexColumns';
-import HelpUsImprove from '../../components/HelpUsImprove';
-import Layout from '../../components/Layout';
 import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
+import Layout from '../../components/Layout';
+import LoadingContentBox from '../../components/LoadingContentBox';
 import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
 import Locations from '../../data/Locations';
-import ContentBox from '../../components/ContentBox';
-import BotCollection from '../../components/BotCollection';
 import States from '../../data/States';
-import { FormattedMessage } from 'react-intl';
-import { Helmet } from 'react-helmet';
+import calculateBotScore from '../../helpers/calulateBotScore';
 
-class RpcsPage extends Component {
+class RpcHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +28,13 @@ class RpcsPage extends Component {
         if (data.ok) {
           this.setState({
             results: data.data
+              .filter(bot => bot.state === 'approved')
+              .filter(bot => bot.hide !== true)
+              .map(bot => calculateBotScore({
+                bot,
+                locale: this.props.intl.locale
+              }))
+              .sort((a, b) => b.random - a.random)
           });
         } else {
           this.setState({
@@ -35,7 +44,7 @@ class RpcsPage extends Component {
       });
   }
   render() {
-    const { results } = this.state;
+    const results = this.state.results;
     return (
       <Layout match={this.props.match}>
         <FormattedMessage id="pages.rpc.index.title">
@@ -57,7 +66,6 @@ class RpcsPage extends Component {
           <Flex padding={true}>
             <Flex columns={3}>
               <WebsiteTypeButtons />
-              <HelpUsImprove />
             </Flex>
             <Flex columns={9}>
               {
@@ -65,13 +73,9 @@ class RpcsPage extends Component {
                 <ContentBox>
                   <BotCollection bots={
                     results
-                      .sort((a, b) => {
-                        if (this.state.state === States.APPROVED) return b.random - a.random;
-                        return b.edited - a.edited;
-                      })
                   } />
                 </ContentBox> :
-                null
+                <LoadingContentBox />
               }
             </Flex>
           </Flex>
@@ -82,4 +86,13 @@ class RpcsPage extends Component {
   }
 }
 
-export default RpcsPage;
+const mapStateToProps = (state) => {
+  const { bots } = state;
+  return { bots };
+}
+
+const exportedComponent = connect(mapStateToProps)(RpcHome);
+
+exportedComponent.serverFetch = []
+
+export default exportedComponent;

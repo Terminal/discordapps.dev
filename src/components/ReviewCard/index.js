@@ -65,7 +65,7 @@ class ReviewCard extends Component {
       <FlexContainer className={styles.card} style={this.state.deleting ? {opacity: 0} : {}}>
         <FormattedMessage id="alt.avatar" values={{name: review.username}}>
           {(message) => (
-            <LazyImage className={styles.avatar} alt={message} src={`${Locations.server}${review.cachedAvatar}` || Locations.logo} />
+            <LazyImage className={styles.avatar} alt={message} src={`${Locations.cdn}${review.cachedAvatar}` || Locations.logo} />
           )}
         </FormattedMessage>
         <div className={styles.textContainer}>

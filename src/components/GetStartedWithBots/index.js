@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
 import Locations from '../../data/Locations';
-import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import { injectIntl } from 'react-intl';
 import ContentBox from '../ContentBox';
 import Flex from '../FlexColumns';
 
 class PleaseAddYourBotPleaseThanks extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchAuthIfNeeded());
-  }
   render() {
     return (
       <ContentBox>
@@ -35,7 +28,7 @@ class PleaseAddYourBotPleaseThanks extends Component {
                 <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.heading" />
               </a> 
             </h5>
-              <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.content" />
+            <FormattedMessage id="components.pleaseaddyourbotpleasethanks.add.content" />
           </Flex>
         </Flex>
       </ContentBox>
@@ -43,9 +36,4 @@ class PleaseAddYourBotPleaseThanks extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  const { auth } = state;
-  return { auth };
-}
-
-export default connect(mapStateToProps)(injectIntl(PleaseAddYourBotPleaseThanks));
+export default PleaseAddYourBotPleaseThanks;

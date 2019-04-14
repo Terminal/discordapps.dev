@@ -6,6 +6,9 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import Locations from '../../data/Locations';
 import languages from '../../locales';
 import Container from '../Container';
+import ContentBox from '../ContentBox';
+
+import './index.module.scss';
 
 class Layout extends Component {
   render() {
@@ -38,11 +41,13 @@ class Layout extends Component {
         )}
         </FormattedMessage>
         <NavigationBar />
-        <Container>
           <noscript>
-            <p><FormattedMessage id="errors.website.noscript" /></p>
+            <Container>
+              <ContentBox>
+                <FormattedMessage id="errors.website.noscript" />
+              </ContentBox>
+            </Container>
           </noscript>
-        </Container>
         {this.props.children}
         <Footer />
       </div>

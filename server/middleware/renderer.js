@@ -36,7 +36,13 @@ export default (req, res, next) => {
     if (match && route.component.serverFetch) {
       for (let j = 0; j < route.component.serverFetch.length; j += 1) {
         const serverFetch = route.component.serverFetch[j];
-        promises.push(store.dispatch(serverFetch({match})));
+        const payload = serverFetch.payload;
+
+        if (serverFetch.pass.includes('match')) {
+          payload.match = match;
+        }
+
+        promises.push(store.dispatch(serverFetch.function(payload)));
       }
     }
   }
