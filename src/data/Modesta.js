@@ -1,5 +1,5 @@
-import modesta from '../ModestaCSS/scss/modesta.module.scss';
-import twitterEmojis from '../ModestaCSS/scss/twemoji.module.scss';
+import modesta from '../scss/modestacss/scss/modesta.module.scss';
+import twitterEmojis from '../scss/modestacss/scss/twemoji.module.scss';
 
 const Modesta = {};
 const TwitterEmojis = {};

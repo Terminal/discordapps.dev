@@ -1,68 +1,55 @@
 {
   "name": "ls.terminal.ink",
-  "version": "13.0.0",
+  "version": "14.0.0",
   "private": true,
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "start": "node dist/server",
+    "create-bundles": "concurrently \"yarn create-bundle:client\" \"yarn create-bundle:server\"",
+    "create-bundle:client": "cross-env BABEL_ENV=client parcel build src/index.html -d dist/client --public-url /",
+    "create-bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url / --target=node --no-minify"
+  },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/polyfill": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.5.1",
-    "babel-loader": "^8.0.5",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react-app": "^7.0.2",
-    "css-loader": "^2.1.1",
     "express": "^4.16.4",
-    "file-loader": "^3.0.1",
     "flat": "^4.1.0",
-    "ignore-styles": "^5.0.1",
-    "isomorphic-style-loader": "^5.0.1",
+    "isomorphic-fetch": "^2.2.1",
     "marked": "^0.6.2",
     "node-fetch": "^2.3.0",
-    "node-sass": "^4.11.0",
-    "qs": "^6.7.0",
-    "raw-loader": "^2.0.0",
-    "react": "^16.8.6",
+    "postcss-modules": "^1.4.1",
+    "prop-types": "^15.5.4",
+    "react": "^16.0.0-0",
     "react-app-polyfill": "^0.2.2",
-    "react-dev-utils": "^8.0.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-intl": "^2.8.0",
-    "react-redux": "^7.0.1",
-    "react-router-dom": "^4.3.1",
+    "react-redux": "^7.0.2",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
     "react-router-hash-link": "^1.2.1",
-    "react-scripts": "2.1.8",
     "react-share": "^2.4.0",
     "react-slick": "^0.23.2",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "sass-loader": "^7.1.0",
-    "slick-carousel": "^1.8.1",
-    "webpack-node-externals": "^1.7.2",
+    "slick-slider": "^1.8.2",
     "xss": "^1.0.6"
   },
-  "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "webpack": "webpack",
-    "server": "node ./serverbuild/bundle.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "resolutions": {},
   "devDependencies": {
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-static-files-copy": "^2.0.0",
+    "parcel-plugin-sw-precache": "^1.1.1",
+    "react-hot-loader": "^4.8.3",
+    "rimraf": "^2.6.3",
+    "sass": "^1.18.0"
+  },
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
   }
 }

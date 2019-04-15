@@ -1,0 +1,3 @@
+[submodule "src/scss/modestacss"]
+	path = src/scss/modestacss
+	url = https://github.com/alexflipnote/modestacss

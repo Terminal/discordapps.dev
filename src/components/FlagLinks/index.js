@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import languages from '../../locales';
-import twitterEmojis from '../../ModestaCSS/scss/twemoji.module.scss';
+import twitterEmojis from '../../scss/modestacss/scss/twemoji.module.scss';
 import styles from './index.module.scss';
 import Modesta from '../../data/Modesta';
 

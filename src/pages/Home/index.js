@@ -77,7 +77,7 @@ class Home extends Component {
         <Container>
           <Slider {...settings}>
             <ContentBox className={ConstructCSS(styles.sliderContainer)}>
-              <iframe src="https://www.youtube.com/embed/pYRCVFK-mjk?autoplay=1&amp;loop=1&amp;playlist=pYRCVFK-mjk&amp;mute=1" className={styles.sliderVideo} title="Bots YouTube Background" />
+              <iframe src="https://www.youtube-nocookie.com/embed/pYRCVFK-mjk?autoplay=1&amp;loop=1&amp;playlist=pYRCVFK-mjk&amp;mute=1" className={styles.sliderVideo} title="Bots YouTube Background" />
               <div className={styles.sliderContents}>
                 <h3><FormattedMessage id="pages.home.bots.title" /></h3>
                 <p><FormattedMessage id="pages.home.bots.description" /></p>

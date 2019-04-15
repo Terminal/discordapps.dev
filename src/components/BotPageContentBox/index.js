@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ContentBox from '../ContentBox';
 import marked from 'marked';
 import xss from 'xss';
-import arrow from '../../ModestaCSS/css/images/arrow.png';
+import arrow from '../../scss/modestacss/css/images/arrow.png';
 import styles from './index.module.scss';
 import { FormattedMessage } from 'react-intl';
 import Modesta from '../../data/Modesta';
