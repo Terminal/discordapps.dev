@@ -31,15 +31,12 @@ Location                                                          | Description
 [Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8)         | Not related. Stan LOONA.
 
 ## Command Information
-Command            | Description
------------------- | ---------------
-yarn               | Download dependencies
-yarn start         | Run the development server
-yarn build         | Build a version of Discord Apps Marketplace
-yarn test          | Test (there are no tests written)
-yarn eject         | Eject from `create-react-app`. Don't do this.
-yarn webpack       | Pack the built version for use on the server. You must run `yarn build` before running
-yarn server        | Run the production server. You must run `yarn build` then `yarn webpack` before running
+Command             | Description
+------------------- | ---------------
+yarn                | Download dependencies
+yarn dev            | Run the development server
+yarn create-bundles | Package the clientside and serverside portions for deployment
+yarn start          | Run the production server
 
 ## Set up Development environment
 **You will need:**
@@ -51,11 +48,6 @@ yarn server        | Run the production server. You must run `yarn build` then `
   - Ubuntu: `sudo npm i -g yarn`
   - Windows: (as admin) `npm i -g yarn`
 
-**For building a server environment:**
-- Webpack
-  - Ubuntu: `sudo npm i -g webpack-cli`
-  - Windows: (as admin) `npm i -g webpack-cli`
-
 ```bash
 // Clone the project
 git clone --recursive-submodules -j8 https://github.com/terminal/discordapps.dev.git
@@ -64,7 +56,7 @@ git clone --recursive-submodules -j8 https://github.com/terminal/discordapps.dev
 yarn
 
 // Start the project
-yarn start
+yarn dev
 ```
 
 <!--

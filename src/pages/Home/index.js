@@ -129,11 +129,11 @@ class Home extends Component {
                         .filter(bot => bot.type === 'bots')
                         .filter(bot => bot.reviewsCount)
                         .filter(bot => !displayed.includes(bot.id))
+                        .sort((a, b) => b.random - a.random)
                         .map((bot, index) => {
                           if (index < 9) displayed.push(bot.id)
                           return bot;
                         })
-                        .sort((a, b) => b.random - a.random)
                     } limit={9} />
                   </ContentBox>
                   <ContentBox>
@@ -152,11 +152,11 @@ class Home extends Component {
                           .filter(bot => bot.type === 'bots')
                           .filter(bot => bot.count)
                           .filter(bot => !displayed.includes(bot.id))
+                          .sort((a, b) => b.count - a.count)
                           .map((bot, index) => {
                             if (index < 9) displayed.push(bot.id)
                             return bot;
                           })
-                          .sort((a, b) => b.count - a.count)
                       }
                       limit={9}
                       metric="count" />
@@ -169,11 +169,11 @@ class Home extends Component {
                           .filter(bot => bot.type === 'bots')
                           .filter(bot => bot.count)
                           .filter(bot => !displayed.includes(bot.id))
+                          .sort((a, b) => a.count - b.count)
                           .map((bot, index) => {
                             if (index < 9) displayed.push(bot.id)
                             return bot;
                           })
-                          .sort((a, b) => a.count - b.count)
                       }
                       limit={9}
                       metric="count" />
@@ -184,11 +184,11 @@ class Home extends Component {
                       results
                         .filter(bot => bot.type === 'bots')
                         .filter(bot => !displayed.includes(bot.id))
+                        .sort((a, b) => b.created - a.created)
                         .map((bot, index) => {
                           if (index < 9) displayed.push(bot.id)
                           return bot;
                         })
-                        .sort((a, b) => b.created - a.created)
                     } limit={9} />
                   </ContentBox>
                 </> :
