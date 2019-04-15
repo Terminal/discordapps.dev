@@ -63,7 +63,7 @@ For instance, if you're translating Russian, rename to `ru.json`
 If there are features of your language which cannot be represented in English (such as gender for specific buttons), please contact at [discord](https://discord.gg/DwBCgta).
 
 ### 3. (optionally) Test the website
-Follow the instructions in the [README.md](https://github.com/Terminal/discordapps.dev/tree/ls13)
+Follow the instructions in the [README.md](https://github.com/Terminal/discordapps.dev/tree/ls14)
 
 ### 4. Send a pull request
 Go to GitHub and initiate a pull request.
