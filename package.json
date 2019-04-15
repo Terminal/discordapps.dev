@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "start": "node dist/server",
-    "create-bundles": "concurrently \"yarn create-bundle:client\" \"yarn create-bundle:server\"",
-    "create-bundle:client": "cross-env BABEL_ENV=client parcel build src/index.html -d dist/client --public-url /",
-    "create-bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url / --target=node --no-minify"
+    "server": "node dist/server",
+    "bundle": "concurrently \"yarn bundle:client\" \"yarn bundle:server\"",
+    "bundle:client": "cross-env BABEL_ENV=client parcel build src/index.html -d dist/client --public-url /",
+    "bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url / --target=node --no-minify"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
