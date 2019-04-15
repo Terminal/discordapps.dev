@@ -7,19 +7,23 @@ utilising the latest web technology for the bot list of tomorrow.
 ## Features
 ### Progressive Web Application
 ![pwa](.github/pwa.png)
+
 Install Discord Apps Marketplace in supported Google Chrome browsers.
 Service worker speeds up page loads for the fastest experience.
 
 ### Multi Language support
 ![i18n](.github/languages.gif)
+
 Present your ideas in more than just English.
 Make your bot page in multiple languages to target many more users.
 
 ### Images, YouTube and YOUKU video embed
 ![embeds](.github/embeds.gif)
 
+
 ### Multi Prefix
 ![prefixes](.github/prefixes.png)
+
 Add multiple prefixes with available flags for if the bot can be mentioned or customised.
 
 ## Development Previews
