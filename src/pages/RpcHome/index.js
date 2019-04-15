@@ -12,7 +12,6 @@ import LoadingContentBox from '../../components/LoadingContentBox';
 import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
 import Locations from '../../data/Locations';
 import States from '../../data/States';
-import calculateBotScore from '../../helpers/calulateBotScore';
 
 class RpcHome extends Component {
   constructor(props) {

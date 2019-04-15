@@ -11,8 +11,8 @@ import MultipleInputField from '../../components/MultipleInputField';
 import Row from '../../components/Row';
 import Locations from '../../data/Locations';
 import States from '../../data/States';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import calculateBotScore from '../../helpers/calulateBotScore';
+import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 
 class FilterPage extends Component {
   constructor(props) {
