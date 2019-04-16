@@ -50,6 +50,8 @@ export default (req, res, next) => {
 
         promises.push(store.dispatch(serverFetch.function(payload)));
       }
+      // Stop looking for matches
+      break;
     }
   }
   
