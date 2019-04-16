@@ -37,6 +37,19 @@ router
       res.status(404).json(null);
     }
   })
+  .get('/json', (req, res) => {
+    if (req.user && req.user.id) {
+      res.json({
+        ok: true,
+        data: req.user
+      });
+    } else {
+      res.json({
+        ok: true,
+        data: {}
+      });
+    }
+  })
   .use('/logout', (req, res, next) => {
     req.session.destroy((err) => {
       if (err) {
