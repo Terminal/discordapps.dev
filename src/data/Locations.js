@@ -3,6 +3,7 @@ const Locations = {
   // server: 'http://127.0.0.1:8000',
   cdn: 'https://ls.terminal.ink',
   domain: 'https://discordapps.dev',
+  docsServer: 'https://docs.discordapps.dev',
   logo: 'https://ls.terminal.ink/img/logo/logo.svg',
   favicon: 'https://ls.terminal.ink/img/logo/logo32.png',
   sourceCode: 'https://github.com/Terminal/discordapps.dev',

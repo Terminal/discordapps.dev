@@ -8,6 +8,38 @@ import { FormattedMessage } from 'react-intl';
 import Modesta from '../../data/Modesta';
 import elementsStyle from '../../scss/elements.module.scss';
 
+const botpageWhitelist = {
+  p: [],
+  span: [],
+  code: [],
+  b: [],
+  i: [],
+  u: [],
+  li: [],
+  ul: [],
+  ol: [],
+  del: [],
+  pre: [],
+  strong: [],
+  em: [],
+  h1: ['id'],
+  h2: ['id'],
+  h3: ['id'],
+  h4: ['id'],
+  h5: ['id'],
+  h6: ['id'],
+  table: [],
+  thead: [],
+  tbody: [],
+  tr: [],
+  th: [],
+  td: [],
+  hr: [],
+  blockquote: [],
+  br: [],
+  a: ['href']
+};
+
 class BotPageContentBox extends Component {
   constructor(props) {
     super(props);
@@ -75,37 +107,7 @@ class BotPageContentBox extends Component {
 
   render() {
     const page = xss(marked(this.props.page), {
-      whiteList: {
-        p: [],
-        span: [],
-        code: [],
-        b: [],
-        i: [],
-        u: [],
-        li: [],
-        ul: [],
-        ol: [],
-        del: [],
-        pre: [],
-        strong: [],
-        em: [],
-        h1: ['id'],
-        h2: ['id'],
-        h3: ['id'],
-        h4: ['id'],
-        h5: ['id'],
-        h6: ['id'],
-        table: [],
-        thead: [],
-        tbody: [],
-        tr: [],
-        th: [],
-        td: [],
-        hr: [],
-        blockquote: [],
-        br: [],
-        a: ['href']
-      },
+      whiteList: this.props.allowHTML ? null : botpageWhitelist,
       onIgnoreTag: (tag, html, options) => {
         let extraNotes = '';
 
@@ -135,8 +137,15 @@ class BotPageContentBox extends Component {
         }
 
         return;
+      },
+      onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (this.props.allowHTML || name === 'class') {
+          return `${name}="${xss.escapeAttrValue(value)}"`
+        }
       }
     });
+
+    const smallEnough = typeof this.props.forceLarge === 'boolean' ? this.props.forceLarge : this.state.smallEnough;
 
     return (
       <ContentBox>
@@ -146,13 +155,13 @@ class BotPageContentBox extends Component {
               __html: page
             }}
             ref={this.description}
-            style={this.state.smallEnough ? {} : { // if not small enough, set default height to 200
+            style={smallEnough ? {} : { // if not small enough, set default height to 200
               height: '200px',
               transition: `height ${Math.ceil(this.getExtendedHeight() / 200) / 20}s`
             }}
             className={styles.description}
           ></div>
-          {this.state.smallEnough ? null : // if not small enough, show the buttons
+          {smallEnough ? null : // if not small enough, show the buttons
             <div ref={this.button} onClick={this.toggle}>
               { this.state.open === false ?
                 <ContentBox className={`${Modesta.secondary} ${styles.button}`}>

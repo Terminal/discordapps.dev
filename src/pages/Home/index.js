@@ -106,9 +106,9 @@ class Home extends Component {
               <h3><FormattedMessage id="pages.home.discover.title" /></h3>
                 <p><FormattedMessage id="pages.home.discover.description" /></p>
                 <p>
-                  <a href={Locations.sourceReleases} target="_blank" rel="noopener noreferrer">
+                  <LocalisedHyperlink to="/posts">
                     <small><FormattedMessage id="pages.home.discover.link" /></small>
-                  </a>
+                  </LocalisedHyperlink>
                 </p>
               </div>
             </ContentBox>

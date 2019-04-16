@@ -74,6 +74,7 @@ class BotPage extends Component {
           <meta property="og:description" content={contents.description}/>
           <meta name="description" content={contents.description}/>
           <meta property="og:image" content={`${Locations.cdn}${bot.cachedImages.avatar}`} />
+          <meta httpEquiv="last-modified" content={(new Date(bot.edited)).toISOString().split('T')[0]} />
           {
             reviewJSON &&
               <script type="application/ld+json">

@@ -8,6 +8,14 @@
     padding: .2em .4em;
     color: #d0d0d0;
   }
+
+  pre {
+    background: #303030;
+    padding: 1em;
+    code {
+      padding: 0;
+    }
+  }
 }
 
 .tableContainer {

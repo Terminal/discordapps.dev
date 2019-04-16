@@ -12,6 +12,8 @@ import AdminPage from "../pages/AdminPage";
 import LanguagesComparisonPage from "../pages/LanguagesComparisonPage";
 import RpcHome from "../pages/RpcHome";
 import EditRpc from "../pages/EditRpc";
+import DocsHome from "../pages/DocsHome";
+import DocPage from "../pages/DocPage";
 
 const routes = [
   {
@@ -94,6 +96,16 @@ const routes = [
     exact: true,
     component: LanguagesComparisonPage,
     status: 200
+  }, {
+    path: '/:locale/posts',
+    exact: true,
+    component: DocsHome,
+    status: 200,
+  }, {
+    path: '/:locale/posts',
+    exact: false,
+    component: DocPage,
+    status: 200,
   }, {
     path: '/:locale',
     exact: false,
