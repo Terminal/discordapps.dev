@@ -4,18 +4,16 @@ import ContentBox from '../ContentBox';
 import Container from '../Container';
 import { FormattedMessage } from 'react-intl';
 
-class PleaseLogin extends Component {
+class PleaseLoginContainer extends Component {
   render() {
     return (
-      <Layout match={this.props.match}>
-        <Container>
-          <ContentBox>
-            <h2><FormattedMessage id="errors.permissions.login" /></h2>
-          </ContentBox>
-        </Container>
-      </Layout>
+      <Container>
+        <ContentBox>
+          <h2><FormattedMessage id="errors.permissions.login" /></h2>
+        </ContentBox>
+      </Container>
     )
   }
 }
 
-export default PleaseLogin;
+export default PleaseLoginContainer;

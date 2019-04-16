@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Container from '../../components/Container';
 import Layout from '../../components/Layout';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import PleaseLogin from '../../components/PleaseLogIn';
+import PleaseLoginContainer from '../../components/PleaseLogIn';
 import PermissionDenied from '../../components/PermissionDenied';
 import States from '../../data/States';
 import LocalisedHyperlink from '../../components/LocalisedHyperlink';
@@ -20,7 +20,9 @@ class AdminPage extends Component {
 
     if (!auth || !auth.id) {
       return (
-        <PleaseLogin match={this.props.match}/>
+        <Layout match={this.props.match}>
+          <PleaseLoginContainer match={this.props.match}/>
+        </Layout>
       )
     }
 

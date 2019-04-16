@@ -8,7 +8,7 @@ import FlexContainer from '../../components/FlexContainer';
 import InputField from '../../components/InputField';
 import Layout from '../../components/Layout';
 import MultipleInputField from '../../components/MultipleInputField';
-import PleaseLogin from '../../components/PleaseLogIn';
+import PleaseLoginContainer from '../../components/PleaseLogIn';
 import Row from '../../components/Row';
 import Locations from '../../data/Locations';
 import Modesta from '../../data/Modesta';
@@ -148,7 +148,9 @@ class EditRpc extends Component {
 
     if (!auth || !auth.id) {
       return (
-        <PleaseLogin match={this.props.match}/>
+        <Layout match={this.props.match}>
+          <PleaseLoginContainer match={this.props.match}/>
+        </Layout>
       )
     }
 
