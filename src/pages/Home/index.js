@@ -122,13 +122,26 @@ class Home extends Component {
               {
                 Array.isArray(results) ?
                 <>
-                  <ContentBox>
+                  {/* <ContentBox>
                     <h4><FormattedMessage id="pages.home.topBots" /></h4>
                     <BotCollection bots={
                       results
                         .filter(bot => bot.type === 'bots')
                         .filter(bot => bot.reviewsCount)
                         .filter(bot => !displayed.includes(bot.id))
+                        .sort((a, b) => b.random - a.random)
+                        .map((bot, index) => {
+                          if (index < 9) displayed.push(bot.id)
+                          return bot;
+                        })
+                    } limit={9} />
+                  </ContentBox> */}
+                  <ContentBox>
+                    <h4><FormattedMessage id="pages.home.randomBots" /></h4>
+                    <BotCollection bots={
+                      results
+                        .filter(bot => bot.type === 'bots')
+                        .map(bot => Object.assign({}, bot, {random: Math.random()}))
                         .sort((a, b) => b.random - a.random)
                         .map((bot, index) => {
                           if (index < 9) displayed.push(bot.id)
