@@ -35,22 +35,23 @@ export default (req, res, next) => {
   for (let i = 0; i < routes.length; i += 1) {
     const match = matchPath(req.baseUrl, routes[i]);
     const route = routes[i];
-    if (match && route.component.serverFetch) {
-      for (let j = 0; j < route.component.serverFetch.length; j += 1) {
-        const serverFetch = route.component.serverFetch[j];
-        const payload = serverFetch.payload;
-
-        if (serverFetch.pass.includes('match')) {
-          payload.match = match;
+    if (match) {
+      if (route.component.serverFetch) {
+        for (let j = 0; j < route.component.serverFetch.length; j += 1) {
+          const serverFetch = route.component.serverFetch[j];
+          const payload = serverFetch.payload;
+  
+          if (serverFetch.pass.includes('match')) {
+            payload.match = match;
+          }
+  
+          if (serverFetch.pass.includes('pathname')) {
+            payload.pathname = req.baseUrl;
+          }
+  
+          promises.push(store.dispatch(serverFetch.function(payload)));
         }
-
-        if (serverFetch.pass.includes('pathname')) {
-          payload.pathname = req.baseUrl;
-        }
-
-        promises.push(store.dispatch(serverFetch.function(payload)));
       }
-      // Stop looking for matches
       break;
     }
   }
