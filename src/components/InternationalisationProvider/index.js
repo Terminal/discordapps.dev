@@ -1,10 +1,8 @@
 import flat from 'flat';
 import React, { Component } from 'react';
 import { addLocaleData, IntlProvider, FormattedMessage } from 'react-intl';
-import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import languages from '../../locales';
-import { setLocaleHandler } from '../../redux/actions/options';
 import { Helmet } from 'react-helmet';
 
 const messages = languages
@@ -17,22 +15,18 @@ const messages = languages
 
 class InternationalisationProvider extends Component {
   render() {
-    const { dispatch, match, location, options } = this.props;
+    const { match, location } = this.props;
 
     if (!messages[match.params.locale]) return (
       <Redirect to={`/en-GB${location.pathname}`} />
     )
-
-    if (options.locale !== match.params.locale) {
-      dispatch(setLocaleHandler(match.params.locale));
-    }
 
     return (
       <IntlProvider
         locale={match.params.locale}
         messages={Object.assign({}, messages['en-GB'], messages[match.params.locale])}
         defaultLocale="en-GB">
-        <>
+        <div>
           <FormattedMessage id="site.name">
             {(title) => (
               <Helmet
@@ -44,15 +38,11 @@ class InternationalisationProvider extends Component {
             )}
           </FormattedMessage>
           {this.props.children}
-        </>
+        </div>
       </IntlProvider>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  const { options } = state;
-  return { options };
-}
 
-export default connect(mapStateToProps)(InternationalisationProvider);
+export default InternationalisationProvider;
