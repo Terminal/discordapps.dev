@@ -404,6 +404,12 @@
       "description": "Click the button to get points!",
       "leave": "Are you sure you want to leave? You will lose all your points.",
       "score": "You have {kliksphilip, plural, =0 {no points :heejintears:} one {1 point} other {{kliksphilip} points}}."
+    },
+    "docs": {
+      "by": "By {name}",
+      "more": "View more",
+      "noMore": "There are no more posts!",
+      "back": "Back to posts"
     }
   },
   "navbar": {

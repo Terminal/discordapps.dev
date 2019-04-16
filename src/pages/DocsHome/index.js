@@ -80,7 +80,7 @@ class DocsHome extends Component {
               <LocalisedHyperlink to={page.permalink}>
                 <h2>{page.title}</h2>
               </LocalisedHyperlink>
-              {page.by && <p><i>By {page.by}</i></p>}
+              {page.by && <p><i><FormattedMessage id="pages.docs.by" values={{name: page.by}} /></i></p>}
               {page.date && <p>
                 {new Date(page.date).toLocaleDateString(this.props.intl.locale, DateFormat)}
               </p>}
@@ -91,8 +91,8 @@ class DocsHome extends Component {
         <Container className={Modesta.center}>
           {
             this.state.loadAll ? 
-            <p>No more posts!</p> :
-            <Button onClick={this.loadAll} className={Modesta.primary}>View All</Button>
+            <p><FormattedMessage id="pages.docs.noMore" /></p> :
+            <Button onClick={this.loadAll} className={Modesta.primary}><FormattedMessage id="pages.docs.more" /></Button>
           }
         </Container>
       </Layout>

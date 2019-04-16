@@ -67,10 +67,10 @@ class DocPage extends Component {
           <meta httpEquiv="last-modified" content={date.toISOString().split('T')[0]} />
         </Helmet>
         <Container>
-          <LinkButton to="/posts" className={Modesta.secondary}>Back</LinkButton>
+          <LinkButton to="/posts" className={Modesta.secondary}><FormattedMessage id="pages.docs.back" /></LinkButton>
           <ContentBox>
             <h2>{page.title}</h2>
-            {page.by && <p><i>By {page.by}</i></p>}
+            {page.by && <p><i><FormattedMessage id="pages.docs.by" values={{name: page.by}} /></i></p>}
             {page.date && <p>
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
