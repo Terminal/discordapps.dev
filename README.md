@@ -43,25 +43,7 @@ yarn create-bundles | Package the clientside and serverside portions for deploym
 yarn start          | Run the production server
 
 ## Set up Development environment
-**You will need:**
-- Node.js
-- Build tools
-  - Ubuntu: `sudo apt install build-essential`
-  - Windows: (as admin) `npm i -g windows-build-tools`
-- Yarn
-  - Ubuntu: `sudo npm i -g yarn`
-  - Windows: (as admin) `npm i -g yarn`
-
-```bash
-// Clone the project
-git clone --recursive-submodules -j8 https://github.com/terminal/discordapps.dev.git
-
-// Install dependencies
-yarn
-
-// Start the project
-yarn dev
-```
+[Refer to the "How to set up a development instance of Discord Apps Marketplace" page on discordapps.dev](https://discordapps.dev/en-GB/posts/docs/20190416-development-instance/)
 
 <!--
 ## Sponsors
