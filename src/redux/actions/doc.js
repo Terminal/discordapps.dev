@@ -41,9 +41,7 @@ function shouldFetchDoc(state, page) {
 
 export function fetchADoc({match, pathname}) {
   return (dispatch, getState) => {
-    console.log(match.url);
     const path = pathname.substring(match.url.length);
-    console.log(path);
     if (shouldFetchDoc(getState(), path)) {
       return dispatch(fetchDoc(path))
     }
