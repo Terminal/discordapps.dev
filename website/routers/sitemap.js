@@ -1,8 +1,8 @@
 const xmlify = require('js2xmlparser');
+const fetch = require('node-fetch');
 const r = require('../rethinkdb');
 const config = require('../config');
 const languages = require('../data/displayedLanguages.json');
-const fetch = require('node-fetch');
 
 module.exports = (req, res) => {
   const sitemap = {
