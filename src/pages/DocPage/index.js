@@ -11,37 +11,23 @@ import LoadingContainer from '../../components/LoadingContainer';
 import BotPageContentBox from '../../components/BotPageContentBox';
 import LinkButton from '../../components/LinkButton';
 import Modesta from '../../data/Modesta';
+import { connect } from 'react-redux';
+import { fetchADoc } from '../../redux/actions/doc';
 
 class DocPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      page: null,
-      status: null
-    }
-
-    this.fetch = this.fetch.bind(this);
   }
   componentDidMount() {
-    const path = this.props.location.pathname.substring(this.props.match.url.length);
-    this.fetch(path);
-  }
-  fetch(path) {
-    fetch(`${Locations.docsServer}/posts${path}`)
-      .then((res) => {
-        this.setState({
-          status: res.status
-        });
-        if (res.status === 200) return res.json();
-      })
-      .then((data) => {
-        this.setState({
-          page: data
-        });
-      });
+    const { dispatch } = this.props;
+    dispatch(fetchADoc({
+      match: this.props.match,
+      pathname: window.location.pathname
+    }))
   }
   render() {
-    const { page, status } = this.state;
+    const page = this.props.doc.data;
+    const status = this.props.doc.status;
 
     if (status === 404) {
       return <NotFound match={this.props.match} />
@@ -82,4 +68,20 @@ class DocPage extends Component {
   }
 }
 
-export default injectIntl(DocPage);
+const mapStateToProps = (state) => {
+  const { doc } = state;
+  return { doc };
+}
+
+const exportedComponent = connect(mapStateToProps)(injectIntl(DocPage));
+
+exportedComponent.serverFetch = [
+  {
+    function: fetchADoc,
+    pass: ['match', 'pathname'],
+    payload: {}
+  }
+]
+
+export default exportedComponent;
+

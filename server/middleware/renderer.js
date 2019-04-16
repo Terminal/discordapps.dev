@@ -44,6 +44,10 @@ export default (req, res, next) => {
           payload.match = match;
         }
 
+        if (serverFetch.pass.includes('pathname')) {
+          payload.pathname = req.baseUrl;
+        }
+
         promises.push(store.dispatch(serverFetch.function(payload)));
       }
     }
