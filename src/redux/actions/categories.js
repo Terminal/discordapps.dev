@@ -22,8 +22,12 @@ function fetchCategories() {
     return fetch(`${Locations.server}/reactjs/v2/categories`, {
       credentials: 'include'
     })
-      .then(res => res.json())
-      .then(json => dispatch(receiveCategories(json)));
+      .then(res => {
+        return res.json()
+          .then(json => {
+            return dispatch(receiveCategories(json));
+          })
+      });
   };
 }
 

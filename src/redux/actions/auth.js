@@ -12,14 +12,14 @@ function requestAuth() {
 function receiveAuth(json) {
   return {
     type: RECEIVE_AUTH,
-    auth: json
+    data: json.data
   };
 }
 
 function fetchAuth() {
   return (dispatch) => {
     dispatch(requestAuth());
-    return fetch(`${Locations.server}/auth/info`, {
+    return fetch(`${Locations.server}/auth/json`, {
       credentials: 'include'
     })
       .then(res => res.json())

@@ -14,7 +14,7 @@ function categories(state = {
       return Object.assign({}, state, {
         fetching: false,
         fetched: true,
-        data: action.data
+        data: action.data.slice()
       });
     default:
       return state;

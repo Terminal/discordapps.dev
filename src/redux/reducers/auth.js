@@ -14,7 +14,7 @@ function auth(state = {
       return Object.assign({}, state, {
         fetching: false,
         fetched: true,
-        data: action.auth
+        data: Object.keys(action.data).length === 0 ? null : action.data,
       });
     default:
       return state;

@@ -141,12 +141,8 @@ class EditBot extends Component {
   }
 
   render() {
-    // Do not use redux bot if not editing
-    const bot = this.props.match.params.id ? this.props.bot.data : null;
-    const categories = this.props.categories.data
     const auth = this.props.auth.data
-    const { intl } = this.props
-
+    
     if (!auth || !auth.id) {
       return (
         <Layout match={this.props.match}>
@@ -154,6 +150,8 @@ class EditBot extends Component {
         </Layout>
       )
     }
+    
+    const { intl } = this.props
 
     if (this.state.redirect) {
       return (
@@ -161,6 +159,8 @@ class EditBot extends Component {
       )
     }
 
+    const bot = this.props.match.params.id ? this.props.bot.data : null;
+    const categories = this.props.categories.data
     return (
       <Layout match={this.props.match}>
         <FormattedMessage id="pages.edit.leave">
@@ -313,4 +313,14 @@ const mapStateToProps = (state) => {
   return { categories, auth, bot };
 }
 
-export default connect(mapStateToProps)(injectIntl(EditBot));
+const exportedComponent = connect(mapStateToProps)(injectIntl(EditBot));
+
+exportedComponent.serverFetch = [
+  {
+    function: fetchCategoriesIfNeeded,
+    pass: [],
+    payload: {}
+  }
+]
+
+export default exportedComponent;
