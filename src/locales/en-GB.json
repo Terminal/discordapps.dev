@@ -409,7 +409,9 @@
       "by": "By {name}",
       "more": "View more",
       "noMore": "There are no more posts!",
-      "back": "Back to posts"
+      "back": "Back to posts",
+      "title": "Terminal.ink Documentation and Blogs",
+      "description": "See posts about how Terminal.ink operates, or see a tutorial on how to do something."
     }
   },
   "navbar": {

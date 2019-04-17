@@ -58,10 +58,10 @@ class DocsHome extends Component {
     
     return (
       <Layout match={this.props.match}>
-        <FormattedMessage id="pages.rpc.index.title">
+        <FormattedMessage id="pages.docs.title">
           {
             title =>
-            <FormattedMessage id="pages.rpc.index.description">
+            <FormattedMessage id="pages.docs.description">
               {description =>
                 <Helmet>
                   <title>{title}</title>
