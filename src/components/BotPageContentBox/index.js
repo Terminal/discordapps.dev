@@ -8,7 +8,7 @@ import { FormattedMessage } from 'react-intl';
 import Modesta from '../../data/Modesta';
 import elementsStyle from '../../scss/elements.module.scss';
 
-const botpageWhitelist = {
+const botPageWhitelist = {
   p: [],
   span: [],
   code: [],
@@ -107,7 +107,7 @@ class BotPageContentBox extends Component {
 
   render() {
     const page = xss(marked(this.props.page), {
-      whiteList: this.props.allowHTML ? null : botpageWhitelist,
+      whiteList: this.props.allowHTML ? null : botPageWhitelist,
       onIgnoreTag: (tag, html, options) => {
         let extraNotes = '';
 
