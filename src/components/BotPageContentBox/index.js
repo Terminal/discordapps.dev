@@ -138,6 +138,12 @@ class BotPageContentBox extends Component {
 
         return;
       },
+      onTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (tag === 'img' && name === 'src' && this.props.cdn && value.startsWith('/')) {
+          return `src="${this.props.cdn}${value}"`
+        }
+        return;
+      },
       onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
         if (this.props.allowHTML || name === 'class') {
           return `${name}="${xss.escapeAttrValue(value)}"`

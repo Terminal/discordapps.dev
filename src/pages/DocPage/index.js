@@ -61,7 +61,7 @@ class DocPage extends Component {
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
           </ContentBox>
-          <BotPageContentBox page={page.content} forceLarge={true} allowHTML={true} />
+          <BotPageContentBox page={page.content} forceLarge={true} allowHTML={true} cdn={Locations.docsServer} />
         </Container>
       </Layout>
     );
