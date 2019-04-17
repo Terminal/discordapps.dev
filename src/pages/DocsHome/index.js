@@ -78,7 +78,7 @@ class DocsHome extends Component {
           results.map((page) =>
             <ContentBox key={page.permalink}>
               <LocalisedHyperlink to={page.permalink}>
-                <h2>{page.title}</h2>
+                <h3>{page.title}</h3>
               </LocalisedHyperlink>
               {page.by && <p><i><FormattedMessage id="pages.docs.by" values={{name: page.by}} /></i></p>}
               {page.date && <p>
