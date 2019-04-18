@@ -30,7 +30,7 @@
     "react-router-dom": "^5.0.0",
     "react-router-hash-link": "^1.2.1",
     "react-share": "^2.4.0",
-    "react-slick": "^0.23.2",
+    "react-slick": "^0.24.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "slick-slider": "^1.8.2",
