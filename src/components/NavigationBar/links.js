@@ -14,12 +14,14 @@ class NavbarLinks extends Component {
   }
   render() {
     const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
-    const { auth } = this.props;
+    const { auth, unlocalisedPath } = this.props;
     return (
       <>
         <FormattedMessage id="navbar.languages">
           {message => (
-            <LocalisedHyperlink aria-label={message} to="/locale">
+            <LocalisedHyperlink aria-label={message} to="/locale" query={{
+              returnBrowserTo: unlocalisedPath
+            }}>
               <span className={`${Modesta.emoji} ${TwitterEmojis.twaGlobeShowingEuropeAfrica}`} />
             </LocalisedHyperlink>
           )}
@@ -95,7 +97,7 @@ class NavbarLinks extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   const { auth } = state;
   return { auth };
 }

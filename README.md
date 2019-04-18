@@ -20,7 +20,6 @@ Make your bot page in multiple languages to target many more users.
 ### Images, YouTube and YOUKU video embed
 ![embeds](.github/embeds.gif)
 
-
 ### Multi Prefix
 ![prefixes](.github/prefixes.png)
 
@@ -30,7 +29,7 @@ Add multiple prefixes with available flags for if the bot can be mentioned or cu
 Location                                                          | Description
 ----------------------------------------------------------------- | -----------------
 [Discord Apps Marketplace](https://discordapps.dev/)              | Production instance
-[netlify](https://twink.netlify.com/)                             | Development instance - Always latest commit
+[Netlify](https://twink.netlify.com/)                             | Development instance - Always latest commit
 [Fog Creek Software's Glitch](https://discordapps-dev.glitch.me/) | Glitch is a great website
 [Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8)         | Not related. Stan LOONA.
 
@@ -39,7 +38,7 @@ Command             | Description
 ------------------- | ---------------
 yarn                | Download dependencies
 yarn dev            | Run the development server
-yarn create-bundles | Package the clientside and serverside portions for deployment
+yarn create-bundles | Package the client-side and server-side portions for deployment
 yarn start          | Run the production server
 
 ## Set up Development environment

@@ -6,7 +6,9 @@ import twitterEmojis from '../../scss/modestacss/scss/twemoji.module.scss';
 import styles from './index.module.scss';
 import Modesta from '../../data/Modesta';
 
-export default () => (
+export default ({
+  unlocalisedPath = ''
+}) => (
   <div className={styles.flags}>
     {
       languages
@@ -15,7 +17,7 @@ export default () => (
           <FormattedMessage id={`locales.${language.code}`} key={language.code}>
             {(message) => (
               <Link
-                to={`/${language.code}`}
+                to={`/${language.code}${unlocalisedPath}`}
                 className={`${Modesta.emoji} ${twitterEmojis[language.flag]} ${styles.flag}`}
                 aria-label={message}
                 title={message}></Link>

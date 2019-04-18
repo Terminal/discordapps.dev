@@ -52,7 +52,7 @@ class NavigationBar extends Component {
           </h1>
 
           <div className={Modesta.sidenav}>
-            <NavbarLinks />
+            <NavbarLinks unlocalisedPath={this.props.unlocalisedPath} />
           </div>
         </div>
         <div className={`${displayCSS.mobile} ${Modesta.navContainer} ${styles.mobileNavbar}`}>
@@ -67,7 +67,7 @@ class NavigationBar extends Component {
           </div>
 
           <div className={Modesta.sidenav} ref={this.navside}>
-            <NavbarLinks />
+            <NavbarLinks unlocalisedPath={this.props.unlocalisedPath} />
           </div>
         </div>
         <div ref={this.darken} className={`${styles.darken} ${displayCSS.mobile}`}></div>

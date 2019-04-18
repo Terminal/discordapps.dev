@@ -40,7 +40,7 @@ class Layout extends Component {
           </FormattedMessage>
         )}
         </FormattedMessage>
-        <NavigationBar />
+        <NavigationBar unlocalisedPath={unlocalisedPath} />
           <noscript>
             <Container>
               <ContentBox>
