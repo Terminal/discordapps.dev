@@ -14,8 +14,6 @@ Object.keys(twitterEmojis)
     TwitterEmojis[css.replace(/-([a-z0-9])/g, (capture) => capture[1].toUpperCase()).replace('-', '')] = twitterEmojis[css];
   });
 
-console.log(TwitterEmojis)
-
 export default Modesta;
 export {
   TwitterEmojis
