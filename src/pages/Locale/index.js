@@ -11,7 +11,6 @@ import qs from 'qs';
 class Locale extends Component {
   render() {
     const query = qs.parse(this.props.location.search.replace(/^\?/, ''));
-    console.log(query);
     return (
       <Layout match={this.props.match}>
         <Container>
