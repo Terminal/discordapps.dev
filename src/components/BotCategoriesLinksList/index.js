@@ -18,9 +18,9 @@ class CategoriesLinksList extends Component {
     const categories = this.props.categories.data
     return (
       <ContentBox>
-        <h4>
+        <h5>
           <FormattedMessage id="pages.bots.initiateCategoryFilter" />
-        </h4>
+        </h5>
         {
           categories.length === 0 ?
           <LoadingText /> :
