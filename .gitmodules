@@ -1,3 +1,6 @@
 [submodule "src/scss/modestacss"]
 	path = src/scss/modestacss
 	url = https://github.com/alexflipnote/modestacss
+[submodule "src/scss/twemoji"]
+	path = src/scss/twemoji
+	url = https://github.com/twitter/twemoji.git

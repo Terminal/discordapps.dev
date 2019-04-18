@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import languages from '../../locales';
-import twitterEmojis from '../../scss/modestacss/scss/twemoji.module.scss';
+import { TwitterEmojis } from '../../data/Modesta';
 import styles from './index.module.scss';
 import Modesta from '../../data/Modesta';
 
@@ -18,7 +18,7 @@ export default ({
             {(message) => (
               <Link
                 to={`/${language.code}${unlocalisedPath}`}
-                className={`${Modesta.emoji} ${twitterEmojis[language.flag]} ${styles.flag}`}
+                className={`${Modesta.emoji} ${TwitterEmojis[language.flag.replace(/-([a-z0-9])/g, (capture) => capture[1].toUpperCase()).replace('-', '')]} ${styles.flag}`}
                 aria-label={message}
                 title={message}></Link>
             )}
