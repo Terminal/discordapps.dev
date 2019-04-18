@@ -10,6 +10,5 @@ Location                                                  | Description
 
 
 <!--
-## Sponsors
-This project is funded by people who keep the open source community alive.
+aeong
 -->
