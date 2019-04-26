@@ -19,7 +19,7 @@
   },
   "homepage": "https://ls.terminal.ink/",
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.5",
     "eslint": "^5.16.0",
