@@ -60,7 +60,7 @@ For instance, if you're translating Russian, rename to `ru.json`
 ![How to rename a JSON file](/.github/rename.gif)
 
 ### 2. Open the file and edit.
-If there are features of your language which cannot be represented in English (such as gender for specific buttons), please contact at [discord](https://discord.gg/DwBCgta).
+If there are features of your language which cannot be represented in your language (such as gender for specific buttons), please contact at [discord](https://discord.gg/DwBCgta).
 
 ### 3. (optionally) Test the website
 Follow the instructions in the [README.md](https://github.com/Terminal/discordapps.dev/tree/ls14)
