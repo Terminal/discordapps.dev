@@ -11,7 +11,7 @@
     "bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url / --target=node --no-minify"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.4.3",
+    "@babel/polyfill": "^7.4.4",
     "autoprefixer": "^9.5.1",
     "express": "^4.16.4",
     "flat": "^4.1.0",
