@@ -397,6 +397,10 @@
         "placeholder": "All Applications",
         "bots": "Bots",
         "rpc": "Rich Presence"
+      },
+      "state": {
+        "placeholder": "Any state",
+        "title": "State"
       }
     },
     "game": {

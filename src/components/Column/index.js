@@ -4,7 +4,7 @@ import Modesta from '../../data/Modesta';
 class Column extends Component {
   render() {
     return (
-      <div className={`${Modesta.column} ${this.props.className || ''}`}>
+      <div {...this.props} className={`${Modesta.column} ${this.props.className || ''}`}>
         {this.props.children}
       </div>
     )

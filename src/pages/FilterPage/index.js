@@ -27,7 +27,7 @@ class FilterPage extends Component {
       timeout: null,
       hidden: true,
       type: null,
-      state: null
+      state: null,
     }
     this.form = React.createRef();
     this.onChange = this.onChange.bind(this);
@@ -91,7 +91,8 @@ class FilterPage extends Component {
   }
   render() {
     const categories = this.props.categories.data;
-    const { results, owners, category, nsfw, type, query, hidden } = this.state;
+    const auth = this.props.auth.data;
+    const { results, owners, category, nsfw, type, query, hidden, state } = this.state;
 
     return (
       <Layout match={this.props.match}>
@@ -108,6 +109,10 @@ class FilterPage extends Component {
               </Row>
               <Row>
                 <InputField name="type" id="pages.filter.type" localiseOptions="pages.filter.type" allowNone={true} options={['bots', 'rpc']} value={type} onChange={this.onChange}/>
+                <InputField style={auth && auth.admin ? {} : {
+                  visibility: 'hidden',
+                  position: 'fixed'
+                }} name="state" id="pages.filter.state" localiseOptions="states" allowNone={true} options={Object.values(States)} value={state} onChange={this.onChange}/>
               </Row>
             </ContentBox>
           </form>
@@ -131,8 +136,8 @@ class FilterPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { categories, bots } = state;
-  return { categories, bots };
+  const { categories, bots, auth } = state;
+  return { categories, bots, auth };
 }
 
 const exportedComponent = connect(mapStateToProps)(injectIntl(FilterPage));

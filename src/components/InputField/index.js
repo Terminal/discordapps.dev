@@ -59,7 +59,7 @@ class InputField extends Component {
     }
 
     return (
-      <Column className={this.props.className || Modesta.oneHalf}>
+      <Column className={this.props.className || Modesta.oneHalf} style={this.props.style}>
         <label htmlFor={this.props.name}>
           <FormattedMessage id={`${this.props.id}.title`} />
           {this.props.required ? '*' : null}
