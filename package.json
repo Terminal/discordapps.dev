@@ -34,6 +34,7 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "slick-slider": "^1.8.2",
+    "twemoji": "^12.0.1",
     "xss": "^1.0.6"
   },
   "resolutions": {},
