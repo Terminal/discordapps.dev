@@ -8,6 +8,9 @@ import Flex from '../../components/FlexColumns';
 import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
 import HelpUsImprove from '../../components/HelpUsImprove';
 
+import pensive from './pensive.svg';
+import styles from './index.module.scss';
+
 class NotFound extends Component {
   render() {
     return (
@@ -26,6 +29,7 @@ class NotFound extends Component {
                 <p>
                   <FormattedMessage id="pages.error.snarky" />
                 </p>
+                <img src={pensive} className={styles.pensive} />
               </ContentBox>
             </Flex>
           </Flex>
