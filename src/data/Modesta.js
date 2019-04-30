@@ -17,7 +17,6 @@ Object.keys(twitterEmojis)
   });
 
 Modesta.secondary = overrideColours.secondary
-console.log(overrideColours)
 
 export default Modesta;
 export {

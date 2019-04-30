@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import AppPageDeleteButton from '../../components/AppPageDeleteButton';
 import BotPageContentBox from '../../components/BotPageContentBox';
 import BotPageImagesBox from '../../components/BotPageImagesBox';
 import BotPageInfoBox from '../../components/BotPageInfoBox';
 import BotPageReviewsBox from '../../components/BotPageReviewsBox';
 import BotPageSetStateBox from '../../components/BotPageSetStateBox';
 import BtecParallax from '../../components/BtecParallax';
+import Button from '../../components/Button';
 import Container from '../../components/Container';
 import ContentBox from '../../components/ContentBox';
 import Flex from '../../components/FlexColumns';
@@ -18,18 +20,15 @@ import LocalisedHyperlink from '../../components/LocalisedHyperlink';
 import NotALink from '../../components/NotALink';
 import Youku from '../../components/Youku';
 import YouTube from '../../components/YouTube';
+import DateFormat from '../../data/DateFormat';
 import Locations from '../../data/Locations';
 import States from '../../data/States';
+import ConstructCSS from '../../helpers/ConstructCSS';
 import reviewToJsonLd from '../../helpers/reviewToJsonLd';
-import languages, { Localise, languageHasTranslations } from '../../locales';
+import { Localise } from '../../locales';
 import { fetchABot } from '../../redux/actions/bot';
 import NotFound from '../NotFound';
 import styles from './index.module.scss';
-import DateFormat from '../../data/DateFormat';
-import Modesta from '../../data/Modesta';
-import Button from '../../components/Button';
-import ConstructCSS from '../../helpers/ConstructCSS';
-import AppPageDeleteButton from '../../components/AppPageDeleteButton';
 
 class BotPage extends Component {
   constructor(props) {
