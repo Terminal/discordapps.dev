@@ -139,17 +139,12 @@
       "adverts": "Indeholder funktioner der er låst bag andre tjenester",
       "inAppPurchases": "Has in-app purchases",
       "nsfw": "NSFW",
-      "offeredby": "Indsendt af:",
-      "modified": "Sidst redigeret: { date }",
-      "created": "Først udgivet: { date }",
-      "category": "Kategori: { category }",
+      "offeredby": "Indsendt af",
+      "modified": "Sidst redigeret",
+      "created": "Først udgivet",
+      "category": "Kategori",
       "initiateCategoryFilter": "Find botter for...",
-      "ownerFilter": "Botter af { name }",
-      "count": {
-        "one": "Installeret på en enkelt server",
-        "other": "Installeret på %s servere"
-      },
-      "rated": "Bedømmelse {{ rating }}/5.0"
+      "count": "Installeret på {guilds, plural, one {en enkelt server} other {{guilds} servere}}"
     },
     "configuration": {
       "token": {

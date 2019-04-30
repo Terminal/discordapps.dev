@@ -140,17 +140,11 @@
       "inAppPurchases": "Hat in-app Käufe",
       "nsfw": "NSFW",
       "offeredby": "Angeboten von:",
-      "modified": "Zuletzt bearbeitet: { date }",
-      "created": "Zuerst veröffentlicht: { date }",
-      "category": "Kategorie: { category }",
-      "initiateCategoryFilter": "Finde Bots für...",
-      "ownerFilter": "Bots von { name }",
+      "modified": "Zuletzt bearbeitet",
+      "created": "Zuerst veröffentlicht",
+      "category": "Kategorie",
       "search": "Suche",
-      "count": {
-        "one": "In einem einzigen Server",
-        "other": "In %s Server"
-      },
-      "rated": "Bewertung: {{ rating }}/5.0"
+      "count": "In {guilds, plural, one {einem einzigen Server} other {{guilds} Server}}"
     },
     "configuration": {
       "token": {

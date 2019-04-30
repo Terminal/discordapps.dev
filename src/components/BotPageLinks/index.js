@@ -55,10 +55,9 @@ class BotPageLinks extends Component {
             </>}
           </FormattedMessage>
         </FlexContainer>
-        <FlexColumns>
           {
             bot.authors.length > 0 ?
-            <FlexColumns columns={6}>
+            <>
               <p><FormattedMessage id="pages.bots.offeredby"/></p>
               <ul>
                 {bot.authors.map((author) => (
@@ -72,45 +71,36 @@ class BotPageLinks extends Component {
                   </li>
                 ))}
               </ul>
-            </FlexColumns> :
-            <FlexColumns columns={6}>
-              <FlexContainer className={Modesta.secondary} style={{margin: '5px', padding: '5px'}}><FormattedMessage id="pages.bots.reclaim"/></FlexContainer>
-            </FlexColumns>
+            </> :
+            <FlexContainer className={Modesta.secondary} style={{margin: '5px', padding: '5px'}}><FormattedMessage id="pages.bots.reclaim"/></FlexContainer>
           }
-          <FlexColumns columns={6}>
-            <p>
-              <FormattedMessage id="pages.bots.created" values={{
-                date: (new Date(bot.created)).toLocaleDateString(this.props.intl.locale, DateFormat)
-              }} /><br />
-              <FormattedMessage id="pages.bots.modified" values={{
-                date: (new Date(bot.edited)).toLocaleDateString(this.props.intl.locale, DateFormat)
-              }} />
-            </p>
-          </FlexColumns>
+          <p>
+            <FormattedMessage id="pages.bots.created" values={{
+              date: (new Date(bot.created)).toLocaleDateString(this.props.intl.locale, DateFormat)
+            }} /><br />
+            <FormattedMessage id="pages.bots.modified" values={{
+              date: (new Date(bot.edited)).toLocaleDateString(this.props.intl.locale, DateFormat)
+            }} />
+          </p>
           {
             bot.category &&
-            <FlexColumns columns={6}>
-              <FormattedMessage id={`categories.${bot.category}`}>
-                {
-                  category =>
-                  <FormattedMessage id="pages.bots.category" values={{
-                    category
-                  }} />
-                }
-              </FormattedMessage>
-            </FlexColumns>
+            <FormattedMessage id={`categories.${bot.category}`}>
+              {
+                category =>
+                <FormattedMessage id="pages.bots.category" values={{
+                  category
+                }} />
+              }
+            </FormattedMessage>
           }
           {
             typeof bot.count === 'number' &&
-            <FlexColumns columns={6}>
-              <p>
-                <FormattedMessage id="pages.bots.count" values={{
-                  guilds: bot.count
-                }}/>
-              </p>
-            </FlexColumns>
+            <p>
+              <FormattedMessage id="pages.bots.count" values={{
+                guilds: bot.count
+              }}/>
+            </p>
           }
-        </FlexColumns>
       </ContentBox>
     )
   }

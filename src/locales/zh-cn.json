@@ -145,16 +145,12 @@
       "inAppPurchases": "Has in-app purchases 包含内购",
       "nsfw": "NSFW",
       "offeredby": "提供：",
-      "modified": "最后修改：{ date }",
-      "created": "创建于：{ date }",
-      "category": "分类：{ category }",
+      "modified": "最后修改",
+      "created": "创建于",
+      "category": "分类",
       "initiateCategoryFilter": "为…寻找机器人",
       "ownerFilter": "{ name } 创建的机器人",
-      "count": {
-        "one": "已在一个服务器上安装",
-        "other": "已在%s个服务器上安装"
-      },
-      "rated": "评分： {{ rating }}/5"
+      "count": "已在{guilds, plural, one {一} other {{guilds}}}个服务器上安装"
     },
     "configuration": {
       "token": {

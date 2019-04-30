@@ -263,8 +263,14 @@ const getMasterLanguage = (locale) => {
   return language.code;
 }
 
+const languageHasTranslations = (locale) => {
+  const language = languages.find(language => language.code === locale);
+  return language && language.translations
+}
+
 export default languages;
 export {
   Localise,
-  getMasterLanguage
+  getMasterLanguage,
+  languageHasTranslations
 };

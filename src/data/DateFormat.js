@@ -1,5 +1,5 @@
 export default {
-  weekday: 'long',
+  // weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric'

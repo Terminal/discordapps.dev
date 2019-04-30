@@ -152,6 +152,12 @@
       "smallBots": "Growing Bots",
       "topRPC": "RPC applications"
     },
+    "apps": {
+      "oneLang": "This page is only available in the following language",
+      "otherLang": "This page is available in other languages",
+      "appLinks": "Application Links",
+      "devLinks": "Developer Links"
+    },
     "rpc": {
       "index": {
         "title": "Rich Presence List",
@@ -177,16 +183,16 @@
       "reallyDelete": "Sure?",
       "reclaim": "There is no author information for this bot. This may be because of loss of data between Discord_Fork and ls.terminal.ink migrations. If this is your bot, please join the Terminal.ink for reclaiming.",
       "edit": "Edit",
-      "configure": "Configure",
+      "configure": "Token and Configuration",
       "github": "View on GitHub",
-      "prefix": "{count, plural, one {Prefix:} other {Prefixes:}}",
+      "prefix": "{count, plural, one {Prefix} other {Prefixes}}",
       "adverts": "Contains adverts and features locked behind other services",
       "inAppPurchases": "Has in-app purchases",
       "nsfw": "NSFW",
-      "offeredby": "Offered By:",
-      "modified": "Last modified: { date }",
-      "created": "First published: { date }",
-      "category": "Category: { category }",
+      "offeredby": "Developers",
+      "modified": "Last modified",
+      "created": "First published",
+      "category": "Category",
       "initiateCategoryFilter": "Categories",
       "count": "Installed in {guilds, plural, one {a server} other {{guilds} servers}}"
     },

@@ -148,17 +148,11 @@
       "inAppPurchases": "Ma zakupy w aplikacji",
       "nsfw": "NSFW",
       "offeredby": "Stworzony przez:",
-      "modified": "Ostatnio zmodyfikowany: { date }",
-      "created": "Opublikowany po raz pierwszy: { date }",
-      "category": "Kategoria: { category }",
-      "initiateCategoryFilter": "Znajdź boty dla...",
-      "ownerFilter": "Boty przez { name }",
+      "modified": "Ostatnio zmodyfikowany",
+      "created": "Opublikowany po raz pierwszy",
+      "category": "Kategoria",
       "search": "Szukaj",
-      "count": {
-        "one": "Zainstalowany na jednym serwerze",
-        "other": "Zainstalowany na %s serwerach"
-      },
-      "rated": "Ocenione {{ rating }}/5.0"
+      "count": "Zainstalowany na {guilds, plural, one {jednym serwerze} other {{guilds} serwerach}}"
     },
     "configuration": {
       "token": {
