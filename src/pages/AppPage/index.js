@@ -155,16 +155,24 @@ class BotPage extends Component {
                 <p>
                   <FormattedMessage id="pages.bots.offeredby"/>
                   <ul className={styles.appLinks}>
-                    {app.authors.map((author) => (
-                      <li key={author.id}>
-                        <LocalisedHyperlink aria-label={`${author.username}#${author.discriminator}`} to="/filter" query={{
-                          owners: [author.id],
-                          state: States.APPROVED
-                        }}>
-                          {author.username}#{author.discriminator}
-                        </LocalisedHyperlink>
+                    {
+                      app.authors.length ?
+                        app.authors.map((author) => (
+                        <li key={author.id}>
+                          <LocalisedHyperlink aria-label={`${author.username}#${author.discriminator}`} to="/filter" query={{
+                            owners: [author.id],
+                            state: States.APPROVED
+                          }}>
+                            {author.username}#{author.discriminator}
+                          </LocalisedHyperlink>
+                        </li>
+                      )) :
+                      <li>
+                        <i>
+                          <FormattedMessage id="pages.apps.reclaim" />
+                        </i>
                       </li>
-                    ))}
+                    }
                   </ul>
                 </p>
                 {

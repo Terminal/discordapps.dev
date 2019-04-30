@@ -156,7 +156,8 @@
       "oneLang": "This page is only available in the following language",
       "otherLang": "This page is available in other languages",
       "appLinks": "Application Links",
-      "devLinks": "Developer Links"
+      "devLinks": "Developer Links",
+      "reclaim": "No data. Join Terminal.ink to claim"
     },
     "rpc": {
       "index": {
@@ -181,7 +182,6 @@
       "customisable": "Customisable",
       "delete": "Delete",
       "reallyDelete": "Sure?",
-      "reclaim": "There is no author information for this bot. This may be because of loss of data between Discord_Fork and ls.terminal.ink migrations. If this is your bot, please join the Terminal.ink for reclaiming.",
       "edit": "Edit",
       "configure": "Token and Configuration",
       "github": "View on GitHub",
