@@ -10,7 +10,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import redirects from '../../src/data/redirects';
 
-const htmlData = readFileSync(join(__dirname, '../client/index.html'), 'utf8')
+const htmlData = readFileSync(join(__dirname, '../index.html'), 'utf8')
 
 export default (req, res, next) => {
   // If a redirect is required, return the redirect.

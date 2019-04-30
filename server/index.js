@@ -10,7 +10,7 @@ const app = express();
 app
   .use('^/$', serverRenderer) // Render ROOT with the server
   .use(express.static(
-    path.resolve(process.cwd(), 'dist', 'client'),
+    path.resolve(process.cwd(), 'dist'),
     { maxAge: '30d' }
   ))
   .get('/sitemap.xml', (req, res, next) => {

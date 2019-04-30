@@ -6,8 +6,9 @@
     "dev": "parcel src/index.html -d dist/development",
     "start": "node dist/server",
     "server": "node dist/server",
+    "build": "yarn bundle",
     "bundle": "concurrently \"yarn bundle:client\" \"yarn bundle:server\"",
-    "bundle:client": "cross-env BABEL_ENV=client parcel build src/index.html -d dist/client --public-url /",
+    "bundle:client": "cross-env BABEL_ENV=client parcel build src/index.html -d dist/ --public-url /",
     "bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url / --target=node --no-minify"
   },
   "dependencies": {
