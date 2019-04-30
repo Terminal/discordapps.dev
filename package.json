@@ -3,7 +3,7 @@
   "version": "14.0.0",
   "private": true,
   "scripts": {
-    "dev": "parcel src/index.html",
+    "dev": "parcel src/index.html -d dist/development",
     "start": "node dist/server",
     "server": "node dist/server",
     "bundle": "concurrently \"yarn bundle:client\" \"yarn bundle:server\"",
