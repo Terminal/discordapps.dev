@@ -50,7 +50,7 @@
       "edit_success": "Edited application successfully.",
       "count": "The guild count for a bot must be between 0 and 5000000 servers",
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
-      "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the cover URL may not be identical to the avatar URL.",
+      "cover": "The background URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the background URL may not be identical to the avatar URL.",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
       "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead.",
       "youtube": "The YouTube ID needs to look like an ID",
@@ -318,7 +318,7 @@
           "placeholder": "A HTTPS link to an avatar image"
         },
         "cover": {
-          "title": "Cover Image",
+          "title": "Background Image",
           "placeholder": "A HTTPS link to a large image"
         },
         "preview": {
