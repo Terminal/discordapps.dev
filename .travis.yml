@@ -9,8 +9,6 @@ jobs:
   include:
     - stage: Build generic distribution
       script: yarn bundle
-    - stage: Deploy to GitHub
-      script: skip
       deploy:
         provider: pages
         skip_cleanup: true
@@ -22,8 +20,6 @@ jobs:
           branch: ls14
     - stage: Build GitHub Pages version
       script: yarn bundle:gh
-    - stage: Deploy to GitHub Pages
-      script: skip
       deploy:
         provider: pages
         skip_cleanup: true
