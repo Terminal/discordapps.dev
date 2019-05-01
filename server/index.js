@@ -8,11 +8,17 @@ const path = require('path');
 const app = express();
 
 app
-  .use('^/$', serverRenderer) // Render ROOT with the server
-  .use(express.static(
-    path.resolve(process.cwd(), 'dist'),
-    { maxAge: '30d' }
-  ))
+  .get('/robots.txt', (req, res, next) => {
+    res.send(
+`User-agent: *
+Disallow: /*/bots/filter
+Disallow: /*/filter
+Disallow: /*/admin
+Disallow: /*/game
+Disallow: /*/languagescomparisontool
+`
+    );
+  })
   .get('/sitemap.xml', (req, res, next) => {
     fetch(`${Locations.server}/ls13.xml`)
       .then(result => result.text())
@@ -23,6 +29,11 @@ app
       )
       .catch(err => next(err));
   })
+  .use('^/$', serverRenderer) // Render ROOT with the server
+  .use(express.static(
+    path.resolve(process.cwd(), 'dist'),
+    { maxAge: '30d' }
+  ))
   .use('*', serverRenderer) // Render non-static with the server
   .listen(3000, (error) => {
     if (error) {
