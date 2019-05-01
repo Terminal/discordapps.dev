@@ -11,9 +11,15 @@ import * as serviceWorker from './serviceWorker';
 
 const element = document.getElementById('app')
 
+let basename = '/';
+
+if (window.hostname === 'terminal.github.io') {
+  basename = '/discordapps.dev/';
+}
+
 const app = (
   <ReduxProvider>
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </ReduxProvider>

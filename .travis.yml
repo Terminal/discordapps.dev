@@ -7,7 +7,7 @@ install:
 
 jobs:
   include:
-    - stage: Build generic distribution
+    - stage: Build the Terminal.ink Open Source Bot List project
       script: yarn bundle
       deploy:
         provider: pages
