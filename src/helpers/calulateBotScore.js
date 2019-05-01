@@ -18,10 +18,15 @@ const calculateBotScore = ({
 
     // Bots with competitors in the bot page lose 2 points.
     Competitors.forEach((competitor) => {
-      if (content.page.includes(competitor)) {
-        bot.random -= 2;
-      }
-    })
+      // Subtract 2 points for each instance of a competitor
+      // https://stackoverflow.com/questions/4009756/how-to-count-string-occurrence-in-string
+      // '---discordbots.org---'
+      //    ==> ['---', '---'] ==> 1 instance
+      // '---discordbots.org---discordbots.org---'
+      //    ==> ['---', '---', '---'] ==> 2 instances
+      const instances = content.page.split(competitor).length - 1;
+      bot.random -= 2 * instances;
+    });
   });
 
   // Bots with preview images gain .5 points.
