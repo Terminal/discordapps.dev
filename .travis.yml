@@ -1,17 +1,34 @@
 language: node_js
 node_js: lts/*
+sudo: false
 
 install:
   - yarn
 
-script:
-  - yarn bundle
-
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  local_dir: ./dist
-  on:
-    branch: ls14
+jobs:
+  include:
+    - stage: Build generic distribution
+      script: yarn bundle
+    - stage: Deploy to GitHub
+      script: skip
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep_history: true
+        local_dir: ./dist
+        target_branch: dist
+        on:
+          branch: ls14
+    - stage: Build GitHub Pages version
+      script: yarn bundle:gh
+    - stage: Deploy to GitHub Pages
+      script: skip
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+        keep_history: true
+        local_dir: ./dist
+        on:
+          branch: ls14
