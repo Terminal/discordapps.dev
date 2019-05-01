@@ -131,14 +131,18 @@ class BotPage extends Component {
                     </ul>
                   </p>
                 }
-                <p>
-                  <FormattedMessage id={`pages.apps.appLinks`} />
-                  <ul className={styles.appLinks}>
-                    {app.support ? <li><a href={app.support}><FormattedMessage id="pages.bots.support" /></a></li> : null}
-                    {app.website ? <li><a href={app.website}><FormattedMessage id="pages.bots.website" /></a></li> : null}
-                    {app.github && app.github.owner && app.github.repo ? <li><a href={`https://github.com/${app.github.owner}/${app.github.repo}`}><FormattedMessage id="pages.bots.github" /></a></li> : null}
-                  </ul>
-                </p>
+                {
+                  app.support || app.website || (app.github && app.github.owner && app.github.repo) ?
+                  <p>
+                    <FormattedMessage id={`pages.apps.appLinks`} />
+                    <ul className={styles.appLinks}>
+                      {app.support ? <li><a href={app.support}><FormattedMessage id="pages.bots.support" /></a></li> : null}
+                      {app.website ? <li><a href={app.website}><FormattedMessage id="pages.bots.website" /></a></li> : null}
+                      {app.github && app.github.owner && app.github.repo ? <li><a href={`https://github.com/${app.github.owner}/${app.github.repo}`}><FormattedMessage id="pages.bots.github" /></a></li> : null}
+                    </ul>
+                  </p> :
+                  null
+                }
                 { auth && (auth.admin || app.authors.some(author => author.id === auth.id)) ?
                   <p>
                     <FormattedMessage id={`pages.apps.devLinks`} />
