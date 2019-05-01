@@ -1393,7 +1393,7 @@ class ContentBox extends _react.Component {
 var _default = ContentBox;
 exports.default = _default;
 },{"../../scss/colours.module.scss":"B5RV","./index.module.scss":"I5ip","../../data/Modesta":"3GPO"}],"1a+H":[function(require,module,exports) {
-module.exports = "/arrow.4675c036.png";
+module.exports = "/discordapps.dev/arrow.4675c036.png";
 },{}],"irDA":[function(require,module,exports) {
 module.exports = {
   "description": "_description_681df",
@@ -7046,7 +7046,7 @@ class HelpUsImprove extends _react.Component {
 var _default = HelpUsImprove;
 exports.default = _default;
 },{"../ContentBox":"wueC","../../data/Locations":"xg/o"}],"gKh5":[function(require,module,exports) {
-module.exports = "/pensive.8f076f62.svg";
+module.exports = "/discordapps.dev/pensive.8f076f62.svg";
 },{}],"oLKj":[function(require,module,exports) {
 module.exports = {
   "pensive": "_pensive_d10c7"
@@ -8903,7 +8903,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps)(CategoriesLinksList);
 
 exports.default = _default;
 },{"../ContentBox":"wueC","./index.module.scss":"JPpK","../LoadingText":"u9/w","../LocalisedHyperlink":"EFH/","../../redux/actions/categories":"9pxy","../../data/States":"HQpP"}],"dHuT":[function(require,module,exports) {
-module.exports = "/hk.19c8b6f4.jpg";
+module.exports = "/discordapps.dev/hk.19c8b6f4.jpg";
 },{}],"6IzC":[function(require,module,exports) {
 module.exports = {
   "slider": "_slider_b9b50",
@@ -8915,7 +8915,7 @@ module.exports = {
   "dots": "_dots_b9b50"
 };
 },{}],"kn5L":[function(require,module,exports) {
-module.exports = "/rpc.89411526.jpg";
+module.exports = "/discordapps.dev/rpc.89411526.jpg";
 },{}],"BAkA":[function(require,module,exports) {
 "use strict";
 
@@ -11217,4 +11217,4 @@ Disallow: /*/languagescomparisontool
   console.log('Now listening to 3000');
 });
 },{"./middleware/renderer":"pnxz","../src/data/Locations":"xg/o"}]},{},["Focm"], null)
-//# sourceMappingURL=/index.js.map
+//# sourceMappingURL=/discordapps.dev/index.js.map
