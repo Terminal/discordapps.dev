@@ -1294,6 +1294,9 @@ button {
   padding: 0.3em 0.8em;
   position: relative;
 }
+button._btn_e89a5 {
+  box-shadow: unset !important;
+}
 button:active {
   box-shadow: none !important;
   top: 2;
