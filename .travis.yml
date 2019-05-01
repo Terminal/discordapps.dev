@@ -18,8 +18,7 @@ jobs:
         target_branch: dist
         on:
           branch: ls14
-    - stage: Build GitHub Pages version
-      script: yarn bundle:gh
+    - script: yarn bundle:gh
       deploy:
         provider: pages
         skip_cleanup: true
