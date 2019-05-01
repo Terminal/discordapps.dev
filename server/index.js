@@ -4139,7 +4139,7 @@ module.exports = {
       "edit_success": "Edited application successfully.",
       "count": "The guild count for a bot must be between 0 and 5000000 servers",
       "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
-      "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the cover URL may not be identical to the avatar URL.",
+      "cover": "The background URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the background URL may not be identical to the avatar URL.",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
       "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead.",
       "youtube": "The YouTube ID needs to look like an ID",
@@ -4407,7 +4407,7 @@ module.exports = {
           "placeholder": "A HTTPS link to an avatar image"
         },
         "cover": {
-          "title": "Cover Image",
+          "title": "Background Image",
           "placeholder": "A HTTPS link to a large image"
         },
         "preview": {
@@ -7300,7 +7300,7 @@ class BotPage extends _react.Component {
       className: _indexModule.default.triggerNote
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.mentionable"
-    })) : null)), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    })) : null)), app.support || app.website || app.github && app.github.owner && app.github.repo ? _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: `pages.apps.appLinks`
     }), _react.default.createElement("ul", {
       className: _indexModule.default.appLinks
@@ -7316,7 +7316,7 @@ class BotPage extends _react.Component {
       href: `https://github.com/${app.github.owner}/${app.github.repo}`
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.github"
-    }))) : null)), auth && (auth.admin || app.authors.some(author => author.id === auth.id)) ? _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    }))) : null)) : null, auth && (auth.admin || app.authors.some(author => author.id === auth.id)) ? _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: `pages.apps.devLinks`
     }), _react.default.createElement("ul", {
       className: _indexModule.default.appLinks
