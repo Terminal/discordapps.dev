@@ -13,7 +13,7 @@ const element = document.getElementById('app')
 
 let basename = '/';
 
-if (window.hostname === 'terminal.github.io') {
+if (window.location.hostname === 'terminal.github.io') {
   basename = '/discordapps.dev/';
 }
 
