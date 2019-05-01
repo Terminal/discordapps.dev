@@ -26,10 +26,13 @@ Make your bot page in multiple languages to target many more users.
 Add multiple prefixes with available flags for if the bot can be mentioned or customised.
 
 ## Development Previews
+Download the bundled code in the `dist` branch of this repo.
+
 Location                                                          | Description
 ----------------------------------------------------------------- | -----------------
 [Discord Apps Marketplace](https://discordapps.dev/)              | Production instance
 [Netlify](https://twink.netlify.com/)                             | Development instance - Always latest commit
+[GitHub Pages](https://terminal.github.io/discordapps.dev/en-GB)  | Development instance - Slower than Netlify
 [Fog Creek Software's Glitch](https://discordapps-dev.glitch.me/) | Glitch is a great website
 [Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8)         | Not related. Stan LOONA.
 
