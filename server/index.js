@@ -1,0 +1,11212 @@
+// modules are defined as an array
+// [ module function, map of requires ]
+//
+// map of requires is short require name -> numeric require
+//
+// anything defined in a previous bundle is accessed via the
+// orig method which is the require for previous bundles
+parcelRequire = (function (modules, cache, entry, globalName) {
+  // Save the require from previous bundle to this closure if any
+  var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
+  var nodeRequire = typeof require === 'function' && require;
+
+  function newRequire(name, jumped) {
+    if (!cache[name]) {
+      if (!modules[name]) {
+        // if we cannot find the module within our internal map or
+        // cache jump to the current global require ie. the last bundle
+        // that was added to the page.
+        var currentRequire = typeof parcelRequire === 'function' && parcelRequire;
+        if (!jumped && currentRequire) {
+          return currentRequire(name, true);
+        }
+
+        // If there are other bundles on this page the require from the
+        // previous one is saved to 'previousRequire'. Repeat this as
+        // many times as there are bundles until the module is found or
+        // we exhaust the require chain.
+        if (previousRequire) {
+          return previousRequire(name, true);
+        }
+
+        // Try the node require function if it exists.
+        if (nodeRequire && typeof name === 'string') {
+          return nodeRequire(name);
+        }
+
+        var err = new Error('Cannot find module \'' + name + '\'');
+        err.code = 'MODULE_NOT_FOUND';
+        throw err;
+      }
+
+      localRequire.resolve = resolve;
+      localRequire.cache = {};
+
+      var module = cache[name] = new newRequire.Module(name);
+
+      modules[name][0].call(module.exports, localRequire, module, module.exports, this);
+    }
+
+    return cache[name].exports;
+
+    function localRequire(x){
+      return newRequire(localRequire.resolve(x));
+    }
+
+    function resolve(x){
+      return modules[name][1][x] || x;
+    }
+  }
+
+  function Module(moduleName) {
+    this.id = moduleName;
+    this.bundle = newRequire;
+    this.exports = {};
+  }
+
+  newRequire.isParcelRequire = true;
+  newRequire.Module = Module;
+  newRequire.modules = modules;
+  newRequire.cache = cache;
+  newRequire.parent = previousRequire;
+  newRequire.register = function (id, exports) {
+    modules[id] = [function (require, module) {
+      module.exports = exports;
+    }, {}];
+  };
+
+  var error;
+  for (var i = 0; i < entry.length; i++) {
+    try {
+      newRequire(entry[i]);
+    } catch (e) {
+      // Save first error but execute all entries
+      if (!error) {
+        error = e;
+      }
+    }
+  }
+
+  if (entry.length) {
+    // Expose entry point to Node, AMD or browser globals
+    // Based on https://github.com/ForbesLindesay/umd/blob/master/template.js
+    var mainExports = newRequire(entry[entry.length - 1]);
+
+    // CommonJS
+    if (typeof exports === "object" && typeof module !== "undefined") {
+      module.exports = mainExports;
+
+    // RequireJS
+    } else if (typeof define === "function" && define.amd) {
+     define(function () {
+       return mainExports;
+     });
+
+    // <script>
+    } else if (globalName) {
+      this[globalName] = mainExports;
+    }
+  }
+
+  // Override the current require with this new one
+  parcelRequire = newRequire;
+
+  if (error) {
+    // throw error from earlier, _after updating parcelRequire_
+    throw error;
+  }
+
+  return newRequire;
+})({"xg/o":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const Locations = {
+  server: 'https://api.discordapps.dev',
+  // server: 'http://127.0.0.1:8000',
+  cdn: 'https://api.discordapps.dev',
+  domain: 'https://discordapps.dev',
+  docsServer: 'https://docs.discordapps.dev',
+  // docsServer: 'http://127.0.0.1:4000',
+  logo: 'https://api.discordapps.dev/img/logo/logo.svg',
+  favicon: 'https://api.discordapps.dev/img/logo/logo32.png',
+  sourceCode: 'https://github.com/Terminal/discordapps.dev',
+  sourceDependencies: 'https://github.com/Terminal/discordapps.dev/network/dependencies',
+  sourceLicence: 'https://github.com/Terminal/discordapps.dev/blob/ls14/LICENCE',
+  sourceIssues: 'https://github.com/Terminal/discordapps.dev/issues',
+  sourceTranslations: 'https://github.com/Terminal/discordapps.dev/tree/ls14/src/locales',
+  sourceReleases: 'https://github.com/Terminal/discordapps.dev/releases',
+  wiki: 'https://github.com/Terminal/discordapps.dev/wiki',
+  tutorials: 'https://github.com/Terminal/discordapps.dev/wiki/Tutorials-Home',
+  termsAndConditions: 'https://github.com/Terminal/discordapps.dev/wiki/Terms-and-Conditions',
+  terminalInk: 'https://terminal.ink',
+  discordServer: 'https://discord.gg/8uC6aKZ',
+  add: 'https://github.com/Terminal/discordapps.dev/wiki#share-your-creation'
+};
+var _default = Locations;
+exports.default = _default;
+},{}],"9FFc":[function(require,module,exports) {
+module.exports = {
+  "link": "_link_9fecd"
+};
+},{}],"zfiY":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class NotALink extends _react.Component {
+  render() {
+    return _react.default.createElement("span", _extends({
+      className: `${_indexModule.default.link} ${this.props.className}`
+    }, this.props), this.props.children);
+  }
+
+}
+
+var _default = NotALink;
+exports.default = _default;
+},{"./index.module.scss":"9FFc"}],"P7V4":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _NotALink = _interopRequireDefault(require("../NotALink"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageDeleteButton extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sure: false,
+      deleted: false
+    };
+    this.openSure = this.openSure.bind(this);
+    this.delete = this.delete.bind(this);
+  }
+
+  openSure() {
+    this.setState({
+      sure: true
+    });
+  }
+
+  delete() {
+    fetch(`${_Locations.default.server}/bots/${this.props.app.id}/delete`, {
+      method: 'POST',
+      credentials: 'include'
+    }).then(res => res.json()).then(data => {
+      if (data.ok) this.setState({
+        deleted: true
+      });
+    });
+  }
+
+  render() {
+    if (this.state.deleted) {
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/"
+      });
+    }
+
+    if (this.state.sure) {
+      return _react.default.createElement(_NotALink.default, {
+        onClick: this.delete
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "pages.bots.reallyDelete"
+      }));
+    }
+
+    return _react.default.createElement(_NotALink.default, {
+      onClick: this.openSure
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.delete"
+    }));
+  }
+
+}
+
+var _default = AppPageDeleteButton;
+exports.default = _default;
+},{"../../data/Locations":"xg/o","../NotALink":"zfiY"}],"B5RV":[function(require,module,exports) {
+module.exports = {
+  "container": "_container_f1129",
+  "secondary": "_secondary_f1129"
+};
+},{}],"I5ip":[function(require,module,exports) {
+module.exports = {
+  "container": "_container_4478b"
+};
+},{}],"GOfQ":[function(require,module,exports) {
+module.exports = {
+  "markdown-container": "_markdown-container_e89a5",
+  "pl-c": "_pl-c_e89a5",
+  "pl-c1": "_pl-c1_e89a5",
+  "pl-s": "_pl-s_e89a5",
+  "pl-v": "_pl-v_e89a5",
+  "pl-e": "_pl-e_e89a5",
+  "pl-en": "_pl-en_e89a5",
+  "pl-smi": "_pl-smi_e89a5",
+  "pl-s1": "_pl-s1_e89a5",
+  "pl-ent": "_pl-ent_e89a5",
+  "pl-k": "_pl-k_e89a5",
+  "pl-pds": "_pl-pds_e89a5",
+  "pl-pse": "_pl-pse_e89a5",
+  "pl-sr": "_pl-sr_e89a5",
+  "pl-cce": "_pl-cce_e89a5",
+  "pl-sre": "_pl-sre_e89a5",
+  "pl-sra": "_pl-sra_e89a5",
+  "pl-smw": "_pl-smw_e89a5",
+  "pl-bu": "_pl-bu_e89a5",
+  "pl-ii": "_pl-ii_e89a5",
+  "pl-c2": "_pl-c2_e89a5",
+  "pl-ml": "_pl-ml_e89a5",
+  "pl-mh": "_pl-mh_e89a5",
+  "pl-ms": "_pl-ms_e89a5",
+  "pl-mi": "_pl-mi_e89a5",
+  "pl-mb": "_pl-mb_e89a5",
+  "pl-md": "_pl-md_e89a5",
+  "pl-mi1": "_pl-mi1_e89a5",
+  "pl-mc": "_pl-mc_e89a5",
+  "pl-mi2": "_pl-mi2_e89a5",
+  "pl-mdr": "_pl-mdr_e89a5",
+  "pl-ba": "_pl-ba_e89a5",
+  "pl-sg": "_pl-sg_e89a5",
+  "pl-corl": "_pl-corl_e89a5",
+  "octicon": "_octicon_e89a5",
+  "pl-0": "_pl-0_e89a5",
+  "pl-1": "_pl-1_e89a5",
+  "pl-2": "_pl-2_e89a5",
+  "pl-3": "_pl-3_e89a5",
+  "pl-4": "_pl-4_e89a5",
+  "pl-5": "_pl-5_e89a5",
+  "pl-6": "_pl-6_e89a5",
+  "anchor": "_anchor_e89a5",
+  "octicon-link": "_octicon-link_e89a5",
+  "highlight": "_highlight_e89a5",
+  "err": "_err_e89a5",
+  "w": "_w_e89a5",
+  "c": "_c_e89a5",
+  "cd": "_cd_e89a5",
+  "cm": "_cm_e89a5",
+  "c1": "_c1_e89a5",
+  "cs": "_cs_e89a5",
+  "cp": "_cp_e89a5",
+  "nt": "_nt_e89a5",
+  "o": "_o_e89a5",
+  "ow": "_ow_e89a5",
+  "p": "_p_e89a5",
+  "pi": "_pi_e89a5",
+  "gi": "_gi_e89a5",
+  "gd": "_gd_e89a5",
+  "gh": "_gh_e89a5",
+  "k": "_k_e89a5",
+  "kn": "_kn_e89a5",
+  "kp": "_kp_e89a5",
+  "kr": "_kr_e89a5",
+  "kv": "_kv_e89a5",
+  "kc": "_kc_e89a5",
+  "kt": "_kt_e89a5",
+  "kd": "_kd_e89a5",
+  "s": "_s_e89a5",
+  "sb": "_sb_e89a5",
+  "sc": "_sc_e89a5",
+  "sd": "_sd_e89a5",
+  "s2": "_s2_e89a5",
+  "sh": "_sh_e89a5",
+  "sx": "_sx_e89a5",
+  "s1": "_s1_e89a5",
+  "sr": "_sr_e89a5",
+  "si": "_si_e89a5",
+  "se": "_se_e89a5",
+  "nn": "_nn_e89a5",
+  "nc": "_nc_e89a5",
+  "no": "_no_e89a5",
+  "na": "_na_e89a5",
+  "m": "_m_e89a5",
+  "mf": "_mf_e89a5",
+  "mh": "_mh_e89a5",
+  "mi": "_mi_e89a5",
+  "il": "_il_e89a5",
+  "mo": "_mo_e89a5",
+  "mb": "_mb_e89a5",
+  "mx": "_mx_e89a5",
+  "ss": "_ss_e89a5",
+  "highlighter-rouge": "_highlighter-rouge_e89a5",
+  "full-commit": "_full-commit_e89a5",
+  "btn-outline": "_btn-outline_e89a5",
+  "radio-label": "_radio-label_e89a5",
+  "task-list-item": "_task-list-item_e89a5",
+  "arrow": "_arrow_e89a5",
+  "fading": "_fading_e89a5",
+  "arrow--scrolled": "_arrow--scrolled_e89a5",
+  "bounce": "_bounce_e89a5",
+  "buttons": "_buttons_e89a5",
+  "alizarin": "_alizarin_e89a5",
+  "amethyst": "_amethyst_e89a5",
+  "asbestos": "_asbestos_e89a5",
+  "belize-hole": "_belize-hole_e89a5",
+  "black": "_black_e89a5",
+  "carrot": "_carrot_e89a5",
+  "clouds": "_clouds_e89a5",
+  "concrete": "_concrete_e89a5",
+  "cubered": "_cubered_e89a5",
+  "dark": "_dark_e89a5",
+  "emerald": "_emerald_e89a5",
+  "gold": "_gold_e89a5",
+  "green-sea": "_green-sea_e89a5",
+  "light": "_light_e89a5",
+  "midnight-blue": "_midnight-blue_e89a5",
+  "nephritis": "_nephritis_e89a5",
+  "orange": "_orange_e89a5",
+  "peach": "_peach_e89a5",
+  "peter-river": "_peter-river_e89a5",
+  "pomegranate": "_pomegranate_e89a5",
+  "primary": "_primary_e89a5",
+  "pumpkin": "_pumpkin_e89a5",
+  "raw-purple": "_raw-purple_e89a5",
+  "secondary": "_secondary_e89a5",
+  "silver": "_silver_e89a5",
+  "sun-flower": "_sun-flower_e89a5",
+  "transparent": "_transparent_e89a5",
+  "turquoise": "_turquoise_e89a5",
+  "wet-asphalt": "_wet-asphalt_e89a5",
+  "white": "_white_e89a5",
+  "wisteria": "_wisteria_e89a5",
+  "deviantart": "_deviantart_e89a5",
+  "discord": "_discord_e89a5",
+  "facebook": "_facebook_e89a5",
+  "github": "_github_e89a5",
+  "google": "_google_e89a5",
+  "googleplus": "_googleplus_e89a5",
+  "instagram": "_instagram_e89a5",
+  "linkedin": "_linkedin_e89a5",
+  "patreon": "_patreon_e89a5",
+  "paypal": "_paypal_e89a5",
+  "pinterest": "_pinterest_e89a5",
+  "reddit": "_reddit_e89a5",
+  "skype": "_skype_e89a5",
+  "slack": "_slack_e89a5",
+  "snapchat": "_snapchat_e89a5",
+  "soundcloud": "_soundcloud_e89a5",
+  "spotify": "_spotify_e89a5",
+  "steam": "_steam_e89a5",
+  "telegram": "_telegram_e89a5",
+  "tumblr": "_tumblr_e89a5",
+  "twitch": "_twitch_e89a5",
+  "twitter": "_twitter_e89a5",
+  "viber": "_viber_e89a5",
+  "whatsapp": "_whatsapp_e89a5",
+  "youtube": "_youtube_e89a5",
+  "btn": "_btn_e89a5",
+  "alizarin-border": "_alizarin-border_e89a5",
+  "alizarin-border-nodark": "_alizarin-border-nodark_e89a5",
+  "alizarin-nodark": "_alizarin-nodark_e89a5",
+  "alizarin-flat": "_alizarin-flat_e89a5",
+  "alizarin-flat-nodark": "_alizarin-flat-nodark_e89a5",
+  "amethyst-border": "_amethyst-border_e89a5",
+  "amethyst-border-nodark": "_amethyst-border-nodark_e89a5",
+  "amethyst-nodark": "_amethyst-nodark_e89a5",
+  "amethyst-flat": "_amethyst-flat_e89a5",
+  "amethyst-flat-nodark": "_amethyst-flat-nodark_e89a5",
+  "asbestos-border": "_asbestos-border_e89a5",
+  "asbestos-border-nodark": "_asbestos-border-nodark_e89a5",
+  "asbestos-nodark": "_asbestos-nodark_e89a5",
+  "asbestos-flat": "_asbestos-flat_e89a5",
+  "asbestos-flat-nodark": "_asbestos-flat-nodark_e89a5",
+  "belize-hole-border": "_belize-hole-border_e89a5",
+  "belize-hole-border-nodark": "_belize-hole-border-nodark_e89a5",
+  "belize-hole-nodark": "_belize-hole-nodark_e89a5",
+  "belize-hole-flat": "_belize-hole-flat_e89a5",
+  "belize-hole-flat-nodark": "_belize-hole-flat-nodark_e89a5",
+  "black-border": "_black-border_e89a5",
+  "black-border-nodark": "_black-border-nodark_e89a5",
+  "black-nodark": "_black-nodark_e89a5",
+  "black-flat": "_black-flat_e89a5",
+  "black-flat-nodark": "_black-flat-nodark_e89a5",
+  "carrot-border": "_carrot-border_e89a5",
+  "carrot-border-nodark": "_carrot-border-nodark_e89a5",
+  "carrot-nodark": "_carrot-nodark_e89a5",
+  "carrot-flat": "_carrot-flat_e89a5",
+  "carrot-flat-nodark": "_carrot-flat-nodark_e89a5",
+  "clouds-border": "_clouds-border_e89a5",
+  "clouds-border-nodark": "_clouds-border-nodark_e89a5",
+  "clouds-nodark": "_clouds-nodark_e89a5",
+  "clouds-flat": "_clouds-flat_e89a5",
+  "clouds-flat-nodark": "_clouds-flat-nodark_e89a5",
+  "concrete-border": "_concrete-border_e89a5",
+  "concrete-border-nodark": "_concrete-border-nodark_e89a5",
+  "concrete-nodark": "_concrete-nodark_e89a5",
+  "concrete-flat": "_concrete-flat_e89a5",
+  "concrete-flat-nodark": "_concrete-flat-nodark_e89a5",
+  "cubered-border": "_cubered-border_e89a5",
+  "cubered-border-nodark": "_cubered-border-nodark_e89a5",
+  "cubered-nodark": "_cubered-nodark_e89a5",
+  "cubered-flat": "_cubered-flat_e89a5",
+  "cubered-flat-nodark": "_cubered-flat-nodark_e89a5",
+  "dark-border": "_dark-border_e89a5",
+  "dark-border-nodark": "_dark-border-nodark_e89a5",
+  "dark-nodark": "_dark-nodark_e89a5",
+  "dark-flat": "_dark-flat_e89a5",
+  "dark-flat-nodark": "_dark-flat-nodark_e89a5",
+  "emerald-border": "_emerald-border_e89a5",
+  "emerald-border-nodark": "_emerald-border-nodark_e89a5",
+  "emerald-nodark": "_emerald-nodark_e89a5",
+  "emerald-flat": "_emerald-flat_e89a5",
+  "emerald-flat-nodark": "_emerald-flat-nodark_e89a5",
+  "gold-border": "_gold-border_e89a5",
+  "gold-border-nodark": "_gold-border-nodark_e89a5",
+  "gold-nodark": "_gold-nodark_e89a5",
+  "gold-flat": "_gold-flat_e89a5",
+  "gold-flat-nodark": "_gold-flat-nodark_e89a5",
+  "green-sea-border": "_green-sea-border_e89a5",
+  "green-sea-border-nodark": "_green-sea-border-nodark_e89a5",
+  "green-sea-nodark": "_green-sea-nodark_e89a5",
+  "green-sea-flat": "_green-sea-flat_e89a5",
+  "green-sea-flat-nodark": "_green-sea-flat-nodark_e89a5",
+  "highlight-border": "_highlight-border_e89a5",
+  "highlight-border-nodark": "_highlight-border-nodark_e89a5",
+  "highlight-nodark": "_highlight-nodark_e89a5",
+  "highlight-flat": "_highlight-flat_e89a5",
+  "highlight-flat-nodark": "_highlight-flat-nodark_e89a5",
+  "light-border": "_light-border_e89a5",
+  "light-border-nodark": "_light-border-nodark_e89a5",
+  "light-nodark": "_light-nodark_e89a5",
+  "light-flat": "_light-flat_e89a5",
+  "light-flat-nodark": "_light-flat-nodark_e89a5",
+  "midnight-blue-border": "_midnight-blue-border_e89a5",
+  "midnight-blue-border-nodark": "_midnight-blue-border-nodark_e89a5",
+  "midnight-blue-nodark": "_midnight-blue-nodark_e89a5",
+  "midnight-blue-flat": "_midnight-blue-flat_e89a5",
+  "midnight-blue-flat-nodark": "_midnight-blue-flat-nodark_e89a5",
+  "nephritis-border": "_nephritis-border_e89a5",
+  "nephritis-border-nodark": "_nephritis-border-nodark_e89a5",
+  "nephritis-nodark": "_nephritis-nodark_e89a5",
+  "nephritis-flat": "_nephritis-flat_e89a5",
+  "nephritis-flat-nodark": "_nephritis-flat-nodark_e89a5",
+  "orange-border": "_orange-border_e89a5",
+  "orange-border-nodark": "_orange-border-nodark_e89a5",
+  "orange-nodark": "_orange-nodark_e89a5",
+  "orange-flat": "_orange-flat_e89a5",
+  "orange-flat-nodark": "_orange-flat-nodark_e89a5",
+  "peach-border": "_peach-border_e89a5",
+  "peach-border-nodark": "_peach-border-nodark_e89a5",
+  "peach-nodark": "_peach-nodark_e89a5",
+  "peach-flat": "_peach-flat_e89a5",
+  "peach-flat-nodark": "_peach-flat-nodark_e89a5",
+  "peter-river-border": "_peter-river-border_e89a5",
+  "peter-river-border-nodark": "_peter-river-border-nodark_e89a5",
+  "peter-river-nodark": "_peter-river-nodark_e89a5",
+  "peter-river-flat": "_peter-river-flat_e89a5",
+  "peter-river-flat-nodark": "_peter-river-flat-nodark_e89a5",
+  "pomegranate-border": "_pomegranate-border_e89a5",
+  "pomegranate-border-nodark": "_pomegranate-border-nodark_e89a5",
+  "pomegranate-nodark": "_pomegranate-nodark_e89a5",
+  "pomegranate-flat": "_pomegranate-flat_e89a5",
+  "pomegranate-flat-nodark": "_pomegranate-flat-nodark_e89a5",
+  "primary-border": "_primary-border_e89a5",
+  "primary-border-nodark": "_primary-border-nodark_e89a5",
+  "primary-nodark": "_primary-nodark_e89a5",
+  "primary-flat": "_primary-flat_e89a5",
+  "primary-flat-nodark": "_primary-flat-nodark_e89a5",
+  "pumpkin-border": "_pumpkin-border_e89a5",
+  "pumpkin-border-nodark": "_pumpkin-border-nodark_e89a5",
+  "pumpkin-nodark": "_pumpkin-nodark_e89a5",
+  "pumpkin-flat": "_pumpkin-flat_e89a5",
+  "pumpkin-flat-nodark": "_pumpkin-flat-nodark_e89a5",
+  "raw-purple-border": "_raw-purple-border_e89a5",
+  "raw-purple-border-nodark": "_raw-purple-border-nodark_e89a5",
+  "raw-purple-nodark": "_raw-purple-nodark_e89a5",
+  "raw-purple-flat": "_raw-purple-flat_e89a5",
+  "raw-purple-flat-nodark": "_raw-purple-flat-nodark_e89a5",
+  "secondary-border": "_secondary-border_e89a5",
+  "secondary-border-nodark": "_secondary-border-nodark_e89a5",
+  "secondary-nodark": "_secondary-nodark_e89a5",
+  "secondary-flat": "_secondary-flat_e89a5",
+  "secondary-flat-nodark": "_secondary-flat-nodark_e89a5",
+  "silver-border": "_silver-border_e89a5",
+  "silver-border-nodark": "_silver-border-nodark_e89a5",
+  "silver-nodark": "_silver-nodark_e89a5",
+  "silver-flat": "_silver-flat_e89a5",
+  "silver-flat-nodark": "_silver-flat-nodark_e89a5",
+  "sun-flower-border": "_sun-flower-border_e89a5",
+  "sun-flower-border-nodark": "_sun-flower-border-nodark_e89a5",
+  "sun-flower-nodark": "_sun-flower-nodark_e89a5",
+  "sun-flower-flat": "_sun-flower-flat_e89a5",
+  "sun-flower-flat-nodark": "_sun-flower-flat-nodark_e89a5",
+  "transparent-border": "_transparent-border_e89a5",
+  "transparent-border-nodark": "_transparent-border-nodark_e89a5",
+  "transparent-nodark": "_transparent-nodark_e89a5",
+  "transparent-flat": "_transparent-flat_e89a5",
+  "transparent-flat-nodark": "_transparent-flat-nodark_e89a5",
+  "turquoise-border": "_turquoise-border_e89a5",
+  "turquoise-border-nodark": "_turquoise-border-nodark_e89a5",
+  "turquoise-nodark": "_turquoise-nodark_e89a5",
+  "turquoise-flat": "_turquoise-flat_e89a5",
+  "turquoise-flat-nodark": "_turquoise-flat-nodark_e89a5",
+  "wet-asphalt-border": "_wet-asphalt-border_e89a5",
+  "wet-asphalt-border-nodark": "_wet-asphalt-border-nodark_e89a5",
+  "wet-asphalt-nodark": "_wet-asphalt-nodark_e89a5",
+  "wet-asphalt-flat": "_wet-asphalt-flat_e89a5",
+  "wet-asphalt-flat-nodark": "_wet-asphalt-flat-nodark_e89a5",
+  "white-border": "_white-border_e89a5",
+  "white-border-nodark": "_white-border-nodark_e89a5",
+  "white-nodark": "_white-nodark_e89a5",
+  "white-flat": "_white-flat_e89a5",
+  "white-flat-nodark": "_white-flat-nodark_e89a5",
+  "wisteria-border": "_wisteria-border_e89a5",
+  "wisteria-border-nodark": "_wisteria-border-nodark_e89a5",
+  "wisteria-nodark": "_wisteria-nodark_e89a5",
+  "wisteria-flat": "_wisteria-flat_e89a5",
+  "wisteria-flat-nodark": "_wisteria-flat-nodark_e89a5",
+  "deviantart-border": "_deviantart-border_e89a5",
+  "deviantart-border-nodark": "_deviantart-border-nodark_e89a5",
+  "deviantart-nodark": "_deviantart-nodark_e89a5",
+  "deviantart-flat": "_deviantart-flat_e89a5",
+  "deviantart-flat-nodark": "_deviantart-flat-nodark_e89a5",
+  "discord-border": "_discord-border_e89a5",
+  "discord-border-nodark": "_discord-border-nodark_e89a5",
+  "discord-nodark": "_discord-nodark_e89a5",
+  "discord-flat": "_discord-flat_e89a5",
+  "discord-flat-nodark": "_discord-flat-nodark_e89a5",
+  "facebook-border": "_facebook-border_e89a5",
+  "facebook-border-nodark": "_facebook-border-nodark_e89a5",
+  "facebook-nodark": "_facebook-nodark_e89a5",
+  "facebook-flat": "_facebook-flat_e89a5",
+  "facebook-flat-nodark": "_facebook-flat-nodark_e89a5",
+  "github-border": "_github-border_e89a5",
+  "github-border-nodark": "_github-border-nodark_e89a5",
+  "github-nodark": "_github-nodark_e89a5",
+  "github-flat": "_github-flat_e89a5",
+  "github-flat-nodark": "_github-flat-nodark_e89a5",
+  "google-border": "_google-border_e89a5",
+  "google-border-nodark": "_google-border-nodark_e89a5",
+  "google-nodark": "_google-nodark_e89a5",
+  "google-flat": "_google-flat_e89a5",
+  "google-flat-nodark": "_google-flat-nodark_e89a5",
+  "googleplus-border": "_googleplus-border_e89a5",
+  "googleplus-border-nodark": "_googleplus-border-nodark_e89a5",
+  "googleplus-nodark": "_googleplus-nodark_e89a5",
+  "googleplus-flat": "_googleplus-flat_e89a5",
+  "googleplus-flat-nodark": "_googleplus-flat-nodark_e89a5",
+  "instagram-border": "_instagram-border_e89a5",
+  "instagram-border-nodark": "_instagram-border-nodark_e89a5",
+  "instagram-nodark": "_instagram-nodark_e89a5",
+  "instagram-flat": "_instagram-flat_e89a5",
+  "instagram-flat-nodark": "_instagram-flat-nodark_e89a5",
+  "linkedin-border": "_linkedin-border_e89a5",
+  "linkedin-border-nodark": "_linkedin-border-nodark_e89a5",
+  "linkedin-nodark": "_linkedin-nodark_e89a5",
+  "linkedin-flat": "_linkedin-flat_e89a5",
+  "linkedin-flat-nodark": "_linkedin-flat-nodark_e89a5",
+  "patreon-border": "_patreon-border_e89a5",
+  "patreon-border-nodark": "_patreon-border-nodark_e89a5",
+  "patreon-nodark": "_patreon-nodark_e89a5",
+  "patreon-flat": "_patreon-flat_e89a5",
+  "patreon-flat-nodark": "_patreon-flat-nodark_e89a5",
+  "paypal-border": "_paypal-border_e89a5",
+  "paypal-border-nodark": "_paypal-border-nodark_e89a5",
+  "paypal-nodark": "_paypal-nodark_e89a5",
+  "paypal-flat": "_paypal-flat_e89a5",
+  "paypal-flat-nodark": "_paypal-flat-nodark_e89a5",
+  "pinterest-border": "_pinterest-border_e89a5",
+  "pinterest-border-nodark": "_pinterest-border-nodark_e89a5",
+  "pinterest-nodark": "_pinterest-nodark_e89a5",
+  "pinterest-flat": "_pinterest-flat_e89a5",
+  "pinterest-flat-nodark": "_pinterest-flat-nodark_e89a5",
+  "reddit-border": "_reddit-border_e89a5",
+  "reddit-border-nodark": "_reddit-border-nodark_e89a5",
+  "reddit-nodark": "_reddit-nodark_e89a5",
+  "reddit-flat": "_reddit-flat_e89a5",
+  "reddit-flat-nodark": "_reddit-flat-nodark_e89a5",
+  "skype-border": "_skype-border_e89a5",
+  "skype-border-nodark": "_skype-border-nodark_e89a5",
+  "skype-nodark": "_skype-nodark_e89a5",
+  "skype-flat": "_skype-flat_e89a5",
+  "skype-flat-nodark": "_skype-flat-nodark_e89a5",
+  "slack-border": "_slack-border_e89a5",
+  "slack-border-nodark": "_slack-border-nodark_e89a5",
+  "slack-nodark": "_slack-nodark_e89a5",
+  "slack-flat": "_slack-flat_e89a5",
+  "slack-flat-nodark": "_slack-flat-nodark_e89a5",
+  "snapchat-border": "_snapchat-border_e89a5",
+  "snapchat-border-nodark": "_snapchat-border-nodark_e89a5",
+  "snapchat-nodark": "_snapchat-nodark_e89a5",
+  "snapchat-flat": "_snapchat-flat_e89a5",
+  "snapchat-flat-nodark": "_snapchat-flat-nodark_e89a5",
+  "soundcloud-border": "_soundcloud-border_e89a5",
+  "soundcloud-border-nodark": "_soundcloud-border-nodark_e89a5",
+  "soundcloud-nodark": "_soundcloud-nodark_e89a5",
+  "soundcloud-flat": "_soundcloud-flat_e89a5",
+  "soundcloud-flat-nodark": "_soundcloud-flat-nodark_e89a5",
+  "spotify-border": "_spotify-border_e89a5",
+  "spotify-border-nodark": "_spotify-border-nodark_e89a5",
+  "spotify-nodark": "_spotify-nodark_e89a5",
+  "spotify-flat": "_spotify-flat_e89a5",
+  "spotify-flat-nodark": "_spotify-flat-nodark_e89a5",
+  "steam-border": "_steam-border_e89a5",
+  "steam-border-nodark": "_steam-border-nodark_e89a5",
+  "steam-nodark": "_steam-nodark_e89a5",
+  "steam-flat": "_steam-flat_e89a5",
+  "steam-flat-nodark": "_steam-flat-nodark_e89a5",
+  "telegram-border": "_telegram-border_e89a5",
+  "telegram-border-nodark": "_telegram-border-nodark_e89a5",
+  "telegram-nodark": "_telegram-nodark_e89a5",
+  "telegram-flat": "_telegram-flat_e89a5",
+  "telegram-flat-nodark": "_telegram-flat-nodark_e89a5",
+  "tumblr-border": "_tumblr-border_e89a5",
+  "tumblr-border-nodark": "_tumblr-border-nodark_e89a5",
+  "tumblr-nodark": "_tumblr-nodark_e89a5",
+  "tumblr-flat": "_tumblr-flat_e89a5",
+  "tumblr-flat-nodark": "_tumblr-flat-nodark_e89a5",
+  "twitch-border": "_twitch-border_e89a5",
+  "twitch-border-nodark": "_twitch-border-nodark_e89a5",
+  "twitch-nodark": "_twitch-nodark_e89a5",
+  "twitch-flat": "_twitch-flat_e89a5",
+  "twitch-flat-nodark": "_twitch-flat-nodark_e89a5",
+  "twitter-border": "_twitter-border_e89a5",
+  "twitter-border-nodark": "_twitter-border-nodark_e89a5",
+  "twitter-nodark": "_twitter-nodark_e89a5",
+  "twitter-flat": "_twitter-flat_e89a5",
+  "twitter-flat-nodark": "_twitter-flat-nodark_e89a5",
+  "viber-border": "_viber-border_e89a5",
+  "viber-border-nodark": "_viber-border-nodark_e89a5",
+  "viber-nodark": "_viber-nodark_e89a5",
+  "viber-flat": "_viber-flat_e89a5",
+  "viber-flat-nodark": "_viber-flat-nodark_e89a5",
+  "whatsapp-border": "_whatsapp-border_e89a5",
+  "whatsapp-border-nodark": "_whatsapp-border-nodark_e89a5",
+  "whatsapp-nodark": "_whatsapp-nodark_e89a5",
+  "whatsapp-flat": "_whatsapp-flat_e89a5",
+  "whatsapp-flat-nodark": "_whatsapp-flat-nodark_e89a5",
+  "youtube-border": "_youtube-border_e89a5",
+  "youtube-border-nodark": "_youtube-border-nodark_e89a5",
+  "youtube-nodark": "_youtube-nodark_e89a5",
+  "youtube-flat": "_youtube-flat_e89a5",
+  "youtube-flat-nodark": "_youtube-flat-nodark_e89a5",
+  "animation": "_animation_e89a5",
+  "button-enter": "_button-enter_e89a5",
+  "animation-bounce": "_animation-bounce_e89a5",
+  "bounce-button": "_bounce-button_e89a5",
+  "hover-scale": "_hover-scale_e89a5",
+  "hover-scale-inset": "_hover-scale-inset_e89a5",
+  "hover-bounce": "_hover-bounce_e89a5",
+  "hover": "_hover_e89a5",
+  "emoji": "_emoji_e89a5",
+  "emoji-lg": "_emoji-lg_e89a5",
+  "emoji-2x": "_emoji-2x_e89a5",
+  "emoji-3x": "_emoji-3x_e89a5",
+  "emoji-4x": "_emoji-4x_e89a5",
+  "emoji-5x": "_emoji-5x_e89a5",
+  "center-object": "_center-object_e89a5",
+  "fullscreen": "_fullscreen_e89a5",
+  "background": "_background_e89a5",
+  "slideshow": "_slideshow_e89a5",
+  "me": "_me_e89a5",
+  "half": "_half_e89a5",
+  "image-title": "_image-title_e89a5",
+  "title": "_title_e89a5",
+  "undertitle": "_undertitle_e89a5",
+  "unset": "_unset_e89a5",
+  "large-border": "_large-border_e89a5",
+  "medium-border": "_medium-border_e89a5",
+  "small-border": "_small-border_e89a5",
+  "no-border": "_no-border_e89a5",
+  "github-repo-item": "_github-repo-item_e89a5",
+  "content": "_content_e89a5",
+  "name": "_name_e89a5",
+  "description": "_description_e89a5",
+  "information": "_information_e89a5",
+  "colour": "_colour_e89a5",
+  "color": "_color_e89a5",
+  "meta": "_meta_e89a5",
+  "link": "_link_e89a5",
+  "star": "_star_e89a5",
+  "fork": "_fork_e89a5",
+  "license": "_license_e89a5",
+  "container": "_container_e89a5",
+  "column": "_column_e89a5",
+  "columns": "_columns_e89a5",
+  "row": "_row_e89a5",
+  "one-full": "_one-full_e89a5",
+  "one-half": "_one-half_e89a5",
+  "one-third": "_one-third_e89a5",
+  "one-fourth": "_one-fourth_e89a5",
+  "flex-grid": "_flex-grid_e89a5",
+  "col-xs": "_col-xs_e89a5",
+  "col-xs-1": "_col-xs-1_e89a5",
+  "col-xs-2": "_col-xs-2_e89a5",
+  "col-xs-3": "_col-xs-3_e89a5",
+  "col-xs-4": "_col-xs-4_e89a5",
+  "col-xs-5": "_col-xs-5_e89a5",
+  "col-xs-6": "_col-xs-6_e89a5",
+  "col-xs-7": "_col-xs-7_e89a5",
+  "col-xs-8": "_col-xs-8_e89a5",
+  "col-xs-9": "_col-xs-9_e89a5",
+  "col-xs-10": "_col-xs-10_e89a5",
+  "col-xs-11": "_col-xs-11_e89a5",
+  "col-xs-12": "_col-xs-12_e89a5",
+  "modal": "_modal_e89a5",
+  "fading-modal-in": "_fading-modal-in_e89a5",
+  "modal--close": "_modal--close_e89a5",
+  "fading-modal-out": "_fading-modal-out_e89a5",
+  "modal-content": "_modal-content_e89a5",
+  "close": "_close_e89a5",
+  "nav-container": "_nav-container_e89a5",
+  "default": "_default_e89a5",
+  "menu-icon": "_menu-icon_e89a5",
+  "nav-title": "_nav-title_e89a5",
+  "sidenav": "_sidenav_e89a5",
+  "current": "_current_e89a5",
+  "nav-content": "_nav-content_e89a5",
+  "nav-button": "_nav-button_e89a5",
+  "loader": "_loader_e89a5",
+  "load": "_load_e89a5",
+  "tooltip": "_tooltip_e89a5",
+  "left": "_left_e89a5",
+  "right": "_right_e89a5",
+  "paper-container": "_paper-container_e89a5",
+  "paper": "_paper_e89a5",
+  "ribbon": "_ribbon_e89a5",
+  "box-container": "_box-container_e89a5",
+  "message": "_message_e89a5",
+  "progress-container": "_progress-container_e89a5",
+  "progress-bar": "_progress-bar_e89a5",
+  "card-container": "_card-container_e89a5",
+  "card": "_card_e89a5",
+  "avatar": "_avatar_e89a5",
+  "footer": "_footer_e89a5",
+  "workcard-container": "_workcard-container_e89a5",
+  "overlay": "_overlay_e89a5",
+  "text": "_text_e89a5",
+  "table-container": "_table-container_e89a5",
+  "table-center": "_table-center_e89a5",
+  "form-container": "_form-container_e89a5",
+  "label": "_label_e89a5",
+  "parallax-container": "_parallax-container_e89a5",
+  "parallax": "_parallax_e89a5",
+  "small": "_small_e89a5",
+  "medium": "_medium_e89a5",
+  "large": "_large_e89a5",
+  "one-line": "_one-line_e89a5",
+  "no-nav": "_no-nav_e89a5",
+  "bold": "_bold_e89a5",
+  "italic": "_italic_e89a5",
+  "center-text": "_center-text_e89a5",
+  "left-text": "_left-text_e89a5",
+  "right-text": "_right-text_e89a5",
+  "full-width": "_full-width_e89a5",
+  "half-width": "_half-width_e89a5",
+  "no-border-radius": "_no-border-radius_e89a5",
+  "no-box-shadow": "_no-box-shadow_e89a5",
+  "no-margin": "_no-margin_e89a5",
+  "no-padding": "_no-padding_e89a5",
+  "no-select": "_no-select_e89a5",
+  "no-text-shadow": "_no-text-shadow_e89a5",
+  "relative": "_relative_e89a5",
+  "transparent-bg": "_transparent-bg_e89a5",
+  "center": "_center_e89a5",
+  "box-shadow": "_box-shadow_e89a5",
+  "arial": "_arial_e89a5",
+  "monospace": "_monospace_e89a5",
+  "montserrat": "_montserrat_e89a5",
+  "roboto": "_roboto_e89a5",
+  "times-new-roman": "_times-new-roman_e89a5",
+  "alizarin-text": "_alizarin-text_e89a5",
+  "alizarin-dropshadow": "_alizarin-dropshadow_e89a5",
+  "alizarin-paper": "_alizarin-paper_e89a5",
+  "alizarin-bar": "_alizarin-bar_e89a5",
+  "amethyst-text": "_amethyst-text_e89a5",
+  "amethyst-dropshadow": "_amethyst-dropshadow_e89a5",
+  "amethyst-paper": "_amethyst-paper_e89a5",
+  "amethyst-bar": "_amethyst-bar_e89a5",
+  "asbestos-text": "_asbestos-text_e89a5",
+  "asbestos-dropshadow": "_asbestos-dropshadow_e89a5",
+  "asbestos-paper": "_asbestos-paper_e89a5",
+  "asbestos-bar": "_asbestos-bar_e89a5",
+  "belize-hole-text": "_belize-hole-text_e89a5",
+  "belize-hole-dropshadow": "_belize-hole-dropshadow_e89a5",
+  "belize-hole-paper": "_belize-hole-paper_e89a5",
+  "belize-hole-bar": "_belize-hole-bar_e89a5",
+  "black-text": "_black-text_e89a5",
+  "black-dropshadow": "_black-dropshadow_e89a5",
+  "black-paper": "_black-paper_e89a5",
+  "black-bar": "_black-bar_e89a5",
+  "carrot-text": "_carrot-text_e89a5",
+  "carrot-dropshadow": "_carrot-dropshadow_e89a5",
+  "carrot-paper": "_carrot-paper_e89a5",
+  "carrot-bar": "_carrot-bar_e89a5",
+  "clouds-text": "_clouds-text_e89a5",
+  "clouds-dropshadow": "_clouds-dropshadow_e89a5",
+  "clouds-paper": "_clouds-paper_e89a5",
+  "clouds-bar": "_clouds-bar_e89a5",
+  "concrete-text": "_concrete-text_e89a5",
+  "concrete-dropshadow": "_concrete-dropshadow_e89a5",
+  "concrete-paper": "_concrete-paper_e89a5",
+  "concrete-bar": "_concrete-bar_e89a5",
+  "cubered-text": "_cubered-text_e89a5",
+  "cubered-dropshadow": "_cubered-dropshadow_e89a5",
+  "cubered-paper": "_cubered-paper_e89a5",
+  "cubered-bar": "_cubered-bar_e89a5",
+  "dark-text": "_dark-text_e89a5",
+  "dark-dropshadow": "_dark-dropshadow_e89a5",
+  "dark-paper": "_dark-paper_e89a5",
+  "dark-bar": "_dark-bar_e89a5",
+  "emerald-text": "_emerald-text_e89a5",
+  "emerald-dropshadow": "_emerald-dropshadow_e89a5",
+  "emerald-paper": "_emerald-paper_e89a5",
+  "emerald-bar": "_emerald-bar_e89a5",
+  "gold-text": "_gold-text_e89a5",
+  "gold-dropshadow": "_gold-dropshadow_e89a5",
+  "gold-paper": "_gold-paper_e89a5",
+  "gold-bar": "_gold-bar_e89a5",
+  "green-sea-text": "_green-sea-text_e89a5",
+  "green-sea-dropshadow": "_green-sea-dropshadow_e89a5",
+  "green-sea-paper": "_green-sea-paper_e89a5",
+  "green-sea-bar": "_green-sea-bar_e89a5",
+  "highlight-text": "_highlight-text_e89a5",
+  "highlight-dropshadow": "_highlight-dropshadow_e89a5",
+  "highlight-paper": "_highlight-paper_e89a5",
+  "highlight-bar": "_highlight-bar_e89a5",
+  "light-text": "_light-text_e89a5",
+  "light-dropshadow": "_light-dropshadow_e89a5",
+  "light-paper": "_light-paper_e89a5",
+  "light-bar": "_light-bar_e89a5",
+  "midnight-blue-text": "_midnight-blue-text_e89a5",
+  "midnight-blue-dropshadow": "_midnight-blue-dropshadow_e89a5",
+  "midnight-blue-paper": "_midnight-blue-paper_e89a5",
+  "midnight-blue-bar": "_midnight-blue-bar_e89a5",
+  "nephritis-text": "_nephritis-text_e89a5",
+  "nephritis-dropshadow": "_nephritis-dropshadow_e89a5",
+  "nephritis-paper": "_nephritis-paper_e89a5",
+  "nephritis-bar": "_nephritis-bar_e89a5",
+  "orange-text": "_orange-text_e89a5",
+  "orange-dropshadow": "_orange-dropshadow_e89a5",
+  "orange-paper": "_orange-paper_e89a5",
+  "orange-bar": "_orange-bar_e89a5",
+  "peach-text": "_peach-text_e89a5",
+  "peach-dropshadow": "_peach-dropshadow_e89a5",
+  "peach-paper": "_peach-paper_e89a5",
+  "peach-bar": "_peach-bar_e89a5",
+  "peter-river-text": "_peter-river-text_e89a5",
+  "peter-river-dropshadow": "_peter-river-dropshadow_e89a5",
+  "peter-river-paper": "_peter-river-paper_e89a5",
+  "peter-river-bar": "_peter-river-bar_e89a5",
+  "pomegranate-text": "_pomegranate-text_e89a5",
+  "pomegranate-dropshadow": "_pomegranate-dropshadow_e89a5",
+  "pomegranate-paper": "_pomegranate-paper_e89a5",
+  "pomegranate-bar": "_pomegranate-bar_e89a5",
+  "primary-text": "_primary-text_e89a5",
+  "primary-dropshadow": "_primary-dropshadow_e89a5",
+  "primary-paper": "_primary-paper_e89a5",
+  "primary-bar": "_primary-bar_e89a5",
+  "pumpkin-text": "_pumpkin-text_e89a5",
+  "pumpkin-dropshadow": "_pumpkin-dropshadow_e89a5",
+  "pumpkin-paper": "_pumpkin-paper_e89a5",
+  "pumpkin-bar": "_pumpkin-bar_e89a5",
+  "raw-purple-text": "_raw-purple-text_e89a5",
+  "raw-purple-dropshadow": "_raw-purple-dropshadow_e89a5",
+  "raw-purple-paper": "_raw-purple-paper_e89a5",
+  "raw-purple-bar": "_raw-purple-bar_e89a5",
+  "secondary-text": "_secondary-text_e89a5",
+  "secondary-dropshadow": "_secondary-dropshadow_e89a5",
+  "secondary-paper": "_secondary-paper_e89a5",
+  "secondary-bar": "_secondary-bar_e89a5",
+  "silver-text": "_silver-text_e89a5",
+  "silver-dropshadow": "_silver-dropshadow_e89a5",
+  "silver-paper": "_silver-paper_e89a5",
+  "silver-bar": "_silver-bar_e89a5",
+  "sun-flower-text": "_sun-flower-text_e89a5",
+  "sun-flower-dropshadow": "_sun-flower-dropshadow_e89a5",
+  "sun-flower-paper": "_sun-flower-paper_e89a5",
+  "sun-flower-bar": "_sun-flower-bar_e89a5",
+  "transparent-text": "_transparent-text_e89a5",
+  "transparent-dropshadow": "_transparent-dropshadow_e89a5",
+  "transparent-paper": "_transparent-paper_e89a5",
+  "transparent-bar": "_transparent-bar_e89a5",
+  "turquoise-text": "_turquoise-text_e89a5",
+  "turquoise-dropshadow": "_turquoise-dropshadow_e89a5",
+  "turquoise-paper": "_turquoise-paper_e89a5",
+  "turquoise-bar": "_turquoise-bar_e89a5",
+  "wet-asphalt-text": "_wet-asphalt-text_e89a5",
+  "wet-asphalt-dropshadow": "_wet-asphalt-dropshadow_e89a5",
+  "wet-asphalt-paper": "_wet-asphalt-paper_e89a5",
+  "wet-asphalt-bar": "_wet-asphalt-bar_e89a5",
+  "white-text": "_white-text_e89a5",
+  "white-dropshadow": "_white-dropshadow_e89a5",
+  "white-paper": "_white-paper_e89a5",
+  "white-bar": "_white-bar_e89a5",
+  "wisteria-text": "_wisteria-text_e89a5",
+  "wisteria-dropshadow": "_wisteria-dropshadow_e89a5",
+  "wisteria-paper": "_wisteria-paper_e89a5",
+  "wisteria-bar": "_wisteria-bar_e89a5",
+  "deviantart-text": "_deviantart-text_e89a5",
+  "deviantart-dropshadow": "_deviantart-dropshadow_e89a5",
+  "deviantart-paper": "_deviantart-paper_e89a5",
+  "deviantart-bar": "_deviantart-bar_e89a5",
+  "discord-text": "_discord-text_e89a5",
+  "discord-dropshadow": "_discord-dropshadow_e89a5",
+  "discord-paper": "_discord-paper_e89a5",
+  "discord-bar": "_discord-bar_e89a5",
+  "facebook-text": "_facebook-text_e89a5",
+  "facebook-dropshadow": "_facebook-dropshadow_e89a5",
+  "facebook-paper": "_facebook-paper_e89a5",
+  "facebook-bar": "_facebook-bar_e89a5",
+  "github-text": "_github-text_e89a5",
+  "github-dropshadow": "_github-dropshadow_e89a5",
+  "github-paper": "_github-paper_e89a5",
+  "github-bar": "_github-bar_e89a5",
+  "google-text": "_google-text_e89a5",
+  "google-dropshadow": "_google-dropshadow_e89a5",
+  "google-paper": "_google-paper_e89a5",
+  "google-bar": "_google-bar_e89a5",
+  "googleplus-text": "_googleplus-text_e89a5",
+  "googleplus-dropshadow": "_googleplus-dropshadow_e89a5",
+  "googleplus-paper": "_googleplus-paper_e89a5",
+  "googleplus-bar": "_googleplus-bar_e89a5",
+  "instagram-text": "_instagram-text_e89a5",
+  "instagram-dropshadow": "_instagram-dropshadow_e89a5",
+  "instagram-paper": "_instagram-paper_e89a5",
+  "instagram-bar": "_instagram-bar_e89a5",
+  "linkedin-text": "_linkedin-text_e89a5",
+  "linkedin-dropshadow": "_linkedin-dropshadow_e89a5",
+  "linkedin-paper": "_linkedin-paper_e89a5",
+  "linkedin-bar": "_linkedin-bar_e89a5",
+  "patreon-text": "_patreon-text_e89a5",
+  "patreon-dropshadow": "_patreon-dropshadow_e89a5",
+  "patreon-paper": "_patreon-paper_e89a5",
+  "patreon-bar": "_patreon-bar_e89a5",
+  "paypal-text": "_paypal-text_e89a5",
+  "paypal-dropshadow": "_paypal-dropshadow_e89a5",
+  "paypal-paper": "_paypal-paper_e89a5",
+  "paypal-bar": "_paypal-bar_e89a5",
+  "pinterest-text": "_pinterest-text_e89a5",
+  "pinterest-dropshadow": "_pinterest-dropshadow_e89a5",
+  "pinterest-paper": "_pinterest-paper_e89a5",
+  "pinterest-bar": "_pinterest-bar_e89a5",
+  "reddit-text": "_reddit-text_e89a5",
+  "reddit-dropshadow": "_reddit-dropshadow_e89a5",
+  "reddit-paper": "_reddit-paper_e89a5",
+  "reddit-bar": "_reddit-bar_e89a5",
+  "skype-text": "_skype-text_e89a5",
+  "skype-dropshadow": "_skype-dropshadow_e89a5",
+  "skype-paper": "_skype-paper_e89a5",
+  "skype-bar": "_skype-bar_e89a5",
+  "slack-text": "_slack-text_e89a5",
+  "slack-dropshadow": "_slack-dropshadow_e89a5",
+  "slack-paper": "_slack-paper_e89a5",
+  "slack-bar": "_slack-bar_e89a5",
+  "snapchat-text": "_snapchat-text_e89a5",
+  "snapchat-dropshadow": "_snapchat-dropshadow_e89a5",
+  "snapchat-paper": "_snapchat-paper_e89a5",
+  "snapchat-bar": "_snapchat-bar_e89a5",
+  "soundcloud-text": "_soundcloud-text_e89a5",
+  "soundcloud-dropshadow": "_soundcloud-dropshadow_e89a5",
+  "soundcloud-paper": "_soundcloud-paper_e89a5",
+  "soundcloud-bar": "_soundcloud-bar_e89a5",
+  "spotify-text": "_spotify-text_e89a5",
+  "spotify-dropshadow": "_spotify-dropshadow_e89a5",
+  "spotify-paper": "_spotify-paper_e89a5",
+  "spotify-bar": "_spotify-bar_e89a5",
+  "steam-text": "_steam-text_e89a5",
+  "steam-dropshadow": "_steam-dropshadow_e89a5",
+  "steam-paper": "_steam-paper_e89a5",
+  "steam-bar": "_steam-bar_e89a5",
+  "telegram-text": "_telegram-text_e89a5",
+  "telegram-dropshadow": "_telegram-dropshadow_e89a5",
+  "telegram-paper": "_telegram-paper_e89a5",
+  "telegram-bar": "_telegram-bar_e89a5",
+  "tumblr-text": "_tumblr-text_e89a5",
+  "tumblr-dropshadow": "_tumblr-dropshadow_e89a5",
+  "tumblr-paper": "_tumblr-paper_e89a5",
+  "tumblr-bar": "_tumblr-bar_e89a5",
+  "twitch-text": "_twitch-text_e89a5",
+  "twitch-dropshadow": "_twitch-dropshadow_e89a5",
+  "twitch-paper": "_twitch-paper_e89a5",
+  "twitch-bar": "_twitch-bar_e89a5",
+  "twitter-text": "_twitter-text_e89a5",
+  "twitter-dropshadow": "_twitter-dropshadow_e89a5",
+  "twitter-paper": "_twitter-paper_e89a5",
+  "twitter-bar": "_twitter-bar_e89a5",
+  "viber-text": "_viber-text_e89a5",
+  "viber-dropshadow": "_viber-dropshadow_e89a5",
+  "viber-paper": "_viber-paper_e89a5",
+  "viber-bar": "_viber-bar_e89a5",
+  "whatsapp-text": "_whatsapp-text_e89a5",
+  "whatsapp-dropshadow": "_whatsapp-dropshadow_e89a5",
+  "whatsapp-paper": "_whatsapp-paper_e89a5",
+  "whatsapp-bar": "_whatsapp-bar_e89a5",
+  "youtube-text": "_youtube-text_e89a5",
+  "youtube-dropshadow": "_youtube-dropshadow_e89a5",
+  "youtube-paper": "_youtube-paper_e89a5",
+  "youtube-bar": "_youtube-bar_e89a5"
+};
+},{"./images/arrow.png":[["arrow.4675c036.png","+k4V"],"+k4V"],"./images/menu-icon.png":[["menu-icon.8188857e.png","B65b"],"B65b"]}],"BpSE":[function(require,module,exports) {
+module.exports = {
+  "twa-cn": "_twa-cn_655ff",
+  "twa-de": "_twa-de_655ff",
+  "twa-flag-ac": "_twa-flag-ac_655ff",
+  "twa-flag-ad": "_twa-flag-ad_655ff",
+  "twa-flag-ae": "_twa-flag-ae_655ff",
+  "twa-flag-af": "_twa-flag-af_655ff",
+  "twa-flag-ag": "_twa-flag-ag_655ff",
+  "twa-flag-ai": "_twa-flag-ai_655ff",
+  "twa-flag-al": "_twa-flag-al_655ff",
+  "twa-flag-am": "_twa-flag-am_655ff",
+  "twa-flag-ao": "_twa-flag-ao_655ff",
+  "twa-flag-aq": "_twa-flag-aq_655ff",
+  "twa-flag-ar": "_twa-flag-ar_655ff",
+  "twa-flag-as": "_twa-flag-as_655ff",
+  "twa-flag-at": "_twa-flag-at_655ff",
+  "twa-flag-au": "_twa-flag-au_655ff",
+  "twa-flag-aw": "_twa-flag-aw_655ff",
+  "twa-flag-ax": "_twa-flag-ax_655ff",
+  "twa-flag-az": "_twa-flag-az_655ff",
+  "twa-flag-ba": "_twa-flag-ba_655ff",
+  "twa-flag-bb": "_twa-flag-bb_655ff",
+  "twa-flag-bd": "_twa-flag-bd_655ff",
+  "twa-flag-be": "_twa-flag-be_655ff",
+  "twa-flag-bf": "_twa-flag-bf_655ff",
+  "twa-flag-bg": "_twa-flag-bg_655ff",
+  "twa-flag-bh": "_twa-flag-bh_655ff",
+  "twa-flag-bi": "_twa-flag-bi_655ff",
+  "twa-flag-bj": "_twa-flag-bj_655ff",
+  "twa-flag-bl": "_twa-flag-bl_655ff",
+  "twa-flag-bm": "_twa-flag-bm_655ff",
+  "twa-flag-bn": "_twa-flag-bn_655ff",
+  "twa-flag-bo": "_twa-flag-bo_655ff",
+  "twa-flag-bq": "_twa-flag-bq_655ff",
+  "twa-flag-br": "_twa-flag-br_655ff",
+  "twa-flag-bs": "_twa-flag-bs_655ff",
+  "twa-flag-bt": "_twa-flag-bt_655ff",
+  "twa-flag-bv": "_twa-flag-bv_655ff",
+  "twa-flag-bw": "_twa-flag-bw_655ff",
+  "twa-flag-by": "_twa-flag-by_655ff",
+  "twa-flag-bz": "_twa-flag-bz_655ff",
+  "twa-flag-ca": "_twa-flag-ca_655ff",
+  "twa-flag-cc": "_twa-flag-cc_655ff",
+  "twa-flag-cd": "_twa-flag-cd_655ff",
+  "twa-flag-cf": "_twa-flag-cf_655ff",
+  "twa-flag-cg": "_twa-flag-cg_655ff",
+  "twa-flag-ch": "_twa-flag-ch_655ff",
+  "twa-flag-ci": "_twa-flag-ci_655ff",
+  "twa-flag-ck": "_twa-flag-ck_655ff",
+  "twa-flag-cl": "_twa-flag-cl_655ff",
+  "twa-flag-cm": "_twa-flag-cm_655ff",
+  "twa-flag-co": "_twa-flag-co_655ff",
+  "twa-flag-cp": "_twa-flag-cp_655ff",
+  "twa-flag-cr": "_twa-flag-cr_655ff",
+  "twa-flag-cu": "_twa-flag-cu_655ff",
+  "twa-flag-cv": "_twa-flag-cv_655ff",
+  "twa-flag-cw": "_twa-flag-cw_655ff",
+  "twa-flag-cx": "_twa-flag-cx_655ff",
+  "twa-flag-cy": "_twa-flag-cy_655ff",
+  "twa-flag-cz": "_twa-flag-cz_655ff",
+  "twa-flag-dg": "_twa-flag-dg_655ff",
+  "twa-flag-dj": "_twa-flag-dj_655ff",
+  "twa-flag-dk": "_twa-flag-dk_655ff",
+  "twa-flag-dm": "_twa-flag-dm_655ff",
+  "twa-flag-do": "_twa-flag-do_655ff",
+  "twa-flag-dz": "_twa-flag-dz_655ff",
+  "twa-flag-ea": "_twa-flag-ea_655ff",
+  "twa-flag-ec": "_twa-flag-ec_655ff",
+  "twa-flag-ee": "_twa-flag-ee_655ff",
+  "twa-flag-eg": "_twa-flag-eg_655ff",
+  "twa-flag-eh": "_twa-flag-eh_655ff",
+  "twa-flag-england": "_twa-flag-england_655ff",
+  "twa-flag-er": "_twa-flag-er_655ff",
+  "twa-flag-et": "_twa-flag-et_655ff",
+  "twa-flag-eu": "_twa-flag-eu_655ff",
+  "twa-flag-fi": "_twa-flag-fi_655ff",
+  "twa-flag-fj": "_twa-flag-fj_655ff",
+  "twa-flag-fk": "_twa-flag-fk_655ff",
+  "twa-flag-fm": "_twa-flag-fm_655ff",
+  "twa-flag-fo": "_twa-flag-fo_655ff",
+  "twa-flag-ga": "_twa-flag-ga_655ff",
+  "twa-flag-gd": "_twa-flag-gd_655ff",
+  "twa-flag-ge": "_twa-flag-ge_655ff",
+  "twa-flag-gf": "_twa-flag-gf_655ff",
+  "twa-flag-gg": "_twa-flag-gg_655ff",
+  "twa-flag-gh": "_twa-flag-gh_655ff",
+  "twa-flag-gi": "_twa-flag-gi_655ff",
+  "twa-flag-gl": "_twa-flag-gl_655ff",
+  "twa-flag-gm": "_twa-flag-gm_655ff",
+  "twa-flag-gn": "_twa-flag-gn_655ff",
+  "twa-flag-gp": "_twa-flag-gp_655ff",
+  "twa-flag-gq": "_twa-flag-gq_655ff",
+  "twa-flag-gr": "_twa-flag-gr_655ff",
+  "twa-flag-gs": "_twa-flag-gs_655ff",
+  "twa-flag-gt": "_twa-flag-gt_655ff",
+  "twa-flag-gu": "_twa-flag-gu_655ff",
+  "twa-flag-gw": "_twa-flag-gw_655ff",
+  "twa-flag-gy": "_twa-flag-gy_655ff",
+  "twa-flag-hk": "_twa-flag-hk_655ff",
+  "twa-flag-hm": "_twa-flag-hm_655ff",
+  "twa-flag-hn": "_twa-flag-hn_655ff",
+  "twa-flag-hr": "_twa-flag-hr_655ff",
+  "twa-flag-ht": "_twa-flag-ht_655ff",
+  "twa-flag-hu": "_twa-flag-hu_655ff",
+  "twa-flag-ic": "_twa-flag-ic_655ff",
+  "twa-flag-id": "_twa-flag-id_655ff",
+  "twa-flag-ie": "_twa-flag-ie_655ff",
+  "twa-flag-il": "_twa-flag-il_655ff",
+  "twa-flag-im": "_twa-flag-im_655ff",
+  "twa-flag-in-hole": "_twa-flag-in-hole_655ff",
+  "twa-flag-in": "_twa-flag-in_655ff",
+  "twa-flag-io": "_twa-flag-io_655ff",
+  "twa-flag-iq": "_twa-flag-iq_655ff",
+  "twa-flag-ir": "_twa-flag-ir_655ff",
+  "twa-flag-is": "_twa-flag-is_655ff",
+  "twa-flag-je": "_twa-flag-je_655ff",
+  "twa-flag-jm": "_twa-flag-jm_655ff",
+  "twa-flag-jo": "_twa-flag-jo_655ff",
+  "twa-flag-ke": "_twa-flag-ke_655ff",
+  "twa-flag-kg": "_twa-flag-kg_655ff",
+  "twa-flag-kh": "_twa-flag-kh_655ff",
+  "twa-flag-ki": "_twa-flag-ki_655ff",
+  "twa-flag-km": "_twa-flag-km_655ff",
+  "twa-flag-kn": "_twa-flag-kn_655ff",
+  "twa-flag-kp": "_twa-flag-kp_655ff",
+  "twa-flag-kw": "_twa-flag-kw_655ff",
+  "twa-flag-ky": "_twa-flag-ky_655ff",
+  "twa-flag-kz": "_twa-flag-kz_655ff",
+  "twa-flag-la": "_twa-flag-la_655ff",
+  "twa-flag-lb": "_twa-flag-lb_655ff",
+  "twa-flag-lc": "_twa-flag-lc_655ff",
+  "twa-flag-li": "_twa-flag-li_655ff",
+  "twa-flag-lk": "_twa-flag-lk_655ff",
+  "twa-flag-lr": "_twa-flag-lr_655ff",
+  "twa-flag-ls": "_twa-flag-ls_655ff",
+  "twa-flag-lt": "_twa-flag-lt_655ff",
+  "twa-flag-lu": "_twa-flag-lu_655ff",
+  "twa-flag-lv": "_twa-flag-lv_655ff",
+  "twa-flag-ly": "_twa-flag-ly_655ff",
+  "twa-flag-ma": "_twa-flag-ma_655ff",
+  "twa-flag-mc": "_twa-flag-mc_655ff",
+  "twa-flag-md": "_twa-flag-md_655ff",
+  "twa-flag-me": "_twa-flag-me_655ff",
+  "twa-flag-mf": "_twa-flag-mf_655ff",
+  "twa-flag-mg": "_twa-flag-mg_655ff",
+  "twa-flag-mh": "_twa-flag-mh_655ff",
+  "twa-flag-mk": "_twa-flag-mk_655ff",
+  "twa-flag-ml": "_twa-flag-ml_655ff",
+  "twa-flag-mm": "_twa-flag-mm_655ff",
+  "twa-flag-mn": "_twa-flag-mn_655ff",
+  "twa-flag-mo": "_twa-flag-mo_655ff",
+  "twa-flag-mp": "_twa-flag-mp_655ff",
+  "twa-flag-mq": "_twa-flag-mq_655ff",
+  "twa-flag-mr": "_twa-flag-mr_655ff",
+  "twa-flag-ms": "_twa-flag-ms_655ff",
+  "twa-flag-mt": "_twa-flag-mt_655ff",
+  "twa-flag-mu": "_twa-flag-mu_655ff",
+  "twa-flag-mv": "_twa-flag-mv_655ff",
+  "twa-flag-mw": "_twa-flag-mw_655ff",
+  "twa-flag-mx": "_twa-flag-mx_655ff",
+  "twa-flag-my": "_twa-flag-my_655ff",
+  "twa-flag-mz": "_twa-flag-mz_655ff",
+  "twa-flag-na": "_twa-flag-na_655ff",
+  "twa-flag-nc": "_twa-flag-nc_655ff",
+  "twa-flag-ne": "_twa-flag-ne_655ff",
+  "twa-flag-nf": "_twa-flag-nf_655ff",
+  "twa-flag-ng": "_twa-flag-ng_655ff",
+  "twa-flag-ni": "_twa-flag-ni_655ff",
+  "twa-flag-nl": "_twa-flag-nl_655ff",
+  "twa-flag-no": "_twa-flag-no_655ff",
+  "twa-flag-np": "_twa-flag-np_655ff",
+  "twa-flag-nr": "_twa-flag-nr_655ff",
+  "twa-flag-nu": "_twa-flag-nu_655ff",
+  "twa-flag-nz": "_twa-flag-nz_655ff",
+  "twa-flag-om": "_twa-flag-om_655ff",
+  "twa-flag-pa": "_twa-flag-pa_655ff",
+  "twa-flag-pe": "_twa-flag-pe_655ff",
+  "twa-flag-pf": "_twa-flag-pf_655ff",
+  "twa-flag-pg": "_twa-flag-pg_655ff",
+  "twa-flag-ph": "_twa-flag-ph_655ff",
+  "twa-flag-pk": "_twa-flag-pk_655ff",
+  "twa-flag-pl": "_twa-flag-pl_655ff",
+  "twa-flag-pm": "_twa-flag-pm_655ff",
+  "twa-flag-pn": "_twa-flag-pn_655ff",
+  "twa-flag-pr": "_twa-flag-pr_655ff",
+  "twa-flag-ps": "_twa-flag-ps_655ff",
+  "twa-flag-pt": "_twa-flag-pt_655ff",
+  "twa-flag-pw": "_twa-flag-pw_655ff",
+  "twa-flag-py": "_twa-flag-py_655ff",
+  "twa-flag-qa": "_twa-flag-qa_655ff",
+  "twa-flag-re": "_twa-flag-re_655ff",
+  "twa-flag-ro": "_twa-flag-ro_655ff",
+  "twa-flag-rs": "_twa-flag-rs_655ff",
+  "twa-flag-rw": "_twa-flag-rw_655ff",
+  "twa-flag-sa": "_twa-flag-sa_655ff",
+  "twa-flag-sb": "_twa-flag-sb_655ff",
+  "twa-flag-sc": "_twa-flag-sc_655ff",
+  "twa-flag-scotland": "_twa-flag-scotland_655ff",
+  "twa-flag-sd": "_twa-flag-sd_655ff",
+  "twa-flag-se": "_twa-flag-se_655ff",
+  "twa-flag-sg": "_twa-flag-sg_655ff",
+  "twa-flag-sh": "_twa-flag-sh_655ff",
+  "twa-flag-si": "_twa-flag-si_655ff",
+  "twa-flag-sj": "_twa-flag-sj_655ff",
+  "twa-flag-sk": "_twa-flag-sk_655ff",
+  "twa-flag-sl": "_twa-flag-sl_655ff",
+  "twa-flag-sm": "_twa-flag-sm_655ff",
+  "twa-flag-sn": "_twa-flag-sn_655ff",
+  "twa-flag-so": "_twa-flag-so_655ff",
+  "twa-flag-sr": "_twa-flag-sr_655ff",
+  "twa-flag-ss": "_twa-flag-ss_655ff",
+  "twa-flag-st": "_twa-flag-st_655ff",
+  "twa-flag-sv": "_twa-flag-sv_655ff",
+  "twa-flag-sx": "_twa-flag-sx_655ff",
+  "twa-flag-sy": "_twa-flag-sy_655ff",
+  "twa-flag-sz": "_twa-flag-sz_655ff",
+  "twa-flag-ta": "_twa-flag-ta_655ff",
+  "twa-flag-tc": "_twa-flag-tc_655ff",
+  "twa-flag-td": "_twa-flag-td_655ff",
+  "twa-flag-tf": "_twa-flag-tf_655ff",
+  "twa-flag-tg": "_twa-flag-tg_655ff",
+  "twa-flag-th": "_twa-flag-th_655ff",
+  "twa-flag-tj": "_twa-flag-tj_655ff",
+  "twa-flag-tk": "_twa-flag-tk_655ff",
+  "twa-flag-tl": "_twa-flag-tl_655ff",
+  "twa-flag-tm": "_twa-flag-tm_655ff",
+  "twa-flag-tn": "_twa-flag-tn_655ff",
+  "twa-flag-to": "_twa-flag-to_655ff",
+  "twa-flag-tr": "_twa-flag-tr_655ff",
+  "twa-flag-tt": "_twa-flag-tt_655ff",
+  "twa-flag-tv": "_twa-flag-tv_655ff",
+  "twa-flag-tw": "_twa-flag-tw_655ff",
+  "twa-flag-tz": "_twa-flag-tz_655ff",
+  "twa-flag-ua": "_twa-flag-ua_655ff",
+  "twa-flag-ug": "_twa-flag-ug_655ff",
+  "twa-flag-um": "_twa-flag-um_655ff",
+  "twa-flag-un": "_twa-flag-un_655ff",
+  "twa-flag-uy": "_twa-flag-uy_655ff",
+  "twa-flag-uz": "_twa-flag-uz_655ff",
+  "twa-flag-va": "_twa-flag-va_655ff",
+  "twa-flag-vc": "_twa-flag-vc_655ff",
+  "twa-flag-ve": "_twa-flag-ve_655ff",
+  "twa-flag-vg": "_twa-flag-vg_655ff",
+  "twa-flag-vi": "_twa-flag-vi_655ff",
+  "twa-flag-vn": "_twa-flag-vn_655ff",
+  "twa-flag-vu": "_twa-flag-vu_655ff",
+  "twa-flag-wales": "_twa-flag-wales_655ff",
+  "twa-flag-wf": "_twa-flag-wf_655ff",
+  "twa-flag-ws": "_twa-flag-ws_655ff",
+  "twa-flag-xk": "_twa-flag-xk_655ff",
+  "twa-flag-ye": "_twa-flag-ye_655ff",
+  "twa-flag-yt": "_twa-flag-yt_655ff",
+  "twa-flag-za": "_twa-flag-za_655ff",
+  "twa-flag-zm": "_twa-flag-zm_655ff",
+  "twa-flag-zw": "_twa-flag-zw_655ff",
+  "twa-fr": "_twa-fr_655ff",
+  "twa-gb": "_twa-gb_655ff",
+  "twa-globe-showing-europe-africa": "_twa-globe-showing-europe-africa_655ff",
+  "twa-right-pointing-magnifying-glass": "_twa-right-pointing-magnifying-glass_655ff",
+  "twa-ru": "_twa-ru_655ff",
+  "twa-us": "_twa-us_655ff"
+};
+},{"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f3.svg":[["1f1e8-1f1f3.71b04f50.svg","eQVn"],"eQVn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ea.svg":[["1f1e9-1f1ea.e18fb3b5.svg","cW1v"],"cW1v"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e8.svg":[["1f1e6-1f1e8.42822809.svg","O4au"],"O4au"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e9.svg":[["1f1e6-1f1e9.0ea5bf62.svg","5Whg"],"5Whg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ea.svg":[["1f1e6-1f1ea.547f1fed.svg","6i6P"],"6i6P"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1eb.svg":[["1f1e6-1f1eb.4d61ccd4.svg","EbGW"],"EbGW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ec.svg":[["1f1e6-1f1ec.046288e0.svg","2/xK"],"2/xK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ee.svg":[["1f1e6-1f1ee.0ea90be6.svg","uLOp"],"uLOp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f1.svg":[["1f1e6-1f1f1.93972240.svg","QXN1"],"QXN1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f2.svg":[["1f1e6-1f1f2.58216aad.svg","wzbN"],"wzbN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f4.svg":[["1f1e6-1f1f4.1c7f2191.svg","w73S"],"w73S"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f6.svg":[["1f1e6-1f1f6.1df3fa89.svg","YJNH"],"YJNH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f7.svg":[["1f1e6-1f1f7.c4023db6.svg","R/+K"],"R/+K"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f8.svg":[["1f1e6-1f1f8.1a6de69f.svg","7wZs"],"7wZs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f9.svg":[["1f1e6-1f1f9.3bf3b3c6.svg","NYla"],"NYla"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fa.svg":[["1f1e6-1f1fa.7df51f83.svg","w4/k"],"w4/k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fc.svg":[["1f1e6-1f1fc.e019d2d9.svg","QJf8"],"QJf8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fd.svg":[["1f1e6-1f1fd.ea851d45.svg","pha7"],"pha7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ff.svg":[["1f1e6-1f1ff.4bcec899.svg","vLk/"],"vLk/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e6.svg":[["1f1e7-1f1e6.04d321b1.svg","1uU0"],"1uU0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e7.svg":[["1f1e7-1f1e7.0d552338.svg","nnba"],"nnba"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e9.svg":[["1f1e7-1f1e9.4190ce8b.svg","vfbl"],"vfbl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ea.svg":[["1f1e7-1f1ea.585290df.svg","7ccV"],"7ccV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1eb.svg":[["1f1e7-1f1eb.57ca06f4.svg","+hQ1"],"+hQ1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ec.svg":[["1f1e7-1f1ec.04c2cb17.svg","akj6"],"akj6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ed.svg":[["1f1e7-1f1ed.0db8867b.svg","Csv8"],"Csv8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ee.svg":[["1f1e7-1f1ee.3c006f2d.svg","1gIg"],"1gIg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ef.svg":[["1f1e7-1f1ef.44d9ae15.svg","x/Uw"],"x/Uw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f1.svg":[["1f1e7-1f1f1.7f18abb7.svg","kw3e"],"kw3e"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f2.svg":[["1f1e7-1f1f2.2b507468.svg","g6Ks"],"g6Ks"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f3.svg":[["1f1e7-1f1f3.52c75492.svg","G+XW"],"G+XW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f4.svg":[["1f1e7-1f1f4.8d38c2ad.svg","Z3f4"],"Z3f4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f6.svg":[["1f1e7-1f1f6.f9f69c99.svg","NYZh"],"NYZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f7.svg":[["1f1e7-1f1f7.ef746b8f.svg","6fzl"],"6fzl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f8.svg":[["1f1e7-1f1f8.58ca0865.svg","u/sN"],"u/sN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f9.svg":[["1f1e7-1f1f9.416260b3.svg","oEwW"],"oEwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fb.svg":[["1f1e7-1f1fb.cee3040c.svg","j/J7"],"j/J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fc.svg":[["1f1e7-1f1fc.bcdfee06.svg","XWe/"],"XWe/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fe.svg":[["1f1e7-1f1fe.03465708.svg","EsIA"],"EsIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ff.svg":[["1f1e7-1f1ff.40df548f.svg","hYWB"],"hYWB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e6.svg":[["1f1e8-1f1e6.5b3a7333.svg","A8qE"],"A8qE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e8.svg":[["1f1e8-1f1e8.a25604bf.svg","OtLZ"],"OtLZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e9.svg":[["1f1e8-1f1e9.703bfd39.svg","LGWM"],"LGWM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1eb.svg":[["1f1e8-1f1eb.c82b0b69.svg","My+t"],"My+t"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ec.svg":[["1f1e8-1f1ec.499856a2.svg","eqbL"],"eqbL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ed.svg":[["1f1e8-1f1ed.1fa5be26.svg","oFgq"],"oFgq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ee.svg":[["1f1e8-1f1ee.811d987d.svg","rsLr"],"rsLr"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f0.svg":[["1f1e8-1f1f0.df9a7963.svg","cHVR"],"cHVR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f1.svg":[["1f1e8-1f1f1.c6f37ae5.svg","ltyK"],"ltyK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f2.svg":[["1f1e8-1f1f2.39baa6fe.svg","wFoG"],"wFoG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f4.svg":[["1f1e8-1f1f4.7ade25c4.svg","k35I"],"k35I"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f5.svg":[["1f1e8-1f1f5.e44dddb2.svg","HV5Z"],"HV5Z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f7.svg":[["1f1e8-1f1f7.0b2b002e.svg","QfSp"],"QfSp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fa.svg":[["1f1e8-1f1fa.6da931b8.svg","NQTT"],"NQTT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fb.svg":[["1f1e8-1f1fb.9cee7af1.svg","xNWL"],"xNWL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fc.svg":[["1f1e8-1f1fc.7ac0f34d.svg","xQeh"],"xQeh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fd.svg":[["1f1e8-1f1fd.e04f949b.svg","CtyF"],"CtyF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fe.svg":[["1f1e8-1f1fe.5d8788d0.svg","CyKQ"],"CyKQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ff.svg":[["1f1e8-1f1ff.32a7c739.svg","c3lH"],"c3lH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ec.svg":[["1f1e9-1f1ec.14ac8655.svg","5peb"],"5peb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ef.svg":[["1f1e9-1f1ef.3532a7ba.svg","L3J7"],"L3J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f0.svg":[["1f1e9-1f1f0.ea8d5e9d.svg","ycSk"],"ycSk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f2.svg":[["1f1e9-1f1f2.fb642994.svg","Vguw"],"Vguw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f4.svg":[["1f1e9-1f1f4.376311d9.svg","+S/r"],"+S/r"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ff.svg":[["1f1e9-1f1ff.ccec0ff3.svg","hCnt"],"hCnt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e6.svg":[["1f1ea-1f1e6.1a8f1f1c.svg","nD+m"],"nD+m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e8.svg":[["1f1ea-1f1e8.9687e62e.svg","kLtF"],"kLtF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ea.svg":[["1f1ea-1f1ea.8f25bfb4.svg","YwIA"],"YwIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ec.svg":[["1f1ea-1f1ec.ea29654b.svg","ycOM"],"ycOM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ed.svg":[["1f1ea-1f1ed.5fab1b55.svg","1mk+"],"1mk+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.svg":[["1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.1f9f70c2.svg","UZTc"],"UZTc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f7.svg":[["1f1ea-1f1f7.207cbcea.svg","WhoC"],"WhoC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f9.svg":[["1f1ea-1f1f9.3b176126.svg","jQ/g"],"jQ/g"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1fa.svg":[["1f1ea-1f1fa.23419a98.svg","5pRH"],"5pRH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ee.svg":[["1f1eb-1f1ee.508dfcf9.svg","0P3J"],"0P3J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ef.svg":[["1f1eb-1f1ef.692eb21e.svg","uVaK"],"uVaK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f0.svg":[["1f1eb-1f1f0.e5c63d69.svg","unqI"],"unqI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f2.svg":[["1f1eb-1f1f2.1d4c935d.svg","mQEE"],"mQEE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f4.svg":[["1f1eb-1f1f4.21e96768.svg","cKKA"],"cKKA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e6.svg":[["1f1ec-1f1e6.f1006d48.svg","KcGo"],"KcGo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e9.svg":[["1f1ec-1f1e9.bba2f0fa.svg","A5WC"],"A5WC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ea.svg":[["1f1ec-1f1ea.f7b30406.svg","PzpK"],"PzpK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1eb.svg":[["1f1ec-1f1eb.23d3cb2d.svg","s5oR"],"s5oR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ec.svg":[["1f1ec-1f1ec.c00ba56e.svg","orsY"],"orsY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ed.svg":[["1f1ec-1f1ed.75604cc1.svg","j7lP"],"j7lP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ee.svg":[["1f1ec-1f1ee.5027204f.svg","AibY"],"AibY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f1.svg":[["1f1ec-1f1f1.ae9ae55b.svg","bNB+"],"bNB+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f2.svg":[["1f1ec-1f1f2.911c154e.svg","oDir"],"oDir"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f3.svg":[["1f1ec-1f1f3.fb70f39e.svg","xD5Q"],"xD5Q"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f5.svg":[["1f1ec-1f1f5.79c0e35c.svg","icF+"],"icF+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f6.svg":[["1f1ec-1f1f6.81009872.svg","IDMs"],"IDMs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f7.svg":[["1f1ec-1f1f7.4a4d5e85.svg","tU3n"],"tU3n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f8.svg":[["1f1ec-1f1f8.018ff6c8.svg","NavM"],"NavM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f9.svg":[["1f1ec-1f1f9.cdc65f16.svg","qdZq"],"qdZq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fa.svg":[["1f1ec-1f1fa.02765584.svg","Vse2"],"Vse2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fc.svg":[["1f1ec-1f1fc.92f2fbb7.svg","bpbP"],"bpbP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fe.svg":[["1f1ec-1f1fe.c8c752c7.svg","Zi9k"],"Zi9k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f0.svg":[["1f1ed-1f1f0.89134375.svg","2V0h"],"2V0h"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f2.svg":[["1f1ed-1f1f2.7df51f83.svg","REwi"],"REwi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f3.svg":[["1f1ed-1f1f3.d424d317.svg","iMdX"],"iMdX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f7.svg":[["1f1ed-1f1f7.26475669.svg","2zL/"],"2zL/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f9.svg":[["1f1ed-1f1f9.32b3a016.svg","vLXA"],"vLXA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1fa.svg":[["1f1ed-1f1fa.1d8e20d4.svg","pKlQ"],"pKlQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e8.svg":[["1f1ee-1f1e8.73ef0a04.svg","kTuC"],"kTuC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e9.svg":[["1f1ee-1f1e9.9719525b.svg","1UHY"],"1UHY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1ea.svg":[["1f1ee-1f1ea.1bffc7d1.svg","Tsuk"],"Tsuk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f1.svg":[["1f1ee-1f1f1.1fa74891.svg","f8kR"],"f8kR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f2.svg":[["1f1ee-1f1f2.a8329c34.svg","ZU7D"],"ZU7D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/26f3.svg":[["26f3.1c592450.svg","00lg"],"00lg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f3.svg":[["1f1ee-1f1f3.413062c2.svg","KWFT"],"KWFT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f4.svg":[["1f1ee-1f1f4.14ac8655.svg","yc3c"],"yc3c"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f6.svg":[["1f1ee-1f1f6.a0ec4a33.svg","FpXc"],"FpXc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f7.svg":[["1f1ee-1f1f7.66f4455b.svg","6WFD"],"6WFD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f8.svg":[["1f1ee-1f1f8.369055b1.svg","J7BB"],"J7BB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1ea.svg":[["1f1ef-1f1ea.cebb1f2a.svg","V9G/"],"V9G/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f2.svg":[["1f1ef-1f1f2.c02d6bf2.svg","ysiJ"],"ysiJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f4.svg":[["1f1ef-1f1f4.03af0c7f.svg","8YoX"],"8YoX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ea.svg":[["1f1f0-1f1ea.773c0b1d.svg","jWq+"],"jWq+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ec.svg":[["1f1f0-1f1ec.eeb1a2bf.svg","k3CX"],"k3CX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ed.svg":[["1f1f0-1f1ed.6056f269.svg","18Xj"],"18Xj"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ee.svg":[["1f1f0-1f1ee.75982fa3.svg","n4uR"],"n4uR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f2.svg":[["1f1f0-1f1f2.cc6670b0.svg","aDpn"],"aDpn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f3.svg":[["1f1f0-1f1f3.d83352e4.svg","gEgg"],"gEgg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f5.svg":[["1f1f0-1f1f5.c8890842.svg","e6/8"],"e6/8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fc.svg":[["1f1f0-1f1fc.3c803fe2.svg","vcGX"],"vcGX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fe.svg":[["1f1f0-1f1fe.5790dc14.svg","pa8m"],"pa8m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ff.svg":[["1f1f0-1f1ff.04cb7d2d.svg","PXi0"],"PXi0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e6.svg":[["1f1f1-1f1e6.c643b934.svg","aSL5"],"aSL5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e7.svg":[["1f1f1-1f1e7.64283791.svg","0wij"],"0wij"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e8.svg":[["1f1f1-1f1e8.befd4a7d.svg","AN2n"],"AN2n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1ee.svg":[["1f1f1-1f1ee.83110489.svg","oM6D"],"oM6D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f0.svg":[["1f1f1-1f1f0.f5e26938.svg","cXD4"],"cXD4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f7.svg":[["1f1f1-1f1f7.d4cedda0.svg","2FwW"],"2FwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f8.svg":[["1f1f1-1f1f8.692a8a3d.svg","06WH"],"06WH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f9.svg":[["1f1f1-1f1f9.04273dfb.svg","xkCu"],"xkCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fa.svg":[["1f1f1-1f1fa.b356257e.svg","HJvy"],"HJvy"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fb.svg":[["1f1f1-1f1fb.06d7f11c.svg","BGmx"],"BGmx"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fe.svg":[["1f1f1-1f1fe.642bf63d.svg","3/Hf"],"3/Hf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e6.svg":[["1f1f2-1f1e6.7cf99271.svg","JUSC"],"JUSC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e8.svg":[["1f1f2-1f1e8.77f9bc2a.svg","798W"],"798W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e9.svg":[["1f1f2-1f1e9.34722307.svg","VUTQ"],"VUTQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ea.svg":[["1f1f2-1f1ea.ed2a8045.svg","e3//"],"e3//"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1eb.svg":[["1f1f2-1f1eb.e44dddb2.svg","xmfW"],"xmfW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ec.svg":[["1f1f2-1f1ec.91d07981.svg","b/ZF"],"b/ZF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ed.svg":[["1f1f2-1f1ed.c7b494cc.svg","HOWE"],"HOWE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f0.svg":[["1f1f2-1f1f0.e99feca6.svg","c+T0"],"c+T0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f1.svg":[["1f1f2-1f1f1.b34cb0c4.svg","uiET"],"uiET"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f2.svg":[["1f1f2-1f1f2.acb2c58b.svg","EEQp"],"EEQp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f3.svg":[["1f1f2-1f1f3.ac88e037.svg","6xQz"],"6xQz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f4.svg":[["1f1f2-1f1f4.b357da34.svg","Jui7"],"Jui7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f5.svg":[["1f1f2-1f1f5.1c03b4c8.svg","MuiK"],"MuiK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f6.svg":[["1f1f2-1f1f6.bbb9bb4a.svg","xzdL"],"xzdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f7.svg":[["1f1f2-1f1f7.58cdb3d7.svg","+2wl"],"+2wl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f8.svg":[["1f1f2-1f1f8.3cb62f40.svg","DRHQ"],"DRHQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f9.svg":[["1f1f2-1f1f9.67d13460.svg","/Uy5"],"/Uy5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fa.svg":[["1f1f2-1f1fa.afd0b205.svg","Mh9J"],"Mh9J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fb.svg":[["1f1f2-1f1fb.2d2df9c7.svg","MvDG"],"MvDG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fc.svg":[["1f1f2-1f1fc.38bddb99.svg","SeZC"],"SeZC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fd.svg":[["1f1f2-1f1fd.0c489398.svg","NS+R"],"NS+R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fe.svg":[["1f1f2-1f1fe.1aa06c61.svg","qkO1"],"qkO1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ff.svg":[["1f1f2-1f1ff.71557d53.svg","y1Y0"],"y1Y0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e6.svg":[["1f1f3-1f1e6.b17f6814.svg","dxpq"],"dxpq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e8.svg":[["1f1f3-1f1e8.c29c05f5.svg","4rR1"],"4rR1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ea.svg":[["1f1f3-1f1ea.bda89cd5.svg","Q19U"],"Q19U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1eb.svg":[["1f1f3-1f1eb.dc81e0af.svg","KioV"],"KioV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ec.svg":[["1f1f3-1f1ec.13330a97.svg","/G8D"],"/G8D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ee.svg":[["1f1f3-1f1ee.5553225e.svg","Y4Cm"],"Y4Cm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f1.svg":[["1f1f3-1f1f1.e611df6c.svg","cStk"],"cStk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f4.svg":[["1f1f3-1f1f4.aeb21e38.svg","FMFG"],"FMFG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f5.svg":[["1f1f3-1f1f5.f2f03c3c.svg","F8+U"],"F8+U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f7.svg":[["1f1f3-1f1f7.b7505152.svg","zD7p"],"zD7p"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1fa.svg":[["1f1f3-1f1fa.764b7f5e.svg","Hq9b"],"Hq9b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ff.svg":[["1f1f3-1f1ff.d4381377.svg","Higc"],"Higc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f4-1f1f2.svg":[["1f1f4-1f1f2.de3a4039.svg","EWrE"],"EWrE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1e6.svg":[["1f1f5-1f1e6.b696172e.svg","q+lZ"],"q+lZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ea.svg":[["1f1f5-1f1ea.b7fe4dc3.svg","nJl3"],"nJl3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1eb.svg":[["1f1f5-1f1eb.7b693467.svg","tmNT"],"tmNT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ec.svg":[["1f1f5-1f1ec.de7c24e6.svg","6ciu"],"6ciu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ed.svg":[["1f1f5-1f1ed.9eb1cbe6.svg","LVVi"],"LVVi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f0.svg":[["1f1f5-1f1f0.4a849c2e.svg","Z7Gt"],"Z7Gt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f1.svg":[["1f1f5-1f1f1.ad05e3a1.svg","FRdO"],"FRdO"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f2.svg":[["1f1f5-1f1f2.b2f807c9.svg","7Dl5"],"7Dl5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f3.svg":[["1f1f5-1f1f3.6acf81d8.svg","fpf2"],"fpf2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f7.svg":[["1f1f5-1f1f7.48bb1903.svg","CC0b"],"CC0b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f8.svg":[["1f1f5-1f1f8.fb3c0d69.svg","RUxP"],"RUxP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f9.svg":[["1f1f5-1f1f9.fee1ea57.svg","bq1W"],"bq1W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fc.svg":[["1f1f5-1f1fc.0f797d50.svg","m+uN"],"m+uN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fe.svg":[["1f1f5-1f1fe.5d4ce754.svg","cUQV"],"cUQV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f6-1f1e6.svg":[["1f1f6-1f1e6.bec915d0.svg","FGhc"],"FGhc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1ea.svg":[["1f1f7-1f1ea.8cfc1967.svg","DVWs"],"DVWs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f4.svg":[["1f1f7-1f1f4.72a91b3a.svg","W9b0"],"W9b0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f8.svg":[["1f1f7-1f1f8.457084db.svg","z4f7"],"z4f7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fc.svg":[["1f1f7-1f1fc.e8cf5870.svg","1QVF"],"1QVF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e6.svg":[["1f1f8-1f1e6.18940f29.svg","4CKt"],"4CKt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e7.svg":[["1f1f8-1f1e7.319df6bf.svg","JURh"],"JURh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e8.svg":[["1f1f8-1f1e8.9ef8ade3.svg","3K8G"],"3K8G"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.svg":[["1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.32625aa3.svg","+hGJ"],"+hGJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e9.svg":[["1f1f8-1f1e9.4b1632be.svg","aCNC"],"aCNC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ea.svg":[["1f1f8-1f1ea.929454cd.svg","qEcB"],"qEcB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ec.svg":[["1f1f8-1f1ec.d445f0ff.svg","OmgE"],"OmgE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ed.svg":[["1f1f8-1f1ed.3d4bd202.svg","06Tz"],"06Tz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ee.svg":[["1f1f8-1f1ee.4737a79e.svg","yCmU"],"yCmU"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ef.svg":[["1f1f8-1f1ef.aeb21e38.svg","EtO2"],"EtO2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f0.svg":[["1f1f8-1f1f0.2e1b0761.svg","+UtB"],"+UtB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f1.svg":[["1f1f8-1f1f1.c3a9845c.svg","dhW6"],"dhW6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f2.svg":[["1f1f8-1f1f2.825be159.svg","UHli"],"UHli"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f3.svg":[["1f1f8-1f1f3.89f8c8b2.svg","/OgS"],"/OgS"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f4.svg":[["1f1f8-1f1f4.38201bf2.svg","TJFK"],"TJFK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f7.svg":[["1f1f8-1f1f7.79844ebb.svg","2jqT"],"2jqT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f8.svg":[["1f1f8-1f1f8.3ed81e3a.svg","R41b"],"R41b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f9.svg":[["1f1f8-1f1f9.1994c21f.svg","omJo"],"omJo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fb.svg":[["1f1f8-1f1fb.b5d5edf4.svg","kdJI"],"kdJI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fd.svg":[["1f1f8-1f1fd.e2e4306f.svg","yB+z"],"yB+z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fe.svg":[["1f1f8-1f1fe.ed82cc90.svg","X4n1"],"X4n1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ff.svg":[["1f1f8-1f1ff.db11dd94.svg","YDYQ"],"YDYQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e6.svg":[["1f1f9-1f1e6.76591f27.svg","aUVm"],"aUVm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e8.svg":[["1f1f9-1f1e8.839080d6.svg","wDzg"],"wDzg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e9.svg":[["1f1f9-1f1e9.841095dd.svg","6zs3"],"6zs3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1eb.svg":[["1f1f9-1f1eb.a6993203.svg","W5/R"],"W5/R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ec.svg":[["1f1f9-1f1ec.ba8b6b31.svg","p5sb"],"p5sb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ed.svg":[["1f1f9-1f1ed.10102828.svg","RqOd"],"RqOd"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ef.svg":[["1f1f9-1f1ef.b7dd46c4.svg","I7kX"],"I7kX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f0.svg":[["1f1f9-1f1f0.f95ae93a.svg","YZb8"],"YZb8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f1.svg":[["1f1f9-1f1f1.ffd0c4f3.svg","NwHC"],"NwHC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f2.svg":[["1f1f9-1f1f2.c2a91563.svg","2+4B"],"2+4B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f3.svg":[["1f1f9-1f1f3.6559403d.svg","EOPT"],"EOPT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f4.svg":[["1f1f9-1f1f4.08c7237a.svg","Fmqp"],"Fmqp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f7.svg":[["1f1f9-1f1f7.12e48b03.svg","LjIn"],"LjIn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f9.svg":[["1f1f9-1f1f9.a8394530.svg","QztB"],"QztB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fb.svg":[["1f1f9-1f1fb.2e96f9ed.svg","DSzt"],"DSzt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fc.svg":[["1f1f9-1f1fc.a87eee10.svg","Iqgt"],"Iqgt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ff.svg":[["1f1f9-1f1ff.d4cc1276.svg","WgZh"],"WgZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1e6.svg":[["1f1fa-1f1e6.153ee43a.svg","Ve+i"],"Ve+i"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ec.svg":[["1f1fa-1f1ec.f61c653a.svg","W7wX"],"W7wX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f2.svg":[["1f1fa-1f1f2.3330be0f.svg","2DYu"],"2DYu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f3.svg":[["1f1fa-1f1f3.67d845dc.svg","+QHK"],"+QHK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1fe.svg":[["1f1fa-1f1fe.5d66a344.svg","DiHo"],"DiHo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ff.svg":[["1f1fa-1f1ff.650b7802.svg","EeLv"],"EeLv"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e6.svg":[["1f1fb-1f1e6.cdc67879.svg","9yrB"],"9yrB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e8.svg":[["1f1fb-1f1e8.78113619.svg","VEdL"],"VEdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ea.svg":[["1f1fb-1f1ea.9af9441c.svg","BOrV"],"BOrV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ec.svg":[["1f1fb-1f1ec.821c31da.svg","JWCu"],"JWCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ee.svg":[["1f1fb-1f1ee.19a399bf.svg","nY8d"],"nY8d"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1f3.svg":[["1f1fb-1f1f3.0b133abb.svg","l/6k"],"l/6k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1fa.svg":[["1f1fb-1f1fa.e5adff28.svg","4TG0"],"4TG0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.svg":[["1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.d7f897fe.svg","JY6H"],"JY6H"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1eb.svg":[["1f1fc-1f1eb.b6144f5e.svg","NR5z"],"NR5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1f8.svg":[["1f1fc-1f1f8.2319a444.svg","PcSV"],"PcSV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fd-1f1f0.svg":[["1f1fd-1f1f0.599d47df.svg","mDSG"],"mDSG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1ea.svg":[["1f1fe-1f1ea.7d4ba854.svg","EcMD"],"EcMD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1f9.svg":[["1f1fe-1f1f9.ebc185ef.svg","M4/N"],"M4/N"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1e6.svg":[["1f1ff-1f1e6.a9826940.svg","40x2"],"40x2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1f2.svg":[["1f1ff-1f1f2.01e3f9d4.svg","c8C5"],"c8C5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1fc.svg":[["1f1ff-1f1fc.c6d9f8f1.svg","BbEf"],"BbEf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f7.svg":[["1f1eb-1f1f7.e44dddb2.svg","EOQP"],"EOQP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e7.svg":[["1f1ec-1f1e7.15195767.svg","Iy5z"],"Iy5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f30d.svg":[["1f30d.3a036f85.svg","+Shm"],"+Shm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f50e.svg":[["1f50e.43549be6.svg","8c9B"],"8c9B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fa.svg":[["1f1f7-1f1fa.65e29db4.svg","UI8x"],"UI8x"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f8.svg":[["1f1fa-1f1f8.3330be0f.svg","qXIQ"],"qXIQ"]}],"3GPO":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TwitterEmojis = exports.default = void 0;
+
+var _modestaModule = _interopRequireDefault(require("../scss/modestacss/scss/modesta.module.scss"));
+
+var _twemojiModule = _interopRequireDefault(require("../scss/twemoji.module.scss"));
+
+var _coloursModule = _interopRequireDefault(require("../scss/colours.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const Modesta = {};
+const TwitterEmojis = {};
+exports.TwitterEmojis = TwitterEmojis;
+Object.keys(_modestaModule.default).forEach(css => {
+  Modesta[css.replace(/-([a-z0-9])/g, capture => capture[1].toUpperCase()).replace('-', '')] = _modestaModule.default[css];
+});
+Object.keys(_twemojiModule.default).forEach(css => {
+  TwitterEmojis[css.replace(/-([a-z0-9])/g, capture => capture[1].toUpperCase()).replace('-', '')] = _twemojiModule.default[css];
+});
+Modesta.secondary = _coloursModule.default.secondary;
+var _default = Modesta;
+exports.default = _default;
+},{"../scss/modestacss/scss/modesta.module.scss":"GOfQ","../scss/twemoji.module.scss":"BpSE","../scss/colours.module.scss":"B5RV"}],"wueC":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _coloursModule = _interopRequireDefault(require("../../scss/colours.module.scss"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ContentBox extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: `${_Modesta.default.boxShadow} ${_coloursModule.default.container} ${_indexModule.default.container} ${this.props.className ? this.props.className : ''}`
+    }, this.props.children);
+  }
+
+}
+
+var _default = ContentBox;
+exports.default = _default;
+},{"../../scss/colours.module.scss":"B5RV","./index.module.scss":"I5ip","../../data/Modesta":"3GPO"}],"1a+H":[function(require,module,exports) {
+module.exports = "/arrow.4675c036.png";
+},{}],"irDA":[function(require,module,exports) {
+module.exports = {
+  "description": "_description_681df",
+  "tableContainer": "_tableContainer_681df",
+  "button": "_button_681df",
+  "arrow": "_arrow_681df",
+  "upsidedown": "_upsidedown_681df"
+};
+},{}],"jpzX":[function(require,module,exports) {
+module.exports = {
+  "roundedCorners": "_roundedCorners_f5cea",
+  "loading": "_loading_f5cea",
+  "button": "_button_f5cea",
+  "scrollbar": "_scrollbar_f5cea"
+};
+},{}],"3FRI":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _marked = _interopRequireDefault(require("marked"));
+
+var _xss = _interopRequireDefault(require("xss"));
+
+var _arrow = _interopRequireDefault(require("../../scss/modestacss/css/images/arrow.png"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const botPageWhitelist = {
+  p: [],
+  span: [],
+  code: [],
+  b: [],
+  i: [],
+  u: [],
+  li: [],
+  ul: [],
+  ol: [],
+  del: [],
+  pre: [],
+  strong: [],
+  em: [],
+  h1: ['id'],
+  h2: ['id'],
+  h3: ['id'],
+  h4: ['id'],
+  h5: ['id'],
+  h6: ['id'],
+  table: [],
+  thead: [],
+  tbody: [],
+  tr: [],
+  th: [],
+  td: [],
+  hr: [],
+  blockquote: [],
+  br: [],
+  a: ['href']
+};
+
+class BotPageContentBox extends _react.Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "getExtendedHeight", () => [...this.description.current.children].map(elem => {
+      const height = elem.clientHeight;
+      let topMargin = 2;
+      let bottomMargin = 2;
+
+      try {
+        topMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-top'), 10);
+        bottomMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-bottom'), 10);
+      } catch (e) {// Do nothing!
+        // Just use the default margin sizes.
+      }
+
+      return topMargin + height + bottomMargin;
+    }).reduce((prev, curr) => prev + curr, 0));
+
+    this.button = _react.default.createRef();
+    this.description = _react.default.createRef();
+    this.state = {
+      open: false,
+      smallEnough: true
+    };
+    this.toggle = this.toggle.bind(this);
+    this.getExtendedHeight = this.getExtendedHeight.bind(this);
+  }
+
+  escape(unsafe) {
+    return unsafe.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
+  toggle() {
+    if (this.state.open === true) {
+      this.description.current.style.height = '200px';
+    } else {
+      this.description.current.style.height = `${this.getExtendedHeight()}px`;
+    }
+
+    this.setState({
+      open: !this.state.open
+    });
+  }
+
+  componentDidMount() {
+    // If the description's size is greater than 300, display the button
+    // Otherwise, just display the entire description
+    if (this.getExtendedHeight() > 300) {
+      this.setState({
+        smallEnough: false
+      });
+    }
+  }
+
+  render() {
+    const page = (0, _xss.default)((0, _marked.default)(this.props.page), {
+      whiteList: this.props.allowHTML ? null : botPageWhitelist,
+      onIgnoreTag: (tag, html, options) => {
+        let extraNotes = '';
+
+        switch (tag) {
+          case 'img':
+            extraNotes = 'You should instead use the "preview images", found in the Appearance section of the edit page of your bot, or adopt the use of emojis.';
+            break;
+
+          case 'script':
+            extraNotes = 'You are too dangerous to use this tag!';
+            break;
+
+          case 'loona':
+            extraNotes = '<3 ily!!!!!';
+            break;
+
+          default:
+            extraNotes = 'Please adopt a tag which is allowed, or restrict yourself to Markdown only.';
+        }
+
+        if (typeof window !== 'undefined') console.error(`The <${tag}> tag is not allowed in the long description box.\n${extraNotes}`);
+        return '';
+      },
+      onTag: (tag, html, options) => {
+        if (tag === 'table') {
+          if (options.isClosing) {
+            return '</table></div>';
+          }
+
+          return `<div class="${_Modesta.default.tableContainer} ${_indexModule.default.tableContainer} ${_elementsModule.default.scrollbar}">${html}`;
+        }
+
+        return;
+      },
+      onTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (tag === 'img' && name === 'src' && this.props.cdn && value.startsWith('/')) {
+          return `src="${this.props.cdn}${value}"`;
+        }
+
+        return;
+      },
+      onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (this.props.allowHTML || name === 'class') {
+          return `${name}="${_xss.default.escapeAttrValue(value)}"`;
+        }
+      }
+    });
+    const smallEnough = typeof this.props.forceLarge === 'boolean' ? this.props.forceLarge : this.state.smallEnough;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", null, _react.default.createElement("div", {
+      dangerouslySetInnerHTML: {
+        __html: page
+      },
+      ref: this.description,
+      style: smallEnough ? {} : {
+        // if not small enough, set default height to 200
+        height: '200px',
+        transition: `height ${Math.ceil(this.getExtendedHeight() / 200) / 20}s`
+      },
+      className: _indexModule.default.description
+    }), smallEnough ? null : // if not small enough, show the buttons
+    _react.default.createElement("div", {
+      ref: this.button,
+      onClick: this.toggle
+    }, this.state.open === false ? _react.default.createElement(_ContentBox.default, {
+      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.more"
+    })), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.toggle"
+    }, message => _react.default.createElement("img", {
+      className: _indexModule.default.arrow,
+      src: _arrow.default,
+      alt: message
+    }))) : _react.default.createElement(_ContentBox.default, {
+      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.less"
+    })), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.toggle"
+    }, message => _react.default.createElement("img", {
+      className: `${_indexModule.default.arrow} ${_indexModule.default.upsidedown}`,
+      src: _arrow.default,
+      alt: message
+    }))))));
+  }
+
+}
+
+var _default = BotPageContentBox;
+exports.default = _default;
+},{"../ContentBox":"wueC","../../scss/modestacss/css/images/arrow.png":"1a+H","./index.module.scss":"irDA","../../data/Modesta":"3GPO","../../scss/elements.module.scss":"jpzX"}],"4QIE":[function(require,module,exports) {
+module.exports = {
+  "sliderContainer": "_sliderContainer_93b3f",
+  "slider": "_slider_93b3f",
+  "botListDotSpace": "_botListDotSpace_93b3f",
+  "image": "_image_93b3f",
+  "dots": "_dots_93b3f"
+};
+},{}],"zaqt":[function(require,module,exports) {
+module.exports = {
+  "modalContent": "_modalContent_8cf20",
+  "modalClose": "_modalClose_8cf20",
+  "modalImage": "_modalImage_8cf20",
+  "zoomIn": "_zoomIn_8cf20"
+};
+},{}],"C3Ys":[function(require,module,exports) {
+module.exports = {
+  "image": "_image_b4d2c",
+  "loaded": "_loaded_b4d2c"
+};
+},{}],"tK5f":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class LazyImage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false
+    };
+    this.load = this.load.bind(this);
+    this.image = _react.default.createRef();
+  }
+
+  load() {
+    this.setState({
+      loaded: true
+    });
+  }
+
+  render() {
+    const loaded = typeof window === 'undefined' || this.state.loaded;
+    return _react.default.createElement("img", _extends({}, this.props, {
+      src: this.props.src,
+      className: `${_indexModule.default.image} ${loaded && _indexModule.default.loaded} ${this.props.className}`,
+      alt: this.props.alt,
+      ref: this.image,
+      onLoad: this.load
+    }));
+  }
+
+}
+
+var _default = LazyImage;
+exports.default = _default;
+},{"./index.module.scss":"C3Ys"}],"Hvc1":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _LazyImage = _interopRequireDefault(require("../LazyImage"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ModalImage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.image = _react.default.createRef();
+    this.state = {
+      open: false,
+      closing: false
+    };
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
+  }
+
+  open() {
+    this.setState({
+      opened: true
+    });
+  }
+
+  close() {
+    this.setState({
+      closing: true
+    });
+    setTimeout(() => {
+      this.setState({
+        opened: false,
+        closing: false
+      });
+    }, 575);
+  }
+
+  render() {
+    return _react.default.createElement("div", null, _react.default.createElement(_LazyImage.default, {
+      src: this.props.src,
+      className: `${this.props.className} ${_indexModule.default.zoomIn}`,
+      onClick: this.open
+    }), _react.default.createElement("div", {
+      onClick: this.close,
+      className: `${_Modesta.default.modal} ${this.state.closing ? `${_Modesta.default.modalClose} ${_indexModule.default.modalClose}` : ''}`,
+      style: this.state.opened ? {
+        display: 'block'
+      } : {}
+    }, _react.default.createElement("div", {
+      className: `${_Modesta.default.modalContent} ${_elementsModule.default.roundedCorners} ${_indexModule.default.modalContent}`
+    }, _react.default.createElement(_LazyImage.default, {
+      src: this.props.src,
+      onClick: this.open,
+      className: _indexModule.default.modalImage
+    }))));
+  }
+
+}
+
+var _default = ModalImage;
+exports.default = _default;
+},{"./index.module.scss":"zaqt","../LazyImage":"tK5f","../../scss/elements.module.scss":"jpzX","../../data/Modesta":"3GPO"}],"hdf4":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _ModalImage = _interopRequireDefault(require("../ModalImage"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotPageContentBox extends _react.Component {
+  render() {
+    if (this.props.images && this.props.images.length === 0) return null;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", {
+      className: `${_indexModule.default.sliderContainer} ${_elementsModule.default.scrollbar}`
+    }, _react.default.createElement("div", {
+      className: _indexModule.default.slider
+    }, this.props.children, this.props.images.map((image, index) => _react.default.createElement(_ModalImage.default, {
+      src: `${_Locations.default.cdn}${image}`,
+      className: _indexModule.default.image,
+      key: index
+    }))), _react.default.createElement("div", {
+      className: _indexModule.default.botListDotSpace
+    })));
+  }
+
+}
+
+var _default = BotPageContentBox;
+exports.default = _default;
+},{"../ContentBox":"wueC","./index.module.scss":"4QIE","../../scss/elements.module.scss":"jpzX","../../data/Locations":"xg/o","../ModalImage":"Hvc1"}],"+AtF":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchAuthIfNeeded = fetchAuthIfNeeded;
+exports.forceFetchAuth = forceFetchAuth;
+exports.RECEIVE_AUTH = exports.REQUEST_AUTH = void 0;
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const REQUEST_AUTH = 'REQUEST_AUTH';
+exports.REQUEST_AUTH = REQUEST_AUTH;
+const RECEIVE_AUTH = 'RECEIVE_AUTH';
+exports.RECEIVE_AUTH = RECEIVE_AUTH;
+
+function requestAuth() {
+  return {
+    type: REQUEST_AUTH
+  };
+}
+
+function receiveAuth(json) {
+  return {
+    type: RECEIVE_AUTH,
+    data: json.data
+  };
+}
+
+function fetchAuth() {
+  return dispatch => {
+    dispatch(requestAuth());
+    return fetch(`${_Locations.default.server}/auth/json`, {
+      credentials: 'include'
+    }).then(res => res.json()).then(json => dispatch(receiveAuth(json)));
+  };
+}
+
+function shouldFetchAuth(state) {
+  if (state.auth.fetching) return false;
+  if (state.auth.fetched) return false;
+  return true;
+}
+
+function fetchAuthIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAuth(getState())) {
+      return dispatch(fetchAuth());
+    }
+  };
+}
+
+function forceFetchAuth() {
+  return dispatch => dispatch(fetchAuth());
+}
+},{"../../data/Locations":"xg/o"}],"2mc2":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class FlexContainer extends _react.Component {
+  render() {
+    return _react.default.createElement("div", _extends({
+      style: {
+        display: 'flex'
+      }
+    }, this.props), this.props.children);
+  }
+
+}
+
+var _default = FlexContainer;
+exports.default = _default;
+},{}],"if3W":[function(require,module,exports) {
+module.exports = {
+  "avatar": "_avatar_15263",
+  "prefix": "_prefix_15263",
+  "links": "_links_15263"
+};
+},{}],"/AVv":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class PrefixLabel extends _react.Component {
+  render() {
+    return _react.default.createElement("span", {
+      className: `${_indexModule.default.prefix} ${this.props.className || ''}`
+    }, this.props.children);
+  }
+
+}
+
+var _default = PrefixLabel;
+exports.default = _default;
+},{"./index.module.scss":"if3W"}],"MCaS":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _auth = require("../../redux/actions/auth");
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _LazyImage = _interopRequireDefault(require("../LazyImage"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _PrefixLabel = _interopRequireDefault(require("./PrefixLabel"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotPageInfoBox extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sure: false,
+      deleted: false
+    };
+    this.openSure = this.openSure.bind(this);
+    this.delete = this.delete.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  openSure() {
+    this.setState({
+      sure: true
+    });
+  }
+
+  delete() {
+    fetch(`${_Locations.default.server}/bots/${this.props.bot.id}/delete`, {
+      method: 'POST',
+      credentials: 'include'
+    }).then(res => res.json()).then(data => {
+      if (data.ok) this.setState({
+        deleted: true
+      });
+    });
+  }
+
+  render() {
+    if (this.state.deleted) {
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/"
+      });
+    }
+
+    const {
+      bot,
+      auth,
+      contents
+    } = this.props;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("div", null, _react.default.createElement(_LazyImage.default, {
+      src: `${_Locations.default.cdn}${bot.cachedImages.avatar}`,
+      className: _indexModule.default.avatar
+    })), _react.default.createElement("div", null, _react.default.createElement("h3", null, contents.name), _react.default.createElement("p", null, contents.description), _react.default.createElement("p", null, bot.nsfw ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
+      className: _Modesta.default.alizarin
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.nsfw"
+    }))) : null, bot.state !== 'approved' ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
+      className: _Modesta.default.alizarin
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `states.${bot.state}`
+    }))) : null))), bot.flags && bot.flags.adverts ? _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.adverts"
+    })) : null, bot.flags && bot.flags.inAppPurchases ? _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.inAppPurchases"
+    })) : null);
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(BotPageInfoBox);
+
+exports.default = _default;
+},{"../../data/Locations":"xg/o","../../data/Modesta":"3GPO","../../redux/actions/auth":"+AtF","../ContentBox":"wueC","../FlexContainer":"2mc2","../LazyImage":"tK5f","./index.module.scss":"if3W","./PrefixLabel":"/AVv"}],"Qr31":[function(require,module,exports) {
+module.exports = {
+  "card": "_card_a68ea",
+  "textContainer": "_textContainer_a68ea",
+  "avatar": "_avatar_a68ea",
+  "discriminator": "_discriminator_a68ea",
+  "description": "_description_a68ea",
+  "stars": "_stars_a68ea"
+};
+},{}],"3gW8":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _LazyImage = _interopRequireDefault(require("../LazyImage"));
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _NotALink = _interopRequireDefault(require("../NotALink"));
+
+var _reactRedux = require("react-redux");
+
+var _auth = require("../../redux/actions/auth");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ReviewCard extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.deleteReview = this.deleteReview.bind(this);
+    this.state = {
+      deleting: false,
+      deleted: false,
+      timeout: null,
+      deleteClicked: false
+    };
+  }
+
+  deleteReview() {
+    if (!this.state.deleteClicked) {
+      this.setState({
+        deleteClicked: true
+      });
+      fetch(`${_Locations.default.server}/bots/${this.props.bot.id}/reviews/${this.props.review.id}/delete`, {
+        credentials: 'include',
+        method: 'POST'
+      }).then(res => {
+        if (res.status === 200) {
+          this.setState({
+            deleting: true,
+            timeout: setTimeout(() => {
+              this.setState({
+                deleted: true
+              });
+            }, 300)
+          });
+        }
+      });
+    }
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.state.timeout);
+  }
+
+  render() {
+    const {
+      review,
+      auth
+    } = this.props;
+    let stars = '';
+
+    for (let i = 0; i < review.rating; i++) {
+      stars += '★';
+    }
+
+    if (this.state.deleted) return null;
+    return _react.default.createElement(_FlexContainer.default, {
+      className: _indexModule.default.card,
+      style: this.state.deleting ? {
+        opacity: 0
+      } : {}
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "alt.avatar",
+      values: {
+        name: review.username
+      }
+    }, message => _react.default.createElement(_LazyImage.default, {
+      className: _indexModule.default.avatar,
+      alt: message,
+      src: `${_Locations.default.cdn}${review.cachedAvatar}` || _Locations.default.logo
+    })), _react.default.createElement("div", {
+      className: _indexModule.default.textContainer
+    }, _react.default.createElement("h6", null, review.username, _react.default.createElement("span", {
+      className: _indexModule.default.discriminator
+    }, "#", review.discriminator)), _react.default.createElement("p", {
+      className: _indexModule.default.description
+    }, review.text), _react.default.createElement("span", {
+      className: _indexModule.default.stars
+    }, stars)), // Allow the review to be deleted by the owner, or by an admin
+    review.isCurrentUserOwner || auth && auth.data && auth.data.admin ? _react.default.createElement(_NotALink.default, {
+      onClick: this.deleteReview
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.delete"
+    })) : null);
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(ReviewCard);
+
+exports.default = _default;
+},{"../../data/Locations":"xg/o","./index.module.scss":"Qr31","../LazyImage":"tK5f","../FlexContainer":"2mc2","../NotALink":"zfiY","../../redux/actions/auth":"+AtF"}],"TQ4l":[function(require,module,exports) {
+module.exports = {
+  "flexGrid": "_flexGrid_7e8ec",
+  "padding": "_padding_7e8ec",
+  "flexBackwards": "_flexBackwards_7e8ec"
+};
+},{}],"15qX":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class FlexColumns extends _react.Component {
+  render() {
+    if (this.props.columns) return _react.default.createElement("div", {
+      className: `${_Modesta.default[`colXs${this.props.columns}`]} ${this.props.className ? this.props.className : ''}`
+    }, this.props.children);
+    return _react.default.createElement("div", {
+      className: `\
+        ${_Modesta.default.flexGrid} \
+        ${_indexModule.default.flexGrid} \
+        ${this.props.backwardsMobile ? _indexModule.default.flexBackwards : ''} \
+        ${this.props.padding ? _indexModule.default.padding : ''} \
+        ${this.props.className ? this.props.className : ''}`
+    }, this.props.children);
+  }
+
+}
+
+var _default = FlexColumns;
+exports.default = _default;
+},{"./index.module.scss":"TQ4l","../../data/Modesta":"3GPO"}],"cd5i":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ProgressBar extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: `${_Modesta.default.progressContainer} ${this.props.className || ''}`
+    }, _react.default.createElement("div", {
+      className: `${_Modesta.default.progressBar} ${_Modesta.default[`${this.props.colour}Bar`]}`,
+      style: {
+        width: `${this.props.proportion * 100}%`
+      }
+    }, this.props.children));
+  }
+
+}
+
+var _default = ProgressBar;
+exports.default = _default;
+},{"../../data/Modesta":"3GPO"}],"hh1e":[function(require,module,exports) {
+module.exports = {
+  "average": "_average_b126c",
+  "averageContainer": "_averageContainer_b126c",
+  "progressText": "_progressText_b126c",
+  "progress": "_progress_b126c"
+};
+},{}],"bshP":[function(require,module,exports) {
+module.exports = {
+  "starsContainer": "_starsContainer_a54ad"
+};
+},{}],"EVlj":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _reactRedux = require("react-redux");
+
+var _auth = require("../../redux/actions/auth");
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ReviewForm extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.submitReview = this.submitReview.bind(this);
+    this.form = _react.default.createRef();
+    this.state = {
+      submitted: false,
+      message: null
+    };
+  }
+
+  submitReview(e) {
+    e.preventDefault();
+
+    if (!this.state.submitted) {
+      const formdata = new FormData(this.form.current);
+      const {
+        auth,
+        intl
+      } = this.props;
+      fetch(`${_Locations.default.server}/${intl.locale}/bots/${this.props.bot.id}/reviews`, {
+        credentials: 'include',
+        body: formdata,
+        method: 'POST'
+      }).then(res => res.json()).then(res => {
+        if (res.ok) {
+          this.setState({
+            submitted: true
+          });
+          this.props.setMyReview({
+            cachedAvatar: auth.data.cachedAvatar,
+            date: new Date(),
+            discriminator: auth.data.discriminator,
+            id: null,
+            isCurrentUserOwner: false,
+            language: intl.locale,
+            rating: formdata.get('review.rating'),
+            text: formdata.get('review.text'),
+            username: auth.data.username
+          });
+        } else {
+          this.setState({
+            message: res.language || res.message
+          });
+        }
+      });
+    }
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.state.timeout);
+  }
+
+  render() {
+    const {
+      auth
+    } = this.props;
+    if (this.state.submitted) return null;
+    if (!auth) return null;
+    if (!auth.data) return null;
+    if (!auth.data.id) return null;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("form", {
+      ref: this.form
+    }, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.write"
+    })), _react.default.createElement(_FlexContainer.default, {
+      className: _indexModule.default.starsContainer
+    }, _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "5",
+      id: "rating-5"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-5"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "4",
+      id: "rating-4"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-4"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "3",
+      id: "rating-3"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-3"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "2",
+      id: "rating-2"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-2"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "1",
+      id: "rating-1"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-1"
+    }, "\u2605")), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.placeholder"
+    }, placeholder => _react.default.createElement("textarea", {
+      name: "review.text",
+      className: _Modesta.default.fullWidth,
+      placeholder: placeholder
+    })), _react.default.createElement("button", {
+      className: `${_Modesta.default.btn} ${_Modesta.default.white} ${_Modesta.default.blackText}`,
+      onClick: this.submitReview
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "forms.submit"
+    })), this.state.message ? _react.default.createElement(_ContentBox.default, {
+      className: _Modesta.default.alizarin
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: this.state.message
+    }))) : null));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(ReviewForm));
+
+exports.default = _default;
+},{"../../data/Locations":"xg/o","./index.module.scss":"bshP","../FlexContainer":"2mc2","../../redux/actions/auth":"+AtF","../ContentBox":"wueC","../../data/Modesta":"3GPO"}],"wm3q":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _ReviewCard = _interopRequireDefault(require("../ReviewCard"));
+
+var _reactIntl = require("react-intl");
+
+var _FlexColumns = _interopRequireDefault(require("../FlexColumns"));
+
+var _ProgressBar = _interopRequireDefault(require("../ProgressBar"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _reactRedux = require("react-redux");
+
+var _auth = require("../../redux/actions/auth");
+
+var _ReviewForm = _interopRequireDefault(require("../ReviewForm"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotPageReviewsBox extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      myReview: null
+    };
+    this.setMyReview = this.setMyReview.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  setMyReview(review) {
+    this.setState({
+      myReview: review
+    });
+  }
+
+  render() {
+    const {
+      bot
+    } = this.props;
+    const auth = this.props.auth.data;
+    const {
+      reviews
+    } = bot;
+    const average = reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length;
+    const counts = [0, 0, 0, 0, 0];
+    reviews.forEach(review => counts[review.rating - 1]++);
+    const proportions = counts.map(count => count / reviews.length);
+    const myReview = auth ? reviews.find(review => review.author === auth.id) : null;
+    const isOwner = auth ? bot.authors.some(author => author.id === auth.id) : false;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.title"
+    })), _react.default.createElement(_FlexColumns.default, null, _react.default.createElement(_FlexColumns.default, {
+      columns: 4,
+      className: _indexModule.default.averageContainer
+    }, _react.default.createElement("span", {
+      className: _indexModule.default.average
+    }, average.toFixed(1) !== 'NaN' ? average.toFixed(1) : null)), _react.default.createElement(_FlexColumns.default, {
+      columns: 8
+    }, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "5"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "emerald",
+      proportion: proportions[4]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "4"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "greenSea",
+      proportion: proportions[3]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "3"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "sunFlower",
+      proportion: proportions[2]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "2"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "carrot",
+      proportion: proportions[1]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "1"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "alizarin",
+      proportion: proportions[0]
+    })))), _react.default.createElement("div", null, // If there's a review by the owner, show it.
+    this.state.myReview || myReview ? _react.default.createElement(_ReviewCard.default, {
+      review: this.state.myReview || myReview,
+      bot: bot
+    }) : isOwner ? null : _react.default.createElement(_ReviewForm.default, {
+      setMyReview: this.setMyReview,
+      bot: bot
+    }), reviews.slice(0, 8).filter(review => auth ? review.author !== auth.id : true).map((review, index) => _react.default.createElement(_ReviewCard.default, {
+      key: index,
+      review: review,
+      bot: bot
+    }))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(BotPageReviewsBox);
+
+exports.default = _default;
+},{"../ContentBox":"wueC","../ReviewCard":"3gW8","../FlexColumns":"15qX","../ProgressBar":"cd5i","./index.module.scss":"hh1e","../FlexContainer":"2mc2","../../redux/actions/auth":"+AtF","../ReviewForm":"EVlj"}],"JbzX":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class Column extends _react.Component {
+  render() {
+    return _react.default.createElement("div", _extends({}, this.props, {
+      className: `${_Modesta.default.column} ${this.props.className || ''}`
+    }), this.props.children);
+  }
+
+}
+
+var _default = Column;
+exports.default = _default;
+},{"../../data/Modesta":"3GPO"}],"13qH":[function(require,module,exports) {
+module.exports = {
+  "textarea": "_textarea_87520"
+};
+},{}],"6ZcU":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _Column = _interopRequireDefault(require("../Column"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class InputField extends _react.Component {
+  render() {
+    let input = null;
+    const value = this.props.value;
+
+    if (this.props.options) {
+      input = _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: `${this.props.id}.placeholder`
+      }, placeholder => _react.default.createElement("select", {
+        name: this.props.name,
+        className: _Modesta.default.fullWidth,
+        defaultValue: value,
+        onChange: this.props.onChange
+      }, _react.default.createElement("option", {
+        disabled: !this.props.allowNone,
+        selected: !this.props.options.some(option => value === option),
+        value: ""
+      }, placeholder), this.props.options.map(option => {
+        if (this.props.localiseOptions) {
+          return _react.default.createElement(_reactIntl.FormattedMessage, {
+            id: `${this.props.localiseOptions}.${option}`,
+            key: option
+          }, formattedOption => _react.default.createElement("option", {
+            value: option,
+            selected: value === option
+          }, formattedOption));
+        }
+
+        return _react.default.createElement("option", {
+          value: option,
+          selected: value === option,
+          key: option
+        }, option);
+      })));
+    } else if (this.props.toggle) {
+      input = _react.default.createElement("input", {
+        name: this.props.name,
+        type: "checkbox",
+        defaultChecked: value,
+        onChange: this.props.onChange
+      });
+    } else if (this.props.textarea) {
+      input = _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: `${this.props.id}.placeholder`
+      }, placeholder => _react.default.createElement("textarea", {
+        name: this.props.name,
+        className: `${_Modesta.default.fullWidth} ${_indexModule.default.textarea}`,
+        placeholder: placeholder,
+        defaultValue: value || undefined,
+        onChange: this.props.onChange
+      }));
+    } else {
+      input = _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: `${this.props.id}.placeholder`
+      }, placeholder => _react.default.createElement("input", {
+        name: this.props.name,
+        type: "text",
+        className: _Modesta.default.fullWidth,
+        placeholder: placeholder,
+        style: {
+          flexGrow: '1'
+        },
+        defaultValue: value || undefined,
+        onChange: this.props.onChange
+      }));
+    }
+
+    return _react.default.createElement(_Column.default, {
+      className: this.props.className || _Modesta.default.oneHalf,
+      style: this.props.style
+    }, _react.default.createElement("label", {
+      htmlFor: this.props.name
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.title`
+    }), this.props.required ? '*' : null), _react.default.createElement(_FlexContainer.default, null, input), this.props.smallText ? _react.default.createElement("small", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.small`
+    })) : null);
+  }
+
+}
+
+var _default = InputField;
+exports.default = _default;
+},{"../FlexContainer":"2mc2","../Column":"JbzX","../../data/Modesta":"3GPO","./index.module.scss":"13qH"}],"HQpP":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const APPROVED = 'approved';
+const DENIED = 'denied';
+const QUEUE = 'queue';
+const BANNED = 'banned';
+const States = {
+  APPROVED,
+  DENIED,
+  QUEUE,
+  BANNED
+};
+var _default = States;
+exports.default = _default;
+},{}],"ZLDI":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _InputField = _interopRequireDefault(require("../InputField"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _reactIntl = require("react-intl");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotPageSetStateBox extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.form = _react.default.createRef();
+    this.submit = this.submit.bind(this);
+  }
+
+  submit(e) {
+    e.preventDefault();
+    const formdata = new FormData(this.form.current);
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/id/${this.props.bot.id}/state`, {
+      method: 'POST',
+      body: formdata,
+      credentials: 'include'
+    });
+  }
+
+  render() {
+    const auth = this.props.auth.data;
+    const bot = this.props.bot;
+    if (!auth) return null;
+    if (!auth.admin) return null;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("form", {
+      ref: this.form
+    }, _react.default.createElement(_InputField.default, {
+      name: "state",
+      id: "components.botpagesetstatebox.state",
+      localiseOptions: "states",
+      options: Object.values(_States.default),
+      value: bot.state,
+      onChange: this.onChange
+    }), _react.default.createElement(_InputField.default, {
+      name: "reason",
+      id: "components.botpagesetstatebox.reason",
+      textarea: true,
+      className: _Modesta.default.fullWidth
+    }), _react.default.createElement("button", {
+      onClick: this.submit
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagesetstatebox.submit"
+    }))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(BotPageSetStateBox);
+
+exports.default = _default;
+},{"../ContentBox":"wueC","../InputField":"6ZcU","../../data/States":"HQpP","../../data/Modesta":"3GPO","../../data/Locations":"xg/o"}],"LaK3":[function(require,module,exports) {
+module.exports = {
+  "fullscreen": "_fullscreen_dac17",
+  "image": "_image_dac17",
+  "loaded": "_loaded_dac17"
+};
+},{}],"7PtH":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BtecParallax extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: `${_Modesta.default.fullscreen} ${_indexModule.default.fullscreen}`
+    }, _react.default.createElement("div", {
+      className: `${_Modesta.default.background} ${_indexModule.default.image} ${this.props.src ? _indexModule.default.loaded : ''}`,
+      style: this.props.src ? {
+        backgroundImage: `url('${this.props.src}')`
+      } : {}
+    }));
+  }
+
+}
+
+var _default = BtecParallax;
+exports.default = _default;
+},{"./index.module.scss":"LaK3","../../data/Modesta":"3GPO"}],"XhUu":[function(require,module,exports) {
+module.exports = {
+  "btn": "_btn_1c455"
+};
+},{}],"43z2":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+const ConstructCSS = (...args) => args.filter(argument => argument) // Get arguments that are truthy
+.join(' ');
+
+var _default = ConstructCSS;
+exports.default = _default;
+},{}],"UCOH":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class Button extends _react.Component {
+  render() {
+    return _react.default.createElement("span", _extends({}, this.props, {
+      className: (0, _ConstructCSS.default)(_Modesta.default.btn, _Modesta.default.boxShadow, _indexModule.default.btn, this.props.className)
+    }), this.props.children);
+  }
+
+}
+
+var _default = Button;
+exports.default = _default;
+},{"./index.module.scss":"XhUu","../../data/Modesta":"3GPO","../../helpers/ConstructCSS":"43z2"}],"MzKT":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Container extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: (0, _ConstructCSS.default)(_Modesta.default.container, this.props.className)
+    }, this.props.children);
+  }
+
+}
+
+var _default = Container;
+exports.default = _default;
+},{"../../data/Modesta":"3GPO","../../helpers/ConstructCSS":"43z2"}],"g6p6":[function(require,module,exports) {
+module.exports = {
+  "mobile": "_mobile_242d1",
+  "desktop": "_desktop_242d1",
+  "hidden": "_hidden_242d1"
+};
+},{}],"EFH/":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRouterHashLink = require("react-router-hash-link");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+const LocalizedLink = (_ref) => {
+  let {
+    to,
+    intl: {
+      locale
+    },
+    query
+  } = _ref,
+      props = _objectWithoutProperties(_ref, ["to", "intl", "query"]);
+
+  let querylink = '';
+
+  if (query) {
+    querylink = '?' + Object.keys(query).map(key => {
+      if (Array.isArray(query[key])) {
+        return query[key].map(value => `${encodeURIComponent(key)}[]=${encodeURIComponent(value)}`).join('&');
+      }
+
+      return `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`;
+    }).join('&');
+  }
+
+  const path = `/${locale}${to}${querylink}`;
+  return _react.default.createElement(_reactRouterHashLink.HashLink, _extends({}, props, {
+    to: path
+  }));
+};
+
+var _default = (0, _reactIntl.injectIntl)(LocalizedLink);
+
+exports.default = _default;
+},{}],"LERy":[function(require,module,exports) {
+module.exports = {
+  "navbar": "_navbar_babce",
+  "mobileNavContent": "_mobileNavContent_babce",
+  "mobileNavbar": "_mobileNavbar_babce",
+  "mobileHeading": "_mobileHeading_babce",
+  "darken": "_darken_babce"
+};
+},{}],"6IVX":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _Modesta = _interopRequireWildcard(require("../../data/Modesta"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _auth = require("../../redux/actions/auth");
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class NavbarLinks extends _react.Component {
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  render() {
+    const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
+    const {
+      auth,
+      unlocalisedPath
+    } = this.props;
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.languages"
+    }, message => _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": message,
+      to: "/locale",
+      query: {
+        returnBrowserTo: unlocalisedPath
+      }
+    }, _react.default.createElement("span", {
+      className: `${_Modesta.default.emoji} ${_Modesta.TwitterEmojis.twaGlobeShowingEuropeAfrica}`
+    }))), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.search"
+    }, message => _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": message,
+      to: "/filter",
+      query: {
+        state: _States.default.APPROVED
+      }
+    }, _react.default.createElement("span", {
+      className: `${_Modesta.default.emoji} ${_Modesta.TwitterEmojis.twaRightPointingMagnifyingGlass}`
+    }))), auth.data !== null ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.add"
+    }, message => _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": message,
+      to: "/bots/add"
+    }, message)), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.addRpc"
+    }, message => _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": message,
+      to: "/rpc/add"
+    }, message)), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.user"
+    }, message => _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": message,
+      to: "/filter",
+      query: {
+        owners: [auth.data.id],
+        hidden: false
+      }
+    }, auth.data.username)), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.logout"
+    }, message => _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": message,
+      to: "/auth/logout"
+    }, message)), auth.data.admin ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.admin"
+    }, message => _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": message,
+      to: "/admin"
+    }, message))) : null) : _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "navbar.login"
+    }, message => _react.default.createElement("a", {
+      "aria-label": message,
+      href: `${_Locations.default.server}/auth/site?to=${encodeURIComponent(href)}`
+    }, message))));
+  }
+
+}
+
+const mapStateToProps = (state, ownProps) => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(NavbarLinks));
+
+exports.default = _default;
+},{"../../data/Locations":"xg/o","../../data/Modesta":"3GPO","../../data/States":"HQpP","../../redux/actions/auth":"+AtF","../LocalisedHyperlink":"EFH/"}],"DCuC":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _displayModule = _interopRequireDefault(require("../../scss/display.module.scss"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _links = _interopRequireDefault(require("./links"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class NavigationBar extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.open = _react.default.createRef();
+    this.navside = _react.default.createRef();
+    this.darken = _react.default.createRef();
+    this.openNavbar = this.openNavbar.bind(this);
+    this.closeNavbar = this.closeNavbar.bind(this);
+  }
+
+  componentDidMount() {
+    this.open.current.addEventListener('click', this.openNavbar);
+    this.darken.current.addEventListener('click', this.closeNavbar);
+  }
+
+  componentWillUnmount() {
+    // Don't keep stuff hanging there in the background
+    this.open.current.removeEventListener('click', this.openNavbar);
+    this.darken.current.removeEventListener('click', this.closeNavbar);
+  }
+
+  openNavbar() {
+    if (this.navside.current && this.navside.current.style) {
+      this.navside.current.style.transform = 'translateX(0px)';
+      this.darken.current.style.opacity = '0.8';
+      this.darken.current.style.pointerEvents = 'all';
+    }
+  }
+
+  closeNavbar() {
+    this.navside.current.style.transform = 'translateX(-250px)';
+    this.darken.current.style.opacity = '0';
+    this.darken.current.style.pointerEvents = 'none';
+  }
+
+  render() {
+    return _react.default.createElement("div", {
+      className: _indexModule.default.navbar
+    }, _react.default.createElement("div", {
+      className: `${_displayModule.default.desktop} ${_Modesta.default.navContainer} ${_Modesta.default.default}`
+    }, _react.default.createElement("h1", {
+      className: _Modesta.default.navTitle
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "site.name"
+    }))), _react.default.createElement("div", {
+      className: _Modesta.default.sidenav
+    }, _react.default.createElement(_links.default, {
+      unlocalisedPath: this.props.unlocalisedPath
+    }))), _react.default.createElement("div", {
+      className: `${_displayModule.default.mobile} ${_Modesta.default.navContainer} ${_indexModule.default.mobileNavbar}`
+    }, _react.default.createElement("span", {
+      ref: this.open,
+      className: _Modesta.default.menuIcon
+    }), _react.default.createElement("div", {
+      className: `${_indexModule.default.mobileNavContent} ${_Modesta.default.navContent}`
+    }, _react.default.createElement("h4", {
+      className: _indexModule.default.mobileHeading
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "site.name"
+    })))), _react.default.createElement("div", {
+      className: _Modesta.default.sidenav,
+      ref: this.navside
+    }, _react.default.createElement(_links.default, {
+      unlocalisedPath: this.props.unlocalisedPath
+    }))), _react.default.createElement("div", {
+      ref: this.darken,
+      className: `${_indexModule.default.darken} ${_displayModule.default.mobile}`
+    }));
+  }
+
+}
+
+var _default = NavigationBar;
+exports.default = _default;
+},{"../../scss/display.module.scss":"g6p6","../LocalisedHyperlink":"EFH/","./index.module.scss":"LERy","./links":"6IVX","../../data/Modesta":"3GPO"}],"Xc89":[function(require,module,exports) {
+module.exports = {
+  "footer": "_footer_ab5ae",
+  "small": "_small_ab5ae",
+  "links": "_links_ab5ae",
+  "copyright": "_copyright_ab5ae"
+};
+},{}],"xbOT":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _Container = _interopRequireDefault(require("../Container"));
+
+var _reactIntl = require("react-intl");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Footer extends _react.Component {
+  render() {
+    return _react.default.createElement(_Container.default, {
+      className: _indexModule.default.footer
+    }, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", {
+      className: _indexModule.default.links
+    }, _react.default.createElement("a", {
+      href: _Locations.default.wiki,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.docs"
+    })), _react.default.createElement("a", {
+      href: _Locations.default.termsAndConditions,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.terms"
+    })), _react.default.createElement("a", {
+      href: _Locations.default.discordServer,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.discord"
+    })), _react.default.createElement("a", {
+      href: _Locations.default.terminalInk,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.terminal"
+    }))), _react.default.createElement("p", {
+      className: _indexModule.default.copyright
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "copyright"
+    })), _react.default.createElement("p", {
+      className: (0, _ConstructCSS.default)(_indexModule.default.copyright, _indexModule.default.small)
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.apple"
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("p", {
+      className: _indexModule.default.copyright
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.foss"
+    })), _react.default.createElement("div", {
+      className: _indexModule.default.links
+    }, _react.default.createElement("a", {
+      href: _Locations.default.sourceLicence,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.licence"
+    })), _react.default.createElement("a", {
+      href: _Locations.default.sourceDependencies,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.attribution"
+    })), _react.default.createElement("a", {
+      href: _Locations.default.sourceCode,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "footer.source"
+    })))));
+  }
+
+}
+
+var _default = Footer;
+exports.default = _default;
+},{"./index.module.scss":"Xc89","../Container":"MzKT","../../data/Locations":"xg/o","../ContentBox":"wueC","../../helpers/ConstructCSS":"43z2"}],"KNV4":[function(require,module,exports) {
+module.exports = {
+  "categories": {
+    "fun": "Sjov",
+    "games": "Spil",
+    "entertainment": "Underholdning",
+    "productivity": "Produktivitet",
+    "education": "Uddannelse",
+    "image": "Billedmanipulation",
+    "news": "Nyheder",
+    "music": "Musik",
+    "moderation": "Moderation",
+    "utility": "Utility",
+    "notifications": "Notifikationer",
+    "other": "Andet"
+  },
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
+  "errors": {
+    "apps": {
+      "authors": "Du skal have mindst 1 forfatter til botten, alle forfatter-ID'er skal være numeriske",
+      "category": "Du skal vælge en kategori for din bot",
+      "customisable": "The customisability of the prefix must be either ticked, or unticked",
+      "description": "Den korte beskrivelse skal være mellem 10 og 1000 tegn",
+      "githubowner": "GitHub ejeren skal være en gyldige GitHub bruger. Lad dette stå tomt hvis du ikke har en GitHub konto.",
+      "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
+      "id": "Bot-ID'et skal være udfyldt samt numerisk",
+      "invite": "The Invite URL needs to be filled out, and as a valid HTTPS link",
+      "website": "The Website URL needs to be a valid HTTPS link",
+      "languages": "Du skal tilføje et enkelt sprog. Tryk på det sprog du ønsker din botside skal være i, og vælg 'Tilføj et sprog' knappen",
+      "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
+      "name": "Botten skal have et navn der har en længde på mellem 4 og 32 tegn.",
+      "nsfw": "NSFW-statussen skal være enten afkrydset eller ikke afkrydset",
+      "oauth": "OAuth-ID'et skal være numerisk",
+      "page": "The long description must have a length between 20 and 10000",
+      "prefix": "Du skal have mindst et præfiks med en maksimal længde på 10 tegn.",
+      "support": "The Support URL needs to be a valid HTTPS link",
+      "exists": "Botten findes allerede i databasen, og du har ikke tilladelse til at overskrive dette.",
+      "notabot": "Det ID du angav var ikke en botkonto.",
+      "notfound": "Det ID du angav blev ikke genkendt af Discord.",
+      "add_success": "Tilføjede botten til botlistekøen.",
+      "edit_success": "Botten blev redigeret.",
+      "count": "The guild count for a bot must be between 0 and 5000000 servers",
+      "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
+      "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters",
+      "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
+      "no_suitable_lang": "Der findes ingen dansk version af denne side. '{{ language }}' anvendes istedet."
+    },
+    "permissions": {
+      "login": "Du er ikke logget ind",
+      "denied": "Du har ikke tilstrækkelige rettigheder til at kunne tilgå dette"
+    },
+    "website": {
+      "noscript": "JavaScript er deaktiveret. Funktionaliteten kan være nedsat.",
+      "print": "JavaScript er ikke kompatibel med papir udskrivninger."
+    },
+    "reviews": {
+      "rating": "Venligst vælg hvor godt du synes om denne bot før du fortsætter!",
+      "text": "Angiv venligst hvorfor du gav dette antal stjerner til botten.",
+      "self": "Du kan ikke skrive en anmeldelse for din egen bot!"
+    },
+    "api": {
+      "400": "You are unauthorised to use this endpoint. Check your token is correct.",
+      "404": "This endpoint was not found, or the method used to request this page is not compatible.",
+      "500": "Der opstod en intern serverfejl.",
+      "test": "An error was thrown for development purposes.",
+      "no_bot": "Botten blev ikke fundet",
+      "idchange": "The ID of the bot cannot be changed to another ID. Please contact Terminal support for technical support"
+    }
+  },
+  "footer": {
+    "attribution": "Tilskrivning",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "docs": "Dokumentation",
+    "view": "Vis denne side på Github"
+  },
+  "forms": {
+    "add": "Tilføj en anden",
+    "apply": "Anvend",
+    "close": "Luk",
+    "delete": "Slet",
+    "help": "🤔",
+    "select": "Vælg venligst...",
+    "submit": "Indsend",
+    "wait": "Vent venligst..."
+  },
+  "intro": {
+    "search": "Hvad leder du efter?",
+    "docs": "Dokumentation"
+  },
+  "locales": {
+    "ar": "Arabisk",
+    "da": "Dansk",
+    "de": "Tysk",
+    "el": "Græsk",
+    "en-GB": "Engelsk (United Kingdom)",
+    "es": "Spansk",
+    "et": "Estisk",
+    "fi": "Finsk",
+    "fj": "Fiji",
+    "fr": "Fransk",
+    "gd": "Gælisk (Skotsk)",
+    "hi": "Hindi",
+    "it": "Italiensk",
+    "ja": "Japansk",
+    "ko": "Koreansk",
+    "la": "Latin",
+    "nl": "Hollandsk",
+    "no": "Norsk",
+    "pt": "Portugisisk",
+    "ru": "Russisk",
+    "sv": "Svensk",
+    "tr": "Tyrkisk",
+    "vi": "Vietnamesisk",
+    "zh-cn": "Kinesisk (Simplificeret)",
+    "zh-tw": "Kinesisk (Traditionelt)"
+  },
+  "pages": {
+    "bots": {
+      "backgroundAlt": "Logoet for discordapps.dev",
+      "description": "Et sted hvor du kan finde Discord bots",
+      "invite": "Tilføj denne bot",
+      "support": "Teknisk Support",
+      "website": "Webside",
+      "shortname": "Discord Bots",
+      "mentionable": "Kan nævnes",
+      "customisable": "Kan tilpasses",
+      "delete": "Slet",
+      "edit": "Rediger",
+      "configure": "Konfigurer",
+      "github": "Vis på GitHub",
+      "approve": "Godkend",
+      "deny": "Afvis",
+      "prefix": {
+        "one": "Præfiks",
+        "other": "Præfikser"
+      },
+      "adverts": "Indeholder funktioner der er låst bag andre tjenester",
+      "inAppPurchases": "Has in-app purchases",
+      "nsfw": "NSFW",
+      "offeredby": "Indsendt af",
+      "modified": "Sidst redigeret",
+      "created": "Først udgivet",
+      "category": "Kategori",
+      "initiateCategoryFilter": "Find botter for...",
+      "count": "Installeret på {guilds, plural, one {en enkelt server} other {{guilds} servere}}"
+    },
+    "configuration": {
+      "token": {
+        "title": "Token",
+        "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints.",
+        "docs": "Vis dokumentation"
+      },
+      "renew": "Forny token",
+      "hide": {
+        "title": "Skjul bot",
+        "description": "Du kan skjule din bot fra forsiden, i tilfælde af at du ikke behøver, den skal være der.",
+        "disable": "Skjul ikke",
+        "enable": "Skjul"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "modal": "The OAuth ID is the ID which is used when users invite your bot via the OAuth workflow. In almost all cases, this ID is the same as your Bot ID. You will only need to take action if your bot has a difference between the two.",
+        "placeholder": "ID'et brugt i OAuth-linket.",
+        "title": "OAuth-ID"
+      },
+      "authors": {
+        "modal": "Indtast et enkelt ID på en ejer til botten.",
+        "placeholder": "ID på en enkelt ejer",
+        "title": "Fortattere til botten",
+        "add": "Tilføj en mere"
+      },
+      "basicinfo": "Grundlæggende oplysninger",
+      "nsfw": {
+        "title": "Not Safe For Work"
+      },
+      "support": {
+        "placeholder": "I stil med: https://discord.gg/8uC6aKZ",
+        "small": "Lad dette felt stå tomt hvis du ikke ønsker at hjælpe folk",
+        "title": "Support URL"
+      },
+      "category": {
+        "title": "Kategori"
+      },
+      "client_id": {
+        "modal1": "The bot ID is a number which uniquely identifies the bot user. You can retrieve it by clicking the \"Copy\" button within the Discord Developer portal.",
+        "modal2": "You can also find the ID by enabling \"Developer Mode\" in the Discord settings, and then right clicking your bot and pressing \"Copy ID\". Be sure not to copy the ID of the message.",
+        "placeholder": "ID'et for botbrugeren",
+        "title": "Bot-ID"
+      },
+      "customisable": {
+        "title": "Præfiks der kan tilpasses"
+      },
+      "description": {
+        "title": "Kort beskrivelse"
+      },
+      "github_owner": {
+        "placeholder": "I stil med: ry00001",
+        "title": "GitHub bruger / organisation"
+      },
+      "github_repo": {
+        "placeholder": "I stil med: Tuxedo",
+        "title": "GitHub Repository"
+      },
+      "information": "Din botside",
+      "invite": {
+        "modal": "Please make sure \"Bot ID\" has been filled in with your Discord bot's ID",
+        "title": "Invitationslink",
+        "generate": "Generer et invitationslink"
+      },
+      "languages": {
+        "add": "Tilføj et sprog",
+        "delete": "Slet dette sprog",
+        "modal": "Skriv din botside på ethvert af de understøttede sprog. Vælg dit sprog og tryk på 'Tilføj et sprog' knappen.",
+        "title": "Sprog for botside"
+      },
+      "mentionable": {
+        "title": "Can mention to trigger bot"
+      },
+      "name": {
+        "title": "Navn"
+      },
+      "page": {
+        "title": "Udvidet beskrivelse"
+      },
+      "prefix": {
+        "placeholder": "Et enkelt præfiks",
+        "title": "Præfiks",
+        "add": "Tilføj et andet præfiks"
+      },
+      "flags": {
+        "title": "Funding and Advertising Decleration",
+        "inAppPurchases": {
+          "title": "In App Purchases",
+          "small": "Tick this box if you have features behind a paywall"
+        },
+        "adverts": {
+          "title": "Reklamer",
+          "small": "Afkryds denne boks hvis du har funktioner der er låst bag andre tjenester"
+        }
+      },
+      "images": {
+        "title": "Udseende",
+        "avatar": {
+          "title": "Avatar URL",
+          "placeholder": "Et HTTPS-link til et billede der bruges som avatar"
+        },
+        "cover": {
+          "title": "Cover Image",
+          "placeholder": "Et HTTPS-link til et stort billede"
+        },
+        "preview": {
+          "title": "Preview Images",
+          "placeholder": "Et HTTPS-link til et enkelt skærmbillede",
+          "add": "Tilføj et andet billede"
+        }
+      },
+      "youtube": {
+        "title": "YouTube-ID",
+        "placeholder": "Et ID til en YouTube-video der demonstrerer din bot"
+      },
+      "website": {
+        "title": "Webside",
+        "placeholder": "Et HTTPS-link til din webside"
+      },
+      "sourcecode": "Kildekode",
+      "title": "Tilføj eller rediger en applikation",
+      "triggermethods": "Trigger Methods",
+      "deleteLanguage": "Slet et sprog",
+      "required": "Felter markeret med * er påkrævet.",
+      "updates": "It is highly recommended you join the Terminal.ink Discord Server by clicking 'Discord' in the footer, to view service updates, view your application verification status, and also recieve direct messages from staff about your application."
+    },
+    "error": {
+      "notfound": "Siden blev ikke fundet...",
+      "server": "Unexpected rapid disassembly encountered",
+      "github": "Rapporter denne fejl på GitHub.com",
+      "report": "Tak fordi du tager dig tid til at rappotere dene fejl. Fortæl venligst hvad du gjorde inden dette skete."
+    },
+    "list": {
+      "invite": "Inviter",
+      "empty": "Der er ingen botter"
+    },
+    "locale": {
+      "choose": "Vælg venligst et sprog.",
+      "pleasehelp": "Er du en god oversætter? Klik her."
+    },
+    "notfound": {
+      "gohome": "Gå tilbage til forsiden",
+      "message": "Siden blev ikke fundet"
+    },
+    "sure": {
+      "title": "Er du sikker?",
+      "ok": "Ok",
+      "no": "Gå tilbage"
+    },
+    "reviews": {
+      "title": "Anmeldelser",
+      "my": "Min anmeldelse",
+      "write": "Skriv en anmeldelse",
+      "placeholder": "Angiv venligst en begrundelse for din anmeldelse.",
+      "number": {
+        "one": "%s anmeldelse",
+        "other": "%s anmeldelser"
+      },
+      "delete": "Slet anmeldelse",
+      "all": "Vis alle anmeldelser"
+    },
+    "admin": {
+      "title": "Administratorkonsol",
+      "queue": "Vis kø"
+    }
+  },
+  "pagination": {
+    "image": {
+      "prev": "Tilbage",
+      "next": "Næste"
+    },
+    "page": {
+      "prev": "Forrige",
+      "next": "Næste side"
+    },
+    "currentPage": "Side { number }",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Tilføj Reaktioner",
+    "ADMINISTRATOR": "Administrator",
+    "ATTACH_FILES": "Vedhæft Filer",
+    "BAN_MEMBERS": "Ban Members",
+    "CHANGE_NICKNAME": "Change Nickname",
+    "CONNECT": "Tilslut",
+    "CREATE_INSTANT_INVITE": "Opret Øjeblikkelig Invitation",
+    "DEAFEN_MEMBERS": "Gør Medlemmer Døve",
+    "EMBED_LINKS": "Integrer Links",
+    "KICK_MEMBERS": "Smid Medlemmer Ud",
+    "MANAGE_CHANNELS": "Administrer Kanaler",
+    "MANAGE_EMOJIS": "Administrer Emojis",
+    "MANAGE_GUILD": "Administrer Server",
+    "MANAGE_MESSAGES": "Administrer Beskeder",
+    "MANAGE_NICKNAMES": "Manage Nicknames",
+    "MANAGE_ROLES": "Administrer Roller",
+    "MANAGE_WEBHOOKS": "Administrer Webhooks",
+    "MENTION_EVERYONE": "Nævn Alle",
+    "MOVE_MEMBERS": "Flyt Medlemmer",
+    "MUTE_MEMBERS": "Gør Medlemmer Stumme",
+    "READ_MESSAGE_HISTORY": "Read Message History",
+    "READ_MESSAGES": "Læs Beskeder",
+    "SEND_MESSAGES": "Send Beskeder",
+    "SEND_TTS_MESSAGES": "Send TTS Beskeder",
+    "SPEAK": "Tal",
+    "USE_EXTERNAL_EMOJIS": "Brug Eksterne Emojis",
+    "USE_VAD": "Brug Stemmeaktivitet",
+    "VIEW_AUDIT_LOG": "View Audit Log"
+  },
+  "site": {
+    "name": "Discord Botliste af Terminal.ink",
+    "description": "discordapps.dev is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
+  },
+  "states": {
+    "queue": "Ikke verificeret"
+  },
+  "navbar": {
+    "login": "Log på",
+    "logout": "Log af",
+    "admin": "Administrator",
+    "add": "Tilføj en applikation"
+  },
+  "components": {
+    "botpagecontentbox": {
+      "toggle": "Toggle arrow",
+      "more": "Vis mere",
+      "less": "Vis mindre"
+    }
+  }
+};
+},{}],"SgFO":[function(require,module,exports) {
+module.exports = {
+  "categories": {
+    "fun": "Fun",
+    "games": "Spiele",
+    "entertainment": "Unterhaltung",
+    "productivity": "Produktivität",
+    "education": "Bildung",
+    "image": "Bildmanipulation",
+    "news": "Nachrichten",
+    "music": "Musik",
+    "moderation": "Moderation",
+    "utility": "Utility",
+    "notifications": "Meldungen",
+    "other": "Andere"
+  },
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord ist eine eingetragene Marke von Discord Inc.",
+  "errors": {
+    "apps": {
+      "authors": "Du musst mindestens einen Autor haben und alle Autor IDs müssen nummerisch sein",
+      "customisable": "Die änderbarkeit des Prefixes muss entweder ausgewählt oder nicht ausgewählt sein",
+      "description": "Die kurze Beschreibung muss zwischen 10 und 64 Zeichen lang sein",
+      "githubowner": "Der GitHub Besitzer muss ein gültiger Account sein. Lass es leer, wenn du keinen Account hast.",
+      "githubrepo": "Die GitHub Repository muss ein gültiger String sein. Lass es leer, wenn du keine GitHub Repository hast.",
+      "id": "Die Bot ID muss ausgefühlt und nummerisch sein",
+      "invite": "Der Invite Link muss ausgefüllt und ein gültiger HTTPS Link sein",
+      "languages": "Du musst eine einzelne Sprache auswählern befor du weitermachen kannst",
+      "mentionable": "Die erwähnbarkeit des Bots muss entweder ausgewählt oder nicht ausgewählt sein",
+      "name": "Der Botname muss eine Länge zwischen 4 und 32 Zeichen haben",
+      "nsfw": "Der NSFW-status muss entweder ausgewählt oder nicht ausgewählt sein",
+      "oauth": "Die OAuth ID muss nummerisch sein",
+      "page": "Die lange Beschreibung muss zwischen 20 und 10000 Zeichen lang sein",
+      "prefix": "Du musst mindestens einen Prefix haben, welcher maximal 10 Zeichen lang ist.",
+      "support": "Der Support-link muss ein gültiger HTTPS Link sein",
+      "exists": "Der Bot existiert bereits in der Datenbank und du hast keine Berechtigung, dies zu überschreiben.",
+      "notabot": "Die angegebene ID ist nicht von einem Bot.",
+      "notfound": "Die angegebene ID wurde von Discord nicht gefunden.",
+      "add_success": "Bot wurde zur Botlist-Warteschlange hinzugefügt.",
+      "edit_success": "Bot erfolgreich editiert.",
+      "avatar": "Die Avatar URL muss ein gültiger HTTPS Link sein und darf nicht länger als 2000 Zeichn sein",
+      "cover": "Das Cover URL muss ein gültiger HTTPS Link sein und darf nicht länger als 2000 Zeichn sein",
+      "preview": "Die Vorschau URLs müssen gültige HTTPS Links sein, dürfen jeweils nicht länger als 2000 Zeichn sein und es dürfen maximal 20 Links sein.",
+      "no_suitable_lang": "Diese Seite hat keine Deutsche version. '{{ language }}' wird stattdessen angezeigt."
+    },
+    "permissions": {
+      "login": "Du bist nicht eingeloggt",
+      "denied": "Du hast nicht die richtigen Berechtigungen um darauf zugreiffen zu können",
+      "banned": "Dir wurde der Zugang zu dieser Ressourse verwehrt"
+    },
+    "website": {
+      "noscript": "JavaScript wurde deaktiviert. Funktionalität könnte beinträchtigt sein.",
+      "print": "JavaScript ist nicht kompatibel mit Papierausdrucke."
+    },
+    "reviews": {
+      "rating": "Bitte wähle eine Bewertung, befor du fortfährst",
+      "text": "Bitte gib an, warum du diesem Bot diese Anzahl an Sternen gegeben hast.",
+      "self": "Du kannst deinen eigenen Bot nicht bewerten"
+    },
+    "api": {
+      "400": "Du bist nicht berechtigt zum verwenden dieses Endpoints. Überprüfe, ob dein Token korrekt ist.",
+      "404": "Dieser Endpunkt konnte nicht gefunden werden, oder die Methode um diese Seite anzufordern ist nicht kompatibel.",
+      "500": "Ein interner Server-error ist aufgetreten.",
+      "test": "Ein Fehler wurde aus Entwickler-Gründen ausgelöst.",
+      "no_bot": "Bot nicht gefunden.",
+      "idchange": "Die ID des Bots kann nicht geändert werden. Bitte kontaktiere den Support von Terminal für technische unterstützung."
+    }
+  },
+  "footer": {
+    "attribution": "Zuordnung",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "docs": "Doks",
+    "view": "Diese Seite auf GitHub ansehen"
+  },
+  "forms": {
+    "add": "Weitere hinzufügen",
+    "apply": "Anwenden",
+    "close": "Schliessen",
+    "delete": "Löschen",
+    "help": "🤔",
+    "select": "Bitte wählen...",
+    "submit": "Senden",
+    "wait": "Bitte warten..."
+  },
+  "intro": {
+    "search": "Nach was suchst du?",
+    "docs": "Dokumentation"
+  },
+  "locales": {
+    "ar": "Arabisch",
+    "da": "Dänisch",
+    "de": "Deutsch",
+    "el": "Griechisch",
+    "en-GB": "Englisch (Vereinigtes Königreich)",
+    "es": "Spanisch",
+    "et": "Estnisch",
+    "fi": "Finnisch",
+    "fj": "Fijian",
+    "fr": "Französisch",
+    "gd": "Gälisch (Schottisch)",
+    "hi": "Hindi",
+    "it": "Italienisch",
+    "ja": "Japanisch",
+    "ko": "Koreanisch",
+    "la": "Lateinisch",
+    "nl": "Niederländisch",
+    "no": "Norwegisch",
+    "pt": "Portugiesisch",
+    "ru": "Russisch",
+    "sv": "Schwedisch",
+    "tr": "Türkisch",
+    "vi": "Vietnamesisch",
+    "zh-cn": "Chinesisch (Vereinfacht)",
+    "zh-tw": "Chinesisch (Traditionell)"
+  },
+  "pages": {
+    "bots": {
+      "backgroundAlt": "Das Logo für discordapps.dev",
+      "description": "Ein Applikations-Laden für Discord Bots",
+      "invite": "Diesen Bot hinzufügen",
+      "support": "Technischer Support",
+      "website": "Webseite",
+      "shortname": "Discord Botliste",
+      "mentionable": "Erwähnbar",
+      "customisable": "Änderbar",
+      "delete": "Löschen",
+      "edit": "Editieren",
+      "configure": "Konfigurieren",
+      "github": "Auf GitHub ansehen",
+      "approve": "Annehmen",
+      "deny": "Ablehnen",
+      "prefix": {
+        "one": "Prefix",
+        "other": "Prefixe"
+      },
+      "more": "Zeige mehr",
+      "less": "Zeige weniger",
+      "adverts": "Enthält Werbung und Features hinter einem anderen Service",
+      "inAppPurchases": "Hat in-app Käufe",
+      "nsfw": "NSFW",
+      "offeredby": "Angeboten von:",
+      "modified": "Zuletzt bearbeitet",
+      "created": "Zuerst veröffentlicht",
+      "category": "Kategorie",
+      "search": "Suche",
+      "count": "In {guilds, plural, one {einem einzigen Server} other {{guilds} Server}}"
+    },
+    "configuration": {
+      "token": {
+        "title": "Token",
+        "description": "Das ist der Token welcher zum bearbeiten deines Bots auf dieser Liste benötigt wird. Bitte schaue dir die Developer Dokumentation für verfügbare Endpoints an.",
+        "docs": "Zeige Dokumentation"
+      },
+      "renew": "Token erneuern",
+      "hide": {
+        "title": "Bot ausblenden",
+        "description": "Du kannst deinen Bot von der Hauptseite ausblenden, wenn du Ihn dort nicht brauchst.",
+        "disable": "Anzeigen",
+        "enable": "Ausblenden"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "modal": "Die OAuth ID ist die ID, welche verwendet wird, wenn User deinen Bot per OAuth arbaitsablauf einladen. In fast jedem Fall ist die ID die selbe, wie die von deinem Bot. Du musst nur etwas tun, wenn es Unterschiede zwischen den beiden gibt.",
+        "placeholder": "Die verwendete ID im OAuth Link",
+        "title": "OAuth ID"
+      },
+      "authors": {
+        "modal": "Gib eine einzelne ID für den Besitzer des Bots ein.",
+        "placeholder": "ID eines einzelnen Besitzers",
+        "title": "Bot Autoren",
+        "add": "Weitere hinzufügen"
+      },
+      "basicinfo": "Einfache informationen",
+      "nsfw": {
+        "title": "Nicht sicher für die Arbeit"
+      },
+      "support": {
+        "placeholder": "Soetwas wie: https://discord.gg/8uC6aKZ",
+        "small": "Lass dieses Feld leer, wenn du nicht gerne anderen hilfst",
+        "title": "Support URL"
+      },
+      "category": {
+        "title": "Kategorie"
+      },
+      "client_id": {
+        "modal1": "Die Bot ID ist eine Nummer, welche den Bot einzigartig identifiziert. Du kannst Ihn erhalten, wenn du auf den \"Copy\" Knopf im Discord Developer Portal klickst.",
+        "modal2": "Du kannst den Link auch finden, wenn du \"Developer Mode\" in den Discord Einstellungen aktivierst, den Bot rechtsklickst und dann \"ID kopieren\" auswählst. Stell sicher, dass du nicht die ID der Nachricht kopierst.",
+        "placeholder": "Die ID des Bot Users",
+        "title": "Bot ID"
+      },
+      "customisable": {
+        "title": "Prefix änderbar"
+      },
+      "description": {
+        "title": "Kurze Beschreibung"
+      },
+      "github_owner": {
+        "placeholder": "Etwas wie: ry00001",
+        "title": "GitHub Benutzer / Organisation"
+      },
+      "github_repo": {
+        "placeholder": "Etwas wie: Tuxedo",
+        "title": "GitHub Repository"
+      },
+      "information": "Information",
+      "invite": {
+        "modal": "Stelle sicher \"Bot ID\" enthält die ID deines Bots",
+        "title": "Einladungs URL",
+        "generate": "Erstelle einen Link"
+      },
+      "languages": {
+        "add": "Sprache hinzufügen",
+        "delete": "Diese Sprache löschen",
+        "modal": "Schreibe deine Botseite in jede unterstützte Sprache. Wähle eine Sprache und klicke auf den 'Sprache hinzufügen' Knopf.",
+        "title": "Sprachen"
+      },
+      "mentionable": {
+        "title": "Bot kann erwähnt werden zum nutzen"
+      },
+      "name": {
+        "title": "Name"
+      },
+      "page": {
+        "title": "Längere Beschreibung"
+      },
+      "prefix": {
+        "placeholder": "Ein einzelner Prefix",
+        "title": "Prefix",
+        "add": "Weitere hinzufügen"
+      },
+      "flags": {
+        "title": "Erklärung zur Finanzierung und Werbung",
+        "inAppPurchases": {
+          "title": "In-App käufe",
+          "small": "Aktiviere dieses Kontrollkästchen, wenn du Funktionen hinter einer Paywall hast"
+        },
+        "adverts": {
+          "title": "Werbung",
+          "small": "Aktiviere dieses Kontrollkästchen, wenn dein Bot Werbung und/oder Features hinter einem externen service hat"
+        }
+      },
+      "images": {
+        "title": "Darstellung",
+        "avatar": {
+          "title": "Avatar URL",
+          "placeholder": "Ein HTTPS Link zu einem Avatar Bild"
+        },
+        "cover": {
+          "title": "Cover Bild",
+          "placeholder": "Ein HTTPS Link zu einem grossen Bild"
+        },
+        "preview": {
+          "title": "Vorschaubilder",
+          "placeholder": "Ein HTTPS Link zu einem einzelnen Screenshot",
+          "add": "Weiteres Bild hinzufügen"
+        }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "Eine ID zu einem YouTube-Video, welche eine Demonstration deines Bots zeigt"
+      },
+      "website": {
+        "title": "Webseite",
+        "placeholder": "Ein HTTPS Link zu deiner Webseite"
+      },
+      "sourcecode": "Quellcode",
+      "title": "Hinzufügen oder bearbeiten einer Anwendung",
+      "triggermethods": "Trigger Methoden",
+      "deleteLanguage": "Eine Sprache löschen",
+      "required": "Mit * markierte Felder sind auszufüllen.",
+      "updates": "Es ist empfohlen, dem Terminal.ink Discord beizutreten um Service updates, Nachrichten über den Status deines Bots und direkte Nachrichten von Team-Mitgliedern zu erhalten.",
+      "discord": "Terminal.ink beitreten"
+    },
+    "error": {
+      "notfound": "Seite nicht gefunden...",
+      "server": "Unerwartet schnelle Demontage festgestellt",
+      "github": "Melde diesen Fehler auf GitHub.com",
+      "report": "Danke dass du dir Zeit nimmst, um diesen Fehler zu melden. Bitte schreibe, was du vor dem Vorfall getan hast."
+    },
+    "list": {
+      "invite": "Einladen",
+      "empty": "Da sind keine Bots"
+    },
+    "locale": {
+      "choose": "Bitte wähle eine Sprache.",
+      "pleasehelp": "Bist du ein guter Übersetzer? Klick hier."
+    },
+    "notfound": {
+      "gohome": "Hauptseite",
+      "message": "Seite nicht gefunden"
+    },
+    "sure": {
+      "title": "Bist du dir sicher?",
+      "ok": "Ok",
+      "no": "Zurück gehen"
+    },
+    "reviews": {
+      "title": "Bewertungen",
+      "my": "Meine Bewertung",
+      "write": "Schreibe eine Bewertung",
+      "placeholder": "Bitte gib einen Grund für deine Bewertung ein.",
+      "number": {
+        "one": "%s Bewertung",
+        "other": "%s Bewertungen"
+      },
+      "delete": "Bewertung löschen",
+      "all": "Alle Bewertungen ansehen"
+    },
+    "admin": {
+      "title": "Administrator Konsole",
+      "queue": "Warteschlange ansehen",
+      "denied": "Zeige abgelehnte",
+      "banned": "Zeige gebannte",
+      "state": {
+        "reason": "Gib einen Grund für das ändern des Statuses von dem Bot ein",
+        "change": "Status ändern"
+      }
+    }
+  },
+  "pagination": {
+    "image": {
+      "prev": "Vorherige",
+      "next": "Nächste"
+    },
+    "page": {
+      "prev": "Vorherige",
+      "next": "Nächste Seite"
+    },
+    "currentPage": "Seite { number }",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Reactionen hinzufügen",
+    "ADMINISTRATOR": "Administrator",
+    "ATTACH_FILES": "Dateien anhängen",
+    "BAN_MEMBERS": "Mitglieder bannen",
+    "CHANGE_NICKNAME": "Nickname ändern",
+    "CONNECT": "Verbinden",
+    "CREATE_INSTANT_INVITE": "Soforteinladung erstellen",
+    "DEAFEN_MEMBERS": "Mitglieder taubschalten",
+    "EMBED_LINKS": "Links einbetten",
+    "KICK_MEMBERS": "Mitglieder kicken",
+    "MANAGE_CHANNELS": "Kanäle verwalten",
+    "MANAGE_EMOJIS": "Emojis verwalten",
+    "MANAGE_GUILD": "Server verwalten",
+    "MANAGE_MESSAGES": "Nachrichten verwalten",
+    "MANAGE_NICKNAMES": "Nicknamen verwalten",
+    "MANAGE_ROLES": "Rollen verwalten",
+    "MANAGE_WEBHOOKS": "Webhooks verwalten",
+    "MENTION_EVERYONE": "Alle erwähnen",
+    "MOVE_MEMBERS": "Mitglieder verschieben",
+    "MUTE_MEMBERS": "Mitglieder Stummschalten",
+    "READ_MESSAGE_HISTORY": "Nachrichtenverlauf lesen",
+    "READ_MESSAGES": "Nachrichten lessen",
+    "SEND_MESSAGES": "Nachrichten senden",
+    "SEND_TTS_MESSAGES": "TTS Nachrichten senden",
+    "SPEAK": "Sprechen",
+    "USE_EXTERNAL_EMOJIS": "Externe Emojis verwenden",
+    "USE_VAD": "Sprachaktivierung verwenden",
+    "VIEW_AUDIT_LOG": "Auditlogs ansehen"
+  },
+  "site": {
+    "name": "Discord Bot Liste von terminal.ink",
+    "description": "discordapps.dev ist ein applikations-store für Discord Bots. Installiere applikationen für Musik, News, Moderation und mehr für deinen Server."
+  },
+  "states": {
+    "approved": "Genehmigt",
+    "denied": "Abgelehnt",
+    "queue": "In Warteschlange",
+    "banned": "Gebannt"
+  },
+  "navbar": {
+    "add": "App hinzufügen",
+    "login": "Einloggen",
+    "logout": "Ausloggen",
+    "admin": "Admin"
+  }
+};
+},{}],"KfmG":[function(require,module,exports) {
+module.exports = {
+  "categories": {
+    "fun": "Fun",
+    "games": "Games",
+    "entertainment": "Entertainment",
+    "productivity": "Productivity",
+    "education": "Education",
+    "image": "Image Manipulation",
+    "news": "News",
+    "music": "Music",
+    "moderation": "Moderation",
+    "utility": "Utility",
+    "notifications": "Notifications",
+    "other": "Miscellaneous"
+  },
+  "alt": {
+    "avatar": "Avatar for {name}"
+  },
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
+  "errors": {
+    "rpc": {
+      "invite": "The installation URL must filled out, and also be a valid HTTPS link"
+    },
+    "bots": {
+      "invite": "The invite URL must be filled out, and also be a valid HTTPS link",
+      "notabot": "The ID provided was not a bot account.",
+      "notfound": "The ID provided was not found by Discord."
+    },
+    "apps": {
+      "authors": "You must have at least 1 author of the application, and all Author IDs must be numeric",
+      "boolean": "A non-boolean value was sent to the server. Please contact Terminal.ink support.",
+      "category": "You must select a category for your application",
+      "customisable": "The customisability of the prefix must be either ticked, or unticked",
+      "contents": "You must select at least one language for your application page to be displayed in. Click a language, and then click \"Add a language\"",
+      "description": "The short description must have a length between 10 and 100",
+      "githubowner": "The GitHub owner needs to be a valid GitHub user. Leave blank if you do not have a GitHub account.",
+      "githubrepo": "The GitHub repository needs to be a valid string. Leave blank if you do not have a GitHub repository.",
+      "id": "The Application ID needs to be filled out, and numeric",
+      "website": "The Website URL needs to be a valid HTTPS link",
+      "languages": "You must add a single language. Click the language you want your application page to be in, and select the 'Add a language' button",
+      "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
+      "name": "The application must have a name of length between 4 and 32.",
+      "nsfw": "The NSFW status must be either ticked, or unticked",
+      "oauth": "The OAuth ID needs to be numeric",
+      "page": "The long description must have a length between 20 and 10000",
+      "prefix": "You must have at least 1 prefix, of max length 10.",
+      "support": "The Support URL needs to be a valid HTTPS link",
+      "exists": "The application already exists in the database, and you do not have permission to overwrite this.",
+      "add_success": "Added application to the queue.",
+      "edit_success": "Edited application successfully.",
+      "count": "The guild count for a bot must be between 0 and 5000000 servers",
+      "avatar": "The avatar URL must be a valid HTTPS link, and a maximum of 2000 characters",
+      "cover": "The cover URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the cover URL may not be identical to the avatar URL.",
+      "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
+      "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead.",
+      "youtube": "The YouTube ID needs to look like an ID",
+      "youku": "The Alibaba YOUKU ID needs to look like an ID"
+    },
+    "permissions": {
+      "login": "You are not logged in",
+      "denied": "You do not have the adequate permissions to access this",
+      "banned": "You have been denied access to this resource"
+    },
+    "reviews": {
+      "rating": "Please select a rating before continuing",
+      "text": "Please enter why you gave this number of stars for this application.",
+      "self": "You cannot review your own application!"
+    },
+    "api": {
+      "400": "You are unauthorised to use this endpoint. Check your token is correct.",
+      "404": "This endpoint was not found, or the method used to request this page is not compatible.",
+      "500": "An internal server error occured.",
+      "test": "An error was thrown for development purposes.",
+      "no_bot": "Application not found",
+      "idchange": "The ID of the application cannot be changed to another ID. Please contact Terminal support for technical support"
+    },
+    "website": {
+      "noscript": "JavaScript must be enabled to use this website effectively."
+    }
+  },
+  "footer": {
+    "attribution": "Dependencies",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord Server",
+    "terminal": "Terminal.ink",
+    "terms": "Terms and Conditions",
+    "docs": "Docs",
+    "foss": "discordapps.dev is powered by the Terminal.ink Bot List Open Source Project",
+    "apple": "Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc."
+  },
+  "forms": {
+    "select": "Please select...",
+    "submit": "Submit",
+    "wait": "Please wait..."
+  },
+  "intro": {
+    "search": "What are you looking for?",
+    "docs": "Documentation"
+  },
+  "locales": {
+    "ar": "Arabic",
+    "da": "Danish",
+    "de": "German",
+    "el": "Greek",
+    "en-GB": "English (United Kingdom)",
+    "en-US": "English (United States)",
+    "es": "Spanish",
+    "et": "Estonian",
+    "fi": "Finnish",
+    "fj": "Fijian",
+    "fr": "French",
+    "gd": "Gaelic (Scottish)",
+    "hi": "Hindi",
+    "he": "Hebrew",
+    "it": "Italian",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "la": "Latin",
+    "nl": "Dutch",
+    "no": "Norwegian",
+    "pl": "Polish",
+    "pt": "Portuguese",
+    "ru": "Russian",
+    "sv": "Swedish",
+    "tr": "Turkish",
+    "vi": "Vietnamese",
+    "zh-cn": "Chinese (Simplified)",
+    "zh-tw": "Chinese (Traditional)"
+  },
+  "pages": {
+    "home": {
+      "bots": {
+        "title": "Bots",
+        "description": "Find the perfect bot for your Discord server",
+        "link": "Start exploring"
+      },
+      "rpc": {
+        "title": "Rich Presence Plugins",
+        "description": "Show off what you are doing in Discord with RPC applications",
+        "link": "Start sharing"
+      },
+      "discover": {
+        "title": "Discover Terminal.ink",
+        "description": "See how we work on improving the Terminal.ink Bot List Open Source Project",
+        "link": "Blog"
+      },
+      "topBots": "Top Rated Bots",
+      "randomBots": "Random Selection",
+      "newestBots": "Just Added",
+      "popularBots": "Most Installed",
+      "smallBots": "Growing Bots",
+      "topRPC": "RPC applications"
+    },
+    "apps": {
+      "oneLang": "This page is only available in the following language",
+      "otherLang": "This page is available in other languages",
+      "appLinks": "Application Links",
+      "devLinks": "Developer Links",
+      "reclaim": "No data. Join Terminal.ink to claim"
+    },
+    "rpc": {
+      "index": {
+        "title": "Rich Presence List",
+        "description": "Show off what you're doing, with a wide range of Discord RPC plugins for Windows, Mac or Linux software. Browse RPC and more at the Discord Apps Marketplace"
+      },
+      "edit": "Edit RPC Application",
+      "invite": "Install this application",
+      "supports": "Supports: {operatingSystems}"
+    },
+    "bots": {
+      "index": {
+        "title": "Bot List",
+        "description": "Find a Discord Bot for your server to improve your workflow, add a bit of fun or listen together with Discord Bots. Browse bots and more at the Discord Apps Marketplace"
+      },
+      "backgroundAlt": "The logo for discordapps.dev",
+      "inMyLanguage": "Bots in my Language",
+      "invite": "Add this bot",
+      "support": "Technical Support",
+      "website": "Website",
+      "mentionable": "Mentionable",
+      "customisable": "Customisable",
+      "delete": "Delete",
+      "reallyDelete": "Sure?",
+      "edit": "Edit",
+      "configure": "Token and Configuration",
+      "github": "View on GitHub",
+      "prefix": "{count, plural, one {Prefix} other {Prefixes}}",
+      "adverts": "Contains adverts and features locked behind other services",
+      "inAppPurchases": "Has in-app purchases",
+      "nsfw": "NSFW",
+      "offeredby": "Developers",
+      "modified": "Last modified",
+      "created": "First published",
+      "category": "Category",
+      "initiateCategoryFilter": "Categories",
+      "count": "Installed in {guilds, plural, one {a server} other {{guilds} servers}}"
+    },
+    "configuration": {
+      "token": {
+        "title": "Token",
+        "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints.",
+        "docs": "View Documentation",
+        "renew": "Renew Token"
+      },
+      "hide": {
+        "title": "Hide bot",
+        "description": "You can hide your bot from the front page of the website, in case you don't need to be there.",
+        "disable": "Unhide",
+        "enable": "Hide"
+      }
+    },
+    "edit": {
+      "rpc": {
+        "invite": {
+          "title": "Installation URL",
+          "placeholder": "Enter a HTTPS link to your website to download your software"
+        },
+        "flags": {
+          "title": "Available Features",
+          "win": {
+            "title": "Supports Microsoft Windows"
+          },
+          "mac": {
+            "title": "Supports Apple MacOS X"
+          },
+          "linux": {
+            "title": "Supports Linux",
+            "small": "What you’re referring to as Linux, is in fact, GNU/Linux, or as I’ve recently taken to calling it, GNU plus Linux."
+          }
+        }
+      },
+      "invite": {
+        "title": "Invite URL",
+        "placeholder": "Enter a HTTPS link to invite your bot"
+      },
+      "application_id": {
+        "placeholder": "The ID used in the OAuth link.",
+        "title": "OAuth ID"
+      },
+      "authors": {
+        "placeholder": "ID of a single owner",
+        "title": "Authors",
+        "add": "Add another",
+        "delete": "Remove author"
+      },
+      "basicinfo": "Basic Information",
+      "nsfw": {
+        "title": "Not Safe For Work"
+      },
+      "support": {
+        "placeholder": "Something like: https://discord.gg/8uC6aKZ",
+        "small": "Leave this field empty if you don't like helping people",
+        "title": "Support URL"
+      },
+      "category": {
+        "title": "Category",
+        "placeholder": "Select a category"
+      },
+      "client_id": {
+        "placeholder": "The ID of the application",
+        "title": "Application ID"
+      },
+      "customisable": {
+        "title": "Customisable prefix"
+      },
+      "description": {
+        "title": "Short Descripion",
+        "placeholder": "Enter a shorter description, shown on the home page."
+      },
+      "github_owner": {
+        "placeholder": "The owner of the GitHub repository",
+        "title": "GitHub User / Organisation"
+      },
+      "github_repo": {
+        "placeholder": "The name of the GitHub repository",
+        "title": "GitHub Repository"
+      },
+      "information": "Application Page Appearance",
+      "languages": {
+        "modal": "Write your application page in many supported languages. Select a language, then click the \"Add a language\" button to the right.",
+        "add": "Add a language",
+        "delete": "Delete this language"
+      },
+      "leave": "Are you sure you want to leave? Unmodified changes will not be saved.",
+      "mentionable": {
+        "title": "Can mention to trigger bot"
+      },
+      "name": {
+        "title": "Name",
+        "placeholder": "Enter the name of the application."
+      },
+      "page": {
+        "title": "Extended Description",
+        "placeholder": "Enter useful information about your application, like commands, features and updates."
+      },
+      "prefix": {
+        "placeholder": "A single prefix",
+        "title": "Prefix",
+        "add": "Add another prefix",
+        "delete": "Remove prefix"
+      },
+      "flags": {
+        "title": "Funding and Advertising Decleration",
+        "inAppPurchases": {
+          "title": "In App Purchases",
+          "small": "Tick this box if you have features behind a paywall, such as donations"
+        },
+        "adverts": {
+          "title": "Advertisments",
+          "small": "Tick this box if your bot links to other bot lists, and/or have features that are locked behind other services/bot lists"
+        }
+      },
+      "images": {
+        "title": "Appearance",
+        "avatar": {
+          "title": "Avatar URL",
+          "placeholder": "A HTTPS link to an avatar image"
+        },
+        "cover": {
+          "title": "Cover Image",
+          "placeholder": "A HTTPS link to a large image"
+        },
+        "preview": {
+          "title": "Preview Images",
+          "placeholder": "A HTTPS link to a single screenshot",
+          "add": "Add another image",
+          "delete": "Delete"
+        }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "An ID to a YouTube video"
+      },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "An ID to a YOUKU video"
+      },
+      "website": {
+        "title": "Website",
+        "placeholder": "A HTTPS link to your website"
+      },
+      "sourcecode": "Source Code",
+      "title": "Add or Edit an Application",
+      "triggermethods": "Trigger Methods",
+      "deleteLanguage": "Delete a language",
+      "required": "Fields marked with * are required.",
+      "updates": "It is highly recommended you join the Terminal.ink Discord Server to view service updates, view your application verification status, and also recieve direct messages from staff about your application.",
+      "discord": "Join Terminal.ink"
+    },
+    "error": {
+      "notfound": "Page not found...",
+      "server": "Internal Server Error",
+      "github": "Report this error at GitHub.com",
+      "report": "Thanks for taking the time to report this error. Please type in what you were doing before the incident.",
+      "snarky": "This error was going to happen anyway."
+    },
+    "list": {
+      "empty": "There are no applications which matches the current filter."
+    },
+    "locale": {
+      "choose": "Please select a language.",
+      "pleasehelp": "Are you a good translator? Click here."
+    },
+    "langdev": {
+      "title": "Look at all language keys",
+      "compare": "Compare selected languages",
+      "key": "JSON Key",
+      "notfound": "Key not found!"
+    },
+    "reviews": {
+      "title": "Reviews",
+      "write": "Write a review",
+      "placeholder": "Please enter a reason for your review.",
+      "delete": "Delete review"
+    },
+    "admin": {
+      "title": "Administration Console"
+    },
+    "filter": {
+      "authors": {
+        "placeholder": "ID of a single owner",
+        "title": "Bot Authors",
+        "add": "Add another",
+        "delete": "Remove author"
+      },
+      "category": {
+        "title": "Category",
+        "placeholder": "All categories"
+      },
+      "query": {
+        "title": "Search",
+        "placeholder": "Enter text"
+      },
+      "nsfw": {
+        "title": "Not Safe For Work",
+        "placeholder": "Do not filter",
+        "nsfw": "Not Safe for Work",
+        "sfw": "Safe For Work"
+      },
+      "type": {
+        "title": "Application Type",
+        "placeholder": "All Applications",
+        "bots": "Bots",
+        "rpc": "Rich Presence"
+      },
+      "state": {
+        "placeholder": "Any state",
+        "title": "State"
+      }
+    },
+    "game": {
+      "title": "Terminal.ink Game",
+      "description": "Click the button to get points!",
+      "leave": "Are you sure you want to leave? You will lose all your points.",
+      "score": "You have {kliksphilip, plural, =0 {no points :heejintears:} one {1 point} other {{kliksphilip} points}}."
+    },
+    "docs": {
+      "by": "By {name}",
+      "more": "View more",
+      "noMore": "There are no more posts!",
+      "back": "Back to posts",
+      "title": "Terminal.ink Documentation and Blogs",
+      "description": "See posts about how Terminal.ink operates, or see a tutorial on how to do something."
+    }
+  },
+  "navbar": {
+    "add": "Add a bot",
+    "addRpc": "Add RPC app",
+    "login": "Login",
+    "logout": "Logout",
+    "admin": "Admin",
+    "languages": "Languages",
+    "search": "Search for bots",
+    "user": "My Bots"
+  },
+  "pagination": {
+    "page": {
+      "prev": "Previous",
+      "next": "Next Page"
+    },
+    "currentPage": "Page { number }",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Add Reactions",
+    "ADMINISTRATOR": "Administrator",
+    "ATTACH_FILES": "Attach Files",
+    "BAN_MEMBERS": "Ban Members",
+    "CHANGE_NICKNAME": "Change Nickname",
+    "CONNECT": "Connect",
+    "CREATE_INSTANT_INVITE": "Create Instant Invite",
+    "DEAFEN_MEMBERS": "Deafen Members",
+    "EMBED_LINKS": "Embed Links",
+    "KICK_MEMBERS": "Kick Members",
+    "MANAGE_CHANNELS": "Manage Channels",
+    "MANAGE_EMOJIS": "Manage Emojis",
+    "MANAGE_GUILD": "Manage Server",
+    "MANAGE_MESSAGES": "Manage Messages",
+    "MANAGE_NICKNAMES": "Manage Nicknames",
+    "MANAGE_ROLES": "Manage Roles",
+    "MANAGE_WEBHOOKS": "Manage Webhooks",
+    "MENTION_EVERYONE": "Mention Everyone",
+    "MOVE_MEMBERS": "Move Members",
+    "MUTE_MEMBERS": "Mute Members",
+    "READ_MESSAGE_HISTORY": "Read Message History",
+    "READ_MESSAGES": "Read Messages",
+    "SEND_MESSAGES": "Send Messages",
+    "SEND_TTS_MESSAGES": "Send TTS Messages",
+    "SPEAK": "Speak",
+    "USE_EXTERNAL_EMOJIS": "Use External Emojis",
+    "USE_VAD": "Use Voice Activity",
+    "VIEW_AUDIT_LOG": "View Audit Log"
+  },
+  "site": {
+    "name": "Discord Apps Marketplace",
+    "subheading": "Find bots to enhance your server",
+    "description": "discordapps.dev is an application store for Discord applications. Install bots for music, news, moderation and more for your server, or install RPC plugins to show off what you're doing."
+  },
+  "states": {
+    "approved": "Approved",
+    "denied": "Changes required",
+    "queue": "In Queue",
+    "banned": "Banned"
+  },
+  "types": {
+    "all": "All Applications",
+    "bots": "Bots",
+    "rpc": "Rich Presence",
+    "webhooks": "Webhooks"
+  },
+  "components": {
+    "pleaseaddyourbotpleasethanks": {
+      "title": "Get started with Discord Bots",
+      "innovate": {
+        "heading": "Start Innovating",
+        "content": "Learn to create your own Discord application for your own personal server"
+      },
+      "add": {
+        "heading": "Add your app",
+        "content": "Share your creation to the world; Let others enhance their server experience with your applications"
+      }
+    },
+    "categorycollection": {
+      "morebots": "See more"
+    },
+    "botpagecontentbox": {
+      "toggle": "Toggle arrow",
+      "more": "View more",
+      "less": "View less"
+    },
+    "helpusimprove": {
+      "title": "Help us",
+      "text": "Please comment with feedback on this website via the issues tab on GitHub.",
+      "issues": "GitHub Issues"
+    },
+    "botpagesetstatebox": {
+      "state": {
+        "title": "Set state",
+        "placeholder": "Please select a state"
+      },
+      "reason": {
+        "title": "Reason",
+        "placeholder": "Reason for changing the state. (optional)"
+      },
+      "submit": "Update State"
+    },
+    "botpagelinks": {
+      "share": "You should check out '{name}' on the Discord Apps Marketplace"
+    },
+    "botcard": {
+      "rated": "Rated {score}/5.0 by {count} {count, plural, one {user} other {users}}",
+      "noRating": "No ratings"
+    }
+  }
+};
+},{}],"z/qs":[function(require,module,exports) {
+module.exports = {};
+},{}],"H3UD":[function(require,module,exports) {
+module.exports = {
+  "categories": {
+    "fun": "Fun",
+    "games": "Jeux",
+    "entertainment": "Divertissement",
+    "productivity": "Productivité",
+    "education": "Éducation",
+    "image": "Manipulation d'images",
+    "news": "Nouvelles",
+    "music": "Musique",
+    "moderation": "Modération",
+    "utility": "Utilitaire",
+    "notifications": "Notifications",
+    "other": "Autre"
+  },
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord est une marque appartenant Discord Inc.\nTraduction en français par iDroid27, Bowser65, blue et Lionir.",
+  "errors": {
+    "apps": {
+      "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
+      "category": "Vous devez sélectionner une catégorie pour votre bot",
+      "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",
+      "contents": "Vous devez sélectionner au moins une langue pour que votre bot soit disponible. Cliquez sur une langue, puis cliquez sur \"Ajouter une langue\"",
+      "description": "La description courte doit avoir une taille entre 10 et 100 caractères",
+      "githubowner": "Le propriétaire GitHub doit être un utilisateur GitHub valide. Laissez vide si vous n'avez pas de compte GitHub.",
+      "githubrepo": "le répertoire GitHub doit être une chaine de caractères valide. Laissez vide si vous n'avez pas de répertoire GitHub.",
+      "id": "L'ID du bot doit être renseigné, et numerique",
+      "invite": "L'URL d'invitation needs doit être remplis, et avec un lien HTTPS valide",
+      "website": "L'URL du site web doit être un lien HTTPS valide",
+      "languages": "Vous devez ajouter au moins une langue. Sélectionnez le langue dans laquelle vous voulez que vote page de bot soie, et cliquez sur le bouton 'Ajouter cette langue'",
+      "mentionable": "la mentionnabilité du préfixe doit être soit coché, ou décoché",
+      "name": "Le bot doit avoir un nom d'une longueur entre 4 et 32 caractères.",
+      "nsfw": "Le status NSFW doit être soit coché, ou décoché",
+      "oauth": "L'ID OAuth doit être numerique",
+      "page": "la longue description doit avoir une longueur entre 20 et 10000 caractères.",
+      "prefix": "Vous devez avoir au moins un prefixe, d'une longueur maximale de 10 caractères.",
+      "support": "L'URL d'assistance doit être un lien HTTPS valide",
+      "exists": "Le bot existe déjà dans la base de données, et vous n'avez pas la permissions d'écraser cela.",
+      "notabot": "L'ID fourni n'était pas un ID de bot.",
+      "notfound": "L'ID fourni n'a pas été trouvé par Discord.",
+      "add_success": "Le bot a été ajouté à la liste d'attente des bots.",
+      "edit_success": "Bot édité avec succès.",
+      "count": "Le nombre de guildes pour le bot doit être entre 0 et 5000000 serveurs",
+      "avatar": "L'URL de l'avatar doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
+      "cover": "L'URL de la couverture doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
+      "preview": "Toutes les URL d'aperçu doivent être des liens HTTPS valides, avec une longueur maximale de 2000 caractères chacun, avec un maximum de 20 liens",
+      "no_suitable_lang": "Cette page n'a pas de version Française. La version en {{ language }} est affiché à la place.",
+      "youtube": "L'ID Youtube doit ressembler à un ID",
+      "youku": "L'ID d'Alibaba's YOUKU doit ressembler à un ID"
+    },
+    "permissions": {
+      "login": "Vous n'êtes pas connecté",
+      "denied": "Vous n'avez pas les permissions adéquates afin d'accéder à cela",
+      "banned": "Vous avez été interdit d'accéder à cette ressource"
+    },
+    "website": {
+      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites.",
+      "print": "JavaScript n'est pas compatible avec les impressions papier."
+    },
+    "reviews": {
+      "rating": "Veuillez sélectionner une note avant de continuer",
+      "text": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
+      "self": "Vous ne pouvez pas critiquer votre propre bot!"
+    },
+    "api": {
+      "400": "Vous n'êtes pas autorisé à utiliser ce chemin. Vérifiez la validité du jeton.",
+      "404": "Ce chemin n'a pas été trouvé, ou la méthode utilisée pour effectuer cette requête n'est pas supportée.",
+      "500": "Une erreur interne au serveur est survenue.",
+      "test": "Une erreur a été lancée à des fins de développement.",
+      "no_bot": "Bot introuvable",
+      "idchange": "L'ID du bot ne peut être changé pour un autre ID. Veuillez contacter le support de Terminal pour une assistance technique"
+    }
+  },
+  "footer": {
+    "attribution": "Attribution",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "terms": "Conditions d'utilisation",
+    "docs": "Docs",
+    "view": "Voir cette page sur GitHub"
+  },
+  "forms": {
+    "add": "Ajouter un(e) autre",
+    "apply": "Appliquer",
+    "close": "Fermer",
+    "delete": "Supprimer",
+    "help": "🤔",
+    "select": "Veuillez séléctionner...",
+    "submit": "Envoyer",
+    "wait": "Veuillez patienter ..."
+  },
+  "intro": {
+    "search": "Que recherchez vous?",
+    "docs": "Documentation"
+  },
+  "locales": {
+    "ar": "Arabe",
+    "da": "Danois",
+    "de": "Allemand",
+    "el": "Grec",
+    "en-GB": "Anglais (Royaume Uni)",
+    "en-US": "Anglais (États-Unis)",
+    "es": "Espagnol",
+    "et": "Estonien",
+    "fi": "Finlandais",
+    "fj": "Fidjien",
+    "fr": "Français",
+    "gd": "Gaélique (Écossais)",
+    "hi": "Hindi",
+    "he": "Hébreu",
+    "it": "Italien",
+    "ja": "Japonais",
+    "ko": "Coréen",
+    "la": "Latin",
+    "nl": "Néerlandais",
+    "no": "Norvégien",
+    "pl": "Polonais",
+    "pt": "Portugais",
+    "ru": "Russe",
+    "sv": "Suédois",
+    "tr": "Turc",
+    "vi": "Vietnamien",
+    "zh-cn": "Chinois (Simplifié)",
+    "zh-tw": "Chinois (Traditionnel)"
+  },
+  "pages": {
+    "bots": {
+      "backgroundAlt": "Logo pour discordapps.dev",
+      "description": "Une boutique d'applications pour des bots Discord",
+      "inMyLanguage": "Bots dans ma langue",
+      "invite": "Inviter ce bot",
+      "support": "Support technique",
+      "website": "Site Internet",
+      "shortname": "Bots Discord",
+      "mentionable": "Mentionable",
+      "customisable": "Customisable",
+      "delete": "Supprimer",
+      "edit": "Éditer",
+      "configure": "Configurer",
+      "github": "Voir sur GitHub",
+      "approve": "Approuver",
+      "deny": "Refuser",
+      "prefix": {
+        "one": "Préfixe",
+        "other": "Préfixes"
+      },
+      "more": "Voir plus",
+      "less": "Voir moins",
+      "adverts": "Contient de la publicité et des fonctionalités cachées par d'autres services",
+      "inAppPurchases": "Achats dans l'application",
+      "nsfw": "NSFW",
+      "offeredby": "Proposé par :",
+      "modified": "Dernière modification",
+      "created": "Publication",
+      "category": "Catégorie",
+      "search": "Rechercher",
+      "count": "Installé dans {guilds, plural, one {un seul serveur} other {{guilds} serveurs}}"
+    },
+    "configuration": {
+      "token": {
+        "title": "Jeton",
+        "description": "Ceci est le jeton requis pour modifier votre bot sur la liste. Veuillez vous refferer à la documentation pour developers pour les endpoints disponibles.",
+        "docs": "Voir la documentation"
+      },
+      "renew": "Renouveler le jeton",
+      "hide": {
+        "title": "Masquer le bot",
+        "description": "Vous pouvez masquer votre bot de la page d'accueil du site, si vous ne souhaitez pas qu'il y soit.",
+        "disable": "Afficher",
+        "enable": "Masquer"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "modal": "L'ID OAuth est l'ID utilisé lorsque les utilisateurs invitent votre bot à travers le système OAuth. Dans la plupart des cas, cet ID est le même que votre Bot ID. Vous ne devrez agir que si les deux sont différents.",
+        "placeholder": "L'ID utilisé dans le lien OAuth",
+        "title": "ID OAuth"
+      },
+      "authors": {
+        "modal": "Entrer un seul ID d'un propriétaire du bot.",
+        "placeholder": "ID d'un seul propriétaire",
+        "title": "Auteur(s) du Bot",
+        "add": "Ajouter un(e) autre"
+      },
+      "basicinfo": "Informations Basiques",
+      "nsfw": {
+        "title": "Non adapté pour toutes les audiences"
+      },
+      "support": {
+        "placeholder": "Quelque chose comme https://discord.gg/8uC6aKZ",
+        "small": "Laissez ce champ vide si vous n'aimez pas aider les gens",
+        "title": "Serveur d'assistance"
+      },
+      "category": {
+        "title": "Catégorie"
+      },
+      "client_id": {
+        "modal1": "L'ID du bot est un nombre unique qui identifie l'utilisateur associé au bot. Vous pouvez le récupérer en cliquant sur le bouton \"Copier\" dans le Portail Développeur de Discord.",
+        "modal2": "Vous pouvez également trouver cet ID en activant le \"Mode Développeur\" dans les paramètres Discord. Ensuite,  faites un clic droit sur votre bot et cliquez sur \"Copier l'identifiant\". Assurez-vous de ne pas copier l'ID du message.",
+        "placeholder": "L'ID de l'utilisateur associé au bot",
+        "title": "ID du bot"
+      },
+      "customisable": {
+        "title": "Préfixe customisable"
+      },
+      "description": {
+        "title": "Description courte"
+      },
+      "github_owner": {
+        "placeholder": "Quelque chose comme ry00001",
+        "title": "Utilisateur ou Organisation"
+      },
+      "github_repo": {
+        "placeholder": "Quelque chose comme Tuxedo",
+        "title": "Répertoire"
+      },
+      "information": "Page de votre bot",
+      "invite": {
+        "modal": "Veuillez vérifier que \"ID du bot\" a été rempli avec l'ID du bot Discord",
+        "title": "URL d'invitation",
+        "generate": "Générer une URL"
+      },
+      "languages": {
+        "add": "Ajouter une langue",
+        "delete": "Supprimer cette langue",
+        "modal": "Écrivez la page de votre bot dans n'importe quelle langue prise en charge. Sélectionnez une langue, et cliquez sur \"Ajouter cette langue\".",
+        "title": "Langues de la page du bot"
+      },
+      "mentionable": {
+        "title": "Possibilité de mentionner le bot pour le déclencher"
+      },
+      "name": {
+        "title": "Nom"
+      },
+      "page": {
+        "title": "Description extensive"
+      },
+      "prefix": {
+        "placeholder": "Un seul préfixe",
+        "title": "Préfixe",
+        "add": "Ajouter un autre préfixe"
+      },
+      "flags": {
+        "title": "Notification de publicité et/ou de monétisation",
+        "inAppPurchases": {
+          "title": "Achats dans l'application",
+          "small": "Cochez cette case si le bot a des fonctionnalités payantes"
+        },
+        "adverts": {
+          "title": "Publicités",
+          "small": "Cochez cette case si votre bot affiche des publicités, incluant d'autres listes de bots"
+        }
+      },
+      "images": {
+        "title": "Apparance",
+        "avatar": {
+          "title": "URL de l'Avatar",
+          "placeholder": "Un lien HTTPS vers une image d'avatar"
+        },
+        "cover": {
+          "title": "Image de couverture",
+          "placeholder": "Un lien HTTPS vers une image large"
+        },
+        "preview": {
+          "title": "Images d'aperçu",
+          "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot",
+          "add": "Ajouter une autre image"
+        }
+      },
+      "youtube": {
+        "title": "ID YouTube",
+        "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
+      },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "Un ID d'une vidéo YOUKU"
+      },
+      "website": {
+        "title": "Site Internet",
+        "placeholder": "Un lien HTTPS vers votre site Internet"
+      },
+      "sourcecode": "Code Source",
+      "title": "Ajouter ou Modifier une Application",
+      "triggermethods": "Méthodes de déclenchement",
+      "deleteLanguage": "Supprimer une langue",
+      "required": "Les champs marqués d'un * sont requis.",
+      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le statut de la vérification de votre bot, ainsi que recevoir des messages privés de la part du staff à propos de votre application.",
+      "discord": "Rejoindre Terminal.ink"
+    },
+    "error": {
+      "notfound": "Page introuvable...",
+      "server": "Problème inattendu rencontré",
+      "github": "Rapporter ce bug sur GitHub.com",
+      "report": "Merci de prendre le temps de nous signaler cette erreur. Veuillez mentionner ce que vous étiez en train de faire avant l'incident.",
+      "snarky": "C'était sûr d'arriver..."
+    },
+    "list": {
+      "invite": "Inviter",
+      "empty": "Il n'y a pas de bots"
+    },
+    "locale": {
+      "choose": "Sélectionnez une langue.",
+      "pleasehelp": "Êtes-vous un bon traducteur ? Cliquez ici."
+    },
+    "langdev": {
+      "title": "Voir les clés des langages",
+      "compare": "Comparer les langages sélectionnés",
+      "key": "Clé JSON",
+      "notfound": "Clé introuvable !"
+    },
+    "notfound": {
+      "gohome": "Aller à l'accueil",
+      "message": "Page introuvable"
+    },
+    "sure": {
+      "title": "Êtes-vous sûr?",
+      "ok": "Ok",
+      "no": "Retour"
+    },
+    "reviews": {
+      "title": "Critique",
+      "my": "Mes Critiques",
+      "write": "Écrire une critique",
+      "placeholder": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
+      "number": {
+        "one": "%s critique",
+        "other": "%s critiques"
+      },
+      "delete": "Supprimer la critique",
+      "all": "Voir toutes les critiques"
+    },
+    "admin": {
+      "title": "Console d'Administration",
+      "queue": "Voir la queue",
+      "denied": "Voir les refusés",
+      "banned": "Voir les bannis",
+      "state": {
+        "reason": "Entrez la raison pour changer le statut du bot",
+        "change": "Changer le statut"
+      }
+    }
+  },
+  "navbar": {
+    "add": "Ajouter votre application",
+    "login": "Se connecter",
+    "logout": "Déconnexion",
+    "admin": "Administration",
+    "languages": "Langages",
+    "user": "Mes Bots"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Ajouter des réactions",
+    "ADMINISTRATOR": "Administrateur",
+    "ATTACH_FILES": "Attacher des fichiers",
+    "BAN_MEMBERS": "Bannir des membres",
+    "CHANGE_NICKNAME": "Changer de pseudo",
+    "CONNECT": "Se connecter",
+    "CREATE_INSTANT_INVITE": "Créer une invitation",
+    "DEAFEN_MEMBERS": "Rendre des membres sourds",
+    "EMBED_LINKS": "Attacher des liens",
+    "KICK_MEMBERS": "Expulser des membres",
+    "MANAGE_CHANNELS": "Gérer les salons",
+    "MANAGE_EMOJIS": "Gérer les émojis",
+    "MANAGE_GUILD": "Gérer le serveur",
+    "MANAGE_MESSAGES": "Gérer les messages",
+    "MANAGE_NICKNAMES": "Gérer les pseudos",
+    "MANAGE_ROLES": "Gérer les rôles",
+    "MANAGE_WEBHOOKS": "Gérer les webhooks",
+    "MENTION_EVERYONE": "Mentionner @everyone",
+    "MOVE_MEMBERS": "Déplacer les membres",
+    "MUTE_MEMBERS": "Rendre des membres muets",
+    "READ_MESSAGE_HISTORY": "Voir les anciens messages",
+    "READ_MESSAGES": "Lire les messages",
+    "SEND_MESSAGES": "Envoyer des messages",
+    "SEND_TTS_MESSAGES": "Envoyer des messages TTS",
+    "SPEAK": "Parler",
+    "USE_EXTERNAL_EMOJIS": "Utiliser des émojis externes",
+    "USE_VAD": "Utiliser la détection de voix",
+    "VIEW_AUDIT_LOG": "Voir les logs du serveur"
+  },
+  "site": {
+    "name": "Liste d'applications Discord",
+    "description": "discordapps.dev est une boutique d'application pour des bots Discord. Installez des applications pour de la musique, pour des nouvelles, pour modérer et plus pour votre serveur."
+  },
+  "states": {
+    "approved": "Approuvé",
+    "denied": "Refusé",
+    "queue": "En attente",
+    "banned": "Banni"
+  }
+};
+},{}],"eag4":[function(require,module,exports) {
+module.exports = {
+  "categories": {
+    "fun": "Zabawa",
+    "games": "Gry",
+    "entertainment": "Rozrywka",
+    "productivity": "Produktywność",
+    "education": "Edukacja",
+    "image": "Manipulacja zdjęciami",
+    "news": "Aktualności",
+    "music": "Muzyka",
+    "moderation": "Moderacja",
+    "utility": "Użyteczność",
+    "notifications": "Powiadomienia",
+    "other": "Inne"
+  },
+  "copyright": "Prawa autorskie 2017 - 2019, Terminal.ink; Discord jest znakiem towarowym Discord Inc.",
+  "errors": {
+    "apps": {
+      "authors": "Musisz mieć co najmniej jednego autora bota, a wszystkie jego ID muszą być numeryczne",
+      "category": "Musisz wybrać kategorię dla swojego bota",
+      "customisable": "Możliwość dostosowania prefiksa musi być zaznaczona lub usunięta",
+      "description": "Krótki opis musi mieć długość od 10 do 100 znaków",
+      "githubowner": "Właściciel GitHub musi być prawidłowym użytkownikiem GitHub. Pozostaw puste, jeśli nie masz konta GitHub.",
+      "githubrepo": "Repozytorium GitHub musi być poprawne. Pozostaw puste, jeśli nie masz repozytorium GitHub.",
+      "id": "ID Bota musi być wypełnione i numeryczne",
+      "invite": "Adres URL zaproszenia musi zostać wypełniony i jako poprawny link HTTPS",
+      "website": "Adres URL strony musi być prawidłowym linkiem HTTPS",
+      "languages": "Musisz dodać jeden język. Kliknij język, w którym chcesz umieścić stronę swojego robota, i wybierz przycisk 'Dodaj język'",
+      "mentionable": "Opcjonalność wzmiankowa prefiksa musi być zaznaczona lub usunięta",
+      "name": "Bot musi mieć nazwę o długości od 4 do 32 znaków.",
+      "nsfw": "Status NSFW musi być zaznaczone lub odznaczone",
+      "oauth": "ID OAuth musi być numeryczne",
+      "page": "Długi opis musi mieć długość od 20 do 10000 znaków",
+      "prefix": "Musisz mieć co najmniej jeden prefiks, o maksymalnej długości 10.",
+      "support": "Adres URL pomocy technicznej musi być prawidłowym linkiem HTTPS",
+      "exists": "Bot już istnieje w bazie danych i nie masz uprawnień do jego zastąpienia.",
+      "notabot": "Podane ID nie było kontem bota.",
+      "notfound": "Podane ID nie zostało znalezione przez Discorda.",
+      "add_success": "Dodano bota do kolejki listy botów.",
+      "edit_success": "Zedytowano bota poprawnie.",
+      "count": "Liczba serwerów dla bota musi wynosić od 0 do 5000000 serwerów",
+      "avatar": "Adres URL awatara musi być prawidłowym linkiem HTTPS i nie może przekraczać 2000 znaków",
+      "cover": "Adres URL strony tytułowej musi być prawidłowym linkiem HTTPS, maksymalnie 2000 znaków",
+      "preview": "Wszystkie adresy URL podglądu muszą być poprawnym linkiem HTTPS, maksymalnie 2000 znaków każdy, maksymalnie 20 linków",
+      "no_suitable_lang": "Ta strona nie ma wersji angielskiej. '{{ language }}' jest wyświetlany zamiast tego.",
+      "youtube": "YouTube ID musi wyglądać jak ID",
+      "youku": "Alibaba YOUKU ID musi wyglądać jak ID"
+    },
+    "permissions": {
+      "login": "Nie jesteś zalogowany",
+      "denied": "Nie masz odpowiednich uprawnień, aby uzyskać do niego dostęp",
+      "banned": "Odmówiono Ci dostępu do tego zasobu"
+    },
+    "website": {
+      "noscript": "JavaScript został wyłączony. Funkcjonalność może zostać zmniejszona.",
+      "print": "JavaScript nie jest zgodny z wydrukami papierowymi."
+    },
+    "reviews": {
+      "rating": "Przed kontynuowaniem wybierz ocenę",
+      "text": "Proszę podać, dlaczego dałeś taką liczbie gwiazdek dla tego bota.",
+      "self": "Nie możesz zrecenzować własnego bota!"
+    },
+    "api": {
+      "400": "Nie jesteś uprawniony do używania tego punktu końcowego. Sprawdź swój token.",
+      "404": "Ten punkt końcowy nie został znaleziony lub metoda używana do żądania tej strony nie jest zgodna.",
+      "500": "Wystąpił wewnętrzny błąd serwera.",
+      "test": "Wystąpił błąd w celach programistycznych.",
+      "no_bot": "Bot nie znaleziony",
+      "idchange": "ID bota nie może zostać zmienione na inne ID. Skontaktuj się z obsługą Terminalu, aby uzyskać pomoc techniczną"
+    }
+  },
+  "footer": {
+    "attribution": "Przypisanie",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "terms": "Regulamin",
+    "docs": "Dokumentacja",
+    "view": "Wyświetl tę stronę na GitHubie"
+  },
+  "forms": {
+    "add": "Dodaj kolejnego",
+    "apply": "Zastosuj",
+    "close": "Zamknij",
+    "delete": "Usuń",
+    "help": "🤔",
+    "select": "Proszę wybrać...",
+    "submit": "Zatwierdź",
+    "wait": "Proszę czekać..."
+  },
+  "intro": {
+    "search": "Czego szukasz?",
+    "docs": "Dokumentacja"
+  },
+  "locales": {
+    "ar": "Arabski",
+    "da": "Duński",
+    "de": "Niemiecki",
+    "el": "Grecki",
+    "en-GB": "Angielski (Zjednoszone Królestwo)",
+    "es": "Hiszpański",
+    "et": "Estoński",
+    "fi": "Fiński",
+    "fj": "Fidżi",
+    "fr": "Francuski",
+    "gd": "Celtycki",
+    "hi": "Hinduski",
+    "he": "Hebrajski",
+    "it": "Włoski",
+    "ja": "Japoński",
+    "ko": "Koreański",
+    "la": "Łacina",
+    "nl": "Holenderski",
+    "no": "Norweski",
+    "pl": "Polski",
+    "pt": "Portugalski",
+    "ru": "Rosyjski",
+    "sv": "Szwedzki",
+    "tr": "Turecki",
+    "vi": "Wietnamski",
+    "zh-cn": "Chiński (Uproszczony)",
+    "zh-tw": "Chiński (Tradycyjny)"
+  },
+  "pages": {
+    "bots": {
+      "backgroundAlt": "Logo dla discordapps.dev",
+      "description": "Zbiór aplikacji dla botów Discord",
+      "invite": "Dodaj tego bota",
+      "support": "Pomoc techniczna",
+      "website": "Strona internetowa",
+      "shortname": "Discordowy bot",
+      "mentionable": "Wzmiankowalny",
+      "customisable": "Konfigurowalny",
+      "delete": "Usuń",
+      "edit": "Edytuj",
+      "configure": "Skonfiguruj",
+      "github": "Zobacz na GitHubie",
+      "approve": "Potwierdzony",
+      "deny": "Odrzucony",
+      "prefix": {
+        "one": "Prefiks",
+        "other": "Prefiksy"
+      },
+      "more": "Zobacz więcej",
+      "less": "Zobacz mniej",
+      "adverts": "Zawiera reklamy i funkcje zablokowane za innymi usługami",
+      "inAppPurchases": "Ma zakupy w aplikacji",
+      "nsfw": "NSFW",
+      "offeredby": "Stworzony przez:",
+      "modified": "Ostatnio zmodyfikowany",
+      "created": "Opublikowany po raz pierwszy",
+      "category": "Kategoria",
+      "search": "Szukaj",
+      "count": "Zainstalowany na {guilds, plural, one {jednym serwerze} other {{guilds} serwerach}}"
+    },
+    "configuration": {
+      "token": {
+        "title": "Token",
+        "description": "To jest token wymagany do edycji twojego bota na tej liście. Informacje na temat dostępnych punktów końcowych można znaleźć w dokumentacji dla programistów.",
+        "docs": "Zobacz dokumentację"
+      },
+      "renew": "Odnów token",
+      "hide": {
+        "title": "Ukryj bota",
+        "description": "Możesz ukryć swojego bota z pierwszej strony, na wypadek, gdybyś nie chciał by tam był.",
+        "disable": "Odkryj",
+        "enable": "Ukryj"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "modal": "ID OAuth to ID, które jest używany, gdy użytkownicy zapraszają Twojego bota przez OAuth. W prawie wszystkich przypadkach te ID jest takie samo jak ID bota. Będziesz musiał tylko podjąć działanie, jeśli twój bot ma różnicę między tymi dwoma.",
+        "placeholder": "ID użyte w linku OAuth.",
+        "title": "OAuth ID"
+      },
+      "authors": {
+        "modal": "Wpisz jedno ID właściciela bota.",
+        "placeholder": "ID jednego właściciela",
+        "title": "Autorzy botów",
+        "add": "Dodaj kolejnego"
+      },
+      "basicinfo": "Podstawowe informacje",
+      "nsfw": {
+        "title": "Niebezpieczne dla pracy (NSFW)"
+      },
+      "support": {
+        "placeholder": "Coś jak: https://discord.gg/8uC6aKZ",
+        "small": "Pozostaw to pole puste, jeśli nie lubisz pomagać ludziom",
+        "title": "Adres URL serwera supportu"
+      },
+      "category": {
+        "title": "Kategoria"
+      },
+      "client_id": {
+        "modal1": "ID bota jest numerem, który jednoznacznie identyfikuje użytkownika bota. Możesz go odzyskać, klikając przycisk \"Kopiuj\" w obrębie portalu Discord Developer.",
+        "modal2": "ID można również znaleźć, włączając \"Tryb dewelopera\" w ustawieniach Discorda, a następnie kliknij prawym przyciskiem myszy i naciśnij \"Kopiuj ID\". Pamiętaj, aby nie skopiować ID wiadomości.",
+        "placeholder": "ID użytkownika bota",
+        "title": "ID bota"
+      },
+      "customisable": {
+        "title": "Konfigurowalny prefiks"
+      },
+      "description": {
+        "title": "Krótki opis"
+      },
+      "github_owner": {
+        "placeholder": "Coś jak: ry00001",
+        "title": "Organizacja/Użytkownik GitHuba"
+      },
+      "github_repo": {
+        "placeholder": "Coś jak: Tuxedo",
+        "title": "Repozytorium GitHuba"
+      },
+      "information": "Twoja strona z botem",
+      "invite": {
+        "modal": "Proszę upewnij się, że \"ID bota\" został wypełniony numerem ID bota Discord",
+        "title": "Adres URL zaproszenia",
+        "generate": "Wygeneruj link do zaproszenia"
+      },
+      "languages": {
+        "add": "Dodaj język",
+        "delete": "Usuń ten język",
+        "modal": "Napisz stronę swojego bota w dowolnym obsługiwanym języku. Wybierz język i kliknij przycisk 'Dodaj język'.",
+        "title": "Języki stron bota"
+      },
+      "mentionable": {
+        "title": "Można wzmiankować aby uruchomić bota"
+      },
+      "name": {
+        "title": "Nazwa"
+      },
+      "page": {
+        "title": "Rozszerzony opis"
+      },
+      "prefix": {
+        "placeholder": "Pojedynczy prefiks",
+        "title": "Prefiks",
+        "add": "Dodaj kolejny prefiks"
+      },
+      "flags": {
+        "title": "Deklaracja finansowania i reklamy",
+        "inAppPurchases": {
+          "title": "Zakupy w aplikacji",
+          "small": "Zaznacz to pole, jeśli masz funkcje płatne"
+        },
+        "adverts": {
+          "title": "Reklamy",
+          "small": "Zaznacz to pole, jeśli masz reklamy i / lub funkcje, które są zablokowane za innymi usługami"
+        }
+      },
+      "images": {
+        "title": "Wygląd",
+        "avatar": {
+          "title": "Adres URL awatara",
+          "placeholder": "Link HTTPS do obrazu awatara"
+        },
+        "cover": {
+          "title": "Okładka",
+          "placeholder": "Link HTTPS do dużego obrazu"
+        },
+        "preview": {
+          "title": "Podgląd obrazów",
+          "placeholder": "Link HTTPS do jednego zrzutu ekranu",
+          "add": "Dodaj kolejne zdjęcie"
+        }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "ID do filmu na YouTube"
+      },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "ID do filmu na YOUKU"
+      },
+      "website": {
+        "title": "Strona internetowa",
+        "placeholder": "Link HTTPS do Twojej strony"
+      },
+      "sourcecode": "Kod źródłowy",
+      "title": "Dodaj lub edytuj aplikację",
+      "triggermethods": "Metody wyzwalania",
+      "deleteLanguage": "Usuń język",
+      "required": "Pola zaznaczone * są wymagane.",
+      "updates": "Zaleca się dołączenie na serwer Discord Terminal.ink aby wyświetlić aktualizacje, zobaczyć status weryfikacji bota a także otrzymywać bezpośrednie wiadomości od pracowników dotyczące twojej aplikacji.",
+      "discord": "Dołącz na serwer Terminal.ink"
+    },
+    "error": {
+      "notfound": "Strona nie znaleziona...",
+      "server": "Wewnętrzny błąd serwera",
+      "github": "Zgłoś ten błąd na GitHub.com",
+      "report": "Dziękuje za poświęcenie Twojego czasu żeby zgłosić ten błąd. Proszę wpisz co robiłeś/aś przed incydentem.",
+      "snarky": "Z pewnością musiało tak się stać..."
+    },
+    "list": {
+      "invite": "Zaproszenie",
+      "empty": "Nie ma botów"
+    },
+    "locale": {
+      "choose": "Proszę wybrać język.",
+      "pleasehelp": "Jesteś dobrym tłumaczem? Kliknij tutaj."
+    },
+    "langdev": {
+      "title": "Zobacz na wszystkie klucze języków",
+      "compare": "Porównaj wybrane języki",
+      "key": "JSON klucz",
+      "notfound": "Klucz nie znaleziony!"
+    },
+    "notfound": {
+      "gohome": "Strona główna",
+      "message": "Strona nie została znaleziona"
+    },
+    "sure": {
+      "title": "Czy jesteś pewny?",
+      "ok": "Ok",
+      "no": "Wróć"
+    },
+    "reviews": {
+      "title": "Recenzje",
+      "my": "Moja recenzja",
+      "write": "Napisz recenzję",
+      "placeholder": "Proszę wpisać powód Twojej recenzji.",
+      "number": {
+        "one": "%s recenzja",
+        "other": "%s recenzji(e)"
+      },
+      "delete": "Usuń wszystkie recenzje",
+      "all": "Zobacz wszystkie recenzje"
+    },
+    "admin": {
+      "title": "Konsola Administracji",
+      "queue": "Zobacz boty w kolejce",
+      "denied": "Zobacz odrzucone boty",
+      "banned": "Zobacz zbanowane boty",
+      "state": {
+        "reason": "Wpisz powód zmiany stanu bota",
+        "change": "Zmień stan bota"
+      }
+    }
+  },
+  "navbar": {
+    "add": "Dodaj aplikację",
+    "login": "Zaloguj się",
+    "logout": "Wyloguj",
+    "admin": "Administrator",
+    "languages": "Języki",
+    "user": "Moje boty"
+  },
+  "pagination": {
+    "image": {
+      "prev": "Poprzednie",
+      "next": "Następne"
+    },
+    "page": {
+      "prev": "Poprzednia strona",
+      "next": "Następna strona"
+    },
+    "currentPage": "Strona { number }",
+    "reviews": "Recenzje użytkowników dla '{{ name }}' - Strona { number }"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Dodawanie reakcji",
+    "ADMINISTRATOR": "Administrator",
+    "ATTACH_FILES": "Załączanie plików",
+    "BAN_MEMBERS": "Banowanie członków",
+    "CHANGE_NICKNAME": "Zmiania pseudonimu",
+    "CONNECT": "Połączanie",
+    "CREATE_INSTANT_INVITE": "Tworzenie natychmiastowych zaproszeń",
+    "DEAFEN_MEMBERS": "Wyciszanie członków",
+    "EMBED_LINKS": "Zamieszczanie linków",
+    "KICK_MEMBERS": "Wyrzucanie członków",
+    "MANAGE_CHANNELS": "Zarządzanie kanałami",
+    "MANAGE_EMOJIS": "Zarządzanie emotikonami",
+    "MANAGE_GUILD": "Zarządzanie Serwerem",
+    "MANAGE_MESSAGES": "Zarządzanie Wiadomościami",
+    "MANAGE_NICKNAMES": "Zarządzanie przezwiskami",
+    "MANAGE_ROLES": "Zarządzanie rolami",
+    "MANAGE_WEBHOOKS": "Zarządzanie Webhookami",
+    "MENTION_EVERYONE": "Powiadamianie wszystkich",
+    "MOVE_MEMBERS": "Przenoszenie członków",
+    "MUTE_MEMBERS": "Wyciszanie członków",
+    "READ_MESSAGE_HISTORY": "Czytanie historii wiadomości",
+    "READ_MESSAGES": "Czytanie wiadomości",
+    "SEND_MESSAGES": "Wysyłanie wiadomości",
+    "SEND_TTS_MESSAGES": "Wysyłanie wiadomości TTS",
+    "SPEAK": "Rozmawianie",
+    "USE_EXTERNAL_EMOJIS": "Użycie zewnętrznych emoji",
+    "USE_VAD": "Użycie aktywacji głosowej",
+    "VIEW_AUDIT_LOG": "Wyświetl dziennik zdarzeń"
+  },
+  "site": {
+    "name": "Discordowa Lista Botów przez Terminal.ink",
+    "description": "discordapps.dev to zbiór aplikacji dla Discordowych botów. Instaluj aplikacje dla muzyki, aktualności, moderacji i więcej dla Twojego serwera."
+  },
+  "states": {
+    "approved": "Zatwierdzony",
+    "denied": "Odrzucony",
+    "queue": "W kolejce",
+    "banned": "Zbanowany"
+  }
+};
+},{}],"sHKk":[function(require,module,exports) {
+module.exports = {
+  "categories": {
+    "fun": "玩乐",
+    "games": "游戏",
+    "entertainment": "娱乐",
+    "productivity": "生产力",
+    "education": "教育",
+    "image": "图片生成",
+    "news": "新闻",
+    "music": "音乐",
+    "moderation": "管理",
+    "utility": "效益",
+    "notifications": "通知",
+    "other": "其他"
+  },
+  "copyright": "2017 - 2019, Terminal.ink 版权所有; Discord 是 Discord Inc. 的商标。",
+  "errors": {
+    "apps": {
+      "authors": "至少需要一个用户是该机器人的作者，并且所有作者ID须为数字。",
+      "category": "您必须为该机器人选择至少一项分类。",
+      "customisable": "“前缀的可设置性”选项须为勾选或未勾选。",
+      "description": "简短说明的字数须在10至100之间。",
+      "githubowner": "“GitHub项目拥有者”项必须是有效的Github账户，如果您没有GitHub账户可以留空。",
+      "githubrepo": "GitHub项目须为有效的字符串，如果您没有GitHub项目则可留空。",
+      "id": "必须填写“机器人ID”栏，须为全数字。",
+      "invite": "“邀请网址”栏是必填项，且需要是有效的HTTPS链接。",
+      "website": "网址须为有效的HTTPS链接。",
+      "languages": "您必须为该机器人选择一门语言。选择一门您想要让您的机器人页面所在的语言，然后点击“添加一门语言”按钮。",
+      "mentionable": "前缀的可提及性须是已勾选或未勾选。",
+      "name": "机器人的名字长度需为4至32个字符之间。",
+      "nsfw": "机器人的NSFW状态须为已勾选或未勾选。",
+      "oauth": "机器人的OAuth ID须为全数字。",
+      "page": "机器人的说明文本长度须为20至10000个字符之间。",
+      "prefix": "您必须有至少一个不超过10个字符的前缀。",
+      "support": "机器人的支援网址必须为有效的HTTPS链接。",
+      "exists": "此机器人已经存在于数据库中，而您没有权限覆写。",
+      "notabot": "您所提供的ID不是一个机器人账户。",
+      "notfound": "在Discord中找不到您所以提供的ID。",
+      "add_success": "成功添加此机器人到列表中。",
+      "edit_success": "成功编辑该机器人。",
+      "count": "机器人的服务器计数须在0至5000000之间。",
+      "avatar": "机器人的头像网址须为一个有效的HTTPS网址，且不超过2000个字符。",
+      "cover": "机器人的封面图须为一个有效的HTTPS链接，且不超过2000个字符。",
+      "preview": "所有预览网址须为有效的HTTPS链接，且不超过2000个字符和20个链接。",
+      "no_suitable_lang": "此页面没有英语版本，将使用 '{{ language }}' 显示。"
+    },
+    "permissions": {
+      "login": "您还未登录。",
+      "denied": "您没有访问此页的权限。",
+      "banned": "您已被禁止访问此资源。"
+    },
+    "website": {
+      "noscript": "JavaScript已禁用，某些功能可能被限制。",
+      "print": "JavaScript与打印功能不兼容。"
+    },
+    "reviews": {
+      "rating": "在继续前，请选择一个评级。",
+      "text": "请说明您给这个星数的原因。",
+      "self": "您不能评价您自己的机器人！"
+    },
+    "api": {
+      "400": "您未被授权使用此端点，请检查您的密钥是否正确。",
+      "404": "找不到此端点，或使用了不支持的方式访问该页面。",
+      "500": "内服服务器发生错误。",
+      "test": "一个错误用于开发用途而被抛出。",
+      "no_bot": "找不到机器人。",
+      "idchange": "无法更换机器人ID。欲获得技术支持，请联络Terminal客户支持。"
+    }
+  },
+  "footer": {
+    "attribution": "署名",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "docs": "文档",
+    "view": "在GitHub查看此页面"
+  },
+  "forms": {
+    "add": "添加其他",
+    "apply": "应用",
+    "close": "关闭",
+    "delete": "删除",
+    "help": "🤔",
+    "select": "请选择…",
+    "submit": "提交",
+    "wait": "请稍后…"
+  },
+  "intro": {
+    "search": "您在寻找什么？",
+    "docs": "文档"
+  },
+  "locales": {
+    "ar": "阿拉伯语",
+    "da": "丹麦语",
+    "de": "德语",
+    "el": "希腊语",
+    "en-GB": "英语（英国）",
+    "es": "西班牙语",
+    "et": "爱沙尼亚语",
+    "fi": "芬兰语",
+    "fj": "斐济语",
+    "fr": "法语",
+    "gd": "苏格兰语",
+    "hi": "印地语",
+    "he": "希伯来语",
+    "it": "意大利语",
+    "ja": "日语",
+    "ko": "韩语",
+    "la": "拉丁语",
+    "nl": "荷兰语",
+    "no": "挪威语",
+    "pt": "葡萄牙语",
+    "ru": "俄语",
+    "sv": "瑞典语",
+    "tr": "土耳其语",
+    "vi": "越南语",
+    "zh-cn": "简体中文",
+    "zh-tw": "繁体中文"
+  },
+  "pages": {
+    "bots": {
+      "add": "添加一个应用",
+      "backgroundAlt": "discordapps.dev 的图标",
+      "description": "一个展示Discord机器人的应用商场",
+      "invite": "添加这个机器人",
+      "support": "技术支持",
+      "website": "网站",
+      "shortname": "Discord机器人",
+      "mentionable": "可提及",
+      "customisable": "可定制",
+      "delete": "删除",
+      "edit": "编辑",
+      "configure": "设置",
+      "github": "在GitHub中查看",
+      "approve": "接受",
+      "deny": "拒绝",
+      "prefix": {
+        "one": "前缀",
+        "other": "前缀"
+      },
+      "more": "更多",
+      "less": "更少",
+      "adverts": "含有在其他服务之后的广告和功能",
+      "inAppPurchases": "Has in-app purchases 包含内购",
+      "nsfw": "NSFW",
+      "offeredby": "提供：",
+      "modified": "最后修改",
+      "created": "创建于",
+      "category": "分类",
+      "initiateCategoryFilter": "为…寻找机器人",
+      "ownerFilter": "{ name } 创建的机器人",
+      "count": "已在{guilds, plural, one {一} other {{guilds}}}个服务器上安装"
+    },
+    "configuration": {
+      "token": {
+        "title": "密钥",
+        "description": "这是编辑您在这个列表的机器人时必要的密钥。欲得知支持的端点，请参考开发者文档。",
+        "docs": "查看文档"
+      },
+      "renew": "更新密钥",
+      "hide": {
+        "title": "隐藏机器人",
+        "description": "您可以选择在网站首页上隐藏您的机器人，如果您不想要它出现在那里的话。",
+        "disable": "取消隐藏",
+        "enable": "隐藏"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "modal": "OAuth ID是用户通过OAuth邀请您的机器人时所使用的ID。多数情况下，此ID跟您的机器人ID相同。只有在您的机器人ID和此ID不同时才需要另填。",
+        "placeholder": "用于OAuth链接的ID。",
+        "title": "OAuth ID"
+      },
+      "authors": {
+        "modal": "填写单一机器人拥有者的ID。",
+        "placeholder": "单一拥有者的ID",
+        "title": "机器人拥有者",
+        "add": "添加其他"
+      },
+      "basicinfo": "基本信息",
+      "nsfw": {
+        "title": "不适合在工作场合出现"
+      },
+      "support": {
+        "placeholder": "例如：https://discord.gg/8uC6aKZ",
+        "small": "如果您不喜欢帮助别人，此栏可以留空。",
+        "title": "支援网址"
+      },
+      "category": {
+        "title": "分类"
+      },
+      "client_id": {
+        "modal1": "机器人ID是一串识别该机器人的唯一标识符。您可以在Discord的开发者后台里点击“复制”按钮获取。",
+        "modal2": "您也可以通过开启Discord里的“开发者模式”获得该ID，右键点击您的机器人然后选择“复制ID”。小心不要复制到消息的ID。",
+        "placeholder": "机器人用户的ID",
+        "title": "机器人ID"
+      },
+      "customisable": {
+        "title": "可自定义前缀"
+      },
+      "description": {
+        "title": "简短说明"
+      },
+      "github_owner": {
+        "placeholder": "例如：ry00001",
+        "title": "GitHub用户/团队"
+      },
+      "github_repo": {
+        "placeholder": "例如：Tuxedo",
+        "title": "GitHub版本库"
+      },
+      "information": "您的机器人页面",
+      "invite": {
+        "modal": "请确保您的机器人ID栏已经填入“机器人ID”栏。",
+        "title": "邀请网址",
+        "generate": "生成邀请网址"
+      },
+      "languages": {
+        "add": "添加语言",
+        "delete": "删除这个语言",
+        "modal": "使用任何一门支持的语言编写您的机器人页面。选择一门语言，然后点击“添加语言”按钮。",
+        "title": "机器人页面语言"
+      },
+      "mentionable": {
+        "title": "可以使用提及触发机器人"
+      },
+      "name": {
+        "title": "名字"
+      },
+      "page": {
+        "title": "更详细的说明"
+      },
+      "prefix": {
+        "placeholder": "单一前缀",
+        "title": "前缀",
+        "add": "添加其他前缀"
+      },
+      "flags": {
+        "title": "捐助和广告声明",
+        "inAppPurchases": {
+          "title": "应用内购买",
+          "small": "如果付费能获得更多功能，勾选此项"
+        },
+        "adverts": {
+          "title": "广告",
+          "small": "如果您有广告或需要让用户使用一些服务以激活某些功能，勾选此项"
+        }
+      },
+      "images": {
+        "title": "外观",
+        "avatar": {
+          "title": "头像网址",
+          "placeholder": "头像的HTTPS链接"
+        },
+        "cover": {
+          "title": "封面图片",
+          "placeholder": "大图片的HTTPS链接"
+        },
+        "preview": {
+          "title": "预览图",
+          "placeholder": "单一截图的HTTPS链接",
+          "add": "添加其他图片"
+        }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "一个示范机器人的影片的Youtube ID"
+      },
+      "website": {
+        "title": "网站",
+        "placeholder": "您网站的HTTPS网址"
+      },
+      "sourcecode": "源码",
+      "title": "添加或编辑一个程序",
+      "triggermethods": "触发方式",
+      "deleteLanguage": "删除一门语言",
+      "required": "标记为 * 的项为必填项。",
+      "updates": "我们高度建议您通过点击在页脚的“Discord”字样加入Terminal.ink的Discord服务器，以查看服务更新、机器人的验证情况，和接收来自管理员的私信。"
+    },
+    "error": {
+      "notfound": "找不到页面……",
+      "server": "发生了未预料到的快速卸除",
+      "github": "把此错误报告到Github.com",
+      "report": "感谢您愿意花时间报告此错误。请输入在您错误发生之前的行为。"
+    },
+    "list": {
+      "invite": "邀请",
+      "empty": "这里没有机器人"
+    },
+    "locale": {
+      "choose": "请选择一门语言。",
+      "pleasehelp": "您是一个优秀的翻译者吗？点击这里。"
+    },
+    "langdev": {
+      "title": "查看所有语言代码",
+      "compare": "比较所选语言",
+      "key": "JSON 字串",
+      "notfound": "找不到该字串！"
+    },
+    "notfound": {
+      "gohome": "回到主页",
+      "message": "找不到页面"
+    },
+    "sure": {
+      "title": "您确定？",
+      "ok": "确定",
+      "no": "返回"
+    },
+    "reviews": {
+      "title": "评价",
+      "my": "我的评价",
+      "write": "写一则评价",
+      "placeholder": "请输入您评价的原因。",
+      "number": {
+        "one": "%s 则评价",
+        "other": "%s 则评价"
+      },
+      "delete": "删除评价",
+      "all": "查看所有评价"
+    },
+    "admin": {
+      "title": "管理员控制台",
+      "queue": "查看队列",
+      "denied": "查看被拒绝的程序",
+      "banned": "查看被封锁的程序",
+      "state": {
+        "reason": "输入您更换机器人状态的原因",
+        "change": "更换状态"
+      }
+    }
+  },
+  "navbar": {
+    "add": "添加一个应用",
+    "login": "登录",
+    "logout": "登出",
+    "admin": "管理员"
+  },
+  "pagination": {
+    "image": {
+      "prev": "上一个",
+      "next": "下一个"
+    },
+    "page": {
+      "prev": "上一页",
+      "next": "下一页"
+    },
+    "currentPage": "第 { number } 页",
+    "reviews": "User reviews for '{{ name }}' - Page { number }"
+  },
+  "permission": {
+    "ADD_REACTIONS": "添加反应",
+    "ADMINISTRATOR": "管理员",
+    "ATTACH_FILES": "附上文件",
+    "BAN_MEMBERS": "封锁成员",
+    "CHANGE_NICKNAME": "更改昵称",
+    "CONNECT": "连接",
+    "CREATE_INSTANT_INVITE": "创建即时邀请链接",
+    "DEAFEN_MEMBERS": "拒听成员",
+    "EMBED_LINKS": "链接嵌入",
+    "KICK_MEMBERS": "移除成员",
+    "MANAGE_CHANNELS": "管理频道",
+    "MANAGE_EMOJIS": "管理表情",
+    "MANAGE_GUILD": "管理服务器",
+    "MANAGE_MESSAGES": "管理信息",
+    "MANAGE_NICKNAMES": "管理昵称",
+    "MANAGE_ROLES": "管理身份组",
+    "MANAGE_WEBHOOKS": "管理网络挂钩",
+    "MENTION_EVERYONE": "提及所有人",
+    "MOVE_MEMBERS": "移动成员",
+    "MUTE_MEMBERS": "静音成员",
+    "READ_MESSAGE_HISTORY": "查看消息历史",
+    "READ_MESSAGES": "查看消息",
+    "SEND_MESSAGES": "发送消息",
+    "SEND_TTS_MESSAGES": "发送TTS消息",
+    "SPEAK": "说话",
+    "USE_EXTERNAL_EMOJIS": "使用外部表情",
+    "USE_VAD": "使用语音活动检测",
+    "VIEW_AUDIT_LOG": "查看服务器日志"
+  },
+  "site": {
+    "name": "Terminal.ink 的 Discord 机器人列表",
+    "description": "discordapps.dev 是一个用于陈列Discord机器人的程序商店。在您的服务器上安装用于音乐、新闻、管理等的程序吧！"
+  },
+  "states": {
+    "approved": "已批准",
+    "denied": "已拒绝",
+    "queue": "在队列中",
+    "banned": "被封锁"
+  }
+};
+},{}],"aYz2":[function(require,module,exports) {
+module.exports = {
+  "categories": {
+    "fun": "Plezier",
+    "games": "Spellen",
+    "entertainment": "Entertainment",
+    "productivity": "Productiviteit",
+    "education": "Onderwijs",
+    "image": "Afbeeldingsmanipulatie",
+    "news": "Nieuws",
+    "music": "Muziek",
+    "moderation": "Moderatie",
+    "utility": "Gereedschappen",
+    "notifications": "Notificaties",
+    "other": "Anders"
+  },
+  "alt": {
+    "avatar": "Profielfoto voor {name}"
+  },
+  "copyright": "Auteursrecht 2017 - 2019, Terminal.ink; Discord is een handelsmerk van Discord Inc.",
+  "errors": {
+    "apps": {
+      "authors": "De bot moet op zijn minst 1 auteur hebben, en ID's van de auteurs moeten numeriek zijn",
+      "category": "Je moet een categorie kiezen voor de bot",
+      "customisable": "Aanpasbaarheid van de prefix moet aangevinkt, of niet aangevinkt zijn",
+      "contents": "Je moet tenminste 1 taal aanbieden voor jouw bot. Klik op een taal, en klik dan op \"Taal toevoegen\"",
+      "description": "De korte beschrijving moet een lengte hebben tussen 10 en 100",
+      "githubowner": "De GitHub eigenaar moet een valide GitHub lid zijn. Laat dit veld leeg als je geen GitHub account hebt.",
+      "githubrepo": "De GitHub repository moet een valide string zijn. Laat dit veld blank als je geen GitHub repository hebt.",
+      "id": "De Bot ID moet ingevuld worden, en numeriek zijn.",
+      "invite": "De uitnodigings URL moet ingevuld worden, en moet een valide HTTPS link zijn",
+      "website": "De website URL moet een valide HTTPS link zijn.",
+      "languages": "Je moet tenminste 1 taal toevoegen. Klik op de taal waarin je je pagina wilt schrijven, en selecteer de 'Taal toevoegen' knop",
+      "mentionable": "De 'vermeldbare prefix' knop moet aangevinkt, of niet aangevinkt zijn",
+      "name": "De naam van de bot moet tussen de 4 en 32 karakters zijn.",
+      "nsfw": "De NSFW status van de bot moet aangevinkt, of niet aangevinkt zijn.",
+      "oauth": "Het OAuth ID moet numeriek zijn",
+      "page": "De lange beschrijven moet een lengte tussen 20 en 10000 tekens hebben.",
+      "prefix": "Je moet tenminste 1 prefix hebben, met een maximale lengte van 10 tekens",
+      "support": "De Support URL moet een valide HTTPS link zijn",
+      "exists": "Deze bot bestaat al in de database, en je hebt geen toestemming dit te overschrijven.",
+      "notabot": "Het gegeven ID was geen bot account.",
+      "notfound": "Het gegeven ID kon niet gevonden worden op Discord.",
+      "add_success": "Bot met success aan de wachtrij toegevoegd.",
+      "edit_success": "Bot succesvol aangepast.",
+      "count": "De servercount van de bot moet tussen de 0 en 5000000 servers zijn",
+      "avatar": "De avatar URL moet een valide HTTPS link zijn, met een maximum van 2000 karakters",
+      "cover": "De omslag URL oet een valide HTTPS link zijn, met een maximum van 2000 karakters",
+      "preview": "Alle voorbeeld URLs moeten valide HTTPS links zijn, met een maximum van 2000 karakters per stuk, met een maximum van 20 links",
+      "no_suitable_lang": "Deze pagina heeft geen Nederlandse versie. '{{ language }}' wordt in plaats daarvan weergegeven.",
+      "youtube": "Het YouTube ID moet lijken op een geldig ID",
+      "youku": "Het Alibaba YOUKU ID moet lijken op een geldig ID"
+    },
+    "permissions": {
+      "login": "Je bent niet ingelogd",
+      "denied": "Je hebt niet de benodige toestemming om dit aan te passen",
+      "banned": "Je bent de toegang tot deze bron ontzegd"
+    },
+    "website": {
+      "noscript": "JavaScript is uitgeschakeld. De site kan minder goed functioneren."
+    },
+    "reviews": {
+      "rating": "Selecteer een waardering voordat je verder gaat",
+      "text": "Geef een reden aan voor deze hoeveelheid sterren.",
+      "self": "Je kan je eigen bot niet recenseren!"
+    },
+    "api": {
+      "400": "Je hebt geen toestemming om deze bron te bezichtigen. Controleer of je de juiste authorizatie hebt.",
+      "404": "Deze bron kon niet worden gevonden, of de verzoeksmethode wordt niet ondersteund.",
+      "500": "Een interne server fout is opgetreden.",
+      "test": "Een foutcode is opgeroepen voor ontwikkelingsdoeleinden.",
+      "no_bot": "Bot niet gevonden",
+      "idchange": "Het ID van de bot kan niet worden gewijzigd in een ander ID. Neem contact op met Terminal ondersteuning voor technische ondersteuning"
+    }
+  },
+  "footer": {
+    "attribution": "Attributie",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "terms": "Algemene Voorwaarden",
+    "docs": "Documentatie"
+  },
+  "forms": {
+    "select": "Selecteer alstublieft...",
+    "submit": "Verzenden",
+    "wait": "Even geduld alstublieft..."
+  },
+  "intro": {
+    "search": "Waar ben je naar op zoek?",
+    "docs": "Documentatie"
+  },
+  "locales": {
+    "ar": "Arabisch",
+    "da": "Deens",
+    "de": "Duits",
+    "el": "Grieks",
+    "en-GB": "Engels (Verenigd Koninkrijk)",
+    "en-US": "Engels (Verenigde Staten)",
+    "es": "Spaans",
+    "et": "Estlands",
+    "fi": "Fins",
+    "fj": "Fijian",
+    "fr": "Frans",
+    "gd": "Keltisch (Schotland)",
+    "hi": "Hindi",
+    "he": "Hebreeuws",
+    "it": "Italiaans",
+    "ja": "Japans",
+    "ko": "Koreaans",
+    "la": "Latijn",
+    "nl": "Nederlands",
+    "no": "Noorweegs",
+    "pl": "Pools",
+    "pt": "Portugees",
+    "ru": "Russisch",
+    "sv": "Zweeds",
+    "tr": "Turks",
+    "vi": "Vietnamees",
+    "zh-cn": "Chinees (Vereenvoudigd)",
+    "zh-tw": "Chinees (Traditioneel)"
+  },
+  "pages": {
+    "bots": {
+      "backgroundAlt": "Het logo voor discordapps.dev",
+      "description": "Een applicatiewinkel voor Discord bots",
+      "inMyLanguage": "Bots in mijn taal",
+      "invite": "Voeg deze bot toe",
+      "support": "Technische Ondersteuning",
+      "website": "Website",
+      "shortname": "Discord Bots",
+      "mentionable": "Vermeldbaar",
+      "customisable": "Aanpasbaar",
+      "delete": "Verwijderen",
+      "reallyDelete": "Zeker weten?",
+      "edit": "Aanpassen",
+      "configure": "Configureren",
+      "github": "Bekijk op GitHub",
+      "approve": "Goedkeuren",
+      "deny": "Weigeren",
+      "prefix": "{count, plural, one {Prefix} other {Prefixes}}",
+      "adverts": "Bevat advertenties en/of diensten die ontgrendeld worden door andere integraties",
+      "inAppPurchases": "Heeft in-app aankopen",
+      "nsfw": "NSFW",
+      "offeredby": "Aangeboden Door:",
+      "modified": "Laatst gemodificeerd",
+      "created": "Eerste uitgavedatum",
+      "category": "Categorie",
+      "search": "Zoeken",
+      "count": "Geïnstalleerd in {guilds, plural, one {1 server} other {{guilds} servers}}"
+    },
+    "configuration": {
+      "token": {
+        "title": "Authorizatietoken",
+        "description": "Deze token is verplicht om je bot aan te passen op de site. Refereer naar de ontwikkelaarsdocumentatie voor mogelijke bronnen.",
+        "docs": "Bekijk Documentatie"
+      },
+      "renew": "Vernieuw Token",
+      "hide": {
+        "title": "Verberg bot",
+        "description": "Je kan je bot verbergen van de voorpagina van de site, indien je daar niet aanwezig wilt zijn.",
+        "disable": "Maak zichtbaar",
+        "enable": "Verberg"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "placeholder": "Het ID dat gebruikt wordt in de OAuth link.",
+        "title": "OAuth ID"
+      },
+      "authors": {
+        "placeholder": "ID van een enkele eigenaar",
+        "title": "Bot Auteurs",
+        "add": "Andere toevoegen",
+        "delete": "Verwijder auteur"
+      },
+      "basicinfo": "Basis Informatie",
+      "nsfw": {
+        "title": "Niet Veilig Voor Werk"
+      },
+      "support": {
+        "placeholder": "Iets als: https://discord.gg/8uC6aKZ",
+        "small": "Laat dit veld leeg als je mensen niet wilt helpen",
+        "title": "Ondersteunings URL"
+      },
+      "category": {
+        "title": "Categorie",
+        "placeholder": "Please select a category"
+      },
+      "client_id": {
+        "placeholder": "Het ID van de bot gebruiker",
+        "title": "Bot ID"
+      },
+      "customisable": {
+        "title": "Aanpasbare prefix"
+      },
+      "description": {
+        "title": "Korte Beschrijving",
+        "placeholder": "Voeg een kleine beschrijving toe voor de voorpagina."
+      },
+      "github_owner": {
+        "placeholder": "Iets als: ry00001",
+        "title": "GitHub Gebruiker / Organisatie"
+      },
+      "github_repo": {
+        "placeholder": "Iets als: Smoking",
+        "title": "GitHub Repository"
+      },
+      "information": "Jouw Bot Pagina",
+      "invite": {
+        "title": "Uitnodigings URL",
+        "generate": "Genereer uitnodigingslink"
+      },
+      "languages": {
+        "add": "Voeg een taal toe",
+        "delete": "Verwijder deze taal",
+        "modal": "Schrijf je bot pagina in elke taal die je ondersteunt. Selecteer een taal, en klik op de 'Voeg een taal toe' knop."
+      },
+      "leave": "Weet je zeker dat je de pagina wilt verlaten? Veranderingen zullen niet opgeslagen worden",
+      "mentionable": {
+        "title": "Kan de bot aanroepen door middel van een vermelding"
+      },
+      "name": {
+        "title": "Naam",
+        "placeholder": "Voer de naam van de bot in."
+      },
+      "page": {
+        "title": "Uitgebreide Beschrijving",
+        "placeholder": "Voeg handige informatie over jouw bot toe, zoals commandos, functies en updates."
+      },
+      "prefix": {
+        "placeholder": "Een enkele prefix",
+        "title": "Prefix",
+        "add": "Voeg een andere prefix toe",
+        "delete": "Verwijder prefix"
+      },
+      "flags": {
+        "title": "Inkomsten en advertentie declaratie",
+        "inAppPurchases": {
+          "title": "In-App Aankopen",
+          "small": "Selecteer dit veld als jouw bot functies achter een betaalmuur aanbied"
+        },
+        "adverts": {
+          "title": "Advertenties",
+          "small": "Selecteer dit veld als jouw bot advertenties bevat of functies achter diensten van een derde partij vergrendelt"
+        }
+      },
+      "images": {
+        "title": "Uiterlijk",
+        "avatar": {
+          "title": "Avatar URL",
+          "placeholder": "Een HTTPS link naar een avatar afbeelding"
+        },
+        "cover": {
+          "title": "Omslag Afbeelding",
+          "placeholder": "Een HTTPS link naar een grote afbeelding"
+        },
+        "preview": {
+          "title": "Voorbeeld Afbeeldingen",
+          "placeholder": "Een HTTPS link naar een enkele schermafbeelding",
+          "add": "Voeg nog een afbeelding toe"
+        }
+      },
+      "youtube": {
+        "title": "YouTube ID",
+        "placeholder": "Een ID naar een YouTube video"
+      },
+      "youku": {
+        "title": "Alibaba YOUKU ID",
+        "placeholder": "Een ID naar een YOUKU video"
+      },
+      "website": {
+        "title": "Website",
+        "placeholder": "Een HTTPS link naar jouw website"
+      },
+      "sourcecode": "Broncode",
+      "title": "Maak of wijzig een applicatie",
+      "triggermethods": "Aanroepmethodes",
+      "deleteLanguage": "Verwijder een taal",
+      "required": "Velden gemarkeerd met een * zijn vereist.",
+      "updates": "Het wordt sterk aanbevolen om de Terminal.ink Discord Server te bezoeken voor informatie en updates, het zien van de verificatie status en DMs te ontvangen van medewerkers met betrekking tot jouw bot.",
+      "discord": "Treed toe tot Terminal.ink"
+    },
+    "error": {
+      "notfound": "Pagina kon niet worden gevonden...",
+      "server": "Interne Server Fout",
+      "github": "Rapporteer deze error op GitHub.com",
+      "report": "Bedankt dat je de tijd hebt genomen dit foutreport in te vullen. Geef alstublieft aan waar je mee bezig was voor het incident.",
+      "snarky": "Foutje moet kunnen baas..."
+    },
+    "list": {
+      "empty": "Er zijn geen bots"
+    },
+    "locale": {
+      "choose": "Selecteer alstublieft een taal.",
+      "pleasehelp": "Ben je een goede vertaler? Klik hier."
+    },
+    "langdev": {
+      "title": "Kijk naar alle taalsleutels",
+      "compare": "Vergelijk geselecteerde talen",
+      "key": "JSON Sleutel",
+      "notfound": "Sleutel niet gevonden!"
+    },
+    "reviews": {
+      "title": "Recensies",
+      "write": "Schrijf een recensie",
+      "placeholder": "Voer een reden voor jouw recensie in.",
+      "delete": "Verwijder recensie"
+    },
+    "admin": {
+      "title": "Administratiepaneel"
+    },
+    "filter": {
+      "authors": {
+        "placeholder": "ID van een enkele eigenaar",
+        "title": "Bot Auteurs",
+        "add": "Voeg er nog een toe",
+        "delete": "Verwijder auteur"
+      },
+      "category": {
+        "title": "Categorie",
+        "placeholder": "Alle categorieën"
+      },
+      "query": {
+        "title": "Zoeken",
+        "placeholder": "Voer tekst in"
+      },
+      "nsfw": {
+        "title": "Niet Veilig Voor Werk",
+        "placeholder": "Niet filteren",
+        "nsfw": "Niet Veilig Voor Werk",
+        "sfw": "Veilig Voor Werk"
+      }
+    },
+    "game": {
+      "title": "Terminal.ink Videospel",
+      "description": "Klik op de knop om punten te krijgen!",
+      "leave": "Weet je zeker dat je de pagina wilt verlaten? Je zal al je punten verliezen.",
+      "score": "Je hebt {kliksphilip, plural, =0 {geen punten :heejintears:} one {1 punt} other {{kliksphilip} punten}}."
+    }
+  },
+  "navbar": {
+    "add": "Voeg een app toe",
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "admin": "Admin",
+    "languages": "Talen",
+    "search": "Zoek voor bots",
+    "user": "Mijn Bots"
+  },
+  "pagination": {
+    "page": {
+      "prev": "Vorige",
+      "next": "Volgende pagina"
+    },
+    "currentPage": "Pagina {{{ number }}}",
+    "reviews": "Gebruikersrecensies voor '{{ name }}' - Pagina {{{ number }}}"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Reacties toevoegen",
+    "ADMINISTRATOR": "Beheerder",
+    "ATTACH_FILES": "Bestand bijvoegen",
+    "BAN_MEMBERS": "Leden verbannen",
+    "CHANGE_NICKNAME": "Verander gebruikersnaam",
+    "CONNECT": "Verbinden",
+    "CREATE_INSTANT_INVITE": "Directe uitnodiging creëren",
+    "DEAFEN_MEMBERS": "Geluid van leden dempen",
+    "EMBED_LINKS": "Ingesloten links",
+    "KICK_MEMBERS": "Leden verwijderen",
+    "MANAGE_CHANNELS": "Kanalen beheren",
+    "MANAGE_EMOJIS": "Beheer Emojis",
+    "MANAGE_GUILD": "Server beheren",
+    "MANAGE_MESSAGES": "Berichten beheren",
+    "MANAGE_NICKNAMES": "Gebruikersnamen beheren",
+    "MANAGE_ROLES": "Rollen beheren",
+    "MANAGE_WEBHOOKS": "Webhooks beheren",
+    "MENTION_EVERYONE": "Iedereen noemen",
+    "MOVE_MEMBERS": "Leden verplaatsen",
+    "MUTE_MEMBERS": "Microfoon van leden dempen",
+    "READ_MESSAGE_HISTORY": "Berichtgeschiedenis lezen",
+    "READ_MESSAGES": "Berichten lezen",
+    "SEND_MESSAGES": "Berichten verzenden",
+    "SEND_TTS_MESSAGES": "TTS-berichten verzenden",
+    "SPEAK": "Spreken",
+    "USE_EXTERNAL_EMOJIS": "Gebruik externe Emoji's",
+    "USE_VAD": "Spraakactivatie gebruiken",
+    "VIEW_AUDIT_LOG": "Audit-logboek weergeven"
+  },
+  "site": {
+    "name": "Discord Bot List",
+    "subheading": "Vind bots om je server op te fleuren",
+    "description": "discordapps.dev is een applicatie winkel voor Discord bots. Installeer applicaties voor muziek, nieuws, moderatie en meer in jouw server."
+  },
+  "states": {
+    "approved": "Goedgekeurd",
+    "denied": "Geweigerd",
+    "queue": "In Wachtrij",
+    "banned": "Verbannen"
+  },
+  "components": {
+    "pleaseaddyourbotpleasethanks": {
+      "title": "Starten met Discord Bots",
+      "innovate": {
+        "heading": "Start met innoveren",
+        "content": "Leer je eigen Discord applicatie te maken voor jouw privéserver"
+      },
+      "add": {
+        "heading": "Voeg je bot toe",
+        "content": "Deel je creatie met de wereld; Laat anderen hun server verbeteren met jouw applicaties"
+      }
+    },
+    "categorycollection": {
+      "morebots": "Zie meer"
+    },
+    "botpagecontentbox": {
+      "toggle": "Zet pijl aan/uit",
+      "more": "Zie meer",
+      "less": "Zie minder"
+    },
+    "helpusimprove": {
+      "title": "Help ons",
+      "text": "Reageer met feedback over deze website via de issues tab op GitHub.",
+      "issues": "GitHub Issues"
+    },
+    "botpagesetstatebox": {
+      "state": {
+        "title": "Geef status aan",
+        "placeholder": "Selecteer alstublieft een status"
+      },
+      "reason": {
+        "title": "Reden",
+        "placeholder": "Reden voor het wijzigen van de status. (optioneel)"
+      },
+      "submit": "Verander Status"
+    }
+  }
+};
+},{}],"m0Vx":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.languageHasTranslations = exports.getMasterLanguage = exports.Localise = exports.default = void 0;
+
+var _da = _interopRequireDefault(require("react-intl/locale-data/da"));
+
+var _de = _interopRequireDefault(require("react-intl/locale-data/de"));
+
+var _en = _interopRequireDefault(require("react-intl/locale-data/en"));
+
+var _fr = _interopRequireDefault(require("react-intl/locale-data/fr"));
+
+var _pl = _interopRequireDefault(require("react-intl/locale-data/pl"));
+
+var _zh = _interopRequireDefault(require("react-intl/locale-data/zh"));
+
+var _nl = _interopRequireDefault(require("react-intl/locale-data/nl"));
+
+var _da2 = _interopRequireDefault(require("./da.json"));
+
+var _de2 = _interopRequireDefault(require("./de.json"));
+
+var _enGB = _interopRequireDefault(require("./en-GB.json"));
+
+var _enUS = _interopRequireDefault(require("./en-US.json"));
+
+var _fr2 = _interopRequireDefault(require("./fr.json"));
+
+var _pl2 = _interopRequireDefault(require("./pl.json"));
+
+var _zhCn = _interopRequireDefault(require("./zh-cn.json"));
+
+var _nl2 = _interopRequireDefault(require("./nl.json"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const languages = [{
+  code: 'ar',
+  flag: '',
+  top: false,
+  priority: 22,
+  botPageLanguage: true
+}, {
+  code: 'da',
+  flag: 'twa-flag-dk',
+  top: false,
+  priority: 21,
+  translations: _da2.default,
+  reactIntl: _da.default,
+  botPageLanguage: true
+}, {
+  code: 'de',
+  flag: 'twa-de',
+  top: false,
+  priority: 3,
+  translations: _de2.default,
+  reactIntl: _de.default,
+  botPageLanguage: true
+}, {
+  code: 'el',
+  flag: '',
+  top: false,
+  priority: 20,
+  botPageLanguage: true
+}, {
+  code: 'en-GB',
+  flag: 'twa-gb',
+  top: true,
+  priority: 1,
+  translations: _enGB.default,
+  reactIntl: _en.default,
+  botPageLanguage: true
+}, {
+  code: 'en-US',
+  flag: 'twa-us',
+  master: 'en-GB',
+  top: true,
+  priority: 1.1,
+  translations: _enUS.default,
+  reactIntl: _en.default,
+  botPageLanguage: false
+}, {
+  code: 'es',
+  flag: '',
+  top: false,
+  priority: 4,
+  botPageLanguage: true
+}, {
+  code: 'et',
+  flag: '',
+  top: false,
+  priority: 19,
+  botPageLanguage: true
+}, {
+  code: 'fi',
+  flag: '',
+  top: false,
+  priority: 18,
+  botPageLanguage: true
+}, {
+  code: 'fj',
+  flag: '',
+  top: false,
+  priority: 17,
+  botPageLanguage: true
+}, {
+  code: 'fr',
+  flag: 'twa-fr',
+  top: false,
+  priority: 2,
+  translations: _fr2.default,
+  reactIntl: _fr.default,
+  botPageLanguage: true
+}, {
+  code: 'gd',
+  flag: '',
+  top: false,
+  priority: 16,
+  botPageLanguage: true
+}, {
+  code: 'he',
+  flag: '',
+  top: false,
+  priority: 26,
+  botPageLanguage: true
+}, {
+  code: 'hi',
+  flag: '',
+  top: false,
+  priority: 15,
+  botPageLanguage: true
+}, {
+  code: 'it',
+  flag: '',
+  top: false,
+  priority: 5,
+  botPageLanguage: true
+}, {
+  code: 'ja',
+  flag: '',
+  top: false,
+  priority: 14,
+  botPageLanguage: true
+}, {
+  code: 'ko',
+  flag: '',
+  top: false,
+  priority: 13,
+  botPageLanguage: true
+}, {
+  code: 'la',
+  flag: '',
+  top: false,
+  priority: 12,
+  botPageLanguage: true
+}, {
+  code: 'nl',
+  flag: 'twa-flag-nl',
+  top: false,
+  priority: 11,
+  translations: _nl2.default,
+  reactIntl: _nl.default,
+  botPageLanguage: true
+}, {
+  code: 'no',
+  flag: 'twa-flag-no',
+  top: false,
+  priority: 10,
+  botPageLanguage: true
+}, {
+  code: 'pl',
+  flag: 'twa-flag-pl',
+  top: false,
+  priority: 27,
+  translations: _pl2.default,
+  reactIntl: _pl.default,
+  botPageLanguage: true
+}, {
+  code: 'pt',
+  flag: 'twa-flag-pt',
+  top: false,
+  priority: 23,
+  botPageLanguage: true
+}, {
+  code: 'ru',
+  flag: 'twa-ru',
+  top: false,
+  priority: 6,
+  botPageLanguage: true
+}, {
+  code: 'sv',
+  flag: 'twa-flag-sv',
+  top: false,
+  priority: 7,
+  botPageLanguage: true
+}, {
+  code: 'tr',
+  flag: 'twa-flag-tr',
+  top: false,
+  priority: 24,
+  botPageLanguage: true
+}, {
+  code: 'vi',
+  flag: 'twa-flag-vi',
+  top: false,
+  priority: 25,
+  botPageLanguage: true
+}, {
+  code: 'zh-cn',
+  flag: 'twa-cn',
+  top: false,
+  priority: 9,
+  translations: _zhCn.default,
+  reactIntl: _zh.default,
+  botPageLanguage: true
+}, {
+  code: 'zh-tw',
+  flag: 'twa-flag-tw',
+  top: false,
+  priority: 8,
+  botPageLanguage: true
+}]; // console.log(JSON.stringify(languages.map(x => x.code)))
+
+const Localise = (contents, locale) => {
+  let localisedContents = contents.find(content => content.locale === locale);
+
+  if (localisedContents) {
+    return localisedContents;
+  }
+
+  const availableLanguages = languages.sort((a, b) => {
+    if (a.priority < b.priority) {
+      return -1;
+    } else if (a.priority > b.priority) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  for (let i = 0; i < availableLanguages.length; i += 1) {
+    localisedContents = contents.find(content => content.locale === availableLanguages[i].code);
+
+    if (localisedContents) {
+      return localisedContents;
+    }
+  }
+
+  throw new Error('Cannot find any languages for this bot!');
+}; // Get the language that the bots can be in
+
+
+exports.Localise = Localise;
+
+const getMasterLanguage = locale => {
+  const language = languages.find(language => language.code === locale);
+  if (language && language.master) return language.master;
+  return language.code;
+};
+
+exports.getMasterLanguage = getMasterLanguage;
+
+const languageHasTranslations = locale => {
+  const language = languages.find(language => language.code === locale);
+  return language && language.translations;
+};
+
+exports.languageHasTranslations = languageHasTranslations;
+var _default = languages;
+exports.default = _default;
+},{"./da.json":"KNV4","./de.json":"SgFO","./en-GB.json":"KfmG","./en-US.json":"z/qs","./fr.json":"H3UD","./pl.json":"eag4","./zh-cn.json":"sHKk","./nl.json":"aYz2"}],"KIu8":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _NavigationBar = _interopRequireDefault(require("../NavigationBar"));
+
+var _Footer = _interopRequireDefault(require("../Footer"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _locales = _interopRequireDefault(require("../../locales"));
+
+var _Container = _interopRequireDefault(require("../Container"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+require("./index.module.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Layout extends _react.Component {
+  render() {
+    const location = this.props.match;
+    const unlocalisedPath = location.url.substr(location.params.locale.length + 1);
+    return _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "site.name"
+    }, siteName => _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "site.description"
+    }, siteDescription => _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("meta", {
+      charSet: "utf-8"
+    }), _react.default.createElement("link", {
+      rel: "shortcut icon",
+      href: _Locations.default.favicon
+    }), _react.default.createElement("meta", {
+      property: "og:title",
+      content: siteName
+    }), _react.default.createElement("meta", {
+      property: "og:site_name",
+      content: siteName
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: siteDescription
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: siteDescription
+    }), _react.default.createElement("link", {
+      rel: "manifest",
+      href: `/${this.props.intl.locale}.manifest.json`
+    }), _locales.default.filter(language => language.translations).map(language => _react.default.createElement("link", {
+      key: language.code,
+      rel: "alternate",
+      href: `${_Locations.default.domain}/${language.code}${unlocalisedPath}`,
+      hreflang: language.code
+    }))))), _react.default.createElement(_NavigationBar.default, {
+      unlocalisedPath: unlocalisedPath
+    }), _react.default.createElement("noscript", null, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "errors.website.noscript"
+    })))), this.props.children, _react.default.createElement(_Footer.default, null));
+  }
+
+}
+
+var _default = (0, _reactIntl.injectIntl)(Layout);
+
+exports.default = _default;
+},{"../NavigationBar":"DCuC","../Footer":"xbOT","../../data/Locations":"xg/o","../../locales":"m0Vx","../Container":"MzKT","../ContentBox":"wueC","./index.module.scss":"z/qs"}],"hT/a":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class LoadingContentBox extends _react.Component {
+  render() {
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", {
+      className: _Modesta.default.loader
+    }, "Loading..."));
+  }
+
+}
+
+var _default = LoadingContentBox;
+exports.default = _default;
+},{"../../data/Modesta":"3GPO","../ContentBox":"wueC"}],"WGiP":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Container = _interopRequireDefault(require("../Container"));
+
+var _LoadingContentBox = _interopRequireDefault(require("../LoadingContentBox"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class LoadingContainer extends _react.Component {
+  render() {
+    return _react.default.createElement(_Container.default, null, _react.default.createElement(_LoadingContentBox.default, null));
+  }
+
+}
+
+var _default = LoadingContainer;
+exports.default = _default;
+},{"../Container":"MzKT","../LoadingContentBox":"hT/a"}],"T9M8":[function(require,module,exports) {
+module.exports = {
+  "video": "_video_1eb53"
+};
+},{}],"6ekf":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Youku extends _react.Component {
+  render() {
+    return _react.default.createElement("iframe", {
+      src: `http://player.youku.com/embed/${this.props.video}`,
+      frameBorder: "0",
+      allow: "accelerometer; encrypted-media; gyroscope; picture-in-picture",
+      allowFullScreen: true,
+      className: _indexModule.default.video,
+      title: this.props.title
+    });
+  }
+
+}
+
+var _default = Youku;
+exports.default = _default;
+},{"./index.module.scss":"T9M8"}],"2IlP":[function(require,module,exports) {
+module.exports = {
+  "video": "_video_17bad"
+};
+},{}],"uuBE":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class YouTube extends _react.Component {
+  render() {
+    return _react.default.createElement("iframe", {
+      src: `https://www.youtube-nocookie.com/embed/${this.props.video}`,
+      frameBorder: "0",
+      allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+      allowFullScreen: true,
+      className: _indexModule.default.video,
+      title: this.props.title
+    });
+  }
+
+}
+
+var _default = YouTube;
+exports.default = _default;
+},{"./index.module.scss":"2IlP"}],"742c":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  // weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+};
+exports.default = _default;
+},{}],"mNaX":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Locations = _interopRequireDefault(require("../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const reviewToJsonLd = (contents, item) => {
+  const template = {
+    '@context': 'http://schema.org',
+    '@type': 'Product',
+    description: contents.description,
+    name: contents.name,
+    image: [`${_Locations.default.cdn}${item.cachedImages.avatar}`, ...item.cachedImages.preview.map(img => `${_Locations.default.cdn}${img}`)],
+    sku: item.id
+  }; // If there are reviews, add the reviews stuff
+
+  if (item.reviews.length) {
+    const average = item.reviews.reduce((prev, curr) => prev + curr.rating, 0) / item.reviews.length;
+    template.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: average,
+      reviewCount: item.reviews.length
+    };
+    template.review = [];
+
+    for (let i = 0; i < item.reviews.length; i += 1) {
+      const review = item.reviews[i];
+      const date = new Date(review.date);
+      template.review.push({
+        '@type': 'Review',
+        author: review.username,
+        datePublished: `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`,
+        description: review.text,
+        reviewRating: {
+          '@type': 'Rating',
+          bestRating: '5',
+          ratingValue: review.rating.toString(),
+          worstRating: '1'
+        }
+      });
+    }
+  } else {
+    return null;
+  }
+
+  return JSON.stringify(template);
+};
+
+var _default = reviewToJsonLd;
+exports.default = _default;
+},{"../data/Locations":"xg/o"}],"MOEP":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchABot = fetchABot;
+exports.resetTheBot = resetTheBot;
+exports.RESET_BOT = exports.RECIEVE_BOT = exports.REQUEST_BOT = void 0;
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const REQUEST_BOT = 'REQUEST_BOT';
+exports.REQUEST_BOT = REQUEST_BOT;
+const RECIEVE_BOT = 'RECIEVE_BOT';
+exports.RECIEVE_BOT = RECIEVE_BOT;
+const RESET_BOT = 'RESET_BOT';
+exports.RESET_BOT = RESET_BOT;
+
+function requestBot(id) {
+  return {
+    type: REQUEST_BOT,
+    id
+  };
+}
+
+function resetBot() {
+  return {
+    type: RESET_BOT
+  };
+}
+
+function recieveBot(json, status, id) {
+  return {
+    type: RECIEVE_BOT,
+    data: json.data,
+    status,
+    id
+  };
+}
+
+function fetchBot(id) {
+  return dispatch => {
+    dispatch(requestBot(id));
+    return fetch(`${_Locations.default.server}/reactjs/v2/apps/id/${id}`, {
+      credentials: 'include'
+    }).then(res => {
+      return res.json().then(json => {
+        return dispatch(recieveBot(json, res.status, id));
+      });
+    });
+  };
+}
+
+function shouldFetchBot(state, id) {
+  // If the data has already been fetched, do not fetch it
+  if (state.bot.data && state.bot.data.id === id && state.bot.id === id) return false;
+  return true;
+}
+
+function fetchABot({
+  match
+}) {
+  return (dispatch, getState) => {
+    if (shouldFetchBot(getState(), match.params.id)) {
+      return dispatch(fetchBot(match.params.id));
+    }
+  };
+}
+
+function resetTheBot() {
+  return dispatch => {
+    dispatch(resetBot());
+  };
+}
+},{"../../data/Locations":"xg/o"}],"TqTC":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _FlexColumns = _interopRequireDefault(require("../FlexColumns"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class PleaseAddYourBotPleaseThanks extends _react.Component {
+  render() {
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_FlexColumns.default, null, _react.default.createElement(_FlexColumns.default, {
+      columns: 4
+    }, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.pleaseaddyourbotpleasethanks.title"
+    }))), _react.default.createElement(_FlexColumns.default, {
+      columns: 4
+    }, _react.default.createElement("h5", null, _react.default.createElement("a", {
+      href: _Locations.default.tutorials
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.pleaseaddyourbotpleasethanks.innovate.heading"
+    }))), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.pleaseaddyourbotpleasethanks.innovate.content"
+    })), _react.default.createElement(_FlexColumns.default, {
+      columns: 4
+    }, _react.default.createElement("h5", null, _react.default.createElement("a", {
+      href: _Locations.default.add
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.pleaseaddyourbotpleasethanks.add.heading"
+    }))), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.pleaseaddyourbotpleasethanks.add.content"
+    }))));
+  }
+
+}
+
+var _default = PleaseAddYourBotPleaseThanks;
+exports.default = _default;
+},{"../../data/Locations":"xg/o","../ContentBox":"wueC","../FlexColumns":"15qX"}],"ASwv":[function(require,module,exports) {
+module.exports = {
+  "websiteTypeButtons": "_websiteTypeButtons_62ce1",
+  "btn": "_btn_62ce1"
+};
+},{}],"AwUp":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
+var _Button = _interopRequireDefault(require("../Button"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class LinkButton extends _react.Component {
+  render() {
+    return _react.default.createElement(_LocalisedHyperlink.default, {
+      to: this.props.to
+    }, _react.default.createElement(_Button.default, {
+      className: this.props.className
+    }, this.props.children));
+  }
+
+}
+
+var _default = LinkButton;
+exports.default = _default;
+},{"../LocalisedHyperlink":"EFH/","../Button":"UCOH"}],"4uBf":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _LinkButton = _interopRequireDefault(require("../LinkButton"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class WebsiteTypeButtons extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: _indexModule.default.websiteTypeButtons
+    }, _react.default.createElement(_LinkButton.default, {
+      to: "/bots",
+      className: (0, _ConstructCSS.default)(_Modesta.default.secondary, _indexModule.default.btn)
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "types.bots"
+    })), _react.default.createElement(_LinkButton.default, {
+      to: "/rpc",
+      className: (0, _ConstructCSS.default)(_Modesta.default.secondary, _indexModule.default.btn)
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "types.rpc"
+    })));
+  }
+
+}
+
+var _default = WebsiteTypeButtons;
+exports.default = _default;
+},{"./index.module.scss":"ASwv","../LinkButton":"AwUp","../../data/Modesta":"3GPO","../../helpers/ConstructCSS":"43z2"}],"xU77":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _reactIntl = require("react-intl");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class HelpUsImprove extends _react.Component {
+  render() {
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.helpusimprove.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.helpusimprove.text"
+    })), _react.default.createElement("a", {
+      href: _Locations.default.sourceIssues
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.helpusimprove.issues"
+    })));
+  }
+
+}
+
+var _default = HelpUsImprove;
+exports.default = _default;
+},{"../ContentBox":"wueC","../../data/Locations":"xg/o"}],"gKh5":[function(require,module,exports) {
+module.exports = "/pensive.8f076f62.svg";
+},{}],"oLKj":[function(require,module,exports) {
+module.exports = {
+  "pensive": "_pensive_d10c7"
+};
+},{}],"Fup1":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _GetStartedWithBots = _interopRequireDefault(require("../../components/GetStartedWithBots"));
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/WebsiteTypeButtons"));
+
+var _HelpUsImprove = _interopRequireDefault(require("../../components/HelpUsImprove"));
+
+var _pensive = _interopRequireDefault(require("./pensive.svg"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class NotFound extends _react.Component {
+  render() {
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_FlexColumns.default, {
+      padding: true
+    }, _react.default.createElement(_FlexColumns.default, {
+      columns: 3
+    }, _react.default.createElement(_WebsiteTypeButtons.default, null), _react.default.createElement(_HelpUsImprove.default, null)), _react.default.createElement(_FlexColumns.default, {
+      columns: 9
+    }, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h1", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.error.notfound"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.error.snarky"
+    })), _react.default.createElement("img", {
+      src: _pensive.default,
+      className: _indexModule.default.pensive
+    })))), _react.default.createElement(_GetStartedWithBots.default, null)));
+  }
+
+}
+
+var _default = NotFound;
+exports.default = _default;
+},{"../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/Layout":"KIu8","../../components/GetStartedWithBots":"TqTC","../../components/FlexColumns":"15qX","../../components/WebsiteTypeButtons":"4uBf","../../components/HelpUsImprove":"xU77","./pensive.svg":"gKh5","./index.module.scss":"oLKj"}],"7WRm":[function(require,module,exports) {
+module.exports = {
+  "appLinks": "_appLinks_932ab",
+  "prefixList": "_prefixList_932ab",
+  "prefix": "_prefix_932ab",
+  "triggerNote": "_triggerNote_932ab",
+  "btn": "_btn_932ab",
+  "localeLinks": "_localeLinks_932ab",
+  "used": "_used_932ab"
+};
+},{}],"jZcb":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _AppPageDeleteButton = _interopRequireDefault(require("../../components/AppPageDeleteButton"));
+
+var _BotPageContentBox = _interopRequireDefault(require("../../components/BotPageContentBox"));
+
+var _BotPageImagesBox = _interopRequireDefault(require("../../components/BotPageImagesBox"));
+
+var _BotPageInfoBox = _interopRequireDefault(require("../../components/BotPageInfoBox"));
+
+var _BotPageReviewsBox = _interopRequireDefault(require("../../components/BotPageReviewsBox"));
+
+var _BotPageSetStateBox = _interopRequireDefault(require("../../components/BotPageSetStateBox"));
+
+var _BtecParallax = _interopRequireDefault(require("../../components/BtecParallax"));
+
+var _Button = _interopRequireDefault(require("../../components/Button"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../../components/LocalisedHyperlink"));
+
+var _NotALink = _interopRequireDefault(require("../../components/NotALink"));
+
+var _Youku = _interopRequireDefault(require("../../components/Youku"));
+
+var _YouTube = _interopRequireDefault(require("../../components/YouTube"));
+
+var _DateFormat = _interopRequireDefault(require("../../data/DateFormat"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+var _reviewToJsonLd = _interopRequireDefault(require("../../helpers/reviewToJsonLd"));
+
+var _locales = require("../../locales");
+
+var _bot = require("../../redux/actions/bot");
+
+var _NotFound = _interopRequireDefault(require("../NotFound"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotPage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bot: null,
+      displayLocale: props.intl.locale
+    };
+    this.setLocale = this.setLocale.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      dispatch,
+      match
+    } = this.props; // Check if the bot has been injected
+
+    dispatch((0, _bot.fetchABot)({
+      match
+    }));
+  }
+
+  setLocale(locale) {
+    this.setState({
+      displayLocale: locale
+    });
+    window.scrollTo(0, 0);
+  }
+
+  render() {
+    const app = this.props.bot.data;
+    const auth = this.props.auth.data;
+    const status = this.props.bot.status;
+
+    if (status === 404) {
+      if (this.props.staticContext) this.props.staticContext.status = 404;
+      return _react.default.createElement(_NotFound.default, {
+        match: this.props.match
+      });
+    }
+
+    if (!app) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_LoadingContainer.default, null));
+    }
+
+    if (app.id === this.props.match.params.id && app.type !== this.props.match.params.type) {
+      if (this.props.staticContext) this.props.staticContext.status = 301;
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: `/${this.props.match.params.locale}/${app.type}/${app.id}`
+      });
+    }
+
+    const contents = (0, _locales.Localise)(app.contents, this.state.displayLocale || this.props.intl.locale);
+    const reviewJSON = (0, _reviewToJsonLd.default)(contents, app);
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, contents.name), _react.default.createElement("meta", {
+      property: "og:title",
+      content: contents.name
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: contents.description
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: contents.description
+    }), _react.default.createElement("meta", {
+      property: "og:image",
+      content: `${_Locations.default.cdn}${app.cachedImages.avatar}`
+    }), _react.default.createElement("meta", {
+      httpEquiv: "last-modified",
+      content: new Date(app.edited).toISOString().split('T')[0]
+    }), reviewJSON && _react.default.createElement("script", {
+      type: "application/ld+json"
+    }, reviewJSON)), app.cachedImages.cover ? _react.default.createElement(_BtecParallax.default, {
+      src: `${_Locations.default.cdn}${app.cachedImages.cover}`
+    }) : null, _react.default.createElement(_Container.default, null, _react.default.createElement(_BotPageInfoBox.default, {
+      bot: app,
+      contents: contents
+    }), _react.default.createElement(_FlexColumns.default, {
+      padding: true
+    }, _react.default.createElement(_FlexColumns.default, {
+      columns: 3
+    }, _react.default.createElement("a", {
+      href: app.invite
+    }, _react.default.createElement(_Button.default, {
+      className: _indexModule.default.btn
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `pages.${app.type}.invite`
+    }))), _react.default.createElement(_ContentBox.default, null, app.trigger && _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.prefix",
+      values: {
+        count: app.trigger.prefix.length
+      }
+    }), _react.default.createElement("ul", {
+      className: _indexModule.default.prefixList
+    }, app.trigger.prefix.map((prefix, index) => _react.default.createElement("li", {
+      key: index,
+      className: _indexModule.default.prefix
+    }, prefix)), app.trigger.customisable ? _react.default.createElement("li", {
+      className: _indexModule.default.triggerNote
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.customisable"
+    })) : null, app.trigger.mentionable ? _react.default.createElement("li", {
+      className: _indexModule.default.triggerNote
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.mentionable"
+    })) : null)), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `pages.apps.appLinks`
+    }), _react.default.createElement("ul", {
+      className: _indexModule.default.appLinks
+    }, app.support ? _react.default.createElement("li", null, _react.default.createElement("a", {
+      href: app.support
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.support"
+    }))) : null, app.website ? _react.default.createElement("li", null, _react.default.createElement("a", {
+      href: app.website
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.website"
+    }))) : null, app.github && app.github.owner && app.github.repo ? _react.default.createElement("li", null, _react.default.createElement("a", {
+      href: `https://github.com/${app.github.owner}/${app.github.repo}`
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.github"
+    }))) : null)), auth && (auth.admin || app.authors.some(author => author.id === auth.id)) ? _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `pages.apps.devLinks`
+    }), _react.default.createElement("ul", {
+      className: _indexModule.default.appLinks
+    }, _react.default.createElement("li", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: `/${app.type}/${app.id}/edit`
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `pages.${app.type}.edit`
+    }))), _react.default.createElement("li", null, _react.default.createElement(_AppPageDeleteButton.default, {
+      app: app
+    })), _react.default.createElement("li", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: `/${app.type}/${app.id}/configure`
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.configure"
+    }))))) : null, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.offeredby"
+    }), _react.default.createElement("ul", {
+      className: _indexModule.default.appLinks
+    }, app.authors.length ? app.authors.map(author => _react.default.createElement("li", {
+      key: author.id
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
+      "aria-label": `${author.username}#${author.discriminator}`,
+      to: "/filter",
+      query: {
+        owners: [author.id],
+        state: _States.default.APPROVED
+      }
+    }, author.username, "#", author.discriminator))) : _react.default.createElement("li", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.apps.reclaim"
+    }))))), app.category && _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.category"
+    }), _react.default.createElement("ul", {
+      className: _indexModule.default.appLinks
+    }, _react.default.createElement("li", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/filter",
+      query: {
+        category: app.category,
+        state: _States.default.APPROVED
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `categories.${app.category}`
+    }))))), app.count && _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.count",
+      values: {
+        guilds: app.count
+      }
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.created"
+    }), _react.default.createElement("ul", {
+      className: _indexModule.default.appLinks
+    }, _react.default.createElement("li", null, new Date(app.created).toLocaleDateString(this.props.intl.locale, _DateFormat.default)))), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.modified"
+    }), _react.default.createElement("ul", {
+      className: _indexModule.default.appLinks
+    }, _react.default.createElement("li", null, new Date(app.edited).toLocaleDateString(this.props.intl.locale, _DateFormat.default))))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("p", null, app.contents.length === 1 ? _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.apps.oneLang"
+    }) : _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.apps.otherLang"
+    }), _react.default.createElement("ul", {
+      className: (0, _ConstructCSS.default)(_indexModule.default.appLinks, _indexModule.default.localeLinks)
+    }, app.contents.map(appContents => _react.default.createElement("li", {
+      key: appContents.locale
+    }, contents.locale === appContents.locale ? _react.default.createElement("span", {
+      className: _indexModule.default.used
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `locales.${appContents.locale}`
+    })) : _react.default.createElement(_NotALink.default, {
+      onClick: () => this.setLocale(appContents.locale)
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `locales.${appContents.locale}`
+    })))))))), _react.default.createElement(_FlexColumns.default, {
+      columns: 9
+    }, _react.default.createElement(_BotPageContentBox.default, {
+      page: contents.page
+    }), _react.default.createElement(_BotPageImagesBox.default, {
+      images: app.cachedImages.preview
+    }, app.videos.youtube ? _react.default.createElement(_YouTube.default, {
+      video: app.videos.youtube
+    }) : null, app.videos.youku ? _react.default.createElement(_Youku.default, {
+      video: app.videos.youku
+    }) : null), _react.default.createElement(_BotPageReviewsBox.default, {
+      bot: app
+    }))), _react.default.createElement(_BotPageSetStateBox.default, {
+      bot: app
+    })));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    bot,
+    auth
+  } = state;
+  return {
+    bot,
+    auth
+  };
+};
+
+const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(BotPage));
+exportedComponent.serverFetch = [{
+  function: _bot.fetchABot,
+  pass: ['match'],
+  payload: {}
+}];
+var _default = exportedComponent;
+exports.default = _default;
+},{"../../components/AppPageDeleteButton":"P7V4","../../components/BotPageContentBox":"3FRI","../../components/BotPageImagesBox":"hdf4","../../components/BotPageInfoBox":"MCaS","../../components/BotPageReviewsBox":"wm3q","../../components/BotPageSetStateBox":"ZLDI","../../components/BtecParallax":"7PtH","../../components/Button":"UCOH","../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/FlexColumns":"15qX","../../components/Layout":"KIu8","../../components/LoadingContainer":"WGiP","../../components/LocalisedHyperlink":"EFH/","../../components/NotALink":"zfiY","../../components/Youku":"6ekf","../../components/YouTube":"uuBE","../../data/DateFormat":"742c","../../data/Locations":"xg/o","../../data/States":"HQpP","../../helpers/ConstructCSS":"43z2","../../helpers/reviewToJsonLd":"mNaX","../../locales":"m0Vx","../../redux/actions/bot":"MOEP","../NotFound":"Fup1","./index.module.scss":"7WRm"}],"U3Rj":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Layout = _interopRequireDefault(require("../Layout"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _Container = _interopRequireDefault(require("../Container"));
+
+var _reactIntl = require("react-intl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class PermissionDenied extends _react.Component {
+  render() {
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "errors.permissions.denied"
+    })))));
+  }
+
+}
+
+var _default = PermissionDenied;
+exports.default = _default;
+},{"../Layout":"KIu8","../ContentBox":"wueC","../Container":"MzKT"}],"2qhD":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _NotFound = _interopRequireDefault(require("../NotFound"));
+
+var _reactIntl = require("react-intl");
+
+var _locales = require("../../locales");
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
+
+var _PermissionDenied = _interopRequireDefault(require("../../components/PermissionDenied"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ConfigurePage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bot: null,
+      notFound: false,
+      notAllowed: false
+    };
+  }
+
+  componentDidMount() {
+    // Check if the bot has been injected
+    if (!this.state.bot) {
+      fetch(`${_Locations.default.server}/reactjs/v2/apps/id/${this.props.match.params.id}/configure`, {
+        credentials: 'include'
+      }).then(res => {
+        if (res.status === 404) {
+          this.setState({
+            notFound: true
+          });
+        } else if (res.status === 401) {
+          this.setState({
+            notAllowed: true
+          });
+        }
+
+        return res.json();
+      }).then(data => {
+        if (data.ok) {
+          const bot = data.data;
+          this.setState({
+            bot
+          });
+        }
+      });
+    }
+  }
+
+  render() {
+    if (this.state.notFound) {
+      return _react.default.createElement(_NotFound.default, {
+        match: this.props.match
+      });
+    }
+
+    if (this.state.notAllowed) {
+      return _react.default.createElement(_PermissionDenied.default, {
+        match: this.props.match
+      });
+    }
+
+    if (!this.state.bot) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_LoadingContainer.default, null));
+    }
+
+    const {
+      bot
+    } = this.state;
+    const contents = (0, _locales.Localise)(this.state.bot.contents, this.props.intl.locale);
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, contents.name)), _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.token.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.token.description"
+    })), _react.default.createElement(_ContentBox.default, {
+      className: _Modesta.default.secondary
+    }, _react.default.createElement("code", null, bot.token)), _react.default.createElement("a", {
+      className: `${_Modesta.default.btn} ${_Modesta.default.github}`,
+      href: _Locations.default.wiki,
+      target: "_blank",
+      rel: "noopener noreferrer"
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.token.docs"
+    })))));
+  }
+
+}
+
+var _default = (0, _reactIntl.injectIntl)(ConfigurePage);
+
+exports.default = _default;
+},{"../../components/Container":"MzKT","../../components/Layout":"KIu8","../../data/Locations":"xg/o","../NotFound":"Fup1","../../locales":"m0Vx","../../components/ContentBox":"wueC","../../data/Modesta":"3GPO","../../components/LoadingContainer":"WGiP","../../components/PermissionDenied":"U3Rj"}],"JzF5":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _Column = _interopRequireDefault(require("../Column"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class MultipleInputField extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.add = this.add.bind(this);
+    this.remove = this.remove.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      values: []
+    };
+  }
+
+  handleChange(e, index) {
+    const values = [...this.state.values];
+    values[index] = e.target.value;
+    this.setState({
+      values
+    });
+  }
+
+  add(e) {
+    e.preventDefault();
+    this.setState({
+      values: [...this.state.values, '']
+    });
+  }
+
+  remove(e, index) {
+    e.preventDefault();
+    this.setState({
+      values: this.state.values.filter((x, i) => i !== index)
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.state.values.length === 0 && this.props.value && this.props.value.length > 0) {
+      this.setState({
+        values: this.props.value
+      });
+    }
+  }
+
+  render() {
+    let values = this.state.values.slice();
+
+    const input = (value, index) => _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.placeholder`
+    }, placeholder => _react.default.createElement("input", {
+      name: this.props.name,
+      type: "text",
+      className: _Modesta.default.fullWidth,
+      placeholder: placeholder,
+      style: {
+        flexGrow: '1'
+      },
+      value: value || '',
+      onChange: e => {
+        this.handleChange(e, index);
+        if (this.props.onChange) this.props.onChange(e);
+      }
+    }));
+
+    return _react.default.createElement(_Column.default, {
+      className: this.props.className || _Modesta.default.oneHalf
+    }, _react.default.createElement("label", {
+      htmlFor: this.props.name
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.title`
+    }), this.props.required ? '*' : null), _react.default.createElement(_FlexContainer.default, null, input(values.shift(), 0), _react.default.createElement("button", {
+      className: _elementsModule.default.button,
+      onClick: this.add
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.add`
+    }))), values.map((value, index) => _react.default.createElement(_FlexContainer.default, {
+      key: index
+    }, input(value, index + 1), _react.default.createElement("button", {
+      className: _elementsModule.default.button,
+      onClick: e => this.remove(e, index + 1)
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.delete`
+    })))));
+  }
+
+}
+
+var _default = MultipleInputField;
+exports.default = _default;
+},{"../FlexContainer":"2mc2","../Column":"JbzX","../../data/Modesta":"3GPO","../../scss/elements.module.scss":"jpzX"}],"0dH1":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Layout = _interopRequireDefault(require("../Layout"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _Container = _interopRequireDefault(require("../Container"));
+
+var _reactIntl = require("react-intl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class PleaseLoginContainer extends _react.Component {
+  render() {
+    return _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "errors.permissions.login"
+    }))));
+  }
+
+}
+
+var _default = PleaseLoginContainer;
+exports.default = _default;
+},{"../Layout":"KIu8","../ContentBox":"wueC","../Container":"MzKT"}],"Ln2X":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Row extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: _Modesta.default.row
+    }, this.props.children);
+  }
+
+}
+
+var _default = Row;
+exports.default = _default;
+},{"../../data/Modesta":"3GPO"}],"9pxy":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchCategoriesIfNeeded = fetchCategoriesIfNeeded;
+exports.RECIEVE_CATEGORIES = exports.REQUEST_CATEGORIES = void 0;
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const REQUEST_CATEGORIES = 'REQUEST_CATEGORIES';
+exports.REQUEST_CATEGORIES = REQUEST_CATEGORIES;
+const RECIEVE_CATEGORIES = 'RECIEVE_CATEGORIES';
+exports.RECIEVE_CATEGORIES = RECIEVE_CATEGORIES;
+
+function requestCategories() {
+  return {
+    type: REQUEST_CATEGORIES
+  };
+}
+
+function receiveCategories(json) {
+  return {
+    type: RECIEVE_CATEGORIES,
+    data: json.data
+  };
+}
+
+function fetchCategories() {
+  return dispatch => {
+    dispatch(requestCategories());
+    return fetch(`${_Locations.default.server}/reactjs/v2/categories`, {
+      credentials: 'include'
+    }).then(res => {
+      return res.json().then(json => {
+        return dispatch(receiveCategories(json));
+      });
+    });
+  };
+}
+
+function shouldFetchCategories(state) {
+  if (state.categories.fetching) return false;
+  if (state.categories.fetched) return false;
+  return true;
+}
+
+function fetchCategoriesIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchCategories(getState())) {
+      return dispatch(fetchCategories());
+    }
+  };
+}
+},{"../../data/Locations":"xg/o"}],"ZCQ5":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexContainer = _interopRequireDefault(require("../../components/FlexContainer"));
+
+var _InputField = _interopRequireDefault(require("../../components/InputField"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _MultipleInputField = _interopRequireDefault(require("../../components/MultipleInputField"));
+
+var _PleaseLogIn = _interopRequireDefault(require("../../components/PleaseLogIn"));
+
+var _Row = _interopRequireDefault(require("../../components/Row"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _locales = _interopRequireDefault(require("../../locales"));
+
+var _auth = require("../../redux/actions/auth");
+
+var _categories = require("../../redux/actions/categories");
+
+var _displayModule = _interopRequireDefault(require("../../scss/display.module.scss"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+var _bot = require("../../redux/actions/bot");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class EditBot extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      notFound: false,
+      edited: true,
+      message: null,
+      unlocalised: null,
+      ok: null,
+      unusedLanguages: _locales.default.filter(language => language.botPageLanguage).map(language => language.code),
+      usedLanguages: [],
+      redirect: null,
+      loadedExistingLanguages: false
+    };
+    this.form = _react.default.createRef();
+    this.languagesSelect = _react.default.createRef();
+    this.submit = this.submit.bind(this);
+    this.addLanguage = this.addLanguage.bind(this);
+    this.loadExistingLanguages = this.loadExistingLanguages.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.match.params.id) {
+      this.loadExistingLanguages();
+    }
+  }
+
+  componentDidMount() {
+    const {
+      dispatch,
+      match
+    } = this.props;
+    dispatch((0, _categories.fetchCategoriesIfNeeded)());
+    dispatch((0, _auth.fetchAuthIfNeeded)()); // If editing a bot
+
+    if (match.params.id) {
+      dispatch((0, _bot.fetchABot)({
+        match
+      }));
+      this.loadExistingLanguages();
+    }
+  }
+
+  loadExistingLanguages() {
+    const bot = this.props.bot.data;
+
+    if (!this.state.loadedExistingLanguages && bot && bot.contents) {
+      console.log('reloading languages');
+      this.setState({
+        loadedExistingLanguages: true,
+        unusedLanguages: _locales.default.filter(language => language.botPageLanguage).filter(language => !bot.contents.some(content => content.locale === language.code)).map(language => language.code),
+        usedLanguages: _locales.default.filter(language => language.botPageLanguage).filter(language => bot.contents.some(content => content.locale === language.code)).map(language => language.code)
+      });
+    }
+  }
+
+  addLanguage(e) {
+    e.preventDefault();
+    const selected = this.languagesSelect.current.value;
+
+    if (selected !== 'null' && this.state.unusedLanguages.includes(selected)) {
+      this.setState({
+        unusedLanguages: this.state.unusedLanguages.filter(language => language !== selected),
+        usedLanguages: [...this.state.usedLanguages, selected]
+      });
+    }
+  }
+
+  removeLanguage(e, selected) {
+    e.preventDefault();
+
+    if (selected !== 'null') {
+      this.setState({
+        usedLanguages: this.state.usedLanguages.filter(language => language !== selected),
+        unusedLanguages: [...this.state.unusedLanguages, selected]
+      });
+    }
+  }
+
+  submit(e) {
+    e.preventDefault();
+    const formdata = new FormData(this.form.current);
+    fetch(`${_Locations.default.server}/bots/add`, {
+      method: 'POST',
+      body: formdata,
+      credentials: 'include'
+    }).then(data => data.json()).then(data => {
+      this.setState({
+        ok: data.ok,
+        message: data.message || null,
+        unlocalised: data.language || null
+      });
+
+      if (data.ok) {
+        this.setState({
+          edited: false
+        });
+      }
+
+      if (data.redirect) {
+        const {
+          dispatch
+        } = this.props;
+        dispatch((0, _bot.resetTheBot)());
+        setTimeout(() => {
+          this.setState({
+            redirect: data.redirect
+          });
+        }, 500);
+      }
+    });
+  }
+
+  render() {
+    const auth = this.props.auth.data;
+
+    if (!auth || !auth.id) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_PleaseLogIn.default, {
+        match: this.props.match
+      }));
+    }
+
+    const {
+      intl
+    } = this.props;
+
+    if (this.state.redirect) {
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: `/${intl.locale}${this.state.redirect}`
+      });
+    }
+
+    const bot = this.props.match.params.id ? this.props.bot.data : null;
+    const categories = this.props.categories.data;
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.leave"
+    }, message => _react.default.createElement(_reactRouterDom.Prompt, {
+      when: this.state.edited,
+      message: message
+    })), _react.default.createElement("form", {
+      ref: this.form,
+      onSubmit: this.submit
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement("h1", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.required"
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.basicinfo"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.id",
+      id: "pages.edit.client_id",
+      value: bot && bot.id,
+      required: true
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.oauth",
+      id: "pages.edit.application_id",
+      value: bot && bot.oauth
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.invite",
+      id: "pages.edit.invite",
+      value: bot && bot.invite,
+      required: true
+    }), _react.default.createElement(_MultipleInputField.default, {
+      name: "app.authors[]",
+      id: "pages.edit.authors",
+      multiple: true,
+      value: bot && bot.authors && bot.authors.map(author => author.id),
+      required: true
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.support",
+      id: "pages.edit.support",
+      value: bot && bot.support
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.category",
+      id: "pages.edit.category",
+      localiseOptions: "categories",
+      options: categories || [],
+      value: bot && bot.category
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.website",
+      id: "pages.edit.website",
+      value: bot && bot.website
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.nsfw",
+      id: "pages.edit.nsfw",
+      value: bot && bot.nsfw,
+      toggle: true
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.images.title"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.images.avatar",
+      id: "pages.edit.images.avatar",
+      value: bot && bot.images && bot.images.avatar
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.images.cover",
+      id: "pages.edit.images.cover",
+      value: bot && bot.images && bot.images.cover
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.videos.youtube",
+      id: "pages.edit.youtube",
+      value: bot && bot.videos && bot.videos.youtube
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.videos.youku",
+      id: "pages.edit.youku",
+      value: bot && bot.videos && bot.videos.youku
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_MultipleInputField.default, {
+      name: "app.images.preview[]",
+      id: "pages.edit.images.preview",
+      value: bot && bot.images && bot.images.preview
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.triggermethods"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_MultipleInputField.default, {
+      name: "app.trigger.prefix[]",
+      id: "pages.edit.prefix",
+      value: bot && bot.trigger && bot.trigger.prefix,
+      required: true
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.trigger.customisable",
+      id: "pages.edit.customisable",
+      value: bot && bot.trigger && bot.trigger.customisable,
+      toggle: true
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.trigger.mentionable",
+      id: "pages.edit.mentionable",
+      value: bot && bot.trigger && bot.trigger.mentionable,
+      toggle: true
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.flags.title"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.flags.inAppPurchases",
+      id: "pages.edit.flags.inAppPurchases",
+      value: bot && bot.flags && bot.flags.inAppPurchases,
+      toggle: true,
+      smallText: true
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.flags.adverts",
+      id: "pages.edit.flags.adverts",
+      value: bot && bot.flags && bot.flags.adverts,
+      toggle: true,
+      smallText: true
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.sourcecode"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.github.owner",
+      id: "pages.edit.github_owner",
+      value: bot && bot.github && bot.github.owner
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.github.repo",
+      id: "pages.edit.github_repo",
+      value: bot && bot.github && bot.github.repo
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.information"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.languages.modal"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("select", {
+      form: "null",
+      className: _Modesta.default.fullWidth,
+      defaultValue: "null",
+      ref: this.languagesSelect
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "forms.select"
+    }, select => _react.default.createElement("option", {
+      value: "null",
+      disabled: true
+    }, select)), this.state.unusedLanguages.map(language => ({
+      language,
+      message: intl.formatMessage({
+        id: `locales.${language}`
+      })
+    })).sort((a, b) => a.message.localeCompare(b.message)).map(({
+      language,
+      message
+    }) => _react.default.createElement("option", {
+      key: language,
+      value: language
+    }, message || ''))), _react.default.createElement("button", {
+      onClick: this.addLanguage,
+      className: _elementsModule.default.button
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.languages.add"
+    }))))), this.state.usedLanguages.map((language, index) => {
+      const contents = bot && bot.contents && bot.contents.find(content => content.locale === language);
+      return _react.default.createElement(_ContentBox.default, {
+        key: language
+      }, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+        key: language,
+        id: `locales.${language}`
+      })), _react.default.createElement("button", {
+        onClick: e => this.removeLanguage(e, language),
+        className: _elementsModule.default.button
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "pages.edit.deleteLanguage"
+      }))), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+        name: `app.contents[${index}][name]`,
+        id: "pages.edit.name",
+        value: contents && contents.name,
+        className: _Modesta.default.fullWidth,
+        required: true
+      })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+        name: `app.contents[${index}][description]`,
+        id: "pages.edit.description",
+        value: contents && contents.description,
+        className: _Modesta.default.fullWidth,
+        required: true
+      })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+        name: `app.contents[${index}][page]`,
+        id: "pages.edit.page",
+        value: contents && contents.page,
+        textarea: true,
+        className: _Modesta.default.fullWidth,
+        required: true
+      })), _react.default.createElement("input", {
+        name: `app.contents[${index}][locale]`,
+        type: "text",
+        className: _displayModule.default.hidden,
+        value: language
+      }));
+    }), _react.default.createElement(_ContentBox.default, null, this.state.message || this.state.unlocalised ? _react.default.createElement(_ContentBox.default, {
+      className: this.state.ok ? _Modesta.default.emerald : _Modesta.default.alizarin
+    }, _react.default.createElement("p", null, this.state.unlocalised ? _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: this.state.unlocalised
+    }) : this.state.message)) : _react.default.createElement("div", null, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.updates"
+    })), _react.default.createElement("a", {
+      className: `${_Modesta.default.discord} ${_Modesta.default.btn}`,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: _Locations.default.discordServer
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.discord"
+    }))), _react.default.createElement("button", {
+      className: `${_Modesta.default.discord} ${_Modesta.default.btn}`
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "forms.submit"
+    })))), _react.default.createElement("input", {
+      className: _displayModule.default.hidden,
+      name: "app.type",
+      value: "bots"
+    })));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    categories,
+    auth,
+    bot
+  } = state;
+  return {
+    categories,
+    auth,
+    bot
+  };
+};
+
+const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(EditBot));
+exportedComponent.serverFetch = [{
+  function: _categories.fetchCategoriesIfNeeded,
+  pass: [],
+  payload: {}
+}];
+var _default = exportedComponent;
+exports.default = _default;
+},{"../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/FlexContainer":"2mc2","../../components/InputField":"6ZcU","../../components/Layout":"KIu8","../../components/MultipleInputField":"JzF5","../../components/PleaseLogIn":"0dH1","../../components/Row":"Ln2X","../../data/Locations":"xg/o","../../data/Modesta":"3GPO","../../locales":"m0Vx","../../redux/actions/auth":"+AtF","../../redux/actions/categories":"9pxy","../../scss/display.module.scss":"g6p6","../../scss/elements.module.scss":"jpzX","../../redux/actions/bot":"MOEP"}],"TNAl":[function(require,module,exports) {
+module.exports = {
+  "card": "_card_bf0e9",
+  "link": "_link_bf0e9",
+  "supportList": "_supportList_bf0e9",
+  "rating": "_rating_bf0e9",
+  "avatar": "_avatar_bf0e9",
+  "description": "_description_bf0e9"
+};
+},{}],"3c7M":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
+var _LazyImage = _interopRequireDefault(require("../LazyImage"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotCard extends _react.Component {
+  render() {
+    const {
+      bot,
+      contents
+    } = this.props;
+    const supported = [];
+
+    if (bot.flags.win) {
+      supported.push('Windows');
+    }
+
+    if (bot.flags.mac) {
+      supported.push('Mac');
+    }
+
+    if (bot.flags.linux) {
+      supported.push('Linux');
+    }
+
+    return _react.default.createElement("div", {
+      className: _indexModule.default.card
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: `/${bot.type}/${bot.id}`,
+      className: _indexModule.default.link
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "alt.avatar",
+      values: {
+        name: contents.name
+      }
+    }, message => _react.default.createElement(_LazyImage.default, {
+      className: _indexModule.default.avatar,
+      alt: message,
+      src: `${_Locations.default.cdn}${bot.cachedImages.avatar}` || _Locations.default.logo
+    })), _react.default.createElement("div", null, _react.default.createElement("h6", null, contents.name), _react.default.createElement("p", {
+      className: _indexModule.default.description
+    }, contents.description), bot.flags.win || bot.flags.mac || bot.flags.linux ? _react.default.createElement("p", {
+      className: _indexModule.default.supportList
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.rpc.supports",
+      values: {
+        operatingSystems: supported.join(', ')
+      }
+    })) : null, _react.default.createElement("p", {
+      className: _indexModule.default.supportList
+    }, this.props.metric === 'ratings' ? bot.rating > 0 ? _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botcard.rated",
+      values: {
+        score: bot.rating.toFixed(1),
+        count: bot.reviewsCount
+      }
+    }) : _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botcard.noRating"
+    }) : bot.count ? _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.count",
+      values: {
+        guilds: bot.count
+      }
+    }) : null))));
+  }
+
+}
+
+var _default = BotCard;
+exports.default = _default;
+},{"../../data/Locations":"xg/o","./index.module.scss":"TNAl","../LocalisedHyperlink":"EFH/","../LazyImage":"tK5f"}],"gD2Z":[function(require,module,exports) {
+module.exports = {
+  "collection": "_collection_322ed"
+};
+},{}],"17ao":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _locales = require("../../locales");
+
+var _BotCard = _interopRequireDefault(require("../BotCard"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotCollection extends _react.Component {
+  render() {
+    const {
+      bots,
+      limit,
+      hidden
+    } = this.props;
+    let listed = bots.filter(bot => bot.contents.length > 0);
+
+    if (limit) {
+      listed = listed.slice(0, limit);
+    } // Remove hidden bots
+
+
+    if (hidden) {
+      listed = listed.filter(bot => bot.hide === false);
+    }
+
+    return _react.default.createElement("div", {
+      className: _indexModule.default.collection
+    }, listed.length > 0 ? // Find bots that fit in the category
+    listed.map(bot => {
+      const contents = (0, _locales.Localise)(bot.contents, this.props.intl.locale);
+      return [bot, contents];
+    }).map(([bot, contents]) => _react.default.createElement(_BotCard.default, {
+      key: bot.id,
+      bot: bot,
+      contents: contents,
+      metric: this.props.metric || 'ratings'
+    })) : _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.list.empty"
+    }));
+  }
+
+}
+
+var _default = (0, _reactIntl.injectIntl)(BotCollection);
+
+exports.default = _default;
+},{"../../locales":"m0Vx","../BotCard":"3c7M","./index.module.scss":"gD2Z"}],"C45u":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+// list of people i dislike
+const Competitors = [// 'automacord.xyz',
+'botlist.space', 'bots.discord.pw', 'bots.ondiscord.xyz', 'botsfordiscord.com', 'botsparadiscord.xyz', // 'carbonitex.net',
+'dankbotlist.com', 'discord.boats', // 'discord.bots.gg',
+'discordbestbots.xyz', 'discordboats.club', 'discordbot.world', 'discordbotlist.com', 'discordbotreviews.xyz', 'discordbots.dev', 'discordbots.fr', 'discordbots.group', 'discordbots.org', 'divinediscordbots.com', 'lbots.org', 'mythicalbots.xyz', 'portalmybot.com'];
+var _default = Competitors;
+exports.default = _default;
+},{}],"yEdH":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _locales = require("../locales");
+
+var _Competitors = _interopRequireDefault(require("../data/Competitors"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const calculateBotScore = ({
+  bot,
+  locale
+}) => {
+  // If the bot has the same language as the viewer, add 100 points.
+  if (bot.contents.some(contents => contents.locale === locale || contents.locale === (0, _locales.getMasterLanguage)(locale))) {
+    bot.random += 100;
+  }
+
+  bot.contents.forEach(content => {
+    // For each description that starts with a lowercase character, deduct .5 points.
+    if (/^[a-z]/.test(content.description)) {
+      bot.random -= .5;
+    } // Bots with competitors in the bot page lose 2 points.
+
+
+    _Competitors.default.forEach(competitor => {
+      if (content.page.includes(competitor)) {
+        bot.random -= 2;
+      }
+    });
+  }); // Bots with preview images gain .5 points.
+
+  if (bot.images.preview.length > 0) {
+    bot.random += .5;
+  } // Bots with a support server gain .1 points.
+
+
+  if (bot.support) {
+    bot.random += .1;
+  }
+
+  if (bot.rating && bot.reviewsCount && bot.rating >= 1 && bot.reviewsCount >= 1) {
+    // *ring ring*
+    // me:   Yes can i speak to Matt Parker
+    // them: No they're too busy
+    // me:   Great time to do this the crap way
+    bot.random += bot.rating * Math.log10(bot.reviewsCount) / 5;
+  }
+
+  return bot;
+};
+
+var _default = calculateBotScore;
+exports.default = _default;
+},{"../locales":"m0Vx","../data/Competitors":"C45u"}],"x21S":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _qs = _interopRequireDefault(require("qs"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _BotCollection = _interopRequireDefault(require("../../components/BotCollection"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _InputField = _interopRequireDefault(require("../../components/InputField"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _MultipleInputField = _interopRequireDefault(require("../../components/MultipleInputField"));
+
+var _Row = _interopRequireDefault(require("../../components/Row"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _categories = require("../../redux/actions/categories");
+
+var _calulateBotScore = _interopRequireDefault(require("../../helpers/calulateBotScore"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class FilterPage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: null,
+      message: null,
+      owners: [],
+      category: null,
+      nsfw: null,
+      query: null,
+      timeout: null,
+      hidden: true,
+      type: null,
+      state: null
+    };
+    this.form = _react.default.createRef();
+    this.onChange = this.onChange.bind(this);
+    this.search = this.search.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _categories.fetchCategoriesIfNeeded)());
+
+    if (this.props.location.search) {
+      this.search(this.props.location.search);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.state.timeout) clearTimeout(this.state.timeout);
+  }
+
+  search(searchQuery) {
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/search${searchQuery}`).then(res => res.json()).then(data => {
+      if (data.ok) {
+        this.setState({
+          results: data.data.map(bot => (0, _calulateBotScore.default)({
+            bot,
+            locale: this.props.intl.locale
+          })).sort((a, b) => b.random - a.random)
+        });
+      } else {
+        this.setState({
+          message: data.message
+        });
+      }
+    });
+
+    const query = _qs.default.parse(window.location.search.replace(/^\?/, ''));
+
+    this.setState({
+      owners: query.owners,
+      category: query.category,
+      nsfw: query.nsfw,
+      query: query.q,
+      hidden: !(query.hidden === 'false'),
+      state: query.state
+    });
+  }
+
+  onChange(e) {
+    const formdata = new FormData(this.form.current);
+    const queryString = new URLSearchParams(formdata).toString();
+    const timeout = setTimeout(() => {
+      if (this.state.timeout === timeout) {
+        if (queryString) {
+          this.search(`?${queryString}`);
+        }
+      }
+    }, 250);
+    this.setState({
+      timeout
+    });
+  }
+
+  render() {
+    const categories = this.props.categories.data;
+    const auth = this.props.auth.data;
+    const {
+      results,
+      owners,
+      category,
+      nsfw,
+      type,
+      query,
+      hidden,
+      state
+    } = this.state;
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement("form", {
+      ref: this.form
+    }, _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_MultipleInputField.default, {
+      name: "owners[]",
+      id: "pages.filter.authors",
+      value: owners,
+      onChange: this.onChange
+    }), _react.default.createElement(_InputField.default, {
+      name: "category",
+      id: "pages.filter.category",
+      localiseOptions: "categories",
+      allowNone: true,
+      options: categories || [],
+      value: category,
+      onChange: this.onChange
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "q",
+      id: "pages.filter.query",
+      value: query,
+      onChange: this.onChange
+    }), _react.default.createElement(_InputField.default, {
+      name: "nsfw",
+      id: "pages.filter.nsfw",
+      localiseOptions: "pages.filter.nsfw",
+      allowNone: true,
+      options: ['sfw', 'nsfw'],
+      value: nsfw,
+      onChange: this.onChange
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "type",
+      id: "pages.filter.type",
+      localiseOptions: "pages.filter.type",
+      allowNone: true,
+      options: ['bots', 'rpc'],
+      value: type,
+      onChange: this.onChange
+    }), _react.default.createElement(_InputField.default, {
+      style: auth && auth.admin ? {} : {
+        visibility: 'hidden',
+        position: 'fixed'
+      },
+      name: "state",
+      id: "pages.filter.state",
+      localiseOptions: "states",
+      allowNone: true,
+      options: Object.values(_States.default),
+      value: state,
+      onChange: this.onChange
+    })))), Array.isArray(results) ? _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_BotCollection.default, {
+      bots: results.sort((a, b) => {
+        if (this.state.state === _States.default.APPROVED) return b.random - a.random;
+        return b.edited - a.edited;
+      }),
+      hidden: hidden
+    })) : null));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    categories,
+    bots,
+    auth
+  } = state;
+  return {
+    categories,
+    bots,
+    auth
+  };
+};
+
+const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(FilterPage));
+exportedComponent.serverFetch = [];
+var _default = exportedComponent;
+exports.default = _default;
+},{"../../components/BotCollection":"17ao","../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/InputField":"6ZcU","../../components/Layout":"KIu8","../../components/MultipleInputField":"JzF5","../../components/Row":"Ln2X","../../data/Locations":"xg/o","../../data/States":"HQpP","../../redux/actions/categories":"9pxy","../../helpers/calulateBotScore":"yEdH"}],"yQpM":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _GetStartedWithBots = _interopRequireDefault(require("../../components/GetStartedWithBots"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Game extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      kliksphilip: 0
+    };
+    this.klick = this.klick.bind(this);
+  }
+
+  klick() {
+    this.setState({
+      kliksphilip: this.state.kliksphilip + 1
+    });
+  }
+
+  render() {
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.game.title"
+    }, gameName => _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.game.description"
+    }, gameDescription => _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, gameName), _react.default.createElement("meta", {
+      property: "og:title",
+      content: gameName
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: gameDescription
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: gameDescription
+    })))), _react.default.createElement(_Container.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.game.leave"
+    }, message => _react.default.createElement(_reactRouterDom.Prompt, {
+      message: message
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.game.title"
+    })), _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.game.description"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.game.score",
+      values: {
+        kliksphilip: this.state.kliksphilip
+      }
+    })), _react.default.createElement("button", {
+      onClick: this.klick
+    }, "Get a point")), _react.default.createElement(_GetStartedWithBots.default, null)));
+  }
+
+}
+
+var _default = Game;
+exports.default = _default;
+},{"../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/Layout":"KIu8","../../components/GetStartedWithBots":"TqTC"}],"JPpK":[function(require,module,exports) {
+module.exports = {
+  "list": "_list_ddc7d",
+  "item": "_item_ddc7d"
+};
+},{}],"ETMr":[function(require,module,exports) {
+module.exports = {
+  "line": "_line_9fb62"
+};
+},{}],"Vrip":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class LoadingLine extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: `${_indexModule.default.line} ${_elementsModule.default.roundedCorners} ${_elementsModule.default.loading}`,
+      style: {
+        width: `${this.props.width}%`
+      }
+    });
+  }
+
+}
+
+var _default = LoadingLine;
+exports.default = _default;
+},{"./index.module.scss":"ETMr","../../scss/elements.module.scss":"jpzX"}],"u9/w":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _LoadingLine = _interopRequireDefault(require("./LoadingLine"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class LoadingText extends _react.Component {
+  render() {
+    const widths = [];
+    let lines = this.props.lines || 10;
+
+    for (let i = 0; i < lines; i += 1) {
+      widths.push(60 + Math.random() * 40);
+    }
+
+    return _react.default.createElement("div", null, widths.map((width, index) => _react.default.createElement(_LoadingLine.default, {
+      key: index,
+      width: width
+    })));
+  }
+
+}
+
+var _default = LoadingText;
+exports.default = _default;
+},{"./LoadingLine":"Vrip"}],"6raI":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _LoadingText = _interopRequireDefault(require("../LoadingText"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
+var _categories = require("../../redux/actions/categories");
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class CategoriesLinksList extends _react.Component {
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _categories.fetchCategoriesIfNeeded)());
+  }
+
+  render() {
+    const categories = this.props.categories.data;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h5", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.initiateCategoryFilter"
+    })), categories.length === 0 ? _react.default.createElement(_LoadingText.default, null) : _react.default.createElement("ul", {
+      className: _indexModule.default.list
+    }, categories.map(x => _react.default.createElement("li", {
+      key: x,
+      className: _indexModule.default.item
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/filter",
+      query: {
+        category: x,
+        state: _States.default.APPROVED
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `categories.${x}`
+    }))))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    categories
+  } = state;
+  return {
+    categories
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(CategoriesLinksList);
+
+exports.default = _default;
+},{"../ContentBox":"wueC","./index.module.scss":"JPpK","../LoadingText":"u9/w","../LocalisedHyperlink":"EFH/","../../redux/actions/categories":"9pxy","../../data/States":"HQpP"}],"dHuT":[function(require,module,exports) {
+module.exports = "/hk.19c8b6f4.jpg";
+},{}],"6IzC":[function(require,module,exports) {
+module.exports = {
+  "slider": "_slider_b9b50",
+  "sliderContainer": "_sliderContainer_b9b50",
+  "sliderContents": "_sliderContents_b9b50",
+  "sliderImage": "_sliderImage_b9b50",
+  "sliderVideo": "_sliderVideo_b9b50",
+  "dragging": "_dragging_b9b50",
+  "dots": "_dots_b9b50"
+};
+},{}],"kn5L":[function(require,module,exports) {
+module.exports = "/rpc.89411526.jpg";
+},{}],"BAkA":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _reactSlick = _interopRequireDefault(require("react-slick"));
+
+var _BotCategoriesLinksList = _interopRequireDefault(require("../../components/BotCategoriesLinksList"));
+
+var _BotCollection = _interopRequireDefault(require("../../components/BotCollection"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _GetStartedWithBots = _interopRequireDefault(require("../../components/GetStartedWithBots"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _LazyImage = _interopRequireDefault(require("../../components/LazyImage"));
+
+var _LoadingContentBox = _interopRequireDefault(require("../../components/LoadingContentBox"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../../components/LocalisedHyperlink"));
+
+var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/WebsiteTypeButtons"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+var _categories = require("../../redux/actions/categories");
+
+var _hk = _interopRequireDefault(require("./hk.jpg"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _rpc = _interopRequireDefault(require("./rpc.jpg"));
+
+var _calulateBotScore = _interopRequireDefault(require("../../helpers/calulateBotScore"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Home extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: []
+    };
+  }
+
+  componentDidMount() {
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/search?approved=${_States.default.APPROVED}`).then(res => res.json()).then(data => {
+      if (data.ok) {
+        this.setState({
+          results: data.data.filter(bot => bot.state === 'approved').filter(bot => bot.hide !== true).map(bot => (0, _calulateBotScore.default)({
+            bot,
+            locale: this.props.intl.locale
+          })).sort((a, b) => b.random - a.random)
+        });
+      } else {
+        this.setState({
+          message: data.message
+        });
+      }
+    });
+  }
+
+  render() {
+    const results = this.state.results;
+    const settings = {
+      className: _indexModule.default.slider,
+      dotsClass: _indexModule.default.dots,
+      centerMode: true,
+      infinite: false,
+      slidesToShow: 1,
+      // autoplay: true,
+      // autoplaySpeed: 3000,
+      speed: 500,
+      arrows: false,
+      dots: true,
+      focusOnSelect: true,
+      pauseOnDotsHover: true,
+      pauseOnFocus: true,
+      pauseOnHover: true
+    };
+    const displayed = [];
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_reactSlick.default, settings, _react.default.createElement(_ContentBox.default, {
+      className: (0, _ConstructCSS.default)(_indexModule.default.sliderContainer)
+    }, _react.default.createElement("iframe", {
+      src: "https://www.youtube-nocookie.com/embed/pYRCVFK-mjk?autoplay=1&loop=1&playlist=pYRCVFK-mjk&mute=1",
+      className: _indexModule.default.sliderVideo,
+      title: "Bots YouTube Background"
+    }), _react.default.createElement("div", {
+      className: _indexModule.default.sliderContents
+    }, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.bots.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.bots.description"
+    })), _react.default.createElement("p", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/bots"
+    }, _react.default.createElement("small", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.bots.link"
+    })))))), _react.default.createElement(_ContentBox.default, {
+      className: _indexModule.default.sliderContainer
+    }, _react.default.createElement(_LazyImage.default, {
+      src: _rpc.default,
+      className: _indexModule.default.sliderImage
+    }), _react.default.createElement("div", {
+      className: _indexModule.default.sliderContents
+    }, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.rpc.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.rpc.description"
+    })), _react.default.createElement("p", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/rpc"
+    }, _react.default.createElement("small", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.rpc.link"
+    })))))), _react.default.createElement(_ContentBox.default, {
+      className: _indexModule.default.sliderContainer
+    }, _react.default.createElement(_LazyImage.default, {
+      src: _hk.default,
+      className: _indexModule.default.sliderImage
+    }), _react.default.createElement("div", {
+      className: _indexModule.default.sliderContents
+    }, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.discover.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.discover.description"
+    })), _react.default.createElement("p", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/posts"
+    }, _react.default.createElement("small", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.discover.link"
+    }))))))), _react.default.createElement(_FlexColumns.default, {
+      padding: true
+    }, _react.default.createElement(_FlexColumns.default, {
+      columns: 3
+    }, _react.default.createElement(_WebsiteTypeButtons.default, null), _react.default.createElement(_BotCategoriesLinksList.default, null)), _react.default.createElement(_FlexColumns.default, {
+      columns: 9
+    }, Array.isArray(results) ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.randomBots"
+    })), _react.default.createElement(_BotCollection.default, {
+      bots: results.filter(bot => bot.type === 'bots').map(bot => Object.assign({}, bot, {
+        random: Math.random()
+      })).sort((a, b) => b.random - a.random).map((bot, index) => {
+        if (index < 9) displayed.push(bot.id);
+        return bot;
+      }),
+      limit: 9
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.topRPC"
+    })), _react.default.createElement(_BotCollection.default, {
+      bots: results.filter(bot => bot.type === 'rpc').sort((a, b) => b.random - a.random),
+      limit: 9
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.popularBots"
+    })), _react.default.createElement(_BotCollection.default, {
+      bots: results.filter(bot => bot.type === 'bots').filter(bot => bot.count).filter(bot => !displayed.includes(bot.id)).sort((a, b) => b.count - a.count).map((bot, index) => {
+        if (index < 9) displayed.push(bot.id);
+        return bot;
+      }),
+      limit: 9,
+      metric: "count"
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.smallBots"
+    })), _react.default.createElement(_BotCollection.default, {
+      bots: results.filter(bot => bot.type === 'bots').filter(bot => bot.count).filter(bot => !displayed.includes(bot.id)).sort((a, b) => a.count - b.count).map((bot, index) => {
+        if (index < 9) displayed.push(bot.id);
+        return bot;
+      }),
+      limit: 9,
+      metric: "count"
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.home.newestBots"
+    })), _react.default.createElement(_BotCollection.default, {
+      bots: results.filter(bot => bot.type === 'bots').filter(bot => !displayed.includes(bot.id)).sort((a, b) => b.created - a.created).map((bot, index) => {
+        if (index < 9) displayed.push(bot.id);
+        return bot;
+      }),
+      limit: 9
+    }))) : _react.default.createElement(_LoadingContentBox.default, null))), _react.default.createElement(_GetStartedWithBots.default, null)));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    bots
+  } = state;
+  return {
+    bots
+  };
+};
+
+const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(Home));
+exportedComponent.serverFetch = [{
+  function: _categories.fetchCategoriesIfNeeded,
+  pass: [],
+  payload: {}
+}];
+var _default = exportedComponent;
+exports.default = _default;
+},{"../../components/BotCategoriesLinksList":"6raI","../../components/BotCollection":"17ao","../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/FlexColumns":"15qX","../../components/GetStartedWithBots":"TqTC","../../components/Layout":"KIu8","../../components/LazyImage":"tK5f","../../components/LoadingContentBox":"hT/a","../../components/LocalisedHyperlink":"EFH/","../../components/WebsiteTypeButtons":"4uBf","../../data/Locations":"xg/o","../../data/States":"HQpP","../../helpers/ConstructCSS":"43z2","../../redux/actions/categories":"9pxy","./hk.jpg":"dHuT","./index.module.scss":"6IzC","./rpc.jpg":"kn5L","../../helpers/calulateBotScore":"yEdH"}],"LGOr":[function(require,module,exports) {
+module.exports = {
+  "heading": "_heading_4023b",
+  "grow": "_grow_4023b"
+};
+},{}],"5vCK":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _locales = require("../../locales");
+
+var _categories = require("../../redux/actions/categories");
+
+var _BotCollection = _interopRequireDefault(require("../BotCollection"));
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _LoadingContentBox = _interopRequireDefault(require("../LoadingContentBox"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _calulateBotScore = _interopRequireDefault(require("../../helpers/calulateBotScore"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class CategoryCollection extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bots: []
+    };
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _categories.fetchCategoriesIfNeeded)());
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/search?type=bots&approved=${_States.default.APPROVED}`).then(res => res.json()).then(data => {
+      if (data.ok) {
+        this.setState({
+          bots: data.data.filter(bot => bot.state === 'approved').filter(bot => bot.hide !== true).map(bot => (0, _calulateBotScore.default)({
+            bot,
+            locale: this.props.intl.locale
+          })).sort((a, b) => b.random - a.random)
+        });
+      }
+    });
+  }
+
+  render() {
+    const categories = this.props.categories.data;
+    const {
+      bots
+    } = this.state;
+    const botsInMyLanguage = bots.filter(bot => bot.contents.some(contents => contents.locale === this.props.intl.locale || contents.locale === (0, _locales.getMasterLanguage)(this.props.intl.locale)));
+    return _react.default.createElement("div", null, botsInMyLanguage.length !== 0 && (0, _locales.getMasterLanguage)(this.props.intl.locale) !== 'en-GB' ? _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.inMyLanguage"
+    })), _react.default.createElement(_BotCollection.default, {
+      bots: botsInMyLanguage,
+      limit: 9,
+      hidden: true
+    })) : null, categories.length > 0 ? categories.filter(category => bots.filter(bot => bot.category === category).length) // List categories that are not empty
+    .map(a => [a, Math.random()]) // Randomise the order of the categories
+    .sort((a, b) => a[1] - b[1]).map(a => a[0]).map(category => {
+      const botsInCategory = bots.filter(bot => bot.category === category);
+      return _react.default.createElement(_ContentBox.default, {
+        key: category
+      }, _react.default.createElement("div", {
+        className: _indexModule.default.heading
+      }, _react.default.createElement("h4", {
+        className: _indexModule.default.grow,
+        id: category
+      }, _react.default.createElement(_LocalisedHyperlink.default, {
+        to: "/filter",
+        query: {
+          category,
+          state: _States.default.APPROVED
+        }
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: `categories.${category}`
+      }))), botsInCategory.length > 8 ? _react.default.createElement(_LocalisedHyperlink.default, {
+        to: "/filter",
+        query: {
+          category,
+          state: _States.default.APPROVED
+        }
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "components.categorycollection.morebots"
+      })) : null), _react.default.createElement(_BotCollection.default, {
+        bots: botsInCategory,
+        limit: 9,
+        hidden: true
+      }));
+    }) : _react.default.createElement(_LoadingContentBox.default, null));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    categories
+  } = state;
+  return {
+    categories
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(CategoryCollection));
+
+exports.default = _default;
+},{"../../data/Locations":"xg/o","../../locales":"m0Vx","../../redux/actions/categories":"9pxy","../BotCollection":"17ao","../ContentBox":"wueC","../LoadingContentBox":"hT/a","../LocalisedHyperlink":"EFH/","./index.module.scss":"LGOr","../../data/States":"HQpP","../../helpers/calulateBotScore":"yEdH"}],"xVA4":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _BotCategoriesLinksList = _interopRequireDefault(require("../../components/BotCategoriesLinksList"));
+
+var _BotCategoryCollection = _interopRequireDefault(require("../../components/BotCategoryCollection"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _GetStartedWithBots = _interopRequireDefault(require("../../components/GetStartedWithBots"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/WebsiteTypeButtons"));
+
+var _categories = require("../../redux/actions/categories");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotsHome extends _react.Component {
+  render() {
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.index.title"
+    }, title => _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.index.description"
+    }, description => _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, title), _react.default.createElement("meta", {
+      property: "og:title",
+      content: title
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: description
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: description
+    })))), _react.default.createElement(_Container.default, null, _react.default.createElement(_FlexColumns.default, {
+      padding: true
+    }, _react.default.createElement(_FlexColumns.default, {
+      columns: 3
+    }, _react.default.createElement(_WebsiteTypeButtons.default, null), _react.default.createElement(_BotCategoriesLinksList.default, null)), _react.default.createElement(_FlexColumns.default, {
+      columns: 9
+    }, _react.default.createElement(_BotCategoryCollection.default, null))), _react.default.createElement(_GetStartedWithBots.default, null)));
+  }
+
+}
+
+BotsHome.serverFetch = [{
+  function: _categories.fetchCategoriesIfNeeded,
+  pass: [],
+  payload: {}
+}];
+var _default = BotsHome;
+exports.default = _default;
+},{"../../components/BotCategoriesLinksList":"6raI","../../components/BotCategoryCollection":"5vCK","../../components/Container":"MzKT","../../components/FlexColumns":"15qX","../../components/GetStartedWithBots":"TqTC","../../components/Layout":"KIu8","../../components/WebsiteTypeButtons":"4uBf","../../redux/actions/categories":"9pxy"}],"lakt":[function(require,module,exports) {
+module.exports = {
+  "flags": "_flags_d6973",
+  "flag": "_flag_d6973"
+};
+},{}],"YNL+":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _locales = _interopRequireDefault(require("../../locales"));
+
+var _Modesta = _interopRequireWildcard(require("../../data/Modesta"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = ({
+  unlocalisedPath = ''
+}) => _react.default.createElement("div", {
+  className: _indexModule.default.flags
+}, _locales.default.filter(language => language.translations).map(language => _react.default.createElement(_reactIntl.FormattedMessage, {
+  id: `locales.${language.code}`,
+  key: language.code
+}, message => _react.default.createElement(_reactRouterDom.Link, {
+  to: `/${language.code}${unlocalisedPath}`,
+  className: `${_Modesta.default.emoji} ${_Modesta.TwitterEmojis[language.flag.replace(/-([a-z0-9])/g, capture => capture[1].toUpperCase()).replace('-', '')]} ${_indexModule.default.flag}`,
+  "aria-label": message,
+  title: message
+}))));
+
+exports.default = _default;
+},{"../../locales":"m0Vx","../../data/Modesta":"3GPO","./index.module.scss":"lakt"}],"c3KN":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlagLinks = _interopRequireDefault(require("../../components/FlagLinks"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _qs = _interopRequireDefault(require("qs"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Locale extends _react.Component {
+  render() {
+    const query = _qs.default.parse(this.props.location.search.replace(/^\?/, ''));
+
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, {
+      className: _Modesta.default.center
+    }, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.locale.choose"
+    })), _react.default.createElement(_FlagLinks.default, {
+      unlocalisedPath: query.returnBrowserTo
+    }), _react.default.createElement("p", null, _react.default.createElement("a", {
+      href: _Locations.default.sourceTranslations
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.locale.pleasehelp"
+    }))))));
+  }
+
+}
+
+var _default = Locale;
+exports.default = _default;
+},{"../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/FlagLinks":"YNL+","../../components/Layout":"KIu8","../../data/Locations":"xg/o","../../data/Modesta":"3GPO"}],"i3MG":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _auth = require("../../redux/actions/auth");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AuthenticateLogout extends _react.Component {
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    fetch(`${_Locations.default.server}/auth/logout`, {
+      credentials: 'include'
+    }).then(() => {
+      dispatch((0, _auth.forceFetchAuth)());
+    });
+  }
+
+  render() {
+    const {
+      intl
+    } = this.props;
+    return _react.default.createElement(_reactRouterDom.Redirect, {
+      to: `/${intl.locale}`
+    });
+  }
+
+}
+
+var _default = (0, _reactRedux.connect)()((0, _reactIntl.injectIntl)(AuthenticateLogout));
+
+exports.default = _default;
+},{"../../data/Locations":"xg/o","../../redux/actions/auth":"+AtF"}],"BAEK":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _auth = require("../../redux/actions/auth");
+
+var _PleaseLogIn = _interopRequireDefault(require("../../components/PleaseLogIn"));
+
+var _PermissionDenied = _interopRequireDefault(require("../../components/PermissionDenied"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../../components/LocalisedHyperlink"));
+
+var _reactIntl = require("react-intl");
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AdminPage extends _react.Component {
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  render() {
+    const auth = this.props.auth.data;
+
+    if (!auth || !auth.id) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_PleaseLogIn.default, {
+        match: this.props.match
+      }));
+    }
+
+    if (!auth.admin) {
+      return _react.default.createElement(_PermissionDenied.default, {
+        match: this.props.match
+      });
+    }
+
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h1", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.admin.title"
+    })), _react.default.createElement("ul", null, Object.values(_States.default).map(state => _react.default.createElement("li", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/filter",
+      query: {
+        state: state
+      }
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `states.${state}`
+    }))))))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(AdminPage);
+
+exports.default = _default;
+},{"../../components/Container":"MzKT","../../components/Layout":"KIu8","../../redux/actions/auth":"+AtF","../../components/PleaseLogIn":"0dH1","../../components/PermissionDenied":"U3Rj","../../data/States":"HQpP","../../components/LocalisedHyperlink":"EFH/","../../components/ContentBox":"wueC"}],"CY6M":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _flat = _interopRequireDefault(require("flat"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexContainer = _interopRequireDefault(require("../../components/FlexContainer"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _Row = _interopRequireDefault(require("../../components/Row"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _locales = _interopRequireWildcard(require("../../locales"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+class LanguagesComparisonPage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedLanguages: []
+    };
+    this.languagesSelect = _react.default.createRef();
+    this.addLanguage = this.addLanguage.bind(this);
+  }
+
+  addLanguage(e) {
+    e.preventDefault();
+    const selected = this.languagesSelect.current.value;
+    this.setState({
+      selectedLanguages: [...this.state.selectedLanguages, selected]
+    });
+  }
+
+  render() {
+    const intl = this.props.intl;
+    const selectedLanguages = this.state.selectedLanguages;
+
+    const languageKeys = _locales.default.filter(lang => lang.translations).map(lang => lang.code);
+
+    const unusedKeys = _locales.default.filter(lang => lang.translations).map(lang => lang.translations).map(lang => Object.keys((0, _flat.default)(lang))).reduce((prev, curr) => prev.concat(curr), []).reduce((prev, curr) => {
+      prev[curr] = false;
+      return prev;
+    }, {});
+
+    const localisations = _locales.default.filter(lang => lang.translations).reduce((prev, curr) => {
+      prev[curr.code] = (0, _flat.default)(curr.translations);
+      return prev;
+    }, {});
+
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("select", {
+      form: "null",
+      className: _Modesta.default.fullWidth,
+      defaultValue: "null",
+      ref: this.languagesSelect
+    }, languageKeys.map(language => ({
+      language,
+      message: intl.formatMessage({
+        id: `locales.${language}`
+      })
+    })).sort((a, b) => a.message.localeCompare(b.message)).map(({
+      language,
+      message
+    }) => _react.default.createElement("option", {
+      key: language,
+      value: language
+    }, message || ''))), _react.default.createElement("button", {
+      onClick: this.addLanguage,
+      className: _elementsModule.default.button
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.languages.add"
+    })))), _react.default.createElement("div", {
+      className: `${_Modesta.default.tableContainer} ${_Modesta.default.tableCenter}`,
+      style: {
+        maxWidth: '100vw'
+      }
+    }, _react.default.createElement("table", {
+      style: {
+        whiteSpace: 'normal'
+      }
+    }, _react.default.createElement("thead", null, _react.default.createElement("tr", null, _react.default.createElement("td", null, "Key"), selectedLanguages.map(locale => _react.default.createElement("td", {
+      key: locale
+    }, locale)))), _react.default.createElement("tbody", null, _react.default.createElement("tr", null, _react.default.createElement("td", null, _react.default.createElement("b", null, "Master Language"), _react.default.createElement("p", null, "The language this inherits from, for bot page scoring")), selectedLanguages.map(locale => _react.default.createElement("td", {
+      key: locale
+    }, (0, _locales.getMasterLanguage)(locale)))), Object.keys(unusedKeys).map(key => _react.default.createElement("tr", {
+      key: key
+    }, _react.default.createElement("td", null, key), selectedLanguages.map(locale => _react.default.createElement("td", {
+      key: locale
+    }, localisations[locale][key])))))))));
+  }
+
+}
+
+var _default = (0, _reactIntl.injectIntl)(LanguagesComparisonPage);
+
+exports.default = _default;
+},{"../../components/ContentBox":"wueC","../../components/FlexContainer":"2mc2","../../components/Layout":"KIu8","../../components/Row":"Ln2X","../../data/Modesta":"3GPO","../../locales":"m0Vx","../../scss/elements.module.scss":"jpzX"}],"VooJ":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _BotCollection = _interopRequireDefault(require("../../components/BotCollection"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _GetStartedWithBots = _interopRequireDefault(require("../../components/GetStartedWithBots"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _LoadingContentBox = _interopRequireDefault(require("../../components/LoadingContentBox"));
+
+var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/WebsiteTypeButtons"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _calulateBotScore = _interopRequireDefault(require("../../helpers/calulateBotScore"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class RpcHome extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: []
+    };
+  }
+
+  componentDidMount() {
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/search?type=rpc&approved=${_States.default.APPROVED}`).then(res => res.json()).then(data => {
+      if (data.ok) {
+        this.setState({
+          results: data.data.filter(bot => bot.state === 'approved').sort((a, b) => b.random - a.random)
+        });
+      } else {
+        this.setState({
+          message: data.message
+        });
+      }
+    });
+  }
+
+  render() {
+    const results = this.state.results;
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.rpc.index.title"
+    }, title => _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.rpc.index.description"
+    }, description => _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, title), _react.default.createElement("meta", {
+      property: "og:title",
+      content: title
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: description
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: description
+    })))), _react.default.createElement(_Container.default, null, _react.default.createElement(_FlexColumns.default, {
+      padding: true
+    }, _react.default.createElement(_FlexColumns.default, {
+      columns: 3
+    }, _react.default.createElement(_WebsiteTypeButtons.default, null)), _react.default.createElement(_FlexColumns.default, {
+      columns: 9
+    }, Array.isArray(results) ? _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_BotCollection.default, {
+      bots: results
+    })) : _react.default.createElement(_LoadingContentBox.default, null))), _react.default.createElement(_GetStartedWithBots.default, null)));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    bots
+  } = state;
+  return {
+    bots
+  };
+};
+
+const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)(RpcHome);
+exportedComponent.serverFetch = [];
+var _default = exportedComponent;
+exports.default = _default;
+},{"../../components/BotCollection":"17ao","../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/FlexColumns":"15qX","../../components/GetStartedWithBots":"TqTC","../../components/Layout":"KIu8","../../components/LoadingContentBox":"hT/a","../../components/WebsiteTypeButtons":"4uBf","../../data/Locations":"xg/o","../../data/States":"HQpP","../../helpers/calulateBotScore":"yEdH"}],"ggfm":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexContainer = _interopRequireDefault(require("../../components/FlexContainer"));
+
+var _InputField = _interopRequireDefault(require("../../components/InputField"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _MultipleInputField = _interopRequireDefault(require("../../components/MultipleInputField"));
+
+var _PleaseLogIn = _interopRequireDefault(require("../../components/PleaseLogIn"));
+
+var _Row = _interopRequireDefault(require("../../components/Row"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _locales = _interopRequireDefault(require("../../locales"));
+
+var _auth = require("../../redux/actions/auth");
+
+var _categories = require("../../redux/actions/categories");
+
+var _displayModule = _interopRequireDefault(require("../../scss/display.module.scss"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+var _bot = require("../../redux/actions/bot");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class EditRpc extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      notFound: false,
+      edited: true,
+      message: null,
+      unlocalised: null,
+      ok: null,
+      unusedLanguages: _locales.default.filter(language => language.botPageLanguage).map(language => language.code),
+      usedLanguages: [],
+      redirect: null,
+      loadedExistingLanguages: false
+    };
+    this.form = _react.default.createRef();
+    this.languagesSelect = _react.default.createRef();
+    this.submit = this.submit.bind(this);
+    this.addLanguage = this.addLanguage.bind(this);
+    this.loadExistingLanguages = this.loadExistingLanguages.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (this.props.match.params.id) {
+      this.loadExistingLanguages();
+    }
+  }
+
+  componentDidMount() {
+    const {
+      dispatch,
+      match
+    } = this.props;
+    dispatch((0, _categories.fetchCategoriesIfNeeded)());
+    dispatch((0, _auth.fetchAuthIfNeeded)()); // If editing a bot
+
+    if (match.params.id) {
+      dispatch((0, _bot.fetchABot)({
+        match
+      }));
+      this.loadExistingLanguages();
+    }
+  }
+
+  loadExistingLanguages() {
+    const bot = this.props.bot.data;
+
+    if (!this.state.loadedExistingLanguages && bot && bot.contents) {
+      console.log('reloading languages');
+      this.setState({
+        loadedExistingLanguages: true,
+        unusedLanguages: _locales.default.filter(language => language.botPageLanguage).filter(language => !bot.contents.some(content => content.locale === language.code)).map(language => language.code),
+        usedLanguages: _locales.default.filter(language => language.botPageLanguage).filter(language => bot.contents.some(content => content.locale === language.code)).map(language => language.code)
+      });
+    }
+  }
+
+  addLanguage(e) {
+    e.preventDefault();
+    const selected = this.languagesSelect.current.value;
+
+    if (selected !== 'null' && this.state.unusedLanguages.includes(selected)) {
+      this.setState({
+        unusedLanguages: this.state.unusedLanguages.filter(language => language !== selected),
+        usedLanguages: [...this.state.usedLanguages, selected]
+      });
+    }
+  }
+
+  removeLanguage(e, selected) {
+    e.preventDefault();
+
+    if (selected !== 'null') {
+      this.setState({
+        usedLanguages: this.state.usedLanguages.filter(language => language !== selected),
+        unusedLanguages: [...this.state.unusedLanguages, selected]
+      });
+    }
+  }
+
+  submit(e) {
+    e.preventDefault();
+    const formdata = new FormData(this.form.current);
+    fetch(`${_Locations.default.server}/bots/add`, {
+      method: 'POST',
+      body: formdata,
+      credentials: 'include'
+    }).then(data => data.json()).then(data => {
+      this.setState({
+        ok: data.ok,
+        message: data.message || null,
+        unlocalised: data.language || null
+      });
+
+      if (data.ok) {
+        this.setState({
+          edited: false
+        });
+      }
+
+      if (data.redirect) {
+        const {
+          dispatch
+        } = this.props;
+        dispatch((0, _bot.resetTheBot)());
+        setTimeout(() => {
+          this.setState({
+            redirect: data.redirect
+          });
+        }, 500);
+      }
+    });
+  }
+
+  render() {
+    // Do not use redux bot if not editing
+    const bot = this.props.match.params.id ? this.props.bot.data : null;
+    const auth = this.props.auth.data;
+    const {
+      intl
+    } = this.props;
+
+    if (!auth || !auth.id) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_PleaseLogIn.default, {
+        match: this.props.match
+      }));
+    }
+
+    if (this.state.redirect) {
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: `/${intl.locale}${this.state.redirect}`
+      });
+    }
+
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.leave"
+    }, message => _react.default.createElement(_reactRouterDom.Prompt, {
+      when: this.state.edited,
+      message: message
+    })), _react.default.createElement("form", {
+      ref: this.form,
+      onSubmit: this.submit
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement("h1", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.required"
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.basicinfo"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.id",
+      id: "pages.edit.client_id",
+      value: bot && bot.id,
+      required: true
+    }), _react.default.createElement(_MultipleInputField.default, {
+      name: "app.authors[]",
+      id: "pages.edit.authors",
+      multiple: true,
+      value: bot && bot.authors && bot.authors.map(author => author.id),
+      required: true
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.support",
+      id: "pages.edit.support",
+      value: bot && bot.support
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.website",
+      id: "pages.edit.website",
+      value: bot && bot.website
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.invite",
+      id: "pages.edit.rpc.invite",
+      value: bot && bot.invite,
+      required: true
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.images.title"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.images.avatar",
+      id: "pages.edit.images.avatar",
+      value: bot && bot.images && bot.images.avatar
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.images.cover",
+      id: "pages.edit.images.cover",
+      value: bot && bot.images && bot.images.cover
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.videos.youtube",
+      id: "pages.edit.youtube",
+      value: bot && bot.videos && bot.videos.youtube
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.videos.youku",
+      id: "pages.edit.youku",
+      value: bot && bot.videos && bot.videos.youku
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_MultipleInputField.default, {
+      name: "app.images.preview[]",
+      id: "pages.edit.images.preview",
+      value: bot && bot.images && bot.images.preview
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.rpc.flags.title"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.flags.win",
+      id: "pages.edit.rpc.flags.win",
+      value: bot && bot.flags && bot.flags.win,
+      toggle: true
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.flags.mac",
+      id: "pages.edit.rpc.flags.mac",
+      value: bot && bot.flags && bot.flags.mac,
+      toggle: true
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.flags.linux",
+      id: "pages.edit.rpc.flags.linux",
+      value: bot && bot.flags && bot.flags.linux,
+      toggle: true,
+      smallText: true
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.sourcecode"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+      name: "app.github.owner",
+      id: "pages.edit.github_owner",
+      value: bot && bot.github && bot.github.owner
+    }), _react.default.createElement(_InputField.default, {
+      name: "app.github.repo",
+      id: "pages.edit.github_repo",
+      value: bot && bot.github && bot.github.repo
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.information"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.languages.modal"
+    })), _react.default.createElement(_Row.default, null, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("select", {
+      form: "null",
+      className: _Modesta.default.fullWidth,
+      defaultValue: "null",
+      ref: this.languagesSelect
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "forms.select"
+    }, select => _react.default.createElement("option", {
+      value: "null",
+      disabled: true
+    }, select)), this.state.unusedLanguages.map(language => ({
+      language,
+      message: intl.formatMessage({
+        id: `locales.${language}`
+      })
+    })).sort((a, b) => a.message.localeCompare(b.message)).map(({
+      language,
+      message
+    }) => _react.default.createElement("option", {
+      key: language,
+      value: language
+    }, message || ''))), _react.default.createElement("button", {
+      onClick: this.addLanguage,
+      className: _elementsModule.default.button
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.languages.add"
+    }))))), this.state.usedLanguages.map((language, index) => {
+      const contents = bot && bot.contents && bot.contents.find(content => content.locale === language);
+      return _react.default.createElement(_ContentBox.default, {
+        key: language
+      }, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+        key: language,
+        id: `locales.${language}`
+      })), _react.default.createElement("button", {
+        onClick: e => this.removeLanguage(e, language),
+        className: _elementsModule.default.button
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "pages.edit.deleteLanguage"
+      }))), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+        name: `app.contents[${index}][name]`,
+        id: "pages.edit.name",
+        value: contents && contents.name,
+        className: _Modesta.default.fullWidth,
+        required: true
+      })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+        name: `app.contents[${index}][description]`,
+        id: "pages.edit.description",
+        value: contents && contents.description,
+        className: _Modesta.default.fullWidth,
+        required: true
+      })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
+        name: `app.contents[${index}][page]`,
+        id: "pages.edit.page",
+        value: contents && contents.page,
+        textarea: true,
+        className: _Modesta.default.fullWidth,
+        required: true
+      })), _react.default.createElement("input", {
+        name: `app.contents[${index}][locale]`,
+        type: "text",
+        className: _displayModule.default.hidden,
+        value: language
+      }));
+    }), _react.default.createElement(_ContentBox.default, null, this.state.message || this.state.unlocalised ? _react.default.createElement(_ContentBox.default, {
+      className: this.state.ok ? _Modesta.default.emerald : _Modesta.default.alizarin
+    }, _react.default.createElement("p", null, this.state.unlocalised ? _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: this.state.unlocalised
+    }) : this.state.message)) : _react.default.createElement("div", null, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.updates"
+    })), _react.default.createElement("a", {
+      className: `${_Modesta.default.discord} ${_Modesta.default.btn}`,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: _Locations.default.discordServer
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.edit.discord"
+    }))), _react.default.createElement("button", {
+      className: `${_Modesta.default.discord} ${_Modesta.default.btn}`
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "forms.submit"
+    })))), _react.default.createElement("input", {
+      className: _displayModule.default.hidden,
+      name: "app.type",
+      value: "rpc"
+    })));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    categories,
+    auth,
+    bot
+  } = state;
+  return {
+    categories,
+    auth,
+    bot
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(EditRpc));
+
+exports.default = _default;
+},{"../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/FlexContainer":"2mc2","../../components/InputField":"6ZcU","../../components/Layout":"KIu8","../../components/MultipleInputField":"JzF5","../../components/PleaseLogIn":"0dH1","../../components/Row":"Ln2X","../../data/Locations":"xg/o","../../data/Modesta":"3GPO","../../locales":"m0Vx","../../redux/actions/auth":"+AtF","../../redux/actions/categories":"9pxy","../../scss/display.module.scss":"g6p6","../../scss/elements.module.scss":"jpzX","../../redux/actions/bot":"MOEP"}],"mv6i":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _BotCollection = _interopRequireDefault(require("../../components/BotCollection"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _GetStartedWithBots = _interopRequireDefault(require("../../components/GetStartedWithBots"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _LoadingContentBox = _interopRequireDefault(require("../../components/LoadingContentBox"));
+
+var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/WebsiteTypeButtons"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _States = _interopRequireDefault(require("../../data/States"));
+
+var _Button = _interopRequireDefault(require("../../components/Button"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _DateFormat = _interopRequireDefault(require("../../data/DateFormat"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../../components/LocalisedHyperlink"));
+
+var _NotFound = _interopRequireDefault(require("../NotFound"));
+
+var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class DocsHome extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: null,
+      loadAll: false
+    };
+    this.loadAll = this.loadAll.bind(this);
+    this.fetch = this.fetch.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetch('index');
+  }
+
+  loadAll() {
+    this.setState({
+      loadAll: true
+    });
+    fetch('all');
+  }
+
+  fetch(type) {
+    fetch(`${_Locations.default.docsServer}/${type}.json`).then(res => res.json()).then(data => {
+      this.setState({
+        results: data
+      });
+    });
+  }
+
+  render() {
+    const results = this.state.results;
+
+    if (!Array.isArray(results)) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_LoadingContainer.default, null));
+    }
+
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.title"
+    }, title => _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.description"
+    }, description => _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, title), _react.default.createElement("meta", {
+      property: "og:title",
+      content: title
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: description
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: description
+    })))), _react.default.createElement(_Container.default, null, results.map(page => _react.default.createElement(_ContentBox.default, {
+      key: page.permalink
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: page.permalink
+    }, _react.default.createElement("h3", null, page.title)), page.by && _react.default.createElement("p", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.by",
+      values: {
+        name: page.by
+      }
+    }))), page.date && _react.default.createElement("p", null, new Date(page.date).toLocaleDateString(this.props.intl.locale, _DateFormat.default))))), _react.default.createElement(_Container.default, {
+      className: _Modesta.default.center
+    }, this.state.loadAll ? _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.noMore"
+    })) : _react.default.createElement(_Button.default, {
+      onClick: this.loadAll,
+      className: _Modesta.default.primary
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.more"
+    }))));
+  }
+
+}
+
+var _default = (0, _reactIntl.injectIntl)(DocsHome);
+
+exports.default = _default;
+},{"../../components/BotCollection":"17ao","../../components/Container":"MzKT","../../components/ContentBox":"wueC","../../components/FlexColumns":"15qX","../../components/GetStartedWithBots":"TqTC","../../components/Layout":"KIu8","../../components/LoadingContentBox":"hT/a","../../components/WebsiteTypeButtons":"4uBf","../../data/Locations":"xg/o","../../data/States":"HQpP","../../components/Button":"UCOH","../../data/Modesta":"3GPO","../../data/DateFormat":"742c","../../components/LocalisedHyperlink":"EFH/","../NotFound":"Fup1","../../components/LoadingContainer":"WGiP"}],"agzr":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchADoc = fetchADoc;
+exports.RECIEVE_DOC = exports.REQUEST_DOC = void 0;
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const REQUEST_DOC = 'REQUEST_DOC';
+exports.REQUEST_DOC = REQUEST_DOC;
+const RECIEVE_DOC = 'RECIEVE_DOC';
+exports.RECIEVE_DOC = RECIEVE_DOC;
+
+function requestDoc(page) {
+  return {
+    type: REQUEST_DOC,
+    page
+  };
+}
+
+function recieveDoc(json, status, page) {
+  return {
+    type: RECIEVE_DOC,
+    data: json,
+    status,
+    page
+  };
+}
+
+function fetchDoc(page) {
+  return dispatch => {
+    dispatch(requestDoc(page));
+    return fetch(`${_Locations.default.docsServer}/posts${page}`).then(res => {
+      return res.json().then(json => {
+        return dispatch(recieveDoc(json, res.status, page));
+      });
+    });
+  };
+}
+
+function shouldFetchDoc(state, page) {
+  // If the data has already been fetched, do not fetch it
+  if (state.doc.page === page) return false;
+  return true;
+}
+
+function fetchADoc({
+  match,
+  pathname
+}) {
+  return (dispatch, getState) => {
+    const path = pathname.substring(match.url.length);
+
+    if (shouldFetchDoc(getState(), path)) {
+      return dispatch(fetchDoc(path));
+    }
+  };
+}
+},{"../../data/Locations":"xg/o"}],"CM9n":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _DateFormat = _interopRequireDefault(require("../../data/DateFormat"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _NotFound = _interopRequireDefault(require("../NotFound"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
+
+var _BotPageContentBox = _interopRequireDefault(require("../../components/BotPageContentBox"));
+
+var _LinkButton = _interopRequireDefault(require("../../components/LinkButton"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _reactRedux = require("react-redux");
+
+var _doc = require("../../redux/actions/doc");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class DocPage extends _react.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _doc.fetchADoc)({
+      match: this.props.match,
+      pathname: window.location.pathname
+    }));
+  }
+
+  render() {
+    const page = this.props.doc.data;
+    const status = this.props.doc.status;
+
+    if (status === 404) {
+      return _react.default.createElement(_NotFound.default, {
+        match: this.props.match
+      });
+    }
+
+    if (!page) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_LoadingContainer.default, null));
+    }
+
+    const date = new Date(page.date);
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, page.title), _react.default.createElement("meta", {
+      property: "og:title",
+      content: page.title
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: page.description
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: page.description
+    }), _react.default.createElement("meta", {
+      httpEquiv: "last-modified",
+      content: date.toISOString().split('T')[0]
+    })), _react.default.createElement(_Container.default, null, _react.default.createElement(_LinkButton.default, {
+      to: "/posts",
+      className: _Modesta.default.secondary
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.back"
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, page.title), page.by && _react.default.createElement("p", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.by",
+      values: {
+        name: page.by
+      }
+    }))), page.date && _react.default.createElement("p", null, date.toLocaleDateString(this.props.intl.locale, _DateFormat.default))), _react.default.createElement(_BotPageContentBox.default, {
+      page: page.content,
+      forceLarge: true,
+      allowHTML: true,
+      cdn: _Locations.default.docsServer
+    })));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    doc
+  } = state;
+  return {
+    doc
+  };
+};
+
+const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(DocPage));
+exportedComponent.serverFetch = [{
+  function: _doc.fetchADoc,
+  pass: ['match', 'pathname'],
+  payload: {}
+}];
+var _default = exportedComponent;
+exports.default = _default;
+},{"../../components/ContentBox":"wueC","../../components/Layout":"KIu8","../../data/DateFormat":"742c","../../data/Locations":"xg/o","../NotFound":"Fup1","../../components/Container":"MzKT","../../components/LoadingContainer":"WGiP","../../components/BotPageContentBox":"3FRI","../../components/LinkButton":"AwUp","../../data/Modesta":"3GPO","../../redux/actions/doc":"agzr"}],"FURF":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _AppPage = _interopRequireDefault(require("../pages/AppPage"));
+
+var _ConfigurePage = _interopRequireDefault(require("../pages/ConfigurePage"));
+
+var _EditBot = _interopRequireDefault(require("../pages/EditBot"));
+
+var _FilterPage = _interopRequireDefault(require("../pages/FilterPage"));
+
+var _Game = _interopRequireDefault(require("../pages/Game"));
+
+var _Home = _interopRequireDefault(require("../pages/Home"));
+
+var _BotsHome = _interopRequireDefault(require("../pages/BotsHome"));
+
+var _Locale = _interopRequireDefault(require("../pages/Locale"));
+
+var _LogOut = _interopRequireDefault(require("../pages/LogOut"));
+
+var _NotFound = _interopRequireDefault(require("../pages/NotFound"));
+
+var _AdminPage = _interopRequireDefault(require("../pages/AdminPage"));
+
+var _LanguagesComparisonPage = _interopRequireDefault(require("../pages/LanguagesComparisonPage"));
+
+var _RpcHome = _interopRequireDefault(require("../pages/RpcHome"));
+
+var _EditRpc = _interopRequireDefault(require("../pages/EditRpc"));
+
+var _DocsHome = _interopRequireDefault(require("../pages/DocsHome"));
+
+var _DocPage = _interopRequireDefault(require("../pages/DocPage"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const routes = [{
+  path: '/:locale/',
+  exact: true,
+  component: _Home.default,
+  status: 200
+}, {
+  path: '/:locale/game',
+  exact: true,
+  component: _Game.default,
+  status: 200
+}, {
+  path: '/:locale/auth/logout',
+  exact: true,
+  component: _LogOut.default,
+  status: 200
+}, {
+  path: '/:locale/bots',
+  exact: true,
+  component: _BotsHome.default,
+  status: 200
+}, {
+  path: '/:locale/rpc',
+  exact: true,
+  component: _RpcHome.default,
+  status: 200
+}, {
+  path: '/:locale/bots/add',
+  exact: true,
+  component: _EditBot.default,
+  status: 200
+}, {
+  path: '/:locale/rpc/add',
+  exact: true,
+  component: _EditRpc.default,
+  status: 200
+}, {
+  path: '/:locale/filter',
+  exact: true,
+  component: _FilterPage.default,
+  status: 200
+}, {
+  path: '/:locale/bots/:id/configure',
+  exact: true,
+  component: _ConfigurePage.default,
+  status: 200
+}, {
+  path: '/:locale/bots/:id/edit',
+  exact: true,
+  component: _EditBot.default,
+  status: 200
+}, {
+  path: '/:locale/rpc/:id/edit',
+  exact: true,
+  component: _EditRpc.default,
+  status: 200
+}, {
+  path: '/:locale/:type/:id',
+  exact: true,
+  component: _AppPage.default,
+  status: 200
+}, {
+  path: '/:locale/:type/:id',
+  exact: true,
+  component: _AppPage.default,
+  status: 200
+}, {
+  path: '/:locale/locale',
+  exact: true,
+  component: _Locale.default,
+  status: 200
+}, {
+  path: '/:locale/admin',
+  exact: true,
+  component: _AdminPage.default,
+  status: 200
+}, {
+  path: '/:locale/languagescomparisontool',
+  exact: true,
+  component: _LanguagesComparisonPage.default,
+  status: 200
+}, {
+  path: '/:locale/posts',
+  exact: true,
+  component: _DocsHome.default,
+  status: 200
+}, {
+  path: '/:locale/posts',
+  exact: false,
+  component: _DocPage.default,
+  status: 200
+}, {
+  path: '/:locale',
+  exact: false,
+  component: _NotFound.default,
+  status: 404
+}];
+var _default = routes;
+exports.default = _default;
+},{"../pages/AppPage":"jZcb","../pages/ConfigurePage":"2qhD","../pages/EditBot":"ZCQ5","../pages/FilterPage":"x21S","../pages/Game":"yQpM","../pages/Home":"BAkA","../pages/BotsHome":"xVA4","../pages/Locale":"c3KN","../pages/LogOut":"i3MG","../pages/NotFound":"Fup1","../pages/AdminPage":"BAEK","../pages/LanguagesComparisonPage":"CY6M","../pages/RpcHome":"VooJ","../pages/EditRpc":"ggfm","../pages/DocsHome":"mv6i","../pages/DocPage":"CM9n"}],"qrHD":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _flat = _interopRequireDefault(require("flat"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _locales = _interopRequireDefault(require("../../locales"));
+
+var _reactHelmet = require("react-helmet");
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const messages = _locales.default.filter(language => language.translations).reduce((prev, curr) => {
+  (0, _reactIntl.addLocaleData)(curr.reactIntl);
+  prev[curr.code] = (0, _flat.default)(curr.translations);
+  return prev;
+}, {});
+
+class InternationalisationProvider extends _react.Component {
+  render() {
+    const {
+      match,
+      location
+    } = this.props;
+    if (!messages[match.params.locale]) return _react.default.createElement(_reactRouterDom.Redirect, {
+      to: `/en-GB${location.pathname}`
+    });
+    return _react.default.createElement(_reactIntl.IntlProvider, {
+      locale: match.params.locale,
+      messages: Object.assign({}, messages['en-GB'], messages[match.params.locale]),
+      defaultLocale: "en-GB"
+    }, _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "site.name"
+    }, title => _react.default.createElement(_reactHelmet.Helmet, {
+      titleTemplate: `%s - ${title}`,
+      defaultTitle: title
+    }, _react.default.createElement("html", {
+      lang: match.params.locale
+    }))), this.props.children));
+  }
+
+}
+
+var _default = InternationalisationProvider;
+exports.default = _default;
+},{"../../locales":"m0Vx"}],"dyGp":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const redirects = [{
+  path: '/',
+  exact: true,
+  status: 301,
+  to: () => '/en-GB'
+}, {
+  path: '/en-baguette',
+  exact: false,
+  status: 301,
+  to: () => '/en-GB'
+}, {
+  path: '/:locale/bots/filter',
+  exact: true,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/filter`
+}, {
+  path: '/:locale/boats/',
+  exact: false,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/bots`
+}, {
+  path: '/:locale/bot/',
+  exact: true,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/bots`
+}, {
+  path: '/:locale/bots/by/:id',
+  exact: true,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/filter?owners[]=${encodeURIComponent(match.params.id)}`
+}, {
+  path: '/:locale/bots/category/:category',
+  exact: true,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/filter?category=${encodeURIComponent(match.params.category)}&state=approved`
+}, {
+  path: '/:locale/bots/unverified',
+  exact: true,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/filter?state=queue`
+}, {
+  path: '/:locale/bots/search',
+  exact: true,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/filter`
+}];
+var _default = redirects;
+exports.default = _default;
+},{}],"tciW":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _routes = _interopRequireDefault(require("../../data/routes"));
+
+var _InternationalisationProvider = _interopRequireDefault(require("../InternationalisationProvider"));
+
+var _redirects = _interopRequireDefault(require("../../data/redirects"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class WebsiteRouter extends _react.Component {
+  render() {
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') window.location.href = `http://127.0.0.1:1234${window.location.pathname}`;
+    if (typeof window !== 'undefined' && window.location.hostname === 'discordapp.dev') window.location.href = `https://discordapps.dev${window.location.pathname}`;
+    return _react.default.createElement(_reactRouterDom.Switch, null, _redirects.default.map(route => _react.default.createElement(_reactRouterDom.Route, {
+      key: route.path,
+      path: route.path,
+      exact: route.exact,
+      component: ({
+        match,
+        location,
+        staticContext
+      }) => {
+        if (staticContext) {
+          staticContext.status = route.status;
+        }
+
+        return _react.default.createElement(_reactRouterDom.Redirect, {
+          to: route.to({
+            match,
+            location,
+            staticContext
+          })
+        });
+      }
+    })), _routes.default.map(route => {
+      const RouteComponent = route.component;
+      return _react.default.createElement(_reactRouterDom.Route, {
+        key: route.path,
+        path: route.path,
+        exact: route.exact,
+        component: ({
+          match,
+          location,
+          staticContext
+        }) => {
+          if (staticContext) {
+            staticContext.status = route.status;
+          }
+
+          return _react.default.createElement(_InternationalisationProvider.default, {
+            match: match,
+            location: location
+          }, _react.default.createElement(RouteComponent, {
+            match: match,
+            location: location,
+            staticContext: staticContext
+          }));
+        }
+      });
+    }));
+  }
+
+}
+
+var _default = WebsiteRouter;
+exports.default = _default;
+},{"../../data/routes":"FURF","../InternationalisationProvider":"qrHD","../../data/redirects":"dyGp"}],"eBcb":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Routes = _interopRequireDefault(require("./components/Routes"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class App extends _react.Component {
+  render() {
+    return _react.default.createElement(_Routes.default, null);
+  }
+
+}
+
+var _default = App;
+exports.default = _default;
+},{"./components/Routes":"tciW"}],"Rai1":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _auth = require("../actions/auth");
+
+function auth(state = {
+  fetching: false,
+  fetched: false,
+  data: null
+}, action) {
+  switch (action.type) {
+    case _auth.REQUEST_AUTH:
+      return Object.assign({}, state, {
+        fetching: true
+      });
+
+    case _auth.RECEIVE_AUTH:
+      return Object.assign({}, state, {
+        fetching: false,
+        fetched: true,
+        data: Object.keys(action.data).length === 0 ? null : action.data
+      });
+
+    default:
+      return state;
+  }
+}
+
+var _default = auth;
+exports.default = _default;
+},{"../actions/auth":"+AtF"}],"K/xY":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _categories = require("../actions/categories");
+
+function categories(state = {
+  fetching: false,
+  fetched: false,
+  data: []
+}, action) {
+  switch (action.type) {
+    case _categories.REQUEST_CATEGORIES:
+      return Object.assign({}, state, {
+        fetching: true
+      });
+
+    case _categories.RECIEVE_CATEGORIES:
+      return Object.assign({}, state, {
+        fetching: false,
+        fetched: true,
+        data: action.data.slice()
+      });
+
+    default:
+      return state;
+  }
+}
+
+var _default = categories;
+exports.default = _default;
+},{"../actions/categories":"9pxy"}],"LvNp":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _bot = require("../actions/bot");
+
+function bot(state = {
+  fetching: false,
+  fetched: false,
+  data: null,
+  status: null,
+  id: null
+}, action) {
+  switch (action.type) {
+    case _bot.REQUEST_BOT:
+      return Object.assign({}, state, {
+        fetching: true,
+        fetched: false,
+        data: null,
+        id: action.id
+      });
+
+    case _bot.RESET_BOT:
+      return Object.assign({}, state, {
+        fetching: false,
+        fetched: false,
+        data: null,
+        status: null
+      });
+
+    case _bot.RECIEVE_BOT:
+      return Object.assign({}, state, {
+        fetching: false,
+        fetched: true,
+        data: Object.keys(action.data).length === 0 ? null : action.data,
+        status: action.status
+      });
+
+    default:
+      return state;
+  }
+}
+
+var _default = bot;
+exports.default = _default;
+},{"../actions/bot":"MOEP"}],"5uzp":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _doc = require("../actions/doc");
+
+function doc(state = {
+  fetching: false,
+  fetched: false,
+  data: null,
+  status: null,
+  id: null
+}, action) {
+  switch (action.type) {
+    case _doc.REQUEST_DOC:
+      return Object.assign({}, state, {
+        fetching: true,
+        fetched: false,
+        data: null,
+        page: action.page
+      });
+
+    case _doc.RECIEVE_DOC:
+      return Object.assign({}, state, {
+        fetching: false,
+        fetched: true,
+        data: Object.keys(action.data).length === 0 ? null : action.data,
+        status: action.status
+      });
+
+    default:
+      return state;
+  }
+}
+
+var _default = doc;
+exports.default = _default;
+},{"../actions/doc":"agzr"}],"wwkJ":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _redux = require("redux");
+
+var _auth = _interopRequireDefault(require("./auth"));
+
+var _categories = _interopRequireDefault(require("./categories"));
+
+var _bot = _interopRequireDefault(require("./bot"));
+
+var _doc = _interopRequireDefault(require("./doc"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = (0, _redux.combineReducers)({
+  auth: _auth.default,
+  categories: _categories.default,
+  bot: _bot.default,
+  doc: _doc.default
+});
+
+exports.default = _default;
+},{"./auth":"Rai1","./categories":"K/xY","./bot":"LvNp","./doc":"5uzp"}],"dPLT":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = configureStore;
+
+var _redux = require("redux");
+
+var _reduxThunk = _interopRequireDefault(require("redux-thunk"));
+
+var _reducers = _interopRequireDefault(require("./reducers"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const stuffToCompose = [(0, _redux.applyMiddleware)(_reduxThunk.default)];
+
+if (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__) {
+  stuffToCompose.push(window.__REDUX_DEVTOOLS_EXTENSION__());
+}
+
+function configureStore() {
+  if (typeof window !== 'undefined' && window.REDUX_STATE) {
+    return (0, _redux.createStore)(_reducers.default, window.REDUX_STATE, (0, _redux.compose)(...stuffToCompose));
+  }
+
+  return (0, _redux.createStore)(_reducers.default, (0, _redux.compose)(...stuffToCompose));
+}
+},{"./reducers":"wwkJ"}],"pnxz":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _server = _interopRequireDefault(require("react-dom/server"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactRedux = require("react-redux");
+
+var _reactRouter = require("react-router");
+
+var _App = _interopRequireDefault(require("../../src/App"));
+
+var _routes = _interopRequireDefault(require("../../src/data/routes"));
+
+var _store = _interopRequireDefault(require("../../src/redux/store"));
+
+var _fs = require("fs");
+
+var _path = require("path");
+
+var _redirects = _interopRequireDefault(require("../../src/data/redirects"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const htmlData = (0, _fs.readFileSync)((0, _path.join)(__dirname, '../index.html'), 'utf8');
+
+var _default = (req, res, next) => {
+  // If a redirect is required, return the redirect.
+  for (let i = 0; i < _redirects.default.length; i += 1) {
+    const match = (0, _reactRouter.matchPath)(req.baseUrl, _redirects.default[i]);
+    const route = _redirects.default[i];
+
+    if (match) {
+      return res.redirect(route.status || 302, route.to({
+        match
+      }));
+    }
+  }
+
+  const context = {
+    status: 200
+  };
+  const store = (0, _store.default)(); // https://medium.freecodecamp.org/demystifying-reacts-server-side-render-de335d408fe4
+  // Fetch everything needed to render the page from redux.
+
+  const promises = [];
+
+  for (let i = 0; i < _routes.default.length; i += 1) {
+    const match = (0, _reactRouter.matchPath)(req.baseUrl, _routes.default[i]);
+    const route = _routes.default[i];
+
+    if (match) {
+      if (route.component.serverFetch) {
+        for (let j = 0; j < route.component.serverFetch.length; j += 1) {
+          const serverFetch = route.component.serverFetch[j];
+          const payload = serverFetch.payload;
+
+          if (serverFetch.pass.includes('match')) {
+            payload.match = match;
+          }
+
+          if (serverFetch.pass.includes('pathname')) {
+            payload.pathname = req.baseUrl;
+          }
+
+          promises.push(store.dispatch(serverFetch.function(payload)));
+        }
+      }
+
+      break;
+    }
+  } // After redux finishes, then send the HTML
+
+
+  Promise.all(promises).then(() => {
+    // render the app as a string-
+    const html = _server.default.renderToString(_react.default.createElement(_reactRedux.Provider, {
+      store: store
+    }, _react.default.createElement(_reactRouter.StaticRouter, {
+      location: req.baseUrl,
+      context: context
+    }, _react.default.createElement(_App.default, null))));
+
+    const helmet = _reactHelmet.Helmet.renderStatic(); // Set the status code to the status of the components.
+
+
+    res.status(context.status);
+    res.send(htmlData.replace('<html lang="en">', `<html ${helmet.htmlAttributes.toString()}>`).replace('<title>Discord Apps Marketplace</title>', helmet.title.toString() + helmet.meta.toString() + helmet.link.toString() + helmet.script.toString()).replace('<div id="app"></div>', `<div id="app">${html}</div><script>window.REDUX_STATE = ${JSON.stringify(store.getState())}</script>`));
+  }).catch(err => next(err));
+};
+
+exports.default = _default;
+},{"../../src/App":"eBcb","../../src/data/routes":"FURF","../../src/redux/store":"dPLT","../../src/data/redirects":"dyGp"}],"Focm":[function(require,module,exports) {
+"use strict";
+
+var _express = _interopRequireDefault(require("express"));
+
+var _renderer = _interopRequireDefault(require("./middleware/renderer"));
+
+var _Locations = _interopRequireDefault(require("../src/data/Locations"));
+
+require("isomorphic-fetch");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const path = require('path');
+
+const app = (0, _express.default)();
+app.use('^/$', _renderer.default) // Render ROOT with the server
+.use(_express.default.static(path.resolve(process.cwd(), 'dist'), {
+  maxAge: '30d'
+})).get('/sitemap.xml', (req, res, next) => {
+  fetch(`${_Locations.default.server}/ls13.xml`).then(result => result.text()).then(text => res.header('Content-Type', 'application/xml').send(text)).catch(err => next(err));
+}).use('*', _renderer.default) // Render non-static with the server
+.listen(3000, error => {
+  if (error) {
+    return console.log('something bad happened', error);
+  }
+
+  console.log('Now listening to 3000');
+});
+},{"./middleware/renderer":"pnxz","../src/data/Locations":"xg/o"}]},{},["Focm"], null)
+//# sourceMappingURL=/index.js.map
