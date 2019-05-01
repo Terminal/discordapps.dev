@@ -11195,12 +11195,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const path = require('path');
 
 const app = (0, _express.default)();
-app.use('^/$', _renderer.default) // Render ROOT with the server
+app.get('/robots.txt', (req, res, next) => {
+  res.send(`User-agent: *
+Disallow: /*/bots/filter
+Disallow: /*/filter
+Disallow: /*/admin
+Disallow: /*/game
+Disallow: /*/languagescomparisontool
+`);
+}).get('/sitemap.xml', (req, res, next) => {
+  fetch(`${_Locations.default.server}/ls13.xml`).then(result => result.text()).then(text => res.header('Content-Type', 'application/xml').send(text)).catch(err => next(err));
+}).use('^/$', _renderer.default) // Render ROOT with the server
 .use(_express.default.static(path.resolve(process.cwd(), 'dist'), {
   maxAge: '30d'
-})).get('/sitemap.xml', (req, res, next) => {
-  fetch(`${_Locations.default.server}/ls13.xml`).then(result => result.text()).then(text => res.header('Content-Type', 'application/xml').send(text)).catch(err => next(err));
-}).use('*', _renderer.default) // Render non-static with the server
+})).use('*', _renderer.default) // Render non-static with the server
 .listen(3000, error => {
   if (error) {
     return console.log('something bad happened', error);
