@@ -32,7 +32,7 @@ Location                                                          | Description
 ----------------------------------------------------------------- | -----------------
 [Discord Apps Marketplace](https://discordapps.dev/)              | Production instance
 [Netlify](https://twink.netlify.com/)                             | Development instance - Always latest commit
-[GitHub Pages](https://terminal.github.io/discordapps.dev/en-GB)  | Development instance - Slower than Netlify
+[GitHub Pages](https://terminal.github.io/discordapps.dev/)  | Development instance - Slower than Netlify
 [Fog Creek Software's Glitch](https://discordapps-dev.glitch.me/) | Glitch is a great website
 [Olivia Hye](https://www.youtube.com/watch?v=UkY8HvgvBJ8)         | Not related. Stan LOONA.
 
