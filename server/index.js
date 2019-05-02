@@ -7343,7 +7343,7 @@ class BotPage extends _react.Component {
         owners: [author.id],
         state: _States.default.APPROVED
       }
-    }, author.username, "#", author.discriminator))) : _react.default.createElement("li", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    }, author.username ? `${author.username}#${author.discriminator}` : author.id))) : _react.default.createElement("li", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.apps.reclaim"
     }))))), app.category && _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.category"
