@@ -7948,6 +7948,7 @@ button._youtube_e89a5 {
 ._avatar_15263 {
   width: 7em;
   height: 7em;
+  object-fit: cover;
   padding-right: 1em;
 }
 
@@ -7987,6 +7988,7 @@ button._youtube_e89a5 {
   margin-right: 0.5em;
   border-radius: 10px;
   flex-shrink: 0;
+  object-fit: cover;
   background-color: #4a4a4a;
 }
 
@@ -8274,6 +8276,7 @@ body, div[id=app] {
   margin-right: 0.5em;
   border-radius: 1em;
   flex-shrink: 0;
+  object-fit: cover;
   background-color: #4a4a4a;
 }
 
