@@ -52,14 +52,29 @@ router
     r.table('apps')
       .get(req.params.id)
       .merge(bot => ({
-        authors: r.table('users').getAll(r.args(bot('authors'))).pluck('discriminator', 'username', 'cachedAvatar', 'id').coerceTo('array')
-      }))
-      .merge(bot => ({
+        authors: bot('authors')
+          .map(id => r.table('users')
+            .get(id)
+            .default({
+              id,
+              discriminator: null,
+              username: null,
+              cachedAvatar: null
+            })
+            .pluck('discriminator', 'username', 'cachedAvatar', 'id')),
         reviews: r.table('reviews')
           .filter({
             bot: bot('id')
           })
-          .merge(reviewer => r.table('users').get(reviewer('author')).pluck('discriminator', 'username', 'cachedAvatar'))
+          .merge(reviewer => r.table('users')
+            .get(reviewer('author'))
+            .default({
+              id: reviewer('author'),
+              discriminator: null,
+              username: null,
+              cachedAvatar: null
+            })
+            .pluck('discriminator', 'username', 'cachedAvatar'))
           .merge(reviewer => ({
             isCurrentUserOwner: req.user ? r.eq(reviewer('author'), req.user.id) : false
           }))
