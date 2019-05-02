@@ -4288,13 +4288,13 @@ module.exports = {
     "configuration": {
       "token": {
         "title": "Token",
-        "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints.",
+        "description": "This is the token required to edit your application on this list. Please refer to the developer documentation for available endpoints.",
         "docs": "View Documentation",
         "renew": "Renew Token"
       },
       "hide": {
-        "title": "Hide bot",
-        "description": "You can hide your bot from the front page of the website, in case you don't need to be there.",
+        "title": "Hide application",
+        "description": "You can hide your application from the front page of the website, in case you don't need to be there.",
         "disable": "Unhide",
         "enable": "Hide"
       }
@@ -7491,6 +7491,10 @@ var _LoadingContainer = _interopRequireDefault(require("../../components/Loading
 
 var _PermissionDenied = _interopRequireDefault(require("../../components/PermissionDenied"));
 
+var _NotALink = _interopRequireDefault(require("../../components/NotALink"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -7503,6 +7507,8 @@ class ConfigurePage extends _react.Component {
       notFound: false,
       notAllowed: false
     };
+    this.resetToken = this.resetToken.bind(this);
+    this.hideBot = this.hideBot.bind(this);
   }
 
   componentDidMount() {
@@ -7531,6 +7537,34 @@ class ConfigurePage extends _react.Component {
         }
       });
     }
+  }
+
+  resetToken() {
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/id/${this.props.match.params.id}/token`, {
+      credentials: 'include',
+      method: 'POST'
+    }).then(data => data.json()).then(data => {
+      if (data.ok) {
+        const bot = data.data.changes[0].new_val;
+        this.setState({
+          bot
+        });
+      }
+    });
+  }
+
+  hideBot() {
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/id/${this.props.match.params.id}/hide`, {
+      credentials: 'include',
+      method: 'POST'
+    }).then(data => data.json()).then(data => {
+      if (data.ok) {
+        const bot = data.data.changes[0].new_val;
+        this.setState({
+          bot
+        });
+      }
+    });
   }
 
   render() {
@@ -7571,7 +7605,25 @@ class ConfigurePage extends _react.Component {
       rel: "noopener noreferrer"
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.configuration.token.docs"
-    })))));
+    })), _react.default.createElement(_NotALink.default, {
+      onClick: this.resetToken,
+      className: (0, _ConstructCSS.default)(_Modesta.default.btn, _Modesta.default.github)
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.token.renew"
+    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.hide.title"
+    })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.hide.description"
+    })), _react.default.createElement(_NotALink.default, {
+      onClick: this.hideBot,
+      className: (0, _ConstructCSS.default)(_Modesta.default.btn, bot.hide ? (0, _ConstructCSS.default)(_Modesta.default.emerald, _Modesta.default.blackText) : _Modesta.default.alizarin)
+    }, bot.hide ? _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.hide.disable"
+    }) : // disable hidden === show
+    _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.configuration.hide.enable"
+    }) // enable hidden === hide
+    ))));
   }
 
 }
@@ -7579,7 +7631,7 @@ class ConfigurePage extends _react.Component {
 var _default = (0, _reactIntl.injectIntl)(ConfigurePage);
 
 exports.default = _default;
-},{"../../components/Container":"MzKT","../../components/Layout":"KIu8","../../data/Locations":"xg/o","../NotFound":"Fup1","../../locales":"m0Vx","../../components/ContentBox":"wueC","../../data/Modesta":"3GPO","../../components/LoadingContainer":"WGiP","../../components/PermissionDenied":"U3Rj"}],"JzF5":[function(require,module,exports) {
+},{"../../components/Container":"MzKT","../../components/Layout":"KIu8","../../data/Locations":"xg/o","../NotFound":"Fup1","../../locales":"m0Vx","../../components/ContentBox":"wueC","../../data/Modesta":"3GPO","../../components/LoadingContainer":"WGiP","../../components/PermissionDenied":"U3Rj","../../components/NotALink":"zfiY","../../helpers/ConstructCSS":"43z2"}],"JzF5":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
