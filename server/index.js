@@ -10764,6 +10764,13 @@ const redirects = [{
   status: 301,
   to: () => '/en-GB'
 }, {
+  path: '/:locale/locale/dev',
+  exact: true,
+  status: 301,
+  to: ({
+    match
+  }) => `/${match.params.locale}/languagescomparisontool`
+}, {
   path: '/:locale/bots/filter',
   exact: true,
   status: 301,
