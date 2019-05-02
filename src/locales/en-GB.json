@@ -199,13 +199,13 @@
     "configuration": {
       "token": {
         "title": "Token",
-        "description": "This is the token required to edit your bot on this list. Please refer to the developer documentation for available endpoints.",
+        "description": "This is the token required to edit your application on this list. Please refer to the developer documentation for available endpoints.",
         "docs": "View Documentation",
         "renew": "Renew Token"
       },
       "hide": {
-        "title": "Hide bot",
-        "description": "You can hide your bot from the front page of the website, in case you don't need to be there.",
+        "title": "Hide application",
+        "description": "You can hide your application from the front page of the website, in case you don't need to be there.",
         "disable": "Unhide",
         "enable": "Hide"
       }

@@ -10,6 +10,8 @@ import ContentBox from '../../components/ContentBox';
 import Modesta from '../../data/Modesta';
 import LoadingContainer from '../../components/LoadingContainer';
 import PermissionDenied from '../../components/PermissionDenied';
+import NotALink from '../../components/NotALink';
+import ConstructCSS from '../../helpers/ConstructCSS';
 
 class ConfigurePage extends Component {
   constructor(props) {
@@ -20,6 +22,9 @@ class ConfigurePage extends Component {
       notFound: false,
       notAllowed: false
     };
+
+    this.resetToken = this.resetToken.bind(this);
+    this.hideBot = this.hideBot.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +54,38 @@ class ConfigurePage extends Component {
           }
         })
     }
+  }
+
+  resetToken() {
+    fetch(`${Locations.server}/reactjs/v2/apps/id/${this.props.match.params.id}/token`, {
+      credentials: 'include',
+      method: 'POST'
+    })
+      .then(data => data.json())
+      .then((data) => {
+        if (data.ok) {
+          const bot = data.data.changes[0].new_val;
+          this.setState({
+            bot
+          });
+        }
+      })
+  }
+
+  hideBot() {
+    fetch(`${Locations.server}/reactjs/v2/apps/id/${this.props.match.params.id}/hide`, {
+      credentials: 'include',
+      method: 'POST'
+    })
+      .then(data => data.json())
+      .then((data) => {
+        if (data.ok) {
+          const bot = data.data.changes[0].new_val;
+          this.setState({
+            bot
+          });
+        }
+      })
   }
 
   render() {
@@ -89,7 +126,23 @@ class ConfigurePage extends Component {
                 {bot.token}
               </code>
             </ContentBox>
-            <a className={`${Modesta.btn} ${Modesta.github}`} href={Locations.wiki} target="_blank" rel="noopener noreferrer"><FormattedMessage id="pages.configuration.token.docs" /></a>
+            <a className={`${Modesta.btn} ${Modesta.github}`} href={Locations.wiki} target="_blank" rel="noopener noreferrer">
+              <FormattedMessage id="pages.configuration.token.docs" />
+            </a>
+            <NotALink onClick={this.resetToken} className={ConstructCSS(Modesta.btn, Modesta.github)}>
+              <FormattedMessage id="pages.configuration.token.renew" />
+            </NotALink>
+          </ContentBox>
+          <ContentBox>
+            <h2><FormattedMessage id="pages.configuration.hide.title" /></h2>
+            <p><FormattedMessage id="pages.configuration.hide.description" /></p>
+            <NotALink onClick={this.hideBot} className={ConstructCSS(Modesta.btn, bot.hide ? ConstructCSS(Modesta.emerald, Modesta.blackText) : Modesta.alizarin)}>
+              {
+                bot.hide ?
+                  <FormattedMessage id="pages.configuration.hide.disable" /> : // disable hidden === show
+                  <FormattedMessage id="pages.configuration.hide.enable" /> // enable hidden === hide
+              }
+            </NotALink>
           </ContentBox>
         </Container>
       </Layout>
