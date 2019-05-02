@@ -235,42 +235,6 @@ router
           message: err.message
         });
       });
-  })
-  .post('/:id/token', checkParamsLength, isLoggedIn, isOwnerOfBot, (req, res) => {
-    r.table('apps')
-      .update({
-        id: req.params.id,
-        token: crypto.randomBytes(20).toString('hex')
-      })
-      .then(() => {
-        res.json({
-          ok: true
-        });
-      })
-      .catch((err) => {
-        res.json({
-          ok: false,
-          message: err.message
-        });
-      });
-  })
-  .post('/:id/hide', checkParamsLength, isLoggedIn, isOwnerOfBot, (req, res) => {
-    r.table('apps')
-      .get(req.params.id)
-      .update({
-        hide: r.row('hide').not()
-      })
-      .then(() => {
-        res.json({
-          ok: true
-        });
-      })
-      .catch((err) => {
-        res.json({
-          ok: false,
-          message: err.message
-        });
-      });
   });
 
 module.exports = router;

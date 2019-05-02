@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require('multer');
+const crypto = require('crypto');
 const r = require('../rethinkdb');
 const checkParamsLength = require('../middleware/checkParamsLength');
 
@@ -91,6 +92,48 @@ router
       })
       .catch((err) => {
         next(err);
+      });
+  })
+  .post('/apps/id/:id/hide', isOwnerOfBot, (req, res) => {
+    r.table('apps')
+      .get(req.params.id)
+      .update({
+        hide: r.row('hide').not()
+      }, {
+        returnChanges: true
+      })
+      .then((data) => {
+        res.json({
+          ok: true,
+          data
+        });
+      })
+      .catch((err) => {
+        res.json({
+          ok: false,
+          message: err.message
+        });
+      });
+  })
+  .post('/apps/id/:id/token', isOwnerOfBot, (req, res) => {
+    r.table('apps')
+      .get(req.params.id)
+      .update({
+        token: crypto.randomBytes(20).toString('hex')
+      }, {
+        returnChanges: true
+      })
+      .then((data) => {
+        res.json({
+          ok: true,
+          data
+        });
+      })
+      .catch((err) => {
+        res.json({
+          ok: false,
+          message: err.message
+        });
       });
   })
   .post('/apps/id/:id/state', checkParamsLength, isLoggedIn, isAdmin, reader.none(), (req, res, next) => {
