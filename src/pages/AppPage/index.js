@@ -167,7 +167,11 @@ class BotPage extends Component {
                             owners: [author.id],
                             state: States.APPROVED
                           }}>
-                            {author.username}#{author.discriminator}
+                            {
+                              author.username ?
+                              `${author.username}#${author.discriminator}` :
+                              author.id
+                            }
                           </LocalisedHyperlink>
                         </li>
                       )) :
