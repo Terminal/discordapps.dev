@@ -1,6 +1,6 @@
 {
-  "short_name": "Discord Apps",
-  "name": "Discord Bot Apps",
+  "short_name": "Discord的應用程式",
+  "name": "Discord的應用程式",
   "icons": [
     {
       "src": "https://api.discordapps.dev/img/logo/logo.svg",
@@ -20,7 +20,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/de/",
+  "start_url": "/zn-cn/",
   "scope": "/",
   "display": "standalone",
   "theme_color": "#282828",

@@ -1,6 +1,6 @@
 {
-  "short_name": "Liste d'applications Discord",
-  "name": "Liste d'applications Discord",
+  "short_name": "Discord Apps",
+  "name": "Discord Apps",
   "icons": [
     {
       "src": "https://api.discordapps.dev/img/logo/logo.svg",
