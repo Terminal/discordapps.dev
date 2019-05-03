@@ -4127,7 +4127,7 @@ module.exports = {
       "id": "The Application ID needs to be filled out, and numeric",
       "website": "The Website URL needs to be a valid HTTPS link",
       "languages": "You must add a single language. Click the language you want your application page to be in, and select the 'Add a language' button",
-      "mentionable": "The mentionabiliity of the prefix must be either ticked, or unticked",
+      "mentionable": "The mentionability of the prefix must be either ticked, or unticked",
       "name": "The application must have a name of length between 4 and 32.",
       "nsfw": "The NSFW status must be either ticked, or unticked",
       "oauth": "The OAuth ID needs to be numeric",
@@ -4142,8 +4142,8 @@ module.exports = {
       "cover": "The background URL must be a valid HTTPS link, and a maximum of 2000 characters. Additionally, the background URL may not be identical to the avatar URL.",
       "preview": "All preview URLs must be a valid HTTPS link, and a maximum of 2000 characters each, with a maximum of 20 links",
       "no_suitable_lang": "This page has no English version. '{{ language }}' is being displayed instead.",
-      "youtube": "The YouTube ID needs to look like an ID",
-      "youku": "The Alibaba YOUKU ID needs to look like an ID"
+      "youtube": "The YouTube video ID needs to look like an ID",
+      "youku": "The YOUKU video ID needs to look like an ID"
     },
     "permissions": {
       "login": "You are not logged in",
@@ -4158,7 +4158,7 @@ module.exports = {
     "api": {
       "400": "You are unauthorised to use this endpoint. Check your token is correct.",
       "404": "This endpoint was not found, or the method used to request this page is not compatible.",
-      "500": "An internal server error occured.",
+      "500": "An internal server error occurred.",
       "test": "An error was thrown for development purposes.",
       "no_bot": "Application not found",
       "idchange": "The ID of the application cannot be changed to another ID. Please contact Terminal support for technical support"
@@ -4175,7 +4175,7 @@ module.exports = {
     "terminal": "Terminal.ink",
     "terms": "Terms and Conditions",
     "docs": "Docs",
-    "foss": "discordapps.dev is powered by the Terminal.ink Bot List Open Source Project",
+    "foss": "Discord Apps is powered by the Terminal.ink Bot List Open Source Project",
     "apple": "Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc."
   },
   "forms": {
@@ -4251,7 +4251,7 @@ module.exports = {
     "rpc": {
       "index": {
         "title": "Rich Presence List",
-        "description": "Show off what you're doing, with a wide range of Discord RPC plugins for Windows, Mac or Linux software. Browse RPC and more at the Discord Apps Marketplace"
+        "description": "Show off what you're doing, with a wide range of Discord RPC plugins for Windows, Mac or Linux software. Browse RPC and more on Discord Apps"
       },
       "edit": "Edit RPC Application",
       "invite": "Install this application",
@@ -4260,7 +4260,7 @@ module.exports = {
     "bots": {
       "index": {
         "title": "Bot List",
-        "description": "Find a Discord Bot for your server to improve your workflow, add a bit of fun or listen together with Discord Bots. Browse bots and more at the Discord Apps Marketplace"
+        "description": "Find a Discord Bot for your server to improve your work-flow, add a bit of fun or listen together with Discord Bots. Browse bots and more on Discord Apps"
       },
       "backgroundAlt": "The logo for discordapps.dev",
       "inMyLanguage": "Bots in my Language",
@@ -4295,7 +4295,7 @@ module.exports = {
       "hide": {
         "title": "Hide application",
         "description": "You can hide your application from the front page of the website, in case you don't need to be there.",
-        "disable": "Unhide",
+        "disable": "Un-hide",
         "enable": "Hide"
       }
     },
@@ -4315,7 +4315,7 @@ module.exports = {
           },
           "linux": {
             "title": "Supports Linux",
-            "small": "What you’re referring to as Linux, is in fact, GNU/Linux, or as I’ve recently taken to calling it, GNU plus Linux."
+            "small": "What you're referring to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux."
           }
         }
       },
@@ -4354,7 +4354,7 @@ module.exports = {
         "title": "Customisable prefix"
       },
       "description": {
-        "title": "Short Descripion",
+        "title": "Short Description",
         "placeholder": "Enter a shorter description, shown on the home page."
       },
       "github_owner": {
@@ -4390,13 +4390,13 @@ module.exports = {
         "delete": "Remove prefix"
       },
       "flags": {
-        "title": "Funding and Advertising Decleration",
+        "title": "Funding and Advertising Declaration",
         "inAppPurchases": {
           "title": "In App Purchases",
-          "small": "Tick this box if you have features behind a paywall, such as donations"
+          "small": "Tick this box if you have features behind a pay-wall, such as donations"
         },
         "adverts": {
-          "title": "Advertisments",
+          "title": "Advertisements",
           "small": "Tick this box if your bot links to other bot lists, and/or have features that are locked behind other services/bot lists"
         }
       },
@@ -4412,7 +4412,7 @@ module.exports = {
         },
         "preview": {
           "title": "Preview Images",
-          "placeholder": "A HTTPS link to a single screenshot",
+          "placeholder": "A HTTPS link to a single screen-shot",
           "add": "Add another image",
           "delete": "Delete"
         }
@@ -4434,7 +4434,7 @@ module.exports = {
       "triggermethods": "Trigger Methods",
       "deleteLanguage": "Delete a language",
       "required": "Fields marked with * are required.",
-      "updates": "It is highly recommended you join the Terminal.ink Discord Server to view service updates, view your application verification status, and also recieve direct messages from staff about your application.",
+      "updates": "It is highly recommended you join the Terminal.ink Discord Server to view service updates, view your application verification status, and also receive direct messages from staff about your application.",
       "discord": "Join Terminal.ink"
     },
     "error": {
@@ -4509,7 +4509,7 @@ module.exports = {
       "more": "View more",
       "noMore": "There are no more posts!",
       "back": "Back to posts",
-      "title": "Terminal.ink Documentation and Blogs",
+      "title": "Terminal.ink Documentation and Blog",
       "description": "See posts about how Terminal.ink operates, or see a tutorial on how to do something."
     }
   },
@@ -4518,7 +4518,7 @@ module.exports = {
     "addRpc": "Add RPC app",
     "login": "Login",
     "logout": "Logout",
-    "admin": "Admin",
+    "admin": "Administration",
     "languages": "Languages",
     "search": "Search for bots",
     "user": "My Bots"
@@ -4562,7 +4562,7 @@ module.exports = {
     "VIEW_AUDIT_LOG": "View Audit Log"
   },
   "site": {
-    "name": "Discord Apps Marketplace",
+    "name": "Discord Apps",
     "subheading": "Find bots to enhance your server",
     "description": "discordapps.dev is an application store for Discord applications. Install bots for music, news, moderation and more for your server, or install RPC plugins to show off what you're doing."
   },
@@ -4615,7 +4615,7 @@ module.exports = {
       "submit": "Update State"
     },
     "botpagelinks": {
-      "share": "You should check out '{name}' on the Discord Apps Marketplace"
+      "share": "You should check out '{name}' at Discord Apps"
     },
     "botcard": {
       "rated": "Rated {score}/5.0 by {count} {count, plural, one {user} other {users}}",
