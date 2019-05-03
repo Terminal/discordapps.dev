@@ -5410,7 +5410,7 @@ module.exports = {
     "VIEW_AUDIT_LOG": "Wyświetl dziennik zdarzeń"
   },
   "site": {
-    "name": "Discordowa Lista Botów przez Terminal.ink",
+    "name": "Aplikacje Discord",
     "description": "discordapps.dev to zbiór aplikacji dla Discordowych botów. Instaluj aplikacje dla muzyki, aktualności, moderacji i więcej dla Twojego serwera."
   },
   "states": {
@@ -5802,7 +5802,7 @@ module.exports = {
     "VIEW_AUDIT_LOG": "查看服务器日志"
   },
   "site": {
-    "name": "Terminal.ink 的 Discord 机器人列表",
+    "name": "Discord的应用程序",
     "description": "discordapps.dev 是一个用于陈列Discord机器人的程序商店。在您的服务器上安装用于音乐、新闻、管理等的程序吧！"
   },
   "states": {
@@ -6202,7 +6202,7 @@ module.exports = {
     "VIEW_AUDIT_LOG": "Audit-logboek weergeven"
   },
   "site": {
-    "name": "Discord Bot List",
+    "name": "Discord Apps",
     "subheading": "Vind bots om je server op te fleuren",
     "description": "discordapps.dev is een applicatie winkel voor Discord bots. Installeer applicaties voor muziek, nieuws, moderatie en meer in jouw server."
   },
