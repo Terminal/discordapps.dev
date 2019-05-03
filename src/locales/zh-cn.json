@@ -379,7 +379,7 @@
     "VIEW_AUDIT_LOG": "查看服务器日志"
   },
   "site": {
-    "name": "Terminal.ink 的 Discord 机器人列表",
+    "name": "Discord的应用程序",
     "description": "discordapps.dev 是一个用于陈列Discord机器人的程序商店。在您的服务器上安装用于音乐、新闻、管理等的程序吧！"
   },
   "states": {

@@ -1,6 +1,6 @@
 {
-  "short_name": "Discord Apps",
-  "name": "Discord Apps Marketplace",
+  "short_name": "Discord的应用程序",
+  "name": "Discord的应用程序",
   "icons": [
     {
       "src": "https://api.discordapps.dev/img/logo/logo.svg",
