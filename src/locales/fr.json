@@ -59,7 +59,7 @@
       "banned": "Vous avez été interdit d'accéder à cette ressource"
     },
     "website": {
-      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites.",
+      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites."
     },
     "reviews": {
       "rating": "Veuillez sélectionner une note avant de continuer",
@@ -244,7 +244,7 @@
       "languages": {
         "add": "Ajouter une langue",
         "delete": "Supprimer cette langue",
-        "modal": "Écrivez la page de votre bot dans n'importe quelle langue prise en charge. Sélectionnez une langue, et cliquez sur \"Ajouter cette langue\".",
+        "modal": "Écrivez la page de votre bot dans n'importe quelle langue prise en charge. Sélectionnez une langue, et cliquez sur \"Ajouter cette langue\"."
       },
       "mentionable": {
         "title": "Possibilité de mentionner le bot pour le déclencher"
