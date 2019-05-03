@@ -3685,7 +3685,7 @@ module.exports = {
     "VIEW_AUDIT_LOG": "View Audit Log"
   },
   "site": {
-    "name": "Discord Botliste af Terminal.ink",
+    "name": "Discord Apps",
     "description": "discordapps.dev is an application store for Discord bots. Install applications for music, news, moderation and more for your server."
   },
   "states": {
@@ -4070,7 +4070,7 @@ module.exports = {
     "VIEW_AUDIT_LOG": "Auditlogs ansehen"
   },
   "site": {
-    "name": "Discord Bot Liste von terminal.ink",
+    "name": "Discord Apps",
     "description": "discordapps.dev ist ein applikations-store für Discord Bots. Installiere applikationen für Musik, News, Moderation und mehr für deinen Server."
   },
   "states": {
