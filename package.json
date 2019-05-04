@@ -41,7 +41,9 @@
     "twemoji": "^12.0.1",
     "xss": "^1.0.6"
   },
-  "resolutions": {},
+  "resolutions": {
+    "tar": ">=4.4.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",

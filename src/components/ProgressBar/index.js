@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 
 class ProgressBar extends Component {
   render() {
     return (
-      <div className={`${Modesta.progressContainer} ${this.props.className || ''}`}>
-        <div className={`${Modesta.progressBar} ${Modesta[`${this.props.colour}Bar`]}`} style={{
+      <div className={`${this.props.className || ''}`}>
+        <div className={`${Modesta[`${this.props.colour}Bar`]}`} style={{
           width: `${this.props.proportion * 100}%`
         }}>
           {this.props.children}

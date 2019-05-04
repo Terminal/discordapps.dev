@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import NavigationBar from '../NavigationBar';
-import Footer from '../Footer';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import Locations from '../../data/Locations';
 import languages from '../../locales';
-import Container from '../Container';
-import ContentBox from '../ContentBox';
-
+import Footer from './Footer';
+import containers from './containers.module.scss';
 import './index.module.scss';
+import NavbarLinks from './NavbarLinks';
+import NavigationBar from './NavigationBar';
 
 class Layout extends Component {
   render() {
@@ -17,7 +16,7 @@ class Layout extends Component {
     const unlocalisedPath = location.url.substr(location.params.locale.length + 1);
 
     return (
-      <div>
+      <div className={containers.app}>
         <FormattedMessage id="site.name">
         {siteName => (
           <FormattedMessage id="site.description">
@@ -40,15 +39,12 @@ class Layout extends Component {
           </FormattedMessage>
         )}
         </FormattedMessage>
+        <div className={containers.navback} />
         <NavigationBar unlocalisedPath={unlocalisedPath} />
-          <noscript>
-            <Container>
-              <ContentBox>
-                <FormattedMessage id="errors.website.noscript" />
-              </ContentBox>
-            </Container>
-          </noscript>
-        {this.props.children}
+        <NavbarLinks unlocalisedPath={this.props.unlocalisedPath} />
+        <div className={containers.content}>
+          {this.props.children}
+        </div>
         <Footer />
       </div>
     )

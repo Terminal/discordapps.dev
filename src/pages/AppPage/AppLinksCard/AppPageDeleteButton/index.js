@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Redirect } from 'react-router-dom';
-import Locations from '../../data/Locations';
-import NotALink from '../NotALink';
+import Locations from '../../../../data/Locations';
+import NotALink from '../../../../components/NotALink';
 
 class AppPageDeleteButton extends Component {
   constructor(props) {

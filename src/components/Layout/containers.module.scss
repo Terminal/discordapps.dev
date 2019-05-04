@@ -1,0 +1,36 @@
+@import 'colours';
+
+.app {
+  display: grid;
+  grid-template-columns: 2em auto 1fr 2em;
+  grid-template-areas:
+    ".       navtitle   navlinks   ."
+    ".       content    content    ."
+    ".       footer     footer     .";
+  grid-row-gap: 1em;
+  margin-bottom: 3em;
+}
+
+.navback {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: navtitle-start;
+  grid-row-end: navlinks-end;
+  background-color: map-get($colours, navbar)
+}
+
+.navtitle {
+  grid-area: navtitle;
+}
+
+.navlinks {
+  grid-area: navlinks;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+.content {
+  grid-area: content;
+}

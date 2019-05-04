@@ -1,0 +1,14 @@
+$colours: (
+  text: #ddd,
+  link: rgb(30, 174, 219),
+  background: #2a2a2a,
+  navbar: #2a2a2aee,
+  primary: #2a2a2aee,
+  secondary: #404040bb,
+);
+
+// @each $name, $value in $colours {
+//   .colour-#{$name} {
+//     color: $value;
+//   }
+// }

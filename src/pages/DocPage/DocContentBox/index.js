@@ -1,46 +1,11 @@
-import React, { Component } from 'react';
-import ContentBox from '../ContentBox';
 import marked from 'marked';
+import React, { Component } from 'react';
 import xss from 'xss';
-import arrow from '../../scss/modestacss/css/images/arrow.png';
+import ContentBox from '../../../components/ContentBox';
+import Modesta from '../../../data/TwitterEmojis';
 import styles from './index.module.scss';
-import { FormattedMessage } from 'react-intl';
-import Modesta from '../../data/Modesta';
-import elementsStyle from '../../scss/elements.module.scss';
 
-const botPageWhitelist = {
-  p: [],
-  span: [],
-  code: [],
-  b: [],
-  i: [],
-  u: [],
-  li: [],
-  ul: [],
-  ol: [],
-  del: [],
-  pre: [],
-  strong: [],
-  em: [],
-  h1: ['id'],
-  h2: ['id'],
-  h3: ['id'],
-  h4: ['id'],
-  h5: ['id'],
-  h6: ['id'],
-  table: [],
-  thead: [],
-  tbody: [],
-  tr: [],
-  th: [],
-  td: [],
-  hr: [],
-  blockquote: [],
-  br: [],
-  a: ['href']
-};
-
-class BotPageContentBox extends Component {
+class DocContentBox extends Component {
   constructor(props) {
     super(props);
 
@@ -107,7 +72,7 @@ class BotPageContentBox extends Component {
 
   render() {
     const page = xss(marked(this.props.page), {
-      whiteList: this.props.allowHTML ? null : botPageWhitelist,
+      whiteList: null,
       onIgnoreTag: (tag, html, options) => {
         let extraNotes = '';
 
@@ -133,7 +98,7 @@ class BotPageContentBox extends Component {
           if (options.isClosing) {
             return '</table></div>'
           }
-          return `<div class="${Modesta.tableContainer} ${styles.tableContainer} ${elementsStyle.scrollbar}">${html}`
+          return `<div class="${styles.tableContainer}">${html}`
         }
 
         return;
@@ -151,8 +116,6 @@ class BotPageContentBox extends Component {
       }
     });
 
-    const smallEnough = typeof this.props.forceLarge === 'boolean' ? this.props.forceLarge : this.state.smallEnough;
-
     return (
       <ContentBox>
         <div>
@@ -161,34 +124,12 @@ class BotPageContentBox extends Component {
               __html: page
             }}
             ref={this.description}
-            style={smallEnough ? {} : { // if not small enough, set default height to 200
-              height: '200px',
-              transition: `height ${Math.ceil(this.getExtendedHeight() / 200) / 20}s`
-            }}
             className={styles.description}
           ></div>
-          {smallEnough ? null : // if not small enough, show the buttons
-            <div ref={this.button} onClick={this.toggle}>
-              { this.state.open === false ?
-                <ContentBox className={`${Modesta.secondary} ${styles.button}`}>
-                  <p><FormattedMessage id="components.botpagecontentbox.more" /></p>
-                  <FormattedMessage id="components.botpagecontentbox.toggle">
-                    {message => <img className={styles.arrow} src={arrow} alt={message}/>}
-                  </FormattedMessage>
-                </ContentBox> :
-                <ContentBox className={`${Modesta.secondary} ${styles.button}`}>
-                  <p><FormattedMessage id="components.botpagecontentbox.less" /></p>
-                  <FormattedMessage id="components.botpagecontentbox.toggle">
-                    {message => <img className={`${styles.arrow} ${styles.upsidedown}`} src={arrow} alt={message}/>}
-                  </FormattedMessage>
-                </ContentBox>
-              }
-            </div>
-          }
         </div>
       </ContentBox>
     )
   }
 }
 
-export default BotPageContentBox;
+export default DocContentBox;

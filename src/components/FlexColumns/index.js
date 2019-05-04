@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './index.module.scss';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 
 class FlexColumns extends Component {
   render() {
@@ -11,7 +11,7 @@ class FlexColumns extends Component {
     )
     return (
       <div className={`\
-        ${Modesta.flexGrid} \
+        \
         ${styles.flexGrid} \
         ${this.props.backwardsMobile ? styles.flexBackwards : ''} \
         ${this.props.padding ? styles.padding : ''} \

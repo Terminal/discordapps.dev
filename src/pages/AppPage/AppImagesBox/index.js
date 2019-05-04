@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import ContentBox from '../ContentBox';
+import ContentBox from '../../../components/ContentBox';
 import styles from './index.module.scss';
 import elementsStyle from '../../scss/elements.module.scss';
 
-import Locations from '../../data/Locations';
-import ModalImage from '../ModalImage';
+import Locations from '../../../data/Locations';
+import ModalImage from '../../../components/ModalImage';
 
 class BotPageContentBox extends Component {
   render() {

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import Container from '../../components/Container';
 import ContentBox from '../../components/ContentBox';
 import Layout from '../../components/Layout';
+import LinkButton from '../../components/LinkButton';
+import LoadingContainer from '../../components/LoadingContainer';
 import DateFormat from '../../data/DateFormat';
 import Locations from '../../data/Locations';
-import NotFound from '../NotFound';
-import Container from '../../components/Container';
-import LoadingContainer from '../../components/LoadingContainer';
-import BotPageContentBox from '../../components/BotPageContentBox';
-import LinkButton from '../../components/LinkButton';
-import Modesta from '../../data/Modesta';
-import { connect } from 'react-redux';
+import Modesta from '../../data/TwitterEmojis';
 import { fetchADoc } from '../../redux/actions/doc';
+import NotFound from '../NotFound';
+import DocContentBox from './DocContentBox';
 
 class DocPage extends Component {
   constructor(props) {
@@ -61,7 +61,7 @@ class DocPage extends Component {
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
           </ContentBox>
-          <BotPageContentBox page={page.content} forceLarge={true} allowHTML={true} cdn={Locations.docsServer} />
+          <DocContentBox page={page.content} cdn={Locations.docsServer} />
         </Container>
       </Layout>
     );

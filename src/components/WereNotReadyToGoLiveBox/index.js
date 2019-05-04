@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ContentBox from '../ContentBox';
 import Locations from '../../data/Locations';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 import YouTube from '../YouTube';
 
 class WereNotReadyToGoLiveBox extends Component {
@@ -55,11 +55,11 @@ class WereNotReadyToGoLiveBox extends Component {
   }
   render() {
     return (
-      <ContentBox className={`${Modesta.alizarin} ${Modesta.whiteText}`}>
+      <ContentBox className={``}>
         <p>
           This community developed edition of the <b>Terminal.ink Bot List and Application Marketplace</b> is not ready for production.<br />
-          <a className={`${Modesta.btn} ${Modesta.asbestos}`} href={Locations.server}>Main website</a><br />
-          <a className={`${Modesta.btn} ${Modesta.asbestos}`} href={Locations.sourceCode}>Development Source Code @ GitHub</a>
+          <a className={``} href={Locations.server}>Main website</a><br />
+          <a className={``} href={Locations.sourceCode}>Development Source Code @ GitHub</a>
         </p>
         {this.state.video ? <YouTube video={this.state.video} /> : null}
       </ContentBox>

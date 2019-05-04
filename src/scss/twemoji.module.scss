@@ -1,5 +1,19 @@
 @import './emoji-map';
 
+// Stolen
+// https://github.com/AlexFlipnote/ModestaCSS
+.twa {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 1em 1em;
+  display: inline-block;
+  height: 1em;
+  margin: 0 .05em 0 .1em;
+  vertical-align: -.1em;
+  width: 1em;
+}
+
+// yes it's not inside `.twa`, but it's kind cheaper to do so
 @each $name, $code in $emoji-map {
   .twa-#{$name} {
     background-image: url('/../node_modules/twemoji/2/svg/#{$code}.svg');

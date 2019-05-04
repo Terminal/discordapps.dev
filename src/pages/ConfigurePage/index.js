@@ -7,7 +7,7 @@ import NotFound from '../NotFound';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Localise } from '../../locales';
 import ContentBox from '../../components/ContentBox';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 import LoadingContainer from '../../components/LoadingContainer';
 import PermissionDenied from '../../components/PermissionDenied';
 import NotALink from '../../components/NotALink';
@@ -126,7 +126,7 @@ class ConfigurePage extends Component {
                 {bot.token}
               </code>
             </ContentBox>
-            <a className={`${Modesta.btn} ${Modesta.github}`} href={Locations.wiki} target="_blank" rel="noopener noreferrer">
+            <a className={``} href={Locations.wiki} target="_blank" rel="noopener noreferrer">
               <FormattedMessage id="pages.configuration.token.docs" />
             </a>
             <NotALink onClick={this.resetToken} className={ConstructCSS(Modesta.btn, Modesta.github)}>

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import colours from '../../scss/colours.module.scss';
 import styles from './index.module.scss';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 
 class ContentBox extends Component {
   render() {
     return (
-      <div className={`${Modesta.boxShadow} ${colours.container} ${styles.container} ${this.props.className ? this.props.className : ''}`}>
+      <div className={`${styles.container} ${this.props.className ? this.props.className : ''}`}>
         {this.props.children}
       </div>
     )

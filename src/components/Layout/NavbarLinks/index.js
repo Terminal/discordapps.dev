@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
-import Locations from '../../data/Locations';
-import Modesta, { TwitterEmojis } from '../../data/Modesta';
-import States from '../../data/States';
-import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import LocalisedHyperlink from '../LocalisedHyperlink';
+import Locations from '../../../data/Locations';
+import States from '../../../data/States';
+import { TwitterEmojis } from '../../../data/TwitterEmojis';
+import ConstructCSS from '../../../helpers/ConstructCSS';
+import { fetchAuthIfNeeded } from '../../../redux/actions/auth';
+import LocalisedHyperlink from '../../LocalisedHyperlink';
+import containers from '../containers.module.scss';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -16,13 +18,13 @@ class NavbarLinks extends Component {
     const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
     const { auth, unlocalisedPath } = this.props;
     return (
-      <>
+      <div className={containers.navlinks}>
         <FormattedMessage id="navbar.languages">
           {message => (
             <LocalisedHyperlink aria-label={message} to="/locale" query={{
               returnBrowserTo: unlocalisedPath
             }}>
-              <span className={`${Modesta.emoji} ${TwitterEmojis.twaGlobeShowingEuropeAfrica}`} />
+              <span className={ConstructCSS(TwitterEmojis.twaGlobeShowingEuropeAfrica, TwitterEmojis.twa)} />
             </LocalisedHyperlink>
           )}
         </FormattedMessage>
@@ -31,7 +33,7 @@ class NavbarLinks extends Component {
             <LocalisedHyperlink aria-label={message} to="/filter" query={{
               state: States.APPROVED
             }}>
-              <span className={`${Modesta.emoji} ${TwitterEmojis.twaRightPointingMagnifyingGlass}`} />
+              <span className={ConstructCSS(TwitterEmojis.twaRightPointingMagnifyingGlass, TwitterEmojis.twa)} />
             </LocalisedHyperlink>
           )}
         </FormattedMessage>
@@ -92,7 +94,7 @@ class NavbarLinks extends Component {
             </FormattedMessage>
           </>
         }
-      </>
+      </div>
     )
   }
 }

@@ -6,7 +6,7 @@ import FlexContainer from '../FlexContainer';
 import { connect } from 'react-redux';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import ContentBox from '../ContentBox';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -85,7 +85,7 @@ class ReviewForm extends Component {
           <FormattedMessage id="pages.reviews.placeholder">
             {placeholder => <textarea name="review.text" className={Modesta.fullWidth} placeholder={placeholder}></textarea>}
           </FormattedMessage>
-          <button className={`${Modesta.btn} ${Modesta.white} ${Modesta.blackText}`} onClick={this.submitReview}>
+          <button className={``} onClick={this.submitReview}>
             <FormattedMessage id="forms.submit" />
           </button>
           {

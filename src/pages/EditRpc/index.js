@@ -11,7 +11,7 @@ import MultipleInputField from '../../components/MultipleInputField';
 import PleaseLoginContainer from '../../components/PleaseLogIn';
 import Row from '../../components/Row';
 import Locations from '../../data/Locations';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 import languages from '../../locales';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
@@ -280,10 +280,10 @@ class EditRpc extends Component {
                   </ContentBox> :
                   <div>
                     <p><FormattedMessage id="pages.edit.updates" /></p>
-                    <a className={`${Modesta.discord} ${Modesta.btn}`} target="_blank" rel="noopener noreferrer" href={Locations.discordServer}><FormattedMessage id="pages.edit.discord" /></a>
+                    <a className={``} target="_blank" rel="noopener noreferrer" href={Locations.discordServer}><FormattedMessage id="pages.edit.discord" /></a>
                   </div>
               }
-              <button className={`${Modesta.discord} ${Modesta.btn}`}>
+              <button className={``}>
                 <FormattedMessage id="forms.submit" />
               </button>
             </ContentBox>

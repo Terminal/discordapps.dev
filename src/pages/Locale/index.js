@@ -5,7 +5,6 @@ import ContentBox from '../../components/ContentBox';
 import FlagLinks from '../../components/FlagLinks';
 import Layout from '../../components/Layout';
 import Locations from '../../data/Locations';
-import Modesta from '../../data/Modesta';
 import qs from 'qs';
 
 class Locale extends Component {
@@ -14,7 +13,7 @@ class Locale extends Component {
     return (
       <Layout match={this.props.match}>
         <Container>
-          <ContentBox className={Modesta.center}>
+          <ContentBox>
             <h2><FormattedMessage id="pages.locale.choose" /></h2>
             <FlagLinks unlocalisedPath={query.returnBrowserTo} />
             <p>

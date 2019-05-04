@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import FlexContainer from '../FlexContainer';
 import Column from '../Column';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 import elementStyles from '../../scss/elements.module.scss';
 
 class MultipleInputField extends Component {

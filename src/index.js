@@ -8,6 +8,8 @@ import { BrowserRouter } from 'react-router-dom';
 import ReduxProvider from './components/ReduxProvider';
 
 import * as serviceWorker from './serviceWorker';
+// global side effects
+import './scss/index';
 
 const element = document.getElementById('app')
 

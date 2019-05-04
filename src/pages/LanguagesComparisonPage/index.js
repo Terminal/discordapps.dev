@@ -5,7 +5,6 @@ import ContentBox from '../../components/ContentBox';
 import FlexContainer from '../../components/FlexContainer';
 import Layout from '../../components/Layout';
 import Row from '../../components/Row';
-import Modesta from '../../data/Modesta';
 import languages, { getMasterLanguage } from '../../locales';
 import elementStyles from '../../scss/elements.module.scss';
 
@@ -58,7 +57,7 @@ class LanguagesComparisonPage extends Component {
         <ContentBox>
           <Row>
             <FlexContainer>
-              <select form="null" className={Modesta.fullWidth} defaultValue="null" ref={this.languagesSelect}>
+              <select form="null" defaultValue="null" ref={this.languagesSelect}>
                 {
                   languageKeys
                     .map(language => ({
@@ -76,7 +75,7 @@ class LanguagesComparisonPage extends Component {
               </button>
             </FlexContainer>
           </Row>
-          <div className={`${Modesta.tableContainer} ${Modesta.tableCenter}`} style={{maxWidth: '100vw'}}>
+          <div className={``} style={{maxWidth: '100vw'}}>
             <table style={{whiteSpace: 'normal'}}>
               <thead>
                 <tr>

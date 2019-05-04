@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ContentBox from '../ContentBox';
-import InputField from '../InputField';
-import States from '../../data/States';
-import Modesta from '../../data/Modesta';
+import ContentBox from '../../../components/ContentBox';
+import InputField from '../../../components/InputField';
+import States from '../../../data/States';
+import Modesta from '../../../data/TwitterEmojis';
 import { FormattedMessage } from 'react-intl';
-import Locations from '../../data/Locations';
+import Locations from '../../../data/Locations';
 
-class BotPageSetStateBox extends Component {
+class AppSetStateBox extends Component {
   constructor(props) {
     super(props);
 
@@ -48,4 +48,4 @@ const mapStateToProps = (state) => {
   return { auth };
 }
 
-export default connect(mapStateToProps)(BotPageSetStateBox);
+export default connect(mapStateToProps)(AppSetStateBox);

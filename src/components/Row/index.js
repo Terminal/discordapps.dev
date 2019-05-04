@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 
 class Row extends Component {
   render() {

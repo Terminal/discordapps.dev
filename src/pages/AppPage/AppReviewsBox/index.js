@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import ContentBox from '../ContentBox';
-import ReviewCard from '../ReviewCard';
+import ContentBox from '../../../components/ContentBox';
+import ReviewCard from '../../../components/ReviewCard';
 import { FormattedMessage } from 'react-intl';
-import FlexColumns from '../FlexColumns';
-import ProgressBar from '../ProgressBar';
+import FlexColumns from '../../../components/FlexColumns';
+import ProgressBar from '../../../components/ProgressBar';
 import styles from './index.module.scss';
-import FlexContainer from '../FlexContainer';
+import FlexContainer from '../../../components/FlexContainer';
 import { connect } from 'react-redux';
-import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import ReviewForm from '../ReviewForm';
+import { fetchAuthIfNeeded } from '../../../redux/actions/auth';
+import ReviewForm from '../../../components/ReviewForm';
 
-class BotPageReviewsBox extends Component {
+class AppReviewsBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
   return { auth };
 }
 
-export default connect(mapStateToProps)(BotPageReviewsBox);
+export default connect(mapStateToProps)(AppReviewsBox);

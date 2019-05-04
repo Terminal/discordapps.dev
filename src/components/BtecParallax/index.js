@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import styles from './index.module.scss';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 
 class BtecParallax extends Component {
   render() {
     return (
-      <div className={`${Modesta.fullscreen} ${styles.fullscreen}`}>
-        <div className={`${Modesta.background} ${styles.image} ${this.props.src ? styles.loaded : ''}`}
+      <div className={`${styles.fullscreen}`}>
+        <div className={`${styles.image} ${this.props.src ? styles.loaded : ''}`}
         style={this.props.src ? {
           backgroundImage: `url('${this.props.src}')`
         }: {}} />

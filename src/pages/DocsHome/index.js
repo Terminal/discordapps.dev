@@ -12,7 +12,7 @@ import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
 import Locations from '../../data/Locations';
 import States from '../../data/States';
 import Button from '../../components/Button';
-import Modesta from '../../data/Modesta';
+import Modesta from '../../data/TwitterEmojis';
 import DateFormat from '../../data/DateFormat';
 import LocalisedHyperlink from '../../components/LocalisedHyperlink';
 import NotFound from '../NotFound';
