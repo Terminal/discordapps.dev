@@ -8,6 +8,7 @@ import containers from './containers.module.scss';
 import './index.module.scss';
 import NavbarLinks from './NavbarLinks';
 import NavigationBar from './NavigationBar';
+import ConstructCSS from '../../helpers/ConstructCSS';
 
 class Layout extends Component {
   render() {
@@ -39,10 +40,10 @@ class Layout extends Component {
           </FormattedMessage>
         )}
         </FormattedMessage>
-        <div className={containers.navback} />
+        <div className={containers.navbar} />
         <NavigationBar unlocalisedPath={unlocalisedPath} />
         <NavbarLinks unlocalisedPath={this.props.unlocalisedPath} />
-        <div className={containers.content}>
+        <div className={ConstructCSS(containers.content, this.props.className)}>
           {this.props.children}
         </div>
         <Footer />

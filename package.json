@@ -17,6 +17,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "autoprefixer": "^9.5.1",
+    "breakpoint-sass": "^2.7.1",
     "express": "^4.16.4",
     "flat": "^4.1.0",
     "isomorphic-fetch": "^2.2.1",

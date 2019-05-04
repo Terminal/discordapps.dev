@@ -1,19 +1,34 @@
 @import 'colours';
+@import 'media';
 
 .app {
   display: grid;
-  grid-template-columns: 2em auto 1fr 2em;
+  grid-template-columns: minmax(3px, 2em) 1fr minmax(3px, 2em);
   grid-template-areas:
-    ".       navtitle   navlinks   ."
-    ".       content    content    ."
-    ".       footer     footer     .";
+    ".       navtitle   ."
+    ".       navlinks   ."
+    ".       content    ."
+    ".       footer     .";
   grid-row-gap: 1em;
   margin-bottom: 3em;
 }
 
-.navback {
+@include desktop {
+  .app {
+    grid-template-columns: minmax(5em, auto) min-content minmax(min-content, 1000px) minmax(5em, auto);
+    grid-template-areas:
+      ". navtitle   navlinks ."
+      ". content    content  ."
+      ". footer     footer   .";
+  }
+}
+
+.navbar {
   grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-end: 4;
+  @include desktop {
+    grid-column-end: 5;
+  }
   grid-row-start: navtitle-start;
   grid-row-end: navlinks-end;
   background-color: map-get($colours, navbar)

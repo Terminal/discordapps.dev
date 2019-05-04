@@ -15,7 +15,6 @@ import Modesta from '../../data/TwitterEmojis';
 import languages from '../../locales';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
-import displayStyles from '../../scss/display.module.scss';
 import elementStyles from '../../scss/elements.module.scss';
 import { fetchABot, resetTheBot } from '../../redux/actions/bot';
 
@@ -261,7 +260,7 @@ class EditRpc extends Component {
                     <Row>
                       <InputField name={`app.contents[${index}][page]`} id="pages.edit.page" value={contents && contents.page} textarea={true} className={Modesta.fullWidth} required={true} />
                     </Row>
-                    <input name={`app.contents[${index}][locale]`} type="text" className={displayStyles.hidden} value={language}></input>
+                    <input name={`app.contents[${index}][locale]`} type="text" value={language}></input>
                   </ContentBox>
                 )
               })

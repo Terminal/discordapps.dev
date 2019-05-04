@@ -8,8 +8,8 @@ import styles from './index.module.scss';
 class NavigationBar extends Component {
   render() {
     return (
-      <div className={ConstructCSS(containers.navtitle, styles.navbar)}>
-        <h1>
+      <div className={containers.navtitle}>
+        <h1 className={styles.title}>
           <LocalisedHyperlink to="/">
             <FormattedMessage id="site.name" />
           </LocalisedHyperlink>
