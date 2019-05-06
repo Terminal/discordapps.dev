@@ -8167,9 +8167,6 @@ button._youtube_49062 {
   white-space: pre-line;
   margin: 0;
 }
-body, div[id=app] {
-  overflow-x: hidden;
-}
 ._video_ff09d {
   width: 50vh;
   height: 30vh;
@@ -8305,6 +8302,12 @@ body, div[id=app] {
 }
 @charset "UTF-8";
 ._slider_5fb40 {
+  overflow: hidden;
+  margin-left: calc(50% - 50vw - 10px);
+  width: 100vw;
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  box-sizing: border-box;
   margin-bottom: 50px;
   /* Slider */
 }
@@ -8395,6 +8398,7 @@ body, div[id=app] {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  overflow-x: hidden;
 }
 ._slider_5fb40 [class*=slick-track]:before,
 ._slider_5fb40 [class*=slick-track]:after {
