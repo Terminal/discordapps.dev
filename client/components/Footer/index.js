@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import Locations from '../../data/Locations';
 import Container from '../Container';
 import styles from './index.module.scss';
+import LocalisedHyperlink from '../LocalisedHyperlink';
 
 class Footer extends Component {
   render() {
@@ -12,12 +13,12 @@ class Footer extends Component {
           <FormattedMessage id="copyright" />
         </p>
         <div className={styles.links}>
-          <a href={Locations.wiki} target="_blank" rel="noopener noreferrer">
+          <LocalisedHyperlink to={Locations.wiki}>
             <FormattedMessage id="footer.docs" />
-          </a>
-          <a href={Locations.termsAndConditions} target="_blank" rel="noopener noreferrer">
+          </LocalisedHyperlink>
+          <LocalisedHyperlink to='/posts/docs/terms/'>
             <FormattedMessage id="footer.terms" />
-          </a>
+          </LocalisedHyperlink>
           <a href={Locations.discordServer} target="_blank" rel="noopener noreferrer">
             <FormattedMessage id="footer.discord" />
           </a>

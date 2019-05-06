@@ -11,7 +11,7 @@ import elementsStyle from '../../../scss/elements.module.scss';
 
 class BotPageContentBox extends Component {
   render() {
-    const page = xss(marked(this.props.page), {
+    const page = xss(this.props.page.replace(/x-ls-newline/g, '\\n'), {
       whiteList: null,
       onTag: (tag, html, options) => {
         if (tag === 'table') {

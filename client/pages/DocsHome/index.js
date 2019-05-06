@@ -1,22 +1,15 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import BotCollection from '../../components/BotCollection';
+import Button from '../../components/Button';
 import Container from '../../components/Container';
 import ContentBox from '../../components/ContentBox';
-import Flex from '../../components/FlexColumns';
-import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
 import Layout from '../../components/Layout';
-import LoadingContentBox from '../../components/LoadingContentBox';
-import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
-import Locations from '../../data/Locations';
-import States from '../../data/States';
-import Button from '../../components/Button';
-import Modesta from '../../data/Modesta';
-import DateFormat from '../../data/DateFormat';
-import LocalisedHyperlink from '../../components/LocalisedHyperlink';
-import NotFound from '../NotFound';
 import LoadingContainer from '../../components/LoadingContainer';
+import LocalisedHyperlink from '../../components/LocalisedHyperlink';
+import DateFormat from '../../data/DateFormat';
+import Locations from '../../data/Locations';
+import Modesta from '../../data/Modesta';
 
 class DocsHome extends Component {
   constructor(props) {
@@ -30,7 +23,7 @@ class DocsHome extends Component {
     this.fetch = this.fetch.bind(this);
   }
   componentDidMount() {
-    this.fetch('index');
+    this.fetch('all');
   }
   loadAll() {
     this.setState({
@@ -55,6 +48,14 @@ class DocsHome extends Component {
         <LoadingContainer />
       </Layout>
     }
+
+    // keep howto on top
+    const categories = ['howto'];
+    results.forEach((post) => {
+      if (!categories.includes(post.type)) {
+        categories.push(post.type)
+      }
+    });
     
     return (
       <Layout match={this.props.match}>
@@ -74,25 +75,20 @@ class DocsHome extends Component {
           }
         </FormattedMessage>
         <Container>
-        {
-          results.map((page) =>
-            <ContentBox key={page.permalink}>
-              <LocalisedHyperlink to={page.permalink}>
-                <h3>{page.title}</h3>
-              </LocalisedHyperlink>
-              {page.by && <p><i><FormattedMessage id="pages.docs.by" values={{name: page.by}} /></i></p>}
-              {page.date && <p>
-                {new Date(page.date).toLocaleDateString(this.props.intl.locale, DateFormat)}
-              </p>}
-            </ContentBox>
-          )
-        }
-        </Container>
-        <Container className={Modesta.center}>
           {
-            this.state.loadAll ? 
-            <p><FormattedMessage id="pages.docs.noMore" /></p> :
-            <Button onClick={this.loadAll} className={Modesta.primary}><FormattedMessage id="pages.docs.more" /></Button>
+            categories.map(category =>
+              <ContentBox>
+                <h3><FormattedMessage id={`pages.docs.headers.${category}`} /></h3>
+                {
+                  results.filter(page => page.type === category)
+                    .map(page => <p>
+                      <LocalisedHyperlink to={page.permalink}>
+                        {page.title}
+                      </LocalisedHyperlink>
+                    </p>)
+                }
+              </ContentBox>
+            )
           }
         </Container>
       </Layout>

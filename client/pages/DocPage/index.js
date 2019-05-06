@@ -22,7 +22,14 @@ class DocPage extends Component {
     const { dispatch } = this.props;
     dispatch(fetchADoc({
       match: this.props.match,
-      pathname: window.location.pathname
+      pathname: this.props.location.pathname
+    }))
+  }
+  componentDidUpdate() {
+    const { dispatch } = this.props;
+    dispatch(fetchADoc({
+      match: this.props.match,
+      pathname: this.props.location.pathname
     }))
   }
   render() {

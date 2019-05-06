@@ -13,9 +13,9 @@ const Locations = {
   sourceIssues: 'https://github.com/Terminal/discordapps.dev/issues',
   sourceTranslations: 'https://github.com/Terminal/discordapps.dev/tree/ls14/src/locales',
   sourceReleases: 'https://github.com/Terminal/discordapps.dev/releases',
-  wiki: 'https://github.com/Terminal/discordapps.dev/wiki',
+  wiki: '/posts',
   tutorials: 'https://github.com/Terminal/discordapps.dev/wiki/Tutorials-Home',
-  termsAndConditions: 'https://github.com/Terminal/discordapps.dev/wiki/Terms-and-Conditions',
+  termsAndConditions: '/posts/docs/terms',
   terminalInk: 'https://terminal.ink',
   discordServer: 'https://discord.gg/8uC6aKZ',
   add: 'https://github.com/Terminal/discordapps.dev/wiki#share-your-creation'
