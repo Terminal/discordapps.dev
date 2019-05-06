@@ -1,4 +1,10 @@
 .slider {
+  overflow: hidden;
+  margin-left: calc(50% - 50vw - 10px);
+  width: 100vw;
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+  box-sizing: border-box;
   margin-bottom: 50px;
   [class*=slick-slide] {
     transform: scale(0.90);
@@ -102,6 +108,7 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
+      overflow-x: hidden;
   }
   [class*=slick-track]:before,
   [class*=slick-track]:after
