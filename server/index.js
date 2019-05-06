@@ -6310,9 +6310,9 @@ class AppPageInfoBox extends _react.Component {
     }
 
     const {
-      app,
-      auth
+      app
     } = this.props;
+    const auth = this.props.auth.data;
     return _react.default.createElement(_ContentBox.default, null, app.trigger && _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.prefix",
       values: {
