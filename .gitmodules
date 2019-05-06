@@ -1,5 +1,3 @@
-[submodule "client/scss/modestacss"]
-	path = client/scss/modestacss
-	url = https://github.com/alexflipnote/modestacss
+[submodule "client/scss/ModestaCSS"]
 	path = client/scss/ModestaCSS
 	url = https://github.com/AlexFlipnote/ModestaCSS

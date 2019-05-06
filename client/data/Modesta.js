@@ -1,4 +1,4 @@
-import modesta from '../scss/modestacss/scss/modesta.module.scss';
+import modesta from '../scss/ModestaCSS/scss/modesta.module.scss';
 import twitterEmojis from '../scss/twemoji.module.scss';
 
 import overrideColours from '../scss/colours.module.scss';
