@@ -11303,10 +11303,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 let r = null;
 
-if (_databaseConfig.default.enabled) {
-  r = (0, _rethinkdbdash.default)(_databaseConfig.default);
-}
-
 const checkDatabase = () => r.dbList().then(dbList => {
   // If the list of databases does not include the one Forklift uses
   if (!dbList.includes(_databaseConfig.default.db)) {
@@ -11333,9 +11329,13 @@ const checkDatabase = () => r.dbList().then(dbList => {
   return Promise.all(promises);
 });
 
-checkDatabase().then(() => {
-  console.log('Database tables created!');
-});
+if (_databaseConfig.default.enabled) {
+  r = (0, _rethinkdbdash.default)(_databaseConfig.default);
+  checkDatabase().then(() => {
+    console.log('Database tables created!');
+  });
+}
+
 var _default = r;
 exports.default = _default;
 },{"../../../configuration/server/databaseConfig":"Rqlz","../../data/autoInitTables":"Hl1S"}],"eWoe":[function(require,module,exports) {
