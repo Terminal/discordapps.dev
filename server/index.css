@@ -8217,6 +8217,7 @@ button._youtube_49062 {
   position: absolute;
   box-sizing: border-box;
   width: 100vw;
+  max-width: 100%;
   z-index: 2;
 }
 
@@ -8227,9 +8228,16 @@ button._youtube_49062 {
   margin-bottom: 0;
 }
 
+._titleContainer_81ec6 {
+  align-self: center;
+}
+._titleContainer_81ec6 h3 {
+  white-space: nowrap;
+}
+
 ._avatar_81ec6 {
-  width: 7em;
   height: 7em;
+  max-width: 7em;
   object-fit: cover;
   margin-right: 1em;
 }
@@ -8245,6 +8253,14 @@ button._youtube_49062 {
 ._links_81ec6 a, ._links_81ec6 span {
   margin-right: 5px;
 }
+._btn_40445 {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: rgba(0, 151, 50, 0.4);
+  white-space: normal;
+  height: auto;
+}
 ._topPad_2011f {
   margin-top: 250px;
 }
@@ -8253,6 +8269,10 @@ button._youtube_49062 {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+._rhsButton_2011f {
+  margin-bottom: 1em;
 }
 
 ._prefixList_2011f {
@@ -8278,15 +8298,6 @@ button._youtube_49062 {
 }
 ._localeLinks_2011f ._used_2011f {
   color: #777;
-}
-._btn_40445 {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  margin-bottom: 1em;
-  padding: 0;
-  width: 100%;
-  background-color: rgba(0, 151, 50, 0.4);
 }
 ._card_c317e {
   max-width: 33%;

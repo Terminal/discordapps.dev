@@ -7168,6 +7168,7 @@ exports.default = _default;
 module.exports = {
   "box": "_box_81ec6",
   "container": "_container_81ec6",
+  "titleContainer": "_titleContainer_81ec6",
   "avatar": "_avatar_81ec6",
   "prefix": "_prefix_81ec6",
   "links": "_links_81ec6"
@@ -7199,7 +7200,51 @@ class PrefixLabel extends _react.Component {
 
 var _default = PrefixLabel;
 exports.default = _default;
-},{"./index.module.scss":"cIZt"}],"BuAp":[function(require,module,exports) {
+},{"./index.module.scss":"cIZt"}],"+9p0":[function(require,module,exports) {
+module.exports = {
+  "btn": "_btn_40445"
+};
+},{}],"hTVF":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _Button = _interopRequireDefault(require("../../../components/Button"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../../helpers/ConstructCSS"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageInviteButton extends _react.Component {
+  render() {
+    const {
+      app
+    } = this.props;
+    return _react.default.createElement("a", {
+      href: app.invite
+    }, _react.default.createElement(_Button.default, {
+      className: (0, _ConstructCSS.default)(_indexModule.default.btn, this.props.className)
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `pages.${app.type}.invite`
+    })));
+  }
+
+}
+
+var _default = AppPageInviteButton;
+exports.default = _default;
+},{"../../../components/Button":"+DmJ","./index.module.scss":"+9p0","../../../helpers/ConstructCSS":"SwhA"}],"BuAp":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7229,6 +7274,8 @@ var _Container = _interopRequireDefault(require("../../../components/Container")
 
 var _Button = _interopRequireDefault(require("../../../components/Button"));
 
+var _AppPageInviteButton = _interopRequireDefault(require("../AppPageInviteButton"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -7238,6 +7285,7 @@ class AppPageTitleBox extends _react.Component {
     super(props);
     this.scroll = this.scroll.bind(this);
     this.state = {
+      padding: 50,
       maxHeight: 200
     };
   }
@@ -7252,38 +7300,46 @@ class AppPageTitleBox extends _react.Component {
 
   scroll(e) {
     const heightthing = (100 - window.scrollY) / 2;
+    const maxHeight = 200 - window.scrollY;
     this.setState({
-      padding: `${heightthing > 0 ? heightthing : 0}px`
+      padding: `${heightthing > 0 ? heightthing : 0}px`,
+      maxHeight: `${maxHeight > 50 ? maxHeight : 50}px`
     });
   }
 
   render() {
     const {
-      bot,
+      app,
       contents
     } = this.props;
     return _react.default.createElement(_ContentBox.default, {
       className: _indexModule.default.box,
       style: {
         paddingTop: this.state.padding,
-        paddingBottom: this.state.padding
+        paddingBottom: this.state.padding,
+        maxHeight: this.state.maxHeight
       }
     }, _react.default.createElement(_Container.default, {
       className: _indexModule.default.container
     }, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement(_LazyImage.default, {
-      src: `${_Locations.default.cdn}${bot.cachedImages.avatar}`,
-      className: _indexModule.default.avatar
-    }), _react.default.createElement("div", null, _react.default.createElement("h3", null, contents.name), _react.default.createElement("p", null, contents.description), bot.nsfw || bot.state !== 'approved' ? _react.default.createElement("p", null, bot.nsfw ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
+      src: `${_Locations.default.cdn}${app.cachedImages.avatar}`,
+      className: _indexModule.default.avatar,
+      style: {
+        maxHeight: this.state.maxHeight
+      }
+    }), _react.default.createElement("div", {
+      className: _indexModule.default.titleContainer
+    }, _react.default.createElement("h3", null, contents.name))), app.nsfw || app.state !== 'approved' ? _react.default.createElement("p", null, app.nsfw ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
       className: _Modesta.default.alizarin
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.nsfw"
-    }))) : null, bot.state !== 'approved' ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
+    }))) : null, app.state !== 'approved' ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
       className: _Modesta.default.alizarin
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: `states.${bot.state}`
-    }))) : null) : null)), bot.flags && bot.flags.adverts && _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `states.${app.state}`
+    }))) : null) : null, app.flags && app.flags.adverts && _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.adverts"
-    })), bot.flags && bot.flags.inAppPurchases && _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    })), app.flags && app.flags.inAppPurchases && _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.inAppPurchases"
     }))));
   }
@@ -7292,59 +7348,18 @@ class AppPageTitleBox extends _react.Component {
 
 var _default = AppPageTitleBox;
 exports.default = _default;
-},{"../../../components/ContentBox":"50Yc","../../../components/FlexContainer":"AaMC","../../../components/LazyImage":"ofRo","../../../data/Locations":"uTwd","../../../data/Modesta":"FbNY","./index.module.scss":"cIZt","./PrefixLabel":"hpSO","../../../components/Container":"tNeE","../../../components/Button":"+DmJ"}],"GT34":[function(require,module,exports) {
+},{"../../../components/ContentBox":"50Yc","../../../components/FlexContainer":"AaMC","../../../components/LazyImage":"ofRo","../../../data/Locations":"uTwd","../../../data/Modesta":"FbNY","./index.module.scss":"cIZt","./PrefixLabel":"hpSO","../../../components/Container":"tNeE","../../../components/Button":"+DmJ","../AppPageInviteButton":"hTVF"}],"GT34":[function(require,module,exports) {
 module.exports = {
   "topPad": "_topPad_2011f",
   "appLinks": "_appLinks_2011f",
+  "rhsButton": "_rhsButton_2011f",
   "prefixList": "_prefixList_2011f",
   "prefix": "_prefix_2011f",
   "triggerNote": "_triggerNote_2011f",
   "localeLinks": "_localeLinks_2011f",
   "used": "_used_2011f"
 };
-},{}],"+9p0":[function(require,module,exports) {
-module.exports = {
-  "btn": "_btn_40445"
-};
-},{}],"hTVF":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _reactIntl = require("react-intl");
-
-var _Button = _interopRequireDefault(require("../../../components/Button"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class AppPageInviteButton extends _react.Component {
-  render() {
-    const {
-      app
-    } = this.props;
-    return _react.default.createElement("a", {
-      href: app.invite
-    }, _react.default.createElement(_Button.default, {
-      className: _indexModule.default.btn
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: `pages.${app.type}.invite`
-    })));
-  }
-
-}
-
-var _default = AppPageInviteButton;
-exports.default = _default;
-},{"../../../components/Button":"+DmJ","./index.module.scss":"+9p0"}],"frcu":[function(require,module,exports) {
+},{}],"frcu":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7472,7 +7487,7 @@ class BotPage extends _react.Component {
     return _react.default.createElement(_Layout.default, {
       match: this.props.match,
       afterNav: _react.default.createElement(_AppPageTitleBox.default, {
-        bot: app,
+        app: app,
         contents: contents
       })
     }, _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, contents.name), _react.default.createElement("meta", {
@@ -7501,7 +7516,8 @@ class BotPage extends _react.Component {
     }, _react.default.createElement(_FlexColumns.default, {
       columns: 3
     }, _react.default.createElement(_AppPageInviteButton.default, {
-      app: app
+      app: app,
+      className: _indexModule.default.rhsButton
     }), _react.default.createElement(_AppPageInfoBox.default, {
       app: app
     }), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("p", null, app.contents.length === 1 ? _react.default.createElement(_reactIntl.FormattedMessage, {
