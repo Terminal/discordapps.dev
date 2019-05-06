@@ -251,11 +251,7 @@ class WebsiteBackgroundImage extends _react.Component {
 
 var _default = WebsiteBackgroundImage;
 exports.default = _default;
-},{"../LazyImage":"ofRo","./index.module.scss":"oAcg"}],"Gm6F":[function(require,module,exports) {
-module.exports = {
-  "btn": "_btn_4dba6"
-};
-},{}],"H2cc":[function(require,module,exports) {
+},{"../LazyImage":"ofRo","./index.module.scss":"oAcg"}],"H2cc":[function(require,module,exports) {
 module.exports = {
   "markdown-container": "_markdown-container_49062",
   "pl-c": "_pl-c_49062",
@@ -1355,7 +1351,11 @@ Object.keys(_twemojiModule.default).forEach(css => {
 Modesta.secondary = _coloursModule.default.secondary;
 var _default = Modesta;
 exports.default = _default;
-},{"../scss/ModestaCSS/scss/modesta.module.scss":"H2cc","../scss/twemoji.module.scss":"qa3M","../scss/colours.module.scss":"n9dU"}],"+DmJ":[function(require,module,exports) {
+},{"../scss/ModestaCSS/scss/modesta.module.scss":"H2cc","../scss/twemoji.module.scss":"qa3M","../scss/colours.module.scss":"n9dU"}],"Gm6F":[function(require,module,exports) {
+module.exports = {
+  "btn": "_btn_4dba6"
+};
+},{}],"+DmJ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1365,11 +1365,11 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
 var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
 
 var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1380,7 +1380,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 class Button extends _react.Component {
   render() {
     return _react.default.createElement("span", _extends({}, this.props, {
-      className: (0, _ConstructCSS.default)(_Modesta.default.btn, _Modesta.default.boxShadow, _indexModule.default.btn, this.props.className)
+      className: (0, _ConstructCSS.default)(_indexModule.default.btn, _Modesta.default.btn, _Modesta.default.boxShadow, this.props.className)
     }), this.props.children);
   }
 
@@ -1388,7 +1388,7 @@ class Button extends _react.Component {
 
 var _default = Button;
 exports.default = _default;
-},{"./index.module.scss":"Gm6F","../../data/Modesta":"FbNY","../../helpers/ConstructCSS":"SwhA"}],"tNeE":[function(require,module,exports) {
+},{"../../data/Modesta":"FbNY","../../helpers/ConstructCSS":"SwhA","./index.module.scss":"Gm6F"}],"tNeE":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
