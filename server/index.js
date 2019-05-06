@@ -1856,7 +1856,6 @@ exports.default = _default;
 },{"../../scss/display.module.scss":"Tyxi","../LocalisedHyperlink":"dChq","./index.module.scss":"ch0H","./links":"JsQ7","../../data/Modesta":"FbNY"}],"Y4cY":[function(require,module,exports) {
 module.exports = {
   "footer": "_footer_d59de",
-  "small": "_small_d59de",
   "links": "_links_d59de",
   "copyright": "_copyright_d59de"
 };
@@ -1870,17 +1869,13 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _Container = _interopRequireDefault(require("../Container"));
-
 var _reactIntl = require("react-intl");
 
 var _Locations = _interopRequireDefault(require("../../data/Locations"));
 
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+var _Container = _interopRequireDefault(require("../Container"));
 
-var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1890,7 +1885,11 @@ class Footer extends _react.Component {
   render() {
     return _react.default.createElement(_Container.default, {
       className: _indexModule.default.footer
-    }, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", {
+    }, _react.default.createElement("p", {
+      className: _indexModule.default.copyright
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "copyright"
+    })), _react.default.createElement("div", {
       className: _indexModule.default.links
     }, _react.default.createElement("a", {
       href: _Locations.default.wiki,
@@ -1911,51 +1910,19 @@ class Footer extends _react.Component {
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "footer.discord"
     })), _react.default.createElement("a", {
-      href: _Locations.default.terminalInk,
-      target: "_blank",
-      rel: "noopener noreferrer"
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "footer.terminal"
-    }))), _react.default.createElement("p", {
-      className: _indexModule.default.copyright
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "copyright"
-    })), _react.default.createElement("p", {
-      className: (0, _ConstructCSS.default)(_indexModule.default.copyright, _indexModule.default.small)
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "footer.apple"
-    }))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("p", {
-      className: _indexModule.default.copyright
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "footer.foss"
-    })), _react.default.createElement("div", {
-      className: _indexModule.default.links
-    }, _react.default.createElement("a", {
-      href: _Locations.default.sourceLicence,
-      target: "_blank",
-      rel: "noopener noreferrer"
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "footer.licence"
-    })), _react.default.createElement("a", {
-      href: _Locations.default.sourceDependencies,
-      target: "_blank",
-      rel: "noopener noreferrer"
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "footer.attribution"
-    })), _react.default.createElement("a", {
       href: _Locations.default.sourceCode,
       target: "_blank",
       rel: "noopener noreferrer"
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "footer.source"
-    })))));
+    }))));
   }
 
 }
 
 var _default = Footer;
 exports.default = _default;
-},{"./index.module.scss":"Y4cY","../Container":"tNeE","../../data/Locations":"uTwd","../ContentBox":"50Yc","../../helpers/ConstructCSS":"SwhA"}],"occt":[function(require,module,exports) {
+},{"../../data/Locations":"uTwd","../Container":"tNeE","./index.module.scss":"Y4cY"}],"occt":[function(require,module,exports) {
 module.exports = {
   "categories": {
     "fun": "Sjov",
@@ -2733,7 +2700,7 @@ module.exports = {
   "alt": {
     "avatar": "Avatar for {name}"
   },
-  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
+  "copyright": "Copyright 2017 - 2019, Terminal.ink",
   "errors": {
     "rpc": {
       "invite": "The installation URL must filled out, and also be a valid HTTPS link"
@@ -2799,9 +2766,9 @@ module.exports = {
     "attribution": "Dependencies",
     "licence": "GNU AGPLv3",
     "source": "GitHub",
-    "discord": "Discord Server",
+    "discord": "Discord",
     "terminal": "Terminal.ink",
-    "terms": "Terms and Conditions",
+    "terms": "Terms",
     "docs": "Docs",
     "foss": "Discord Apps is powered by the Terminal.ink Bot List Open Source Project",
     "apple": "Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc."
@@ -9227,7 +9194,7 @@ class Home extends _react.Component {
     const displayed = [];
     return _react.default.createElement(_Layout.default, {
       match: this.props.match
-    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_reactSlick.default, settings, _react.default.createElement(_ContentBox.default, {
+    }, _react.default.createElement(_reactSlick.default, settings, _react.default.createElement(_ContentBox.default, {
       className: (0, _ConstructCSS.default)(_indexModule.default.sliderContainer)
     }, _react.default.createElement("iframe", {
       src: "https://www.youtube-nocookie.com/embed/pYRCVFK-mjk?autoplay=1&loop=1&playlist=pYRCVFK-mjk&mute=1",
@@ -9273,7 +9240,7 @@ class Home extends _react.Component {
       to: "/posts"
     }, _react.default.createElement("small", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.home.discover.link"
-    }))))))), _react.default.createElement(_FlexColumns.default, {
+    }))))))), _react.default.createElement(_Container.default, null, _react.default.createElement(_FlexColumns.default, {
       padding: true
     }, _react.default.createElement(_FlexColumns.default, {
       columns: 3
