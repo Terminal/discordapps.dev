@@ -1,22 +1,20 @@
 .slider {
   overflow: hidden;
-  // 10px, the magic number
-  margin-left: calc(50% - 50vw - 10px);
   width: 100vw;
-  padding-left: calc(50vw - 50%);
-  padding-right: calc(50vw - 50%);
+  max-width: 100%;
   box-sizing: border-box;
-  margin-bottom: 50px;
+  margin: 50px 0;
   [class*=slick-slide] {
     transform: scale(0.90);
     opacity: 0.3;
     transition: transform 0.5s, opacity 0.5s;
     .sliderContainer {
-      height: 20vh;
+      height: 25vh;
       transition: background-color 0.5s;
       background-color: #202020ee;
       position: relative;
       overflow-y: hidden;
+      box-sizing: border-box;
       .sliderContents {
         width: 100%;
         position: absolute;
@@ -36,10 +34,10 @@
       .sliderVideo {
         position: absolute;
         left: 0;
-        top: -100%;
+        top: -200%;
         border: 0;
         width: 100%;
-        height: 300%;
+        height: 400%;
         pointer-events: none;
         filter: brightness(30%);
       }

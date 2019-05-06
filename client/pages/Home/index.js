@@ -74,45 +74,45 @@ class Home extends Component {
 
     return (
       <Layout match={this.props.match}>
+        <Slider {...settings}>
+          <ContentBox className={ConstructCSS(styles.sliderContainer)}>
+            <iframe src="https://www.youtube-nocookie.com/embed/pYRCVFK-mjk?autoplay=1&amp;loop=1&amp;playlist=pYRCVFK-mjk&amp;mute=1" className={styles.sliderVideo} title="Bots YouTube Background" />
+            <div className={styles.sliderContents}>
+              <h3><FormattedMessage id="pages.home.bots.title" /></h3>
+              <p><FormattedMessage id="pages.home.bots.description" /></p>
+              <p>
+                <LocalisedHyperlink to="/bots">
+                  <small><FormattedMessage id="pages.home.bots.link" /></small>
+                </LocalisedHyperlink>
+              </p>
+            </div>
+          </ContentBox>
+          <ContentBox className={styles.sliderContainer}>
+            <LazyImage src={rpcImage} className={styles.sliderImage} />
+            <div className={styles.sliderContents}>
+            <h3><FormattedMessage id="pages.home.rpc.title" /></h3>
+              <p><FormattedMessage id="pages.home.rpc.description" /></p>
+              <p>
+                <LocalisedHyperlink to="/rpc">
+                  <small><FormattedMessage id="pages.home.rpc.link" /></small>
+                </LocalisedHyperlink>
+              </p>
+            </div>
+          </ContentBox>
+          <ContentBox className={styles.sliderContainer}>
+            <LazyImage src={hkImage} className={styles.sliderImage} />
+            <div className={styles.sliderContents}>
+            <h3><FormattedMessage id="pages.home.discover.title" /></h3>
+              <p><FormattedMessage id="pages.home.discover.description" /></p>
+              <p>
+                <LocalisedHyperlink to="/posts">
+                  <small><FormattedMessage id="pages.home.discover.link" /></small>
+                </LocalisedHyperlink>
+              </p>
+            </div>
+          </ContentBox>
+        </Slider>
         <Container>
-          <Slider {...settings}>
-            <ContentBox className={ConstructCSS(styles.sliderContainer)}>
-              <iframe src="https://www.youtube-nocookie.com/embed/pYRCVFK-mjk?autoplay=1&amp;loop=1&amp;playlist=pYRCVFK-mjk&amp;mute=1" className={styles.sliderVideo} title="Bots YouTube Background" />
-              <div className={styles.sliderContents}>
-                <h3><FormattedMessage id="pages.home.bots.title" /></h3>
-                <p><FormattedMessage id="pages.home.bots.description" /></p>
-                <p>
-                  <LocalisedHyperlink to="/bots">
-                    <small><FormattedMessage id="pages.home.bots.link" /></small>
-                  </LocalisedHyperlink>
-                </p>
-              </div>
-            </ContentBox>
-            <ContentBox className={styles.sliderContainer}>
-              <LazyImage src={rpcImage} className={styles.sliderImage} />
-              <div className={styles.sliderContents}>
-              <h3><FormattedMessage id="pages.home.rpc.title" /></h3>
-                <p><FormattedMessage id="pages.home.rpc.description" /></p>
-                <p>
-                  <LocalisedHyperlink to="/rpc">
-                    <small><FormattedMessage id="pages.home.rpc.link" /></small>
-                  </LocalisedHyperlink>
-                </p>
-              </div>
-            </ContentBox>
-            <ContentBox className={styles.sliderContainer}>
-              <LazyImage src={hkImage} className={styles.sliderImage} />
-              <div className={styles.sliderContents}>
-              <h3><FormattedMessage id="pages.home.discover.title" /></h3>
-                <p><FormattedMessage id="pages.home.discover.description" /></p>
-                <p>
-                  <LocalisedHyperlink to="/posts">
-                    <small><FormattedMessage id="pages.home.discover.link" /></small>
-                  </LocalisedHyperlink>
-                </p>
-              </div>
-            </ContentBox>
-          </Slider>
           <Flex padding={true}>
             <Flex columns={3}>
               <WebsiteTypeButtons />

@@ -16,7 +16,7 @@
   "alt": {
     "avatar": "Avatar for {name}"
   },
-  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord is a trademark of Discord Inc.",
+  "copyright": "Copyright 2017 - 2019, Terminal.ink",
   "errors": {
     "rpc": {
       "invite": "The installation URL must filled out, and also be a valid HTTPS link"
@@ -82,9 +82,9 @@
     "attribution": "Dependencies",
     "licence": "GNU AGPLv3",
     "source": "GitHub",
-    "discord": "Discord Server",
+    "discord": "Discord",
     "terminal": "Terminal.ink",
-    "terms": "Terms and Conditions",
+    "terms": "Terms",
     "docs": "Docs",
     "foss": "Discord Apps is powered by the Terminal.ink Bot List Open Source Project",
     "apple": "Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc."
