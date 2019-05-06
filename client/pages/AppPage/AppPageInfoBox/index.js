@@ -51,7 +51,8 @@ class AppPageInfoBox extends Component {
       )
     }
 
-    const { app, auth } = this.props;
+    const { app } = this.props;
+    const auth = this.props.auth.data;
     return (
       <ContentBox>
         {
