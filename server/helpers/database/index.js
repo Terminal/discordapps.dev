@@ -4,10 +4,6 @@ import autoInitTables from '../../data/autoInitTables';
 
 let r = null;
 
-if (databaseConfig.enabled) {
-  r = rethinkdb(databaseConfig);
-}
-
 const checkDatabase = () => r.dbList()
   .then((dbList) => {
     // If the list of databases does not include the one Forklift uses
@@ -38,9 +34,13 @@ const checkDatabase = () => r.dbList()
     return Promise.all(promises);
   });
 
-checkDatabase()
-  .then(() => {
-    console.log('Database tables created!');
-  })
+if (databaseConfig.enabled) {
+  r = rethinkdb(databaseConfig);
+
+  checkDatabase()
+    .then(() => {
+      console.log('Database tables created!');
+    })
+}
 
 export default r;
