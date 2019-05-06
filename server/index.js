@@ -139,9 +139,9 @@ const Locations = {
   sourceIssues: 'https://github.com/Terminal/discordapps.dev/issues',
   sourceTranslations: 'https://github.com/Terminal/discordapps.dev/tree/ls14/src/locales',
   sourceReleases: 'https://github.com/Terminal/discordapps.dev/releases',
-  wiki: 'https://github.com/Terminal/discordapps.dev/wiki',
+  wiki: '/posts',
   tutorials: 'https://github.com/Terminal/discordapps.dev/wiki/Tutorials-Home',
-  termsAndConditions: 'https://github.com/Terminal/discordapps.dev/wiki/Terms-and-Conditions',
+  termsAndConditions: '/posts/docs/terms',
   terminalInk: 'https://terminal.ink',
   discordServer: 'https://discord.gg/8uC6aKZ',
   add: 'https://github.com/Terminal/discordapps.dev/wiki#share-your-creation'
@@ -1877,6 +1877,8 @@ var _Container = _interopRequireDefault(require("../Container"));
 
 var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -1891,16 +1893,12 @@ class Footer extends _react.Component {
       id: "copyright"
     })), _react.default.createElement("div", {
       className: _indexModule.default.links
-    }, _react.default.createElement("a", {
-      href: _Locations.default.wiki,
-      target: "_blank",
-      rel: "noopener noreferrer"
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: _Locations.default.wiki
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "footer.docs"
-    })), _react.default.createElement("a", {
-      href: _Locations.default.termsAndConditions,
-      target: "_blank",
-      rel: "noopener noreferrer"
+    })), _react.default.createElement(_LocalisedHyperlink.default, {
+      to: "/posts/docs/terms/"
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "footer.terms"
     })), _react.default.createElement("a", {
@@ -1922,7 +1920,7 @@ class Footer extends _react.Component {
 
 var _default = Footer;
 exports.default = _default;
-},{"../../data/Locations":"uTwd","../Container":"tNeE","./index.module.scss":"Y4cY"}],"occt":[function(require,module,exports) {
+},{"../../data/Locations":"uTwd","../Container":"tNeE","./index.module.scss":"Y4cY","../LocalisedHyperlink":"dChq"}],"occt":[function(require,module,exports) {
 module.exports = {
   "categories": {
     "fun": "Sjov",
@@ -3105,7 +3103,12 @@ module.exports = {
       "noMore": "There are no more posts!",
       "back": "Back to posts",
       "title": "Terminal.ink Documentation and Blog",
-      "description": "See posts about how Terminal.ink operates, or see a tutorial on how to do something."
+      "description": "See posts about how Terminal.ink operates, or see a tutorial on how to do something.",
+      "headers": {
+        "blog": "Latest blog posts",
+        "howto": "Tutorials",
+        "docs": "Website Documentation Series"
+      }
     }
   },
   "navbar": {
@@ -10362,37 +10365,23 @@ var _reactHelmet = require("react-helmet");
 
 var _reactIntl = require("react-intl");
 
-var _BotCollection = _interopRequireDefault(require("../../components/BotCollection"));
+var _Button = _interopRequireDefault(require("../../components/Button"));
 
 var _Container = _interopRequireDefault(require("../../components/Container"));
 
 var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
 
-var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
-
-var _GetStartedWithBots = _interopRequireDefault(require("../../components/GetStartedWithBots"));
-
 var _Layout = _interopRequireDefault(require("../../components/Layout"));
 
-var _LoadingContentBox = _interopRequireDefault(require("../../components/LoadingContentBox"));
-
-var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/WebsiteTypeButtons"));
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-var _States = _interopRequireDefault(require("../../data/States"));
-
-var _Button = _interopRequireDefault(require("../../components/Button"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-var _DateFormat = _interopRequireDefault(require("../../data/DateFormat"));
+var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
 
 var _LocalisedHyperlink = _interopRequireDefault(require("../../components/LocalisedHyperlink"));
 
-var _NotFound = _interopRequireDefault(require("../NotFound"));
+var _DateFormat = _interopRequireDefault(require("../../data/DateFormat"));
 
-var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10410,7 +10399,7 @@ class DocsHome extends _react.Component {
   }
 
   componentDidMount() {
-    this.fetch('index');
+    this.fetch('all');
   }
 
   loadAll() {
@@ -10435,8 +10424,15 @@ class DocsHome extends _react.Component {
       return _react.default.createElement(_Layout.default, {
         match: this.props.match
       }, _react.default.createElement(_LoadingContainer.default, null));
-    }
+    } // keep howto on top
 
+
+    const categories = ['howto'];
+    results.forEach(post => {
+      if (!categories.includes(post.type)) {
+        categories.push(post.type);
+      }
+    });
     return _react.default.createElement(_Layout.default, {
       match: this.props.match
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -10452,25 +10448,11 @@ class DocsHome extends _react.Component {
     }), _react.default.createElement("meta", {
       name: "description",
       content: description
-    })))), _react.default.createElement(_Container.default, null, results.map(page => _react.default.createElement(_ContentBox.default, {
-      key: page.permalink
-    }, _react.default.createElement(_LocalisedHyperlink.default, {
+    })))), _react.default.createElement(_Container.default, null, categories.map(category => _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `pages.docs.headers.${category}`
+    })), results.filter(page => page.type === category).map(page => _react.default.createElement("p", null, _react.default.createElement(_LocalisedHyperlink.default, {
       to: page.permalink
-    }, _react.default.createElement("h3", null, page.title)), page.by && _react.default.createElement("p", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.docs.by",
-      values: {
-        name: page.by
-      }
-    }))), page.date && _react.default.createElement("p", null, new Date(page.date).toLocaleDateString(this.props.intl.locale, _DateFormat.default))))), _react.default.createElement(_Container.default, {
-      className: _Modesta.default.center
-    }, this.state.loadAll ? _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.docs.noMore"
-    })) : _react.default.createElement(_Button.default, {
-      onClick: this.loadAll,
-      className: _Modesta.default.primary
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.docs.more"
-    }))));
+    }, page.title)))))));
   }
 
 }
@@ -10478,7 +10460,7 @@ class DocsHome extends _react.Component {
 var _default = (0, _reactIntl.injectIntl)(DocsHome);
 
 exports.default = _default;
-},{"../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/LoadingContentBox":"qVpT","../../components/WebsiteTypeButtons":"V0nm","../../data/Locations":"uTwd","../../data/States":"2Fxh","../../components/Button":"+DmJ","../../data/Modesta":"FbNY","../../data/DateFormat":"4Pyv","../../components/LocalisedHyperlink":"dChq","../NotFound":"GVTv","../../components/LoadingContainer":"N3k8"}],"RzcF":[function(require,module,exports) {
+},{"../../components/Button":"+DmJ","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../components/LoadingContainer":"N3k8","../../components/LocalisedHyperlink":"dChq","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../../data/Modesta":"FbNY"}],"RzcF":[function(require,module,exports) {
 module.exports = {
   "description": "_description_d4455",
   "tableContainer": "_tableContainer_d4455"
@@ -10515,7 +10497,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 class BotPageContentBox extends _react.Component {
   render() {
-    const page = (0, _xss.default)((0, _marked.default)(this.props.page), {
+    const page = (0, _xss.default)(this.props.page.replace(/x-ls-newline/g, '\\n'), {
       whiteList: null,
       onTag: (tag, html, options) => {
         if (tag === 'table') {
@@ -10695,7 +10677,17 @@ class DocPage extends _react.Component {
     } = this.props;
     dispatch((0, _doc.fetchADoc)({
       match: this.props.match,
-      pathname: window.location.pathname
+      pathname: this.props.location.pathname
+    }));
+  }
+
+  componentDidUpdate() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _doc.fetchADoc)({
+      match: this.props.match,
+      pathname: this.props.location.pathname
     }));
   }
 
