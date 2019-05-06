@@ -26,8 +26,6 @@ class AppPageTitleBox extends Component {
     document.removeEventListener('resize', this.scroll);
   }
   scroll(e) {
-    // console.log(e);
-    console.log(window.scrollY);
     const heightthing = (100 - window.scrollY) / 2
     this.setState({
       padding: `${(heightthing > 0 ? heightthing : 0)}px`
