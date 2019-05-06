@@ -9,6 +9,7 @@ import styles from './index.module.scss';
 import PrefixLabel from './PrefixLabel';
 import Container from '../../../components/Container';
 import Button from '../../../components/Button';
+import AppPageInviteButton from '../AppPageInviteButton';
 
 class AppPageTitleBox extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class AppPageTitleBox extends Component {
 
     this.scroll = this.scroll.bind(this);
     this.state = {
+      padding: 50,
       maxHeight: 200
     }
   }
@@ -26,47 +28,55 @@ class AppPageTitleBox extends Component {
     document.removeEventListener('resize', this.scroll);
   }
   scroll(e) {
-    const heightthing = (100 - window.scrollY) / 2
+    const heightthing = (100 - window.scrollY) / 2;
+    const maxHeight = (200 - window.scrollY);
     this.setState({
-      padding: `${(heightthing > 0 ? heightthing : 0)}px`
+      padding: `${(heightthing > 0 ? heightthing : 0)}px`,
+      maxHeight: `${maxHeight > 50 ? maxHeight : 50}px`
     })
   }
   render() {
-    const { bot, contents } = this.props;
+    const { app, contents } = this.props;
     return (
-      <ContentBox className={styles.box} style={{paddingTop: this.state.padding, paddingBottom: this.state.padding}}>
+      <ContentBox className={styles.box} style={{
+        paddingTop: this.state.padding,
+        paddingBottom: this.state.padding,
+        maxHeight: this.state.maxHeight
+      }}>
         <Container className={styles.container}>
           <FlexContainer>
-            <LazyImage src={`${Locations.cdn}${bot.cachedImages.avatar}`} className={styles.avatar} />
-            <div>
+            <LazyImage
+              src={`${Locations.cdn}${app.cachedImages.avatar}`}
+              className={styles.avatar}
+              style={{
+                maxHeight: this.state.maxHeight
+              }} />
+            <div className={styles.titleContainer}>
               <h3>
                 {contents.name}
               </h3>
-              <p>
-                {contents.description}
-              </p>
-              {
-                bot.nsfw || bot.state !== 'approved' ?
-                <p>
-                  {bot.nsfw ? <>
-                    <PrefixLabel className={Modesta.alizarin}><FormattedMessage id="pages.bots.nsfw" /></PrefixLabel>
-                  </> : null}
-                  {bot.state !== 'approved' ? <>
-                    <PrefixLabel className={Modesta.alizarin}><FormattedMessage id={`states.${bot.state}`} /></PrefixLabel>
-                  </> : null}
-                </p> :
-                null
-              }
             </div>
           </FlexContainer>
           {
-            bot.flags && bot.flags.adverts &&
+            app.nsfw || app.state !== 'approved' ?
+            <p>
+              {app.nsfw ? <>
+                <PrefixLabel className={Modesta.alizarin}><FormattedMessage id="pages.bots.nsfw" /></PrefixLabel>
+              </> : null}
+              {app.state !== 'approved' ? <>
+                <PrefixLabel className={Modesta.alizarin}><FormattedMessage id={`states.${app.state}`} /></PrefixLabel>
+              </> : null}
+            </p> :
+            null
+          }
+          {
+            app.flags && app.flags.adverts &&
               <div>
                 <FormattedMessage id="pages.bots.adverts" />
               </div>
           }
           {
-            bot.flags && bot.flags.inAppPurchases &&
+            app.flags && app.flags.inAppPurchases &&
               <div>
                 <FormattedMessage id="pages.bots.inAppPurchases" />
               </div>

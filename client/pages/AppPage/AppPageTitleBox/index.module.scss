@@ -6,6 +6,7 @@
   position: absolute;
   box-sizing: border-box;
   width: 100vw;
+  max-width: 100%;
   z-index: 2;
 }
 
@@ -16,9 +17,16 @@
   margin-bottom: 0;
 }
 
+.titleContainer {
+  align-self: center;
+  h3 {
+    white-space: nowrap;
+  }
+}
+
 .avatar {
-  width: 7em;
   height: 7em;
+  max-width: 7em;
   object-fit: cover;
   margin-right: 1em;
 }

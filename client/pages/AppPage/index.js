@@ -86,7 +86,7 @@ class BotPage extends Component {
     const reviewJSON = reviewToJsonLd(contents, app);
 
     return (
-      <Layout match={this.props.match} afterNav={<AppPageTitleBox bot={app} contents={contents}/>}>
+      <Layout match={this.props.match} afterNav={<AppPageTitleBox app={app} contents={contents}/>}>
         <Helmet>
           <title>{contents.name}</title>
           <meta property="og:title" content={contents.name}/>
@@ -109,7 +109,7 @@ class BotPage extends Component {
         <Container className={styles.topPad}>
           <Flex padding={true}>
             <Flex columns={3}>
-              <AppPageInviteButton app={app} />
+              <AppPageInviteButton app={app} className={styles.rhsButton} />
               <AppPageInfoBox app={app} />
               <ContentBox>
                 <p>
