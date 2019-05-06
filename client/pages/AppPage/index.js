@@ -3,32 +3,30 @@ import { Helmet } from 'react-helmet';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import AppPageDeleteButton from '../../components/AppPageDeleteButton';
-import BotPageContentBox from '../../components/BotPageContentBox';
-import BotPageImagesBox from '../../components/BotPageImagesBox';
-import BotPageInfoBox from '../../components/BotPageInfoBox';
-import BotPageReviewsBox from '../../components/BotPageReviewsBox';
-import BotPageSetStateBox from '../../components/BotPageSetStateBox';
-import BtecParallax from '../../components/BtecParallax';
+import WebsiteBackgroundImage from '../../components/WebsiteBackgroundImage';
 import Button from '../../components/Button';
 import Container from '../../components/Container';
 import ContentBox from '../../components/ContentBox';
 import Flex from '../../components/FlexColumns';
 import Layout from '../../components/Layout';
 import LoadingContainer from '../../components/LoadingContainer';
-import LocalisedHyperlink from '../../components/LocalisedHyperlink';
 import NotALink from '../../components/NotALink';
 import Youku from '../../components/Youku';
 import YouTube from '../../components/YouTube';
-import DateFormat from '../../data/DateFormat';
 import Locations from '../../data/Locations';
-import States from '../../data/States';
 import ConstructCSS from '../../helpers/ConstructCSS';
 import reviewToJsonLd from '../../helpers/reviewToJsonLd';
 import { Localise } from '../../locales';
 import { fetchABot } from '../../redux/actions/bot';
 import NotFound from '../NotFound';
+import AppPageContentBox from './AppPageContentBox';
+import AppPageImagesBox from './AppPageImagesBox';
+import AppPageInfoBox from './AppPageInfoBox';
+import AppPageReviewsBox from './AppPageReviewsBox';
+import AppPageSetStateBox from './AppPageSetStateBox';
+import AppPageTitleBox from './AppPageTitleBox';
 import styles from './index.module.scss';
+import AppPageInviteButton from './AppPageInviteButton';
 
 class BotPage extends Component {
   constructor(props) {
@@ -88,7 +86,7 @@ class BotPage extends Component {
     const reviewJSON = reviewToJsonLd(contents, app);
 
     return (
-      <Layout match={this.props.match}>
+      <Layout match={this.props.match} afterNav={<AppPageTitleBox bot={app} contents={contents}/>}>
         <Helmet>
           <title>{contents.name}</title>
           <meta property="og:title" content={contents.name}/>
@@ -105,121 +103,14 @@ class BotPage extends Component {
         </Helmet>
         { 
           app.cachedImages.cover ?
-          <BtecParallax src={`${Locations.cdn}${app.cachedImages.cover}`}/> :
+          <WebsiteBackgroundImage src={`${Locations.cdn}${app.cachedImages.cover}`}/> :
           null
         }
-        <Container>
-          <BotPageInfoBox bot={app} contents={contents}/>
+        <Container className={styles.topPad}>
           <Flex padding={true}>
             <Flex columns={3}>
-              <a href={app.invite}>
-                <Button className={styles.btn}>
-                  <FormattedMessage id={`pages.${app.type}.invite`} />
-                </Button>
-              </a>
-              <ContentBox>
-                {
-                  app.trigger &&
-                  <p>
-                    <FormattedMessage id="pages.bots.prefix" values={{
-                      count: app.trigger.prefix.length
-                    }} />
-                    <ul className={styles.prefixList}>
-                      {app.trigger.prefix.map((prefix, index) => <li key={index} className={styles.prefix}>{prefix}</li>)}
-                      {app.trigger.customisable ? <li className={styles.triggerNote}><FormattedMessage id="pages.bots.customisable" /></li> : null}
-                      {app.trigger.mentionable ? <li className={styles.triggerNote}><FormattedMessage id="pages.bots.mentionable" /></li> : null}
-                    </ul>
-                  </p>
-                }
-                {
-                  app.support || app.website || (app.github && app.github.owner && app.github.repo) ?
-                  <p>
-                    <FormattedMessage id={`pages.apps.appLinks`} />
-                    <ul className={styles.appLinks}>
-                      {app.support ? <li><a href={app.support}><FormattedMessage id="pages.bots.support" /></a></li> : null}
-                      {app.website ? <li><a href={app.website}><FormattedMessage id="pages.bots.website" /></a></li> : null}
-                      {app.github && app.github.owner && app.github.repo ? <li><a href={`https://github.com/${app.github.owner}/${app.github.repo}`}><FormattedMessage id="pages.bots.github" /></a></li> : null}
-                    </ul>
-                  </p> :
-                  null
-                }
-                { auth && (auth.admin || app.authors.some(author => author.id === auth.id)) ?
-                  <p>
-                    <FormattedMessage id={`pages.apps.devLinks`} />
-                    <ul className={styles.appLinks}>
-                      <li><LocalisedHyperlink to={`/${app.type}/${app.id}/edit`}><FormattedMessage id={`pages.${app.type}.edit`} /></LocalisedHyperlink></li>
-                      <li>
-                        <AppPageDeleteButton app={app} />
-                      </li>
-                      <li><LocalisedHyperlink to={`/${app.type}/${app.id}/configure`}><FormattedMessage id="pages.bots.configure" /></LocalisedHyperlink></li>
-                    </ul>
-                  </p>
-                  : null
-                }
-                <p>
-                  <FormattedMessage id="pages.bots.offeredby"/>
-                  <ul className={styles.appLinks}>
-                    {
-                      app.authors.length ?
-                        app.authors.map((author) => (
-                        <li key={author.id}>
-                          <LocalisedHyperlink aria-label={`${author.username}#${author.discriminator}`} to="/filter" query={{
-                            owners: [author.id],
-                            state: States.APPROVED
-                          }}>
-                            {
-                              author.username ?
-                              `${author.username}#${author.discriminator}` :
-                              author.id
-                            }
-                          </LocalisedHyperlink>
-                        </li>
-                      )) :
-                      <li>
-                        <i>
-                          <FormattedMessage id="pages.apps.reclaim" />
-                        </i>
-                      </li>
-                    }
-                  </ul>
-                </p>
-                {
-                  app.category &&
-                  <p>
-                    <FormattedMessage id="pages.bots.category"/>
-                    <ul className={styles.appLinks}>
-                      <li>
-                        <LocalisedHyperlink to="/filter" query={{
-                          category: app.category,
-                          state: States.APPROVED
-                        }}>
-                          <FormattedMessage id={`categories.${app.category}`} />
-                        </LocalisedHyperlink>
-                      </li>
-                    </ul>
-                  </p>
-                }
-                {
-                  app.count &&
-                  <p>
-                    <FormattedMessage id="pages.bots.count" values={{
-                      guilds: app.count
-                    }}/>
-                  </p>
-                }
-                <p>
-                  <FormattedMessage id="pages.bots.created" />
-                  <ul className={styles.appLinks}>
-                    <li>{(new Date(app.created)).toLocaleDateString(this.props.intl.locale, DateFormat)}</li>
-                  </ul>
-                </p>
-                <p>
-                  <FormattedMessage id="pages.bots.modified" />
-                  <ul className={styles.appLinks}>
-                    <li>{(new Date(app.edited)).toLocaleDateString(this.props.intl.locale, DateFormat)}</li>
-                  </ul>
-                </p>
-              </ContentBox>
+              <AppPageInviteButton app={app} />
+              <AppPageInfoBox app={app} />
               <ContentBox>
                 <p>
                   {
@@ -249,15 +140,15 @@ class BotPage extends Component {
               </ContentBox>
             </Flex>
             <Flex columns={9}>
-              <BotPageContentBox page={contents.page}/>
-              <BotPageImagesBox images={app.cachedImages.preview}>
+              <AppPageContentBox page={contents.page}/>
+              <AppPageImagesBox images={app.cachedImages.preview}>
                 {app.videos.youtube ? <YouTube video={app.videos.youtube} /> : null}
                 {app.videos.youku ? <Youku video={app.videos.youku} /> : null}
-              </BotPageImagesBox>
-              <BotPageReviewsBox bot={app} />
+              </AppPageImagesBox>
+              <AppPageReviewsBox app={app} />
             </Flex>
           </Flex>
-          <BotPageSetStateBox bot={app} />
+          <AppPageSetStateBox app={app} />
         </Container>
       </Layout>
     );

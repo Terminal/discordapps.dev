@@ -1,0 +1,27 @@
+.description {
+  code {
+    background: #303030;
+    border-radius: 3px;
+    padding: .2em .4em;
+    color: #d0d0d0;
+  }
+
+  pre {
+    background: #303030;
+    padding: 1em;
+    code {
+      padding: 0;
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.tableContainer {
+  overflow-x: auto;
+  table {
+    margin-bottom: 0.5em;
+  }
+}

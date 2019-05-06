@@ -1,0 +1,9 @@
+.background {
+  position: fixed !important;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(30%) blur(5px);
+}

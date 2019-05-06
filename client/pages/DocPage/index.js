@@ -8,7 +8,7 @@ import Locations from '../../data/Locations';
 import NotFound from '../NotFound';
 import Container from '../../components/Container';
 import LoadingContainer from '../../components/LoadingContainer';
-import BotPageContentBox from '../../components/BotPageContentBox';
+import DocPageContentBox from './DocPageContentBox';
 import LinkButton from '../../components/LinkButton';
 import Modesta from '../../data/Modesta';
 import { connect } from 'react-redux';
@@ -61,7 +61,7 @@ class DocPage extends Component {
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
           </ContentBox>
-          <BotPageContentBox page={page.content} forceLarge={true} allowHTML={true} cdn={Locations.docsServer} />
+          <DocPageContentBox page={page.content} forceLarge={true} allowHTML={true} cdn={Locations.docsServer} />
         </Container>
       </Layout>
     );

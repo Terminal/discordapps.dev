@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ContentBox from '../ContentBox';
-import InputField from '../InputField';
-import States from '../../data/States';
-import Modesta from '../../data/Modesta';
+import ContentBox from '../../../components/ContentBox';
+import InputField from '../../../components/InputField';
+import States from '../../../data/States';
+import Modesta from '../../../data/Modesta';
 import { FormattedMessage } from 'react-intl';
-import Locations from '../../data/Locations';
+import Locations from '../../../data/Locations';
 
-class BotPageSetStateBox extends Component {
+class AppPageSetStateBox extends Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +26,7 @@ class BotPageSetStateBox extends Component {
   }
   render() {
     const auth = this.props.auth.data;
-    const bot = this.props.bot;
+    const { app } = this.props;
 
     if (!auth) return null;
     if (!auth.admin) return null;
@@ -34,7 +34,7 @@ class BotPageSetStateBox extends Component {
     return (
       <ContentBox>
         <form ref={this.form}>
-          <InputField name="state" id="components.botpagesetstatebox.state" localiseOptions="states" options={Object.values(States)} value={bot.state} onChange={this.onChange}/>
+          <InputField name="state" id="components.botpagesetstatebox.state" localiseOptions="states" options={Object.values(States)} value={app.state} onChange={this.onChange}/>
           <InputField name="reason" id="components.botpagesetstatebox.reason" textarea={true} className={Modesta.fullWidth} />
           <button onClick={this.submit}><FormattedMessage id="components.botpagesetstatebox.submit" /></button>
         </form>
@@ -48,4 +48,4 @@ const mapStateToProps = (state) => {
   return { auth };
 }
 
-export default connect(mapStateToProps)(BotPageSetStateBox);
+export default connect(mapStateToProps)(AppPageSetStateBox);

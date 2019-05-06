@@ -1,5 +1,6 @@
 .slider {
   overflow: hidden;
+  // 10px, the magic number
   margin-left: calc(50% - 50vw - 10px);
   width: 100vw;
   padding-left: calc(50vw - 50%);

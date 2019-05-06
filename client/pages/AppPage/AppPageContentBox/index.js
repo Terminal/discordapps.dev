@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import ContentBox from '../ContentBox';
+import ContentBox from '../../../components/ContentBox';
 import marked from 'marked';
 import xss from 'xss';
-import arrow from '../../scss/ModestaCSS/css/images/arrow.png';
+import arrow from '../../../scss/ModestaCSS/css/images/arrow.png';
 import styles from './index.module.scss';
 import { FormattedMessage } from 'react-intl';
-import Modesta from '../../data/Modesta';
-import elementsStyle from '../../scss/elements.module.scss';
+import Modesta from '../../../data/Modesta';
+import elementsStyle from '../../../scss/elements.module.scss';
 
 const botPageWhitelist = {
   p: [],
@@ -40,7 +40,7 @@ const botPageWhitelist = {
   a: ['href']
 };
 
-class BotPageContentBox extends Component {
+class AppPageContentBox extends Component {
   constructor(props) {
     super(props);
 
@@ -191,4 +191,4 @@ class BotPageContentBox extends Component {
   }
 }
 
-export default BotPageContentBox;
+export default AppPageContentBox;

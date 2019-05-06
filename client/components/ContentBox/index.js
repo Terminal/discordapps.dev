@@ -6,7 +6,7 @@ import Modesta from '../../data/Modesta';
 class ContentBox extends Component {
   render() {
     return (
-      <div className={`${Modesta.boxShadow} ${colours.container} ${styles.container} ${this.props.className ? this.props.className : ''}`}>
+      <div {...this.props} className={`${Modesta.boxShadow} ${colours.container} ${styles.container} ${this.props.className ? this.props.className : ''}`}>
         {this.props.children}
       </div>
     )

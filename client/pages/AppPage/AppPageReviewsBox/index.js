@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import ContentBox from '../ContentBox';
-import ReviewCard from '../ReviewCard';
+import ContentBox from '../../../components/ContentBox';
+import ReviewCard from '../../../components/ReviewCard';
 import { FormattedMessage } from 'react-intl';
-import FlexColumns from '../FlexColumns';
-import ProgressBar from '../ProgressBar';
+import FlexColumns from '../../../components/FlexColumns';
+import ProgressBar from '../../../components/ProgressBar';
 import styles from './index.module.scss';
-import FlexContainer from '../FlexContainer';
+import FlexContainer from '../../../components/FlexContainer';
 import { connect } from 'react-redux';
-import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import ReviewForm from '../ReviewForm';
+import { fetchAuthIfNeeded } from '../../../redux/actions/auth';
+import ReviewForm from '../../../components/ReviewForm';
 
-class BotPageReviewsBox extends Component {
+class AppPageReviewsBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,9 +28,9 @@ class BotPageReviewsBox extends Component {
     });
   }
   render() {
-    const { bot } = this.props;
+    const { app } = this.props;
     const auth = this.props.auth.data
-    const { reviews } = bot;
+    const { reviews } = app;
     const average = reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length;
 
     const counts = [0, 0, 0, 0, 0];
@@ -38,7 +38,7 @@ class BotPageReviewsBox extends Component {
     const proportions = counts.map(count => count / reviews.length);
 
     const myReview = auth ? reviews.find(review => review.author === auth.id) : null;
-    const isOwner = auth ? bot.authors.some(author => author.id === auth.id) : false;
+    const isOwner = auth ? app.authors.some(author => author.id === auth.id) : false;
 
     return (
       <ContentBox>
@@ -59,18 +59,18 @@ class BotPageReviewsBox extends Component {
           {
             // If there's a review by the owner, show it.
             this.state.myReview || myReview ?
-              <ReviewCard review={this.state.myReview || myReview} bot={bot} /> :
+              <ReviewCard review={this.state.myReview || myReview} bot={app} /> :
               (
                 isOwner ?
                   null :
-                  <ReviewForm setMyReview={this.setMyReview} bot={bot} />
+                  <ReviewForm setMyReview={this.setMyReview} bot={app} />
               )
           }
           {
             reviews
               .slice(0, 8)
               .filter(review => auth ? review.author !== auth.id : true)
-              .map((review, index) => <ReviewCard key={index} review={review} bot={bot} />)
+              .map((review, index) => <ReviewCard key={index} review={review} bot={app} />)
           }
         </div>
       </ContentBox>
@@ -83,4 +83,4 @@ const mapStateToProps = (state) => {
   return { auth };
 }
 
-export default connect(mapStateToProps)(BotPageReviewsBox);
+export default connect(mapStateToProps)(AppPageReviewsBox);

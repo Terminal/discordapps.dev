@@ -40,14 +40,16 @@ class Layout extends Component {
           </FormattedMessage>
         )}
         </FormattedMessage>
-        <NavigationBar unlocalisedPath={unlocalisedPath} />
-          <noscript>
-            <Container>
-              <ContentBox>
-                <FormattedMessage id="errors.website.noscript" />
-              </ContentBox>
-            </Container>
-          </noscript>
+        <NavigationBar unlocalisedPath={unlocalisedPath}>
+          {this.props.afterNav}
+        </NavigationBar>
+        <noscript>
+          <Container>
+            <ContentBox>
+              <FormattedMessage id="errors.website.noscript" />
+            </ContentBox>
+          </Container>
+        </noscript>
         {this.props.children}
         <Footer />
       </div>

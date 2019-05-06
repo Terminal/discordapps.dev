@@ -9,36 +9,24 @@ import Modesta from '../../data/Modesta';
 class NavigationBar extends Component {
   constructor(props) {
     super(props);
-    this.open = React.createRef();
-    this.navside = React.createRef();
-    this.darken = React.createRef();
     this.openNavbar = this.openNavbar.bind(this);
     this.closeNavbar = this.closeNavbar.bind(this);
-  }
 
-  componentDidMount() {
-    this.open.current.addEventListener('click', this.openNavbar);
-    this.darken.current.addEventListener('click', this.closeNavbar);
-  }
-
-  componentWillUnmount() {
-    // Don't keep stuff hanging there in the background
-    this.open.current.removeEventListener('click', this.openNavbar);
-    this.darken.current.removeEventListener('click', this.closeNavbar);
-  }
-
-  openNavbar() {
-    if (this.navside.current && this.navside.current.style) {
-      this.navside.current.style.transform = 'translateX(0px)';
-      this.darken.current.style.opacity = '0.8';
-      this.darken.current.style.pointerEvents = 'all';
+    this.state = {
+      open: false
     }
   }
 
+  openNavbar() {
+    this.setState({
+      open: true
+    })
+  }
+
   closeNavbar() {
-    this.navside.current.style.transform = 'translateX(-250px)';
-    this.darken.current.style.opacity = '0';
-    this.darken.current.style.pointerEvents = 'none';
+    this.setState({
+      open: false
+    })
   }
 
   render() {
@@ -56,7 +44,7 @@ class NavigationBar extends Component {
           </div>
         </div>
         <div className={`${displayCSS.mobile} ${Modesta.navContainer} ${styles.mobileNavbar}`}>
-          <span ref={this.open} className={Modesta.menuIcon}></span>
+          <span onClick={this.openNavbar} className={Modesta.menuIcon}></span>
 
           <div className={`${styles.mobileNavContent} ${Modesta.navContent}`}>
             <h4 className={styles.mobileHeading}>
@@ -66,11 +54,22 @@ class NavigationBar extends Component {
             </h4>
           </div>
 
-          <div className={Modesta.sidenav} ref={this.navside}>
+          <div className={Modesta.sidenav} style={this.state.open ? {
+            transform: 'translateX(0px)'
+          } : {
+            transform: 'translateX(-250px)'
+          }}>
             <NavbarLinks unlocalisedPath={this.props.unlocalisedPath} />
           </div>
         </div>
-        <div ref={this.darken} className={`${styles.darken} ${displayCSS.mobile}`}></div>
+        <div
+          style={this.state.open ? {
+            opacity: '0.8',
+            pointerEvents: 'all'
+          } : {}}
+          className={`${styles.darken} ${displayCSS.mobile}`}
+          onClick={this.closeNavbar}></div>
+        {this.props.children}
       </div>
     );
   }

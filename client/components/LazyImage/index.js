@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './index.module.scss';
+import ConstructCSS from '../../helpers/ConstructCSS';
 
 class LazyImage extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class LazyImage extends Component {
   render() {
     const loaded = typeof window === 'undefined' || this.state.loaded;
     return (
-      <img {...this.props} src={this.props.src} className={`${styles.image} ${loaded && styles.loaded} ${this.props.className}`} alt={this.props.alt} ref={this.image} onLoad={this.load}></img>
+      <img {...this.props} src={this.props.src} className={ConstructCSS(styles.image, loaded && styles.loaded, this.props.className)} alt={this.props.alt} ref={this.image} onLoad={this.load}></img>
     );
   }
 }

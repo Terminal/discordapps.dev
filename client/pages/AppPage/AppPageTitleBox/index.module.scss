@@ -1,0 +1,36 @@
+.box {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: absolute;
+  box-sizing: border-box;
+  width: 100vw;
+  z-index: 2;
+}
+
+.container {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.avatar {
+  width: 7em;
+  height: 7em;
+  object-fit: cover;
+  margin-right: 1em;
+}
+
+.prefix {
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #555;
+  font-family: 'Courier New', Courier, monospace
+}
+
+.links a, .links span {
+  margin-right: 5px;
+}
