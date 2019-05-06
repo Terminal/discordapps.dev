@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import styles from './index.module.scss';
 import Modesta from '../../data/Modesta';
 import ConstructCSS from '../../helpers/ConstructCSS';
+import styles from './index.module.scss';
 
 class Button extends Component {
   render() {
     return (
-      <span {...this.props} className={ConstructCSS(Modesta.btn, Modesta.boxShadow, styles.btn, this.props.className)}>{this.props.children}</span>
+      <span {...this.props} className={ConstructCSS(styles.btn, Modesta.btn, Modesta.boxShadow, this.props.className)}>{this.props.children}</span>
     )
   }
 }
