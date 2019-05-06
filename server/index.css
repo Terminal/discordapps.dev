@@ -15,13 +15,6 @@
   z-index: -1;
   filter: brightness(30%) blur(5px);
 }
-._btn_4dba6 {
-  border-radius: unset;
-  filter: unset !important;
-}
-._btn_4dba6:hover {
-  filter: brightness(80%) !important;
-}
 /*!
  * ModestaCSS v1.0.1 (https://modesta.alexflipnote.dev)
  * Made by AlexFlipnote (https://alexflipnote.dev)
@@ -7775,6 +7768,13 @@ button._youtube_49062 {
 
 ._secondary_f298d {
   background-color: #404040bb !important;
+}
+._btn_4dba6 {
+  border-radius: 18px;
+  filter: unset !important;
+}
+._btn_4dba6:hover {
+  filter: brightness(80%) !important;
 }
 ._container_8004f {
   margin-bottom: 1em;
