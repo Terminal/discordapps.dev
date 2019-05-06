@@ -1,6 +1,6 @@
 import rethinkdb from 'rethinkdbdash';
 import databaseConfig from '../../../configuration/server/databaseConfig';
-import autoInitTables from '../../data/autoinitTables';
+import autoInitTables from '../../data/autoInitTables';
 
 let r = null;
 
