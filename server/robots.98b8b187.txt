@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /*/bots/filter
+Disallow: /*/filter
+Disallow: /*/admin
+Disallow: /*/game
+Disallow: /*/languagescomparisontool
