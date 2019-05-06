@@ -148,11 +148,25 @@ const Locations = {
 };
 var _default = Locations;
 exports.default = _default;
-},{}],"qskh":[function(require,module,exports) {
+},{}],"W70x":[function(require,module,exports) {
 module.exports = {
-  "link": "_link_ceea7"
+  "image": "_image_5c4c2",
+  "loaded": "_loaded_5c4c2"
 };
-},{}],"rr1b":[function(require,module,exports) {
+},{}],"SwhA":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+const ConstructCSS = (...args) => args.filter(argument => argument) // Get arguments that are truthy
+.join(' ');
+
+var _default = ConstructCSS;
+exports.default = _default;
+},{}],"ofRo":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -164,24 +178,50 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-class NotALink extends _react.Component {
+class LazyImage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false
+    };
+    this.load = this.load.bind(this);
+    this.image = _react.default.createRef();
+  }
+
+  load() {
+    this.setState({
+      loaded: true
+    });
+  }
+
   render() {
-    return _react.default.createElement("span", _extends({
-      className: `${_indexModule.default.link} ${this.props.className}`
-    }, this.props), this.props.children);
+    const loaded = typeof window === 'undefined' || this.state.loaded;
+    return _react.default.createElement("img", _extends({}, this.props, {
+      src: this.props.src,
+      className: (0, _ConstructCSS.default)(_indexModule.default.image, loaded && _indexModule.default.loaded, this.props.className),
+      alt: this.props.alt,
+      ref: this.image,
+      onLoad: this.load
+    }));
   }
 
 }
 
-var _default = NotALink;
+var _default = LazyImage;
 exports.default = _default;
-},{"./index.module.scss":"qskh"}],"h5DN":[function(require,module,exports) {
+},{"./index.module.scss":"W70x","../../helpers/ConstructCSS":"SwhA"}],"oAcg":[function(require,module,exports) {
+module.exports = {
+  "background": "_background_d5fda"
+};
+},{}],"TxHF":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -191,80 +231,29 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactIntl = require("react-intl");
+var _LazyImage = _interopRequireDefault(require("../LazyImage"));
 
-var _reactRouterDom = require("react-router-dom");
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-var _NotALink = _interopRequireDefault(require("../NotALink"));
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-class AppPageDeleteButton extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sure: false,
-      deleted: false
-    };
-    this.openSure = this.openSure.bind(this);
-    this.delete = this.delete.bind(this);
-  }
-
-  openSure() {
-    this.setState({
-      sure: true
-    });
-  }
-
-  delete() {
-    fetch(`${_Locations.default.server}/bots/${this.props.app.id}/delete`, {
-      method: 'POST',
-      credentials: 'include'
-    }).then(res => res.json()).then(data => {
-      if (data.ok) this.setState({
-        deleted: true
-      });
-    });
-  }
-
+class WebsiteBackgroundImage extends _react.Component {
   render() {
-    if (this.state.deleted) {
-      return _react.default.createElement(_reactRouterDom.Redirect, {
-        to: "/"
-      });
-    }
-
-    if (this.state.sure) {
-      return _react.default.createElement(_NotALink.default, {
-        onClick: this.delete
-      }, _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: "pages.bots.reallyDelete"
-      }));
-    }
-
-    return _react.default.createElement(_NotALink.default, {
-      onClick: this.openSure
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.bots.delete"
-    }));
+    return _react.default.createElement(_LazyImage.default, {
+      src: this.props.src,
+      className: _indexModule.default.background
+    });
   }
 
 }
 
-var _default = AppPageDeleteButton;
+var _default = WebsiteBackgroundImage;
 exports.default = _default;
-},{"../../data/Locations":"uTwd","../NotALink":"rr1b"}],"n9dU":[function(require,module,exports) {
+},{"../LazyImage":"ofRo","./index.module.scss":"oAcg"}],"Gm6F":[function(require,module,exports) {
 module.exports = {
-  "container": "_container_f298d",
-  "secondary": "_secondary_f298d"
-};
-},{}],"A3mz":[function(require,module,exports) {
-module.exports = {
-  "container": "_container_8004f"
+  "btn": "_btn_4dba6"
 };
 },{}],"H2cc":[function(require,module,exports) {
 module.exports = {
@@ -1333,7 +1322,12 @@ module.exports = {
   "twa-ru": "_twa-ru_93871",
   "twa-us": "_twa-us_93871"
 };
-},{"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f3.svg":[["1f1e8-1f1f3.71b04f50.svg","eQVn"],"eQVn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ea.svg":[["1f1e9-1f1ea.e18fb3b5.svg","cW1v"],"cW1v"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e8.svg":[["1f1e6-1f1e8.42822809.svg","O4au"],"O4au"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e9.svg":[["1f1e6-1f1e9.0ea5bf62.svg","5Whg"],"5Whg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ea.svg":[["1f1e6-1f1ea.547f1fed.svg","6i6P"],"6i6P"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1eb.svg":[["1f1e6-1f1eb.4d61ccd4.svg","EbGW"],"EbGW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ec.svg":[["1f1e6-1f1ec.046288e0.svg","2/xK"],"2/xK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ee.svg":[["1f1e6-1f1ee.0ea90be6.svg","uLOp"],"uLOp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f1.svg":[["1f1e6-1f1f1.93972240.svg","QXN1"],"QXN1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f2.svg":[["1f1e6-1f1f2.58216aad.svg","wzbN"],"wzbN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f4.svg":[["1f1e6-1f1f4.1c7f2191.svg","w73S"],"w73S"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f6.svg":[["1f1e6-1f1f6.1df3fa89.svg","YJNH"],"YJNH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f7.svg":[["1f1e6-1f1f7.c4023db6.svg","R/+K"],"R/+K"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f8.svg":[["1f1e6-1f1f8.1a6de69f.svg","7wZs"],"7wZs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f9.svg":[["1f1e6-1f1f9.3bf3b3c6.svg","NYla"],"NYla"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fa.svg":[["1f1e6-1f1fa.7df51f83.svg","w4/k"],"w4/k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fc.svg":[["1f1e6-1f1fc.e019d2d9.svg","QJf8"],"QJf8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fd.svg":[["1f1e6-1f1fd.ea851d45.svg","pha7"],"pha7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ff.svg":[["1f1e6-1f1ff.4bcec899.svg","vLk/"],"vLk/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e6.svg":[["1f1e7-1f1e6.04d321b1.svg","1uU0"],"1uU0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e7.svg":[["1f1e7-1f1e7.0d552338.svg","nnba"],"nnba"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e9.svg":[["1f1e7-1f1e9.4190ce8b.svg","vfbl"],"vfbl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ea.svg":[["1f1e7-1f1ea.585290df.svg","7ccV"],"7ccV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1eb.svg":[["1f1e7-1f1eb.57ca06f4.svg","+hQ1"],"+hQ1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ec.svg":[["1f1e7-1f1ec.04c2cb17.svg","akj6"],"akj6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ed.svg":[["1f1e7-1f1ed.0db8867b.svg","Csv8"],"Csv8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ee.svg":[["1f1e7-1f1ee.3c006f2d.svg","1gIg"],"1gIg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ef.svg":[["1f1e7-1f1ef.44d9ae15.svg","x/Uw"],"x/Uw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f1.svg":[["1f1e7-1f1f1.7f18abb7.svg","kw3e"],"kw3e"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f2.svg":[["1f1e7-1f1f2.2b507468.svg","g6Ks"],"g6Ks"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f3.svg":[["1f1e7-1f1f3.52c75492.svg","G+XW"],"G+XW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f4.svg":[["1f1e7-1f1f4.8d38c2ad.svg","Z3f4"],"Z3f4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f6.svg":[["1f1e7-1f1f6.f9f69c99.svg","NYZh"],"NYZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f7.svg":[["1f1e7-1f1f7.ef746b8f.svg","6fzl"],"6fzl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f8.svg":[["1f1e7-1f1f8.58ca0865.svg","u/sN"],"u/sN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f9.svg":[["1f1e7-1f1f9.416260b3.svg","oEwW"],"oEwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fb.svg":[["1f1e7-1f1fb.cee3040c.svg","j/J7"],"j/J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fc.svg":[["1f1e7-1f1fc.bcdfee06.svg","XWe/"],"XWe/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fe.svg":[["1f1e7-1f1fe.03465708.svg","EsIA"],"EsIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ff.svg":[["1f1e7-1f1ff.40df548f.svg","hYWB"],"hYWB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e6.svg":[["1f1e8-1f1e6.5b3a7333.svg","A8qE"],"A8qE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e8.svg":[["1f1e8-1f1e8.a25604bf.svg","OtLZ"],"OtLZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e9.svg":[["1f1e8-1f1e9.703bfd39.svg","LGWM"],"LGWM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1eb.svg":[["1f1e8-1f1eb.c82b0b69.svg","My+t"],"My+t"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ec.svg":[["1f1e8-1f1ec.499856a2.svg","eqbL"],"eqbL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ed.svg":[["1f1e8-1f1ed.1fa5be26.svg","oFgq"],"oFgq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ee.svg":[["1f1e8-1f1ee.811d987d.svg","rsLr"],"rsLr"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f0.svg":[["1f1e8-1f1f0.df9a7963.svg","cHVR"],"cHVR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f1.svg":[["1f1e8-1f1f1.c6f37ae5.svg","ltyK"],"ltyK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f2.svg":[["1f1e8-1f1f2.39baa6fe.svg","wFoG"],"wFoG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f4.svg":[["1f1e8-1f1f4.7ade25c4.svg","k35I"],"k35I"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f5.svg":[["1f1e8-1f1f5.e44dddb2.svg","HV5Z"],"HV5Z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f7.svg":[["1f1e8-1f1f7.0b2b002e.svg","QfSp"],"QfSp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fa.svg":[["1f1e8-1f1fa.6da931b8.svg","NQTT"],"NQTT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fb.svg":[["1f1e8-1f1fb.9cee7af1.svg","xNWL"],"xNWL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fc.svg":[["1f1e8-1f1fc.7ac0f34d.svg","xQeh"],"xQeh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fd.svg":[["1f1e8-1f1fd.e04f949b.svg","CtyF"],"CtyF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fe.svg":[["1f1e8-1f1fe.5d8788d0.svg","CyKQ"],"CyKQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ff.svg":[["1f1e8-1f1ff.32a7c739.svg","c3lH"],"c3lH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ec.svg":[["1f1e9-1f1ec.14ac8655.svg","5peb"],"5peb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ef.svg":[["1f1e9-1f1ef.3532a7ba.svg","L3J7"],"L3J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f0.svg":[["1f1e9-1f1f0.ea8d5e9d.svg","ycSk"],"ycSk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f2.svg":[["1f1e9-1f1f2.fb642994.svg","Vguw"],"Vguw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f4.svg":[["1f1e9-1f1f4.376311d9.svg","+S/r"],"+S/r"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ff.svg":[["1f1e9-1f1ff.ccec0ff3.svg","hCnt"],"hCnt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e6.svg":[["1f1ea-1f1e6.1a8f1f1c.svg","nD+m"],"nD+m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e8.svg":[["1f1ea-1f1e8.9687e62e.svg","kLtF"],"kLtF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ea.svg":[["1f1ea-1f1ea.8f25bfb4.svg","YwIA"],"YwIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ec.svg":[["1f1ea-1f1ec.ea29654b.svg","ycOM"],"ycOM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ed.svg":[["1f1ea-1f1ed.5fab1b55.svg","1mk+"],"1mk+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.svg":[["1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.1f9f70c2.svg","UZTc"],"UZTc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f7.svg":[["1f1ea-1f1f7.207cbcea.svg","WhoC"],"WhoC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f9.svg":[["1f1ea-1f1f9.3b176126.svg","jQ/g"],"jQ/g"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1fa.svg":[["1f1ea-1f1fa.23419a98.svg","5pRH"],"5pRH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ee.svg":[["1f1eb-1f1ee.508dfcf9.svg","0P3J"],"0P3J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ef.svg":[["1f1eb-1f1ef.692eb21e.svg","uVaK"],"uVaK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f0.svg":[["1f1eb-1f1f0.e5c63d69.svg","unqI"],"unqI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f2.svg":[["1f1eb-1f1f2.1d4c935d.svg","mQEE"],"mQEE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f4.svg":[["1f1eb-1f1f4.21e96768.svg","cKKA"],"cKKA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e6.svg":[["1f1ec-1f1e6.f1006d48.svg","KcGo"],"KcGo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e9.svg":[["1f1ec-1f1e9.bba2f0fa.svg","A5WC"],"A5WC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ea.svg":[["1f1ec-1f1ea.f7b30406.svg","PzpK"],"PzpK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1eb.svg":[["1f1ec-1f1eb.23d3cb2d.svg","s5oR"],"s5oR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ec.svg":[["1f1ec-1f1ec.c00ba56e.svg","orsY"],"orsY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ed.svg":[["1f1ec-1f1ed.75604cc1.svg","j7lP"],"j7lP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ee.svg":[["1f1ec-1f1ee.5027204f.svg","AibY"],"AibY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f1.svg":[["1f1ec-1f1f1.ae9ae55b.svg","bNB+"],"bNB+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f2.svg":[["1f1ec-1f1f2.911c154e.svg","oDir"],"oDir"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f3.svg":[["1f1ec-1f1f3.fb70f39e.svg","xD5Q"],"xD5Q"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f5.svg":[["1f1ec-1f1f5.79c0e35c.svg","icF+"],"icF+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f6.svg":[["1f1ec-1f1f6.81009872.svg","IDMs"],"IDMs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f7.svg":[["1f1ec-1f1f7.4a4d5e85.svg","tU3n"],"tU3n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f8.svg":[["1f1ec-1f1f8.018ff6c8.svg","NavM"],"NavM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f9.svg":[["1f1ec-1f1f9.cdc65f16.svg","qdZq"],"qdZq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fa.svg":[["1f1ec-1f1fa.02765584.svg","Vse2"],"Vse2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fc.svg":[["1f1ec-1f1fc.92f2fbb7.svg","bpbP"],"bpbP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fe.svg":[["1f1ec-1f1fe.c8c752c7.svg","Zi9k"],"Zi9k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f0.svg":[["1f1ed-1f1f0.89134375.svg","2V0h"],"2V0h"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f2.svg":[["1f1ed-1f1f2.7df51f83.svg","REwi"],"REwi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f3.svg":[["1f1ed-1f1f3.d424d317.svg","iMdX"],"iMdX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f7.svg":[["1f1ed-1f1f7.26475669.svg","2zL/"],"2zL/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f9.svg":[["1f1ed-1f1f9.32b3a016.svg","vLXA"],"vLXA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1fa.svg":[["1f1ed-1f1fa.1d8e20d4.svg","pKlQ"],"pKlQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e8.svg":[["1f1ee-1f1e8.73ef0a04.svg","kTuC"],"kTuC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e9.svg":[["1f1ee-1f1e9.9719525b.svg","1UHY"],"1UHY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1ea.svg":[["1f1ee-1f1ea.1bffc7d1.svg","Tsuk"],"Tsuk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f1.svg":[["1f1ee-1f1f1.1fa74891.svg","f8kR"],"f8kR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f2.svg":[["1f1ee-1f1f2.a8329c34.svg","ZU7D"],"ZU7D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/26f3.svg":[["26f3.1c592450.svg","00lg"],"00lg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f3.svg":[["1f1ee-1f1f3.413062c2.svg","KWFT"],"KWFT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f4.svg":[["1f1ee-1f1f4.14ac8655.svg","yc3c"],"yc3c"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f6.svg":[["1f1ee-1f1f6.a0ec4a33.svg","FpXc"],"FpXc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f7.svg":[["1f1ee-1f1f7.66f4455b.svg","6WFD"],"6WFD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f8.svg":[["1f1ee-1f1f8.369055b1.svg","J7BB"],"J7BB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1ea.svg":[["1f1ef-1f1ea.cebb1f2a.svg","V9G/"],"V9G/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f2.svg":[["1f1ef-1f1f2.c02d6bf2.svg","ysiJ"],"ysiJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f4.svg":[["1f1ef-1f1f4.03af0c7f.svg","8YoX"],"8YoX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ea.svg":[["1f1f0-1f1ea.773c0b1d.svg","jWq+"],"jWq+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ec.svg":[["1f1f0-1f1ec.eeb1a2bf.svg","k3CX"],"k3CX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ed.svg":[["1f1f0-1f1ed.6056f269.svg","18Xj"],"18Xj"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ee.svg":[["1f1f0-1f1ee.75982fa3.svg","n4uR"],"n4uR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f2.svg":[["1f1f0-1f1f2.cc6670b0.svg","aDpn"],"aDpn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f3.svg":[["1f1f0-1f1f3.d83352e4.svg","gEgg"],"gEgg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f5.svg":[["1f1f0-1f1f5.c8890842.svg","e6/8"],"e6/8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fc.svg":[["1f1f0-1f1fc.3c803fe2.svg","vcGX"],"vcGX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fe.svg":[["1f1f0-1f1fe.5790dc14.svg","pa8m"],"pa8m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ff.svg":[["1f1f0-1f1ff.04cb7d2d.svg","PXi0"],"PXi0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e6.svg":[["1f1f1-1f1e6.c643b934.svg","aSL5"],"aSL5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e7.svg":[["1f1f1-1f1e7.64283791.svg","0wij"],"0wij"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e8.svg":[["1f1f1-1f1e8.befd4a7d.svg","AN2n"],"AN2n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1ee.svg":[["1f1f1-1f1ee.83110489.svg","oM6D"],"oM6D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f0.svg":[["1f1f1-1f1f0.f5e26938.svg","cXD4"],"cXD4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f7.svg":[["1f1f1-1f1f7.d4cedda0.svg","2FwW"],"2FwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f8.svg":[["1f1f1-1f1f8.692a8a3d.svg","06WH"],"06WH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f9.svg":[["1f1f1-1f1f9.04273dfb.svg","xkCu"],"xkCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fa.svg":[["1f1f1-1f1fa.b356257e.svg","HJvy"],"HJvy"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fb.svg":[["1f1f1-1f1fb.06d7f11c.svg","BGmx"],"BGmx"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fe.svg":[["1f1f1-1f1fe.642bf63d.svg","3/Hf"],"3/Hf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e6.svg":[["1f1f2-1f1e6.7cf99271.svg","JUSC"],"JUSC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e8.svg":[["1f1f2-1f1e8.77f9bc2a.svg","798W"],"798W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e9.svg":[["1f1f2-1f1e9.34722307.svg","VUTQ"],"VUTQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ea.svg":[["1f1f2-1f1ea.ed2a8045.svg","e3//"],"e3//"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1eb.svg":[["1f1f2-1f1eb.e44dddb2.svg","xmfW"],"xmfW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ec.svg":[["1f1f2-1f1ec.91d07981.svg","b/ZF"],"b/ZF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ed.svg":[["1f1f2-1f1ed.c7b494cc.svg","HOWE"],"HOWE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f0.svg":[["1f1f2-1f1f0.e99feca6.svg","c+T0"],"c+T0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f1.svg":[["1f1f2-1f1f1.b34cb0c4.svg","uiET"],"uiET"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f2.svg":[["1f1f2-1f1f2.acb2c58b.svg","EEQp"],"EEQp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f3.svg":[["1f1f2-1f1f3.ac88e037.svg","6xQz"],"6xQz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f4.svg":[["1f1f2-1f1f4.b357da34.svg","Jui7"],"Jui7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f5.svg":[["1f1f2-1f1f5.1c03b4c8.svg","MuiK"],"MuiK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f6.svg":[["1f1f2-1f1f6.bbb9bb4a.svg","xzdL"],"xzdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f7.svg":[["1f1f2-1f1f7.58cdb3d7.svg","+2wl"],"+2wl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f8.svg":[["1f1f2-1f1f8.3cb62f40.svg","DRHQ"],"DRHQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f9.svg":[["1f1f2-1f1f9.67d13460.svg","/Uy5"],"/Uy5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fa.svg":[["1f1f2-1f1fa.afd0b205.svg","Mh9J"],"Mh9J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fb.svg":[["1f1f2-1f1fb.2d2df9c7.svg","MvDG"],"MvDG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fc.svg":[["1f1f2-1f1fc.38bddb99.svg","SeZC"],"SeZC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fd.svg":[["1f1f2-1f1fd.0c489398.svg","NS+R"],"NS+R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fe.svg":[["1f1f2-1f1fe.1aa06c61.svg","qkO1"],"qkO1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ff.svg":[["1f1f2-1f1ff.71557d53.svg","y1Y0"],"y1Y0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e6.svg":[["1f1f3-1f1e6.b17f6814.svg","dxpq"],"dxpq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e8.svg":[["1f1f3-1f1e8.c29c05f5.svg","4rR1"],"4rR1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ea.svg":[["1f1f3-1f1ea.bda89cd5.svg","Q19U"],"Q19U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1eb.svg":[["1f1f3-1f1eb.dc81e0af.svg","KioV"],"KioV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ec.svg":[["1f1f3-1f1ec.13330a97.svg","/G8D"],"/G8D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ee.svg":[["1f1f3-1f1ee.5553225e.svg","Y4Cm"],"Y4Cm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f1.svg":[["1f1f3-1f1f1.e611df6c.svg","cStk"],"cStk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f4.svg":[["1f1f3-1f1f4.aeb21e38.svg","FMFG"],"FMFG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f5.svg":[["1f1f3-1f1f5.f2f03c3c.svg","F8+U"],"F8+U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f7.svg":[["1f1f3-1f1f7.b7505152.svg","zD7p"],"zD7p"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1fa.svg":[["1f1f3-1f1fa.764b7f5e.svg","Hq9b"],"Hq9b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ff.svg":[["1f1f3-1f1ff.d4381377.svg","Higc"],"Higc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f4-1f1f2.svg":[["1f1f4-1f1f2.de3a4039.svg","EWrE"],"EWrE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1e6.svg":[["1f1f5-1f1e6.b696172e.svg","q+lZ"],"q+lZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ea.svg":[["1f1f5-1f1ea.b7fe4dc3.svg","nJl3"],"nJl3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1eb.svg":[["1f1f5-1f1eb.7b693467.svg","tmNT"],"tmNT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ec.svg":[["1f1f5-1f1ec.de7c24e6.svg","6ciu"],"6ciu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ed.svg":[["1f1f5-1f1ed.9eb1cbe6.svg","LVVi"],"LVVi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f0.svg":[["1f1f5-1f1f0.4a849c2e.svg","Z7Gt"],"Z7Gt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f1.svg":[["1f1f5-1f1f1.ad05e3a1.svg","FRdO"],"FRdO"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f2.svg":[["1f1f5-1f1f2.b2f807c9.svg","7Dl5"],"7Dl5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f3.svg":[["1f1f5-1f1f3.6acf81d8.svg","fpf2"],"fpf2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f7.svg":[["1f1f5-1f1f7.48bb1903.svg","CC0b"],"CC0b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f8.svg":[["1f1f5-1f1f8.fb3c0d69.svg","RUxP"],"RUxP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f9.svg":[["1f1f5-1f1f9.fee1ea57.svg","bq1W"],"bq1W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fc.svg":[["1f1f5-1f1fc.0f797d50.svg","m+uN"],"m+uN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fe.svg":[["1f1f5-1f1fe.5d4ce754.svg","cUQV"],"cUQV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f6-1f1e6.svg":[["1f1f6-1f1e6.bec915d0.svg","FGhc"],"FGhc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1ea.svg":[["1f1f7-1f1ea.8cfc1967.svg","DVWs"],"DVWs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f4.svg":[["1f1f7-1f1f4.72a91b3a.svg","W9b0"],"W9b0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f8.svg":[["1f1f7-1f1f8.457084db.svg","z4f7"],"z4f7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fc.svg":[["1f1f7-1f1fc.e8cf5870.svg","1QVF"],"1QVF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e6.svg":[["1f1f8-1f1e6.18940f29.svg","4CKt"],"4CKt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e7.svg":[["1f1f8-1f1e7.319df6bf.svg","JURh"],"JURh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e8.svg":[["1f1f8-1f1e8.9ef8ade3.svg","3K8G"],"3K8G"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.svg":[["1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.32625aa3.svg","+hGJ"],"+hGJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e9.svg":[["1f1f8-1f1e9.4b1632be.svg","aCNC"],"aCNC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ea.svg":[["1f1f8-1f1ea.929454cd.svg","qEcB"],"qEcB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ec.svg":[["1f1f8-1f1ec.d445f0ff.svg","OmgE"],"OmgE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ed.svg":[["1f1f8-1f1ed.3d4bd202.svg","06Tz"],"06Tz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ee.svg":[["1f1f8-1f1ee.4737a79e.svg","yCmU"],"yCmU"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ef.svg":[["1f1f8-1f1ef.aeb21e38.svg","EtO2"],"EtO2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f0.svg":[["1f1f8-1f1f0.2e1b0761.svg","+UtB"],"+UtB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f1.svg":[["1f1f8-1f1f1.c3a9845c.svg","dhW6"],"dhW6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f2.svg":[["1f1f8-1f1f2.825be159.svg","UHli"],"UHli"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f3.svg":[["1f1f8-1f1f3.89f8c8b2.svg","/OgS"],"/OgS"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f4.svg":[["1f1f8-1f1f4.38201bf2.svg","TJFK"],"TJFK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f7.svg":[["1f1f8-1f1f7.79844ebb.svg","2jqT"],"2jqT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f8.svg":[["1f1f8-1f1f8.3ed81e3a.svg","R41b"],"R41b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f9.svg":[["1f1f8-1f1f9.1994c21f.svg","omJo"],"omJo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fb.svg":[["1f1f8-1f1fb.b5d5edf4.svg","kdJI"],"kdJI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fd.svg":[["1f1f8-1f1fd.e2e4306f.svg","yB+z"],"yB+z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fe.svg":[["1f1f8-1f1fe.ed82cc90.svg","X4n1"],"X4n1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ff.svg":[["1f1f8-1f1ff.db11dd94.svg","YDYQ"],"YDYQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e6.svg":[["1f1f9-1f1e6.76591f27.svg","aUVm"],"aUVm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e8.svg":[["1f1f9-1f1e8.839080d6.svg","wDzg"],"wDzg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e9.svg":[["1f1f9-1f1e9.841095dd.svg","6zs3"],"6zs3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1eb.svg":[["1f1f9-1f1eb.a6993203.svg","W5/R"],"W5/R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ec.svg":[["1f1f9-1f1ec.ba8b6b31.svg","p5sb"],"p5sb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ed.svg":[["1f1f9-1f1ed.10102828.svg","RqOd"],"RqOd"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ef.svg":[["1f1f9-1f1ef.b7dd46c4.svg","I7kX"],"I7kX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f0.svg":[["1f1f9-1f1f0.f95ae93a.svg","YZb8"],"YZb8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f1.svg":[["1f1f9-1f1f1.ffd0c4f3.svg","NwHC"],"NwHC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f2.svg":[["1f1f9-1f1f2.c2a91563.svg","2+4B"],"2+4B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f3.svg":[["1f1f9-1f1f3.6559403d.svg","EOPT"],"EOPT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f4.svg":[["1f1f9-1f1f4.08c7237a.svg","Fmqp"],"Fmqp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f7.svg":[["1f1f9-1f1f7.12e48b03.svg","LjIn"],"LjIn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f9.svg":[["1f1f9-1f1f9.a8394530.svg","QztB"],"QztB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fb.svg":[["1f1f9-1f1fb.2e96f9ed.svg","DSzt"],"DSzt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fc.svg":[["1f1f9-1f1fc.a87eee10.svg","Iqgt"],"Iqgt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ff.svg":[["1f1f9-1f1ff.d4cc1276.svg","WgZh"],"WgZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1e6.svg":[["1f1fa-1f1e6.153ee43a.svg","Ve+i"],"Ve+i"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ec.svg":[["1f1fa-1f1ec.f61c653a.svg","W7wX"],"W7wX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f2.svg":[["1f1fa-1f1f2.3330be0f.svg","2DYu"],"2DYu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f3.svg":[["1f1fa-1f1f3.67d845dc.svg","+QHK"],"+QHK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1fe.svg":[["1f1fa-1f1fe.5d66a344.svg","DiHo"],"DiHo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ff.svg":[["1f1fa-1f1ff.650b7802.svg","EeLv"],"EeLv"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e6.svg":[["1f1fb-1f1e6.cdc67879.svg","9yrB"],"9yrB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e8.svg":[["1f1fb-1f1e8.78113619.svg","VEdL"],"VEdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ea.svg":[["1f1fb-1f1ea.9af9441c.svg","BOrV"],"BOrV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ec.svg":[["1f1fb-1f1ec.821c31da.svg","JWCu"],"JWCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ee.svg":[["1f1fb-1f1ee.19a399bf.svg","nY8d"],"nY8d"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1f3.svg":[["1f1fb-1f1f3.0b133abb.svg","l/6k"],"l/6k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1fa.svg":[["1f1fb-1f1fa.e5adff28.svg","4TG0"],"4TG0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.svg":[["1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.d7f897fe.svg","JY6H"],"JY6H"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1eb.svg":[["1f1fc-1f1eb.b6144f5e.svg","NR5z"],"NR5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1f8.svg":[["1f1fc-1f1f8.2319a444.svg","PcSV"],"PcSV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fd-1f1f0.svg":[["1f1fd-1f1f0.599d47df.svg","mDSG"],"mDSG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1ea.svg":[["1f1fe-1f1ea.7d4ba854.svg","EcMD"],"EcMD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1f9.svg":[["1f1fe-1f1f9.ebc185ef.svg","M4/N"],"M4/N"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1e6.svg":[["1f1ff-1f1e6.a9826940.svg","40x2"],"40x2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1f2.svg":[["1f1ff-1f1f2.01e3f9d4.svg","c8C5"],"c8C5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1fc.svg":[["1f1ff-1f1fc.c6d9f8f1.svg","BbEf"],"BbEf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f7.svg":[["1f1eb-1f1f7.e44dddb2.svg","EOQP"],"EOQP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e7.svg":[["1f1ec-1f1e7.15195767.svg","Iy5z"],"Iy5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f30d.svg":[["1f30d.3a036f85.svg","+Shm"],"+Shm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f50e.svg":[["1f50e.43549be6.svg","8c9B"],"8c9B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fa.svg":[["1f1f7-1f1fa.65e29db4.svg","UI8x"],"UI8x"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f8.svg":[["1f1fa-1f1f8.3330be0f.svg","qXIQ"],"qXIQ"]}],"FbNY":[function(require,module,exports) {
+},{"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f3.svg":[["1f1e8-1f1f3.71b04f50.svg","eQVn"],"eQVn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ea.svg":[["1f1e9-1f1ea.e18fb3b5.svg","cW1v"],"cW1v"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e8.svg":[["1f1e6-1f1e8.42822809.svg","O4au"],"O4au"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e9.svg":[["1f1e6-1f1e9.0ea5bf62.svg","5Whg"],"5Whg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ea.svg":[["1f1e6-1f1ea.547f1fed.svg","6i6P"],"6i6P"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1eb.svg":[["1f1e6-1f1eb.4d61ccd4.svg","EbGW"],"EbGW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ec.svg":[["1f1e6-1f1ec.046288e0.svg","2/xK"],"2/xK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ee.svg":[["1f1e6-1f1ee.0ea90be6.svg","uLOp"],"uLOp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f1.svg":[["1f1e6-1f1f1.93972240.svg","QXN1"],"QXN1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f2.svg":[["1f1e6-1f1f2.58216aad.svg","wzbN"],"wzbN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f4.svg":[["1f1e6-1f1f4.1c7f2191.svg","w73S"],"w73S"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f6.svg":[["1f1e6-1f1f6.1df3fa89.svg","YJNH"],"YJNH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f7.svg":[["1f1e6-1f1f7.c4023db6.svg","R/+K"],"R/+K"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f8.svg":[["1f1e6-1f1f8.1a6de69f.svg","7wZs"],"7wZs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f9.svg":[["1f1e6-1f1f9.3bf3b3c6.svg","NYla"],"NYla"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fa.svg":[["1f1e6-1f1fa.7df51f83.svg","w4/k"],"w4/k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fc.svg":[["1f1e6-1f1fc.e019d2d9.svg","QJf8"],"QJf8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fd.svg":[["1f1e6-1f1fd.ea851d45.svg","pha7"],"pha7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ff.svg":[["1f1e6-1f1ff.4bcec899.svg","vLk/"],"vLk/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e6.svg":[["1f1e7-1f1e6.04d321b1.svg","1uU0"],"1uU0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e7.svg":[["1f1e7-1f1e7.0d552338.svg","nnba"],"nnba"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e9.svg":[["1f1e7-1f1e9.4190ce8b.svg","vfbl"],"vfbl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ea.svg":[["1f1e7-1f1ea.585290df.svg","7ccV"],"7ccV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1eb.svg":[["1f1e7-1f1eb.57ca06f4.svg","+hQ1"],"+hQ1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ec.svg":[["1f1e7-1f1ec.04c2cb17.svg","akj6"],"akj6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ed.svg":[["1f1e7-1f1ed.0db8867b.svg","Csv8"],"Csv8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ee.svg":[["1f1e7-1f1ee.3c006f2d.svg","1gIg"],"1gIg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ef.svg":[["1f1e7-1f1ef.44d9ae15.svg","x/Uw"],"x/Uw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f1.svg":[["1f1e7-1f1f1.7f18abb7.svg","kw3e"],"kw3e"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f2.svg":[["1f1e7-1f1f2.2b507468.svg","g6Ks"],"g6Ks"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f3.svg":[["1f1e7-1f1f3.52c75492.svg","G+XW"],"G+XW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f4.svg":[["1f1e7-1f1f4.8d38c2ad.svg","Z3f4"],"Z3f4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f6.svg":[["1f1e7-1f1f6.f9f69c99.svg","NYZh"],"NYZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f7.svg":[["1f1e7-1f1f7.ef746b8f.svg","6fzl"],"6fzl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f8.svg":[["1f1e7-1f1f8.58ca0865.svg","u/sN"],"u/sN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f9.svg":[["1f1e7-1f1f9.416260b3.svg","oEwW"],"oEwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fb.svg":[["1f1e7-1f1fb.cee3040c.svg","j/J7"],"j/J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fc.svg":[["1f1e7-1f1fc.bcdfee06.svg","XWe/"],"XWe/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fe.svg":[["1f1e7-1f1fe.03465708.svg","EsIA"],"EsIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ff.svg":[["1f1e7-1f1ff.40df548f.svg","hYWB"],"hYWB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e6.svg":[["1f1e8-1f1e6.5b3a7333.svg","A8qE"],"A8qE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e8.svg":[["1f1e8-1f1e8.a25604bf.svg","OtLZ"],"OtLZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e9.svg":[["1f1e8-1f1e9.703bfd39.svg","LGWM"],"LGWM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1eb.svg":[["1f1e8-1f1eb.c82b0b69.svg","My+t"],"My+t"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ec.svg":[["1f1e8-1f1ec.499856a2.svg","eqbL"],"eqbL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ed.svg":[["1f1e8-1f1ed.1fa5be26.svg","oFgq"],"oFgq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ee.svg":[["1f1e8-1f1ee.811d987d.svg","rsLr"],"rsLr"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f0.svg":[["1f1e8-1f1f0.df9a7963.svg","cHVR"],"cHVR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f1.svg":[["1f1e8-1f1f1.c6f37ae5.svg","ltyK"],"ltyK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f2.svg":[["1f1e8-1f1f2.39baa6fe.svg","wFoG"],"wFoG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f4.svg":[["1f1e8-1f1f4.7ade25c4.svg","k35I"],"k35I"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f5.svg":[["1f1e8-1f1f5.e44dddb2.svg","HV5Z"],"HV5Z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f7.svg":[["1f1e8-1f1f7.0b2b002e.svg","QfSp"],"QfSp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fa.svg":[["1f1e8-1f1fa.6da931b8.svg","NQTT"],"NQTT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fb.svg":[["1f1e8-1f1fb.9cee7af1.svg","xNWL"],"xNWL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fc.svg":[["1f1e8-1f1fc.7ac0f34d.svg","xQeh"],"xQeh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fd.svg":[["1f1e8-1f1fd.e04f949b.svg","CtyF"],"CtyF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fe.svg":[["1f1e8-1f1fe.5d8788d0.svg","CyKQ"],"CyKQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ff.svg":[["1f1e8-1f1ff.32a7c739.svg","c3lH"],"c3lH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ec.svg":[["1f1e9-1f1ec.14ac8655.svg","5peb"],"5peb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ef.svg":[["1f1e9-1f1ef.3532a7ba.svg","L3J7"],"L3J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f0.svg":[["1f1e9-1f1f0.ea8d5e9d.svg","ycSk"],"ycSk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f2.svg":[["1f1e9-1f1f2.fb642994.svg","Vguw"],"Vguw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f4.svg":[["1f1e9-1f1f4.376311d9.svg","+S/r"],"+S/r"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ff.svg":[["1f1e9-1f1ff.ccec0ff3.svg","hCnt"],"hCnt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e6.svg":[["1f1ea-1f1e6.1a8f1f1c.svg","nD+m"],"nD+m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e8.svg":[["1f1ea-1f1e8.9687e62e.svg","kLtF"],"kLtF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ea.svg":[["1f1ea-1f1ea.8f25bfb4.svg","YwIA"],"YwIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ec.svg":[["1f1ea-1f1ec.ea29654b.svg","ycOM"],"ycOM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ed.svg":[["1f1ea-1f1ed.5fab1b55.svg","1mk+"],"1mk+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.svg":[["1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.1f9f70c2.svg","UZTc"],"UZTc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f7.svg":[["1f1ea-1f1f7.207cbcea.svg","WhoC"],"WhoC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f9.svg":[["1f1ea-1f1f9.3b176126.svg","jQ/g"],"jQ/g"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1fa.svg":[["1f1ea-1f1fa.23419a98.svg","5pRH"],"5pRH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ee.svg":[["1f1eb-1f1ee.508dfcf9.svg","0P3J"],"0P3J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ef.svg":[["1f1eb-1f1ef.692eb21e.svg","uVaK"],"uVaK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f0.svg":[["1f1eb-1f1f0.e5c63d69.svg","unqI"],"unqI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f2.svg":[["1f1eb-1f1f2.1d4c935d.svg","mQEE"],"mQEE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f4.svg":[["1f1eb-1f1f4.21e96768.svg","cKKA"],"cKKA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e6.svg":[["1f1ec-1f1e6.f1006d48.svg","KcGo"],"KcGo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e9.svg":[["1f1ec-1f1e9.bba2f0fa.svg","A5WC"],"A5WC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ea.svg":[["1f1ec-1f1ea.f7b30406.svg","PzpK"],"PzpK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1eb.svg":[["1f1ec-1f1eb.23d3cb2d.svg","s5oR"],"s5oR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ec.svg":[["1f1ec-1f1ec.c00ba56e.svg","orsY"],"orsY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ed.svg":[["1f1ec-1f1ed.75604cc1.svg","j7lP"],"j7lP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ee.svg":[["1f1ec-1f1ee.5027204f.svg","AibY"],"AibY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f1.svg":[["1f1ec-1f1f1.ae9ae55b.svg","bNB+"],"bNB+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f2.svg":[["1f1ec-1f1f2.911c154e.svg","oDir"],"oDir"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f3.svg":[["1f1ec-1f1f3.fb70f39e.svg","xD5Q"],"xD5Q"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f5.svg":[["1f1ec-1f1f5.79c0e35c.svg","icF+"],"icF+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f6.svg":[["1f1ec-1f1f6.81009872.svg","IDMs"],"IDMs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f7.svg":[["1f1ec-1f1f7.4a4d5e85.svg","tU3n"],"tU3n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f8.svg":[["1f1ec-1f1f8.018ff6c8.svg","NavM"],"NavM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f9.svg":[["1f1ec-1f1f9.cdc65f16.svg","qdZq"],"qdZq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fa.svg":[["1f1ec-1f1fa.02765584.svg","Vse2"],"Vse2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fc.svg":[["1f1ec-1f1fc.92f2fbb7.svg","bpbP"],"bpbP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fe.svg":[["1f1ec-1f1fe.c8c752c7.svg","Zi9k"],"Zi9k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f0.svg":[["1f1ed-1f1f0.89134375.svg","2V0h"],"2V0h"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f2.svg":[["1f1ed-1f1f2.7df51f83.svg","REwi"],"REwi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f3.svg":[["1f1ed-1f1f3.d424d317.svg","iMdX"],"iMdX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f7.svg":[["1f1ed-1f1f7.26475669.svg","2zL/"],"2zL/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f9.svg":[["1f1ed-1f1f9.32b3a016.svg","vLXA"],"vLXA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1fa.svg":[["1f1ed-1f1fa.1d8e20d4.svg","pKlQ"],"pKlQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e8.svg":[["1f1ee-1f1e8.73ef0a04.svg","kTuC"],"kTuC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e9.svg":[["1f1ee-1f1e9.9719525b.svg","1UHY"],"1UHY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1ea.svg":[["1f1ee-1f1ea.1bffc7d1.svg","Tsuk"],"Tsuk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f1.svg":[["1f1ee-1f1f1.1fa74891.svg","f8kR"],"f8kR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f2.svg":[["1f1ee-1f1f2.a8329c34.svg","ZU7D"],"ZU7D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/26f3.svg":[["26f3.1c592450.svg","00lg"],"00lg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f3.svg":[["1f1ee-1f1f3.413062c2.svg","KWFT"],"KWFT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f4.svg":[["1f1ee-1f1f4.14ac8655.svg","yc3c"],"yc3c"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f6.svg":[["1f1ee-1f1f6.a0ec4a33.svg","FpXc"],"FpXc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f7.svg":[["1f1ee-1f1f7.66f4455b.svg","6WFD"],"6WFD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f8.svg":[["1f1ee-1f1f8.369055b1.svg","J7BB"],"J7BB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1ea.svg":[["1f1ef-1f1ea.cebb1f2a.svg","V9G/"],"V9G/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f2.svg":[["1f1ef-1f1f2.c02d6bf2.svg","ysiJ"],"ysiJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f4.svg":[["1f1ef-1f1f4.03af0c7f.svg","8YoX"],"8YoX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ea.svg":[["1f1f0-1f1ea.773c0b1d.svg","jWq+"],"jWq+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ec.svg":[["1f1f0-1f1ec.eeb1a2bf.svg","k3CX"],"k3CX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ed.svg":[["1f1f0-1f1ed.6056f269.svg","18Xj"],"18Xj"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ee.svg":[["1f1f0-1f1ee.75982fa3.svg","n4uR"],"n4uR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f2.svg":[["1f1f0-1f1f2.cc6670b0.svg","aDpn"],"aDpn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f3.svg":[["1f1f0-1f1f3.d83352e4.svg","gEgg"],"gEgg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f5.svg":[["1f1f0-1f1f5.c8890842.svg","e6/8"],"e6/8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fc.svg":[["1f1f0-1f1fc.3c803fe2.svg","vcGX"],"vcGX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fe.svg":[["1f1f0-1f1fe.5790dc14.svg","pa8m"],"pa8m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ff.svg":[["1f1f0-1f1ff.04cb7d2d.svg","PXi0"],"PXi0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e6.svg":[["1f1f1-1f1e6.c643b934.svg","aSL5"],"aSL5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e7.svg":[["1f1f1-1f1e7.64283791.svg","0wij"],"0wij"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e8.svg":[["1f1f1-1f1e8.befd4a7d.svg","AN2n"],"AN2n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1ee.svg":[["1f1f1-1f1ee.83110489.svg","oM6D"],"oM6D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f0.svg":[["1f1f1-1f1f0.f5e26938.svg","cXD4"],"cXD4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f7.svg":[["1f1f1-1f1f7.d4cedda0.svg","2FwW"],"2FwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f8.svg":[["1f1f1-1f1f8.692a8a3d.svg","06WH"],"06WH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f9.svg":[["1f1f1-1f1f9.04273dfb.svg","xkCu"],"xkCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fa.svg":[["1f1f1-1f1fa.b356257e.svg","HJvy"],"HJvy"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fb.svg":[["1f1f1-1f1fb.06d7f11c.svg","BGmx"],"BGmx"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fe.svg":[["1f1f1-1f1fe.642bf63d.svg","3/Hf"],"3/Hf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e6.svg":[["1f1f2-1f1e6.7cf99271.svg","JUSC"],"JUSC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e8.svg":[["1f1f2-1f1e8.77f9bc2a.svg","798W"],"798W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e9.svg":[["1f1f2-1f1e9.34722307.svg","VUTQ"],"VUTQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ea.svg":[["1f1f2-1f1ea.ed2a8045.svg","e3//"],"e3//"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1eb.svg":[["1f1f2-1f1eb.e44dddb2.svg","xmfW"],"xmfW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ec.svg":[["1f1f2-1f1ec.91d07981.svg","b/ZF"],"b/ZF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ed.svg":[["1f1f2-1f1ed.c7b494cc.svg","HOWE"],"HOWE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f0.svg":[["1f1f2-1f1f0.e99feca6.svg","c+T0"],"c+T0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f1.svg":[["1f1f2-1f1f1.b34cb0c4.svg","uiET"],"uiET"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f2.svg":[["1f1f2-1f1f2.acb2c58b.svg","EEQp"],"EEQp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f3.svg":[["1f1f2-1f1f3.ac88e037.svg","6xQz"],"6xQz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f4.svg":[["1f1f2-1f1f4.b357da34.svg","Jui7"],"Jui7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f5.svg":[["1f1f2-1f1f5.1c03b4c8.svg","MuiK"],"MuiK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f6.svg":[["1f1f2-1f1f6.bbb9bb4a.svg","xzdL"],"xzdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f7.svg":[["1f1f2-1f1f7.58cdb3d7.svg","+2wl"],"+2wl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f8.svg":[["1f1f2-1f1f8.3cb62f40.svg","DRHQ"],"DRHQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f9.svg":[["1f1f2-1f1f9.67d13460.svg","/Uy5"],"/Uy5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fa.svg":[["1f1f2-1f1fa.afd0b205.svg","Mh9J"],"Mh9J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fb.svg":[["1f1f2-1f1fb.2d2df9c7.svg","MvDG"],"MvDG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fc.svg":[["1f1f2-1f1fc.38bddb99.svg","SeZC"],"SeZC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fd.svg":[["1f1f2-1f1fd.0c489398.svg","NS+R"],"NS+R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fe.svg":[["1f1f2-1f1fe.1aa06c61.svg","qkO1"],"qkO1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ff.svg":[["1f1f2-1f1ff.71557d53.svg","y1Y0"],"y1Y0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e6.svg":[["1f1f3-1f1e6.b17f6814.svg","dxpq"],"dxpq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e8.svg":[["1f1f3-1f1e8.c29c05f5.svg","4rR1"],"4rR1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ea.svg":[["1f1f3-1f1ea.bda89cd5.svg","Q19U"],"Q19U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1eb.svg":[["1f1f3-1f1eb.dc81e0af.svg","KioV"],"KioV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ec.svg":[["1f1f3-1f1ec.13330a97.svg","/G8D"],"/G8D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ee.svg":[["1f1f3-1f1ee.5553225e.svg","Y4Cm"],"Y4Cm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f1.svg":[["1f1f3-1f1f1.e611df6c.svg","cStk"],"cStk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f4.svg":[["1f1f3-1f1f4.aeb21e38.svg","FMFG"],"FMFG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f5.svg":[["1f1f3-1f1f5.f2f03c3c.svg","F8+U"],"F8+U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f7.svg":[["1f1f3-1f1f7.b7505152.svg","zD7p"],"zD7p"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1fa.svg":[["1f1f3-1f1fa.764b7f5e.svg","Hq9b"],"Hq9b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ff.svg":[["1f1f3-1f1ff.d4381377.svg","Higc"],"Higc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f4-1f1f2.svg":[["1f1f4-1f1f2.de3a4039.svg","EWrE"],"EWrE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1e6.svg":[["1f1f5-1f1e6.b696172e.svg","q+lZ"],"q+lZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ea.svg":[["1f1f5-1f1ea.b7fe4dc3.svg","nJl3"],"nJl3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1eb.svg":[["1f1f5-1f1eb.7b693467.svg","tmNT"],"tmNT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ec.svg":[["1f1f5-1f1ec.de7c24e6.svg","6ciu"],"6ciu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ed.svg":[["1f1f5-1f1ed.9eb1cbe6.svg","LVVi"],"LVVi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f0.svg":[["1f1f5-1f1f0.4a849c2e.svg","Z7Gt"],"Z7Gt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f1.svg":[["1f1f5-1f1f1.ad05e3a1.svg","FRdO"],"FRdO"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f2.svg":[["1f1f5-1f1f2.b2f807c9.svg","7Dl5"],"7Dl5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f3.svg":[["1f1f5-1f1f3.6acf81d8.svg","fpf2"],"fpf2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f7.svg":[["1f1f5-1f1f7.48bb1903.svg","CC0b"],"CC0b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f8.svg":[["1f1f5-1f1f8.fb3c0d69.svg","RUxP"],"RUxP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f9.svg":[["1f1f5-1f1f9.fee1ea57.svg","bq1W"],"bq1W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fc.svg":[["1f1f5-1f1fc.0f797d50.svg","m+uN"],"m+uN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fe.svg":[["1f1f5-1f1fe.5d4ce754.svg","cUQV"],"cUQV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f6-1f1e6.svg":[["1f1f6-1f1e6.bec915d0.svg","FGhc"],"FGhc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1ea.svg":[["1f1f7-1f1ea.8cfc1967.svg","DVWs"],"DVWs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f4.svg":[["1f1f7-1f1f4.72a91b3a.svg","W9b0"],"W9b0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f8.svg":[["1f1f7-1f1f8.457084db.svg","z4f7"],"z4f7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fc.svg":[["1f1f7-1f1fc.e8cf5870.svg","1QVF"],"1QVF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e6.svg":[["1f1f8-1f1e6.18940f29.svg","4CKt"],"4CKt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e7.svg":[["1f1f8-1f1e7.319df6bf.svg","JURh"],"JURh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e8.svg":[["1f1f8-1f1e8.9ef8ade3.svg","3K8G"],"3K8G"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.svg":[["1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.32625aa3.svg","+hGJ"],"+hGJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e9.svg":[["1f1f8-1f1e9.4b1632be.svg","aCNC"],"aCNC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ea.svg":[["1f1f8-1f1ea.929454cd.svg","qEcB"],"qEcB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ec.svg":[["1f1f8-1f1ec.d445f0ff.svg","OmgE"],"OmgE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ed.svg":[["1f1f8-1f1ed.3d4bd202.svg","06Tz"],"06Tz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ee.svg":[["1f1f8-1f1ee.4737a79e.svg","yCmU"],"yCmU"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ef.svg":[["1f1f8-1f1ef.aeb21e38.svg","EtO2"],"EtO2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f0.svg":[["1f1f8-1f1f0.2e1b0761.svg","+UtB"],"+UtB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f1.svg":[["1f1f8-1f1f1.c3a9845c.svg","dhW6"],"dhW6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f2.svg":[["1f1f8-1f1f2.825be159.svg","UHli"],"UHli"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f3.svg":[["1f1f8-1f1f3.89f8c8b2.svg","/OgS"],"/OgS"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f4.svg":[["1f1f8-1f1f4.38201bf2.svg","TJFK"],"TJFK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f7.svg":[["1f1f8-1f1f7.79844ebb.svg","2jqT"],"2jqT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f8.svg":[["1f1f8-1f1f8.3ed81e3a.svg","R41b"],"R41b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f9.svg":[["1f1f8-1f1f9.1994c21f.svg","omJo"],"omJo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fb.svg":[["1f1f8-1f1fb.b5d5edf4.svg","kdJI"],"kdJI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fd.svg":[["1f1f8-1f1fd.e2e4306f.svg","yB+z"],"yB+z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fe.svg":[["1f1f8-1f1fe.ed82cc90.svg","X4n1"],"X4n1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ff.svg":[["1f1f8-1f1ff.db11dd94.svg","YDYQ"],"YDYQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e6.svg":[["1f1f9-1f1e6.76591f27.svg","aUVm"],"aUVm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e8.svg":[["1f1f9-1f1e8.839080d6.svg","wDzg"],"wDzg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e9.svg":[["1f1f9-1f1e9.841095dd.svg","6zs3"],"6zs3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1eb.svg":[["1f1f9-1f1eb.a6993203.svg","W5/R"],"W5/R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ec.svg":[["1f1f9-1f1ec.ba8b6b31.svg","p5sb"],"p5sb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ed.svg":[["1f1f9-1f1ed.10102828.svg","RqOd"],"RqOd"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ef.svg":[["1f1f9-1f1ef.b7dd46c4.svg","I7kX"],"I7kX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f0.svg":[["1f1f9-1f1f0.f95ae93a.svg","YZb8"],"YZb8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f1.svg":[["1f1f9-1f1f1.ffd0c4f3.svg","NwHC"],"NwHC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f2.svg":[["1f1f9-1f1f2.c2a91563.svg","2+4B"],"2+4B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f3.svg":[["1f1f9-1f1f3.6559403d.svg","EOPT"],"EOPT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f4.svg":[["1f1f9-1f1f4.08c7237a.svg","Fmqp"],"Fmqp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f7.svg":[["1f1f9-1f1f7.12e48b03.svg","LjIn"],"LjIn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f9.svg":[["1f1f9-1f1f9.a8394530.svg","QztB"],"QztB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fb.svg":[["1f1f9-1f1fb.2e96f9ed.svg","DSzt"],"DSzt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fc.svg":[["1f1f9-1f1fc.a87eee10.svg","Iqgt"],"Iqgt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ff.svg":[["1f1f9-1f1ff.d4cc1276.svg","WgZh"],"WgZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1e6.svg":[["1f1fa-1f1e6.153ee43a.svg","Ve+i"],"Ve+i"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ec.svg":[["1f1fa-1f1ec.f61c653a.svg","W7wX"],"W7wX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f2.svg":[["1f1fa-1f1f2.3330be0f.svg","2DYu"],"2DYu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f3.svg":[["1f1fa-1f1f3.67d845dc.svg","+QHK"],"+QHK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1fe.svg":[["1f1fa-1f1fe.5d66a344.svg","DiHo"],"DiHo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ff.svg":[["1f1fa-1f1ff.650b7802.svg","EeLv"],"EeLv"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e6.svg":[["1f1fb-1f1e6.cdc67879.svg","9yrB"],"9yrB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e8.svg":[["1f1fb-1f1e8.78113619.svg","VEdL"],"VEdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ea.svg":[["1f1fb-1f1ea.9af9441c.svg","BOrV"],"BOrV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ec.svg":[["1f1fb-1f1ec.821c31da.svg","JWCu"],"JWCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ee.svg":[["1f1fb-1f1ee.19a399bf.svg","nY8d"],"nY8d"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1f3.svg":[["1f1fb-1f1f3.0b133abb.svg","l/6k"],"l/6k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1fa.svg":[["1f1fb-1f1fa.e5adff28.svg","4TG0"],"4TG0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.svg":[["1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.d7f897fe.svg","JY6H"],"JY6H"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1eb.svg":[["1f1fc-1f1eb.b6144f5e.svg","NR5z"],"NR5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1f8.svg":[["1f1fc-1f1f8.2319a444.svg","PcSV"],"PcSV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fd-1f1f0.svg":[["1f1fd-1f1f0.599d47df.svg","mDSG"],"mDSG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1ea.svg":[["1f1fe-1f1ea.7d4ba854.svg","EcMD"],"EcMD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1f9.svg":[["1f1fe-1f1f9.ebc185ef.svg","M4/N"],"M4/N"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1e6.svg":[["1f1ff-1f1e6.a9826940.svg","40x2"],"40x2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1f2.svg":[["1f1ff-1f1f2.01e3f9d4.svg","c8C5"],"c8C5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1fc.svg":[["1f1ff-1f1fc.c6d9f8f1.svg","BbEf"],"BbEf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f7.svg":[["1f1eb-1f1f7.e44dddb2.svg","EOQP"],"EOQP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e7.svg":[["1f1ec-1f1e7.15195767.svg","Iy5z"],"Iy5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f30d.svg":[["1f30d.3a036f85.svg","+Shm"],"+Shm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f50e.svg":[["1f50e.43549be6.svg","8c9B"],"8c9B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fa.svg":[["1f1f7-1f1fa.65e29db4.svg","UI8x"],"UI8x"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f8.svg":[["1f1fa-1f1f8.3330be0f.svg","qXIQ"],"qXIQ"]}],"n9dU":[function(require,module,exports) {
+module.exports = {
+  "container": "_container_f298d",
+  "secondary": "_secondary_f298d"
+};
+},{}],"FbNY":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1361,1525 +1355,7 @@ Object.keys(_twemojiModule.default).forEach(css => {
 Modesta.secondary = _coloursModule.default.secondary;
 var _default = Modesta;
 exports.default = _default;
-},{"../scss/ModestaCSS/scss/modesta.module.scss":"H2cc","../scss/twemoji.module.scss":"qa3M","../scss/colours.module.scss":"n9dU"}],"50Yc":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _coloursModule = _interopRequireDefault(require("../../scss/colours.module.scss"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class ContentBox extends _react.Component {
-  render() {
-    return _react.default.createElement("div", {
-      className: `${_Modesta.default.boxShadow} ${_coloursModule.default.container} ${_indexModule.default.container} ${this.props.className ? this.props.className : ''}`
-    }, this.props.children);
-  }
-
-}
-
-var _default = ContentBox;
-exports.default = _default;
-},{"../../scss/colours.module.scss":"n9dU","./index.module.scss":"A3mz","../../data/Modesta":"FbNY"}],"ILdi":[function(require,module,exports) {
-module.exports = "/discordapps.dev/arrow.4675c036.png";
-},{}],"S8Yc":[function(require,module,exports) {
-module.exports = {
-  "description": "_description_e5410",
-  "tableContainer": "_tableContainer_e5410",
-  "button": "_button_e5410",
-  "arrow": "_arrow_e5410",
-  "upsidedown": "_upsidedown_e5410"
-};
-},{}],"h2Hb":[function(require,module,exports) {
-module.exports = {
-  "roundedCorners": "_roundedCorners_b5853",
-  "loading": "_loading_b5853",
-  "button": "_button_b5853",
-  "scrollbar": "_scrollbar_b5853"
-};
-},{}],"+U5o":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
-
-var _marked = _interopRequireDefault(require("marked"));
-
-var _xss = _interopRequireDefault(require("xss"));
-
-var _arrow = _interopRequireDefault(require("../../scss/ModestaCSS/css/images/arrow.png"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _reactIntl = require("react-intl");
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-const botPageWhitelist = {
-  p: [],
-  span: [],
-  code: [],
-  b: [],
-  i: [],
-  u: [],
-  li: [],
-  ul: [],
-  ol: [],
-  del: [],
-  pre: [],
-  strong: [],
-  em: [],
-  h1: ['id'],
-  h2: ['id'],
-  h3: ['id'],
-  h4: ['id'],
-  h5: ['id'],
-  h6: ['id'],
-  table: [],
-  thead: [],
-  tbody: [],
-  tr: [],
-  th: [],
-  td: [],
-  hr: [],
-  blockquote: [],
-  br: [],
-  a: ['href']
-};
-
-class BotPageContentBox extends _react.Component {
-  constructor(props) {
-    super(props);
-
-    _defineProperty(this, "getExtendedHeight", () => [...this.description.current.children].map(elem => {
-      const height = elem.clientHeight;
-      let topMargin = 2;
-      let bottomMargin = 2;
-
-      try {
-        topMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-top'), 10);
-        bottomMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-bottom'), 10);
-      } catch (e) {// Do nothing!
-        // Just use the default margin sizes.
-      }
-
-      return topMargin + height + bottomMargin;
-    }).reduce((prev, curr) => prev + curr, 0));
-
-    this.button = _react.default.createRef();
-    this.description = _react.default.createRef();
-    this.state = {
-      open: false,
-      smallEnough: true
-    };
-    this.toggle = this.toggle.bind(this);
-    this.getExtendedHeight = this.getExtendedHeight.bind(this);
-  }
-
-  escape(unsafe) {
-    return unsafe.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
-  }
-
-  toggle() {
-    if (this.state.open === true) {
-      this.description.current.style.height = '200px';
-    } else {
-      this.description.current.style.height = `${this.getExtendedHeight()}px`;
-    }
-
-    this.setState({
-      open: !this.state.open
-    });
-  }
-
-  componentDidMount() {
-    // If the description's size is greater than 300, display the button
-    // Otherwise, just display the entire description
-    if (this.getExtendedHeight() > 300) {
-      this.setState({
-        smallEnough: false
-      });
-    }
-  }
-
-  render() {
-    const page = (0, _xss.default)((0, _marked.default)(this.props.page), {
-      whiteList: this.props.allowHTML ? null : botPageWhitelist,
-      onIgnoreTag: (tag, html, options) => {
-        let extraNotes = '';
-
-        switch (tag) {
-          case 'img':
-            extraNotes = 'You should instead use the "preview images", found in the Appearance section of the edit page of your bot, or adopt the use of emojis.';
-            break;
-
-          case 'script':
-            extraNotes = 'You are too dangerous to use this tag!';
-            break;
-
-          case 'loona':
-            extraNotes = '<3 ily!!!!!';
-            break;
-
-          default:
-            extraNotes = 'Please adopt a tag which is allowed, or restrict yourself to Markdown only.';
-        }
-
-        if (typeof window !== 'undefined') console.error(`The <${tag}> tag is not allowed in the long description box.\n${extraNotes}`);
-        return '';
-      },
-      onTag: (tag, html, options) => {
-        if (tag === 'table') {
-          if (options.isClosing) {
-            return '</table></div>';
-          }
-
-          return `<div class="${_Modesta.default.tableContainer} ${_indexModule.default.tableContainer} ${_elementsModule.default.scrollbar}">${html}`;
-        }
-
-        return;
-      },
-      onTagAttr: (tag, name, value, isWhiteAttr) => {
-        if (tag === 'img' && name === 'src' && this.props.cdn && value.startsWith('/')) {
-          return `src="${this.props.cdn}${value}"`;
-        }
-
-        return;
-      },
-      onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
-        if (this.props.allowHTML || name === 'class') {
-          return `${name}="${_xss.default.escapeAttrValue(value)}"`;
-        }
-      }
-    });
-    const smallEnough = typeof this.props.forceLarge === 'boolean' ? this.props.forceLarge : this.state.smallEnough;
-    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", null, _react.default.createElement("div", {
-      dangerouslySetInnerHTML: {
-        __html: page
-      },
-      ref: this.description,
-      style: smallEnough ? {} : {
-        // if not small enough, set default height to 200
-        height: '200px',
-        transition: `height ${Math.ceil(this.getExtendedHeight() / 200) / 20}s`
-      },
-      className: _indexModule.default.description
-    }), smallEnough ? null : // if not small enough, show the buttons
-    _react.default.createElement("div", {
-      ref: this.button,
-      onClick: this.toggle
-    }, this.state.open === false ? _react.default.createElement(_ContentBox.default, {
-      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
-    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "components.botpagecontentbox.more"
-    })), _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "components.botpagecontentbox.toggle"
-    }, message => _react.default.createElement("img", {
-      className: _indexModule.default.arrow,
-      src: _arrow.default,
-      alt: message
-    }))) : _react.default.createElement(_ContentBox.default, {
-      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
-    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "components.botpagecontentbox.less"
-    })), _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "components.botpagecontentbox.toggle"
-    }, message => _react.default.createElement("img", {
-      className: `${_indexModule.default.arrow} ${_indexModule.default.upsidedown}`,
-      src: _arrow.default,
-      alt: message
-    }))))));
-  }
-
-}
-
-var _default = BotPageContentBox;
-exports.default = _default;
-},{"../ContentBox":"50Yc","../../scss/ModestaCSS/css/images/arrow.png":"ILdi","./index.module.scss":"S8Yc","../../data/Modesta":"FbNY","../../scss/elements.module.scss":"h2Hb"}],"NeRe":[function(require,module,exports) {
-module.exports = {
-  "sliderContainer": "_sliderContainer_3ef81",
-  "slider": "_slider_3ef81",
-  "botListDotSpace": "_botListDotSpace_3ef81",
-  "image": "_image_3ef81",
-  "dots": "_dots_3ef81"
-};
-},{}],"FAkX":[function(require,module,exports) {
-module.exports = {
-  "modalContent": "_modalContent_5927a",
-  "modalClose": "_modalClose_5927a",
-  "modalImage": "_modalImage_5927a",
-  "zoomIn": "_zoomIn_5927a"
-};
-},{}],"W70x":[function(require,module,exports) {
-module.exports = {
-  "image": "_image_5c4c2",
-  "loaded": "_loaded_5c4c2"
-};
-},{}],"ofRo":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-class LazyImage extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loaded: false
-    };
-    this.load = this.load.bind(this);
-    this.image = _react.default.createRef();
-  }
-
-  load() {
-    this.setState({
-      loaded: true
-    });
-  }
-
-  render() {
-    const loaded = typeof window === 'undefined' || this.state.loaded;
-    return _react.default.createElement("img", _extends({}, this.props, {
-      src: this.props.src,
-      className: `${_indexModule.default.image} ${loaded && _indexModule.default.loaded} ${this.props.className}`,
-      alt: this.props.alt,
-      ref: this.image,
-      onLoad: this.load
-    }));
-  }
-
-}
-
-var _default = LazyImage;
-exports.default = _default;
-},{"./index.module.scss":"W70x"}],"i0xp":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _LazyImage = _interopRequireDefault(require("../LazyImage"));
-
-var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class ModalImage extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.image = _react.default.createRef();
-    this.state = {
-      open: false,
-      closing: false
-    };
-    this.open = this.open.bind(this);
-    this.close = this.close.bind(this);
-  }
-
-  open() {
-    this.setState({
-      opened: true
-    });
-  }
-
-  close() {
-    this.setState({
-      closing: true
-    });
-    setTimeout(() => {
-      this.setState({
-        opened: false,
-        closing: false
-      });
-    }, 575);
-  }
-
-  render() {
-    return _react.default.createElement("div", null, _react.default.createElement(_LazyImage.default, {
-      src: this.props.src,
-      className: `${this.props.className} ${_indexModule.default.zoomIn}`,
-      onClick: this.open
-    }), _react.default.createElement("div", {
-      onClick: this.close,
-      className: `${_Modesta.default.modal} ${this.state.closing ? `${_Modesta.default.modalClose} ${_indexModule.default.modalClose}` : ''}`,
-      style: this.state.opened ? {
-        display: 'block'
-      } : {}
-    }, _react.default.createElement("div", {
-      className: `${_Modesta.default.modalContent} ${_elementsModule.default.roundedCorners} ${_indexModule.default.modalContent}`
-    }, _react.default.createElement(_LazyImage.default, {
-      src: this.props.src,
-      onClick: this.open,
-      className: _indexModule.default.modalImage
-    }))));
-  }
-
-}
-
-var _default = ModalImage;
-exports.default = _default;
-},{"./index.module.scss":"FAkX","../LazyImage":"ofRo","../../scss/elements.module.scss":"h2Hb","../../data/Modesta":"FbNY"}],"CMB4":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-var _ModalImage = _interopRequireDefault(require("../ModalImage"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class BotPageContentBox extends _react.Component {
-  render() {
-    if (this.props.images && this.props.images.length === 0) return null;
-    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", {
-      className: `${_indexModule.default.sliderContainer} ${_elementsModule.default.scrollbar}`
-    }, _react.default.createElement("div", {
-      className: _indexModule.default.slider
-    }, this.props.children, this.props.images.map((image, index) => _react.default.createElement(_ModalImage.default, {
-      src: `${_Locations.default.cdn}${image}`,
-      className: _indexModule.default.image,
-      key: index
-    }))), _react.default.createElement("div", {
-      className: _indexModule.default.botListDotSpace
-    })));
-  }
-
-}
-
-var _default = BotPageContentBox;
-exports.default = _default;
-},{"../ContentBox":"50Yc","./index.module.scss":"NeRe","../../scss/elements.module.scss":"h2Hb","../../data/Locations":"uTwd","../ModalImage":"i0xp"}],"YSbd":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.fetchAuthIfNeeded = fetchAuthIfNeeded;
-exports.forceFetchAuth = forceFetchAuth;
-exports.RECEIVE_AUTH = exports.REQUEST_AUTH = void 0;
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const REQUEST_AUTH = 'REQUEST_AUTH';
-exports.REQUEST_AUTH = REQUEST_AUTH;
-const RECEIVE_AUTH = 'RECEIVE_AUTH';
-exports.RECEIVE_AUTH = RECEIVE_AUTH;
-
-function requestAuth() {
-  return {
-    type: REQUEST_AUTH
-  };
-}
-
-function receiveAuth(json) {
-  return {
-    type: RECEIVE_AUTH,
-    data: json.data
-  };
-}
-
-function fetchAuth() {
-  return dispatch => {
-    dispatch(requestAuth());
-    return fetch(`${_Locations.default.server}/auth/json`, {
-      credentials: 'include'
-    }).then(res => res.json()).then(json => dispatch(receiveAuth(json)));
-  };
-}
-
-function shouldFetchAuth(state) {
-  if (state.auth.fetching) return false;
-  if (state.auth.fetched) return false;
-  return true;
-}
-
-function fetchAuthIfNeeded() {
-  return (dispatch, getState) => {
-    if (shouldFetchAuth(getState())) {
-      return dispatch(fetchAuth());
-    }
-  };
-}
-
-function forceFetchAuth() {
-  return dispatch => dispatch(fetchAuth());
-}
-},{"../../data/Locations":"uTwd"}],"AaMC":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-class FlexContainer extends _react.Component {
-  render() {
-    return _react.default.createElement("div", _extends({
-      style: {
-        display: 'flex'
-      }
-    }, this.props), this.props.children);
-  }
-
-}
-
-var _default = FlexContainer;
-exports.default = _default;
-},{}],"z8vt":[function(require,module,exports) {
-module.exports = {
-  "avatar": "_avatar_a953b",
-  "prefix": "_prefix_a953b",
-  "links": "_links_a953b"
-};
-},{}],"cLsI":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class PrefixLabel extends _react.Component {
-  render() {
-    return _react.default.createElement("span", {
-      className: `${_indexModule.default.prefix} ${this.props.className || ''}`
-    }, this.props.children);
-  }
-
-}
-
-var _default = PrefixLabel;
-exports.default = _default;
-},{"./index.module.scss":"z8vt"}],"jXO1":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _reactIntl = require("react-intl");
-
-var _reactRedux = require("react-redux");
-
-var _reactRouterDom = require("react-router-dom");
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-var _auth = require("../../redux/actions/auth");
-
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
-
-var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
-
-var _LazyImage = _interopRequireDefault(require("../LazyImage"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _PrefixLabel = _interopRequireDefault(require("./PrefixLabel"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class BotPageInfoBox extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sure: false,
-      deleted: false
-    };
-    this.openSure = this.openSure.bind(this);
-    this.delete = this.delete.bind(this);
-  }
-
-  componentDidMount() {
-    const {
-      dispatch
-    } = this.props;
-    dispatch((0, _auth.fetchAuthIfNeeded)());
-  }
-
-  openSure() {
-    this.setState({
-      sure: true
-    });
-  }
-
-  delete() {
-    fetch(`${_Locations.default.server}/bots/${this.props.bot.id}/delete`, {
-      method: 'POST',
-      credentials: 'include'
-    }).then(res => res.json()).then(data => {
-      if (data.ok) this.setState({
-        deleted: true
-      });
-    });
-  }
-
-  render() {
-    if (this.state.deleted) {
-      return _react.default.createElement(_reactRouterDom.Redirect, {
-        to: "/"
-      });
-    }
-
-    const {
-      bot,
-      auth,
-      contents
-    } = this.props;
-    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("div", null, _react.default.createElement(_LazyImage.default, {
-      src: `${_Locations.default.cdn}${bot.cachedImages.avatar}`,
-      className: _indexModule.default.avatar
-    })), _react.default.createElement("div", null, _react.default.createElement("h3", null, contents.name), _react.default.createElement("p", null, contents.description), _react.default.createElement("p", null, bot.nsfw ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
-      className: _Modesta.default.alizarin
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.bots.nsfw"
-    }))) : null, bot.state !== 'approved' ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
-      className: _Modesta.default.alizarin
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: `states.${bot.state}`
-    }))) : null))), bot.flags && bot.flags.adverts ? _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.bots.adverts"
-    })) : null, bot.flags && bot.flags.inAppPurchases ? _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.bots.inAppPurchases"
-    })) : null);
-  }
-
-}
-
-const mapStateToProps = state => {
-  const {
-    auth
-  } = state;
-  return {
-    auth
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(BotPageInfoBox);
-
-exports.default = _default;
-},{"../../data/Locations":"uTwd","../../data/Modesta":"FbNY","../../redux/actions/auth":"YSbd","../ContentBox":"50Yc","../FlexContainer":"AaMC","../LazyImage":"ofRo","./index.module.scss":"z8vt","./PrefixLabel":"cLsI"}],"uSix":[function(require,module,exports) {
-module.exports = {
-  "card": "_card_fe28b",
-  "textContainer": "_textContainer_fe28b",
-  "avatar": "_avatar_fe28b",
-  "discriminator": "_discriminator_fe28b",
-  "description": "_description_fe28b",
-  "stars": "_stars_fe28b"
-};
-},{}],"GW9A":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _reactIntl = require("react-intl");
-
-var _LazyImage = _interopRequireDefault(require("../LazyImage"));
-
-var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
-
-var _NotALink = _interopRequireDefault(require("../NotALink"));
-
-var _reactRedux = require("react-redux");
-
-var _auth = require("../../redux/actions/auth");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class ReviewCard extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.deleteReview = this.deleteReview.bind(this);
-    this.state = {
-      deleting: false,
-      deleted: false,
-      timeout: null,
-      deleteClicked: false
-    };
-  }
-
-  deleteReview() {
-    if (!this.state.deleteClicked) {
-      this.setState({
-        deleteClicked: true
-      });
-      fetch(`${_Locations.default.server}/bots/${this.props.bot.id}/reviews/${this.props.review.id}/delete`, {
-        credentials: 'include',
-        method: 'POST'
-      }).then(res => {
-        if (res.status === 200) {
-          this.setState({
-            deleting: true,
-            timeout: setTimeout(() => {
-              this.setState({
-                deleted: true
-              });
-            }, 300)
-          });
-        }
-      });
-    }
-  }
-
-  componentDidMount() {
-    const {
-      dispatch
-    } = this.props;
-    dispatch((0, _auth.fetchAuthIfNeeded)());
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.state.timeout);
-  }
-
-  render() {
-    const {
-      review,
-      auth
-    } = this.props;
-    let stars = '';
-
-    for (let i = 0; i < review.rating; i++) {
-      stars += '★';
-    }
-
-    if (this.state.deleted) return null;
-    return _react.default.createElement(_FlexContainer.default, {
-      className: _indexModule.default.card,
-      style: this.state.deleting ? {
-        opacity: 0
-      } : {}
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "alt.avatar",
-      values: {
-        name: review.username
-      }
-    }, message => _react.default.createElement(_LazyImage.default, {
-      className: _indexModule.default.avatar,
-      alt: message,
-      src: `${_Locations.default.cdn}${review.cachedAvatar}` || _Locations.default.logo
-    })), _react.default.createElement("div", {
-      className: _indexModule.default.textContainer
-    }, _react.default.createElement("h6", null, review.username, _react.default.createElement("span", {
-      className: _indexModule.default.discriminator
-    }, "#", review.discriminator)), _react.default.createElement("p", {
-      className: _indexModule.default.description
-    }, review.text), _react.default.createElement("span", {
-      className: _indexModule.default.stars
-    }, stars)), // Allow the review to be deleted by the owner, or by an admin
-    review.isCurrentUserOwner || auth && auth.data && auth.data.admin ? _react.default.createElement(_NotALink.default, {
-      onClick: this.deleteReview
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.reviews.delete"
-    })) : null);
-  }
-
-}
-
-const mapStateToProps = state => {
-  const {
-    auth
-  } = state;
-  return {
-    auth
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(ReviewCard);
-
-exports.default = _default;
-},{"../../data/Locations":"uTwd","./index.module.scss":"uSix","../LazyImage":"ofRo","../FlexContainer":"AaMC","../NotALink":"rr1b","../../redux/actions/auth":"YSbd"}],"uCEh":[function(require,module,exports) {
-module.exports = {
-  "flexGrid": "_flexGrid_6b5eb",
-  "padding": "_padding_6b5eb",
-  "flexBackwards": "_flexBackwards_6b5eb"
-};
-},{}],"U1G4":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class FlexColumns extends _react.Component {
-  render() {
-    if (this.props.columns) return _react.default.createElement("div", {
-      className: `${_Modesta.default[`colXs${this.props.columns}`]} ${this.props.className ? this.props.className : ''}`
-    }, this.props.children);
-    return _react.default.createElement("div", {
-      className: `\
-        ${_Modesta.default.flexGrid} \
-        ${_indexModule.default.flexGrid} \
-        ${this.props.backwardsMobile ? _indexModule.default.flexBackwards : ''} \
-        ${this.props.padding ? _indexModule.default.padding : ''} \
-        ${this.props.className ? this.props.className : ''}`
-    }, this.props.children);
-  }
-
-}
-
-var _default = FlexColumns;
-exports.default = _default;
-},{"./index.module.scss":"uCEh","../../data/Modesta":"FbNY"}],"Ad3D":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class ProgressBar extends _react.Component {
-  render() {
-    return _react.default.createElement("div", {
-      className: `${_Modesta.default.progressContainer} ${this.props.className || ''}`
-    }, _react.default.createElement("div", {
-      className: `${_Modesta.default.progressBar} ${_Modesta.default[`${this.props.colour}Bar`]}`,
-      style: {
-        width: `${this.props.proportion * 100}%`
-      }
-    }, this.props.children));
-  }
-
-}
-
-var _default = ProgressBar;
-exports.default = _default;
-},{"../../data/Modesta":"FbNY"}],"+nx8":[function(require,module,exports) {
-module.exports = {
-  "average": "_average_e04b2",
-  "averageContainer": "_averageContainer_e04b2",
-  "progressText": "_progressText_e04b2",
-  "progress": "_progress_e04b2"
-};
-},{}],"f0QB":[function(require,module,exports) {
-module.exports = {
-  "starsContainer": "_starsContainer_1f281"
-};
-},{}],"jlU0":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _reactIntl = require("react-intl");
-
-var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
-
-var _reactRedux = require("react-redux");
-
-var _auth = require("../../redux/actions/auth");
-
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class ReviewForm extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.submitReview = this.submitReview.bind(this);
-    this.form = _react.default.createRef();
-    this.state = {
-      submitted: false,
-      message: null
-    };
-  }
-
-  submitReview(e) {
-    e.preventDefault();
-
-    if (!this.state.submitted) {
-      const formdata = new FormData(this.form.current);
-      const {
-        auth,
-        intl
-      } = this.props;
-      fetch(`${_Locations.default.server}/${intl.locale}/bots/${this.props.bot.id}/reviews`, {
-        credentials: 'include',
-        body: formdata,
-        method: 'POST'
-      }).then(res => res.json()).then(res => {
-        if (res.ok) {
-          this.setState({
-            submitted: true
-          });
-          this.props.setMyReview({
-            cachedAvatar: auth.data.cachedAvatar,
-            date: new Date(),
-            discriminator: auth.data.discriminator,
-            id: null,
-            isCurrentUserOwner: false,
-            language: intl.locale,
-            rating: formdata.get('review.rating'),
-            text: formdata.get('review.text'),
-            username: auth.data.username
-          });
-        } else {
-          this.setState({
-            message: res.language || res.message
-          });
-        }
-      });
-    }
-  }
-
-  componentDidMount() {
-    const {
-      dispatch
-    } = this.props;
-    dispatch((0, _auth.fetchAuthIfNeeded)());
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.state.timeout);
-  }
-
-  render() {
-    const {
-      auth
-    } = this.props;
-    if (this.state.submitted) return null;
-    if (!auth) return null;
-    if (!auth.data) return null;
-    if (!auth.data.id) return null;
-    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("form", {
-      ref: this.form
-    }, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.reviews.write"
-    })), _react.default.createElement(_FlexContainer.default, {
-      className: _indexModule.default.starsContainer
-    }, _react.default.createElement("input", {
-      type: "radio",
-      name: "review.rating",
-      value: "5",
-      id: "rating-5"
-    }), _react.default.createElement("label", {
-      htmlFor: "rating-5"
-    }, "\u2605"), _react.default.createElement("input", {
-      type: "radio",
-      name: "review.rating",
-      value: "4",
-      id: "rating-4"
-    }), _react.default.createElement("label", {
-      htmlFor: "rating-4"
-    }, "\u2605"), _react.default.createElement("input", {
-      type: "radio",
-      name: "review.rating",
-      value: "3",
-      id: "rating-3"
-    }), _react.default.createElement("label", {
-      htmlFor: "rating-3"
-    }, "\u2605"), _react.default.createElement("input", {
-      type: "radio",
-      name: "review.rating",
-      value: "2",
-      id: "rating-2"
-    }), _react.default.createElement("label", {
-      htmlFor: "rating-2"
-    }, "\u2605"), _react.default.createElement("input", {
-      type: "radio",
-      name: "review.rating",
-      value: "1",
-      id: "rating-1"
-    }), _react.default.createElement("label", {
-      htmlFor: "rating-1"
-    }, "\u2605")), _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.reviews.placeholder"
-    }, placeholder => _react.default.createElement("textarea", {
-      name: "review.text",
-      className: _Modesta.default.fullWidth,
-      placeholder: placeholder
-    })), _react.default.createElement("button", {
-      className: `${_Modesta.default.btn} ${_Modesta.default.white} ${_Modesta.default.blackText}`,
-      onClick: this.submitReview
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "forms.submit"
-    })), this.state.message ? _react.default.createElement(_ContentBox.default, {
-      className: _Modesta.default.alizarin
-    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: this.state.message
-    }))) : null));
-  }
-
-}
-
-const mapStateToProps = state => {
-  const {
-    auth
-  } = state;
-  return {
-    auth
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(ReviewForm));
-
-exports.default = _default;
-},{"../../data/Locations":"uTwd","./index.module.scss":"f0QB","../FlexContainer":"AaMC","../../redux/actions/auth":"YSbd","../ContentBox":"50Yc","../../data/Modesta":"FbNY"}],"mb7s":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
-
-var _ReviewCard = _interopRequireDefault(require("../ReviewCard"));
-
-var _reactIntl = require("react-intl");
-
-var _FlexColumns = _interopRequireDefault(require("../FlexColumns"));
-
-var _ProgressBar = _interopRequireDefault(require("../ProgressBar"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
-
-var _reactRedux = require("react-redux");
-
-var _auth = require("../../redux/actions/auth");
-
-var _ReviewForm = _interopRequireDefault(require("../ReviewForm"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class BotPageReviewsBox extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      myReview: null
-    };
-    this.setMyReview = this.setMyReview.bind(this);
-  }
-
-  componentDidMount() {
-    const {
-      dispatch
-    } = this.props;
-    dispatch((0, _auth.fetchAuthIfNeeded)());
-  }
-
-  setMyReview(review) {
-    this.setState({
-      myReview: review
-    });
-  }
-
-  render() {
-    const {
-      bot
-    } = this.props;
-    const auth = this.props.auth.data;
-    const {
-      reviews
-    } = bot;
-    const average = reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length;
-    const counts = [0, 0, 0, 0, 0];
-    reviews.forEach(review => counts[review.rating - 1]++);
-    const proportions = counts.map(count => count / reviews.length);
-    const myReview = auth ? reviews.find(review => review.author === auth.id) : null;
-    const isOwner = auth ? bot.authors.some(author => author.id === auth.id) : false;
-    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "pages.reviews.title"
-    })), _react.default.createElement(_FlexColumns.default, null, _react.default.createElement(_FlexColumns.default, {
-      columns: 4,
-      className: _indexModule.default.averageContainer
-    }, _react.default.createElement("span", {
-      className: _indexModule.default.average
-    }, average.toFixed(1) !== 'NaN' ? average.toFixed(1) : null)), _react.default.createElement(_FlexColumns.default, {
-      columns: 8
-    }, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
-      className: _indexModule.default.progressText
-    }, "5"), _react.default.createElement(_ProgressBar.default, {
-      className: _indexModule.default.progress,
-      colour: "emerald",
-      proportion: proportions[4]
-    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
-      className: _indexModule.default.progressText
-    }, "4"), _react.default.createElement(_ProgressBar.default, {
-      className: _indexModule.default.progress,
-      colour: "greenSea",
-      proportion: proportions[3]
-    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
-      className: _indexModule.default.progressText
-    }, "3"), _react.default.createElement(_ProgressBar.default, {
-      className: _indexModule.default.progress,
-      colour: "sunFlower",
-      proportion: proportions[2]
-    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
-      className: _indexModule.default.progressText
-    }, "2"), _react.default.createElement(_ProgressBar.default, {
-      className: _indexModule.default.progress,
-      colour: "carrot",
-      proportion: proportions[1]
-    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
-      className: _indexModule.default.progressText
-    }, "1"), _react.default.createElement(_ProgressBar.default, {
-      className: _indexModule.default.progress,
-      colour: "alizarin",
-      proportion: proportions[0]
-    })))), _react.default.createElement("div", null, // If there's a review by the owner, show it.
-    this.state.myReview || myReview ? _react.default.createElement(_ReviewCard.default, {
-      review: this.state.myReview || myReview,
-      bot: bot
-    }) : isOwner ? null : _react.default.createElement(_ReviewForm.default, {
-      setMyReview: this.setMyReview,
-      bot: bot
-    }), reviews.slice(0, 8).filter(review => auth ? review.author !== auth.id : true).map((review, index) => _react.default.createElement(_ReviewCard.default, {
-      key: index,
-      review: review,
-      bot: bot
-    }))));
-  }
-
-}
-
-const mapStateToProps = state => {
-  const {
-    auth
-  } = state;
-  return {
-    auth
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(BotPageReviewsBox);
-
-exports.default = _default;
-},{"../ContentBox":"50Yc","../ReviewCard":"GW9A","../FlexColumns":"U1G4","../ProgressBar":"Ad3D","./index.module.scss":"+nx8","../FlexContainer":"AaMC","../../redux/actions/auth":"YSbd","../ReviewForm":"jlU0"}],"T8sv":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-class Column extends _react.Component {
-  render() {
-    return _react.default.createElement("div", _extends({}, this.props, {
-      className: `${_Modesta.default.column} ${this.props.className || ''}`
-    }), this.props.children);
-  }
-
-}
-
-var _default = Column;
-exports.default = _default;
-},{"../../data/Modesta":"FbNY"}],"+7WR":[function(require,module,exports) {
-module.exports = {
-  "textarea": "_textarea_c763d"
-};
-},{}],"azt2":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _reactIntl = require("react-intl");
-
-var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
-
-var _Column = _interopRequireDefault(require("../Column"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class InputField extends _react.Component {
-  render() {
-    let input = null;
-    const value = this.props.value;
-
-    if (this.props.options) {
-      input = _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: `${this.props.id}.placeholder`
-      }, placeholder => _react.default.createElement("select", {
-        name: this.props.name,
-        className: _Modesta.default.fullWidth,
-        defaultValue: value,
-        onChange: this.props.onChange
-      }, _react.default.createElement("option", {
-        disabled: !this.props.allowNone,
-        selected: !this.props.options.some(option => value === option),
-        value: ""
-      }, placeholder), this.props.options.map(option => {
-        if (this.props.localiseOptions) {
-          return _react.default.createElement(_reactIntl.FormattedMessage, {
-            id: `${this.props.localiseOptions}.${option}`,
-            key: option
-          }, formattedOption => _react.default.createElement("option", {
-            value: option,
-            selected: value === option
-          }, formattedOption));
-        }
-
-        return _react.default.createElement("option", {
-          value: option,
-          selected: value === option,
-          key: option
-        }, option);
-      })));
-    } else if (this.props.toggle) {
-      input = _react.default.createElement("input", {
-        name: this.props.name,
-        type: "checkbox",
-        defaultChecked: value,
-        onChange: this.props.onChange
-      });
-    } else if (this.props.textarea) {
-      input = _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: `${this.props.id}.placeholder`
-      }, placeholder => _react.default.createElement("textarea", {
-        name: this.props.name,
-        className: `${_Modesta.default.fullWidth} ${_indexModule.default.textarea}`,
-        placeholder: placeholder,
-        defaultValue: value || undefined,
-        onChange: this.props.onChange
-      }));
-    } else {
-      input = _react.default.createElement(_reactIntl.FormattedMessage, {
-        id: `${this.props.id}.placeholder`
-      }, placeholder => _react.default.createElement("input", {
-        name: this.props.name,
-        type: "text",
-        className: _Modesta.default.fullWidth,
-        placeholder: placeholder,
-        style: {
-          flexGrow: '1'
-        },
-        defaultValue: value || undefined,
-        onChange: this.props.onChange
-      }));
-    }
-
-    return _react.default.createElement(_Column.default, {
-      className: this.props.className || _Modesta.default.oneHalf,
-      style: this.props.style
-    }, _react.default.createElement("label", {
-      htmlFor: this.props.name
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: `${this.props.id}.title`
-    }), this.props.required ? '*' : null), _react.default.createElement(_FlexContainer.default, null, input), this.props.smallText ? _react.default.createElement("small", null, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: `${this.props.id}.small`
-    })) : null);
-  }
-
-}
-
-var _default = InputField;
-exports.default = _default;
-},{"../FlexContainer":"AaMC","../Column":"T8sv","../../data/Modesta":"FbNY","./index.module.scss":"+7WR"}],"2Fxh":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-const APPROVED = 'approved';
-const DENIED = 'denied';
-const QUEUE = 'queue';
-const BANNED = 'banned';
-const States = {
-  APPROVED,
-  DENIED,
-  QUEUE,
-  BANNED
-};
-var _default = States;
-exports.default = _default;
-},{}],"drSn":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _reactRedux = require("react-redux");
-
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
-
-var _InputField = _interopRequireDefault(require("../InputField"));
-
-var _States = _interopRequireDefault(require("../../data/States"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-var _reactIntl = require("react-intl");
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class BotPageSetStateBox extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.form = _react.default.createRef();
-    this.submit = this.submit.bind(this);
-  }
-
-  submit(e) {
-    e.preventDefault();
-    const formdata = new FormData(this.form.current);
-    fetch(`${_Locations.default.server}/reactjs/v2/apps/id/${this.props.bot.id}/state`, {
-      method: 'POST',
-      body: formdata,
-      credentials: 'include'
-    });
-  }
-
-  render() {
-    const auth = this.props.auth.data;
-    const bot = this.props.bot;
-    if (!auth) return null;
-    if (!auth.admin) return null;
-    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("form", {
-      ref: this.form
-    }, _react.default.createElement(_InputField.default, {
-      name: "state",
-      id: "components.botpagesetstatebox.state",
-      localiseOptions: "states",
-      options: Object.values(_States.default),
-      value: bot.state,
-      onChange: this.onChange
-    }), _react.default.createElement(_InputField.default, {
-      name: "reason",
-      id: "components.botpagesetstatebox.reason",
-      textarea: true,
-      className: _Modesta.default.fullWidth
-    }), _react.default.createElement("button", {
-      onClick: this.submit
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: "components.botpagesetstatebox.submit"
-    }))));
-  }
-
-}
-
-const mapStateToProps = state => {
-  const {
-    auth
-  } = state;
-  return {
-    auth
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(BotPageSetStateBox);
-
-exports.default = _default;
-},{"../ContentBox":"50Yc","../InputField":"azt2","../../data/States":"2Fxh","../../data/Modesta":"FbNY","../../data/Locations":"uTwd"}],"Pqzd":[function(require,module,exports) {
-module.exports = {
-  "fullscreen": "_fullscreen_94307",
-  "image": "_image_94307",
-  "loaded": "_loaded_94307"
-};
-},{}],"2lop":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class BtecParallax extends _react.Component {
-  render() {
-    return _react.default.createElement("div", {
-      className: `${_Modesta.default.fullscreen} ${_indexModule.default.fullscreen}`
-    }, _react.default.createElement("div", {
-      className: `${_Modesta.default.background} ${_indexModule.default.image} ${this.props.src ? _indexModule.default.loaded : ''}`,
-      style: this.props.src ? {
-        backgroundImage: `url('${this.props.src}')`
-      } : {}
-    }));
-  }
-
-}
-
-var _default = BtecParallax;
-exports.default = _default;
-},{"./index.module.scss":"Pqzd","../../data/Modesta":"FbNY"}],"Gm6F":[function(require,module,exports) {
-module.exports = {
-  "btn": "_btn_4dba6"
-};
-},{}],"SwhA":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-const ConstructCSS = (...args) => args.filter(argument => argument) // Get arguments that are truthy
-.join(' ');
-
-var _default = ConstructCSS;
-exports.default = _default;
-},{}],"+DmJ":[function(require,module,exports) {
+},{"../scss/ModestaCSS/scss/modesta.module.scss":"H2cc","../scss/twemoji.module.scss":"qa3M","../scss/colours.module.scss":"n9dU"}],"+DmJ":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2941,7 +1417,87 @@ class Container extends _react.Component {
 
 var _default = Container;
 exports.default = _default;
-},{"../../data/Modesta":"FbNY","../../helpers/ConstructCSS":"SwhA"}],"Tyxi":[function(require,module,exports) {
+},{"../../data/Modesta":"FbNY","../../helpers/ConstructCSS":"SwhA"}],"A3mz":[function(require,module,exports) {
+module.exports = {
+  "container": "_container_8004f"
+};
+},{}],"50Yc":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _coloursModule = _interopRequireDefault(require("../../scss/colours.module.scss"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class ContentBox extends _react.Component {
+  render() {
+    return _react.default.createElement("div", _extends({}, this.props, {
+      className: `${_Modesta.default.boxShadow} ${_coloursModule.default.container} ${_indexModule.default.container} ${this.props.className ? this.props.className : ''}`
+    }), this.props.children);
+  }
+
+}
+
+var _default = ContentBox;
+exports.default = _default;
+},{"../../scss/colours.module.scss":"n9dU","./index.module.scss":"A3mz","../../data/Modesta":"FbNY"}],"uCEh":[function(require,module,exports) {
+module.exports = {
+  "flexGrid": "_flexGrid_6b5eb",
+  "padding": "_padding_6b5eb",
+  "flexBackwards": "_flexBackwards_6b5eb"
+};
+},{}],"U1G4":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class FlexColumns extends _react.Component {
+  render() {
+    if (this.props.columns) return _react.default.createElement("div", {
+      className: `${_Modesta.default[`colXs${this.props.columns}`]} ${this.props.className ? this.props.className : ''}`
+    }, this.props.children);
+    return _react.default.createElement("div", {
+      className: `\
+        ${_Modesta.default.flexGrid} \
+        ${_indexModule.default.flexGrid} \
+        ${this.props.backwardsMobile ? _indexModule.default.flexBackwards : ''} \
+        ${this.props.padding ? _indexModule.default.padding : ''} \
+        ${this.props.className ? this.props.className : ''}`
+    }, this.props.children);
+  }
+
+}
+
+var _default = FlexColumns;
+exports.default = _default;
+},{"./index.module.scss":"uCEh","../../data/Modesta":"FbNY"}],"Tyxi":[function(require,module,exports) {
 module.exports = {
   "mobile": "_mobile_78ffd",
   "desktop": "_desktop_78ffd",
@@ -3008,7 +1564,84 @@ module.exports = {
   "mobileHeading": "_mobileHeading_f0a17",
   "darken": "_darken_f0a17"
 };
-},{}],"JsQ7":[function(require,module,exports) {
+},{}],"2Fxh":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+const APPROVED = 'approved';
+const DENIED = 'denied';
+const QUEUE = 'queue';
+const BANNED = 'banned';
+const States = {
+  APPROVED,
+  DENIED,
+  QUEUE,
+  BANNED
+};
+var _default = States;
+exports.default = _default;
+},{}],"YSbd":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchAuthIfNeeded = fetchAuthIfNeeded;
+exports.forceFetchAuth = forceFetchAuth;
+exports.RECEIVE_AUTH = exports.REQUEST_AUTH = void 0;
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const REQUEST_AUTH = 'REQUEST_AUTH';
+exports.REQUEST_AUTH = REQUEST_AUTH;
+const RECEIVE_AUTH = 'RECEIVE_AUTH';
+exports.RECEIVE_AUTH = RECEIVE_AUTH;
+
+function requestAuth() {
+  return {
+    type: REQUEST_AUTH
+  };
+}
+
+function receiveAuth(json) {
+  return {
+    type: RECEIVE_AUTH,
+    data: json.data
+  };
+}
+
+function fetchAuth() {
+  return dispatch => {
+    dispatch(requestAuth());
+    return fetch(`${_Locations.default.server}/auth/json`, {
+      credentials: 'include'
+    }).then(res => res.json()).then(json => dispatch(receiveAuth(json)));
+  };
+}
+
+function shouldFetchAuth(state) {
+  if (state.auth.fetching) return false;
+  if (state.auth.fetched) return false;
+  return true;
+}
+
+function fetchAuthIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchAuth(getState())) {
+      return dispatch(fetchAuth());
+    }
+  };
+}
+
+function forceFetchAuth() {
+  return dispatch => dispatch(fetchAuth());
+}
+},{"../../data/Locations":"uTwd"}],"JsQ7":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3150,36 +1783,23 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 class NavigationBar extends _react.Component {
   constructor(props) {
     super(props);
-    this.open = _react.default.createRef();
-    this.navside = _react.default.createRef();
-    this.darken = _react.default.createRef();
     this.openNavbar = this.openNavbar.bind(this);
     this.closeNavbar = this.closeNavbar.bind(this);
-  }
-
-  componentDidMount() {
-    this.open.current.addEventListener('click', this.openNavbar);
-    this.darken.current.addEventListener('click', this.closeNavbar);
-  }
-
-  componentWillUnmount() {
-    // Don't keep stuff hanging there in the background
-    this.open.current.removeEventListener('click', this.openNavbar);
-    this.darken.current.removeEventListener('click', this.closeNavbar);
+    this.state = {
+      open: false
+    };
   }
 
   openNavbar() {
-    if (this.navside.current && this.navside.current.style) {
-      this.navside.current.style.transform = 'translateX(0px)';
-      this.darken.current.style.opacity = '0.8';
-      this.darken.current.style.pointerEvents = 'all';
-    }
+    this.setState({
+      open: true
+    });
   }
 
   closeNavbar() {
-    this.navside.current.style.transform = 'translateX(-250px)';
-    this.darken.current.style.opacity = '0';
-    this.darken.current.style.pointerEvents = 'none';
+    this.setState({
+      open: false
+    });
   }
 
   render() {
@@ -3200,7 +1820,7 @@ class NavigationBar extends _react.Component {
     }))), _react.default.createElement("div", {
       className: `${_displayModule.default.mobile} ${_Modesta.default.navContainer} ${_indexModule.default.mobileNavbar}`
     }, _react.default.createElement("span", {
-      ref: this.open,
+      onClick: this.openNavbar,
       className: _Modesta.default.menuIcon
     }), _react.default.createElement("div", {
       className: `${_indexModule.default.mobileNavContent} ${_Modesta.default.navContent}`
@@ -3212,13 +1832,21 @@ class NavigationBar extends _react.Component {
       id: "site.name"
     })))), _react.default.createElement("div", {
       className: _Modesta.default.sidenav,
-      ref: this.navside
+      style: this.state.open ? {
+        transform: 'translateX(0px)'
+      } : {
+        transform: 'translateX(-250px)'
+      }
     }, _react.default.createElement(_links.default, {
       unlocalisedPath: this.props.unlocalisedPath
     }))), _react.default.createElement("div", {
-      ref: this.darken,
-      className: `${_indexModule.default.darken} ${_displayModule.default.mobile}`
-    }));
+      style: this.state.open ? {
+        opacity: '0.8',
+        pointerEvents: 'all'
+      } : {},
+      className: `${_indexModule.default.darken} ${_displayModule.default.mobile}`,
+      onClick: this.closeNavbar
+    }), this.props.children);
   }
 
 }
@@ -6602,7 +5230,7 @@ class Layout extends _react.Component {
       hreflang: language.code
     }))))), _react.default.createElement(_NavigationBar.default, {
       unlocalisedPath: unlocalisedPath
-    }), _react.default.createElement("noscript", null, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    }, this.props.afterNav), _react.default.createElement("noscript", null, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "errors.website.noscript"
     })))), this.props.children, _react.default.createElement(_Footer.default, null));
   }
@@ -6668,7 +5296,40 @@ class LoadingContainer extends _react.Component {
 
 var _default = LoadingContainer;
 exports.default = _default;
-},{"../Container":"tNeE","../LoadingContentBox":"qVpT"}],"/hhG":[function(require,module,exports) {
+},{"../Container":"tNeE","../LoadingContentBox":"qVpT"}],"qskh":[function(require,module,exports) {
+module.exports = {
+  "link": "_link_ceea7"
+};
+},{}],"rr1b":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class NotALink extends _react.Component {
+  render() {
+    return _react.default.createElement("span", _extends({
+      className: `${_indexModule.default.link} ${this.props.className}`
+    }, this.props), this.props.children);
+  }
+
+}
+
+var _default = NotALink;
+exports.default = _default;
+},{"./index.module.scss":"qskh"}],"/hhG":[function(require,module,exports) {
 module.exports = {
   "video": "_video_ff09d"
 };
@@ -6740,21 +5401,7 @@ class YouTube extends _react.Component {
 
 var _default = YouTube;
 exports.default = _default;
-},{"./index.module.scss":"h3Un"}],"4Pyv":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-var _default = {
-  // weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-};
-exports.default = _default;
-},{}],"b75q":[function(require,module,exports) {
+},{"./index.module.scss":"h3Un"}],"b75q":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7120,17 +5767,24 @@ class NotFound extends _react.Component {
 
 var _default = NotFound;
 exports.default = _default;
-},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../components/GetStartedWithBots":"VUzD","../../components/FlexColumns":"U1G4","../../components/WebsiteTypeButtons":"V0nm","../../components/HelpUsImprove":"4kx5","./pensive.svg":"DDbx","./index.module.scss":"4ai9"}],"GT34":[function(require,module,exports) {
+},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../components/GetStartedWithBots":"VUzD","../../components/FlexColumns":"U1G4","../../components/WebsiteTypeButtons":"V0nm","../../components/HelpUsImprove":"4kx5","./pensive.svg":"DDbx","./index.module.scss":"4ai9"}],"ILdi":[function(require,module,exports) {
+module.exports = "/discordapps.dev/arrow.4675c036.png";
+},{}],"Hy70":[function(require,module,exports) {
 module.exports = {
-  "appLinks": "_appLinks_2011f",
-  "prefixList": "_prefixList_2011f",
-  "prefix": "_prefix_2011f",
-  "triggerNote": "_triggerNote_2011f",
-  "btn": "_btn_2011f",
-  "localeLinks": "_localeLinks_2011f",
-  "used": "_used_2011f"
+  "description": "_description_94527",
+  "tableContainer": "_tableContainer_94527",
+  "button": "_button_94527",
+  "arrow": "_arrow_94527",
+  "upsidedown": "_upsidedown_94527"
 };
-},{}],"frcu":[function(require,module,exports) {
+},{}],"h2Hb":[function(require,module,exports) {
+module.exports = {
+  "roundedCorners": "_roundedCorners_b5853",
+  "loading": "_loading_b5853",
+  "button": "_button_b5853",
+  "scrollbar": "_scrollbar_b5853"
+};
+},{}],"PYpx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7140,7 +5794,452 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactHelmet = require("react-helmet");
+var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
+
+var _marked = _interopRequireDefault(require("marked"));
+
+var _xss = _interopRequireDefault(require("xss"));
+
+var _arrow = _interopRequireDefault(require("../../../scss/ModestaCSS/css/images/arrow.png"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _Modesta = _interopRequireDefault(require("../../../data/Modesta"));
+
+var _elementsModule = _interopRequireDefault(require("../../../scss/elements.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const botPageWhitelist = {
+  p: [],
+  span: [],
+  code: [],
+  b: [],
+  i: [],
+  u: [],
+  li: [],
+  ul: [],
+  ol: [],
+  del: [],
+  pre: [],
+  strong: [],
+  em: [],
+  h1: ['id'],
+  h2: ['id'],
+  h3: ['id'],
+  h4: ['id'],
+  h5: ['id'],
+  h6: ['id'],
+  table: [],
+  thead: [],
+  tbody: [],
+  tr: [],
+  th: [],
+  td: [],
+  hr: [],
+  blockquote: [],
+  br: [],
+  a: ['href']
+};
+
+class AppPageContentBox extends _react.Component {
+  constructor(props) {
+    super(props);
+
+    _defineProperty(this, "getExtendedHeight", () => [...this.description.current.children].map(elem => {
+      const height = elem.clientHeight;
+      let topMargin = 2;
+      let bottomMargin = 2;
+
+      try {
+        topMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-top'), 10);
+        bottomMargin = parseInt(document.defaultView.getComputedStyle(elem, '').getPropertyValue('margin-bottom'), 10);
+      } catch (e) {// Do nothing!
+        // Just use the default margin sizes.
+      }
+
+      return topMargin + height + bottomMargin;
+    }).reduce((prev, curr) => prev + curr, 0));
+
+    this.button = _react.default.createRef();
+    this.description = _react.default.createRef();
+    this.state = {
+      open: false,
+      smallEnough: true
+    };
+    this.toggle = this.toggle.bind(this);
+    this.getExtendedHeight = this.getExtendedHeight.bind(this);
+  }
+
+  escape(unsafe) {
+    return unsafe.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+  }
+
+  toggle() {
+    if (this.state.open === true) {
+      this.description.current.style.height = '200px';
+    } else {
+      this.description.current.style.height = `${this.getExtendedHeight()}px`;
+    }
+
+    this.setState({
+      open: !this.state.open
+    });
+  }
+
+  componentDidMount() {
+    // If the description's size is greater than 300, display the button
+    // Otherwise, just display the entire description
+    if (this.getExtendedHeight() > 300) {
+      this.setState({
+        smallEnough: false
+      });
+    }
+  }
+
+  render() {
+    const page = (0, _xss.default)((0, _marked.default)(this.props.page), {
+      whiteList: this.props.allowHTML ? null : botPageWhitelist,
+      onIgnoreTag: (tag, html, options) => {
+        let extraNotes = '';
+
+        switch (tag) {
+          case 'img':
+            extraNotes = 'You should instead use the "preview images", found in the Appearance section of the edit page of your bot, or adopt the use of emojis.';
+            break;
+
+          case 'script':
+            extraNotes = 'You are too dangerous to use this tag!';
+            break;
+
+          case 'loona':
+            extraNotes = '<3 ily!!!!!';
+            break;
+
+          default:
+            extraNotes = 'Please adopt a tag which is allowed, or restrict yourself to Markdown only.';
+        }
+
+        if (typeof window !== 'undefined') console.error(`The <${tag}> tag is not allowed in the long description box.\n${extraNotes}`);
+        return '';
+      },
+      onTag: (tag, html, options) => {
+        if (tag === 'table') {
+          if (options.isClosing) {
+            return '</table></div>';
+          }
+
+          return `<div class="${_Modesta.default.tableContainer} ${_indexModule.default.tableContainer} ${_elementsModule.default.scrollbar}">${html}`;
+        }
+
+        return;
+      },
+      onTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (tag === 'img' && name === 'src' && this.props.cdn && value.startsWith('/')) {
+          return `src="${this.props.cdn}${value}"`;
+        }
+
+        return;
+      },
+      onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (this.props.allowHTML || name === 'class') {
+          return `${name}="${_xss.default.escapeAttrValue(value)}"`;
+        }
+      }
+    });
+    const smallEnough = typeof this.props.forceLarge === 'boolean' ? this.props.forceLarge : this.state.smallEnough;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", null, _react.default.createElement("div", {
+      dangerouslySetInnerHTML: {
+        __html: page
+      },
+      ref: this.description,
+      style: smallEnough ? {} : {
+        // if not small enough, set default height to 200
+        height: '200px',
+        transition: `height ${Math.ceil(this.getExtendedHeight() / 200) / 20}s`
+      },
+      className: _indexModule.default.description
+    }), smallEnough ? null : // if not small enough, show the buttons
+    _react.default.createElement("div", {
+      ref: this.button,
+      onClick: this.toggle
+    }, this.state.open === false ? _react.default.createElement(_ContentBox.default, {
+      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.more"
+    })), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.toggle"
+    }, message => _react.default.createElement("img", {
+      className: _indexModule.default.arrow,
+      src: _arrow.default,
+      alt: message
+    }))) : _react.default.createElement(_ContentBox.default, {
+      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.less"
+    })), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.toggle"
+    }, message => _react.default.createElement("img", {
+      className: `${_indexModule.default.arrow} ${_indexModule.default.upsidedown}`,
+      src: _arrow.default,
+      alt: message
+    }))))));
+  }
+
+}
+
+var _default = AppPageContentBox;
+exports.default = _default;
+},{"../../../components/ContentBox":"50Yc","../../../scss/ModestaCSS/css/images/arrow.png":"ILdi","./index.module.scss":"Hy70","../../../data/Modesta":"FbNY","../../../scss/elements.module.scss":"h2Hb"}],"hWoZ":[function(require,module,exports) {
+module.exports = {
+  "sliderContainer": "_sliderContainer_71510",
+  "slider": "_slider_71510",
+  "botListDotSpace": "_botListDotSpace_71510",
+  "image": "_image_71510",
+  "dots": "_dots_71510"
+};
+},{}],"FAkX":[function(require,module,exports) {
+module.exports = {
+  "modalContent": "_modalContent_5927a",
+  "modalClose": "_modalClose_5927a",
+  "modalImage": "_modalImage_5927a",
+  "zoomIn": "_zoomIn_5927a"
+};
+},{}],"i0xp":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _LazyImage = _interopRequireDefault(require("../LazyImage"));
+
+var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ModalImage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.image = _react.default.createRef();
+    this.state = {
+      open: false,
+      closing: false
+    };
+    this.open = this.open.bind(this);
+    this.close = this.close.bind(this);
+  }
+
+  open() {
+    this.setState({
+      opened: true
+    });
+  }
+
+  close() {
+    this.setState({
+      closing: true
+    });
+    setTimeout(() => {
+      this.setState({
+        opened: false,
+        closing: false
+      });
+    }, 575);
+  }
+
+  render() {
+    return _react.default.createElement("div", null, _react.default.createElement(_LazyImage.default, {
+      src: this.props.src,
+      className: `${this.props.className} ${_indexModule.default.zoomIn}`,
+      onClick: this.open
+    }), _react.default.createElement("div", {
+      onClick: this.close,
+      className: `${_Modesta.default.modal} ${this.state.closing ? `${_Modesta.default.modalClose} ${_indexModule.default.modalClose}` : ''}`,
+      style: this.state.opened ? {
+        display: 'block'
+      } : {}
+    }, _react.default.createElement("div", {
+      className: `${_Modesta.default.modalContent} ${_elementsModule.default.roundedCorners} ${_indexModule.default.modalContent}`
+    }, _react.default.createElement(_LazyImage.default, {
+      src: this.props.src,
+      onClick: this.open,
+      className: _indexModule.default.modalImage
+    }))));
+  }
+
+}
+
+var _default = ModalImage;
+exports.default = _default;
+},{"./index.module.scss":"FAkX","../LazyImage":"ofRo","../../scss/elements.module.scss":"h2Hb","../../data/Modesta":"FbNY"}],"yXl1":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _elementsModule = _interopRequireDefault(require("../../../scss/elements.module.scss"));
+
+var _Locations = _interopRequireDefault(require("../../../data/Locations"));
+
+var _ModalImage = _interopRequireDefault(require("../../../components/ModalImage"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageImagesBox extends _react.Component {
+  render() {
+    if (this.props.images && this.props.images.length === 0) return null;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", {
+      className: `${_indexModule.default.sliderContainer} ${_elementsModule.default.scrollbar}`
+    }, _react.default.createElement("div", {
+      className: _indexModule.default.slider
+    }, this.props.children, this.props.images.map((image, index) => _react.default.createElement(_ModalImage.default, {
+      src: `${_Locations.default.cdn}${image}`,
+      className: _indexModule.default.image,
+      key: index
+    }))), _react.default.createElement("div", {
+      className: _indexModule.default.botListDotSpace
+    })));
+  }
+
+}
+
+var _default = AppPageImagesBox;
+exports.default = _default;
+},{"../../../components/ContentBox":"50Yc","./index.module.scss":"hWoZ","../../../scss/elements.module.scss":"h2Hb","../../../data/Locations":"uTwd","../../../components/ModalImage":"i0xp"}],"TlW0":[function(require,module,exports) {
+module.exports = {
+  "appLinks": "_appLinks_bb522",
+  "prefixList": "_prefixList_bb522",
+  "prefix": "_prefix_bb522",
+  "triggerNote": "_triggerNote_bb522",
+  "btn": "_btn_bb522",
+  "localeLinks": "_localeLinks_bb522",
+  "used": "_used_bb522"
+};
+},{}],"4Pyv":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  // weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+};
+exports.default = _default;
+},{}],"BNJb":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _Locations = _interopRequireDefault(require("../../../data/Locations"));
+
+var _NotALink = _interopRequireDefault(require("../../../components/NotALink"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageDeleteButton extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sure: false,
+      deleted: false
+    };
+    this.openSure = this.openSure.bind(this);
+    this.delete = this.delete.bind(this);
+  }
+
+  openSure() {
+    this.setState({
+      sure: true
+    });
+  }
+
+  delete() {
+    fetch(`${_Locations.default.server}/bots/${this.props.app.id}/delete`, {
+      method: 'POST',
+      credentials: 'include'
+    }).then(res => res.json()).then(data => {
+      if (data.ok) this.setState({
+        deleted: true
+      });
+    });
+  }
+
+  render() {
+    if (this.state.deleted) {
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: "/"
+      });
+    }
+
+    if (this.state.sure) {
+      return _react.default.createElement(_NotALink.default, {
+        onClick: this.delete
+      }, _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: "pages.bots.reallyDelete"
+      }));
+    }
+
+    return _react.default.createElement(_NotALink.default, {
+      onClick: this.openSure
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.delete"
+    }));
+  }
+
+}
+
+var _default = AppPageDeleteButton;
+exports.default = _default;
+},{"../../../data/Locations":"uTwd","../../../components/NotALink":"rr1b"}],"vLPW":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactIntl = require("react-intl");
 
@@ -7148,152 +6247,73 @@ var _reactRedux = require("react-redux");
 
 var _reactRouterDom = require("react-router-dom");
 
-var _AppPageDeleteButton = _interopRequireDefault(require("../../components/AppPageDeleteButton"));
+var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
 
-var _BotPageContentBox = _interopRequireDefault(require("../../components/BotPageContentBox"));
+var _Locations = _interopRequireDefault(require("../../../data/Locations"));
 
-var _BotPageImagesBox = _interopRequireDefault(require("../../components/BotPageImagesBox"));
-
-var _BotPageInfoBox = _interopRequireDefault(require("../../components/BotPageInfoBox"));
-
-var _BotPageReviewsBox = _interopRequireDefault(require("../../components/BotPageReviewsBox"));
-
-var _BotPageSetStateBox = _interopRequireDefault(require("../../components/BotPageSetStateBox"));
-
-var _BtecParallax = _interopRequireDefault(require("../../components/BtecParallax"));
-
-var _Button = _interopRequireDefault(require("../../components/Button"));
-
-var _Container = _interopRequireDefault(require("../../components/Container"));
-
-var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
-
-var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
-
-var _Layout = _interopRequireDefault(require("../../components/Layout"));
-
-var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
-
-var _LocalisedHyperlink = _interopRequireDefault(require("../../components/LocalisedHyperlink"));
-
-var _NotALink = _interopRequireDefault(require("../../components/NotALink"));
-
-var _Youku = _interopRequireDefault(require("../../components/Youku"));
-
-var _YouTube = _interopRequireDefault(require("../../components/YouTube"));
-
-var _DateFormat = _interopRequireDefault(require("../../data/DateFormat"));
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-var _States = _interopRequireDefault(require("../../data/States"));
-
-var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
-
-var _reviewToJsonLd = _interopRequireDefault(require("../../helpers/reviewToJsonLd"));
-
-var _locales = require("../../locales");
-
-var _bot = require("../../redux/actions/bot");
-
-var _NotFound = _interopRequireDefault(require("../NotFound"));
+var _auth = require("../../../redux/actions/auth");
 
 var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _LocalisedHyperlink = _interopRequireDefault(require("../../../components/LocalisedHyperlink"));
+
+var _States = _interopRequireDefault(require("../../../data/States"));
+
+var _DateFormat = _interopRequireDefault(require("../../../data/DateFormat"));
+
+var _AppPageDeleteButton = _interopRequireDefault(require("../AppPageDeleteButton"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-class BotPage extends _react.Component {
+class AppPageInfoBox extends _react.Component {
   constructor(props) {
     super(props);
     this.state = {
-      bot: null,
-      displayLocale: props.intl.locale
+      sure: false,
+      deleted: false
     };
-    this.setLocale = this.setLocale.bind(this);
+    this.openSure = this.openSure.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   componentDidMount() {
     const {
-      dispatch,
-      match
-    } = this.props; // Check if the bot has been injected
-
-    dispatch((0, _bot.fetchABot)({
-      match
-    }));
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
   }
 
-  setLocale(locale) {
+  openSure() {
     this.setState({
-      displayLocale: locale
+      sure: true
     });
-    window.scrollTo(0, 0);
+  }
+
+  delete() {
+    fetch(`${_Locations.default.server}/bots/${this.props.bot.id}/delete`, {
+      method: 'POST',
+      credentials: 'include'
+    }).then(res => res.json()).then(data => {
+      if (data.ok) this.setState({
+        deleted: true
+      });
+    });
   }
 
   render() {
-    const app = this.props.bot.data;
-    const auth = this.props.auth.data;
-    const status = this.props.bot.status;
-
-    if (status === 404) {
-      if (this.props.staticContext) this.props.staticContext.status = 404;
-      return _react.default.createElement(_NotFound.default, {
-        match: this.props.match
-      });
-    }
-
-    if (!app) {
-      return _react.default.createElement(_Layout.default, {
-        match: this.props.match
-      }, _react.default.createElement(_LoadingContainer.default, null));
-    }
-
-    if (app.id === this.props.match.params.id && app.type !== this.props.match.params.type) {
-      if (this.props.staticContext) this.props.staticContext.status = 301;
+    if (this.state.deleted) {
       return _react.default.createElement(_reactRouterDom.Redirect, {
-        to: `/${this.props.match.params.locale}/${app.type}/${app.id}`
+        to: "/"
       });
     }
 
-    const contents = (0, _locales.Localise)(app.contents, this.state.displayLocale || this.props.intl.locale);
-    const reviewJSON = (0, _reviewToJsonLd.default)(contents, app);
-    return _react.default.createElement(_Layout.default, {
-      match: this.props.match
-    }, _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, contents.name), _react.default.createElement("meta", {
-      property: "og:title",
-      content: contents.name
-    }), _react.default.createElement("meta", {
-      property: "og:description",
-      content: contents.description
-    }), _react.default.createElement("meta", {
-      name: "description",
-      content: contents.description
-    }), _react.default.createElement("meta", {
-      property: "og:image",
-      content: `${_Locations.default.cdn}${app.cachedImages.avatar}`
-    }), _react.default.createElement("meta", {
-      httpEquiv: "last-modified",
-      content: new Date(app.edited).toISOString().split('T')[0]
-    }), reviewJSON && _react.default.createElement("script", {
-      type: "application/ld+json"
-    }, reviewJSON)), app.cachedImages.cover ? _react.default.createElement(_BtecParallax.default, {
-      src: `${_Locations.default.cdn}${app.cachedImages.cover}`
-    }) : null, _react.default.createElement(_Container.default, null, _react.default.createElement(_BotPageInfoBox.default, {
-      bot: app,
-      contents: contents
-    }), _react.default.createElement(_FlexColumns.default, {
-      padding: true
-    }, _react.default.createElement(_FlexColumns.default, {
-      columns: 3
-    }, _react.default.createElement("a", {
-      href: app.invite
-    }, _react.default.createElement(_Button.default, {
-      className: _indexModule.default.btn
-    }, _react.default.createElement(_reactIntl.FormattedMessage, {
-      id: `pages.${app.type}.invite`
-    }))), _react.default.createElement(_ContentBox.default, null, app.trigger && _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    const {
+      app,
+      auth
+    } = this.props;
+    return _react.default.createElement(_ContentBox.default, null, app.trigger && _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.prefix",
       values: {
         count: app.trigger.prefix.length
@@ -7381,7 +6401,1112 @@ class BotPage extends _react.Component {
       id: "pages.bots.modified"
     }), _react.default.createElement("ul", {
       className: _indexModule.default.appLinks
-    }, _react.default.createElement("li", null, new Date(app.edited).toLocaleDateString(this.props.intl.locale, _DateFormat.default))))), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("p", null, app.contents.length === 1 ? _react.default.createElement(_reactIntl.FormattedMessage, {
+    }, _react.default.createElement("li", null, new Date(app.edited).toLocaleDateString(this.props.intl.locale, _DateFormat.default)))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(AppPageInfoBox));
+
+exports.default = _default;
+},{"../../../components/ContentBox":"50Yc","../../../data/Locations":"uTwd","../../../redux/actions/auth":"YSbd","./index.module.scss":"TlW0","../../../components/LocalisedHyperlink":"dChq","../../../data/States":"2Fxh","../../../data/DateFormat":"4Pyv","../AppPageDeleteButton":"BNJb"}],"uSix":[function(require,module,exports) {
+module.exports = {
+  "card": "_card_fe28b",
+  "textContainer": "_textContainer_fe28b",
+  "avatar": "_avatar_fe28b",
+  "discriminator": "_discriminator_fe28b",
+  "description": "_description_fe28b",
+  "stars": "_stars_fe28b"
+};
+},{}],"AaMC":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class FlexContainer extends _react.Component {
+  render() {
+    return _react.default.createElement("div", _extends({
+      style: {
+        display: 'flex'
+      }
+    }, this.props), this.props.children);
+  }
+
+}
+
+var _default = FlexContainer;
+exports.default = _default;
+},{}],"GW9A":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _LazyImage = _interopRequireDefault(require("../LazyImage"));
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _NotALink = _interopRequireDefault(require("../NotALink"));
+
+var _reactRedux = require("react-redux");
+
+var _auth = require("../../redux/actions/auth");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ReviewCard extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.deleteReview = this.deleteReview.bind(this);
+    this.state = {
+      deleting: false,
+      deleted: false,
+      timeout: null,
+      deleteClicked: false
+    };
+  }
+
+  deleteReview() {
+    if (!this.state.deleteClicked) {
+      this.setState({
+        deleteClicked: true
+      });
+      fetch(`${_Locations.default.server}/bots/${this.props.bot.id}/reviews/${this.props.review.id}/delete`, {
+        credentials: 'include',
+        method: 'POST'
+      }).then(res => {
+        if (res.status === 200) {
+          this.setState({
+            deleting: true,
+            timeout: setTimeout(() => {
+              this.setState({
+                deleted: true
+              });
+            }, 300)
+          });
+        }
+      });
+    }
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.state.timeout);
+  }
+
+  render() {
+    const {
+      review,
+      auth
+    } = this.props;
+    let stars = '';
+
+    for (let i = 0; i < review.rating; i++) {
+      stars += '★';
+    }
+
+    if (this.state.deleted) return null;
+    return _react.default.createElement(_FlexContainer.default, {
+      className: _indexModule.default.card,
+      style: this.state.deleting ? {
+        opacity: 0
+      } : {}
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "alt.avatar",
+      values: {
+        name: review.username
+      }
+    }, message => _react.default.createElement(_LazyImage.default, {
+      className: _indexModule.default.avatar,
+      alt: message,
+      src: `${_Locations.default.cdn}${review.cachedAvatar}` || _Locations.default.logo
+    })), _react.default.createElement("div", {
+      className: _indexModule.default.textContainer
+    }, _react.default.createElement("h6", null, review.username, _react.default.createElement("span", {
+      className: _indexModule.default.discriminator
+    }, "#", review.discriminator)), _react.default.createElement("p", {
+      className: _indexModule.default.description
+    }, review.text), _react.default.createElement("span", {
+      className: _indexModule.default.stars
+    }, stars)), // Allow the review to be deleted by the owner, or by an admin
+    review.isCurrentUserOwner || auth && auth.data && auth.data.admin ? _react.default.createElement(_NotALink.default, {
+      onClick: this.deleteReview
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.delete"
+    })) : null);
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(ReviewCard);
+
+exports.default = _default;
+},{"../../data/Locations":"uTwd","./index.module.scss":"uSix","../LazyImage":"ofRo","../FlexContainer":"AaMC","../NotALink":"rr1b","../../redux/actions/auth":"YSbd"}],"Ad3D":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ProgressBar extends _react.Component {
+  render() {
+    return _react.default.createElement("div", {
+      className: `${_Modesta.default.progressContainer} ${this.props.className || ''}`
+    }, _react.default.createElement("div", {
+      className: `${_Modesta.default.progressBar} ${_Modesta.default[`${this.props.colour}Bar`]}`,
+      style: {
+        width: `${this.props.proportion * 100}%`
+      }
+    }, this.props.children));
+  }
+
+}
+
+var _default = ProgressBar;
+exports.default = _default;
+},{"../../data/Modesta":"FbNY"}],"nrPT":[function(require,module,exports) {
+module.exports = {
+  "average": "_average_9dc57",
+  "averageContainer": "_averageContainer_9dc57",
+  "progressText": "_progressText_9dc57",
+  "progress": "_progress_9dc57"
+};
+},{}],"f0QB":[function(require,module,exports) {
+module.exports = {
+  "starsContainer": "_starsContainer_1f281"
+};
+},{}],"jlU0":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _reactRedux = require("react-redux");
+
+var _auth = require("../../redux/actions/auth");
+
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ReviewForm extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.submitReview = this.submitReview.bind(this);
+    this.form = _react.default.createRef();
+    this.state = {
+      submitted: false,
+      message: null
+    };
+  }
+
+  submitReview(e) {
+    e.preventDefault();
+
+    if (!this.state.submitted) {
+      const formdata = new FormData(this.form.current);
+      const {
+        auth,
+        intl
+      } = this.props;
+      fetch(`${_Locations.default.server}/${intl.locale}/bots/${this.props.bot.id}/reviews`, {
+        credentials: 'include',
+        body: formdata,
+        method: 'POST'
+      }).then(res => res.json()).then(res => {
+        if (res.ok) {
+          this.setState({
+            submitted: true
+          });
+          this.props.setMyReview({
+            cachedAvatar: auth.data.cachedAvatar,
+            date: new Date(),
+            discriminator: auth.data.discriminator,
+            id: null,
+            isCurrentUserOwner: false,
+            language: intl.locale,
+            rating: formdata.get('review.rating'),
+            text: formdata.get('review.text'),
+            username: auth.data.username
+          });
+        } else {
+          this.setState({
+            message: res.language || res.message
+          });
+        }
+      });
+    }
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.state.timeout);
+  }
+
+  render() {
+    const {
+      auth
+    } = this.props;
+    if (this.state.submitted) return null;
+    if (!auth) return null;
+    if (!auth.data) return null;
+    if (!auth.data.id) return null;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("form", {
+      ref: this.form
+    }, _react.default.createElement("h4", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.write"
+    })), _react.default.createElement(_FlexContainer.default, {
+      className: _indexModule.default.starsContainer
+    }, _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "5",
+      id: "rating-5"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-5"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "4",
+      id: "rating-4"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-4"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "3",
+      id: "rating-3"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-3"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "2",
+      id: "rating-2"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-2"
+    }, "\u2605"), _react.default.createElement("input", {
+      type: "radio",
+      name: "review.rating",
+      value: "1",
+      id: "rating-1"
+    }), _react.default.createElement("label", {
+      htmlFor: "rating-1"
+    }, "\u2605")), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.placeholder"
+    }, placeholder => _react.default.createElement("textarea", {
+      name: "review.text",
+      className: _Modesta.default.fullWidth,
+      placeholder: placeholder
+    })), _react.default.createElement("button", {
+      className: `${_Modesta.default.btn} ${_Modesta.default.white} ${_Modesta.default.blackText}`,
+      onClick: this.submitReview
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "forms.submit"
+    })), this.state.message ? _react.default.createElement(_ContentBox.default, {
+      className: _Modesta.default.alizarin
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: this.state.message
+    }))) : null));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(ReviewForm));
+
+exports.default = _default;
+},{"../../data/Locations":"uTwd","./index.module.scss":"f0QB","../FlexContainer":"AaMC","../../redux/actions/auth":"YSbd","../ContentBox":"50Yc","../../data/Modesta":"FbNY"}],"VA/t":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
+
+var _ReviewCard = _interopRequireDefault(require("../../../components/ReviewCard"));
+
+var _reactIntl = require("react-intl");
+
+var _FlexColumns = _interopRequireDefault(require("../../../components/FlexColumns"));
+
+var _ProgressBar = _interopRequireDefault(require("../../../components/ProgressBar"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _FlexContainer = _interopRequireDefault(require("../../../components/FlexContainer"));
+
+var _reactRedux = require("react-redux");
+
+var _auth = require("../../../redux/actions/auth");
+
+var _ReviewForm = _interopRequireDefault(require("../../../components/ReviewForm"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageReviewsBox extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      myReview: null
+    };
+    this.setMyReview = this.setMyReview.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _auth.fetchAuthIfNeeded)());
+  }
+
+  setMyReview(review) {
+    this.setState({
+      myReview: review
+    });
+  }
+
+  render() {
+    const {
+      app
+    } = this.props;
+    const auth = this.props.auth.data;
+    const {
+      reviews
+    } = app;
+    const average = reviews.reduce((prev, curr) => prev + curr.rating, 0) / reviews.length;
+    const counts = [0, 0, 0, 0, 0];
+    reviews.forEach(review => counts[review.rating - 1]++);
+    const proportions = counts.map(count => count / reviews.length);
+    const myReview = auth ? reviews.find(review => review.author === auth.id) : null;
+    const isOwner = auth ? app.authors.some(author => author.id === auth.id) : false;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.reviews.title"
+    })), _react.default.createElement(_FlexColumns.default, null, _react.default.createElement(_FlexColumns.default, {
+      columns: 4,
+      className: _indexModule.default.averageContainer
+    }, _react.default.createElement("span", {
+      className: _indexModule.default.average
+    }, average.toFixed(1) !== 'NaN' ? average.toFixed(1) : null)), _react.default.createElement(_FlexColumns.default, {
+      columns: 8
+    }, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "5"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "emerald",
+      proportion: proportions[4]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "4"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "greenSea",
+      proportion: proportions[3]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "3"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "sunFlower",
+      proportion: proportions[2]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "2"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "carrot",
+      proportion: proportions[1]
+    })), _react.default.createElement(_FlexContainer.default, null, _react.default.createElement("span", {
+      className: _indexModule.default.progressText
+    }, "1"), _react.default.createElement(_ProgressBar.default, {
+      className: _indexModule.default.progress,
+      colour: "alizarin",
+      proportion: proportions[0]
+    })))), _react.default.createElement("div", null, // If there's a review by the owner, show it.
+    this.state.myReview || myReview ? _react.default.createElement(_ReviewCard.default, {
+      review: this.state.myReview || myReview,
+      bot: app
+    }) : isOwner ? null : _react.default.createElement(_ReviewForm.default, {
+      setMyReview: this.setMyReview,
+      bot: app
+    }), reviews.slice(0, 8).filter(review => auth ? review.author !== auth.id : true).map((review, index) => _react.default.createElement(_ReviewCard.default, {
+      key: index,
+      review: review,
+      bot: app
+    }))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(AppPageReviewsBox);
+
+exports.default = _default;
+},{"../../../components/ContentBox":"50Yc","../../../components/ReviewCard":"GW9A","../../../components/FlexColumns":"U1G4","../../../components/ProgressBar":"Ad3D","./index.module.scss":"nrPT","../../../components/FlexContainer":"AaMC","../../../redux/actions/auth":"YSbd","../../../components/ReviewForm":"jlU0"}],"T8sv":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+class Column extends _react.Component {
+  render() {
+    return _react.default.createElement("div", _extends({}, this.props, {
+      className: `${_Modesta.default.column} ${this.props.className || ''}`
+    }), this.props.children);
+  }
+
+}
+
+var _default = Column;
+exports.default = _default;
+},{"../../data/Modesta":"FbNY"}],"+7WR":[function(require,module,exports) {
+module.exports = {
+  "textarea": "_textarea_c763d"
+};
+},{}],"azt2":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _FlexContainer = _interopRequireDefault(require("../FlexContainer"));
+
+var _Column = _interopRequireDefault(require("../Column"));
+
+var _Modesta = _interopRequireDefault(require("../../data/Modesta"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class InputField extends _react.Component {
+  render() {
+    let input = null;
+    const value = this.props.value;
+
+    if (this.props.options) {
+      input = _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: `${this.props.id}.placeholder`
+      }, placeholder => _react.default.createElement("select", {
+        name: this.props.name,
+        className: _Modesta.default.fullWidth,
+        defaultValue: value,
+        onChange: this.props.onChange
+      }, _react.default.createElement("option", {
+        disabled: !this.props.allowNone,
+        selected: !this.props.options.some(option => value === option),
+        value: ""
+      }, placeholder), this.props.options.map(option => {
+        if (this.props.localiseOptions) {
+          return _react.default.createElement(_reactIntl.FormattedMessage, {
+            id: `${this.props.localiseOptions}.${option}`,
+            key: option
+          }, formattedOption => _react.default.createElement("option", {
+            value: option,
+            selected: value === option
+          }, formattedOption));
+        }
+
+        return _react.default.createElement("option", {
+          value: option,
+          selected: value === option,
+          key: option
+        }, option);
+      })));
+    } else if (this.props.toggle) {
+      input = _react.default.createElement("input", {
+        name: this.props.name,
+        type: "checkbox",
+        defaultChecked: value,
+        onChange: this.props.onChange
+      });
+    } else if (this.props.textarea) {
+      input = _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: `${this.props.id}.placeholder`
+      }, placeholder => _react.default.createElement("textarea", {
+        name: this.props.name,
+        className: `${_Modesta.default.fullWidth} ${_indexModule.default.textarea}`,
+        placeholder: placeholder,
+        defaultValue: value || undefined,
+        onChange: this.props.onChange
+      }));
+    } else {
+      input = _react.default.createElement(_reactIntl.FormattedMessage, {
+        id: `${this.props.id}.placeholder`
+      }, placeholder => _react.default.createElement("input", {
+        name: this.props.name,
+        type: "text",
+        className: _Modesta.default.fullWidth,
+        placeholder: placeholder,
+        style: {
+          flexGrow: '1'
+        },
+        defaultValue: value || undefined,
+        onChange: this.props.onChange
+      }));
+    }
+
+    return _react.default.createElement(_Column.default, {
+      className: this.props.className || _Modesta.default.oneHalf,
+      style: this.props.style
+    }, _react.default.createElement("label", {
+      htmlFor: this.props.name
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.title`
+    }), this.props.required ? '*' : null), _react.default.createElement(_FlexContainer.default, null, input), this.props.smallText ? _react.default.createElement("small", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `${this.props.id}.small`
+    })) : null);
+  }
+
+}
+
+var _default = InputField;
+exports.default = _default;
+},{"../FlexContainer":"AaMC","../Column":"T8sv","../../data/Modesta":"FbNY","./index.module.scss":"+7WR"}],"3m4L":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
+
+var _InputField = _interopRequireDefault(require("../../../components/InputField"));
+
+var _States = _interopRequireDefault(require("../../../data/States"));
+
+var _Modesta = _interopRequireDefault(require("../../../data/Modesta"));
+
+var _reactIntl = require("react-intl");
+
+var _Locations = _interopRequireDefault(require("../../../data/Locations"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageSetStateBox extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.form = _react.default.createRef();
+    this.submit = this.submit.bind(this);
+  }
+
+  submit(e) {
+    e.preventDefault();
+    const formdata = new FormData(this.form.current);
+    fetch(`${_Locations.default.server}/reactjs/v2/apps/id/${this.props.bot.id}/state`, {
+      method: 'POST',
+      body: formdata,
+      credentials: 'include'
+    });
+  }
+
+  render() {
+    const auth = this.props.auth.data;
+    const {
+      app
+    } = this.props;
+    if (!auth) return null;
+    if (!auth.admin) return null;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("form", {
+      ref: this.form
+    }, _react.default.createElement(_InputField.default, {
+      name: "state",
+      id: "components.botpagesetstatebox.state",
+      localiseOptions: "states",
+      options: Object.values(_States.default),
+      value: app.state,
+      onChange: this.onChange
+    }), _react.default.createElement(_InputField.default, {
+      name: "reason",
+      id: "components.botpagesetstatebox.reason",
+      textarea: true,
+      className: _Modesta.default.fullWidth
+    }), _react.default.createElement("button", {
+      onClick: this.submit
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagesetstatebox.submit"
+    }))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    auth
+  } = state;
+  return {
+    auth
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(AppPageSetStateBox);
+
+exports.default = _default;
+},{"../../../components/ContentBox":"50Yc","../../../components/InputField":"azt2","../../../data/States":"2Fxh","../../../data/Modesta":"FbNY","../../../data/Locations":"uTwd"}],"cIZt":[function(require,module,exports) {
+module.exports = {
+  "box": "_box_81ec6",
+  "container": "_container_81ec6",
+  "avatar": "_avatar_81ec6",
+  "prefix": "_prefix_81ec6",
+  "links": "_links_81ec6"
+};
+},{}],"hpSO":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class PrefixLabel extends _react.Component {
+  render() {
+    return _react.default.createElement("span", {
+      className: `${_indexModule.default.prefix} ${this.props.className || ''}`
+    }, this.props.children);
+  }
+
+}
+
+var _default = PrefixLabel;
+exports.default = _default;
+},{"./index.module.scss":"cIZt"}],"BuAp":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
+
+var _FlexContainer = _interopRequireDefault(require("../../../components/FlexContainer"));
+
+var _LazyImage = _interopRequireDefault(require("../../../components/LazyImage"));
+
+var _Locations = _interopRequireDefault(require("../../../data/Locations"));
+
+var _Modesta = _interopRequireDefault(require("../../../data/Modesta"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _PrefixLabel = _interopRequireDefault(require("./PrefixLabel"));
+
+var _Container = _interopRequireDefault(require("../../../components/Container"));
+
+var _Button = _interopRequireDefault(require("../../../components/Button"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageTitleBox extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.scroll = this.scroll.bind(this);
+    this.state = {
+      maxHeight: 200
+    };
+  }
+
+  componentDidMount() {
+    document.addEventListener('scroll', this.scroll);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('resize', this.scroll);
+  }
+
+  scroll(e) {
+    // console.log(e);
+    console.log(window.scrollY);
+    const heightthing = (100 - window.scrollY) / 2;
+    this.setState({
+      padding: `${heightthing > 0 ? heightthing : 0}px`
+    });
+  }
+
+  render() {
+    const {
+      bot,
+      contents
+    } = this.props;
+    return _react.default.createElement(_ContentBox.default, {
+      className: _indexModule.default.box,
+      style: {
+        paddingTop: this.state.padding,
+        paddingBottom: this.state.padding
+      }
+    }, _react.default.createElement(_Container.default, {
+      className: _indexModule.default.container
+    }, _react.default.createElement(_FlexContainer.default, null, _react.default.createElement(_LazyImage.default, {
+      src: `${_Locations.default.cdn}${bot.cachedImages.avatar}`,
+      className: _indexModule.default.avatar
+    }), _react.default.createElement("div", null, _react.default.createElement("h3", null, contents.name), _react.default.createElement("p", null, contents.description), bot.nsfw || bot.state !== 'approved' ? _react.default.createElement("p", null, bot.nsfw ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
+      className: _Modesta.default.alizarin
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.nsfw"
+    }))) : null, bot.state !== 'approved' ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_PrefixLabel.default, {
+      className: _Modesta.default.alizarin
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `states.${bot.state}`
+    }))) : null) : null)), bot.flags && bot.flags.adverts && _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.adverts"
+    })), bot.flags && bot.flags.inAppPurchases && _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.bots.inAppPurchases"
+    }))));
+  }
+
+}
+
+var _default = AppPageTitleBox;
+exports.default = _default;
+},{"../../../components/ContentBox":"50Yc","../../../components/FlexContainer":"AaMC","../../../components/LazyImage":"ofRo","../../../data/Locations":"uTwd","../../../data/Modesta":"FbNY","./index.module.scss":"cIZt","./PrefixLabel":"hpSO","../../../components/Container":"tNeE","../../../components/Button":"+DmJ"}],"GT34":[function(require,module,exports) {
+module.exports = {
+  "topPad": "_topPad_2011f",
+  "appLinks": "_appLinks_2011f",
+  "prefixList": "_prefixList_2011f",
+  "prefix": "_prefix_2011f",
+  "triggerNote": "_triggerNote_2011f",
+  "localeLinks": "_localeLinks_2011f",
+  "used": "_used_2011f"
+};
+},{}],"+9p0":[function(require,module,exports) {
+module.exports = {
+  "btn": "_btn_40445"
+};
+},{}],"hTVF":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactIntl = require("react-intl");
+
+var _Button = _interopRequireDefault(require("../../../components/Button"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AppPageInviteButton extends _react.Component {
+  render() {
+    const {
+      app
+    } = this.props;
+    return _react.default.createElement("a", {
+      href: app.invite
+    }, _react.default.createElement(_Button.default, {
+      className: _indexModule.default.btn
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: `pages.${app.type}.invite`
+    })));
+  }
+
+}
+
+var _default = AppPageInviteButton;
+exports.default = _default;
+},{"../../../components/Button":"+DmJ","./index.module.scss":"+9p0"}],"frcu":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactHelmet = require("react-helmet");
+
+var _reactIntl = require("react-intl");
+
+var _reactRedux = require("react-redux");
+
+var _reactRouterDom = require("react-router-dom");
+
+var _WebsiteBackgroundImage = _interopRequireDefault(require("../../components/WebsiteBackgroundImage"));
+
+var _Button = _interopRequireDefault(require("../../components/Button"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
+
+var _NotALink = _interopRequireDefault(require("../../components/NotALink"));
+
+var _Youku = _interopRequireDefault(require("../../components/Youku"));
+
+var _YouTube = _interopRequireDefault(require("../../components/YouTube"));
+
+var _Locations = _interopRequireDefault(require("../../data/Locations"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+var _reviewToJsonLd = _interopRequireDefault(require("../../helpers/reviewToJsonLd"));
+
+var _locales = require("../../locales");
+
+var _bot = require("../../redux/actions/bot");
+
+var _NotFound = _interopRequireDefault(require("../NotFound"));
+
+var _AppPageContentBox = _interopRequireDefault(require("./AppPageContentBox"));
+
+var _AppPageImagesBox = _interopRequireDefault(require("./AppPageImagesBox"));
+
+var _AppPageInfoBox = _interopRequireDefault(require("./AppPageInfoBox"));
+
+var _AppPageReviewsBox = _interopRequireDefault(require("./AppPageReviewsBox"));
+
+var _AppPageSetStateBox = _interopRequireDefault(require("./AppPageSetStateBox"));
+
+var _AppPageTitleBox = _interopRequireDefault(require("./AppPageTitleBox"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _AppPageInviteButton = _interopRequireDefault(require("./AppPageInviteButton"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotPage extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bot: null,
+      displayLocale: props.intl.locale
+    };
+    this.setLocale = this.setLocale.bind(this);
+  }
+
+  componentDidMount() {
+    const {
+      dispatch,
+      match
+    } = this.props; // Check if the bot has been injected
+
+    dispatch((0, _bot.fetchABot)({
+      match
+    }));
+  }
+
+  setLocale(locale) {
+    this.setState({
+      displayLocale: locale
+    });
+    window.scrollTo(0, 0);
+  }
+
+  render() {
+    const app = this.props.bot.data;
+    const auth = this.props.auth.data;
+    const status = this.props.bot.status;
+
+    if (status === 404) {
+      if (this.props.staticContext) this.props.staticContext.status = 404;
+      return _react.default.createElement(_NotFound.default, {
+        match: this.props.match
+      });
+    }
+
+    if (!app) {
+      return _react.default.createElement(_Layout.default, {
+        match: this.props.match
+      }, _react.default.createElement(_LoadingContainer.default, null));
+    }
+
+    if (app.id === this.props.match.params.id && app.type !== this.props.match.params.type) {
+      if (this.props.staticContext) this.props.staticContext.status = 301;
+      return _react.default.createElement(_reactRouterDom.Redirect, {
+        to: `/${this.props.match.params.locale}/${app.type}/${app.id}`
+      });
+    }
+
+    const contents = (0, _locales.Localise)(app.contents, this.state.displayLocale || this.props.intl.locale);
+    const reviewJSON = (0, _reviewToJsonLd.default)(contents, app);
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match,
+      afterNav: _react.default.createElement(_AppPageTitleBox.default, {
+        bot: app,
+        contents: contents
+      })
+    }, _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, contents.name), _react.default.createElement("meta", {
+      property: "og:title",
+      content: contents.name
+    }), _react.default.createElement("meta", {
+      property: "og:description",
+      content: contents.description
+    }), _react.default.createElement("meta", {
+      name: "description",
+      content: contents.description
+    }), _react.default.createElement("meta", {
+      property: "og:image",
+      content: `${_Locations.default.cdn}${app.cachedImages.avatar}`
+    }), _react.default.createElement("meta", {
+      httpEquiv: "last-modified",
+      content: new Date(app.edited).toISOString().split('T')[0]
+    }), reviewJSON && _react.default.createElement("script", {
+      type: "application/ld+json"
+    }, reviewJSON)), app.cachedImages.cover ? _react.default.createElement(_WebsiteBackgroundImage.default, {
+      src: `${_Locations.default.cdn}${app.cachedImages.cover}`
+    }) : null, _react.default.createElement(_Container.default, {
+      className: _indexModule.default.topPad
+    }, _react.default.createElement(_FlexColumns.default, {
+      padding: true
+    }, _react.default.createElement(_FlexColumns.default, {
+      columns: 3
+    }, _react.default.createElement(_AppPageInviteButton.default, {
+      app: app
+    }), _react.default.createElement(_AppPageInfoBox.default, {
+      app: app
+    }), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("p", null, app.contents.length === 1 ? _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.apps.oneLang"
     }) : _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.apps.otherLang"
@@ -7399,18 +7524,18 @@ class BotPage extends _react.Component {
       id: `locales.${appContents.locale}`
     })))))))), _react.default.createElement(_FlexColumns.default, {
       columns: 9
-    }, _react.default.createElement(_BotPageContentBox.default, {
+    }, _react.default.createElement(_AppPageContentBox.default, {
       page: contents.page
-    }), _react.default.createElement(_BotPageImagesBox.default, {
+    }), _react.default.createElement(_AppPageImagesBox.default, {
       images: app.cachedImages.preview
     }, app.videos.youtube ? _react.default.createElement(_YouTube.default, {
       video: app.videos.youtube
     }) : null, app.videos.youku ? _react.default.createElement(_Youku.default, {
       video: app.videos.youku
-    }) : null), _react.default.createElement(_BotPageReviewsBox.default, {
-      bot: app
-    }))), _react.default.createElement(_BotPageSetStateBox.default, {
-      bot: app
+    }) : null), _react.default.createElement(_AppPageReviewsBox.default, {
+      app: app
+    }))), _react.default.createElement(_AppPageSetStateBox.default, {
+      app: app
     })));
   }
 
@@ -7435,7 +7560,7 @@ exportedComponent.serverFetch = [{
 }];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/AppPageDeleteButton":"h5DN","../../components/BotPageContentBox":"+U5o","../../components/BotPageImagesBox":"CMB4","../../components/BotPageInfoBox":"jXO1","../../components/BotPageReviewsBox":"mb7s","../../components/BotPageSetStateBox":"drSn","../../components/BtecParallax":"2lop","../../components/Button":"+DmJ","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/Layout":"UCeK","../../components/LoadingContainer":"N3k8","../../components/LocalisedHyperlink":"dChq","../../components/NotALink":"rr1b","../../components/Youku":"CyNR","../../components/YouTube":"4Xqa","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../../data/States":"2Fxh","../../helpers/ConstructCSS":"SwhA","../../helpers/reviewToJsonLd":"b75q","../../locales":"Qpzm","../../redux/actions/bot":"YodB","../NotFound":"GVTv","./index.module.scss":"GT34"}],"iVLo":[function(require,module,exports) {
+},{"../../components/WebsiteBackgroundImage":"TxHF","../../components/Button":"+DmJ","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/Layout":"UCeK","../../components/LoadingContainer":"N3k8","../../components/NotALink":"rr1b","../../components/Youku":"CyNR","../../components/YouTube":"4Xqa","../../data/Locations":"uTwd","../../helpers/ConstructCSS":"SwhA","../../helpers/reviewToJsonLd":"b75q","../../locales":"Qpzm","../../redux/actions/bot":"YodB","../NotFound":"GVTv","./AppPageContentBox":"PYpx","./AppPageImagesBox":"yXl1","./AppPageInfoBox":"vLPW","./AppPageReviewsBox":"VA/t","./AppPageSetStateBox":"3m4L","./AppPageTitleBox":"BuAp","./index.module.scss":"GT34","./AppPageInviteButton":"hTVF"}],"iVLo":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10372,7 +10497,108 @@ class DocsHome extends _react.Component {
 var _default = (0, _reactIntl.injectIntl)(DocsHome);
 
 exports.default = _default;
-},{"../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/LoadingContentBox":"qVpT","../../components/WebsiteTypeButtons":"V0nm","../../data/Locations":"uTwd","../../data/States":"2Fxh","../../components/Button":"+DmJ","../../data/Modesta":"FbNY","../../data/DateFormat":"4Pyv","../../components/LocalisedHyperlink":"dChq","../NotFound":"GVTv","../../components/LoadingContainer":"N3k8"}],"+O+J":[function(require,module,exports) {
+},{"../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/LoadingContentBox":"qVpT","../../components/WebsiteTypeButtons":"V0nm","../../data/Locations":"uTwd","../../data/States":"2Fxh","../../components/Button":"+DmJ","../../data/Modesta":"FbNY","../../data/DateFormat":"4Pyv","../../components/LocalisedHyperlink":"dChq","../NotFound":"GVTv","../../components/LoadingContainer":"N3k8"}],"RzcF":[function(require,module,exports) {
+module.exports = {
+  "description": "_description_d4455",
+  "tableContainer": "_tableContainer_d4455"
+};
+},{}],"nUkM":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
+
+var _marked = _interopRequireDefault(require("marked"));
+
+var _xss = _interopRequireDefault(require("xss"));
+
+var _arrow = _interopRequireDefault(require("../../../scss/ModestaCSS/css/images/arrow.png"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _reactIntl = require("react-intl");
+
+var _Modesta = _interopRequireDefault(require("../../../data/Modesta"));
+
+var _elementsModule = _interopRequireDefault(require("../../../scss/elements.module.scss"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class BotPageContentBox extends _react.Component {
+  render() {
+    const page = (0, _xss.default)((0, _marked.default)(this.props.page), {
+      whiteList: null,
+      onTag: (tag, html, options) => {
+        if (tag === 'table') {
+          if (options.isClosing) {
+            return '</table></div>';
+          }
+
+          return `<div class="${_Modesta.default.tableContainer} ${_indexModule.default.tableContainer} ${_elementsModule.default.scrollbar}">${html}`;
+        }
+
+        return;
+      },
+      onTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (tag === 'img' && name === 'src' && this.props.cdn && value.startsWith('/')) {
+          return `src="${this.props.cdn}${value}"`;
+        }
+
+        return;
+      },
+      onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
+        if (this.props.allowHTML || name === 'class') {
+          return `${name}="${_xss.default.escapeAttrValue(value)}"`;
+        }
+      }
+    });
+    const smallEnough = typeof this.props.forceLarge === 'boolean' ? this.props.forceLarge : this.state.smallEnough;
+    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", null, _react.default.createElement("div", {
+      dangerouslySetInnerHTML: {
+        __html: page
+      },
+      ref: this.description,
+      className: _indexModule.default.description
+    }), smallEnough ? null : // if not small enough, show the buttons
+    _react.default.createElement("div", {
+      ref: this.button,
+      onClick: this.toggle
+    }, this.state.open === false ? _react.default.createElement(_ContentBox.default, {
+      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.more"
+    })), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.toggle"
+    }, message => _react.default.createElement("img", {
+      className: _indexModule.default.arrow,
+      src: _arrow.default,
+      alt: message
+    }))) : _react.default.createElement(_ContentBox.default, {
+      className: `${_Modesta.default.secondary} ${_indexModule.default.button}`
+    }, _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.less"
+    })), _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "components.botpagecontentbox.toggle"
+    }, message => _react.default.createElement("img", {
+      className: `${_indexModule.default.arrow} ${_indexModule.default.upsidedown}`,
+      src: _arrow.default,
+      alt: message
+    }))))));
+  }
+
+}
+
+var _default = BotPageContentBox;
+exports.default = _default;
+},{"../../../components/ContentBox":"50Yc","../../../scss/ModestaCSS/css/images/arrow.png":"ILdi","./index.module.scss":"RzcF","../../../data/Modesta":"FbNY","../../../scss/elements.module.scss":"h2Hb"}],"+O+J":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10463,7 +10689,7 @@ var _Container = _interopRequireDefault(require("../../components/Container"));
 
 var _LoadingContainer = _interopRequireDefault(require("../../components/LoadingContainer"));
 
-var _BotPageContentBox = _interopRequireDefault(require("../../components/BotPageContentBox"));
+var _DocPageContentBox = _interopRequireDefault(require("./DocPageContentBox"));
 
 var _LinkButton = _interopRequireDefault(require("../../components/LinkButton"));
 
@@ -10533,7 +10759,7 @@ class DocPage extends _react.Component {
       values: {
         name: page.by
       }
-    }))), page.date && _react.default.createElement("p", null, date.toLocaleDateString(this.props.intl.locale, _DateFormat.default))), _react.default.createElement(_BotPageContentBox.default, {
+    }))), page.date && _react.default.createElement("p", null, date.toLocaleDateString(this.props.intl.locale, _DateFormat.default))), _react.default.createElement(_DocPageContentBox.default, {
       page: page.content,
       forceLarge: true,
       allowHTML: true,
@@ -10560,7 +10786,7 @@ exportedComponent.serverFetch = [{
 }];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../NotFound":"GVTv","../../components/Container":"tNeE","../../components/LoadingContainer":"N3k8","../../components/BotPageContentBox":"+U5o","../../components/LinkButton":"geqJ","../../data/Modesta":"FbNY","../../redux/actions/doc":"+O+J"}],"Fil3":[function(require,module,exports) {
+},{"../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../NotFound":"GVTv","../../components/Container":"tNeE","../../components/LoadingContainer":"N3k8","./DocPageContentBox":"nUkM","../../components/LinkButton":"geqJ","../../data/Modesta":"FbNY","../../redux/actions/doc":"+O+J"}],"Fil3":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
