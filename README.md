@@ -1,18 +1,18 @@
-# Discord Apps Marketplace
+# Discord Apps
 _curated by Terminal.ink_
 
-Discord Apps Marketplace is the next generation in Bot Listing technology,
+Discord Apps is the next generation in Bot Listing technology,
 utilising the latest web technology for the bot list of tomorrow.
 
 ## Features
 ### Progressive Web Application
 ![pwa](.github/pwa.png)
 
-Install Discord Apps Marketplace in supported Google Chrome browsers.
+Install Discord Apps in supported Google Chrome browsers.
 Service worker speeds up page loads for the fastest experience.
 
 ### Multi Language support
-![i18n](.github/languages.gif)
+![i18n](.github/languages.png)
 
 Present your ideas in more than just English.
 Make your bot page in multiple languages to target many more users.
@@ -30,7 +30,7 @@ Download the bundled code in the `dist` branch of this repo.
 
 Location                                                          | Description
 ----------------------------------------------------------------- | -----------------
-[Discord Apps Marketplace](https://discordapps.dev/)              | Production instance
+[Discord Apps](https://discordapps.dev/)                          | Production instance
 [Netlify](https://twink.netlify.com/)                             | Development instance - Always latest commit
 [GitHub Pages](https://terminal.github.io/discordapps.dev/)       | Development instance - Slower than Netlify
 [Fog Creek Software's Glitch](https://discordapps-dev.glitch.me/) | Glitch is a great website
@@ -45,7 +45,7 @@ yarn create-bundles | Package the client-side and server-side portions for deplo
 yarn start          | Run the production server
 
 ## Set up Development environment
-[Refer to the "How to set up a development instance of Discord Apps Marketplace" page on discordapps.dev](https://discordapps.dev/en-GB/posts/docs/20190416-development-instance/)
+[Refer to the "How to set up a development instance of Discord Apps" page on discordapps.dev](https://discordapps.dev/en-GB/posts/docs/20190416-development-instance/)
 
 <!--
 ## Sponsors
