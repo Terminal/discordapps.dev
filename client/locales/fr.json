@@ -1,0 +1,403 @@
+{
+  "categories": {
+    "fun": "Fun",
+    "games": "Jeux",
+    "entertainment": "Divertissement",
+    "productivity": "Productivité",
+    "education": "Éducation",
+    "image": "Manipulation d'images",
+    "news": "Nouvelles",
+    "music": "Musique",
+    "moderation": "Modération",
+    "utility": "Utilitaire",
+    "notifications": "Notifications",
+    "other": "Autre"
+  },
+  "copyright": "Copyright 2017 - 2019, Terminal.ink; Discord est une marque appartenant Discord Inc.\nTraduction en français par iDroid27, Bowser65, blue et Lionir.",
+  "errors": {
+    "apps": {
+      "authors": "Vous devez avoir au moins 1 auteur de ce bot, et tous vos IDs doivent être numériques",
+      "category": "Vous devez sélectionner une catégorie pour votre bot",
+      "customisable": "La customisabilité de votre préfixe doit être soit coché, ou décoché",
+      "contents": "Vous devez sélectionner au moins une langue pour que votre bot soit disponible. Cliquez sur une langue, puis cliquez sur \"Ajouter une langue\"",
+      "description": "La description courte doit avoir une taille entre 10 et 100 caractères",
+      "githubowner": "Le propriétaire GitHub doit être un utilisateur GitHub valide. Laissez vide si vous n'avez pas de compte GitHub.",
+      "githubrepo": "le répertoire GitHub doit être une chaine de caractères valide. Laissez vide si vous n'avez pas de répertoire GitHub.",
+      "id": "L'ID du bot doit être renseigné, et numerique",
+      "website": "L'URL du site web doit être un lien HTTPS valide",
+      "languages": "Vous devez ajouter au moins une langue. Sélectionnez le langue dans laquelle vous voulez que vote page de bot soie, et cliquez sur le bouton 'Ajouter cette langue'",
+      "mentionable": "la mentionnabilité du préfixe doit être soit coché, ou décoché",
+      "name": "Le bot doit avoir un nom d'une longueur entre 4 et 32 caractères.",
+      "nsfw": "Le status NSFW doit être soit coché, ou décoché",
+      "oauth": "L'ID OAuth doit être numerique",
+      "page": "la longue description doit avoir une longueur entre 20 et 10000 caractères.",
+      "prefix": "Vous devez avoir au moins un prefixe, d'une longueur maximale de 10 caractères.",
+      "support": "L'URL d'assistance doit être un lien HTTPS valide",
+      "exists": "Le bot existe déjà dans la base de données, et vous n'avez pas la permissions d'écraser cela.",
+      "add_success": "Le bot a été ajouté à la liste d'attente des bots.",
+      "edit_success": "Bot édité avec succès.",
+      "count": "Le nombre de guildes pour le bot doit être entre 0 et 5000000 serveurs",
+      "avatar": "L'URL de l'avatar doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
+      "cover": "L'URL de la couverture doit être un lien HTTPS valide, avec une longueur maximale de 2000 caractères",
+      "preview": "Toutes les URL d'aperçu doivent être des liens HTTPS valides, avec une longueur maximale de 2000 caractères chacun, avec un maximum de 20 liens",
+      "no_suitable_lang": "Cette page n'a pas de version Française. La version en {{ language }} est affiché à la place.",
+      "youtube": "L'ID Youtube doit ressembler à un ID",
+      "youku": "L'ID YOUKU doit ressembler à un ID",
+      "boolean": "Une valeur non-booléenne a été envoyée au serveur. Veuillez contacter le support Terminal.ink"
+    },
+    "bots": {
+      "invite": "L'URL d'invitation doit être remplie, et doit être un lien HTTPS valide",
+      "notabot": "L'ID fourni n'était pas un ID de bot.",
+      "notfound": "L'ID fourni n'a pas été trouvé par Discord."
+    },
+    "rpc": {
+      "invite": "L'URL d'installation doit être remplie, et doit être un lien HTTPS valide"
+    },
+    "permissions": {
+      "login": "Vous n'êtes pas connecté",
+      "denied": "Vous n'avez pas les permissions adéquates afin d'accéder à cela",
+      "banned": "Vous avez été interdit d'accéder à cette ressource"
+    },
+    "website": {
+      "noscript": "JavaScript a été désactivé. Cernaines fonctionnalitées risquent d'être réduites."
+    },
+    "reviews": {
+      "rating": "Veuillez sélectionner une note avant de continuer",
+      "text": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
+      "self": "Vous ne pouvez pas critiquer votre propre bot!"
+    },
+    "api": {
+      "400": "Vous n'êtes pas autorisé à utiliser ce chemin. Vérifiez la validité du jeton.",
+      "404": "Ce chemin n'a pas été trouvé, ou la méthode utilisée pour effectuer cette requête n'est pas supportée.",
+      "500": "Une erreur interne au serveur est survenue.",
+      "test": "Une erreur a été lancée à des fins de développement.",
+      "no_bot": "Bot introuvable",
+      "idchange": "L'ID du bot ne peut être changé pour un autre ID. Veuillez contacter le support de Terminal pour une assistance technique"
+    }
+  },
+  "footer": {
+    "attribution": "Attribution",
+    "licence": "GNU AGPLv3",
+    "source": "GitHub",
+    "discord": "Discord",
+    "terminal": "Terminal.ink",
+    "terms": "Conditions d'utilisation",
+    "docs": "Docs",
+    "foss": "Discord Apps est propulsé par le Terminal.ink Bot List Open Source Project",
+    "apple": "Apple, le logo Apple, iPhone et iPad sont des marques commerciales de Apple Inc., déposées aux États-Unis et dans d'autres pays et régions. App Store est une marque de service d'Apple Inc."
+  },
+  "forms": {
+    "select": "Veuillez séléctionner...",
+    "submit": "Envoyer",
+    "wait": "Veuillez patienter..."
+  },
+  "intro": {
+    "search": "Que recherchez vous?",
+    "docs": "Documentation"
+  },
+  "locales": {
+    "ar": "Arabe",
+    "da": "Danois",
+    "de": "Allemand",
+    "el": "Grec",
+    "en-GB": "Anglais (Royaume Uni)",
+    "en-US": "Anglais (États-Unis)",
+    "es": "Espagnol",
+    "et": "Estonien",
+    "fi": "Finlandais",
+    "fj": "Fidjien",
+    "fr": "Français",
+    "gd": "Gaélique (Écossais)",
+    "hi": "Hindi",
+    "he": "Hébreu",
+    "it": "Italien",
+    "ja": "Japonais",
+    "ko": "Coréen",
+    "la": "Latin",
+    "nl": "Néerlandais",
+    "no": "Norvégien",
+    "pl": "Polonais",
+    "pt": "Portugais",
+    "ru": "Russe",
+    "sv": "Suédois",
+    "tr": "Turc",
+    "vi": "Vietnamien",
+    "zh-cn": "Chinois (Simplifié)",
+    "zh-tw": "Chinois (Traditionnel)"
+  },
+  "pages": {
+    "apps": {
+      "oneLang": "Cette page est seulement disponible dans la langue suivante",
+      "otherLang": "Cette page est disponible dans d'autres langues",
+      "appLinks": "Liens de l'application",
+      "devLinks": "Liens de développeur",
+      "reclaim": "Aucune donnée. Rejoignez Terminal.ink pour revendiquer"
+    },
+    "home": {
+      "bots": {
+        "title": "Bots",
+        "description": "Trouvez le bot parfait pour votre serveur",
+        "link": "Commencez à explorer"
+      },
+      "rpc": {
+        "title": "Plugins de Présence Riche",
+        "description": "Montrez ce que vous êtes en train de faire dans Discord grâce aux applications RPC",
+        "link": "Commencez à partager"
+      },
+      "discover": {
+        "title": "Découvrez Terminal.ink",
+        "description": "Voyez comment nous travaillons pour améliorer le Terminal.ink Bot List Open Source Project",
+        "link": "Blog"
+      },
+      "topBots": "Bots les mieux notés",
+      "randomBots": "Sélection aléatoires",
+      "popularBots": "Les plus installés",
+      "smallBots": "Bots en croissance",
+      "topRPC": "Applications RPC"
+    },
+    "bots": {
+      "backgroundAlt": "Logo pour discordapps.dev",
+      "inMyLanguage": "Bots dans ma langue",
+      "invite": "Inviter ce bot",
+      "support": "Support technique",
+      "website": "Site Internet",
+      "mentionable": "Mentionable",
+      "customisable": "Customisable",
+      "delete": "Supprimer",
+      "edit": "Éditer",
+      "configure": "Configurer",
+      "github": "Voir sur GitHub",
+      "adverts": "Contient de la publicité et des fonctionalités cachées par d'autres services",
+      "inAppPurchases": "Achats dans l'application",
+      "nsfw": "NSFW",
+      "offeredby": "Proposé par :",
+      "modified": "Dernière modification",
+      "created": "Publication",
+      "category": "Catégorie",
+      "initiateCategoryFilter": "Catégories",
+      "count": "Installé dans {guilds, plural, one {un seul serveur} other {{guilds} serveurs}}"
+    },
+    "rpc": {
+      "index": {
+        "title": "Liste de Présence Riche",
+        "description": "Montrez ce que vous faites, avec une grande variété de plugins RPC pour Discord sur Windows, Mac ou Linux. Parcourez RPC et plus sur Discord Apps"
+      }
+    },
+    "configuration": {
+      "token": {
+        "title": "Jeton",
+        "description": "Ceci est le jeton requis pour modifier votre bot sur la liste. Veuillez vous refferer à la documentation pour developers pour les endpoints disponibles.",
+        "docs": "Voir la documentation"
+      },
+      "hide": {
+        "title": "Masquer le bot",
+        "description": "Vous pouvez masquer votre bot de la page d'accueil du site, si vous ne souhaitez pas qu'il y soit.",
+        "disable": "Afficher",
+        "enable": "Masquer"
+      }
+    },
+    "edit": {
+      "application_id": {
+        "placeholder": "L'ID utilisé dans le lien OAuth",
+        "title": "ID OAuth"
+      },
+      "authors": {
+        "placeholder": "ID d'un seul propriétaire",
+        "title": "Auteur(s) du Bot",
+        "add": "Ajouter un(e) autre"
+      },
+      "basicinfo": "Informations Basiques",
+      "nsfw": {
+        "title": "Non adapté pour toutes les audiences"
+      },
+      "support": {
+        "placeholder": "Quelque chose comme https://discord.gg/8uC6aKZ",
+        "small": "Laissez ce champ vide si vous n'aimez pas aider les gens",
+        "title": "Serveur d'assistance"
+      },
+      "category": {
+        "title": "Catégorie"
+      },
+      "client_id": {
+        "placeholder": "L'ID de l'utilisateur associé au bot",
+        "title": "ID du bot"
+      },
+      "customisable": {
+        "title": "Préfixe customisable"
+      },
+      "description": {
+        "title": "Description courte"
+      },
+      "github_owner": {
+        "placeholder": "Quelque chose comme ry00001",
+        "title": "Utilisateur ou Organisation"
+      },
+      "github_repo": {
+        "placeholder": "Quelque chose comme Tuxedo",
+        "title": "Répertoire"
+      },
+      "information": "Page de votre bot",
+      "invite": {
+        "title": "URL d'invitation",
+        "generate": "Générer une URL"
+      },
+      "languages": {
+        "add": "Ajouter une langue",
+        "delete": "Supprimer cette langue",
+        "modal": "Écrivez la page de votre bot dans n'importe quelle langue prise en charge. Sélectionnez une langue, et cliquez sur \"Ajouter cette langue\"."
+      },
+      "mentionable": {
+        "title": "Possibilité de mentionner le bot pour le déclencher"
+      },
+      "name": {
+        "title": "Nom"
+      },
+      "page": {
+        "title": "Description extensive"
+      },
+      "prefix": {
+        "placeholder": "Un seul préfixe",
+        "title": "Préfixe",
+        "add": "Ajouter un autre préfixe"
+      },
+      "flags": {
+        "title": "Notification de publicité et/ou de monétisation",
+        "inAppPurchases": {
+          "title": "Achats dans l'application",
+          "small": "Cochez cette case si le bot a des fonctionnalités payantes"
+        },
+        "adverts": {
+          "title": "Publicités",
+          "small": "Cochez cette case si votre bot affiche des publicités, incluant d'autres listes de bots"
+        }
+      },
+      "images": {
+        "title": "Apparance",
+        "avatar": {
+          "title": "URL de l'Avatar",
+          "placeholder": "Un lien HTTPS vers une image d'avatar"
+        },
+        "cover": {
+          "title": "Image de couverture",
+          "placeholder": "Un lien HTTPS vers une image large"
+        },
+        "preview": {
+          "title": "Images d'aperçu",
+          "placeholder": "Un lien HTTPS vers une image montrant un aperçu de votre bot",
+          "add": "Ajouter une autre image"
+        }
+      },
+      "youtube": {
+        "title": "ID YouTube",
+        "placeholder": "Un ID d'une vidéo YouTube faisant une démonstration de votre bot"
+      },
+      "youku": {
+        "title": "YOUKU ID",
+        "placeholder": "Un ID d'une vidéo YOUKU"
+      },
+      "website": {
+        "title": "Site Internet",
+        "placeholder": "Un lien HTTPS vers votre site Internet"
+      },
+      "sourcecode": "Code Source",
+      "title": "Ajouter ou Modifier une Application",
+      "triggermethods": "Méthodes de déclenchement",
+      "deleteLanguage": "Supprimer une langue",
+      "required": "Les champs marqués d'un * sont requis.",
+      "updates": "Il est vivement conseillé de rejoindre le serveur Discord de Terminak.ink en cliquant sur 'Discord' en bas de la page, afin de voir les mises à jour du service, voir le statut de la vérification de votre bot, ainsi que recevoir des messages privés de la part du staff à propos de votre application.",
+      "discord": "Rejoindre Terminal.ink"
+    },
+    "error": {
+      "notfound": "Page introuvable...",
+      "server": "Erreur Interne du Serveur",
+      "github": "Rapporter ce bug sur GitHub.com",
+      "report": "Merci de prendre le temps de nous signaler cette erreur. Veuillez mentionner ce que vous étiez en train de faire avant l'incident.",
+      "snarky": "C'était sûr d'arriver..."
+    },
+    "list": {
+      "empty": "Il n'y a pas de bots"
+    },
+    "locale": {
+      "choose": "Sélectionnez une langue.",
+      "pleasehelp": "Êtes-vous un bon traducteur ? Cliquez ici."
+    },
+    "langdev": {
+      "title": "Voir les clés des langages",
+      "compare": "Comparer les langages sélectionnés",
+      "key": "Clé JSON",
+      "notfound": "Clé introuvable !"
+    },
+    "reviews": {
+      "title": "Critique",
+      "write": "Écrire une critique",
+      "placeholder": "Veuillez entrer pourquoi vous avez donné cette note à ce bot.",
+      "delete": "Supprimer la critique"
+    },
+    "admin": {
+      "title": "Console d'Administration"
+    }
+  },
+  "navbar": {
+    "add": "Ajouter votre application",
+    "login": "Se connecter",
+    "logout": "Déconnexion",
+    "admin": "Administration",
+    "languages": "Langages",
+    "user": "Mes Bots"
+  },
+  "pagination": {
+    "page": {
+      "prev": "Prédédent",
+      "next": "Suivant"
+    },
+    "currentPage": "Page { number }",
+    "reviews": "Critiques des utilisateurs pour '{{ name }}' - Page { number }"
+  },
+  "permission": {
+    "ADD_REACTIONS": "Ajouter des réactions",
+    "ADMINISTRATOR": "Administrateur",
+    "ATTACH_FILES": "Attacher des fichiers",
+    "BAN_MEMBERS": "Bannir des membres",
+    "CHANGE_NICKNAME": "Changer de pseudo",
+    "CONNECT": "Se connecter",
+    "CREATE_INSTANT_INVITE": "Créer une invitation",
+    "DEAFEN_MEMBERS": "Rendre des membres sourds",
+    "EMBED_LINKS": "Attacher des liens",
+    "KICK_MEMBERS": "Expulser des membres",
+    "MANAGE_CHANNELS": "Gérer les salons",
+    "MANAGE_EMOJIS": "Gérer les émojis",
+    "MANAGE_GUILD": "Gérer le serveur",
+    "MANAGE_MESSAGES": "Gérer les messages",
+    "MANAGE_NICKNAMES": "Gérer les pseudos",
+    "MANAGE_ROLES": "Gérer les rôles",
+    "MANAGE_WEBHOOKS": "Gérer les webhooks",
+    "MENTION_EVERYONE": "Mentionner @everyone",
+    "MOVE_MEMBERS": "Déplacer les membres",
+    "MUTE_MEMBERS": "Rendre des membres muets",
+    "READ_MESSAGE_HISTORY": "Voir les anciens messages",
+    "READ_MESSAGES": "Lire les messages",
+    "SEND_MESSAGES": "Envoyer des messages",
+    "SEND_TTS_MESSAGES": "Envoyer des messages TTS",
+    "SPEAK": "Parler",
+    "USE_EXTERNAL_EMOJIS": "Utiliser des émojis externes",
+    "USE_VAD": "Utiliser la détection de voix",
+    "VIEW_AUDIT_LOG": "Voir les logs du serveur"
+  },
+  "site": {
+    "name": "Discord Apps",
+    "description": "discordapps.dev est une boutique d'application pour des applications Discord. Installez des applications pour de la musique, pour des nouvelles, pour modérer et plus pour votre serveur, ou même des plugins RPC pour montrer ce que vous êtes entrain de faire."
+  },
+  "states": {
+    "approved": "Approuvé",
+    "denied": "Refusé",
+    "queue": "En attente",
+    "banned": "Banni"
+  },
+  "components": {
+    "botpagecontentbox": {
+      "toggle": "Basculer la flèche",
+      "more": "Voir plus",
+      "less": "Vois moins"
+    }
+  }
+}

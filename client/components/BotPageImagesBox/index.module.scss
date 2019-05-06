@@ -1,0 +1,56 @@
+.sliderContainer {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 5px;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  & > * {
+    max-height: 30vh;
+    border-radius: 5px;
+    margin-left: 10px;
+    flex-shrink: 0;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.botListDotSpace {
+  height: 10px;
+}
+
+.image {
+  max-height: 30vh;
+  border-radius: 5px;
+}
+
+.dots {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  li[class~="slick-active"] { // css modules mixing with shit
+    button {
+      color: #fff !important;
+    }
+  }
+  li {
+    display: inline;
+    button {
+      background-color: transparent;
+      box-shadow: unset;
+      visibility: hidden;
+      padding-left: 3px;
+      padding-right: 3px;
+      font-size: 0;
+      color: #666;
+      &:before {
+        font-size: 12pt;
+        content: '⬤';
+        visibility: visible;
+      }
+    }
+  }
+}

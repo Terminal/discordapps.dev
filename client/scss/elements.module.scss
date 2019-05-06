@@ -1,0 +1,52 @@
+.roundedCorners {
+  border-radius: 5px;
+}
+
+.loading {
+  animation: loading 2s infinite ease-in-out;
+}
+
+.button {
+  height: 38px;
+  border-radius: 4px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.scrollbar {
+  /* width */
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #333;
+    border-radius: 5px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px; 
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+}

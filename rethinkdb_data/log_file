@@ -1,0 +1,36 @@
+2019-05-05T19:44:36.934641400 0.031396s notice: In recursion: removing file 'C:\\Users\\Leondro Lio\\Documents\\programming\\discordapps.dev\\rethinkdb_data\\tmp'
+2019-05-05T19:44:36.935632600 0.032411s warn: Trying to delete non-existent file 'C:\\Users\\Leondro Lio\\Documents\\programming\\discordapps.dev\\rethinkdb_data\\tmp'
+2019-05-05T19:44:36.936629900 0.033906s notice: Initializing directory C:\\Users\\Leondro Lio\\Documents\\programming\\discordapps.dev\\rethinkdb_data
+2019-05-05T19:44:36.938634800 0.035672s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory 'C:\\Users\\Leondro Lio\\Documents\\programming\\discordapps.dev\\rethinkdb_data' did not already exist or is empty.)
+2019-05-05T19:44:36.938634801 0.035858s notice: Running rethinkdb 2.3.6-windows (MSC 190024215)...
+2019-05-05T19:44:36.938634802 0.035950s notice: Running on 6.2.9200 (Windows 8, Server 2012)
+2019-05-05T19:44:36.938634803 0.035986s notice: Loading data from directory C:\\Users\\Leondro Lio\\Documents\\programming\\discordapps.dev\\rethinkdb_data
+2019-05-05T19:44:37.081082000 0.178154s info: Automatically using cache size of 3482 MB
+2019-05-05T19:44:37.087081900 0.183950s notice: Listening for intracluster connections on port 29015
+2019-05-05T19:44:37.097083600 0.193526s notice: Listening for client driver connections on port 28015
+2019-05-05T19:44:37.097083601 0.193661s notice: Listening for administrative HTTP connections on port 8080
+2019-05-05T19:44:37.097083602 0.193664s notice: Listening on cluster address: 127.0.0.1
+2019-05-05T19:44:37.097083603 0.193665s notice: Listening on driver address: 127.0.0.1
+2019-05-05T19:44:37.097083604 0.193666s notice: Listening on http address: 127.0.0.1
+2019-05-05T19:44:37.097083605 0.193667s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2019-05-05T19:44:37.097083606 0.193668s notice: Server ready, "LeondroDesktop_89o" 7157794c-d24a-4251-8d20-cf8a0ea19f21
+2019-05-05T19:49:24.890857700 287.987324s info: Table 18b2bdd8-4dfb-4054-ae2d-8a750b529572: Starting a new Raft election for term 1.
+2019-05-05T19:49:24.892859500 287.989417s info: Table 18b2bdd8-4dfb-4054-ae2d-8a750b529572: Added replica on this server.
+2019-05-05T19:49:24.894858200 287.991472s info: Table 11aee7d5-2be5-4c75-9fd9-209e05239cd6: Starting a new Raft election for term 1.
+2019-05-05T19:49:24.894858201 287.991491s info: Table cfffdf0b-b34b-4b86-ab89-6528fd982e21: Starting a new Raft election for term 1.
+2019-05-05T19:49:24.894858202 287.991499s info: Table fa5328ae-9a18-4cde-b00b-bb581457a0d7: Starting a new Raft election for term 1.
+2019-05-05T19:49:24.894858203 287.991628s info: Table 11aee7d5-2be5-4c75-9fd9-209e05239cd6: Added replica on this server.
+2019-05-05T19:49:24.894858204 287.991694s info: Table cfffdf0b-b34b-4b86-ab89-6528fd982e21: Added replica on this server.
+2019-05-05T19:49:24.894858205 287.991781s info: Table fa5328ae-9a18-4cde-b00b-bb581457a0d7: Added replica on this server.
+2019-05-05T19:49:24.896860200 287.994190s info: Table 18b2bdd8-4dfb-4054-ae2d-8a750b529572: This server is Raft leader for term 1. Latest log index is 0.
+2019-05-05T19:49:24.896860201 287.994232s info: Table 11aee7d5-2be5-4c75-9fd9-209e05239cd6: This server is Raft leader for term 1. Latest log index is 0.
+2019-05-05T19:49:24.897857400 287.994254s info: Table cfffdf0b-b34b-4b86-ab89-6528fd982e21: This server is Raft leader for term 1. Latest log index is 0.
+2019-05-05T19:49:24.897857401 287.994273s info: Table fa5328ae-9a18-4cde-b00b-bb581457a0d7: This server is Raft leader for term 1. Latest log index is 0.
+2019-05-05T19:52:09.271761300 452.368772s info: Table 3a5803db-e8d9-4afb-ba5d-f5dbc4484ae1: Starting a new Raft election for term 1.
+2019-05-05T19:52:09.271761301 452.369020s info: Table 3a5803db-e8d9-4afb-ba5d-f5dbc4484ae1: Added replica on this server.
+2019-05-05T19:52:09.274773800 452.371552s info: Table 3a5803db-e8d9-4afb-ba5d-f5dbc4484ae1: This server is Raft leader for term 1. Latest log index is 0.
+2019-05-05T19:55:52.524896700 675.621924s notice: Server got Control-C; shutting down...
+2019-05-05T19:55:52.524896701 675.622071s notice: Shutting down client connections...
+2019-05-05T19:55:52.524896702 675.622113s notice: All client connections closed.
+2019-05-05T19:55:52.524896703 675.622114s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2019-05-05T19:55:52.538897900 675.636133s notice: Storage engine shut down.

@@ -1,0 +1,16 @@
+.fullscreen {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.image {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.loaded {
+  opacity: 1;
+}

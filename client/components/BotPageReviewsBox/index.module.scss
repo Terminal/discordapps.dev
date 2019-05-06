@@ -1,0 +1,21 @@
+.average {
+  font-size: 48pt;
+}
+
+.averageContainer {
+  text-align: center;
+  align-self: center;
+}
+
+.progressText {
+  width: 15px;
+  text-align: right;
+}
+
+.progress {
+  height: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  flex-grow: 1;
+}

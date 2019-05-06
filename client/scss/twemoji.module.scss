@@ -1,0 +1,7 @@
+@import './emoji-map';
+
+@each $name, $code in $emoji-map {
+  .twa-#{$name} {
+    background-image: url('/../node_modules/twemoji/2/svg/#{$code}.svg');
+  }
+}

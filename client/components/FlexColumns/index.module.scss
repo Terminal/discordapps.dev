@@ -1,0 +1,30 @@
+.flexGrid {
+  & > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  &.padding > div {
+    padding-left: .5em !important;
+    padding-right: .5em !important;
+  }
+
+  &.padding > div:first-child {
+    padding-left: 0 !important;
+  }
+
+  &.padding > div:last-child {
+    padding-right: 0 !important;
+  }
+
+  @media (max-width: 550px) {
+    &.padding > div {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    &.flexBackwards {
+      flex-direction: column-reverse;
+    }
+  }
+}

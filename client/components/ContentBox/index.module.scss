@@ -1,0 +1,16 @@
+.container {
+  margin-bottom: 1em;
+  padding: 1.5em;
+  border-radius: 0;
+  overflow: hidden;
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    padding: .5em;
+  }
+}
