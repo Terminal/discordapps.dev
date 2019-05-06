@@ -18,7 +18,7 @@ class AppPageSetStateBox extends Component {
     e.preventDefault();
     
     const formdata = new FormData(this.form.current);
-    fetch(`${Locations.server}/reactjs/v2/apps/id/${this.props.bot.id}/state`, {
+    fetch(`${Locations.server}/reactjs/v2/apps/id/${this.props.app.id}/state`, {
       method: 'POST',
       body: formdata,
       credentials: 'include'
