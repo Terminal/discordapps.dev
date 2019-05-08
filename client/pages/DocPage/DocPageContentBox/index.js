@@ -8,6 +8,22 @@ import arrow from '../../../scss/ModestaCSS/css/images/arrow.png';
 import styles from './index.module.scss';
 
 class BotPageContentBox extends Component {
+  constructor(props) {
+    super(props);
+
+    this.link = React.createRef();
+    this.textArea = React.createRef();
+    this.onClick = this.onClick.bind(this);
+  }
+  onClick(e) {
+    if (e.target && /h[1-6]/i.test(e.target.tagName)) {
+      this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${e.target.attributes.id.value}`;
+      this.link.current.href = `#${e.target.attributes.id.value}`
+      this.textArea.current.select();
+      document.execCommand('copy');
+      this.link.current.click();
+    }
+  }
   render() {
     const page = xss(this.props.page.replace(/x-ls-newline/g, '\\n'), {
       whiteList: null,
@@ -56,6 +72,7 @@ class BotPageContentBox extends Component {
             }}
             ref={this.description}
             className={styles.description}
+            onClick={this.onClick}
           ></div>
           {smallEnough ? null : // if not small enough, show the buttons
             <div ref={this.button} onClick={this.toggle}>
@@ -76,6 +93,8 @@ class BotPageContentBox extends Component {
             </div>
           }
         </div>
+        <a ref={this.link} className={styles.hidden}></a>
+        <textarea ref={this.textArea} className={styles.hidden}></textarea>
       </ContentBox>
     )
   }

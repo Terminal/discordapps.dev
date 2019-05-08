@@ -17,6 +17,34 @@
   img {
     max-width: 100%;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    &:hover {
+      text-decoration: underline;
+      &:after {
+        content: "";
+        background-image: url('../../../../node_modules/twemoji/2/svg/1f517.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: .8em .8em;
+        display: inline-block;
+        height: 1em;
+        margin: 0 0.05em 0 0.1em;
+        vertical-align: -0.1em;
+        width: 1em;
+      }
+    }
+
+    // make the anchor links "appear" lower, so anchors actually work
+    // https://stackoverflow.com/a/24298427
+    &:before {
+      display: block;
+      content: " ";
+      margin-top: -75px;
+      height: 75px;
+      visibility: hidden;
+    }
+  }
 }
 
 .tableContainer {
@@ -24,4 +52,10 @@
   table {
     margin-bottom: 0.5em;
   }
+}
+
+.hidden {
+  position: absolute;
+  left: -100vw;
+  top: -100vh;
 }
