@@ -140,7 +140,7 @@ const Locations = {
   sourceTranslations: 'https://github.com/Terminal/discordapps.dev/tree/ls14/src/locales',
   sourceReleases: 'https://github.com/Terminal/discordapps.dev/releases',
   wiki: '/posts',
-  tutorials: 'https://github.com/Terminal/discordapps.dev/wiki/Tutorials-Home',
+  tutorials: '/posts',
   termsAndConditions: '/posts/docs/terms',
   terminalInk: 'https://terminal.ink',
   discordServer: 'https://discord.gg/8uC6aKZ',
@@ -1585,11 +1585,13 @@ const LocalizedLink = (_ref) => {
     intl: {
       locale
     },
-    query
+    query,
+    hash
   } = _ref,
-      props = _objectWithoutProperties(_ref, ["to", "intl", "query"]);
+      props = _objectWithoutProperties(_ref, ["to", "intl", "query", "hash"]);
 
   let querylink = '';
+  let hashlink = '';
 
   if (query) {
     querylink = '?' + Object.keys(query).map(key => {
@@ -1601,7 +1603,11 @@ const LocalizedLink = (_ref) => {
     }).join('&');
   }
 
-  const path = `/${locale}${to}${querylink}`;
+  if (hash) {
+    hashlink = `#${encodeURIComponent(hash)}`;
+  }
+
+  const path = `/${locale}${to}${querylink}${hashlink}`;
   return _react.default.createElement(_reactRouterHashLink.HashLink, _extends({}, props, {
     to: path
   }));
@@ -5576,6 +5582,8 @@ var _ContentBox = _interopRequireDefault(require("../ContentBox"));
 
 var _FlexColumns = _interopRequireDefault(require("../FlexColumns"));
 
+var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -5588,8 +5596,9 @@ class PleaseAddYourBotPleaseThanks extends _react.Component {
       id: "components.pleaseaddyourbotpleasethanks.title"
     }))), _react.default.createElement(_FlexColumns.default, {
       columns: 4
-    }, _react.default.createElement("h5", null, _react.default.createElement("a", {
-      href: _Locations.default.tutorials
+    }, _react.default.createElement("h5", null, _react.default.createElement(_LocalisedHyperlink.default, {
+      to: _Locations.default.tutorials,
+      hash: "howto"
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "components.pleaseaddyourbotpleasethanks.innovate.heading"
     }))), _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -5609,7 +5618,7 @@ class PleaseAddYourBotPleaseThanks extends _react.Component {
 
 var _default = PleaseAddYourBotPleaseThanks;
 exports.default = _default;
-},{"../../data/Locations":"uTwd","../ContentBox":"50Yc","../FlexColumns":"U1G4"}],"Szs9":[function(require,module,exports) {
+},{"../../data/Locations":"uTwd","../ContentBox":"50Yc","../FlexColumns":"U1G4","../LocalisedHyperlink":"dChq"}],"Szs9":[function(require,module,exports) {
 module.exports = {
   "websiteTypeButtons": "_websiteTypeButtons_3e09d",
   "btn": "_btn_3e09d"
@@ -10456,8 +10465,19 @@ class DocsHome extends _react.Component {
     this.fetch = this.fetch.bind(this);
   }
 
+  afterFetch() {
+    const element = document.getElementById(window.location.hash.substr(1));
+    console.log(element);
+
+    if (element) {
+      window.scrollTo(0, element.offsetTop);
+    }
+  }
+
   componentDidMount() {
-    this.fetch('all');
+    this.fetch('all').then(() => {
+      this.afterFetch();
+    });
   }
 
   loadAll() {
@@ -10468,7 +10488,7 @@ class DocsHome extends _react.Component {
   }
 
   fetch(type) {
-    fetch(`${_Locations.default.docsServer}/${type}.json`).then(res => res.json()).then(data => {
+    return fetch(`${_Locations.default.docsServer}/${type}.json`).then(res => res.json()).then(data => {
       this.setState({
         results: data
       });
@@ -10508,7 +10528,9 @@ class DocsHome extends _react.Component {
       content: description
     })))), _react.default.createElement(_Container.default, null, categories.map(category => _react.default.createElement(_ContentBox.default, {
       key: category
-    }, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    }, _react.default.createElement("h3", {
+      id: category
+    }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: `pages.docs.headers.${category}`
     })), results.filter(page => page.type === category).map(page => _react.default.createElement("p", {
       key: page.permalink
