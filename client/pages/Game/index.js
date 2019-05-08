@@ -12,7 +12,8 @@ class Game extends Component {
     super(props);
 
     this.state = {
-      kliksphilip: 0
+      kliksphilip: 0,
+      displayedPoints: 0,
     };
     this.klick = this.klick.bind(this);
   }
@@ -20,6 +21,13 @@ class Game extends Component {
     this.setState({
       kliksphilip: this.state.kliksphilip + 1
     });
+    requestAnimationFrame(() => {
+      if (this.state.kliksphilip !== this.state.displayedPoints) {
+        this.setState({
+          displayedPoints: this.state.kliksphilip
+        })
+      }
+    })
   }
   render() {
     return (
@@ -51,7 +59,7 @@ class Game extends Component {
             </h3>
             <p>
               <FormattedMessage id="pages.game.score" values={{
-                kliksphilip: this.state.kliksphilip
+                kliksphilip: this.state.displayedPoints
               }}/>
             </p>
             <button onClick={this.klick}>Get a point</button>
