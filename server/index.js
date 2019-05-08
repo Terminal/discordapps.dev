@@ -7306,7 +7306,9 @@ class AppPageTitleBox extends _react.Component {
     this.scroll = this.scroll.bind(this);
     this.state = {
       padding: 50,
-      maxHeight: 200
+      maxHeight: 200,
+      displayedPadding: 50,
+      displayedMaxHeight: 200
     };
   }
 
@@ -7321,9 +7323,11 @@ class AppPageTitleBox extends _react.Component {
   scroll(e) {
     const heightthing = (100 - window.scrollY) / 2;
     const maxHeight = 200 - window.scrollY;
-    this.setState({
-      padding: `${heightthing > 0 ? heightthing : 0}px`,
-      maxHeight: `${maxHeight > 50 ? maxHeight : 50}px`
+    requestAnimationFrame(() => {
+      this.setState({
+        padding: `${heightthing > 0 ? heightthing : 0}px`,
+        maxHeight: `${maxHeight > 50 ? maxHeight : 50}px`
+      });
     });
   }
 
