@@ -10771,24 +10771,35 @@ class DocPage extends _react.Component {
     super(props);
   }
 
+  afterFetch() {
+    const element = document.getElementById(window.location.hash.substr(1));
+    console.log(element);
+
+    if (element) {
+      window.scrollTo(0, element.offsetTop);
+    }
+  }
+
   componentDidMount() {
     const {
       dispatch
     } = this.props;
-    dispatch((0, _doc.fetchADoc)({
+    const promise = dispatch((0, _doc.fetchADoc)({
       match: this.props.match,
       pathname: this.props.location.pathname
     }));
+    if (promise) promise.then(this.afterFetch);
   }
 
   componentDidUpdate() {
     const {
       dispatch
     } = this.props;
-    dispatch((0, _doc.fetchADoc)({
+    const promise = dispatch((0, _doc.fetchADoc)({
       match: this.props.match,
       pathname: this.props.location.pathname
     }));
+    if (promise) promise.then(this.afterFetch);
   }
 
   render() {
