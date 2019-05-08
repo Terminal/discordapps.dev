@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import ContentBox from '../../../components/ContentBox';
-import marked from 'marked';
+import { FormattedMessage } from 'react-intl';
 import xss from 'xss';
+import ContentBox from '../../../components/ContentBox';
+import { Modesta, RougeHighlight } from '../../../data/Styles';
+import elementsStyle from '../../../scss/elements.module.scss';
 import arrow from '../../../scss/ModestaCSS/css/images/arrow.png';
 import styles from './index.module.scss';
-import { FormattedMessage } from 'react-intl';
-import { Modesta } from '../../../data/Styles';
-import elementsStyle from '../../../scss/elements.module.scss';
-
 
 class BotPageContentBox extends Component {
   render() {
@@ -27,6 +25,17 @@ class BotPageContentBox extends Component {
         if (tag === 'img' && name === 'src' && this.props.cdn && value.startsWith('/')) {
           return `src="${this.props.cdn}${value}"`
         }
+
+        if (name === 'class') {
+          // Replace any class with Rogue highlight class
+          // Part of Jekyll
+          const classes = value.split(' ')
+            .map(className => RougeHighlight[className])
+            .filter(className => className);
+
+          if (classes.length) return `class="${classes}"`
+        }
+
         return;
       },
       onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {

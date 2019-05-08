@@ -1,4 +1,4 @@
-import highlight from '../scss/highlight.module.scss';
+import rougeHighlight from '../scss/rougeHighlight.module.scss';
 import modesta from '../scss/ModestaCSS/scss/modesta.module.scss';
 import twitterEmojis from '../scss/twemoji.module.scss';
 
@@ -8,12 +8,12 @@ const makeFrom = (from) => Object.keys(from)
     [makeBetter(curr)]: from[curr]
   }), {})
 
-const Highlight = makeFrom(highlight)
+const RougeHighlight = makeFrom(rougeHighlight)
 const Modesta = makeFrom(modesta)
 const TwitterEmojis = makeFrom(twitterEmojis)
 
 export {
-  Highlight,
+  RougeHighlight,
   Modesta,
   TwitterEmojis
 }
