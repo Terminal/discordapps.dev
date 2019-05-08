@@ -10506,9 +10506,13 @@ class DocsHome extends _react.Component {
     }), _react.default.createElement("meta", {
       name: "description",
       content: description
-    })))), _react.default.createElement(_Container.default, null, categories.map(category => _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    })))), _react.default.createElement(_Container.default, null, categories.map(category => _react.default.createElement(_ContentBox.default, {
+      key: category
+    }, _react.default.createElement("h3", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: `pages.docs.headers.${category}`
-    })), results.filter(page => page.type === category).map(page => _react.default.createElement("p", null, _react.default.createElement(_LocalisedHyperlink.default, {
+    })), results.filter(page => page.type === category).map(page => _react.default.createElement("p", {
+      key: page.permalink
+    }, _react.default.createElement(_LocalisedHyperlink.default, {
       to: page.permalink
     }, page.title)))))));
   }
@@ -10561,12 +10565,20 @@ class BotPageContentBox extends _react.Component {
   }
 
   onClick(e) {
-    if (e.target && /h[1-6]/i.test(e.target.tagName)) {
-      this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${e.target.attributes.id.value}`;
-      this.link.current.href = `#${e.target.attributes.id.value}`;
-      this.textArea.current.select();
-      document.execCommand('copy');
-      this.link.current.click();
+    if (e.target) {
+      let tag = null; // whoops
+
+      if (/h[1-6]/i.test(e.target.tagName)) tag = e.target;
+      if (/h[1-6]/i.test(e.target.parentElement.tagName)) tag = e.target.parentElement;
+      if (/h[1-6]/i.test(e.target.parentElement.parentElement.tagName)) tag = e.target.parentElement.parentElement;
+
+      if (tag) {
+        this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${tag.attributes.id.value}`;
+        this.link.current.href = `#${tag.attributes.id.value}`;
+        this.textArea.current.select();
+        document.execCommand('copy');
+        this.link.current.click();
+      }
     }
   }
 
