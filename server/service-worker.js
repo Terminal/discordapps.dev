@@ -208,7 +208,7 @@ self.addEventListener('activate', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
-  console.log(event.request.url)
+  // console.log(event.request.url)
   if (/\/api\//g.test(event.request.url)) return false;
   if (/\/sitemap.xml$/.test(event.request.url)) return false;
   if (/\/robots.txt$/.test(event.request.url)) return false;
