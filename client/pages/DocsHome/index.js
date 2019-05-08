@@ -77,11 +77,11 @@ class DocsHome extends Component {
         <Container>
           {
             categories.map(category =>
-              <ContentBox>
+              <ContentBox key={category}>
                 <h3><FormattedMessage id={`pages.docs.headers.${category}`} /></h3>
                 {
                   results.filter(page => page.type === category)
-                    .map(page => <p>
+                    .map(page => <p key={page.permalink}>
                       <LocalisedHyperlink to={page.permalink}>
                         {page.title}
                       </LocalisedHyperlink>

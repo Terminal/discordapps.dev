@@ -16,12 +16,21 @@ class BotPageContentBox extends Component {
     this.onClick = this.onClick.bind(this);
   }
   onClick(e) {
-    if (e.target && /h[1-6]/i.test(e.target.tagName)) {
-      this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${e.target.attributes.id.value}`;
-      this.link.current.href = `#${e.target.attributes.id.value}`
-      this.textArea.current.select();
-      document.execCommand('copy');
-      this.link.current.click();
+    if (e.target) {
+      let tag = null;
+
+      // whoops
+      if (/h[1-6]/i.test(e.target.tagName)) tag = e.target;
+      if (/h[1-6]/i.test(e.target.parentElement.tagName)) tag = e.target.parentElement;
+      if (/h[1-6]/i.test(e.target.parentElement.parentElement.tagName)) tag = e.target.parentElement.parentElement;
+
+      if (tag) {
+        this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${tag.attributes.id.value}`;
+        this.link.current.href = `#${tag.attributes.id.value}`
+        this.textArea.current.select();
+        document.execCommand('copy');
+        this.link.current.click();
+      }
     }
   }
   render() {
