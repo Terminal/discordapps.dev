@@ -8934,7 +8934,8 @@ class Game extends _react.Component {
   constructor(props) {
     super(props);
     this.state = {
-      kliksphilip: 0
+      kliksphilip: 0,
+      displayedPoints: 0
     };
     this.klick = this.klick.bind(this);
   }
@@ -8942,6 +8943,13 @@ class Game extends _react.Component {
   klick() {
     this.setState({
       kliksphilip: this.state.kliksphilip + 1
+    });
+    requestAnimationFrame(() => {
+      if (this.state.kliksphilip !== this.state.displayedPoints) {
+        this.setState({
+          displayedPoints: this.state.kliksphilip
+        });
+      }
     });
   }
 
@@ -8972,7 +8980,7 @@ class Game extends _react.Component {
     })), _react.default.createElement("p", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.game.score",
       values: {
-        kliksphilip: this.state.kliksphilip
+        kliksphilip: this.state.displayedPoints
       }
     })), _react.default.createElement("button", {
       onClick: this.klick
