@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './index.module.scss';
 import LazyImage from '../LazyImage';
 import elementStyles from '../../scss/elements.module.scss';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 
 class ModalImage extends Component {
   constructor(props) {

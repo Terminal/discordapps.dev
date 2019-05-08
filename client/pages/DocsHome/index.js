@@ -9,7 +9,7 @@ import LoadingContainer from '../../components/LoadingContainer';
 import LocalisedHyperlink from '../../components/LocalisedHyperlink';
 import DateFormat from '../../data/DateFormat';
 import Locations from '../../data/Locations';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 
 class DocsHome extends Component {
   constructor(props) {

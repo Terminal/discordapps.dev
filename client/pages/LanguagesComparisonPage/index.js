@@ -5,7 +5,7 @@ import ContentBox from '../../components/ContentBox';
 import FlexContainer from '../../components/FlexContainer';
 import Layout from '../../components/Layout';
 import Row from '../../components/Row';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import languages, { getMasterLanguage } from '../../locales';
 import elementStyles from '../../scss/elements.module.scss';
 

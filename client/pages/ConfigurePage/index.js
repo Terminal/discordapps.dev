@@ -7,7 +7,7 @@ import NotFound from '../NotFound';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import { Localise } from '../../locales';
 import ContentBox from '../../components/ContentBox';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import LoadingContainer from '../../components/LoadingContainer';
 import PermissionDenied from '../../components/PermissionDenied';
 import NotALink from '../../components/NotALink';

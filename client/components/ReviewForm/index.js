@@ -6,7 +6,7 @@ import FlexContainer from '../FlexContainer';
 import { connect } from 'react-redux';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import ContentBox from '../ContentBox';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 
 class ReviewForm extends Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ContentBox from '../../../components/ContentBox';
 import InputField from '../../../components/InputField';
 import States from '../../../data/States';
-import Modesta from '../../../data/Modesta';
+import { Modesta } from '../../../data/Styles';
 import { FormattedMessage } from 'react-intl';
 import Locations from '../../../data/Locations';
 

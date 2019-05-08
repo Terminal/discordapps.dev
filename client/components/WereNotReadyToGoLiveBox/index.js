@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ContentBox from '../ContentBox';
 import Locations from '../../data/Locations';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import YouTube from '../YouTube';
 
 class WereNotReadyToGoLiveBox extends Component {

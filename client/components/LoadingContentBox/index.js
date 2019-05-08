@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import ContentBox from '../ContentBox';
 
 class LoadingContentBox extends Component {

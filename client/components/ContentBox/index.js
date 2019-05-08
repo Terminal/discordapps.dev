@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import colours from '../../scss/colours.module.scss';
 import styles from './index.module.scss';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 
 class ContentBox extends Component {
   render() {

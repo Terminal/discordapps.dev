@@ -5,7 +5,7 @@ import xss from 'xss';
 import arrow from '../../../scss/ModestaCSS/css/images/arrow.png';
 import styles from './index.module.scss';
 import { FormattedMessage } from 'react-intl';
-import Modesta from '../../../data/Modesta';
+import { Modesta } from '../../../data/Styles';
 import elementsStyle from '../../../scss/elements.module.scss';
 
 const botPageWhitelist = {

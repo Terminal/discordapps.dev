@@ -4,7 +4,7 @@ import displayCSS from '../../scss/display.module.scss';
 import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
 import NavbarLinks from './links';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 
 class NavigationBar extends Component {
   constructor(props) {

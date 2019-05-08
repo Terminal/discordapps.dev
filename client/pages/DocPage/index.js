@@ -10,7 +10,7 @@ import Container from '../../components/Container';
 import LoadingContainer from '../../components/LoadingContainer';
 import DocPageContentBox from './DocPageContentBox';
 import LinkButton from '../../components/LinkButton';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import { connect } from 'react-redux';
 import { fetchADoc } from '../../redux/actions/doc';
 

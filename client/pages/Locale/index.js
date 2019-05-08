@@ -5,7 +5,7 @@ import ContentBox from '../../components/ContentBox';
 import FlagLinks from '../../components/FlagLinks';
 import Layout from '../../components/Layout';
 import Locations from '../../data/Locations';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import qs from 'qs';
 
 class Locale extends Component {

@@ -11,7 +11,7 @@ import MultipleInputField from '../../components/MultipleInputField';
 import PleaseLoginContainer from '../../components/PleaseLogIn';
 import Row from '../../components/Row';
 import Locations from '../../data/Locations';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import languages from '../../locales';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';

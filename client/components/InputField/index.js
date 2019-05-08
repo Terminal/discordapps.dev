@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import FlexContainer from '../FlexContainer';
 import Column from '../Column';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 import styles from './index.module.scss';
 
 class InputField extends Component {

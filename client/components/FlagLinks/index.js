@@ -2,9 +2,9 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 import languages from '../../locales';
-import { TwitterEmojis } from '../../data/Modesta';
+import { TwitterEmojis } from '../../data/Styles';
 import styles from './index.module.scss';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 
 export default ({
   unlocalisedPath = ''

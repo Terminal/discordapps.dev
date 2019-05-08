@@ -4,7 +4,7 @@ import ContentBox from '../../../components/ContentBox';
 import FlexContainer from '../../../components/FlexContainer';
 import LazyImage from '../../../components/LazyImage';
 import Locations from '../../../data/Locations';
-import Modesta from '../../../data/Modesta';
+import { Modesta } from '../../../data/Styles';
 import styles from './index.module.scss';
 import PrefixLabel from './PrefixLabel';
 import Container from '../../../components/Container';

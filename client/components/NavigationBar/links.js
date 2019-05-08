@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import Locations from '../../data/Locations';
-import Modesta, { TwitterEmojis } from '../../data/Modesta';
+import { Modesta, TwitterEmojis } from '../../data/Styles';
 import States from '../../data/States';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';

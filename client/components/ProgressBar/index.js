@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modesta from '../../data/Modesta';
+import { Modesta } from '../../data/Styles';
 
 class ProgressBar extends Component {
   render() {
