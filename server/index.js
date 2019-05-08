@@ -302,7 +302,8 @@ module.exports = {
   "mb": "_mb_721f5",
   "mx": "_mx_721f5",
   "ss": "_ss_721f5",
-  "nx": "_nx_721f5"
+  "nx": "_nx_721f5",
+  "nb": "_nb_721f5"
 };
 },{}],"H2cc":[function(require,module,exports) {
 module.exports = {
