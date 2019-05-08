@@ -14,7 +14,7 @@ const Locations = {
   sourceTranslations: 'https://github.com/Terminal/discordapps.dev/tree/ls14/src/locales',
   sourceReleases: 'https://github.com/Terminal/discordapps.dev/releases',
   wiki: '/posts',
-  tutorials: 'https://github.com/Terminal/discordapps.dev/wiki/Tutorials-Home',
+  tutorials: '/posts',
   termsAndConditions: '/posts/docs/terms',
   terminalInk: 'https://terminal.ink',
   discordServer: 'https://discord.gg/8uC6aKZ',

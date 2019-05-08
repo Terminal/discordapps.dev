@@ -2,8 +2,9 @@ import React from 'react';
 import { injectIntl } from 'react-intl';
 import { HashLink as Link } from 'react-router-hash-link';
 
-const LocalizedLink = ({ to, intl: { locale }, query, ...props }) => {
+const LocalizedLink = ({ to, intl: { locale }, query, hash, ...props }) => {
   let querylink = '';
+  let hashlink = '';
 
   if (query) {
     querylink = '?' +
@@ -20,7 +21,11 @@ const LocalizedLink = ({ to, intl: { locale }, query, ...props }) => {
       .join('&');
   }
 
-  const path = `/${locale}${to}${querylink}`;
+  if (hash) {
+    hashlink = `#${encodeURIComponent(hash)}`
+  }
+
+  const path = `/${locale}${to}${querylink}${hashlink}`;
 
   return <Link {...props} to={path} />;
 };

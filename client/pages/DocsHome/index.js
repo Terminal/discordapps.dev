@@ -22,8 +22,18 @@ class DocsHome extends Component {
     this.loadAll = this.loadAll.bind(this);
     this.fetch = this.fetch.bind(this);
   }
+  afterFetch() {
+    const element = document.getElementById(window.location.hash.substr(1))
+    console.log(element);
+    if (element) {
+      window.scrollTo(0, element.offsetTop);
+    }
+  }
   componentDidMount() {
-    this.fetch('all');
+    this.fetch('all')
+      .then(() => {
+        this.afterFetch();
+      })
   }
   loadAll() {
     this.setState({
@@ -32,7 +42,7 @@ class DocsHome extends Component {
     fetch('all');
   }
   fetch(type) {
-    fetch(`${Locations.docsServer}/${type}.json`)
+    return fetch(`${Locations.docsServer}/${type}.json`)
       .then(res => res.json())
       .then((data) => {
         this.setState({
@@ -78,7 +88,9 @@ class DocsHome extends Component {
           {
             categories.map(category =>
               <ContentBox key={category}>
-                <h3><FormattedMessage id={`pages.docs.headers.${category}`} /></h3>
+                <h3 id={category}>
+                  <FormattedMessage id={`pages.docs.headers.${category}`} />
+                </h3>
                 {
                   results.filter(page => page.type === category)
                     .map(page => <p key={page.permalink}>
