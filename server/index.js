@@ -10509,9 +10509,10 @@ exports.default = _default;
 },{"../../components/Button":"+DmJ","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../components/LoadingContainer":"N3k8","../../components/LocalisedHyperlink":"dChq","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../../data/Styles":"rs3k"}],"RzcF":[function(require,module,exports) {
 module.exports = {
   "description": "_description_d4455",
-  "tableContainer": "_tableContainer_d4455"
+  "tableContainer": "_tableContainer_d4455",
+  "hidden": "_hidden_d4455"
 };
-},{}],"nUkM":[function(require,module,exports) {
+},{"./../../../../node_modules/twemoji/2/svg/1f517.svg":[["1f517.fb7fa6a2.svg","w7CQ"],"w7CQ"]}],"nUkM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10540,6 +10541,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 class BotPageContentBox extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.link = _react.default.createRef();
+    this.textArea = _react.default.createRef();
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(e) {
+    if (e.target && /h[1-6]/i.test(e.target.tagName)) {
+      this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${e.target.attributes.id.value}`;
+      this.link.current.href = `#${e.target.attributes.id.value}`;
+      this.textArea.current.select();
+      document.execCommand('copy');
+      this.link.current.click();
+    }
+  }
+
   render() {
     const page = (0, _xss.default)(this.props.page.replace(/x-ls-newline/g, '\\n'), {
       whiteList: null,
@@ -10580,7 +10598,8 @@ class BotPageContentBox extends _react.Component {
         __html: page
       },
       ref: this.description,
-      className: _indexModule.default.description
+      className: _indexModule.default.description,
+      onClick: this.onClick
     }), smallEnough ? null : // if not small enough, show the buttons
     _react.default.createElement("div", {
       ref: this.button,
@@ -10605,7 +10624,13 @@ class BotPageContentBox extends _react.Component {
       className: `${_indexModule.default.arrow} ${_indexModule.default.upsidedown}`,
       src: _arrow.default,
       alt: message
-    }))))));
+    }))))), _react.default.createElement("a", {
+      ref: this.link,
+      className: _indexModule.default.hidden
+    }), _react.default.createElement("textarea", {
+      ref: this.textArea,
+      className: _indexModule.default.hidden
+    }));
   }
 
 }
