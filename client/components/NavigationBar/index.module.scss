@@ -5,6 +5,14 @@
   z-index: 1000;
 }
 
+.navContainer {
+  display: flex !important;
+  flex-direction: row;
+  .desktopHeading {
+    margin-right: auto;
+  }  
+}
+
 .sidenav {
   overflow: visible !important;
 }
