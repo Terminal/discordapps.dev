@@ -7934,6 +7934,14 @@ button._youtube_49062 {
   z-index: 1000;
 }
 
+._navContainer_f0a17 {
+  display: flex !important;
+  flex-direction: row;
+}
+._navContainer_f0a17 ._desktopHeading_f0a17 {
+  margin-right: auto;
+}
+
 ._sidenav_f0a17 {
   overflow: visible !important;
 }
@@ -8511,7 +8519,7 @@ button._youtube_49062 {
   top: -200%;
   border: 0;
   width: 100%;
-  height: 400%;
+  height: 500%;
   pointer-events: none;
   filter: brightness(30%);
 }
