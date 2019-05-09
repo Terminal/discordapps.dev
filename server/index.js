@@ -1619,6 +1619,8 @@ exports.default = _default;
 },{}],"ch0H":[function(require,module,exports) {
 module.exports = {
   "navbar": "_navbar_f0a17",
+  "navContainer": "_navContainer_f0a17",
+  "desktopHeading": "_desktopHeading_f0a17",
   "sidenav": "_sidenav_f0a17",
   "mobileNavContent": "_mobileNavContent_f0a17",
   "mobileNavbar": "_mobileNavbar_f0a17",
@@ -1877,9 +1879,9 @@ class NavigationBar extends _react.Component {
     return _react.default.createElement("div", {
       className: _indexModule.default.navbar
     }, _react.default.createElement("div", {
-      className: `${_displayModule.default.desktop} ${_Styles.Modesta.navContainer} ${_Styles.Modesta.default}`
+      className: (0, _ConstructCSS.default)(_displayModule.default.desktop, _Styles.Modesta.navContainer, _Styles.Modesta.default, _indexModule.default.navContainer)
     }, _react.default.createElement("h1", {
-      className: _Styles.Modesta.navTitle
+      className: (0, _ConstructCSS.default)(_Styles.Modesta.navTitle, _indexModule.default.desktopHeading)
     }, _react.default.createElement(_LocalisedHyperlink.default, {
       to: "/"
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
