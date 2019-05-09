@@ -1619,10 +1619,12 @@ exports.default = _default;
 },{}],"ch0H":[function(require,module,exports) {
 module.exports = {
   "navbar": "_navbar_f0a17",
+  "sidenav": "_sidenav_f0a17",
   "mobileNavContent": "_mobileNavContent_f0a17",
   "mobileNavbar": "_mobileNavbar_f0a17",
   "mobileHeading": "_mobileHeading_f0a17",
-  "darken": "_darken_f0a17"
+  "darken": "_darken_f0a17",
+  "tooltip": "_tooltip_f0a17"
 };
 },{}],"2Fxh":[function(require,module,exports) {
 "use strict";
@@ -1725,6 +1727,10 @@ var _auth = require("../../redux/actions/auth");
 
 var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
 
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -1741,7 +1747,8 @@ class NavbarLinks extends _react.Component {
     const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
     const {
       auth,
-      unlocalisedPath
+      unlocalisedPath,
+      desktop
     } = this.props;
     return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "navbar.languages"
@@ -1752,7 +1759,8 @@ class NavbarLinks extends _react.Component {
         returnBrowserTo: unlocalisedPath
       }
     }, _react.default.createElement("span", {
-      className: `${_Styles.Modesta.emoji} ${_Styles.TwitterEmojis.twaGlobeShowingEuropeAfrica}`
+      className: (0, _ConstructCSS.default)(_Styles.Modesta.emoji, _Styles.TwitterEmojis.twaGlobeShowingEuropeAfrica, desktop && (0, _ConstructCSS.default)(_Styles.Modesta.tooltip, _indexModule.default.tooltip)),
+      "data-tooltip": message
     }))), _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "navbar.search"
     }, message => _react.default.createElement(_LocalisedHyperlink.default, {
@@ -1762,7 +1770,8 @@ class NavbarLinks extends _react.Component {
         state: _States.default.APPROVED
       }
     }, _react.default.createElement("span", {
-      className: `${_Styles.Modesta.emoji} ${_Styles.TwitterEmojis.twaRightPointingMagnifyingGlass}`
+      className: (0, _ConstructCSS.default)(_Styles.Modesta.emoji, _Styles.TwitterEmojis.twaRightPointingMagnifyingGlass, desktop && (0, _ConstructCSS.default)(_Styles.Modesta.tooltip, _indexModule.default.tooltip)),
+      "data-tooltip": message
     }))), auth.data !== null ? _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "navbar.add"
     }, message => _react.default.createElement(_LocalisedHyperlink.default, {
@@ -1814,7 +1823,7 @@ const mapStateToProps = (state, ownProps) => {
 var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(NavbarLinks));
 
 exports.default = _default;
-},{"../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../data/States":"2Fxh","../../redux/actions/auth":"YSbd","../LocalisedHyperlink":"dChq"}],"e86L":[function(require,module,exports) {
+},{"../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../data/States":"2Fxh","../../redux/actions/auth":"YSbd","../LocalisedHyperlink":"dChq","../../helpers/ConstructCSS":"SwhA","./index.module.scss":"ch0H"}],"e86L":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1835,6 +1844,8 @@ var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 var _links = _interopRequireDefault(require("./links"));
 
 var _Styles = require("../../data/Styles");
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1874,9 +1885,10 @@ class NavigationBar extends _react.Component {
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "site.name"
     }))), _react.default.createElement("div", {
-      className: _Styles.Modesta.sidenav
+      className: (0, _ConstructCSS.default)(_Styles.Modesta.sidenav, _indexModule.default.sidenav)
     }, _react.default.createElement(_links.default, {
-      unlocalisedPath: this.props.unlocalisedPath
+      unlocalisedPath: this.props.unlocalisedPath,
+      desktop: true
     }))), _react.default.createElement("div", {
       className: `${_displayModule.default.mobile} ${_Styles.Modesta.navContainer} ${_indexModule.default.mobileNavbar}`
     }, _react.default.createElement("span", {
@@ -1913,7 +1925,7 @@ class NavigationBar extends _react.Component {
 
 var _default = NavigationBar;
 exports.default = _default;
-},{"../../scss/display.module.scss":"Tyxi","../LocalisedHyperlink":"dChq","./index.module.scss":"ch0H","./links":"JsQ7","../../data/Styles":"rs3k"}],"Y4cY":[function(require,module,exports) {
+},{"../../scss/display.module.scss":"Tyxi","../LocalisedHyperlink":"dChq","./index.module.scss":"ch0H","./links":"JsQ7","../../data/Styles":"rs3k","../../helpers/ConstructCSS":"SwhA"}],"Y4cY":[function(require,module,exports) {
 module.exports = {
   "footer": "_footer_d59de",
   "links": "_links_d59de",
