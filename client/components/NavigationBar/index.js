@@ -5,6 +5,7 @@ import LocalisedHyperlink from '../LocalisedHyperlink';
 import styles from './index.module.scss';
 import NavbarLinks from './links';
 import { Modesta } from '../../data/Styles';
+import ConstructCSS from '../../helpers/ConstructCSS';
 
 class NavigationBar extends Component {
   constructor(props) {
@@ -39,8 +40,8 @@ class NavigationBar extends Component {
             </LocalisedHyperlink>
           </h1>
 
-          <div className={Modesta.sidenav}>
-            <NavbarLinks unlocalisedPath={this.props.unlocalisedPath} />
+          <div className={ConstructCSS(Modesta.sidenav, styles.sidenav)}>
+            <NavbarLinks unlocalisedPath={this.props.unlocalisedPath} desktop={true} />
           </div>
         </div>
         <div className={`${displayCSS.mobile} ${Modesta.navContainer} ${styles.mobileNavbar}`}>

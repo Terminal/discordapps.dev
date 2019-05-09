@@ -6,6 +6,8 @@ import { Modesta, TwitterEmojis } from '../../data/Styles';
 import States from '../../data/States';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
 import LocalisedHyperlink from '../LocalisedHyperlink';
+import ConstructCSS from '../../helpers/ConstructCSS';
+import styles from './index.module.scss';
 
 class NavbarLinks extends Component {
   componentDidMount() {
@@ -14,7 +16,7 @@ class NavbarLinks extends Component {
   }
   render() {
     const href = typeof window !== 'undefined' ? window.location.href : 'https://discordapps.dev';
-    const { auth, unlocalisedPath } = this.props;
+    const { auth, unlocalisedPath, desktop } = this.props;
     return (
       <>
         <FormattedMessage id="navbar.languages">
@@ -22,7 +24,7 @@ class NavbarLinks extends Component {
             <LocalisedHyperlink aria-label={message} to="/locale" query={{
               returnBrowserTo: unlocalisedPath
             }}>
-              <span className={`${Modesta.emoji} ${TwitterEmojis.twaGlobeShowingEuropeAfrica}`} />
+              <span className={ConstructCSS(Modesta.emoji, TwitterEmojis.twaGlobeShowingEuropeAfrica, desktop && ConstructCSS(Modesta.tooltip, styles.tooltip))} data-tooltip={message} />
             </LocalisedHyperlink>
           )}
         </FormattedMessage>
@@ -31,7 +33,7 @@ class NavbarLinks extends Component {
             <LocalisedHyperlink aria-label={message} to="/filter" query={{
               state: States.APPROVED
             }}>
-              <span className={`${Modesta.emoji} ${TwitterEmojis.twaRightPointingMagnifyingGlass}`} />
+              <span className={ConstructCSS(Modesta.emoji, TwitterEmojis.twaRightPointingMagnifyingGlass, desktop && ConstructCSS(Modesta.tooltip, styles.tooltip))} data-tooltip={message} />
             </LocalisedHyperlink>
           )}
         </FormattedMessage>

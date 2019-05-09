@@ -5,6 +5,10 @@
   z-index: 1000;
 }
 
+.sidenav {
+  overflow: visible !important;
+}
+
 .mobileNavContent {
   padding-left: 0 !important;
   min-height: 4em;
@@ -37,4 +41,11 @@
   pointer-events: none;
   opacity: 0;
   z-index: 99;
+}
+
+.tooltip {
+  display: inline-block !important;
+  &:after {
+    background-color: #787eb4;
+  }
 }
