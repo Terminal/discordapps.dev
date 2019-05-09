@@ -7,33 +7,54 @@ const languages = require('../data/displayedLanguages.json');
 module.exports = (req, res) => {
   const sitemap = {
     '@': {
-      xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9'
+      xmlns: 'http://www.sitemaps.org/schemas/sitemap/0.9',
+      'xmlns:xhtml': 'http://www.w3.org/1999/xhtml'
     },
-    url: [
-    ]
+    url: []
+  };
+
+  const indexURL = {
+    loc: `${config.webserver.react}/en-GB`,
+    priority: 1,
+    'xhtml:link': [],
   };
 
   languages.forEach((lang) => {
-    sitemap.url.push(
-      {
-        loc: `${config.webserver.react}/${lang}`,
-        priority: 1
+    indexURL['xhtml:link'].push({
+      '@': {
+        rel: 'alternate',
+        hreflang: lang,
+        href: `${config.webserver.react}/${lang}`
       }
-    );
+    });
   });
+
+  sitemap.url.push(indexURL);
 
   Promise.all([
     r.table('apps').filter({ state: 'approved' }),
     fetch('https://docs.discordapps.dev/all.json').then(result => result.json())
   ])
     .then(([apps, docs]) => {
-      languages.forEach((lang) => {
-        apps.forEach((app) => {
-          sitemap.url.push({
-            loc: `${config.webserver.react}/${lang}/${app.type}/${app.id}`,
-            lastmod: (new Date(app.edited)).toISOString().split('T')[0]
+      apps.forEach((app) => {
+        const thisURL = {
+          loc: `${config.webserver.react}/en-GB/${app.type}/${app.id}`,
+          lastmod: (new Date(app.edited)).toISOString().split('T')[0],
+          'xhtml:link': []
+        };
+
+        languages
+          .forEach((lang) => {
+            thisURL['xhtml:link'].push({
+              '@': {
+                rel: 'alternate',
+                hreflang: lang,
+                href: `${config.webserver.react}/${lang}/${app.type}/${app.id}`
+              }
+            });
           });
-        });
+
+        sitemap.url.push(thisURL);
       });
 
       docs.forEach((doc) => {
