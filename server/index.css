@@ -7934,6 +7934,10 @@ button._youtube_49062 {
   z-index: 1000;
 }
 
+._sidenav_f0a17 {
+  overflow: visible !important;
+}
+
 ._mobileNavContent_f0a17 {
   padding-left: 0 !important;
   min-height: 4em;
@@ -7966,6 +7970,13 @@ button._youtube_49062 {
   pointer-events: none;
   opacity: 0;
   z-index: 99;
+}
+
+._tooltip_f0a17 {
+  display: inline-block !important;
+}
+._tooltip_f0a17:after {
+  background-color: #787eb4;
 }
 ._footer_d59de {
   text-align: center;
