@@ -10489,14 +10489,51 @@ class DocsHome extends _react.Component {
 var _default = (0, _reactIntl.injectIntl)(DocsHome);
 
 exports.default = _default;
-},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../components/LoadingContainer":"N3k8","../../components/LocalisedHyperlink":"dChq","../../data/Locations":"uTwd"}],"RzcF":[function(require,module,exports) {
+},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../components/LoadingContainer":"N3k8","../../components/LocalisedHyperlink":"dChq","../../data/Locations":"uTwd"}],"3Mii":[function(require,module,exports) {
 module.exports = {
-  "description": "_description_d4455",
-  "img": "_img_d4455",
-  "tableContainer": "_tableContainer_d4455",
-  "hidden": "_hidden_d4455"
+  "hljs": "_hljs_18adf",
+  "hljs-keyword": "_hljs-keyword_18adf",
+  "hljs-literal": "_hljs-literal_18adf",
+  "hljs-symbol": "_hljs-symbol_18adf",
+  "hljs-name": "_hljs-name_18adf",
+  "hljs-link": "_hljs-link_18adf",
+  "hljs-built_in": "_hljs-built_in_18adf",
+  "hljs-type": "_hljs-type_18adf",
+  "hljs-number": "_hljs-number_18adf",
+  "hljs-class": "_hljs-class_18adf",
+  "hljs-string": "_hljs-string_18adf",
+  "hljs-meta-string": "_hljs-meta-string_18adf",
+  "hljs-regexp": "_hljs-regexp_18adf",
+  "hljs-template-tag": "_hljs-template-tag_18adf",
+  "hljs-subst": "_hljs-subst_18adf",
+  "hljs-function": "_hljs-function_18adf",
+  "hljs-title": "_hljs-title_18adf",
+  "hljs-params": "_hljs-params_18adf",
+  "hljs-formula": "_hljs-formula_18adf",
+  "hljs-comment": "_hljs-comment_18adf",
+  "hljs-quote": "_hljs-quote_18adf",
+  "hljs-doctag": "_hljs-doctag_18adf",
+  "hljs-meta": "_hljs-meta_18adf",
+  "hljs-meta-keyword": "_hljs-meta-keyword_18adf",
+  "hljs-tag": "_hljs-tag_18adf",
+  "hljs-variable": "_hljs-variable_18adf",
+  "hljs-template-variable": "_hljs-template-variable_18adf",
+  "hljs-attr": "_hljs-attr_18adf",
+  "hljs-attribute": "_hljs-attribute_18adf",
+  "hljs-builtin-name": "_hljs-builtin-name_18adf",
+  "hljs-section": "_hljs-section_18adf",
+  "hljs-emphasis": "_hljs-emphasis_18adf",
+  "hljs-strong": "_hljs-strong_18adf",
+  "hljs-bullet": "_hljs-bullet_18adf",
+  "hljs-selector-tag": "_hljs-selector-tag_18adf",
+  "hljs-selector-id": "_hljs-selector-id_18adf",
+  "hljs-selector-class": "_hljs-selector-class_18adf",
+  "hljs-selector-attr": "_hljs-selector-attr_18adf",
+  "hljs-selector-pseudo": "_hljs-selector-pseudo_18adf",
+  "hljs-addition": "_hljs-addition_18adf",
+  "hljs-deletion": "_hljs-deletion_18adf"
 };
-},{"./../../../../node_modules/twemoji/2/svg/1f517.svg":[["1f517.fb7fa6a2.svg","w7CQ"],"w7CQ"]}],"L+Uu":[function(require,module,exports) {
+},{}],"L+Uu":[function(require,module,exports) {
 module.exports = {
   "table": "_table_59897"
 };
@@ -10531,7 +10568,14 @@ class TableContainer extends _react.Component {
 
 var _default = TableContainer;
 exports.default = _default;
-},{"../../data/Styles":"rs3k","../../helpers/ConstructCSS":"SwhA","./index.module.scss":"L+Uu"}],"nUkM":[function(require,module,exports) {
+},{"../../data/Styles":"rs3k","../../helpers/ConstructCSS":"SwhA","./index.module.scss":"L+Uu"}],"RzcF":[function(require,module,exports) {
+module.exports = {
+  "description": "_description_d4455",
+  "img": "_img_d4455",
+  "tableContainer": "_tableContainer_d4455",
+  "hidden": "_hidden_d4455"
+};
+},{"./../../../../node_modules/twemoji/2/svg/1f517.svg":[["1f517.fb7fa6a2.svg","w7CQ"],"w7CQ"]}],"nUkM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10541,11 +10585,13 @@ exports.default = void 0;
 
 var _highlight = _interopRequireDefault(require("highlight.js/lib/highlight"));
 
-var _javascript = _interopRequireDefault(require("highlight.js/lib/languages/javascript"));
-
 var _bash = _interopRequireDefault(require("highlight.js/lib/languages/bash"));
 
 var _diff = _interopRequireDefault(require("highlight.js/lib/languages/diff"));
+
+var _javascript = _interopRequireDefault(require("highlight.js/lib/languages/javascript"));
+
+require("./vs2015.scss");
 
 var _jsx = _interopRequireDefault(require("marksy/jsx"));
 
@@ -10553,17 +10599,13 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox"));
 
-var _LazyImage = _interopRequireDefault(require("../../../components/LazyImage"));
+var _ModalImage = _interopRequireDefault(require("../../../components/ModalImage"));
+
+var _TableContainer = _interopRequireDefault(require("../../../components/TableContainer"));
 
 var _Locations = _interopRequireDefault(require("../../../data/Locations"));
 
 var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-require("highlight.js/styles/vs2015.css");
-
-var _TableContainer = _interopRequireDefault(require("../../../components/TableContainer"));
-
-var _ModalImage = _interopRequireDefault(require("../../../components/ModalImage"));
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
@@ -10639,7 +10681,7 @@ class BotPageContentBox extends _react.Component {
 
 var _default = BotPageContentBox;
 exports.default = _default;
-},{"../../../components/ContentBox":"50Yc","../../../components/LazyImage":"ofRo","../../../data/Locations":"uTwd","./index.module.scss":"RzcF","../../../components/TableContainer":"2VrG","../../../components/ModalImage":"i0xp"}],"+O+J":[function(require,module,exports) {
+},{"./vs2015.scss":"3Mii","../../../components/ContentBox":"50Yc","../../../components/ModalImage":"i0xp","../../../components/TableContainer":"2VrG","../../../data/Locations":"uTwd","./index.module.scss":"RzcF"}],"+O+J":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

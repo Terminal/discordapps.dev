@@ -8598,6 +8598,123 @@ button._youtube_49062 {
   font-size: 7em;
   margin: 0.1em;
 }
+/*
+ * Visual Studio 2015 dark style
+ * Author: Nicolas LLOBERA <nllobera@gmail.com>
+ */
+._hljs_18adf {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #1E1E1E;
+  color: #DCDCDC;
+}
+
+._hljs-keyword_18adf,
+._hljs-literal_18adf,
+._hljs-symbol_18adf,
+._hljs-name_18adf {
+  color: #569CD6;
+}
+
+._hljs-link_18adf {
+  color: #569CD6;
+  text-decoration: underline;
+}
+
+._hljs-built_in_18adf,
+._hljs-type_18adf {
+  color: #4EC9B0;
+}
+
+._hljs-number_18adf,
+._hljs-class_18adf {
+  color: #B8D7A3;
+}
+
+._hljs-string_18adf,
+._hljs-meta-string_18adf {
+  color: #D69D85;
+}
+
+._hljs-regexp_18adf,
+._hljs-template-tag_18adf {
+  color: #9A5334;
+}
+
+._hljs-subst_18adf,
+._hljs-function_18adf,
+._hljs-title_18adf,
+._hljs-params_18adf,
+._hljs-formula_18adf {
+  color: #DCDCDC;
+}
+
+._hljs-comment_18adf,
+._hljs-quote_18adf {
+  color: #57A64A;
+  font-style: italic;
+}
+
+._hljs-doctag_18adf {
+  color: #608B4E;
+}
+
+._hljs-meta_18adf,
+._hljs-meta-keyword_18adf,
+._hljs-tag_18adf {
+  color: #9B9B9B;
+}
+
+._hljs-variable_18adf,
+._hljs-template-variable_18adf {
+  color: #BD63C5;
+}
+
+._hljs-attr_18adf,
+._hljs-attribute_18adf,
+._hljs-builtin-name_18adf {
+  color: #9CDCFE;
+}
+
+._hljs-section_18adf {
+  color: gold;
+}
+
+._hljs-emphasis_18adf {
+  font-style: italic;
+}
+
+._hljs-strong_18adf {
+  font-weight: bold;
+}
+
+/*.hljs-code {
+  font-family:'Monospace';
+}*/
+._hljs-bullet_18adf,
+._hljs-selector-tag_18adf,
+._hljs-selector-id_18adf,
+._hljs-selector-class_18adf,
+._hljs-selector-attr_18adf,
+._hljs-selector-pseudo_18adf {
+  color: #D7BA7D;
+}
+
+._hljs-addition_18adf {
+  background-color: #144212;
+  display: inline-block;
+  width: 100%;
+}
+
+._hljs-deletion_18adf {
+  background-color: #600;
+  display: inline-block;
+  width: 100%;
+}
+._table_59897 {
+  overflow-x: scroll;
+}
 ._description_d4455 code {
   background: #303030;
   border-radius: 3px;
@@ -8649,9 +8766,6 @@ button._youtube_49062 {
   position: absolute;
   left: -100vw;
   top: -100vh;
-}
-._table_59897 {
-  overflow-x: scroll;
 }
 
 /*# sourceMappingURL=/discordapps.dev/index.css.map */
