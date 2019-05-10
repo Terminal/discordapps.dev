@@ -36,6 +36,7 @@ class DocsHome extends Component {
       .then((data) => {
         this.setState({
           results: data
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
         });
       });
   }
