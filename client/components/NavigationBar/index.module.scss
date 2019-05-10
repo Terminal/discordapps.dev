@@ -7,6 +7,9 @@
 
 .navContainer {
   display: flex !important;
+  @media (max-width: 650px) {
+    display: none !important;
+  }
   flex-direction: row;
   .desktopHeading {
     margin-right: auto;

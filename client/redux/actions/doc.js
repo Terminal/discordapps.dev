@@ -23,7 +23,7 @@ function recieveDoc(json, status, page) {
 function fetchDoc(page) {
   return (dispatch) => {
     dispatch(requestDoc(page));
-    return fetch(`${Locations.docsServer}/posts${page}`)
+    return fetch(`${Locations.docsServer}/posts${page}/index.mdx`)
       .then(res => {
         return res.json()
           .then((json) => {
@@ -39,11 +39,10 @@ function shouldFetchDoc(state, page) {
   return true;
 }
 
-export function fetchADoc({match, pathname}) {
+export function fetchADoc({url}) {
   return (dispatch, getState) => {
-    const path = pathname.substring(match.url.length);
-    if (shouldFetchDoc(getState(), path)) {
-      return dispatch(fetchDoc(path))
+    if (shouldFetchDoc(getState(), url)) {
+      return dispatch(fetchDoc(url))
     }
   };
 }

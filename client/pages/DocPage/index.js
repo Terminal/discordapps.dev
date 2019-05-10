@@ -17,10 +17,10 @@ import { fetchADoc } from '../../redux/actions/doc';
 class DocPage extends Component {
   constructor(props) {
     super(props);
+    this.requestURL = props.location.pathname.substring(props.match.url.length);
   }
   afterFetch() {
     const element = document.getElementById(window.location.hash.substr(1))
-    console.log(element);
     if (element) {
       window.scrollTo(0, element.offsetTop);
     }
@@ -28,8 +28,7 @@ class DocPage extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     const promise = dispatch(fetchADoc({
-      match: this.props.match,
-      pathname: this.props.location.pathname
+      url: this.requestURL
     }))
 
     if (promise) promise.then(this.afterFetch);
@@ -37,8 +36,7 @@ class DocPage extends Component {
   componentDidUpdate() {
     const { dispatch } = this.props;
     const promise = dispatch(fetchADoc({
-      match: this.props.match,
-      pathname: this.props.location.pathname
+      url: this.requestURL
     }))
 
     if (promise) promise.then(this.afterFetch);
@@ -79,7 +77,7 @@ class DocPage extends Component {
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
           </ContentBox>
-          <DocPageContentBox page={page.content} forceLarge={true} allowHTML={true} cdn={Locations.docsServer} />
+          <DocPageContentBox page={page.content} requestURL={this.requestURL} />
         </Container>
       </Layout>
     );

@@ -1,17 +1,25 @@
-import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
-import xss from 'xss';
+import hljs from 'highlight.js/lib/highlight';
+import hljsJavascript from 'highlight.js/lib/languages/javascript';
+import hljsBash from 'highlight.js/lib/languages/bash';
+import hljsDiff from 'highlight.js/lib/languages/diff';
+import marksy from 'marksy/jsx';
+import React, { Component, createElement } from 'react';
 import ContentBox from '../../../components/ContentBox';
-import { Modesta, RougeHighlight } from '../../../data/Styles';
-import elementsStyle from '../../../scss/elements.module.scss';
-import arrow from '../../../scss/ModestaCSS/css/images/arrow.png';
+import LazyImage from '../../../components/LazyImage';
+import Locations from '../../../data/Locations';
 import styles from './index.module.scss';
+import 'highlight.js/styles/vs2015.css';
+import TableContainer from '../../../components/TableContainer';
+import ModalImage from '../../../components/ModalImage';
+
+hljs.registerLanguage('javascript', hljsJavascript);
+hljs.registerLanguage('bash', hljsBash);
+hljs.registerLanguage('diff', hljsDiff);
 
 class BotPageContentBox extends Component {
   constructor(props) {
     super(props);
 
-    this.link = React.createRef();
     this.textArea = React.createRef();
     this.onClick = this.onClick.bind(this);
   }
@@ -26,83 +34,75 @@ class BotPageContentBox extends Component {
 
       if (tag) {
         this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${tag.attributes.id.value}`;
-        this.link.current.href = `#${tag.attributes.id.value}`
         this.textArea.current.select();
         document.execCommand('copy');
-        this.link.current.click();
+       
+        const element = document.getElementById(tag.attributes.id.value)
+        if (element) {
+          window.scrollTo(0, element.offsetTop);
+        }
       }
     }
   }
   render() {
-    const page = xss(this.props.page.replace(/x-ls-newline/g, '\\n'), {
-      whiteList: null,
-      onTag: (tag, html, options) => {
-        if (tag === 'table') {
-          if (options.isClosing) {
-            return '</table></div>'
-          }
-          return `<div class="${Modesta.tableContainer} ${styles.tableContainer} ${elementsStyle.scrollbar}">${html}`
-        }
+    const page = this.props.page
+      .replace(/x-ls-backslash/g, '\\\\')
+      .replace(/x-ls-newline/g, '\\n')
 
-        return;
+    const compiler = marksy({
+      createElement,
+      elements: {
+        img: ({src, alt}) => <ModalImage className={styles.img} src={src.startsWith('http') ? src : `${Locations.docsServer}/posts${this.props.requestURL}${src}`} alt={alt} title={alt}/>,
+        table: ({children}) => <TableContainer><table>{children}</table></TableContainer>
       },
-      onTagAttr: (tag, name, value, isWhiteAttr) => {
-        if (tag === 'img' && name === 'src' && this.props.cdn && value.startsWith('/')) {
-          return `src="${this.props.cdn}${value}"`
-        }
-
-        if (name === 'class') {
-          // Replace any class with Rogue highlight class
-          // Part of Jekyll
-          const classes = value.split(' ')
-            .map(className => RougeHighlight[className])
-            .filter(className => className);
-
-          if (classes.length) return `class="${classes}"`
-        }
-
-        return;
-      },
-      onIgnoreTagAttr: (tag, name, value, isWhiteAttr) => {
-        if (this.props.allowHTML || name === 'class') {
-          return `${name}="${xss.escapeAttrValue(value)}"`
-        }
-      }
+      highlight: (language, code) => hljs.highlight(language, code).value
     });
 
-    const smallEnough = typeof this.props.forceLarge === 'boolean' ? this.props.forceLarge : this.state.smallEnough;
+    const compiled = compiler(page);
+
+    console.log("Hello!")
 
     return (
       <ContentBox>
         <div>
           <div
-            dangerouslySetInnerHTML={{
-              __html: page
-            }}
             ref={this.description}
             className={styles.description}
             onClick={this.onClick}
-          ></div>
-          {smallEnough ? null : // if not small enough, show the buttons
-            <div ref={this.button} onClick={this.toggle}>
-              { this.state.open === false ?
-                <ContentBox className={`${Modesta.secondary} ${styles.button}`}>
-                  <p><FormattedMessage id="components.botpagecontentbox.more" /></p>
-                  <FormattedMessage id="components.botpagecontentbox.toggle">
-                    {message => <img className={styles.arrow} src={arrow} alt={message}/>}
-                  </FormattedMessage>
-                </ContentBox> :
-                <ContentBox className={`${Modesta.secondary} ${styles.button}`}>
-                  <p><FormattedMessage id="components.botpagecontentbox.less" /></p>
-                  <FormattedMessage id="components.botpagecontentbox.toggle">
-                    {message => <img className={`${styles.arrow} ${styles.upsidedown}`} src={arrow} alt={message}/>}
-                  </FormattedMessage>
-                </ContentBox>
-              }
-            </div>
-          }
+          >
+            {compiled.tree}
+          </div>
         </div>
-        <a ref={this.link} className={styles.hidden}></a>
+        <textarea ref={this.textArea} className={styles.hidden}></textarea>
+      </ContentBox>
+    )
+  }
+  render() {
+    const page = this.props.page
+      .replace(/x-ls-newline/g, '\\n')
+
+    const compiler = marksy({
+      createElement,
+      elements: {
+        img: ({src, alt}) => <ModalImage className={styles.img} src={src.startsWith('http') ? src : `${Locations.docsServer}/posts${this.props.requestURL}${src}`} alt={alt} title={alt}/>,
+        table: ({children}) => <TableContainer><table>{children}</table></TableContainer>
+      },
+      highlight: (language, code) => hljs.highlight(language, code).value
+    });
+
+    const compiled = compiler(page);
+
+    return (
+      <ContentBox>
+        <div>
+          <div
+            ref={this.description}
+            className={styles.description}
+            onClick={this.onClick}
+          >
+            {compiled.tree}
+          </div>
+        </div>
         <textarea ref={this.textArea} className={styles.hidden}></textarea>
       </ContentBox>
     )

@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import Button from '../../components/Button';
 import Container from '../../components/Container';
 import ContentBox from '../../components/ContentBox';
 import Layout from '../../components/Layout';
 import LoadingContainer from '../../components/LoadingContainer';
 import LocalisedHyperlink from '../../components/LocalisedHyperlink';
-import DateFormat from '../../data/DateFormat';
 import Locations from '../../data/Locations';
-import { Modesta } from '../../data/Styles';
 
 class DocsHome extends Component {
   constructor(props) {
