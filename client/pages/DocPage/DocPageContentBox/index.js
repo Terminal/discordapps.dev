@@ -2,7 +2,6 @@ import hljs from 'highlight.js/lib/highlight';
 import hljsBash from 'highlight.js/lib/languages/bash';
 import hljsDiff from 'highlight.js/lib/languages/diff';
 import hljsJavascript from 'highlight.js/lib/languages/javascript';
-import './vs2015.scss';
 import marksy from 'marksy/jsx';
 import React, { Component, createElement } from 'react';
 import ContentBox from '../../../components/ContentBox';
@@ -10,6 +9,7 @@ import ModalImage from '../../../components/ModalImage';
 import TableContainer from '../../../components/TableContainer';
 import Locations from '../../../data/Locations';
 import styles from './index.module.scss';
+import './vs2015.scss';
 
 hljs.registerLanguage('javascript', hljsJavascript);
 hljs.registerLanguage('bash', hljsBash);
