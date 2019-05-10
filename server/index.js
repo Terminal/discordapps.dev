@@ -129,8 +129,8 @@ const Locations = {
   // server: 'http://127.0.0.1:8000',
   cdn: 'https://api.discordapps.dev',
   domain: 'https://discordapps.dev',
-  docsServer: 'https://docs.discordapps.dev',
-  // docsServer: 'http://127.0.0.1:8080',
+  // docsServer: 'https://docs.discordapps.dev',
+  docsServer: 'http://127.0.0.1:8080',
   logo: 'https://api.discordapps.dev/img/logo/logo.svg',
   favicon: 'https://api.discordapps.dev/img/logo/logo32.png',
   sourceCode: 'https://github.com/Terminal/discordapps.dev',
@@ -10412,10 +10412,8 @@ class DocsHome extends _react.Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: null,
-      loadAll: false
+      results: null
     };
-    this.loadAll = this.loadAll.bind(this);
     this.fetch = this.fetch.bind(this);
   }
 
@@ -10432,13 +10430,6 @@ class DocsHome extends _react.Component {
     this.fetch('all').then(() => {
       this.afterFetch();
     });
-  }
-
-  loadAll() {
-    this.setState({
-      loadAll: true
-    });
-    fetch('all');
   }
 
   fetch(type) {
@@ -10613,7 +10604,7 @@ class BotPageContentBox extends _react.Component {
   }
 
   render() {
-    const page = this.props.page.replace(/x-ls-backslash/g, '\\\\').replace(/x-ls-newline/g, '\\n');
+    const page = this.props.page;
     const compiler = (0, _jsx.default)({
       createElement: _react.createElement,
       elements: {
@@ -10633,38 +10624,7 @@ class BotPageContentBox extends _react.Component {
       highlight: (language, code) => _highlight.default.highlight(language, code).value
     });
     const compiled = compiler(page);
-    console.log("Hello!");
-    return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", null, _react.default.createElement("div", {
-      ref: this.description,
-      className: _indexModule.default.description,
-      onClick: this.onClick
-    }, compiled.tree)), _react.default.createElement("textarea", {
-      ref: this.textArea,
-      className: _indexModule.default.hidden
-    }));
-  }
-
-  render() {
-    const page = this.props.page.replace(/x-ls-newline/g, '\\n');
-    const compiler = (0, _jsx.default)({
-      createElement: _react.createElement,
-      elements: {
-        img: ({
-          src,
-          alt
-        }) => _react.default.createElement(_ModalImage.default, {
-          className: _indexModule.default.img,
-          src: src.startsWith('http') ? src : `${_Locations.default.docsServer}/posts${this.props.requestURL}${src}`,
-          alt: alt,
-          title: alt
-        }),
-        table: ({
-          children
-        }) => _react.default.createElement(_TableContainer.default, null, _react.default.createElement("table", null, children))
-      },
-      highlight: (language, code) => _highlight.default.highlight(language, code).value
-    });
-    const compiled = compiler(page);
+    console.log(compiled);
     return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", null, _react.default.createElement("div", {
       ref: this.description,
       className: _indexModule.default.description,
@@ -10704,10 +10664,10 @@ function requestDoc(page) {
   };
 }
 
-function recieveDoc(json, status, page) {
+function recieveDoc(text, status, page) {
   return {
     type: RECIEVE_DOC,
-    data: json,
+    data: text,
     status,
     page
   };
@@ -10718,11 +10678,8 @@ function fetchDoc(page) {
     dispatch(requestDoc(page));
     return fetch(`${_Locations.default.docsServer}/posts${page}/index.mdx`).then(res => {
       if (res.status !== 200) return dispatch(recieveDoc({}, res.status, page));
-      return res.json().then(json => {
-        return dispatch(recieveDoc(json, res.status, page));
-      }).catch(() => {
-        // json error...
-        return dispatch(recieveDoc({}, 500, page));
+      return res.text().then(text => {
+        return dispatch(recieveDoc(text, res.status, page));
       });
     });
   };
@@ -10781,6 +10738,8 @@ var _reactRedux = require("react-redux");
 
 var _doc = require("../../redux/actions/doc");
 
+var _frontMatter = _interopRequireDefault(require("front-matter"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -10820,7 +10779,7 @@ class DocPage extends _react.Component {
   }
 
   render() {
-    const page = this.props.doc.data;
+    const markdown = this.props.doc.data;
     const status = this.props.doc.status;
 
     if (status === 404) {
@@ -10829,24 +10788,25 @@ class DocPage extends _react.Component {
       });
     }
 
-    if (!page) {
+    if (!markdown) {
       return _react.default.createElement(_Layout.default, {
         match: this.props.match
       }, _react.default.createElement(_LoadingContainer.default, null));
     }
 
-    const date = new Date(page.date);
+    const page = (0, _frontMatter.default)(markdown);
+    const date = new Date(page.attributes.date);
     return _react.default.createElement(_Layout.default, {
       match: this.props.match
     }, _react.default.createElement(_reactHelmet.Helmet, null, _react.default.createElement("title", null, page.title), _react.default.createElement("meta", {
       property: "og:title",
-      content: page.title
+      content: page.attributes.title
     }), _react.default.createElement("meta", {
       property: "og:description",
-      content: page.description
+      content: page.attributes.description
     }), _react.default.createElement("meta", {
       name: "description",
-      content: page.description
+      content: page.attributes.description
     }), _react.default.createElement("meta", {
       httpEquiv: "last-modified",
       content: date.toISOString().split('T')[0]
@@ -10855,13 +10815,13 @@ class DocPage extends _react.Component {
       className: _Styles.Modesta.secondary
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.docs.back"
-    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, page.title), page.by && _react.default.createElement("p", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    })), _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, page.attributes.title), page.attributes.by && _react.default.createElement("p", null, _react.default.createElement("i", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.docs.by",
       values: {
-        name: page.by
+        name: page.attributes.by
       }
-    }))), page.date && _react.default.createElement("p", null, date.toLocaleDateString(this.props.intl.locale, _DateFormat.default))), _react.default.createElement(_DocPageContentBox.default, {
-      page: page.content,
+    }))), page.attributes.date && _react.default.createElement("p", null, date.toLocaleDateString(this.props.intl.locale, _DateFormat.default))), _react.default.createElement(_DocPageContentBox.default, {
+      page: page.body,
       requestURL: this.requestURL
     })));
   }
