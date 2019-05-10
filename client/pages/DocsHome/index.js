@@ -12,11 +12,9 @@ class DocsHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: null,
-      loadAll: false
+      results: null
     }
 
-    this.loadAll = this.loadAll.bind(this);
     this.fetch = this.fetch.bind(this);
   }
   afterFetch() {
@@ -31,12 +29,6 @@ class DocsHome extends Component {
       .then(() => {
         this.afterFetch();
       })
-  }
-  loadAll() {
-    this.setState({
-      loadAll: true
-    });
-    fetch('all');
   }
   fetch(type) {
     return fetch(`${Locations.docsServer}/${type}.json`)

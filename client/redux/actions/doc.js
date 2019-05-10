@@ -11,10 +11,10 @@ function requestDoc(page) {
 }
 
 
-function recieveDoc(json, status, page) {
+function recieveDoc(text, status, page) {
   return {
     type: RECIEVE_DOC,
-    data: json,
+    data: text,
     status,
     page
   };
@@ -26,13 +26,9 @@ function fetchDoc(page) {
     return fetch(`${Locations.docsServer}/posts${page}/index.mdx`)
       .then(res => {
         if (res.status !== 200) return dispatch(recieveDoc({}, res.status, page))
-        return res.json()
-          .then((json) => {
-            return dispatch(recieveDoc(json, res.status, page))
-          })
-          .catch(() => {
-            // json error...
-            return dispatch(recieveDoc({}, 500, page))
+        return res.text()
+          .then((text) => {
+            return dispatch(recieveDoc(text, res.status, page))
           })
       })
   };

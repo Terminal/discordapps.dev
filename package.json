@@ -19,6 +19,7 @@
     "autoprefixer": "^9.5.1",
     "express": "^4.16.4",
     "flat": "^4.1.0",
+    "front-matter": "^3.0.2",
     "highlight.js": "^9.15.6",
     "isomorphic-fetch": "^2.2.1",
     "marked": "^0.6.2",
@@ -63,5 +64,9 @@
   },
   "sw-precache": {
     "templateFilePath": "client/data/ServiceWorkerTemplate.txt"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/terminal/discordapps.dev.git",
+  "author": "7coil <katie@discordmail.com>",
+  "license": "MIT"
 }

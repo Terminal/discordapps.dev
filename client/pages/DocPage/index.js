@@ -13,6 +13,7 @@ import LinkButton from '../../components/LinkButton';
 import { Modesta } from '../../data/Styles';
 import { connect } from 'react-redux';
 import { fetchADoc } from '../../redux/actions/doc';
+import frontmatter from 'front-matter';
 
 class DocPage extends Component {
   constructor(props) {
@@ -42,14 +43,14 @@ class DocPage extends Component {
     if (promise) promise.then(this.afterFetch);
   }
   render() {
-    const page = this.props.doc.data;
+    const markdown = this.props.doc.data;
     const status = this.props.doc.status;
 
     if (status === 404) {
       return <NotFound match={this.props.match} />
     }
 
-    if (!page) {
+    if (!markdown) {
       return (
         <Layout match={this.props.match}>
           <LoadingContainer />
@@ -57,27 +58,29 @@ class DocPage extends Component {
       )
     }
 
-    const date = new Date(page.date);
+    const page = frontmatter(markdown);
+
+    const date = new Date(page.attributes.date);
 
     return (
       <Layout match={this.props.match}>
         <Helmet>
           <title>{page.title}</title>
-          <meta property="og:title" content={page.title}/>
-          <meta property="og:description" content={page.description}/>
-          <meta name="description" content={page.description}/>
+          <meta property="og:title" content={page.attributes.title}/>
+          <meta property="og:description" content={page.attributes.description}/>
+          <meta name="description" content={page.attributes.description}/>
           <meta httpEquiv="last-modified" content={date.toISOString().split('T')[0]} />
         </Helmet>
         <Container>
           <LinkButton to="/posts" className={Modesta.secondary}><FormattedMessage id="pages.docs.back" /></LinkButton>
           <ContentBox>
-            <h2>{page.title}</h2>
-            {page.by && <p><i><FormattedMessage id="pages.docs.by" values={{name: page.by}} /></i></p>}
-            {page.date && <p>
+            <h2>{page.attributes.title}</h2>
+            {page.attributes.by && <p><i><FormattedMessage id="pages.docs.by" values={{name: page.attributes.by}} /></i></p>}
+            {page.attributes.date && <p>
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
           </ContentBox>
-          <DocPageContentBox page={page.content} requestURL={this.requestURL} />
+          <DocPageContentBox page={page.body} requestURL={this.requestURL} />
         </Container>
       </Layout>
     );

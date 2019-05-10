@@ -45,9 +45,7 @@ class BotPageContentBox extends Component {
     }
   }
   render() {
-    const page = this.props.page
-      .replace(/x-ls-backslash/g, '\\\\')
-      .replace(/x-ls-newline/g, '\\n')
+    const page = this.props.page;
 
     const compiler = marksy({
       createElement,
@@ -60,37 +58,7 @@ class BotPageContentBox extends Component {
 
     const compiled = compiler(page);
 
-    console.log("Hello!")
-
-    return (
-      <ContentBox>
-        <div>
-          <div
-            ref={this.description}
-            className={styles.description}
-            onClick={this.onClick}
-          >
-            {compiled.tree}
-          </div>
-        </div>
-        <textarea ref={this.textArea} className={styles.hidden}></textarea>
-      </ContentBox>
-    )
-  }
-  render() {
-    const page = this.props.page
-      .replace(/x-ls-newline/g, '\\n')
-
-    const compiler = marksy({
-      createElement,
-      elements: {
-        img: ({src, alt}) => <ModalImage className={styles.img} src={src.startsWith('http') ? src : `${Locations.docsServer}/posts${this.props.requestURL}${src}`} alt={alt} title={alt}/>,
-        table: ({children}) => <TableContainer><table>{children}</table></TableContainer>
-      },
-      highlight: (language, code) => hljs.highlight(language, code).value
-    });
-
-    const compiled = compiler(page);
+    console.log(compiled);
 
     return (
       <ContentBox>
