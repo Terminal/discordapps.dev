@@ -2,6 +2,7 @@ import hljs from 'highlight.js/lib/highlight';
 import hljsBash from 'highlight.js/lib/languages/bash';
 import hljsDiff from 'highlight.js/lib/languages/diff';
 import hljsJavascript from 'highlight.js/lib/languages/javascript';
+import hljsJson from 'highlight.js/lib/languages/json';
 import marksy from 'marksy/jsx';
 import React, { Component, createElement } from 'react';
 import ContentBox from '../../../components/ContentBox';
@@ -14,6 +15,8 @@ import './vs2015.scss';
 hljs.registerLanguage('javascript', hljsJavascript);
 hljs.registerLanguage('bash', hljsBash);
 hljs.registerLanguage('diff', hljsDiff);
+hljs.registerLanguage('json5', hljsJavascript);
+hljs.registerLanguage('json', hljsJson);
 
 class BotPageContentBox extends Component {
   constructor(props) {
