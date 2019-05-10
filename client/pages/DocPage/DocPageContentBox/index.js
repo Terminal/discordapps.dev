@@ -1,16 +1,15 @@
 import hljs from 'highlight.js/lib/highlight';
-import hljsJavascript from 'highlight.js/lib/languages/javascript';
 import hljsBash from 'highlight.js/lib/languages/bash';
 import hljsDiff from 'highlight.js/lib/languages/diff';
+import hljsJavascript from 'highlight.js/lib/languages/javascript';
+import './vs2015.scss';
 import marksy from 'marksy/jsx';
 import React, { Component, createElement } from 'react';
 import ContentBox from '../../../components/ContentBox';
-import LazyImage from '../../../components/LazyImage';
+import ModalImage from '../../../components/ModalImage';
+import TableContainer from '../../../components/TableContainer';
 import Locations from '../../../data/Locations';
 import styles from './index.module.scss';
-import 'highlight.js/styles/vs2015.css';
-import TableContainer from '../../../components/TableContainer';
-import ModalImage from '../../../components/ModalImage';
 
 hljs.registerLanguage('javascript', hljsJavascript);
 hljs.registerLanguage('bash', hljsBash);
