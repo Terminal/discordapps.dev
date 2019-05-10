@@ -10717,8 +10717,12 @@ function fetchDoc(page) {
   return dispatch => {
     dispatch(requestDoc(page));
     return fetch(`${_Locations.default.docsServer}/posts${page}/index.mdx`).then(res => {
+      if (res.status !== 200) return dispatch(recieveDoc({}, res.status, page));
       return res.json().then(json => {
         return dispatch(recieveDoc(json, res.status, page));
+      }).catch(() => {
+        // json error...
+        return dispatch(recieveDoc({}, 500, page));
       });
     });
   };
