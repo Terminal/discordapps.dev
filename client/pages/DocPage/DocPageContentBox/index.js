@@ -57,8 +57,6 @@ class BotPageContentBox extends Component {
 
     const compiled = compiler(page);
 
-    console.log(compiled);
-
     return (
       <ContentBox>
         <div>
