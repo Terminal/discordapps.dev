@@ -10547,6 +10547,8 @@ var _diff = _interopRequireDefault(require("highlight.js/lib/languages/diff"));
 
 var _javascript = _interopRequireDefault(require("highlight.js/lib/languages/javascript"));
 
+var _json = _interopRequireDefault(require("highlight.js/lib/languages/json"));
+
 var _jsx = _interopRequireDefault(require("marksy/jsx"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -10572,6 +10574,10 @@ _highlight.default.registerLanguage('javascript', _javascript.default);
 _highlight.default.registerLanguage('bash', _bash.default);
 
 _highlight.default.registerLanguage('diff', _diff.default);
+
+_highlight.default.registerLanguage('json5', _javascript.default);
+
+_highlight.default.registerLanguage('json', _json.default);
 
 class BotPageContentBox extends _react.Component {
   constructor(props) {
@@ -10622,7 +10628,6 @@ class BotPageContentBox extends _react.Component {
       highlight: (language, code) => _highlight.default.highlight(language, code).value
     });
     const compiled = compiler(page);
-    console.log(compiled);
     return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("div", null, _react.default.createElement("div", {
       ref: this.description,
       className: _indexModule.default.description,
