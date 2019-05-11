@@ -28,12 +28,12 @@ class BotPageContentBox extends Component {
       elements: {
         img: ({src, alt}) => <ModalImage className={styles.img} src={src.startsWith('http') ? src : `${Locations.docsServer}/posts${this.props.requestURL}${src}`} alt={alt} title={alt}/>,
         table: ({children}) => <TableContainer><table>{children}</table></TableContainer>,
-        h1: ({children, id}) => <ClickableHeading tag="h1" id={id}>{children}</ClickableHeading>,
-        h2: ({children, id}) => <ClickableHeading tag="h2" id={id}>{children}</ClickableHeading>,
-        h3: ({children, id}) => <ClickableHeading tag="h3" id={id}>{children}</ClickableHeading>,
-        h4: ({children, id}) => <ClickableHeading tag="h4" id={id}>{children}</ClickableHeading>,
-        h5: ({children, id}) => <ClickableHeading tag="h5" id={id}>{children}</ClickableHeading>,
-        h6: ({children, id}) => <ClickableHeading tag="h6" id={id}>{children}</ClickableHeading>,
+        h1: ({children, id}) => <ClickableHeading tag="h1" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
+        h2: ({children, id}) => <ClickableHeading tag="h2" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
+        h3: ({children, id}) => <ClickableHeading tag="h3" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
+        h4: ({children, id}) => <ClickableHeading tag="h4" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
+        h5: ({children, id}) => <ClickableHeading tag="h5" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
+        h6: ({children, id}) => <ClickableHeading tag="h6" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
       },
       highlight: (language, code) => hljs.highlight(language, code).value
     });

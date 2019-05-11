@@ -6,6 +6,7 @@ import styles from './index.module.scss';
 import { createToast } from '../../../../redux/actions/toasts';
 import { connect } from 'react-redux';
 import { FormattedMessage } from 'react-intl';
+import Locations from '../../../../data/Locations';
 
 class ClickableHeading extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class ClickableHeading extends Component {
           </FormattedMessage>
         }
       </FormattedMessage>
-      <input value={`${window.location.origin}${window.location.pathname}#${this.props.id}`} ref={this.input} className={styles.hidden} />
+      <input value={`${typeof window !== undefined ? window.location.origin : Locations.domain}${window.location.pathname}#${this.props.id}`} ref={this.input} className={styles.hidden} />
     </>
   }
 }

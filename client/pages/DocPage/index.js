@@ -78,7 +78,7 @@ class DocPage extends Component {
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
           </ContentBox>
-          <DocPageContentBox page={page.body} requestURL={this.props.location.pathname.substring(this.props.match.url.length)} />
+          <DocPageContentBox page={page.body} requestURL={this.props.location.pathname.substring(this.props.match.url.length)} match={this.props.match} location={this.props.location} />
         </Container>
       </Layout>
     );
