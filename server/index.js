@@ -1057,6 +1057,7 @@ module.exports = {
 };
 },{"./images/arrow.png":[["arrow.4675c036.png","65aR"],"65aR"],"./images/menu-icon.png":[["menu-icon.8188857e.png","O424"],"O424"]}],"qa3M":[function(require,module,exports) {
 module.exports = {
+  "twa-chains": "_twa-chains_93871",
   "twa-cn": "_twa-cn_93871",
   "twa-de": "_twa-de_93871",
   "twa-flag-ac": "_twa-flag-ac_93871",
@@ -1314,11 +1315,12 @@ module.exports = {
   "twa-fr": "_twa-fr_93871",
   "twa-gb": "_twa-gb_93871",
   "twa-globe-showing-europe-africa": "_twa-globe-showing-europe-africa_93871",
+  "twa-link": "_twa-link_93871",
   "twa-right-pointing-magnifying-glass": "_twa-right-pointing-magnifying-glass_93871",
   "twa-ru": "_twa-ru_93871",
   "twa-us": "_twa-us_93871"
 };
-},{"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f3.svg":[["1f1e8-1f1f3.71b04f50.svg","eQVn"],"eQVn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ea.svg":[["1f1e9-1f1ea.e18fb3b5.svg","cW1v"],"cW1v"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e8.svg":[["1f1e6-1f1e8.42822809.svg","O4au"],"O4au"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e9.svg":[["1f1e6-1f1e9.0ea5bf62.svg","5Whg"],"5Whg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ea.svg":[["1f1e6-1f1ea.547f1fed.svg","6i6P"],"6i6P"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1eb.svg":[["1f1e6-1f1eb.4d61ccd4.svg","EbGW"],"EbGW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ec.svg":[["1f1e6-1f1ec.046288e0.svg","2/xK"],"2/xK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ee.svg":[["1f1e6-1f1ee.0ea90be6.svg","uLOp"],"uLOp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f1.svg":[["1f1e6-1f1f1.93972240.svg","QXN1"],"QXN1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f2.svg":[["1f1e6-1f1f2.58216aad.svg","wzbN"],"wzbN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f4.svg":[["1f1e6-1f1f4.1c7f2191.svg","w73S"],"w73S"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f6.svg":[["1f1e6-1f1f6.1df3fa89.svg","YJNH"],"YJNH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f7.svg":[["1f1e6-1f1f7.c4023db6.svg","R/+K"],"R/+K"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f8.svg":[["1f1e6-1f1f8.1a6de69f.svg","7wZs"],"7wZs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f9.svg":[["1f1e6-1f1f9.3bf3b3c6.svg","NYla"],"NYla"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fa.svg":[["1f1e6-1f1fa.7df51f83.svg","w4/k"],"w4/k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fc.svg":[["1f1e6-1f1fc.e019d2d9.svg","QJf8"],"QJf8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fd.svg":[["1f1e6-1f1fd.ea851d45.svg","pha7"],"pha7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ff.svg":[["1f1e6-1f1ff.4bcec899.svg","vLk/"],"vLk/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e6.svg":[["1f1e7-1f1e6.04d321b1.svg","1uU0"],"1uU0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e7.svg":[["1f1e7-1f1e7.0d552338.svg","nnba"],"nnba"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e9.svg":[["1f1e7-1f1e9.4190ce8b.svg","vfbl"],"vfbl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ea.svg":[["1f1e7-1f1ea.585290df.svg","7ccV"],"7ccV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1eb.svg":[["1f1e7-1f1eb.57ca06f4.svg","+hQ1"],"+hQ1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ec.svg":[["1f1e7-1f1ec.04c2cb17.svg","akj6"],"akj6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ed.svg":[["1f1e7-1f1ed.0db8867b.svg","Csv8"],"Csv8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ee.svg":[["1f1e7-1f1ee.3c006f2d.svg","1gIg"],"1gIg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ef.svg":[["1f1e7-1f1ef.44d9ae15.svg","x/Uw"],"x/Uw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f1.svg":[["1f1e7-1f1f1.7f18abb7.svg","kw3e"],"kw3e"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f2.svg":[["1f1e7-1f1f2.2b507468.svg","g6Ks"],"g6Ks"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f3.svg":[["1f1e7-1f1f3.52c75492.svg","G+XW"],"G+XW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f4.svg":[["1f1e7-1f1f4.8d38c2ad.svg","Z3f4"],"Z3f4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f6.svg":[["1f1e7-1f1f6.f9f69c99.svg","NYZh"],"NYZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f7.svg":[["1f1e7-1f1f7.ef746b8f.svg","6fzl"],"6fzl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f8.svg":[["1f1e7-1f1f8.58ca0865.svg","u/sN"],"u/sN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f9.svg":[["1f1e7-1f1f9.416260b3.svg","oEwW"],"oEwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fb.svg":[["1f1e7-1f1fb.cee3040c.svg","j/J7"],"j/J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fc.svg":[["1f1e7-1f1fc.bcdfee06.svg","XWe/"],"XWe/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fe.svg":[["1f1e7-1f1fe.03465708.svg","EsIA"],"EsIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ff.svg":[["1f1e7-1f1ff.40df548f.svg","hYWB"],"hYWB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e6.svg":[["1f1e8-1f1e6.5b3a7333.svg","A8qE"],"A8qE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e8.svg":[["1f1e8-1f1e8.a25604bf.svg","OtLZ"],"OtLZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e9.svg":[["1f1e8-1f1e9.703bfd39.svg","LGWM"],"LGWM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1eb.svg":[["1f1e8-1f1eb.c82b0b69.svg","My+t"],"My+t"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ec.svg":[["1f1e8-1f1ec.499856a2.svg","eqbL"],"eqbL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ed.svg":[["1f1e8-1f1ed.1fa5be26.svg","oFgq"],"oFgq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ee.svg":[["1f1e8-1f1ee.811d987d.svg","rsLr"],"rsLr"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f0.svg":[["1f1e8-1f1f0.df9a7963.svg","cHVR"],"cHVR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f1.svg":[["1f1e8-1f1f1.c6f37ae5.svg","ltyK"],"ltyK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f2.svg":[["1f1e8-1f1f2.39baa6fe.svg","wFoG"],"wFoG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f4.svg":[["1f1e8-1f1f4.7ade25c4.svg","k35I"],"k35I"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f5.svg":[["1f1e8-1f1f5.e44dddb2.svg","HV5Z"],"HV5Z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f7.svg":[["1f1e8-1f1f7.0b2b002e.svg","QfSp"],"QfSp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fa.svg":[["1f1e8-1f1fa.6da931b8.svg","NQTT"],"NQTT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fb.svg":[["1f1e8-1f1fb.9cee7af1.svg","xNWL"],"xNWL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fc.svg":[["1f1e8-1f1fc.7ac0f34d.svg","xQeh"],"xQeh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fd.svg":[["1f1e8-1f1fd.e04f949b.svg","CtyF"],"CtyF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fe.svg":[["1f1e8-1f1fe.5d8788d0.svg","CyKQ"],"CyKQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ff.svg":[["1f1e8-1f1ff.32a7c739.svg","c3lH"],"c3lH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ec.svg":[["1f1e9-1f1ec.14ac8655.svg","5peb"],"5peb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ef.svg":[["1f1e9-1f1ef.3532a7ba.svg","L3J7"],"L3J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f0.svg":[["1f1e9-1f1f0.ea8d5e9d.svg","ycSk"],"ycSk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f2.svg":[["1f1e9-1f1f2.fb642994.svg","Vguw"],"Vguw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f4.svg":[["1f1e9-1f1f4.376311d9.svg","+S/r"],"+S/r"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ff.svg":[["1f1e9-1f1ff.ccec0ff3.svg","hCnt"],"hCnt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e6.svg":[["1f1ea-1f1e6.1a8f1f1c.svg","nD+m"],"nD+m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e8.svg":[["1f1ea-1f1e8.9687e62e.svg","kLtF"],"kLtF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ea.svg":[["1f1ea-1f1ea.8f25bfb4.svg","YwIA"],"YwIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ec.svg":[["1f1ea-1f1ec.ea29654b.svg","ycOM"],"ycOM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ed.svg":[["1f1ea-1f1ed.5fab1b55.svg","1mk+"],"1mk+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.svg":[["1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.1f9f70c2.svg","UZTc"],"UZTc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f7.svg":[["1f1ea-1f1f7.207cbcea.svg","WhoC"],"WhoC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f9.svg":[["1f1ea-1f1f9.3b176126.svg","jQ/g"],"jQ/g"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1fa.svg":[["1f1ea-1f1fa.23419a98.svg","5pRH"],"5pRH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ee.svg":[["1f1eb-1f1ee.508dfcf9.svg","0P3J"],"0P3J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ef.svg":[["1f1eb-1f1ef.692eb21e.svg","uVaK"],"uVaK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f0.svg":[["1f1eb-1f1f0.e5c63d69.svg","unqI"],"unqI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f2.svg":[["1f1eb-1f1f2.1d4c935d.svg","mQEE"],"mQEE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f4.svg":[["1f1eb-1f1f4.21e96768.svg","cKKA"],"cKKA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e6.svg":[["1f1ec-1f1e6.f1006d48.svg","KcGo"],"KcGo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e9.svg":[["1f1ec-1f1e9.bba2f0fa.svg","A5WC"],"A5WC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ea.svg":[["1f1ec-1f1ea.f7b30406.svg","PzpK"],"PzpK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1eb.svg":[["1f1ec-1f1eb.23d3cb2d.svg","s5oR"],"s5oR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ec.svg":[["1f1ec-1f1ec.c00ba56e.svg","orsY"],"orsY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ed.svg":[["1f1ec-1f1ed.75604cc1.svg","j7lP"],"j7lP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ee.svg":[["1f1ec-1f1ee.5027204f.svg","AibY"],"AibY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f1.svg":[["1f1ec-1f1f1.ae9ae55b.svg","bNB+"],"bNB+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f2.svg":[["1f1ec-1f1f2.911c154e.svg","oDir"],"oDir"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f3.svg":[["1f1ec-1f1f3.fb70f39e.svg","xD5Q"],"xD5Q"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f5.svg":[["1f1ec-1f1f5.79c0e35c.svg","icF+"],"icF+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f6.svg":[["1f1ec-1f1f6.81009872.svg","IDMs"],"IDMs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f7.svg":[["1f1ec-1f1f7.4a4d5e85.svg","tU3n"],"tU3n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f8.svg":[["1f1ec-1f1f8.018ff6c8.svg","NavM"],"NavM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f9.svg":[["1f1ec-1f1f9.cdc65f16.svg","qdZq"],"qdZq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fa.svg":[["1f1ec-1f1fa.02765584.svg","Vse2"],"Vse2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fc.svg":[["1f1ec-1f1fc.92f2fbb7.svg","bpbP"],"bpbP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fe.svg":[["1f1ec-1f1fe.c8c752c7.svg","Zi9k"],"Zi9k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f0.svg":[["1f1ed-1f1f0.89134375.svg","2V0h"],"2V0h"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f2.svg":[["1f1ed-1f1f2.7df51f83.svg","REwi"],"REwi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f3.svg":[["1f1ed-1f1f3.d424d317.svg","iMdX"],"iMdX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f7.svg":[["1f1ed-1f1f7.26475669.svg","2zL/"],"2zL/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f9.svg":[["1f1ed-1f1f9.32b3a016.svg","vLXA"],"vLXA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1fa.svg":[["1f1ed-1f1fa.1d8e20d4.svg","pKlQ"],"pKlQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e8.svg":[["1f1ee-1f1e8.73ef0a04.svg","kTuC"],"kTuC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e9.svg":[["1f1ee-1f1e9.9719525b.svg","1UHY"],"1UHY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1ea.svg":[["1f1ee-1f1ea.1bffc7d1.svg","Tsuk"],"Tsuk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f1.svg":[["1f1ee-1f1f1.1fa74891.svg","f8kR"],"f8kR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f2.svg":[["1f1ee-1f1f2.a8329c34.svg","ZU7D"],"ZU7D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/26f3.svg":[["26f3.1c592450.svg","00lg"],"00lg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f3.svg":[["1f1ee-1f1f3.413062c2.svg","KWFT"],"KWFT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f4.svg":[["1f1ee-1f1f4.14ac8655.svg","yc3c"],"yc3c"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f6.svg":[["1f1ee-1f1f6.a0ec4a33.svg","FpXc"],"FpXc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f7.svg":[["1f1ee-1f1f7.66f4455b.svg","6WFD"],"6WFD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f8.svg":[["1f1ee-1f1f8.369055b1.svg","J7BB"],"J7BB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1ea.svg":[["1f1ef-1f1ea.cebb1f2a.svg","V9G/"],"V9G/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f2.svg":[["1f1ef-1f1f2.c02d6bf2.svg","ysiJ"],"ysiJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f4.svg":[["1f1ef-1f1f4.03af0c7f.svg","8YoX"],"8YoX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ea.svg":[["1f1f0-1f1ea.773c0b1d.svg","jWq+"],"jWq+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ec.svg":[["1f1f0-1f1ec.eeb1a2bf.svg","k3CX"],"k3CX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ed.svg":[["1f1f0-1f1ed.6056f269.svg","18Xj"],"18Xj"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ee.svg":[["1f1f0-1f1ee.75982fa3.svg","n4uR"],"n4uR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f2.svg":[["1f1f0-1f1f2.cc6670b0.svg","aDpn"],"aDpn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f3.svg":[["1f1f0-1f1f3.d83352e4.svg","gEgg"],"gEgg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f5.svg":[["1f1f0-1f1f5.c8890842.svg","e6/8"],"e6/8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fc.svg":[["1f1f0-1f1fc.3c803fe2.svg","vcGX"],"vcGX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fe.svg":[["1f1f0-1f1fe.5790dc14.svg","pa8m"],"pa8m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ff.svg":[["1f1f0-1f1ff.04cb7d2d.svg","PXi0"],"PXi0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e6.svg":[["1f1f1-1f1e6.c643b934.svg","aSL5"],"aSL5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e7.svg":[["1f1f1-1f1e7.64283791.svg","0wij"],"0wij"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e8.svg":[["1f1f1-1f1e8.befd4a7d.svg","AN2n"],"AN2n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1ee.svg":[["1f1f1-1f1ee.83110489.svg","oM6D"],"oM6D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f0.svg":[["1f1f1-1f1f0.f5e26938.svg","cXD4"],"cXD4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f7.svg":[["1f1f1-1f1f7.d4cedda0.svg","2FwW"],"2FwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f8.svg":[["1f1f1-1f1f8.692a8a3d.svg","06WH"],"06WH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f9.svg":[["1f1f1-1f1f9.04273dfb.svg","xkCu"],"xkCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fa.svg":[["1f1f1-1f1fa.b356257e.svg","HJvy"],"HJvy"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fb.svg":[["1f1f1-1f1fb.06d7f11c.svg","BGmx"],"BGmx"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fe.svg":[["1f1f1-1f1fe.642bf63d.svg","3/Hf"],"3/Hf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e6.svg":[["1f1f2-1f1e6.7cf99271.svg","JUSC"],"JUSC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e8.svg":[["1f1f2-1f1e8.77f9bc2a.svg","798W"],"798W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e9.svg":[["1f1f2-1f1e9.34722307.svg","VUTQ"],"VUTQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ea.svg":[["1f1f2-1f1ea.ed2a8045.svg","e3//"],"e3//"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1eb.svg":[["1f1f2-1f1eb.e44dddb2.svg","xmfW"],"xmfW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ec.svg":[["1f1f2-1f1ec.91d07981.svg","b/ZF"],"b/ZF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ed.svg":[["1f1f2-1f1ed.c7b494cc.svg","HOWE"],"HOWE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f0.svg":[["1f1f2-1f1f0.e99feca6.svg","c+T0"],"c+T0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f1.svg":[["1f1f2-1f1f1.b34cb0c4.svg","uiET"],"uiET"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f2.svg":[["1f1f2-1f1f2.acb2c58b.svg","EEQp"],"EEQp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f3.svg":[["1f1f2-1f1f3.ac88e037.svg","6xQz"],"6xQz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f4.svg":[["1f1f2-1f1f4.b357da34.svg","Jui7"],"Jui7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f5.svg":[["1f1f2-1f1f5.1c03b4c8.svg","MuiK"],"MuiK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f6.svg":[["1f1f2-1f1f6.bbb9bb4a.svg","xzdL"],"xzdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f7.svg":[["1f1f2-1f1f7.58cdb3d7.svg","+2wl"],"+2wl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f8.svg":[["1f1f2-1f1f8.3cb62f40.svg","DRHQ"],"DRHQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f9.svg":[["1f1f2-1f1f9.67d13460.svg","/Uy5"],"/Uy5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fa.svg":[["1f1f2-1f1fa.afd0b205.svg","Mh9J"],"Mh9J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fb.svg":[["1f1f2-1f1fb.2d2df9c7.svg","MvDG"],"MvDG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fc.svg":[["1f1f2-1f1fc.38bddb99.svg","SeZC"],"SeZC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fd.svg":[["1f1f2-1f1fd.0c489398.svg","NS+R"],"NS+R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fe.svg":[["1f1f2-1f1fe.1aa06c61.svg","qkO1"],"qkO1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ff.svg":[["1f1f2-1f1ff.71557d53.svg","y1Y0"],"y1Y0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e6.svg":[["1f1f3-1f1e6.b17f6814.svg","dxpq"],"dxpq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e8.svg":[["1f1f3-1f1e8.c29c05f5.svg","4rR1"],"4rR1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ea.svg":[["1f1f3-1f1ea.bda89cd5.svg","Q19U"],"Q19U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1eb.svg":[["1f1f3-1f1eb.dc81e0af.svg","KioV"],"KioV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ec.svg":[["1f1f3-1f1ec.13330a97.svg","/G8D"],"/G8D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ee.svg":[["1f1f3-1f1ee.5553225e.svg","Y4Cm"],"Y4Cm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f1.svg":[["1f1f3-1f1f1.e611df6c.svg","cStk"],"cStk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f4.svg":[["1f1f3-1f1f4.aeb21e38.svg","FMFG"],"FMFG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f5.svg":[["1f1f3-1f1f5.f2f03c3c.svg","F8+U"],"F8+U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f7.svg":[["1f1f3-1f1f7.b7505152.svg","zD7p"],"zD7p"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1fa.svg":[["1f1f3-1f1fa.764b7f5e.svg","Hq9b"],"Hq9b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ff.svg":[["1f1f3-1f1ff.d4381377.svg","Higc"],"Higc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f4-1f1f2.svg":[["1f1f4-1f1f2.de3a4039.svg","EWrE"],"EWrE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1e6.svg":[["1f1f5-1f1e6.b696172e.svg","q+lZ"],"q+lZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ea.svg":[["1f1f5-1f1ea.b7fe4dc3.svg","nJl3"],"nJl3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1eb.svg":[["1f1f5-1f1eb.7b693467.svg","tmNT"],"tmNT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ec.svg":[["1f1f5-1f1ec.de7c24e6.svg","6ciu"],"6ciu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ed.svg":[["1f1f5-1f1ed.9eb1cbe6.svg","LVVi"],"LVVi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f0.svg":[["1f1f5-1f1f0.4a849c2e.svg","Z7Gt"],"Z7Gt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f1.svg":[["1f1f5-1f1f1.ad05e3a1.svg","FRdO"],"FRdO"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f2.svg":[["1f1f5-1f1f2.b2f807c9.svg","7Dl5"],"7Dl5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f3.svg":[["1f1f5-1f1f3.6acf81d8.svg","fpf2"],"fpf2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f7.svg":[["1f1f5-1f1f7.48bb1903.svg","CC0b"],"CC0b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f8.svg":[["1f1f5-1f1f8.fb3c0d69.svg","RUxP"],"RUxP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f9.svg":[["1f1f5-1f1f9.fee1ea57.svg","bq1W"],"bq1W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fc.svg":[["1f1f5-1f1fc.0f797d50.svg","m+uN"],"m+uN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fe.svg":[["1f1f5-1f1fe.5d4ce754.svg","cUQV"],"cUQV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f6-1f1e6.svg":[["1f1f6-1f1e6.bec915d0.svg","FGhc"],"FGhc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1ea.svg":[["1f1f7-1f1ea.8cfc1967.svg","DVWs"],"DVWs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f4.svg":[["1f1f7-1f1f4.72a91b3a.svg","W9b0"],"W9b0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f8.svg":[["1f1f7-1f1f8.457084db.svg","z4f7"],"z4f7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fc.svg":[["1f1f7-1f1fc.e8cf5870.svg","1QVF"],"1QVF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e6.svg":[["1f1f8-1f1e6.18940f29.svg","4CKt"],"4CKt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e7.svg":[["1f1f8-1f1e7.319df6bf.svg","JURh"],"JURh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e8.svg":[["1f1f8-1f1e8.9ef8ade3.svg","3K8G"],"3K8G"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.svg":[["1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.32625aa3.svg","+hGJ"],"+hGJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e9.svg":[["1f1f8-1f1e9.4b1632be.svg","aCNC"],"aCNC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ea.svg":[["1f1f8-1f1ea.929454cd.svg","qEcB"],"qEcB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ec.svg":[["1f1f8-1f1ec.d445f0ff.svg","OmgE"],"OmgE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ed.svg":[["1f1f8-1f1ed.3d4bd202.svg","06Tz"],"06Tz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ee.svg":[["1f1f8-1f1ee.4737a79e.svg","yCmU"],"yCmU"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ef.svg":[["1f1f8-1f1ef.aeb21e38.svg","EtO2"],"EtO2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f0.svg":[["1f1f8-1f1f0.2e1b0761.svg","+UtB"],"+UtB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f1.svg":[["1f1f8-1f1f1.c3a9845c.svg","dhW6"],"dhW6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f2.svg":[["1f1f8-1f1f2.825be159.svg","UHli"],"UHli"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f3.svg":[["1f1f8-1f1f3.89f8c8b2.svg","/OgS"],"/OgS"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f4.svg":[["1f1f8-1f1f4.38201bf2.svg","TJFK"],"TJFK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f7.svg":[["1f1f8-1f1f7.79844ebb.svg","2jqT"],"2jqT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f8.svg":[["1f1f8-1f1f8.3ed81e3a.svg","R41b"],"R41b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f9.svg":[["1f1f8-1f1f9.1994c21f.svg","omJo"],"omJo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fb.svg":[["1f1f8-1f1fb.b5d5edf4.svg","kdJI"],"kdJI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fd.svg":[["1f1f8-1f1fd.e2e4306f.svg","yB+z"],"yB+z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fe.svg":[["1f1f8-1f1fe.ed82cc90.svg","X4n1"],"X4n1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ff.svg":[["1f1f8-1f1ff.db11dd94.svg","YDYQ"],"YDYQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e6.svg":[["1f1f9-1f1e6.76591f27.svg","aUVm"],"aUVm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e8.svg":[["1f1f9-1f1e8.839080d6.svg","wDzg"],"wDzg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e9.svg":[["1f1f9-1f1e9.841095dd.svg","6zs3"],"6zs3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1eb.svg":[["1f1f9-1f1eb.a6993203.svg","W5/R"],"W5/R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ec.svg":[["1f1f9-1f1ec.ba8b6b31.svg","p5sb"],"p5sb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ed.svg":[["1f1f9-1f1ed.10102828.svg","RqOd"],"RqOd"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ef.svg":[["1f1f9-1f1ef.b7dd46c4.svg","I7kX"],"I7kX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f0.svg":[["1f1f9-1f1f0.f95ae93a.svg","YZb8"],"YZb8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f1.svg":[["1f1f9-1f1f1.ffd0c4f3.svg","NwHC"],"NwHC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f2.svg":[["1f1f9-1f1f2.c2a91563.svg","2+4B"],"2+4B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f3.svg":[["1f1f9-1f1f3.6559403d.svg","EOPT"],"EOPT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f4.svg":[["1f1f9-1f1f4.08c7237a.svg","Fmqp"],"Fmqp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f7.svg":[["1f1f9-1f1f7.12e48b03.svg","LjIn"],"LjIn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f9.svg":[["1f1f9-1f1f9.a8394530.svg","QztB"],"QztB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fb.svg":[["1f1f9-1f1fb.2e96f9ed.svg","DSzt"],"DSzt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fc.svg":[["1f1f9-1f1fc.a87eee10.svg","Iqgt"],"Iqgt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ff.svg":[["1f1f9-1f1ff.d4cc1276.svg","WgZh"],"WgZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1e6.svg":[["1f1fa-1f1e6.153ee43a.svg","Ve+i"],"Ve+i"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ec.svg":[["1f1fa-1f1ec.f61c653a.svg","W7wX"],"W7wX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f2.svg":[["1f1fa-1f1f2.3330be0f.svg","2DYu"],"2DYu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f3.svg":[["1f1fa-1f1f3.67d845dc.svg","+QHK"],"+QHK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1fe.svg":[["1f1fa-1f1fe.5d66a344.svg","DiHo"],"DiHo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ff.svg":[["1f1fa-1f1ff.650b7802.svg","EeLv"],"EeLv"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e6.svg":[["1f1fb-1f1e6.cdc67879.svg","9yrB"],"9yrB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e8.svg":[["1f1fb-1f1e8.78113619.svg","VEdL"],"VEdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ea.svg":[["1f1fb-1f1ea.9af9441c.svg","BOrV"],"BOrV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ec.svg":[["1f1fb-1f1ec.821c31da.svg","JWCu"],"JWCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ee.svg":[["1f1fb-1f1ee.19a399bf.svg","nY8d"],"nY8d"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1f3.svg":[["1f1fb-1f1f3.0b133abb.svg","l/6k"],"l/6k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1fa.svg":[["1f1fb-1f1fa.e5adff28.svg","4TG0"],"4TG0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.svg":[["1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.d7f897fe.svg","JY6H"],"JY6H"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1eb.svg":[["1f1fc-1f1eb.b6144f5e.svg","NR5z"],"NR5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1f8.svg":[["1f1fc-1f1f8.2319a444.svg","PcSV"],"PcSV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fd-1f1f0.svg":[["1f1fd-1f1f0.599d47df.svg","mDSG"],"mDSG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1ea.svg":[["1f1fe-1f1ea.7d4ba854.svg","EcMD"],"EcMD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1f9.svg":[["1f1fe-1f1f9.ebc185ef.svg","M4/N"],"M4/N"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1e6.svg":[["1f1ff-1f1e6.a9826940.svg","40x2"],"40x2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1f2.svg":[["1f1ff-1f1f2.01e3f9d4.svg","c8C5"],"c8C5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1fc.svg":[["1f1ff-1f1fc.c6d9f8f1.svg","BbEf"],"BbEf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f7.svg":[["1f1eb-1f1f7.e44dddb2.svg","EOQP"],"EOQP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e7.svg":[["1f1ec-1f1e7.15195767.svg","Iy5z"],"Iy5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f30d.svg":[["1f30d.3a036f85.svg","+Shm"],"+Shm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f50e.svg":[["1f50e.43549be6.svg","8c9B"],"8c9B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fa.svg":[["1f1f7-1f1fa.65e29db4.svg","UI8x"],"UI8x"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f8.svg":[["1f1fa-1f1f8.3330be0f.svg","qXIQ"],"qXIQ"]}],"h2Hb":[function(require,module,exports) {
+},{"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/26d3.svg":[["26d3.df26b99e.svg","PcdH"],"PcdH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f3.svg":[["1f1e8-1f1f3.71b04f50.svg","eQVn"],"eQVn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ea.svg":[["1f1e9-1f1ea.e18fb3b5.svg","cW1v"],"cW1v"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e8.svg":[["1f1e6-1f1e8.42822809.svg","O4au"],"O4au"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1e9.svg":[["1f1e6-1f1e9.0ea5bf62.svg","5Whg"],"5Whg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ea.svg":[["1f1e6-1f1ea.547f1fed.svg","6i6P"],"6i6P"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1eb.svg":[["1f1e6-1f1eb.4d61ccd4.svg","EbGW"],"EbGW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ec.svg":[["1f1e6-1f1ec.046288e0.svg","2/xK"],"2/xK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ee.svg":[["1f1e6-1f1ee.0ea90be6.svg","uLOp"],"uLOp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f1.svg":[["1f1e6-1f1f1.93972240.svg","QXN1"],"QXN1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f2.svg":[["1f1e6-1f1f2.58216aad.svg","wzbN"],"wzbN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f4.svg":[["1f1e6-1f1f4.1c7f2191.svg","w73S"],"w73S"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f6.svg":[["1f1e6-1f1f6.1df3fa89.svg","YJNH"],"YJNH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f7.svg":[["1f1e6-1f1f7.c4023db6.svg","R/+K"],"R/+K"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f8.svg":[["1f1e6-1f1f8.1a6de69f.svg","7wZs"],"7wZs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1f9.svg":[["1f1e6-1f1f9.3bf3b3c6.svg","NYla"],"NYla"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fa.svg":[["1f1e6-1f1fa.7df51f83.svg","w4/k"],"w4/k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fc.svg":[["1f1e6-1f1fc.e019d2d9.svg","QJf8"],"QJf8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1fd.svg":[["1f1e6-1f1fd.ea851d45.svg","pha7"],"pha7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e6-1f1ff.svg":[["1f1e6-1f1ff.4bcec899.svg","vLk/"],"vLk/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e6.svg":[["1f1e7-1f1e6.04d321b1.svg","1uU0"],"1uU0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e7.svg":[["1f1e7-1f1e7.0d552338.svg","nnba"],"nnba"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1e9.svg":[["1f1e7-1f1e9.4190ce8b.svg","vfbl"],"vfbl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ea.svg":[["1f1e7-1f1ea.585290df.svg","7ccV"],"7ccV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1eb.svg":[["1f1e7-1f1eb.57ca06f4.svg","+hQ1"],"+hQ1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ec.svg":[["1f1e7-1f1ec.04c2cb17.svg","akj6"],"akj6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ed.svg":[["1f1e7-1f1ed.0db8867b.svg","Csv8"],"Csv8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ee.svg":[["1f1e7-1f1ee.3c006f2d.svg","1gIg"],"1gIg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ef.svg":[["1f1e7-1f1ef.44d9ae15.svg","x/Uw"],"x/Uw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f1.svg":[["1f1e7-1f1f1.7f18abb7.svg","kw3e"],"kw3e"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f2.svg":[["1f1e7-1f1f2.2b507468.svg","g6Ks"],"g6Ks"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f3.svg":[["1f1e7-1f1f3.52c75492.svg","G+XW"],"G+XW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f4.svg":[["1f1e7-1f1f4.8d38c2ad.svg","Z3f4"],"Z3f4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f6.svg":[["1f1e7-1f1f6.f9f69c99.svg","NYZh"],"NYZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f7.svg":[["1f1e7-1f1f7.ef746b8f.svg","6fzl"],"6fzl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f8.svg":[["1f1e7-1f1f8.58ca0865.svg","u/sN"],"u/sN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1f9.svg":[["1f1e7-1f1f9.416260b3.svg","oEwW"],"oEwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fb.svg":[["1f1e7-1f1fb.cee3040c.svg","j/J7"],"j/J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fc.svg":[["1f1e7-1f1fc.bcdfee06.svg","XWe/"],"XWe/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1fe.svg":[["1f1e7-1f1fe.03465708.svg","EsIA"],"EsIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e7-1f1ff.svg":[["1f1e7-1f1ff.40df548f.svg","hYWB"],"hYWB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e6.svg":[["1f1e8-1f1e6.5b3a7333.svg","A8qE"],"A8qE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e8.svg":[["1f1e8-1f1e8.a25604bf.svg","OtLZ"],"OtLZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1e9.svg":[["1f1e8-1f1e9.703bfd39.svg","LGWM"],"LGWM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1eb.svg":[["1f1e8-1f1eb.c82b0b69.svg","My+t"],"My+t"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ec.svg":[["1f1e8-1f1ec.499856a2.svg","eqbL"],"eqbL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ed.svg":[["1f1e8-1f1ed.1fa5be26.svg","oFgq"],"oFgq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ee.svg":[["1f1e8-1f1ee.811d987d.svg","rsLr"],"rsLr"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f0.svg":[["1f1e8-1f1f0.df9a7963.svg","cHVR"],"cHVR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f1.svg":[["1f1e8-1f1f1.c6f37ae5.svg","ltyK"],"ltyK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f2.svg":[["1f1e8-1f1f2.39baa6fe.svg","wFoG"],"wFoG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f4.svg":[["1f1e8-1f1f4.7ade25c4.svg","k35I"],"k35I"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f5.svg":[["1f1e8-1f1f5.e44dddb2.svg","HV5Z"],"HV5Z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1f7.svg":[["1f1e8-1f1f7.0b2b002e.svg","QfSp"],"QfSp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fa.svg":[["1f1e8-1f1fa.6da931b8.svg","NQTT"],"NQTT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fb.svg":[["1f1e8-1f1fb.9cee7af1.svg","xNWL"],"xNWL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fc.svg":[["1f1e8-1f1fc.7ac0f34d.svg","xQeh"],"xQeh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fd.svg":[["1f1e8-1f1fd.e04f949b.svg","CtyF"],"CtyF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1fe.svg":[["1f1e8-1f1fe.5d8788d0.svg","CyKQ"],"CyKQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e8-1f1ff.svg":[["1f1e8-1f1ff.32a7c739.svg","c3lH"],"c3lH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ec.svg":[["1f1e9-1f1ec.14ac8655.svg","5peb"],"5peb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ef.svg":[["1f1e9-1f1ef.3532a7ba.svg","L3J7"],"L3J7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f0.svg":[["1f1e9-1f1f0.ea8d5e9d.svg","ycSk"],"ycSk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f2.svg":[["1f1e9-1f1f2.fb642994.svg","Vguw"],"Vguw"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1f4.svg":[["1f1e9-1f1f4.376311d9.svg","+S/r"],"+S/r"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1e9-1f1ff.svg":[["1f1e9-1f1ff.ccec0ff3.svg","hCnt"],"hCnt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e6.svg":[["1f1ea-1f1e6.1a8f1f1c.svg","nD+m"],"nD+m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1e8.svg":[["1f1ea-1f1e8.9687e62e.svg","kLtF"],"kLtF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ea.svg":[["1f1ea-1f1ea.8f25bfb4.svg","YwIA"],"YwIA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ec.svg":[["1f1ea-1f1ec.ea29654b.svg","ycOM"],"ycOM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1ed.svg":[["1f1ea-1f1ed.5fab1b55.svg","1mk+"],"1mk+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.svg":[["1f3f4-e0067-e0062-e0065-e006e-e0067-e007f.1f9f70c2.svg","UZTc"],"UZTc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f7.svg":[["1f1ea-1f1f7.207cbcea.svg","WhoC"],"WhoC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1f9.svg":[["1f1ea-1f1f9.3b176126.svg","jQ/g"],"jQ/g"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ea-1f1fa.svg":[["1f1ea-1f1fa.23419a98.svg","5pRH"],"5pRH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ee.svg":[["1f1eb-1f1ee.508dfcf9.svg","0P3J"],"0P3J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1ef.svg":[["1f1eb-1f1ef.692eb21e.svg","uVaK"],"uVaK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f0.svg":[["1f1eb-1f1f0.e5c63d69.svg","unqI"],"unqI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f2.svg":[["1f1eb-1f1f2.1d4c935d.svg","mQEE"],"mQEE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f4.svg":[["1f1eb-1f1f4.21e96768.svg","cKKA"],"cKKA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e6.svg":[["1f1ec-1f1e6.f1006d48.svg","KcGo"],"KcGo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e9.svg":[["1f1ec-1f1e9.bba2f0fa.svg","A5WC"],"A5WC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ea.svg":[["1f1ec-1f1ea.f7b30406.svg","PzpK"],"PzpK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1eb.svg":[["1f1ec-1f1eb.23d3cb2d.svg","s5oR"],"s5oR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ec.svg":[["1f1ec-1f1ec.c00ba56e.svg","orsY"],"orsY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ed.svg":[["1f1ec-1f1ed.75604cc1.svg","j7lP"],"j7lP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1ee.svg":[["1f1ec-1f1ee.5027204f.svg","AibY"],"AibY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f1.svg":[["1f1ec-1f1f1.ae9ae55b.svg","bNB+"],"bNB+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f2.svg":[["1f1ec-1f1f2.911c154e.svg","oDir"],"oDir"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f3.svg":[["1f1ec-1f1f3.fb70f39e.svg","xD5Q"],"xD5Q"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f5.svg":[["1f1ec-1f1f5.79c0e35c.svg","icF+"],"icF+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f6.svg":[["1f1ec-1f1f6.81009872.svg","IDMs"],"IDMs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f7.svg":[["1f1ec-1f1f7.4a4d5e85.svg","tU3n"],"tU3n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f8.svg":[["1f1ec-1f1f8.018ff6c8.svg","NavM"],"NavM"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1f9.svg":[["1f1ec-1f1f9.cdc65f16.svg","qdZq"],"qdZq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fa.svg":[["1f1ec-1f1fa.02765584.svg","Vse2"],"Vse2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fc.svg":[["1f1ec-1f1fc.92f2fbb7.svg","bpbP"],"bpbP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1fe.svg":[["1f1ec-1f1fe.c8c752c7.svg","Zi9k"],"Zi9k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f0.svg":[["1f1ed-1f1f0.89134375.svg","2V0h"],"2V0h"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f2.svg":[["1f1ed-1f1f2.7df51f83.svg","REwi"],"REwi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f3.svg":[["1f1ed-1f1f3.d424d317.svg","iMdX"],"iMdX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f7.svg":[["1f1ed-1f1f7.26475669.svg","2zL/"],"2zL/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1f9.svg":[["1f1ed-1f1f9.32b3a016.svg","vLXA"],"vLXA"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ed-1f1fa.svg":[["1f1ed-1f1fa.1d8e20d4.svg","pKlQ"],"pKlQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e8.svg":[["1f1ee-1f1e8.73ef0a04.svg","kTuC"],"kTuC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1e9.svg":[["1f1ee-1f1e9.9719525b.svg","1UHY"],"1UHY"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1ea.svg":[["1f1ee-1f1ea.1bffc7d1.svg","Tsuk"],"Tsuk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f1.svg":[["1f1ee-1f1f1.1fa74891.svg","f8kR"],"f8kR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f2.svg":[["1f1ee-1f1f2.a8329c34.svg","ZU7D"],"ZU7D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/26f3.svg":[["26f3.1c592450.svg","00lg"],"00lg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f3.svg":[["1f1ee-1f1f3.413062c2.svg","KWFT"],"KWFT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f4.svg":[["1f1ee-1f1f4.14ac8655.svg","yc3c"],"yc3c"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f6.svg":[["1f1ee-1f1f6.a0ec4a33.svg","FpXc"],"FpXc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f7.svg":[["1f1ee-1f1f7.66f4455b.svg","6WFD"],"6WFD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ee-1f1f8.svg":[["1f1ee-1f1f8.369055b1.svg","J7BB"],"J7BB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1ea.svg":[["1f1ef-1f1ea.cebb1f2a.svg","V9G/"],"V9G/"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f2.svg":[["1f1ef-1f1f2.c02d6bf2.svg","ysiJ"],"ysiJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ef-1f1f4.svg":[["1f1ef-1f1f4.03af0c7f.svg","8YoX"],"8YoX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ea.svg":[["1f1f0-1f1ea.773c0b1d.svg","jWq+"],"jWq+"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ec.svg":[["1f1f0-1f1ec.eeb1a2bf.svg","k3CX"],"k3CX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ed.svg":[["1f1f0-1f1ed.6056f269.svg","18Xj"],"18Xj"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ee.svg":[["1f1f0-1f1ee.75982fa3.svg","n4uR"],"n4uR"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f2.svg":[["1f1f0-1f1f2.cc6670b0.svg","aDpn"],"aDpn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f3.svg":[["1f1f0-1f1f3.d83352e4.svg","gEgg"],"gEgg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1f5.svg":[["1f1f0-1f1f5.c8890842.svg","e6/8"],"e6/8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fc.svg":[["1f1f0-1f1fc.3c803fe2.svg","vcGX"],"vcGX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1fe.svg":[["1f1f0-1f1fe.5790dc14.svg","pa8m"],"pa8m"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f0-1f1ff.svg":[["1f1f0-1f1ff.04cb7d2d.svg","PXi0"],"PXi0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e6.svg":[["1f1f1-1f1e6.c643b934.svg","aSL5"],"aSL5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e7.svg":[["1f1f1-1f1e7.64283791.svg","0wij"],"0wij"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1e8.svg":[["1f1f1-1f1e8.befd4a7d.svg","AN2n"],"AN2n"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1ee.svg":[["1f1f1-1f1ee.83110489.svg","oM6D"],"oM6D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f0.svg":[["1f1f1-1f1f0.f5e26938.svg","cXD4"],"cXD4"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f7.svg":[["1f1f1-1f1f7.d4cedda0.svg","2FwW"],"2FwW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f8.svg":[["1f1f1-1f1f8.692a8a3d.svg","06WH"],"06WH"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1f9.svg":[["1f1f1-1f1f9.04273dfb.svg","xkCu"],"xkCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fa.svg":[["1f1f1-1f1fa.b356257e.svg","HJvy"],"HJvy"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fb.svg":[["1f1f1-1f1fb.06d7f11c.svg","BGmx"],"BGmx"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f1-1f1fe.svg":[["1f1f1-1f1fe.642bf63d.svg","3/Hf"],"3/Hf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e6.svg":[["1f1f2-1f1e6.7cf99271.svg","JUSC"],"JUSC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e8.svg":[["1f1f2-1f1e8.77f9bc2a.svg","798W"],"798W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1e9.svg":[["1f1f2-1f1e9.34722307.svg","VUTQ"],"VUTQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ea.svg":[["1f1f2-1f1ea.ed2a8045.svg","e3//"],"e3//"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1eb.svg":[["1f1f2-1f1eb.e44dddb2.svg","xmfW"],"xmfW"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ec.svg":[["1f1f2-1f1ec.91d07981.svg","b/ZF"],"b/ZF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ed.svg":[["1f1f2-1f1ed.c7b494cc.svg","HOWE"],"HOWE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f0.svg":[["1f1f2-1f1f0.e99feca6.svg","c+T0"],"c+T0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f1.svg":[["1f1f2-1f1f1.b34cb0c4.svg","uiET"],"uiET"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f2.svg":[["1f1f2-1f1f2.acb2c58b.svg","EEQp"],"EEQp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f3.svg":[["1f1f2-1f1f3.ac88e037.svg","6xQz"],"6xQz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f4.svg":[["1f1f2-1f1f4.b357da34.svg","Jui7"],"Jui7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f5.svg":[["1f1f2-1f1f5.1c03b4c8.svg","MuiK"],"MuiK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f6.svg":[["1f1f2-1f1f6.bbb9bb4a.svg","xzdL"],"xzdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f7.svg":[["1f1f2-1f1f7.58cdb3d7.svg","+2wl"],"+2wl"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f8.svg":[["1f1f2-1f1f8.3cb62f40.svg","DRHQ"],"DRHQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1f9.svg":[["1f1f2-1f1f9.67d13460.svg","/Uy5"],"/Uy5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fa.svg":[["1f1f2-1f1fa.afd0b205.svg","Mh9J"],"Mh9J"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fb.svg":[["1f1f2-1f1fb.2d2df9c7.svg","MvDG"],"MvDG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fc.svg":[["1f1f2-1f1fc.38bddb99.svg","SeZC"],"SeZC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fd.svg":[["1f1f2-1f1fd.0c489398.svg","NS+R"],"NS+R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1fe.svg":[["1f1f2-1f1fe.1aa06c61.svg","qkO1"],"qkO1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f2-1f1ff.svg":[["1f1f2-1f1ff.71557d53.svg","y1Y0"],"y1Y0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e6.svg":[["1f1f3-1f1e6.b17f6814.svg","dxpq"],"dxpq"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1e8.svg":[["1f1f3-1f1e8.c29c05f5.svg","4rR1"],"4rR1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ea.svg":[["1f1f3-1f1ea.bda89cd5.svg","Q19U"],"Q19U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1eb.svg":[["1f1f3-1f1eb.dc81e0af.svg","KioV"],"KioV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ec.svg":[["1f1f3-1f1ec.13330a97.svg","/G8D"],"/G8D"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ee.svg":[["1f1f3-1f1ee.5553225e.svg","Y4Cm"],"Y4Cm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f1.svg":[["1f1f3-1f1f1.e611df6c.svg","cStk"],"cStk"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f4.svg":[["1f1f3-1f1f4.aeb21e38.svg","FMFG"],"FMFG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f5.svg":[["1f1f3-1f1f5.f2f03c3c.svg","F8+U"],"F8+U"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1f7.svg":[["1f1f3-1f1f7.b7505152.svg","zD7p"],"zD7p"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1fa.svg":[["1f1f3-1f1fa.764b7f5e.svg","Hq9b"],"Hq9b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f3-1f1ff.svg":[["1f1f3-1f1ff.d4381377.svg","Higc"],"Higc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f4-1f1f2.svg":[["1f1f4-1f1f2.de3a4039.svg","EWrE"],"EWrE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1e6.svg":[["1f1f5-1f1e6.b696172e.svg","q+lZ"],"q+lZ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ea.svg":[["1f1f5-1f1ea.b7fe4dc3.svg","nJl3"],"nJl3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1eb.svg":[["1f1f5-1f1eb.7b693467.svg","tmNT"],"tmNT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ec.svg":[["1f1f5-1f1ec.de7c24e6.svg","6ciu"],"6ciu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1ed.svg":[["1f1f5-1f1ed.9eb1cbe6.svg","LVVi"],"LVVi"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f0.svg":[["1f1f5-1f1f0.4a849c2e.svg","Z7Gt"],"Z7Gt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f1.svg":[["1f1f5-1f1f1.ad05e3a1.svg","FRdO"],"FRdO"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f2.svg":[["1f1f5-1f1f2.b2f807c9.svg","7Dl5"],"7Dl5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f3.svg":[["1f1f5-1f1f3.6acf81d8.svg","fpf2"],"fpf2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f7.svg":[["1f1f5-1f1f7.48bb1903.svg","CC0b"],"CC0b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f8.svg":[["1f1f5-1f1f8.fb3c0d69.svg","RUxP"],"RUxP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1f9.svg":[["1f1f5-1f1f9.fee1ea57.svg","bq1W"],"bq1W"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fc.svg":[["1f1f5-1f1fc.0f797d50.svg","m+uN"],"m+uN"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f5-1f1fe.svg":[["1f1f5-1f1fe.5d4ce754.svg","cUQV"],"cUQV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f6-1f1e6.svg":[["1f1f6-1f1e6.bec915d0.svg","FGhc"],"FGhc"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1ea.svg":[["1f1f7-1f1ea.8cfc1967.svg","DVWs"],"DVWs"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f4.svg":[["1f1f7-1f1f4.72a91b3a.svg","W9b0"],"W9b0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1f8.svg":[["1f1f7-1f1f8.457084db.svg","z4f7"],"z4f7"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fc.svg":[["1f1f7-1f1fc.e8cf5870.svg","1QVF"],"1QVF"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e6.svg":[["1f1f8-1f1e6.18940f29.svg","4CKt"],"4CKt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e7.svg":[["1f1f8-1f1e7.319df6bf.svg","JURh"],"JURh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e8.svg":[["1f1f8-1f1e8.9ef8ade3.svg","3K8G"],"3K8G"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.svg":[["1f3f4-e0067-e0062-e0073-e0063-e0074-e007f.32625aa3.svg","+hGJ"],"+hGJ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1e9.svg":[["1f1f8-1f1e9.4b1632be.svg","aCNC"],"aCNC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ea.svg":[["1f1f8-1f1ea.929454cd.svg","qEcB"],"qEcB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ec.svg":[["1f1f8-1f1ec.d445f0ff.svg","OmgE"],"OmgE"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ed.svg":[["1f1f8-1f1ed.3d4bd202.svg","06Tz"],"06Tz"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ee.svg":[["1f1f8-1f1ee.4737a79e.svg","yCmU"],"yCmU"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ef.svg":[["1f1f8-1f1ef.aeb21e38.svg","EtO2"],"EtO2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f0.svg":[["1f1f8-1f1f0.2e1b0761.svg","+UtB"],"+UtB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f1.svg":[["1f1f8-1f1f1.c3a9845c.svg","dhW6"],"dhW6"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f2.svg":[["1f1f8-1f1f2.825be159.svg","UHli"],"UHli"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f3.svg":[["1f1f8-1f1f3.89f8c8b2.svg","/OgS"],"/OgS"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f4.svg":[["1f1f8-1f1f4.38201bf2.svg","TJFK"],"TJFK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f7.svg":[["1f1f8-1f1f7.79844ebb.svg","2jqT"],"2jqT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f8.svg":[["1f1f8-1f1f8.3ed81e3a.svg","R41b"],"R41b"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1f9.svg":[["1f1f8-1f1f9.1994c21f.svg","omJo"],"omJo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fb.svg":[["1f1f8-1f1fb.b5d5edf4.svg","kdJI"],"kdJI"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fd.svg":[["1f1f8-1f1fd.e2e4306f.svg","yB+z"],"yB+z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1fe.svg":[["1f1f8-1f1fe.ed82cc90.svg","X4n1"],"X4n1"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f8-1f1ff.svg":[["1f1f8-1f1ff.db11dd94.svg","YDYQ"],"YDYQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e6.svg":[["1f1f9-1f1e6.76591f27.svg","aUVm"],"aUVm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e8.svg":[["1f1f9-1f1e8.839080d6.svg","wDzg"],"wDzg"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1e9.svg":[["1f1f9-1f1e9.841095dd.svg","6zs3"],"6zs3"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1eb.svg":[["1f1f9-1f1eb.a6993203.svg","W5/R"],"W5/R"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ec.svg":[["1f1f9-1f1ec.ba8b6b31.svg","p5sb"],"p5sb"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ed.svg":[["1f1f9-1f1ed.10102828.svg","RqOd"],"RqOd"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ef.svg":[["1f1f9-1f1ef.b7dd46c4.svg","I7kX"],"I7kX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f0.svg":[["1f1f9-1f1f0.f95ae93a.svg","YZb8"],"YZb8"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f1.svg":[["1f1f9-1f1f1.ffd0c4f3.svg","NwHC"],"NwHC"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f2.svg":[["1f1f9-1f1f2.c2a91563.svg","2+4B"],"2+4B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f3.svg":[["1f1f9-1f1f3.6559403d.svg","EOPT"],"EOPT"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f4.svg":[["1f1f9-1f1f4.08c7237a.svg","Fmqp"],"Fmqp"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f7.svg":[["1f1f9-1f1f7.12e48b03.svg","LjIn"],"LjIn"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1f9.svg":[["1f1f9-1f1f9.a8394530.svg","QztB"],"QztB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fb.svg":[["1f1f9-1f1fb.2e96f9ed.svg","DSzt"],"DSzt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1fc.svg":[["1f1f9-1f1fc.a87eee10.svg","Iqgt"],"Iqgt"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f9-1f1ff.svg":[["1f1f9-1f1ff.d4cc1276.svg","WgZh"],"WgZh"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1e6.svg":[["1f1fa-1f1e6.153ee43a.svg","Ve+i"],"Ve+i"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ec.svg":[["1f1fa-1f1ec.f61c653a.svg","W7wX"],"W7wX"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f2.svg":[["1f1fa-1f1f2.3330be0f.svg","2DYu"],"2DYu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f3.svg":[["1f1fa-1f1f3.67d845dc.svg","+QHK"],"+QHK"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1fe.svg":[["1f1fa-1f1fe.5d66a344.svg","DiHo"],"DiHo"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1ff.svg":[["1f1fa-1f1ff.650b7802.svg","EeLv"],"EeLv"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e6.svg":[["1f1fb-1f1e6.cdc67879.svg","9yrB"],"9yrB"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1e8.svg":[["1f1fb-1f1e8.78113619.svg","VEdL"],"VEdL"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ea.svg":[["1f1fb-1f1ea.9af9441c.svg","BOrV"],"BOrV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ec.svg":[["1f1fb-1f1ec.821c31da.svg","JWCu"],"JWCu"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1ee.svg":[["1f1fb-1f1ee.19a399bf.svg","nY8d"],"nY8d"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1f3.svg":[["1f1fb-1f1f3.0b133abb.svg","l/6k"],"l/6k"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fb-1f1fa.svg":[["1f1fb-1f1fa.e5adff28.svg","4TG0"],"4TG0"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.svg":[["1f3f4-e0067-e0062-e0077-e006c-e0073-e007f.d7f897fe.svg","JY6H"],"JY6H"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1eb.svg":[["1f1fc-1f1eb.b6144f5e.svg","NR5z"],"NR5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fc-1f1f8.svg":[["1f1fc-1f1f8.2319a444.svg","PcSV"],"PcSV"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fd-1f1f0.svg":[["1f1fd-1f1f0.599d47df.svg","mDSG"],"mDSG"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1ea.svg":[["1f1fe-1f1ea.7d4ba854.svg","EcMD"],"EcMD"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fe-1f1f9.svg":[["1f1fe-1f1f9.ebc185ef.svg","M4/N"],"M4/N"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1e6.svg":[["1f1ff-1f1e6.a9826940.svg","40x2"],"40x2"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1f2.svg":[["1f1ff-1f1f2.01e3f9d4.svg","c8C5"],"c8C5"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ff-1f1fc.svg":[["1f1ff-1f1fc.c6d9f8f1.svg","BbEf"],"BbEf"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1eb-1f1f7.svg":[["1f1eb-1f1f7.e44dddb2.svg","EOQP"],"EOQP"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1ec-1f1e7.svg":[["1f1ec-1f1e7.15195767.svg","Iy5z"],"Iy5z"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f30d.svg":[["1f30d.3a036f85.svg","+Shm"],"+Shm"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f517.svg":[["1f517.fb7fa6a2.svg","w7CQ"],"w7CQ"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f50e.svg":[["1f50e.43549be6.svg","8c9B"],"8c9B"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1f7-1f1fa.svg":[["1f1f7-1f1fa.65e29db4.svg","UI8x"],"UI8x"],"/home/travis/build/Terminal/discordapps.dev/node_modules/twemoji/2/svg/1f1fa-1f1f8.svg":[["1f1fa-1f1f8.3330be0f.svg","qXIQ"],"qXIQ"]}],"h2Hb":[function(require,module,exports) {
 module.exports = {
   "roundedCorners": "_roundedCorners_b5853",
   "loading": "_loading_b5853",
@@ -3131,6 +3133,8 @@ module.exports = {
       "back": "Back to posts",
       "title": "Terminal.ink Documentation and Blog",
       "description": "See posts about how Terminal.ink operates, or see a tutorial on how to do something.",
+      "copy": "Click to copy link to this section",
+      "copied": "Copied link to your clipboard",
       "headers": {
         "blog": "Latest blog posts",
         "howto": "Tutorials",
@@ -5160,7 +5164,75 @@ const languageHasTranslations = locale => {
 exports.languageHasTranslations = languageHasTranslations;
 var _default = languages;
 exports.default = _default;
-},{"./da.json":"occt","./de.json":"mmKu","./en-GB.json":"bdyH","./en-US.json":"pac/","./fr.json":"AhAd","./pl.json":"EG4I","./zh-cn.json":"kGVP","./nl.json":"X81M"}],"UCeK":[function(require,module,exports) {
+},{"./da.json":"occt","./de.json":"mmKu","./en-GB.json":"bdyH","./en-US.json":"pac/","./fr.json":"AhAd","./pl.json":"EG4I","./zh-cn.json":"kGVP","./nl.json":"X81M"}],"hUzy":[function(require,module,exports) {
+module.exports = {
+  "toastContainer": "_toastContainer_99426",
+  "toastDiv": "_toastDiv_99426",
+  "enter": "_enter_99426",
+  "toastLeave": "_toastLeave_99426",
+  "leave": "_leave_99426",
+  "toast": "_toast_99426",
+  "timeout": "_timeout_99426",
+  "timeoutAnimation": "_timeoutAnimation_99426"
+};
+},{}],"Ed+p":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../../helpers/ConstructCSS"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Toasts extends _react.Component {
+  render() {
+    const {
+      toasts
+    } = this.props.toasts;
+    return _react.default.createElement("div", {
+      className: _indexModule.default.toastContainer
+    }, toasts.map(toast => _react.default.createElement("div", {
+      key: toast.id,
+      className: (0, _ConstructCSS.default)(_indexModule.default.toastDiv, toast.leave && _indexModule.default.toastLeave)
+    }, _react.default.createElement("div", {
+      className: _indexModule.default.timeout,
+      style: {
+        animationDuration: `${toast.timeout / 1000}s`
+      }
+    }), _react.default.createElement("span", {
+      style: {
+        backgroundColor: toast.colour
+      },
+      className: _indexModule.default.toast
+    }, toast.content))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    toasts
+  } = state;
+  return {
+    toasts
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(Toasts);
+
+exports.default = _default;
+},{"./index.module.scss":"hUzy","../../../helpers/ConstructCSS":"SwhA"}],"UCeK":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5187,6 +5259,8 @@ var _Container = _interopRequireDefault(require("../Container"));
 var _ContentBox = _interopRequireDefault(require("../ContentBox"));
 
 require("./index.module.scss");
+
+var _Toasts = _interopRequireDefault(require("./Toasts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5229,7 +5303,7 @@ class Layout extends _react.Component {
       unlocalisedPath: unlocalisedPath
     }, this.props.afterNav), _react.default.createElement("noscript", null, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "errors.website.noscript"
-    })))), this.props.children, _react.default.createElement(_Footer.default, null));
+    })))), this.props.children, _react.default.createElement(_Footer.default, null), _react.default.createElement(_Toasts.default, null));
   }
 
 }
@@ -5237,7 +5311,7 @@ class Layout extends _react.Component {
 var _default = (0, _reactIntl.injectIntl)(Layout);
 
 exports.default = _default;
-},{"../NavigationBar":"e86L","../Footer":"FlX3","../../data/Locations":"uTwd","../../locales":"Qpzm","../Container":"tNeE","../ContentBox":"50Yc","./index.module.scss":"pac/"}],"qVpT":[function(require,module,exports) {
+},{"../NavigationBar":"e86L","../Footer":"FlX3","../../data/Locations":"uTwd","../../locales":"Qpzm","../Container":"tNeE","../ContentBox":"50Yc","./index.module.scss":"pac/","./Toasts":"Ed+p"}],"qVpT":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5378,6 +5452,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -5389,7 +5465,7 @@ class YouTube extends _react.Component {
       frameBorder: "0",
       allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
       allowFullScreen: true,
-      className: _indexModule.default.video,
+      className: (0, _ConstructCSS.default)(_indexModule.default.video, this.props.className),
       title: this.props.title
     });
   }
@@ -5398,7 +5474,7 @@ class YouTube extends _react.Component {
 
 var _default = YouTube;
 exports.default = _default;
-},{"./index.module.scss":"h3Un"}],"b75q":[function(require,module,exports) {
+},{"./index.module.scss":"h3Un","../../helpers/ConstructCSS":"SwhA"}],"b75q":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10531,7 +10607,175 @@ module.exports = {
   "tableContainer": "_tableContainer_d4455",
   "hidden": "_hidden_d4455"
 };
-},{"./../../../../node_modules/twemoji/2/svg/1f517.svg":[["1f517.fb7fa6a2.svg","w7CQ"],"w7CQ"]}],"nUkM":[function(require,module,exports) {
+},{}],"QyPa":[function(require,module,exports) {
+module.exports = {
+  "heading": "_heading_95111",
+  "hidden": "_hidden_95111"
+};
+},{}],"wMtb":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toastLeave = exports.deleteToast = exports.incrementToastCounter = exports.createToast = exports.LEAVE_TOAST = exports.DELETE_TOAST = exports.CREATE_TOAST = exports.INCREMENT_COUNTER = void 0;
+const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+exports.INCREMENT_COUNTER = INCREMENT_COUNTER;
+const CREATE_TOAST = 'CREATE_TOAST';
+exports.CREATE_TOAST = CREATE_TOAST;
+const DELETE_TOAST = 'DELETE_TOAST';
+exports.DELETE_TOAST = DELETE_TOAST;
+const LEAVE_TOAST = 'LEAVE_TOAST';
+exports.LEAVE_TOAST = LEAVE_TOAST;
+
+const pushToast = ({
+  id,
+  content,
+  colour,
+  timeout
+}) => ({
+  type: CREATE_TOAST,
+  toast: {
+    id,
+    content,
+    colour,
+    timeout,
+    leave: false
+  }
+});
+
+const incrementToastCounter = () => {
+  return {
+    type: INCREMENT_COUNTER
+  };
+};
+
+exports.incrementToastCounter = incrementToastCounter;
+
+const createToast = ({
+  content = 'This is an empty toast',
+  colour = '#787eb4',
+  timeout = 5000
+}) => {
+  return (dispatch, getState) => {
+    const id = getState().toasts.counter;
+    dispatch(pushToast({
+      id,
+      content,
+      colour,
+      timeout
+    }));
+    dispatch(incrementToastCounter());
+
+    if (timeout !== 0) {
+      setTimeout(() => {
+        dispatch(toastLeave(id));
+      }, timeout);
+      setTimeout(() => {// dispatch(deleteToast(id));
+      }, timeout + 5000);
+    }
+
+    return id;
+  };
+};
+
+exports.createToast = createToast;
+
+const toastLeave = id => {
+  return {
+    type: LEAVE_TOAST,
+    id
+  };
+};
+
+exports.toastLeave = toastLeave;
+
+const deleteToast = id => {
+  return {
+    type: DELETE_TOAST,
+    id
+  };
+};
+
+exports.deleteToast = deleteToast;
+},{}],"t6wZ":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Styles = require("../../../../data/Styles");
+
+var _FlexContainer = _interopRequireDefault(require("../../../../components/FlexContainer"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../../../helpers/ConstructCSS"));
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _toasts = require("../../../../redux/actions/toasts");
+
+var _reactRedux = require("react-redux");
+
+var _reactIntl = require("react-intl");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class ClickableHeading extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+    this.input = _react.default.createRef();
+    this.header = _react.default.createRef();
+  }
+
+  componentDidMount() {
+    if (window.location.hash === `#${this.props.id}`) window.scrollTo(0, this.header.current.offsetTop);
+  }
+
+  onClick(e, copied) {
+    window.scrollTo(0, this.header.current.offsetTop);
+    const {
+      dispatch
+    } = this.props;
+    dispatch((0, _toasts.createToast)({
+      content: copied,
+      timeout: 3000
+    }));
+    this.input.current.select();
+    document.execCommand('copy');
+  }
+
+  render() {
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.copy"
+    }, copy => _react.default.createElement(_reactIntl.FormattedMessage, {
+      id: "pages.docs.copied"
+    }, copied => (0, _react.createElement)(this.props.tag, {
+      children: this.props.children,
+      className: (0, _ConstructCSS.default)(_Styles.Modesta.tooltip, _indexModule.default.heading),
+      'data-tooltip': copy,
+      id: this.props.id,
+      ref: this.header,
+      onClick: e => this.onClick(e, copied)
+    }))), _react.default.createElement("input", {
+      value: `${window.location.origin}${window.location.pathname}#${this.props.id}`,
+      ref: this.input,
+      className: _indexModule.default.hidden
+    }));
+  }
+
+}
+
+var _default = (0, _reactRedux.connect)()(ClickableHeading);
+
+exports.default = _default;
+},{"../../../../data/Styles":"rs3k","../../../../components/FlexContainer":"AaMC","../../../../helpers/ConstructCSS":"SwhA","./index.module.scss":"QyPa","../../../../redux/actions/toasts":"wMtb"}],"nUkM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10565,6 +10809,8 @@ var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
 require("./vs2015.scss");
 
+var _ClickableHeading = _interopRequireDefault(require("./ClickableHeading"));
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -10580,33 +10826,6 @@ _highlight.default.registerLanguage('json5', _javascript.default);
 _highlight.default.registerLanguage('json', _json.default);
 
 class BotPageContentBox extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.textArea = _react.default.createRef();
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick(e) {
-    if (e.target) {
-      let tag = null; // whoops
-
-      if (/h[1-6]/i.test(e.target.tagName)) tag = e.target;
-      if (/h[1-6]/i.test(e.target.parentElement.tagName)) tag = e.target.parentElement;
-      if (/h[1-6]/i.test(e.target.parentElement.parentElement.tagName)) tag = e.target.parentElement.parentElement;
-
-      if (tag) {
-        this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${tag.attributes.id.value}`;
-        this.textArea.current.select();
-        document.execCommand('copy');
-        const element = document.getElementById(tag.attributes.id.value);
-
-        if (element) {
-          window.scrollTo(0, element.offsetTop);
-        }
-      }
-    }
-  }
-
   render() {
     const page = this.props.page;
     const compiler = (0, _jsx.default)({
@@ -10623,7 +10842,49 @@ class BotPageContentBox extends _react.Component {
         }),
         table: ({
           children
-        }) => _react.default.createElement(_TableContainer.default, null, _react.default.createElement("table", null, children))
+        }) => _react.default.createElement(_TableContainer.default, null, _react.default.createElement("table", null, children)),
+        h1: ({
+          children,
+          id
+        }) => _react.default.createElement(_ClickableHeading.default, {
+          tag: "h1",
+          id: id
+        }, children),
+        h2: ({
+          children,
+          id
+        }) => _react.default.createElement(_ClickableHeading.default, {
+          tag: "h2",
+          id: id
+        }, children),
+        h3: ({
+          children,
+          id
+        }) => _react.default.createElement(_ClickableHeading.default, {
+          tag: "h3",
+          id: id
+        }, children),
+        h4: ({
+          children,
+          id
+        }) => _react.default.createElement(_ClickableHeading.default, {
+          tag: "h4",
+          id: id
+        }, children),
+        h5: ({
+          children,
+          id
+        }) => _react.default.createElement(_ClickableHeading.default, {
+          tag: "h5",
+          id: id
+        }, children),
+        h6: ({
+          children,
+          id
+        }) => _react.default.createElement(_ClickableHeading.default, {
+          tag: "h6",
+          id: id
+        }, children)
       },
       highlight: (language, code) => _highlight.default.highlight(language, code).value
     });
@@ -10632,17 +10893,14 @@ class BotPageContentBox extends _react.Component {
       ref: this.description,
       className: _indexModule.default.description,
       onClick: this.onClick
-    }, compiled.tree)), _react.default.createElement("textarea", {
-      ref: this.textArea,
-      className: _indexModule.default.hidden
-    }));
+    }, compiled.tree)));
   }
 
 }
 
 var _default = BotPageContentBox;
 exports.default = _default;
-},{"../../../components/ContentBox":"50Yc","../../../components/ModalImage":"i0xp","../../../components/TableContainer":"2VrG","../../../data/Locations":"uTwd","./index.module.scss":"RzcF","./vs2015.scss":"pac/"}],"+O+J":[function(require,module,exports) {
+},{"../../../components/ContentBox":"50Yc","../../../components/ModalImage":"i0xp","../../../components/TableContainer":"2VrG","../../../data/Locations":"uTwd","./index.module.scss":"RzcF","./vs2015.scss":"pac/","./ClickableHeading":"t6wZ"}],"+O+J":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10848,7 +11106,56 @@ exportedComponent.serverFetch = [{
 }];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../NotFound":"GVTv","../../components/Container":"tNeE","../../components/LoadingContainer":"N3k8","./DocPageContentBox":"nUkM","../../components/LinkButton":"geqJ","../../data/Styles":"rs3k","../../redux/actions/doc":"+O+J"}],"Fil3":[function(require,module,exports) {
+},{"../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../NotFound":"GVTv","../../components/Container":"tNeE","../../components/LoadingContainer":"N3k8","./DocPageContentBox":"nUkM","../../components/LinkButton":"geqJ","../../data/Styles":"rs3k","../../redux/actions/doc":"+O+J"}],"g3Zr":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Container = _interopRequireDefault(require("../../components/Container"));
+
+var _Layout = _interopRequireDefault(require("../../components/Layout"));
+
+var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
+
+var _Styles = require("../../data/Styles");
+
+var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
+
+var _reactGithubBtn = _interopRequireDefault(require("react-github-btn"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class AboutPage extends _react.Component {
+  render() {
+    return _react.default.createElement(_Layout.default, {
+      match: this.props.match
+    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, "Discord Apps"), _react.default.createElement("p", null, "Discord Apps is the longest running Open Source application store for Discord Bots and other Discord Applications.", _react.default.createElement("br", null), "We are empowered by members of the open source community to help contribute translations, fixes and overall presentation of the website.")), _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_FlexColumns.default, null, _react.default.createElement(_FlexColumns.default, {
+      columns: 6
+    }, _react.default.createElement("h4", null, "Open Source"), _react.default.createElement("p", null, "We are open source")), _react.default.createElement(_FlexColumns.default, {
+      columns: 6
+    }, _react.default.createElement("h4", null, "Bot List People"), _react.default.createElement("p", null, "We're bad people")), _react.default.createElement(_FlexColumns.default, {
+      columns: 6
+    }, _react.default.createElement("h4", null, "Bot List People"), _react.default.createElement("p", null, "We're good people"))), _react.default.createElement(_reactGithubBtn.default, {
+      href: "https://github.com/terminal/discordapps.dev",
+      "data-icon": "octicon-star",
+      "data-size": "large",
+      "data-show-count": "true",
+      "aria-label": "Star terminal/discordapps.dev on GitHub"
+    }, "Star"))));
+  }
+
+}
+
+var _default = AboutPage;
+exports.default = _default;
+},{"../../components/Container":"tNeE","../../components/Layout":"UCeK","../../components/ContentBox":"50Yc","../../data/Styles":"rs3k","../../components/FlexColumns":"U1G4"}],"Fil3":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10888,13 +11195,20 @@ var _DocsHome = _interopRequireDefault(require("../pages/DocsHome"));
 
 var _DocPage = _interopRequireDefault(require("../pages/DocPage"));
 
+var _AboutPage = _interopRequireDefault(require("../pages/AboutPage"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const routes = [{
   path: '/:locale/',
   exact: true,
   component: _Home.default,
-  status: 200
+  status: 200 // }, {
+  //   path: '/:locale/about',
+  //   exact: true,
+  //   component: AboutPage,
+  //   status: 200,
+
 }, {
   path: '/:locale/game',
   exact: true,
@@ -10988,7 +11302,7 @@ const routes = [{
 }];
 var _default = routes;
 exports.default = _default;
-},{"../pages/AppPage":"frcu","../pages/ConfigurePage":"HOS3","../pages/EditBot":"gvgD","../pages/FilterPage":"0bbm","../pages/Game":"L/hj","../pages/Home":"gEi2","../pages/BotsHome":"7vza","../pages/Locale":"9DHm","../pages/LogOut":"BXm7","../pages/NotFound":"GVTv","../pages/AdminPage":"JkHl","../pages/LanguagesComparisonPage":"/yZI","../pages/RpcHome":"Qxjn","../pages/EditRpc":"vgrX","../pages/DocsHome":"kTdp","../pages/DocPage":"tU9b"}],"C+Ou":[function(require,module,exports) {
+},{"../pages/AppPage":"frcu","../pages/ConfigurePage":"HOS3","../pages/EditBot":"gvgD","../pages/FilterPage":"0bbm","../pages/Game":"L/hj","../pages/Home":"gEi2","../pages/BotsHome":"7vza","../pages/Locale":"9DHm","../pages/LogOut":"BXm7","../pages/NotFound":"GVTv","../pages/AdminPage":"JkHl","../pages/LanguagesComparisonPage":"/yZI","../pages/RpcHome":"Qxjn","../pages/EditRpc":"vgrX","../pages/DocsHome":"kTdp","../pages/DocPage":"tU9b","../pages/AboutPage":"g3Zr"}],"C+Ou":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11385,7 +11699,55 @@ function doc(state = {
 
 var _default = doc;
 exports.default = _default;
-},{"../actions/doc":"+O+J"}],"nVbN":[function(require,module,exports) {
+},{"../actions/doc":"+O+J"}],"jSfU":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _toasts = require("../actions/toasts");
+
+function document(state = {
+  counter: 0,
+  toasts: []
+}, action) {
+  switch (action.type) {
+    case _toasts.INCREMENT_COUNTER:
+      return Object.assign({}, state, {
+        counter: state.counter + 1
+      });
+
+    case _toasts.CREATE_TOAST:
+      return Object.assign({}, state, {
+        toasts: [...state.toasts, action.toast]
+      });
+
+    case _toasts.LEAVE_TOAST:
+      return Object.assign({}, state, {
+        toasts: state.toasts.map(toast => {
+          if (toast.id === action.id) {
+            toast.leave = true;
+          }
+
+          return toast;
+        })
+      });
+
+    case _toasts.DELETE_TOAST:
+      return Object.assign({}, state, {
+        toasts: state.toasts.filter(toast => toast.id !== action.id)
+      });
+
+    default:
+      return state;
+  }
+}
+
+var _default = document;
+exports.default = _default;
+},{"../actions/toasts":"wMtb"}],"nVbN":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11403,17 +11765,20 @@ var _bot = _interopRequireDefault(require("./bot"));
 
 var _doc = _interopRequireDefault(require("./doc"));
 
+var _toasts = _interopRequireDefault(require("./toasts"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = (0, _redux.combineReducers)({
   auth: _auth.default,
   categories: _categories.default,
   bot: _bot.default,
-  doc: _doc.default
+  doc: _doc.default,
+  toasts: _toasts.default
 });
 
 exports.default = _default;
-},{"./auth":"1Xxv","./categories":"Ci+K","./bot":"fYS/","./doc":"eSIz"}],"JtT0":[function(require,module,exports) {
+},{"./auth":"1Xxv","./categories":"Ci+K","./bot":"fYS/","./doc":"eSIz","./toasts":"jSfU"}],"JtT0":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
