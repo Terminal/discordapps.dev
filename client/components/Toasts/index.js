@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './index.module.scss';
-import ConstructCSS from '../../../helpers/ConstructCSS';
+import ConstructCSS from '../../helpers/ConstructCSS';
 
 class Toasts extends Component {
   render() {

@@ -44,8 +44,8 @@ const createToast = ({
       }, timeout);
 
       setTimeout(() => {
-        // dispatch(deleteToast(id));
-      }, timeout + 5000)
+        dispatch(deleteToast(id));
+      }, timeout + 1500)
     }
 
     return id;
