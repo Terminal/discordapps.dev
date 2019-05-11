@@ -49,7 +49,7 @@ class ClickableHeading extends Component {
           </FormattedMessage>
         }
       </FormattedMessage>
-      <input value={`${typeof window !== undefined ? window.location.origin : Locations.domain}${window.location.pathname}#${this.props.id}`} ref={this.input} className={styles.hidden} />
+      <input value={`${typeof window !== undefined ? window.location.origin : Locations.domain}${this.props.location.pathname}#${this.props.id}`} ref={this.input} className={styles.hidden} />
     </>
   }
 }
