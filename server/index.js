@@ -10884,11 +10884,14 @@ function shouldFetchDoc(state, page) {
 }
 
 function fetchADoc({
-  url
+  match,
+  pathname
 }) {
   return (dispatch, getState) => {
-    if (shouldFetchDoc(getState(), url)) {
-      return dispatch(fetchDoc(url));
+    const path = pathname.substring(match.url.length);
+
+    if (shouldFetchDoc(getState(), path)) {
+      return dispatch(fetchDoc(path));
     }
   };
 }
@@ -10937,11 +10940,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 class DocPage extends _react.Component {
-  constructor(props) {
-    super(props);
-    this.requestURL = props.location.pathname.substring(props.match.url.length);
-  }
-
   afterFetch() {
     const element = document.getElementById(window.location.hash.substr(1));
 
@@ -10952,20 +10950,26 @@ class DocPage extends _react.Component {
 
   componentDidMount() {
     const {
-      dispatch
+      dispatch,
+      match,
+      location
     } = this.props;
     const promise = dispatch((0, _doc.fetchADoc)({
-      url: this.requestURL
+      match,
+      pathname: location.pathname
     }));
     if (promise) promise.then(this.afterFetch);
   }
 
   componentDidUpdate() {
     const {
-      dispatch
+      dispatch,
+      match,
+      location
     } = this.props;
     const promise = dispatch((0, _doc.fetchADoc)({
-      url: this.requestURL
+      match,
+      pathname: location.pathname
     }));
     if (promise) promise.then(this.afterFetch);
   }
@@ -11014,7 +11018,7 @@ class DocPage extends _react.Component {
       }
     }))), page.attributes.date && _react.default.createElement("p", null, date.toLocaleDateString(this.props.intl.locale, _DateFormat.default))), _react.default.createElement(_DocPageContentBox.default, {
       page: page.body,
-      requestURL: this.requestURL
+      requestURL: this.props.location.pathname.substring(this.props.match.url.length)
     })));
   }
 
