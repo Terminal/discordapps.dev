@@ -26,7 +26,7 @@ class BotPageContentBox extends Component {
     const compiler = marksy({
       createElement,
       elements: {
-        img: ({src, alt}) => <ModalImage className={styles.img} src={src.startsWith('http') ? src : `${Locations.docsServer}/posts${this.props.requestURL}${src}`} alt={alt} title={alt}/>,
+        img: ({src, alt}) => <ModalImage className={styles.img} src={src.startsWith('http') ? src : `${Locations.docsServer}/posts${this.props.requestURL}/${src}`} alt={alt} title={alt}/>,
         table: ({children}) => <TableContainer><table>{children}</table></TableContainer>,
         h1: ({children, id}) => <ClickableHeading tag="h1" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
         h2: ({children, id}) => <ClickableHeading tag="h2" id={id} match={this.props.match} location={this.props.location}>{children}</ClickableHeading>,
