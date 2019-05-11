@@ -10697,6 +10697,7 @@ class ClickableHeading extends _react.Component {
       ref: this.header,
       onClick: e => this.onClick(e, copied)
     }))), _react.default.createElement("input", {
+      readOnly: true,
       value: `${typeof window !== 'undefined' ? window.location.origin : _Locations.default.domain}${this.props.location.pathname}#${this.props.id}`,
       ref: this.input,
       className: _indexModule.default.hidden
