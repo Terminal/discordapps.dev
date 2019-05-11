@@ -11,6 +11,7 @@ import TableContainer from '../../../components/TableContainer';
 import Locations from '../../../data/Locations';
 import styles from './index.module.scss';
 import './vs2015.scss';
+import ClickableHeading from './ClickableHeading';
 
 hljs.registerLanguage('javascript', hljsJavascript);
 hljs.registerLanguage('bash', hljsBash);
@@ -19,33 +20,6 @@ hljs.registerLanguage('json5', hljsJavascript);
 hljs.registerLanguage('json', hljsJson);
 
 class BotPageContentBox extends Component {
-  constructor(props) {
-    super(props);
-
-    this.textArea = React.createRef();
-    this.onClick = this.onClick.bind(this);
-  }
-  onClick(e) {
-    if (e.target) {
-      let tag = null;
-
-      // whoops
-      if (/h[1-6]/i.test(e.target.tagName)) tag = e.target;
-      if (/h[1-6]/i.test(e.target.parentElement.tagName)) tag = e.target.parentElement;
-      if (/h[1-6]/i.test(e.target.parentElement.parentElement.tagName)) tag = e.target.parentElement.parentElement;
-
-      if (tag) {
-        this.textArea.current.value = `${window.location.origin}${window.location.pathname}#${tag.attributes.id.value}`;
-        this.textArea.current.select();
-        document.execCommand('copy');
-       
-        const element = document.getElementById(tag.attributes.id.value)
-        if (element) {
-          window.scrollTo(0, element.offsetTop);
-        }
-      }
-    }
-  }
   render() {
     const page = this.props.page;
 
@@ -53,7 +27,13 @@ class BotPageContentBox extends Component {
       createElement,
       elements: {
         img: ({src, alt}) => <ModalImage className={styles.img} src={src.startsWith('http') ? src : `${Locations.docsServer}/posts${this.props.requestURL}${src}`} alt={alt} title={alt}/>,
-        table: ({children}) => <TableContainer><table>{children}</table></TableContainer>
+        table: ({children}) => <TableContainer><table>{children}</table></TableContainer>,
+        h1: ({children, id}) => <ClickableHeading tag="h1" id={id}>{children}</ClickableHeading>,
+        h2: ({children, id}) => <ClickableHeading tag="h2" id={id}>{children}</ClickableHeading>,
+        h3: ({children, id}) => <ClickableHeading tag="h3" id={id}>{children}</ClickableHeading>,
+        h4: ({children, id}) => <ClickableHeading tag="h4" id={id}>{children}</ClickableHeading>,
+        h5: ({children, id}) => <ClickableHeading tag="h5" id={id}>{children}</ClickableHeading>,
+        h6: ({children, id}) => <ClickableHeading tag="h6" id={id}>{children}</ClickableHeading>,
       },
       highlight: (language, code) => hljs.highlight(language, code).value
     });
@@ -71,7 +51,6 @@ class BotPageContentBox extends Component {
             {compiled.tree}
           </div>
         </div>
-        <textarea ref={this.textArea} className={styles.hidden}></textarea>
       </ContentBox>
     )
   }

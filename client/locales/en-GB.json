@@ -422,6 +422,8 @@
       "back": "Back to posts",
       "title": "Terminal.ink Documentation and Blog",
       "description": "See posts about how Terminal.ink operates, or see a tutorial on how to do something.",
+      "copy": "Click to copy link to this section",
+      "copied": "Copied link to your clipboard",
       "headers": {
         "blog": "Latest blog posts",
         "howto": "Tutorials",

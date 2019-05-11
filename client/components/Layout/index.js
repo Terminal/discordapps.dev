@@ -9,6 +9,7 @@ import Container from '../Container';
 import ContentBox from '../ContentBox';
 
 import './index.module.scss';
+import Toasts from './Toasts';
 
 class Layout extends Component {
   render() {
@@ -52,6 +53,7 @@ class Layout extends Component {
         </noscript>
         {this.props.children}
         <Footer />
+        <Toasts />
       </div>
     )
   }

@@ -14,6 +14,7 @@ import RpcHome from "../pages/RpcHome";
 import EditRpc from "../pages/EditRpc";
 import DocsHome from "../pages/DocsHome";
 import DocPage from "../pages/DocPage";
+import AboutPage from "../pages/AboutPage";
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     exact: true,
     component: Home,
     status: 200,
+  // }, {
+  //   path: '/:locale/about',
+  //   exact: true,
+  //   component: AboutPage,
+  //   status: 200,
   }, {
     path: '/:locale/game',
     exact: true,

@@ -1,0 +1,13 @@
+.heading {
+  &:after {
+    background-color: #787eb4;
+    font-size: 16pt;
+    top: 100%;
+  }
+}
+
+.hidden {
+  position: fixed;
+  top: -100vh;
+  left: -100vw;
+}

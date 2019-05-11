@@ -1,0 +1,67 @@
+.toastContainer {
+  position: fixed;
+  text-align: right;
+  right: 5px;
+  bottom: 5px;
+  z-index: 2000;
+  .toastDiv {
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    animation-name: enter;
+    animation-duration: 1s;
+  }
+  .toastLeave {
+    animation-name: leave;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+  .toast {
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    display: block;
+  }
+  .timeout {
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000022;
+    animation-name: timeoutAnimation;
+    animation-duration: 5s;
+    animation-delay: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes leave {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes enter {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes timeoutAnimation {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

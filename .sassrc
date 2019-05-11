@@ -1,0 +1,5 @@
+{
+  "includePaths": [
+    "client/scss"
+  ]
+}

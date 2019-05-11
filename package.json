@@ -30,6 +30,7 @@
     "react": "^16.0.0-0",
     "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.8.6",
+    "react-github-btn": "^1.0.5",
     "react-helmet": "6.0.0-beta",
     "react-intl": "^2.8.0",
     "react-redux": "^7.0.3",
