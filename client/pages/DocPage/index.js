@@ -16,10 +16,6 @@ import { fetchADoc } from '../../redux/actions/doc';
 import frontmatter from 'front-matter';
 
 class DocPage extends Component {
-  constructor(props) {
-    super(props);
-    this.requestURL = props.location.pathname.substring(props.match.url.length);
-  }
   afterFetch() {
     const element = document.getElementById(window.location.hash.substr(1))
     if (element) {
@@ -27,17 +23,19 @@ class DocPage extends Component {
     }
   }
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, match, location } = this.props;
     const promise = dispatch(fetchADoc({
-      url: this.requestURL
+      match,
+      pathname: location.pathname
     }))
 
     if (promise) promise.then(this.afterFetch);
   }
   componentDidUpdate() {
-    const { dispatch } = this.props;
+    const { dispatch, match, location } = this.props;
     const promise = dispatch(fetchADoc({
-      url: this.requestURL
+      match,
+      pathname: location.pathname
     }))
 
     if (promise) promise.then(this.afterFetch);
@@ -80,7 +78,7 @@ class DocPage extends Component {
               {date.toLocaleDateString(this.props.intl.locale, DateFormat)}
             </p>}
           </ContentBox>
-          <DocPageContentBox page={page.body} requestURL={this.requestURL} />
+          <DocPageContentBox page={page.body} requestURL={this.props.location.pathname.substring(this.props.match.url.length)} />
         </Container>
       </Layout>
     );

@@ -40,11 +40,11 @@ function shouldFetchDoc(state, page) {
   return true;
 }
 
-export function fetchADoc({url}) {
+export function fetchADoc({match, pathname}) {
   return (dispatch, getState) => {
-    if (shouldFetchDoc(getState(), url)) {
-      return dispatch(fetchDoc(url))
+    const path = pathname.substring(match.url.length);
+    if (shouldFetchDoc(getState(), path)) {
+      return dispatch(fetchDoc(path))
     }
   };
 }
-
