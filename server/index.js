@@ -11106,56 +11106,7 @@ exportedComponent.serverFetch = [{
 }];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../NotFound":"GVTv","../../components/Container":"tNeE","../../components/LoadingContainer":"N3k8","./DocPageContentBox":"nUkM","../../components/LinkButton":"geqJ","../../data/Styles":"rs3k","../../redux/actions/doc":"+O+J"}],"g3Zr":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Container = _interopRequireDefault(require("../../components/Container"));
-
-var _Layout = _interopRequireDefault(require("../../components/Layout"));
-
-var _ContentBox = _interopRequireDefault(require("../../components/ContentBox"));
-
-var _Styles = require("../../data/Styles");
-
-var _FlexColumns = _interopRequireDefault(require("../../components/FlexColumns"));
-
-var _reactGithubBtn = _interopRequireDefault(require("react-github-btn"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class AboutPage extends _react.Component {
-  render() {
-    return _react.default.createElement(_Layout.default, {
-      match: this.props.match
-    }, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h2", null, "Discord Apps"), _react.default.createElement("p", null, "Discord Apps is the longest running Open Source application store for Discord Bots and other Discord Applications.", _react.default.createElement("br", null), "We are empowered by members of the open source community to help contribute translations, fixes and overall presentation of the website.")), _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_FlexColumns.default, null, _react.default.createElement(_FlexColumns.default, {
-      columns: 6
-    }, _react.default.createElement("h4", null, "Open Source"), _react.default.createElement("p", null, "We are open source")), _react.default.createElement(_FlexColumns.default, {
-      columns: 6
-    }, _react.default.createElement("h4", null, "Bot List People"), _react.default.createElement("p", null, "We're bad people")), _react.default.createElement(_FlexColumns.default, {
-      columns: 6
-    }, _react.default.createElement("h4", null, "Bot List People"), _react.default.createElement("p", null, "We're good people"))), _react.default.createElement(_reactGithubBtn.default, {
-      href: "https://github.com/terminal/discordapps.dev",
-      "data-icon": "octicon-star",
-      "data-size": "large",
-      "data-show-count": "true",
-      "aria-label": "Star terminal/discordapps.dev on GitHub"
-    }, "Star"))));
-  }
-
-}
-
-var _default = AboutPage;
-exports.default = _default;
-},{"../../components/Container":"tNeE","../../components/Layout":"UCeK","../../components/ContentBox":"50Yc","../../data/Styles":"rs3k","../../components/FlexColumns":"U1G4"}],"Fil3":[function(require,module,exports) {
+},{"../../components/ContentBox":"50Yc","../../components/Layout":"UCeK","../../data/DateFormat":"4Pyv","../../data/Locations":"uTwd","../NotFound":"GVTv","../../components/Container":"tNeE","../../components/LoadingContainer":"N3k8","./DocPageContentBox":"nUkM","../../components/LinkButton":"geqJ","../../data/Styles":"rs3k","../../redux/actions/doc":"+O+J"}],"Fil3":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11195,10 +11146,9 @@ var _DocsHome = _interopRequireDefault(require("../pages/DocsHome"));
 
 var _DocPage = _interopRequireDefault(require("../pages/DocPage"));
 
-var _AboutPage = _interopRequireDefault(require("../pages/AboutPage"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import AboutPage from "../pages/AboutPage";
 const routes = [{
   path: '/:locale/',
   exact: true,
@@ -11302,7 +11252,7 @@ const routes = [{
 }];
 var _default = routes;
 exports.default = _default;
-},{"../pages/AppPage":"frcu","../pages/ConfigurePage":"HOS3","../pages/EditBot":"gvgD","../pages/FilterPage":"0bbm","../pages/Game":"L/hj","../pages/Home":"gEi2","../pages/BotsHome":"7vza","../pages/Locale":"9DHm","../pages/LogOut":"BXm7","../pages/NotFound":"GVTv","../pages/AdminPage":"JkHl","../pages/LanguagesComparisonPage":"/yZI","../pages/RpcHome":"Qxjn","../pages/EditRpc":"vgrX","../pages/DocsHome":"kTdp","../pages/DocPage":"tU9b","../pages/AboutPage":"g3Zr"}],"C+Ou":[function(require,module,exports) {
+},{"../pages/AppPage":"frcu","../pages/ConfigurePage":"HOS3","../pages/EditBot":"gvgD","../pages/FilterPage":"0bbm","../pages/Game":"L/hj","../pages/Home":"gEi2","../pages/BotsHome":"7vza","../pages/Locale":"9DHm","../pages/LogOut":"BXm7","../pages/NotFound":"GVTv","../pages/AdminPage":"JkHl","../pages/LanguagesComparisonPage":"/yZI","../pages/RpcHome":"Qxjn","../pages/EditRpc":"vgrX","../pages/DocsHome":"kTdp","../pages/DocPage":"tU9b"}],"C+Ou":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
