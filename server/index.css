@@ -7966,71 +7966,6 @@ button._youtube_49062 {
   white-space: pre-line;
   margin: 0;
 }
-._toastContainer_99426 {
-  position: fixed;
-  text-align: right;
-  right: 5px;
-  bottom: 5px;
-  z-index: 2000;
-}
-._toastContainer_99426 ._toastDiv_99426 {
-  margin-bottom: 20px;
-  overflow: hidden;
-  position: relative;
-  animation-name: _enter_99426;
-  animation-duration: 1s;
-}
-._toastContainer_99426 ._toastLeave_99426 {
-  animation-name: _leave_99426;
-  animation-duration: 1s;
-  animation-delay: 0.5s;
-  animation-fill-mode: forwards;
-}
-._toastContainer_99426 ._toast_99426 {
-  border-radius: 5px;
-  padding: 5px;
-  color: white;
-  display: block;
-}
-._toastContainer_99426 ._timeout_99426 {
-  position: absolute;
-  border-radius: 5px;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #00000022;
-  animation-name: _timeoutAnimation_99426;
-  animation-duration: 5s;
-  animation-delay: 0.5s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
-}
-
-@keyframes _leave_99426 {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(120%);
-  }
-}
-@keyframes _enter_99426 {
-  from {
-    transform: translateX(120%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-@keyframes _timeoutAnimation_99426 {
-  from {
-    width: 100%;
-  }
-  to {
-    width: 0%;
-  }
-}
 ._link_ceea7 {
   color: #1eaedb;
   cursor: pointer;
@@ -8783,6 +8718,71 @@ span[class*=hljs-deletion] {
   position: fixed;
   top: -100vh;
   left: -100vw;
+}
+._toastContainer_ca399 {
+  position: fixed;
+  text-align: right;
+  right: 5px;
+  bottom: 5px;
+  z-index: 2000;
+}
+._toastContainer_ca399 ._toastDiv_ca399 {
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+  animation-name: _enter_ca399;
+  animation-duration: 1s;
+}
+._toastContainer_ca399 ._toastLeave_ca399 {
+  animation-name: _leave_ca399;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+._toastContainer_ca399 ._toast_ca399 {
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  display: block;
+}
+._toastContainer_ca399 ._timeout_ca399 {
+  position: absolute;
+  border-radius: 5px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000022;
+  animation-name: _timeoutAnimation_ca399;
+  animation-duration: 5s;
+  animation-delay: 0.5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes _leave_ca399 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+@keyframes _enter_ca399 {
+  from {
+    transform: translateX(120%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes _timeoutAnimation_ca399 {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
 }
 
 /*# sourceMappingURL=/index.css.map */
