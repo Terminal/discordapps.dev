@@ -10653,6 +10653,8 @@ var _reactRedux = require("react-redux");
 
 var _reactIntl = require("react-intl");
 
+var _Locations = _interopRequireDefault(require("../../../../data/Locations"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -10695,7 +10697,7 @@ class ClickableHeading extends _react.Component {
       ref: this.header,
       onClick: e => this.onClick(e, copied)
     }))), _react.default.createElement("input", {
-      value: `${window.location.origin}${window.location.pathname}#${this.props.id}`,
+      value: `${typeof window !== undefined ? window.location.origin : _Locations.default.domain}${window.location.pathname}#${this.props.id}`,
       ref: this.input,
       className: _indexModule.default.hidden
     }));
@@ -10706,7 +10708,7 @@ class ClickableHeading extends _react.Component {
 var _default = (0, _reactRedux.connect)()(ClickableHeading);
 
 exports.default = _default;
-},{"../../../../data/Styles":"rs3k","../../../../components/FlexContainer":"AaMC","../../../../helpers/ConstructCSS":"SwhA","./index.module.scss":"QyPa","../../../../redux/actions/toasts":"wMtb"}],"nUkM":[function(require,module,exports) {
+},{"../../../../data/Styles":"rs3k","../../../../components/FlexContainer":"AaMC","../../../../helpers/ConstructCSS":"SwhA","./index.module.scss":"QyPa","../../../../redux/actions/toasts":"wMtb","../../../../data/Locations":"uTwd"}],"nUkM":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10779,42 +10781,54 @@ class BotPageContentBox extends _react.Component {
           id
         }) => _react.default.createElement(_ClickableHeading.default, {
           tag: "h1",
-          id: id
+          id: id,
+          match: this.props.match,
+          location: this.props.location
         }, children),
         h2: ({
           children,
           id
         }) => _react.default.createElement(_ClickableHeading.default, {
           tag: "h2",
-          id: id
+          id: id,
+          match: this.props.match,
+          location: this.props.location
         }, children),
         h3: ({
           children,
           id
         }) => _react.default.createElement(_ClickableHeading.default, {
           tag: "h3",
-          id: id
+          id: id,
+          match: this.props.match,
+          location: this.props.location
         }, children),
         h4: ({
           children,
           id
         }) => _react.default.createElement(_ClickableHeading.default, {
           tag: "h4",
-          id: id
+          id: id,
+          match: this.props.match,
+          location: this.props.location
         }, children),
         h5: ({
           children,
           id
         }) => _react.default.createElement(_ClickableHeading.default, {
           tag: "h5",
-          id: id
+          id: id,
+          match: this.props.match,
+          location: this.props.location
         }, children),
         h6: ({
           children,
           id
         }) => _react.default.createElement(_ClickableHeading.default, {
           tag: "h6",
-          id: id
+          id: id,
+          match: this.props.match,
+          location: this.props.location
         }, children)
       },
       highlight: (language, code) => _highlight.default.highlight(language, code).value
@@ -11018,7 +11032,9 @@ class DocPage extends _react.Component {
       }
     }))), page.attributes.date && _react.default.createElement("p", null, date.toLocaleDateString(this.props.intl.locale, _DateFormat.default))), _react.default.createElement(_DocPageContentBox.default, {
       page: page.body,
-      requestURL: this.props.location.pathname.substring(this.props.match.url.length)
+      requestURL: this.props.location.pathname.substring(this.props.match.url.length),
+      match: this.props.match,
+      location: this.props.location
     })));
   }
 
