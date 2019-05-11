@@ -8246,6 +8246,7 @@ button._youtube_49062 {
   width: 100vw;
   max-width: 100%;
   z-index: 2;
+  overflow: hidden;
 }
 
 ._container_81ec6 {
