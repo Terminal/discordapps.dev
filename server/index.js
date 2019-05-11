@@ -10769,7 +10769,7 @@ class BotPageContentBox extends _react.Component {
           alt
         }) => _react.default.createElement(_ModalImage.default, {
           className: _indexModule.default.img,
-          src: src.startsWith('http') ? src : `${_Locations.default.docsServer}/posts${this.props.requestURL}${src}`,
+          src: src.startsWith('http') ? src : `${_Locations.default.docsServer}/posts${this.props.requestURL}/${src}`,
           alt: alt,
           title: alt
         }),
