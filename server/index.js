@@ -5164,75 +5164,7 @@ const languageHasTranslations = locale => {
 exports.languageHasTranslations = languageHasTranslations;
 var _default = languages;
 exports.default = _default;
-},{"./da.json":"occt","./de.json":"mmKu","./en-GB.json":"bdyH","./en-US.json":"pac/","./fr.json":"AhAd","./pl.json":"EG4I","./zh-cn.json":"kGVP","./nl.json":"X81M"}],"hUzy":[function(require,module,exports) {
-module.exports = {
-  "toastContainer": "_toastContainer_99426",
-  "toastDiv": "_toastDiv_99426",
-  "enter": "_enter_99426",
-  "toastLeave": "_toastLeave_99426",
-  "leave": "_leave_99426",
-  "toast": "_toast_99426",
-  "timeout": "_timeout_99426",
-  "timeoutAnimation": "_timeoutAnimation_99426"
-};
-},{}],"Ed+p":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _reactRedux = require("react-redux");
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _ConstructCSS = _interopRequireDefault(require("../../../helpers/ConstructCSS"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class Toasts extends _react.Component {
-  render() {
-    const {
-      toasts
-    } = this.props.toasts;
-    return _react.default.createElement("div", {
-      className: _indexModule.default.toastContainer
-    }, toasts.map(toast => _react.default.createElement("div", {
-      key: toast.id,
-      className: (0, _ConstructCSS.default)(_indexModule.default.toastDiv, toast.leave && _indexModule.default.toastLeave)
-    }, _react.default.createElement("div", {
-      className: _indexModule.default.timeout,
-      style: {
-        animationDuration: `${toast.timeout / 1000}s`
-      }
-    }), _react.default.createElement("span", {
-      style: {
-        backgroundColor: toast.colour
-      },
-      className: _indexModule.default.toast
-    }, toast.content))));
-  }
-
-}
-
-const mapStateToProps = state => {
-  const {
-    toasts
-  } = state;
-  return {
-    toasts
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(Toasts);
-
-exports.default = _default;
-},{"./index.module.scss":"hUzy","../../../helpers/ConstructCSS":"SwhA"}],"UCeK":[function(require,module,exports) {
+},{"./da.json":"occt","./de.json":"mmKu","./en-GB.json":"bdyH","./en-US.json":"pac/","./fr.json":"AhAd","./pl.json":"EG4I","./zh-cn.json":"kGVP","./nl.json":"X81M"}],"UCeK":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5259,8 +5191,6 @@ var _Container = _interopRequireDefault(require("../Container"));
 var _ContentBox = _interopRequireDefault(require("../ContentBox"));
 
 require("./index.module.scss");
-
-var _Toasts = _interopRequireDefault(require("./Toasts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5303,7 +5233,7 @@ class Layout extends _react.Component {
       unlocalisedPath: unlocalisedPath
     }, this.props.afterNav), _react.default.createElement("noscript", null, _react.default.createElement(_Container.default, null, _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "errors.website.noscript"
-    })))), this.props.children, _react.default.createElement(_Footer.default, null), _react.default.createElement(_Toasts.default, null));
+    })))), this.props.children, _react.default.createElement(_Footer.default, null));
   }
 
 }
@@ -5311,7 +5241,7 @@ class Layout extends _react.Component {
 var _default = (0, _reactIntl.injectIntl)(Layout);
 
 exports.default = _default;
-},{"../NavigationBar":"e86L","../Footer":"FlX3","../../data/Locations":"uTwd","../../locales":"Qpzm","../Container":"tNeE","../ContentBox":"50Yc","./index.module.scss":"pac/","./Toasts":"Ed+p"}],"qVpT":[function(require,module,exports) {
+},{"../NavigationBar":"e86L","../Footer":"FlX3","../../data/Locations":"uTwd","../../locales":"Qpzm","../Container":"tNeE","../ContentBox":"50Yc","./index.module.scss":"pac/"}],"qVpT":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10671,8 +10601,9 @@ const createToast = ({
       setTimeout(() => {
         dispatch(toastLeave(id));
       }, timeout);
-      setTimeout(() => {// dispatch(deleteToast(id));
-      }, timeout + 5000);
+      setTimeout(() => {
+        dispatch(deleteToast(id));
+      }, timeout + 1500);
     }
 
     return id;
@@ -11464,7 +11395,75 @@ class WebsiteRouter extends _react.Component {
 
 var _default = WebsiteRouter;
 exports.default = _default;
-},{"../../data/routes":"Fil3","../InternationalisationProvider":"C+Ou","../../data/redirects":"FQPh"}],"xTYH":[function(require,module,exports) {
+},{"../../data/routes":"Fil3","../InternationalisationProvider":"C+Ou","../../data/redirects":"FQPh"}],"5QhJ":[function(require,module,exports) {
+module.exports = {
+  "toastContainer": "_toastContainer_ca399",
+  "toastDiv": "_toastDiv_ca399",
+  "enter": "_enter_ca399",
+  "toastLeave": "_toastLeave_ca399",
+  "leave": "_leave_ca399",
+  "toast": "_toast_ca399",
+  "timeout": "_timeout_ca399",
+  "timeoutAnimation": "_timeoutAnimation_ca399"
+};
+},{}],"IpuM":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _reactRedux = require("react-redux");
+
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
+
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+
+class Toasts extends _react.Component {
+  render() {
+    const {
+      toasts
+    } = this.props.toasts;
+    return _react.default.createElement("div", {
+      className: _indexModule.default.toastContainer
+    }, toasts.map(toast => _react.default.createElement("div", {
+      key: toast.id,
+      className: (0, _ConstructCSS.default)(_indexModule.default.toastDiv, toast.leave && _indexModule.default.toastLeave)
+    }, _react.default.createElement("div", {
+      className: _indexModule.default.timeout,
+      style: {
+        animationDuration: `${toast.timeout / 1000}s`
+      }
+    }), _react.default.createElement("span", {
+      style: {
+        backgroundColor: toast.colour
+      },
+      className: _indexModule.default.toast
+    }, toast.content))));
+  }
+
+}
+
+const mapStateToProps = state => {
+  const {
+    toasts
+  } = state;
+  return {
+    toasts
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(Toasts);
+
+exports.default = _default;
+},{"./index.module.scss":"5QhJ","../../helpers/ConstructCSS":"SwhA"}],"xTYH":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11476,20 +11475,22 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _Routes = _interopRequireDefault(require("./components/Routes"));
 
+var _Toasts = _interopRequireDefault(require("./components/Toasts"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 class App extends _react.Component {
   render() {
-    return _react.default.createElement(_Routes.default, null);
+    return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Toasts.default, null), _react.default.createElement(_Routes.default, null));
   }
 
 }
 
 var _default = App;
 exports.default = _default;
-},{"./components/Routes":"fcPh"}],"1Xxv":[function(require,module,exports) {
+},{"./components/Routes":"fcPh","./components/Toasts":"IpuM"}],"1Xxv":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
