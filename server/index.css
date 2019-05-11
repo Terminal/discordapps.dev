@@ -7818,6 +7818,11 @@ button._youtube_49062 {
 ._scrollbar_b5853::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+noscript {
+  text-align: center;
+  padding: 2em;
+}
 ._btn_4dba6 {
   border-radius: 18px;
   filter: unset !important;
