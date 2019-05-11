@@ -14,7 +14,7 @@ import RpcHome from "../pages/RpcHome";
 import EditRpc from "../pages/EditRpc";
 import DocsHome from "../pages/DocsHome";
 import DocPage from "../pages/DocPage";
-import AboutPage from "../pages/AboutPage";
+// import AboutPage from "../pages/AboutPage";
 
 const routes = [
   {
