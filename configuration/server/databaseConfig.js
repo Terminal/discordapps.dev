@@ -1,5 +1,5 @@
 const databaseConfig = {
-  enabled: true,
+  enabled: false,
   db: "test",
   servers: [
     {
