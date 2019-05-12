@@ -8,7 +8,7 @@ import Flex from '../../components/FlexColumns';
 import PleaseAddYourBotPleaseThanks from '../../components/GetStartedWithBots';
 import Layout from '../../components/Layout';
 import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
+import Categories from '../../../data/Categories';
 
 class BotsHome extends Component {
   render() {
@@ -45,13 +45,5 @@ class BotsHome extends Component {
     );
   }
 }
-
-BotsHome.serverFetch = [
-  {
-    function: fetchCategoriesIfNeeded,
-    pass: [],
-    payload: {}
-  }
-]
 
 export default BotsHome;

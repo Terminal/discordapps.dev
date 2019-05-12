@@ -14,7 +14,6 @@ import Locations from '../../data/Locations';
 import { Modesta } from '../../data/Styles';
 import languages from '../../locales';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import displayStyles from '../../scss/display.module.scss';
 import elementStyles from '../../scss/elements.module.scss';
 import { fetchABot, resetTheBot } from '../../redux/actions/bot';
@@ -52,7 +51,6 @@ class EditRpc extends Component {
 
   componentDidMount() {
     const { dispatch, match } = this.props;
-    dispatch(fetchCategoriesIfNeeded());
     dispatch(fetchAuthIfNeeded());
 
     // If editing a bot
@@ -296,8 +294,8 @@ class EditRpc extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { categories, auth, bot } = state;
-  return { categories, auth, bot };
+  const { auth, bot } = state;
+  return { auth, bot };
 }
 
 export default connect(mapStateToProps)(injectIntl(EditRpc));

@@ -14,9 +14,8 @@ import LoadingContentBox from '../../components/LoadingContentBox';
 import LocalisedHyperlink from '../../components/LocalisedHyperlink';
 import WebsiteTypeButtons from '../../components/WebsiteTypeButtons';
 import Locations from '../../data/Locations';
-import States from '../../data/States';
+import States from '../../../data/States';
 import ConstructCSS from '../../helpers/ConstructCSS';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
 import hkImage from './hk.jpg';
 import styles from './index.module.scss';
 import rpcImage from './rpc.jpg';
@@ -223,13 +222,5 @@ const mapStateToProps = (state) => {
 }
 
 const exportedComponent = connect(mapStateToProps)(injectIntl(Home));
-
-exportedComponent.serverFetch = [
-  {
-    function: fetchCategoriesIfNeeded,
-    pass: [],
-    payload: {}
-  }
-]
 
 export default exportedComponent;

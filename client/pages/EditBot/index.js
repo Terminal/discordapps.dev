@@ -14,7 +14,7 @@ import Locations from '../../data/Locations';
 import { Modesta } from '../../data/Styles';
 import languages from '../../locales';
 import { fetchAuthIfNeeded } from '../../redux/actions/auth';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
+import Categories from '../../../data/Categories';
 import displayStyles from '../../scss/display.module.scss';
 import elementStyles from '../../scss/elements.module.scss';
 import { fetchABot, resetTheBot } from '../../redux/actions/bot';
@@ -52,7 +52,6 @@ class EditBot extends Component {
 
   componentDidMount() {
     const { dispatch, match } = this.props;
-    dispatch(fetchCategoriesIfNeeded());
     dispatch(fetchAuthIfNeeded());
 
     // If editing a bot
@@ -160,7 +159,6 @@ class EditBot extends Component {
     }
 
     const bot = this.props.match.params.id ? this.props.bot.data : null;
-    const categories = this.props.categories.data
     return (
       <Layout match={this.props.match}>
         <FormattedMessage id="pages.edit.leave">
@@ -182,7 +180,7 @@ class EditBot extends Component {
               </Row>
               <Row>
                 <InputField name="app.support" id="pages.edit.support" value={bot && bot.support} />
-                <InputField name="app.category" id="pages.edit.category" localiseOptions="categories" options={categories || []} value={bot && bot.category} />
+                <InputField name="app.category" id="pages.edit.category" localiseOptions="categories" options={Categories} value={bot && bot.category} />
               </Row>
               <Row>
                 <InputField name="app.website" id="pages.edit.website" value={bot && bot.website} />
@@ -309,18 +307,10 @@ class EditBot extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { categories, auth, bot } = state;
-  return { categories, auth, bot };
+  const { auth, bot } = state;
+  return { auth, bot };
 }
 
 const exportedComponent = connect(mapStateToProps)(injectIntl(EditBot));
-
-exportedComponent.serverFetch = [
-  {
-    function: fetchCategoriesIfNeeded,
-    pass: [],
-    payload: {}
-  }
-]
 
 export default exportedComponent;

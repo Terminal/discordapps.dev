@@ -10,8 +10,8 @@ import Layout from '../../components/Layout';
 import MultipleInputField from '../../components/MultipleInputField';
 import Row from '../../components/Row';
 import Locations from '../../data/Locations';
-import States from '../../data/States';
-import { fetchCategoriesIfNeeded } from '../../redux/actions/categories';
+import States from '../../../data/States';
+import Categories from '../../../data/Categories';
 import calculateBotScore from '../../helpers/calulateBotScore';
 
 class FilterPage extends Component {
@@ -33,10 +33,7 @@ class FilterPage extends Component {
     this.onChange = this.onChange.bind(this);
     this.search = this.search.bind(this);
   }
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(fetchCategoriesIfNeeded());
-    
+  componentDidMount() {    
     if (this.props.location.search) {
       this.search(this.props.location.search)
     }
@@ -90,7 +87,6 @@ class FilterPage extends Component {
     })
   }
   render() {
-    const categories = this.props.categories.data;
     const auth = this.props.auth.data;
     const { results, owners, category, nsfw, type, query, hidden, state } = this.state;
 
@@ -101,7 +97,7 @@ class FilterPage extends Component {
             <ContentBox>
               <Row>
                 <MultipleInputField name="owners[]" id="pages.filter.authors" value={owners} onChange={this.onChange}/>
-                <InputField name="category" id="pages.filter.category" localiseOptions="categories" allowNone={true} options={categories || []} value={category} onChange={this.onChange}/>
+                <InputField name="category" id="pages.filter.category" localiseOptions="categories" allowNone={true} options={Categories} value={category} onChange={this.onChange}/>
               </Row>
               <Row>
                 <InputField name="q" id="pages.filter.query" value={query} onChange={this.onChange}/>
@@ -136,8 +132,8 @@ class FilterPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { categories, bots, auth } = state;
-  return { categories, bots, auth };
+  const { bots, auth } = state;
+  return { bots, auth };
 }
 
 const exportedComponent = connect(mapStateToProps)(injectIntl(FilterPage));

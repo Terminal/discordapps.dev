@@ -7,7 +7,7 @@ import Locations from '../../../data/Locations';
 import { fetchAuthIfNeeded } from '../../../redux/actions/auth';
 import styles from './index.module.scss';
 import LocalisedHyperlink from '../../../components/LocalisedHyperlink';
-import States from '../../../data/States';
+import States from '../../../../data/States';
 import DateFormat from '../../../data/DateFormat';
 import AppPageDeleteButton from '../AppPageDeleteButton';
 
