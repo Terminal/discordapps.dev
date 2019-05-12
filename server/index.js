@@ -1583,7 +1583,7 @@ module.exports = {
   "darken": "_darken_f0a17",
   "tooltip": "_tooltip_f0a17"
 };
-},{}],"2Fxh":[function(require,module,exports) {
+},{}],"x2wK":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1678,7 +1678,7 @@ var _Locations = _interopRequireDefault(require("../../data/Locations"));
 
 var _Styles = require("../../data/Styles");
 
-var _States = _interopRequireDefault(require("../../data/States"));
+var _States = _interopRequireDefault(require("../../../data/States"));
 
 var _auth = require("../../redux/actions/auth");
 
@@ -1780,7 +1780,7 @@ const mapStateToProps = (state, ownProps) => {
 var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(NavbarLinks));
 
 exports.default = _default;
-},{"../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../data/States":"2Fxh","../../redux/actions/auth":"YSbd","../LocalisedHyperlink":"dChq","../../helpers/ConstructCSS":"SwhA","./index.module.scss":"ch0H"}],"e86L":[function(require,module,exports) {
+},{"../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../../data/States":"x2wK","../../redux/actions/auth":"YSbd","../LocalisedHyperlink":"dChq","../../helpers/ConstructCSS":"SwhA","./index.module.scss":"ch0H"}],"e86L":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6256,7 +6256,7 @@ var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
 var _LocalisedHyperlink = _interopRequireDefault(require("../../../components/LocalisedHyperlink"));
 
-var _States = _interopRequireDefault(require("../../../data/States"));
+var _States = _interopRequireDefault(require("../../../../data/States"));
 
 var _DateFormat = _interopRequireDefault(require("../../../data/DateFormat"));
 
@@ -6417,7 +6417,7 @@ const mapStateToProps = state => {
 var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(AppPageInfoBox));
 
 exports.default = _default;
-},{"../../../components/ContentBox":"50Yc","../../../data/Locations":"uTwd","../../../redux/actions/auth":"YSbd","./index.module.scss":"TlW0","../../../components/LocalisedHyperlink":"dChq","../../../data/States":"2Fxh","../../../data/DateFormat":"4Pyv","../AppPageDeleteButton":"BNJb"}],"uSix":[function(require,module,exports) {
+},{"../../../components/ContentBox":"50Yc","../../../data/Locations":"uTwd","../../../redux/actions/auth":"YSbd","./index.module.scss":"TlW0","../../../components/LocalisedHyperlink":"dChq","../../../../data/States":"x2wK","../../../data/DateFormat":"4Pyv","../AppPageDeleteButton":"BNJb"}],"uSix":[function(require,module,exports) {
 module.exports = {
   "card": "_card_fe28b",
   "textContainer": "_textContainer_fe28b",
@@ -7088,7 +7088,7 @@ var _ContentBox = _interopRequireDefault(require("../../../components/ContentBox
 
 var _InputField = _interopRequireDefault(require("../../../components/InputField"));
 
-var _States = _interopRequireDefault(require("../../../data/States"));
+var _States = _interopRequireDefault(require("../../../../data/States"));
 
 var _Styles = require("../../../data/Styles");
 
@@ -7159,7 +7159,7 @@ const mapStateToProps = state => {
 var _default = (0, _reactRedux.connect)(mapStateToProps)(AppPageSetStateBox);
 
 exports.default = _default;
-},{"../../../components/ContentBox":"50Yc","../../../components/InputField":"azt2","../../../data/States":"2Fxh","../../../data/Styles":"rs3k","../../../data/Locations":"uTwd"}],"cIZt":[function(require,module,exports) {
+},{"../../../components/ContentBox":"50Yc","../../../components/InputField":"azt2","../../../../data/States":"x2wK","../../../data/Styles":"rs3k","../../../data/Locations":"uTwd"}],"cIZt":[function(require,module,exports) {
 module.exports = {
   "box": "_box_81ec6",
   "container": "_container_81ec6",
@@ -7948,64 +7948,17 @@ class Row extends _react.Component {
 
 var _default = Row;
 exports.default = _default;
-},{"../../data/Styles":"rs3k"}],"BIvw":[function(require,module,exports) {
+},{"../../data/Styles":"rs3k"}],"3TUw":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchCategoriesIfNeeded = fetchCategoriesIfNeeded;
-exports.RECIEVE_CATEGORIES = exports.REQUEST_CATEGORIES = void 0;
-
-var _Locations = _interopRequireDefault(require("../../data/Locations"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const REQUEST_CATEGORIES = 'REQUEST_CATEGORIES';
-exports.REQUEST_CATEGORIES = REQUEST_CATEGORIES;
-const RECIEVE_CATEGORIES = 'RECIEVE_CATEGORIES';
-exports.RECIEVE_CATEGORIES = RECIEVE_CATEGORIES;
-
-function requestCategories() {
-  return {
-    type: REQUEST_CATEGORIES
-  };
-}
-
-function receiveCategories(json) {
-  return {
-    type: RECIEVE_CATEGORIES,
-    data: json.data
-  };
-}
-
-function fetchCategories() {
-  return dispatch => {
-    dispatch(requestCategories());
-    return fetch(`${_Locations.default.server}/reactjs/v2/categories`, {
-      credentials: 'include'
-    }).then(res => {
-      return res.json().then(json => {
-        return dispatch(receiveCategories(json));
-      });
-    });
-  };
-}
-
-function shouldFetchCategories(state) {
-  if (state.categories.fetching) return false;
-  if (state.categories.fetched) return false;
-  return true;
-}
-
-function fetchCategoriesIfNeeded() {
-  return (dispatch, getState) => {
-    if (shouldFetchCategories(getState())) {
-      return dispatch(fetchCategories());
-    }
-  };
-}
-},{"../../data/Locations":"uTwd"}],"gvgD":[function(require,module,exports) {
+exports.default = void 0;
+const Categories = ['fun', 'games', 'entertainment', 'productivity', 'education', 'image', 'news', 'music', 'moderation', 'utility', 'notifications', 'other'];
+var _default = Categories;
+exports.default = _default;
+},{}],"gvgD":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8045,7 +7998,7 @@ var _locales = _interopRequireDefault(require("../../locales"));
 
 var _auth = require("../../redux/actions/auth");
 
-var _categories = require("../../redux/actions/categories");
+var _Categories = _interopRequireDefault(require("../../../data/Categories"));
 
 var _displayModule = _interopRequireDefault(require("../../scss/display.module.scss"));
 
@@ -8089,7 +8042,6 @@ class EditBot extends _react.Component {
       dispatch,
       match
     } = this.props;
-    dispatch((0, _categories.fetchCategoriesIfNeeded)());
     dispatch((0, _auth.fetchAuthIfNeeded)()); // If editing a bot
 
     if (match.params.id) {
@@ -8192,7 +8144,6 @@ class EditBot extends _react.Component {
     }
 
     const bot = this.props.match.params.id ? this.props.bot.data : null;
-    const categories = this.props.categories.data;
     return _react.default.createElement(_Layout.default, {
       match: this.props.match
     }, _react.default.createElement(_reactIntl.FormattedMessage, {
@@ -8237,7 +8188,7 @@ class EditBot extends _react.Component {
       name: "app.category",
       id: "pages.edit.category",
       localiseOptions: "categories",
-      options: categories || [],
+      options: _Categories.default,
       value: bot && bot.category
     })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
       name: "app.website",
@@ -8406,26 +8357,19 @@ class EditBot extends _react.Component {
 
 const mapStateToProps = state => {
   const {
-    categories,
     auth,
     bot
   } = state;
   return {
-    categories,
     auth,
     bot
   };
 };
 
 const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(EditBot));
-exportedComponent.serverFetch = [{
-  function: _categories.fetchCategoriesIfNeeded,
-  pass: [],
-  payload: {}
-}];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexContainer":"AaMC","../../components/InputField":"azt2","../../components/Layout":"UCeK","../../components/MultipleInputField":"gasw","../../components/PleaseLogIn":"L3ld","../../components/Row":"pSXH","../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../locales":"Qpzm","../../redux/actions/auth":"YSbd","../../redux/actions/categories":"BIvw","../../scss/display.module.scss":"Tyxi","../../scss/elements.module.scss":"h2Hb","../../redux/actions/bot":"YodB"}],"YApm":[function(require,module,exports) {
+},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexContainer":"AaMC","../../components/InputField":"azt2","../../components/Layout":"UCeK","../../components/MultipleInputField":"gasw","../../components/PleaseLogIn":"L3ld","../../components/Row":"pSXH","../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../locales":"Qpzm","../../redux/actions/auth":"YSbd","../../../data/Categories":"3TUw","../../scss/display.module.scss":"Tyxi","../../scss/elements.module.scss":"h2Hb","../../redux/actions/bot":"YodB"}],"YApm":[function(require,module,exports) {
 module.exports = {
   "card": "_card_c317e",
   "link": "_link_c317e",
@@ -8698,9 +8642,9 @@ var _Row = _interopRequireDefault(require("../../components/Row"));
 
 var _Locations = _interopRequireDefault(require("../../data/Locations"));
 
-var _States = _interopRequireDefault(require("../../data/States"));
+var _States = _interopRequireDefault(require("../../../data/States"));
 
-var _categories = require("../../redux/actions/categories");
+var _Categories = _interopRequireDefault(require("../../../data/Categories"));
 
 var _calulateBotScore = _interopRequireDefault(require("../../helpers/calulateBotScore"));
 
@@ -8729,11 +8673,6 @@ class FilterPage extends _react.Component {
   }
 
   componentDidMount() {
-    const {
-      dispatch
-    } = this.props;
-    dispatch((0, _categories.fetchCategoriesIfNeeded)());
-
     if (this.props.location.search) {
       this.search(this.props.location.search);
     }
@@ -8787,7 +8726,6 @@ class FilterPage extends _react.Component {
   }
 
   render() {
-    const categories = this.props.categories.data;
     const auth = this.props.auth.data;
     const {
       results,
@@ -8813,7 +8751,7 @@ class FilterPage extends _react.Component {
       id: "pages.filter.category",
       localiseOptions: "categories",
       allowNone: true,
-      options: categories || [],
+      options: _Categories.default,
       value: category,
       onChange: this.onChange
     })), _react.default.createElement(_Row.default, null, _react.default.createElement(_InputField.default, {
@@ -8862,12 +8800,10 @@ class FilterPage extends _react.Component {
 
 const mapStateToProps = state => {
   const {
-    categories,
     bots,
     auth
   } = state;
   return {
-    categories,
     bots,
     auth
   };
@@ -8877,7 +8813,7 @@ const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIn
 exportedComponent.serverFetch = [];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/InputField":"azt2","../../components/Layout":"UCeK","../../components/MultipleInputField":"gasw","../../components/Row":"pSXH","../../data/Locations":"uTwd","../../data/States":"2Fxh","../../redux/actions/categories":"BIvw","../../helpers/calulateBotScore":"lxnb"}],"L/hj":[function(require,module,exports) {
+},{"../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/InputField":"azt2","../../components/Layout":"UCeK","../../components/MultipleInputField":"gasw","../../components/Row":"pSXH","../../data/Locations":"uTwd","../../../data/States":"x2wK","../../../data/Categories":"3TUw","../../helpers/calulateBotScore":"lxnb"}],"L/hj":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8971,11 +8907,7 @@ module.exports = {
   "list": "_list_bd94c",
   "item": "_item_bd94c"
 };
-},{}],"bc+p":[function(require,module,exports) {
-module.exports = {
-  "line": "_line_e3b22"
-};
-},{}],"fIO1":[function(require,module,exports) {
+},{}],"JxM1":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8984,109 +8916,30 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
-
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _elementsModule = _interopRequireDefault(require("../../scss/elements.module.scss"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class LoadingLine extends _react.Component {
-  render() {
-    return _react.default.createElement("div", {
-      className: `${_indexModule.default.line} ${_elementsModule.default.roundedCorners} ${_elementsModule.default.loading}`,
-      style: {
-        width: `${this.props.width}%`
-      }
-    });
-  }
-
-}
-
-var _default = LoadingLine;
-exports.default = _default;
-},{"./index.module.scss":"bc+p","../../scss/elements.module.scss":"h2Hb"}],"fRuQ":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _LoadingLine = _interopRequireDefault(require("./LoadingLine"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-class LoadingText extends _react.Component {
-  render() {
-    const widths = [];
-    let lines = this.props.lines || 10;
-
-    for (let i = 0; i < lines; i += 1) {
-      widths.push(60 + Math.random() * 40);
-    }
-
-    return _react.default.createElement("div", null, widths.map((width, index) => _react.default.createElement(_LoadingLine.default, {
-      key: index,
-      width: width
-    })));
-  }
-
-}
-
-var _default = LoadingText;
-exports.default = _default;
-},{"./LoadingLine":"fIO1"}],"JxM1":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _ContentBox = _interopRequireDefault(require("../ContentBox"));
 
 var _reactIntl = require("react-intl");
 
-var _reactRedux = require("react-redux");
+var _States = _interopRequireDefault(require("../../../data/States"));
 
-var _indexModule = _interopRequireDefault(require("./index.module.scss"));
-
-var _LoadingText = _interopRequireDefault(require("../LoadingText"));
+var _ContentBox = _interopRequireDefault(require("../ContentBox"));
 
 var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"));
 
-var _categories = require("../../redux/actions/categories");
+var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
-var _States = _interopRequireDefault(require("../../data/States"));
+var _Categories = _interopRequireDefault(require("../../../data/Categories"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 class CategoriesLinksList extends _react.Component {
-  componentDidMount() {
-    const {
-      dispatch
-    } = this.props;
-    dispatch((0, _categories.fetchCategoriesIfNeeded)());
-  }
-
   render() {
-    const categories = this.props.categories.data;
     return _react.default.createElement(_ContentBox.default, null, _react.default.createElement("h5", null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "pages.bots.initiateCategoryFilter"
-    })), categories.length === 0 ? _react.default.createElement(_LoadingText.default, null) : _react.default.createElement("ul", {
+    })), _react.default.createElement("ul", {
       className: _indexModule.default.list
-    }, categories.map(x => _react.default.createElement("li", {
+    }, _Categories.default.map(x => _react.default.createElement("li", {
       key: x,
       className: _indexModule.default.item
     }, _react.default.createElement(_LocalisedHyperlink.default, {
@@ -9102,19 +8955,9 @@ class CategoriesLinksList extends _react.Component {
 
 }
 
-const mapStateToProps = state => {
-  const {
-    categories
-  } = state;
-  return {
-    categories
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)(CategoriesLinksList);
-
+var _default = CategoriesLinksList;
 exports.default = _default;
-},{"../ContentBox":"50Yc","./index.module.scss":"PhP6","../LoadingText":"fRuQ","../LocalisedHyperlink":"dChq","../../redux/actions/categories":"BIvw","../../data/States":"2Fxh"}],"uhL9":[function(require,module,exports) {
+},{"../../../data/States":"x2wK","../ContentBox":"50Yc","../LocalisedHyperlink":"dChq","./index.module.scss":"PhP6","../../../data/Categories":"3TUw"}],"uhL9":[function(require,module,exports) {
 module.exports = "/discordapps.dev/hk.19c8b6f4.jpg";
 },{}],"la7U":[function(require,module,exports) {
 module.exports = {
@@ -9168,11 +9011,9 @@ var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/Websi
 
 var _Locations = _interopRequireDefault(require("../../data/Locations"));
 
-var _States = _interopRequireDefault(require("../../data/States"));
+var _States = _interopRequireDefault(require("../../../data/States"));
 
 var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
-
-var _categories = require("../../redux/actions/categories");
 
 var _hk = _interopRequireDefault(require("./hk.jpg"));
 
@@ -9340,14 +9181,9 @@ const mapStateToProps = state => {
 };
 
 const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(Home));
-exportedComponent.serverFetch = [{
-  function: _categories.fetchCategoriesIfNeeded,
-  pass: [],
-  payload: {}
-}];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/BotCategoriesLinksList":"JxM1","../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/LazyImage":"ofRo","../../components/LoadingContentBox":"qVpT","../../components/LocalisedHyperlink":"dChq","../../components/WebsiteTypeButtons":"V0nm","../../data/Locations":"uTwd","../../data/States":"2Fxh","../../helpers/ConstructCSS":"SwhA","../../redux/actions/categories":"BIvw","./hk.jpg":"uhL9","./index.module.scss":"la7U","./rpc.jpg":"JIzo","../../helpers/calulateBotScore":"lxnb"}],"l/9E":[function(require,module,exports) {
+},{"../../components/BotCategoriesLinksList":"JxM1","../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/LazyImage":"ofRo","../../components/LoadingContentBox":"qVpT","../../components/LocalisedHyperlink":"dChq","../../components/WebsiteTypeButtons":"V0nm","../../data/Locations":"uTwd","../../../data/States":"x2wK","../../helpers/ConstructCSS":"SwhA","./hk.jpg":"uhL9","./index.module.scss":"la7U","./rpc.jpg":"JIzo","../../helpers/calulateBotScore":"lxnb"}],"l/9E":[function(require,module,exports) {
 module.exports = {
   "heading": "_heading_7d240",
   "grow": "_grow_7d240"
@@ -9370,7 +9206,7 @@ var _Locations = _interopRequireDefault(require("../../data/Locations"));
 
 var _locales = require("../../locales");
 
-var _categories = require("../../redux/actions/categories");
+var _Categories = _interopRequireDefault(require("../../../data/Categories"));
 
 var _BotCollection = _interopRequireDefault(require("../BotCollection"));
 
@@ -9382,7 +9218,7 @@ var _LocalisedHyperlink = _interopRequireDefault(require("../LocalisedHyperlink"
 
 var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
-var _States = _interopRequireDefault(require("../../data/States"));
+var _States = _interopRequireDefault(require("../../../data/States"));
 
 var _calulateBotScore = _interopRequireDefault(require("../../helpers/calulateBotScore"));
 
@@ -9399,10 +9235,6 @@ class CategoryCollection extends _react.Component {
   }
 
   componentDidMount() {
-    const {
-      dispatch
-    } = this.props;
-    dispatch((0, _categories.fetchCategoriesIfNeeded)());
     fetch(`${_Locations.default.server}/reactjs/v2/apps/search?type=bots&approved=${_States.default.APPROVED}`).then(res => res.json()).then(data => {
       if (data.ok) {
         this.setState({
@@ -9416,7 +9248,6 @@ class CategoryCollection extends _react.Component {
   }
 
   render() {
-    const categories = this.props.categories.data;
     const {
       bots
     } = this.state;
@@ -9427,7 +9258,7 @@ class CategoryCollection extends _react.Component {
       bots: botsInMyLanguage,
       limit: 9,
       hidden: true
-    })) : null, categories.length > 0 ? categories.filter(category => bots.filter(bot => bot.category === category).length) // List categories that are not empty
+    })) : null, _Categories.default.filter(category => bots.filter(bot => bot.category === category).length) // List categories that are not empty
     .map(a => [a, Math.random()]) // Randomise the order of the categories
     .sort((a, b) => a[1] - b[1]).map(a => a[0]).map(category => {
       const botsInCategory = bots.filter(bot => bot.category === category);
@@ -9459,24 +9290,15 @@ class CategoryCollection extends _react.Component {
         limit: 9,
         hidden: true
       }));
-    }) : _react.default.createElement(_LoadingContentBox.default, null));
+    }));
   }
 
 }
 
-const mapStateToProps = state => {
-  const {
-    categories
-  } = state;
-  return {
-    categories
-  };
-};
-
-var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(CategoryCollection));
+var _default = (0, _reactIntl.injectIntl)(CategoryCollection);
 
 exports.default = _default;
-},{"../../data/Locations":"uTwd","../../locales":"Qpzm","../../redux/actions/categories":"BIvw","../BotCollection":"dznf","../ContentBox":"50Yc","../LoadingContentBox":"qVpT","../LocalisedHyperlink":"dChq","./index.module.scss":"l/9E","../../data/States":"2Fxh","../../helpers/calulateBotScore":"lxnb"}],"7vza":[function(require,module,exports) {
+},{"../../data/Locations":"uTwd","../../locales":"Qpzm","../../../data/Categories":"3TUw","../BotCollection":"dznf","../ContentBox":"50Yc","../LoadingContentBox":"qVpT","../LocalisedHyperlink":"dChq","./index.module.scss":"l/9E","../../../data/States":"x2wK","../../helpers/calulateBotScore":"lxnb"}],"7vza":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9504,7 +9326,7 @@ var _Layout = _interopRequireDefault(require("../../components/Layout"));
 
 var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/WebsiteTypeButtons"));
 
-var _categories = require("../../redux/actions/categories");
+var _Categories = _interopRequireDefault(require("../../../data/Categories"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9538,14 +9360,9 @@ class BotsHome extends _react.Component {
 
 }
 
-BotsHome.serverFetch = [{
-  function: _categories.fetchCategoriesIfNeeded,
-  pass: [],
-  payload: {}
-}];
 var _default = BotsHome;
 exports.default = _default;
-},{"../../components/BotCategoriesLinksList":"JxM1","../../components/BotCategoryCollection":"6W3R","../../components/Container":"tNeE","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/WebsiteTypeButtons":"V0nm","../../redux/actions/categories":"BIvw"}],"CRMR":[function(require,module,exports) {
+},{"../../components/BotCategoriesLinksList":"JxM1","../../components/BotCategoryCollection":"6W3R","../../components/Container":"tNeE","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/WebsiteTypeButtons":"V0nm","../../../data/Categories":"3TUw"}],"CRMR":[function(require,module,exports) {
 module.exports = {
   "flags": "_flags_94c62",
   "flag": "_flag_94c62"
@@ -9712,7 +9529,7 @@ var _PleaseLogIn = _interopRequireDefault(require("../../components/PleaseLogIn"
 
 var _PermissionDenied = _interopRequireDefault(require("../../components/PermissionDenied"));
 
-var _States = _interopRequireDefault(require("../../data/States"));
+var _States = _interopRequireDefault(require("../../../data/States"));
 
 var _LocalisedHyperlink = _interopRequireDefault(require("../../components/LocalisedHyperlink"));
 
@@ -9777,7 +9594,7 @@ const mapStateToProps = state => {
 var _default = (0, _reactRedux.connect)(mapStateToProps)(AdminPage);
 
 exports.default = _default;
-},{"../../components/Container":"tNeE","../../components/Layout":"UCeK","../../redux/actions/auth":"YSbd","../../components/PleaseLogIn":"L3ld","../../components/PermissionDenied":"iVLo","../../data/States":"2Fxh","../../components/LocalisedHyperlink":"dChq","../../components/ContentBox":"50Yc"}],"/yZI":[function(require,module,exports) {
+},{"../../components/Container":"tNeE","../../components/Layout":"UCeK","../../redux/actions/auth":"YSbd","../../components/PleaseLogIn":"L3ld","../../components/PermissionDenied":"iVLo","../../../data/States":"x2wK","../../components/LocalisedHyperlink":"dChq","../../components/ContentBox":"50Yc"}],"/yZI":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9925,7 +9742,7 @@ var _WebsiteTypeButtons = _interopRequireDefault(require("../../components/Websi
 
 var _Locations = _interopRequireDefault(require("../../data/Locations"));
 
-var _States = _interopRequireDefault(require("../../data/States"));
+var _States = _interopRequireDefault(require("../../../data/States"));
 
 var _calulateBotScore = _interopRequireDefault(require("../../helpers/calulateBotScore"));
 
@@ -9998,7 +9815,7 @@ const exportedComponent = (0, _reactRedux.connect)(mapStateToProps)(RpcHome);
 exportedComponent.serverFetch = [];
 var _default = exportedComponent;
 exports.default = _default;
-},{"../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/LoadingContentBox":"qVpT","../../components/WebsiteTypeButtons":"V0nm","../../data/Locations":"uTwd","../../data/States":"2Fxh","../../helpers/calulateBotScore":"lxnb"}],"vgrX":[function(require,module,exports) {
+},{"../../components/BotCollection":"dznf","../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/LoadingContentBox":"qVpT","../../components/WebsiteTypeButtons":"V0nm","../../data/Locations":"uTwd","../../../data/States":"x2wK","../../helpers/calulateBotScore":"lxnb"}],"vgrX":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10037,8 +9854,6 @@ var _Styles = require("../../data/Styles");
 var _locales = _interopRequireDefault(require("../../locales"));
 
 var _auth = require("../../redux/actions/auth");
-
-var _categories = require("../../redux/actions/categories");
 
 var _displayModule = _interopRequireDefault(require("../../scss/display.module.scss"));
 
@@ -10082,7 +9897,6 @@ class EditRpc extends _react.Component {
       dispatch,
       match
     } = this.props;
-    dispatch((0, _categories.fetchCategoriesIfNeeded)());
     dispatch((0, _auth.fetchAuthIfNeeded)()); // If editing a bot
 
     if (match.params.id) {
@@ -10370,12 +10184,10 @@ class EditRpc extends _react.Component {
 
 const mapStateToProps = state => {
   const {
-    categories,
     auth,
     bot
   } = state;
   return {
-    categories,
     auth,
     bot
   };
@@ -10384,7 +10196,7 @@ const mapStateToProps = state => {
 var _default = (0, _reactRedux.connect)(mapStateToProps)((0, _reactIntl.injectIntl)(EditRpc));
 
 exports.default = _default;
-},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexContainer":"AaMC","../../components/InputField":"azt2","../../components/Layout":"UCeK","../../components/MultipleInputField":"gasw","../../components/PleaseLogIn":"L3ld","../../components/Row":"pSXH","../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../locales":"Qpzm","../../redux/actions/auth":"YSbd","../../redux/actions/categories":"BIvw","../../scss/display.module.scss":"Tyxi","../../scss/elements.module.scss":"h2Hb","../../redux/actions/bot":"YodB"}],"kTdp":[function(require,module,exports) {
+},{"../../components/Container":"tNeE","../../components/ContentBox":"50Yc","../../components/FlexContainer":"AaMC","../../components/InputField":"azt2","../../components/Layout":"UCeK","../../components/MultipleInputField":"gasw","../../components/PleaseLogIn":"L3ld","../../components/Row":"pSXH","../../data/Locations":"uTwd","../../data/Styles":"rs3k","../../locales":"Qpzm","../../redux/actions/auth":"YSbd","../../scss/display.module.scss":"Tyxi","../../scss/elements.module.scss":"h2Hb","../../redux/actions/bot":"YodB"}],"kTdp":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11546,42 +11358,7 @@ function auth(state = {
 
 var _default = auth;
 exports.default = _default;
-},{"../actions/auth":"YSbd"}],"Ci+K":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _categories = require("../actions/categories");
-
-function categories(state = {
-  fetching: false,
-  fetched: false,
-  data: []
-}, action) {
-  switch (action.type) {
-    case _categories.REQUEST_CATEGORIES:
-      return Object.assign({}, state, {
-        fetching: true
-      });
-
-    case _categories.RECIEVE_CATEGORIES:
-      return Object.assign({}, state, {
-        fetching: false,
-        fetched: true,
-        data: action.data.slice()
-      });
-
-    default:
-      return state;
-  }
-}
-
-var _default = categories;
-exports.default = _default;
-},{"../actions/categories":"BIvw"}],"fYS/":[function(require,module,exports) {
+},{"../actions/auth":"YSbd"}],"fYS/":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11731,8 +11508,6 @@ var _redux = require("redux");
 
 var _auth = _interopRequireDefault(require("./auth"));
 
-var _categories = _interopRequireDefault(require("./categories"));
-
 var _bot = _interopRequireDefault(require("./bot"));
 
 var _doc = _interopRequireDefault(require("./doc"));
@@ -11743,14 +11518,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = (0, _redux.combineReducers)({
   auth: _auth.default,
-  categories: _categories.default,
   bot: _bot.default,
   doc: _doc.default,
   toasts: _toasts.default
 });
 
 exports.default = _default;
-},{"./auth":"1Xxv","./categories":"Ci+K","./bot":"fYS/","./doc":"eSIz","./toasts":"jSfU"}],"JtT0":[function(require,module,exports) {
+},{"./auth":"1Xxv","./bot":"fYS/","./doc":"eSIz","./toasts":"jSfU"}],"JtT0":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11975,6 +11749,10 @@ var _express = _interopRequireDefault(require("express"));
 
 var _database = _interopRequireDefault(require("../../helpers/database"));
 
+var _Categories = _interopRequireDefault(require("../../../data/Categories"));
+
+var _databaseConfig = _interopRequireDefault(require("../../../configuration/server/databaseConfig"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const ApiOneApps = _express.default.Router();
@@ -11995,7 +11773,16 @@ const mergeReviews = (app, req) => _database.default.table('reviews').filter({
   isCurrentUserOwner: req.user ? _database.default.eq(reviewer('author'), req.user.id) : false
 })).default([]).without('bot', 'author', 'id').coerceTo('array');
 
-ApiOneApps.use('/id/:id', (req, res, next) => {
+ApiOneApps.use((req, res, next) => {
+  if (!_databaseConfig.default.enabled) {
+    res.json({
+      ok: false,
+      message: 'The database has not been enabled. Edit `/data/databaseConfig.js` with the relevant settings to enable.'
+    });
+  } else {
+    next();
+  }
+}).use('/id/:id', (req, res, next) => {
   _database.default.table('apps').get(req.params.id).merge(app => ({
     authors: mergeAuthors(app),
     reviews: mergeReviews(app, req)
@@ -12008,12 +11795,78 @@ ApiOneApps.use('/id/:id', (req, res, next) => {
   }).catch(err => {
     next(err);
   });
-}).use((req, res) => {
-  res.send('hi');
+}).use('/search', (req, res, next) => {
+  // Keys in the BOTS table that can be sorted by
+  const sortKeys = ['id', 'random', 'created', 'edited'];
+  const query = typeof req.query.q === 'string' ? req.query.q : '';
+  const state = typeof req.query.state === 'string' ? req.query.state : '';
+  const category = typeof req.query.category === 'string' ? req.query.category : '';
+  const nsfw = typeof req.query.nsfw === 'string' ? req.query.nsfw : '';
+  const type = typeof req.query.type === 'string' ? req.query.type : '';
+  const owners = Array.isArray(req.query.owners) ? req.query.owners : [];
+  const sort = sortKeys.includes(req.query.sort) ? req.query.sort : 'random';
+  const order = req.query.order === 'asc' ? 'asc' : 'desc';
+
+  const filter = app => {
+    // Bodge for chaining
+    // All tables always has ID
+    let databaseQuery = app.hasFields('id');
+
+    if (state) {
+      databaseQuery = databaseQuery.and(app('state').eq(state));
+    }
+
+    if (query) {
+      databaseQuery = databaseQuery.and(app('contents').contains(contents => contents('page').default('').match(sanitise(query)).or(contents('name').default('').match(sanitise(query))).or(contents('description').default('').match(sanitise(query)))));
+    } // If NSFW bots are requested, add that to the query
+
+
+    if (nsfw === 'nsfw') {
+      databaseQuery = databaseQuery.and(app('nsfw').eq(true));
+    } else if (nsfw === 'sfw') {
+      databaseQuery = databaseQuery.and(app('nsfw').eq(false));
+    }
+
+    if (type) {
+      databaseQuery = databaseQuery.and(app('type').eq(type));
+    } // If a query is requested, add that to the query
+
+
+    if (_Categories.default.includes(category)) {
+      databaseQuery = databaseQuery.and(app('category').eq(category));
+    } // If there's an array of owners, add that to the query
+    // but only if it is not empty
+
+
+    for (let i = 0; i < owners.length; i += 1) {
+      if (owners[i] !== '') {
+        databaseQuery = databaseQuery.and(app('authors').contains(owners[i]));
+      }
+    }
+
+    return databaseQuery;
+  };
+
+  _database.default.table('apps').filter(filter).merge(apps => ({
+    authors: mergeAuthors(apps),
+    rating: _database.default.table('reviews').filter({
+      bot: apps('id')
+    }).avg('rating').default(0),
+    reviewsCount: _database.default.table('reviews').filter({
+      bot: apps('id')
+    }).count()
+  })).without('token').orderBy(_database.default[order](sort)).then(bots => {
+    res.json({
+      ok: true,
+      data: bots
+    });
+  }).catch(err => {
+    next(err);
+  });
 });
 var _default = ApiOneApps;
 exports.default = _default;
-},{"../../helpers/database":"Kail"}],"D/FV":[function(require,module,exports) {
+},{"../../helpers/database":"Kail","../../../data/Categories":"3TUw","../../../configuration/server/databaseConfig":"Rqlz"}],"D/FV":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12025,22 +11878,11 @@ var _express = _interopRequireDefault(require("express"));
 
 var _apps = _interopRequireDefault(require("./apps"));
 
-var _databaseConfig = _interopRequireDefault(require("../../../configuration/server/databaseConfig"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const ApiOne = _express.default.Router();
 
-ApiOne.use((req, res, next) => {
-  if (!_databaseConfig.default.enabled) {
-    res.json({
-      ok: false,
-      message: 'The database has not been enabled. Edit `/data/databaseConfig.js` with the relevant settings to enable.'
-    });
-  } else {
-    next();
-  }
-}).use('/apps', _apps.default).use((req, res) => {
+ApiOne.use('/apps', _apps.default).use((req, res) => {
   res.status(404).json({
     ok: false,
     message: 'Route not found'
@@ -12056,7 +11898,7 @@ ApiOne.use((req, res, next) => {
 });
 var _default = ApiOne;
 exports.default = _default;
-},{"./apps":"eWoe","../../../configuration/server/databaseConfig":"Rqlz"}],"Focm":[function(require,module,exports) {
+},{"./apps":"eWoe"}],"Focm":[function(require,module,exports) {
 "use strict";
 
 var _express = _interopRequireDefault(require("express"));
