@@ -26,7 +26,7 @@ class InternationalisationProvider extends Component {
         locale={match.params.locale}
         messages={Object.assign({}, messages['en-GB'], messages[match.params.locale])}
         defaultLocale="en-GB">
-        <div>
+        <>
           <FormattedMessage id="site.name">
             {(title) => (
               <Helmet
@@ -38,7 +38,7 @@ class InternationalisationProvider extends Component {
             )}
           </FormattedMessage>
           {this.props.children}
-        </div>
+        </>
       </IntlProvider>
     )
   }
