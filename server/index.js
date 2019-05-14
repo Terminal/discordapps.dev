@@ -11059,7 +11059,7 @@ class InternationalisationProvider extends _react.Component {
       locale: match.params.locale,
       messages: Object.assign({}, messages['en-GB'], messages[match.params.locale]),
       defaultLocale: "en-GB"
-    }, _react.default.createElement("div", null, _react.default.createElement(_reactIntl.FormattedMessage, {
+    }, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_reactIntl.FormattedMessage, {
       id: "site.name"
     }, title => _react.default.createElement(_reactHelmet.Helmet, {
       titleTemplate: `%s - ${title}`,
