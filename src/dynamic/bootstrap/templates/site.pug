@@ -1,94 +1,94 @@
 doctype html
 
 //*
-	ls.terminal.ink Discord Bot List Server
-	Copyright (C) 2019 Moustacheminer Server Services
-	Copyright (C) 2019 Terminal.ink
+  ls.terminal.ink Discord Bot List Server
+  Copyright (C) 2019 Moustacheminer Server Services
+  Copyright (C) 2019 Terminal.ink
 
-	This program is free software: you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 3 of the License, or
-	(at your option) any later version.
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-	This program is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-	You should have received a copy of the GNU General Public License
-	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 html
-	head
-		block title
-			title #{title ? `${title} -` : ''} #{__('website')}
-		meta(charset="utf-8")
-		meta(http-equiv="X-UA-Compatible" content="IE=edge")
-		meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1")
-		meta(name="theme-color" content="#FFFFFF")
-		meta(property="og:type" content="website")
-		link(rel="publisher" href=location)
-		block embed
-			meta(name="author" content=location)
-			meta(property="og:description" content=__('website_description'))
-			meta(name="og:image" content="/img/terminal.png")
-			meta(property="og:title" content=__('website'))
-		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css")
-		link(href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet")
-		link(href="/css/bootstrap/index.css" rel="stylesheet")
-		link(href="/img/favicon.gif" rel="shortcut-icon")
-		link(href="/img/favicon.gif" rel="icon")
-		link(href="/css/pace-theme.css" rel="stylesheet")
-		script(src="/js/pace.min.js")
-	body
-		nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
-			button.navbar-toggler.navbar-toggler-right.collapsed(type="button" data-toggle="collapse" data-target="#navbar")
-				span.navbar-toggler-icon
-			a.navbar-brand(href="/") #{__('nav_header')}
-			#navbar.navbar-collapse.collapse
-				ul.navbar-nav.mr-auto
-					li.nav-item
-						a.nav-link(href="/docs") #{__('nav_documentation')}
-					li.nav-item
-						a.nav-link(href="/") #{__('nav_list')}
-					li.nav-item
-						a.nav-link(href="/list/all") #{__('nav_all')}
-					li.nav-item
-						a.nav-link(href="/list/queue") #{__('nav_queue')}
-					if user
-						li.nav-item
-							a.nav-link(href="/bot/add") #{__('nav_add')}
-					li.nav-item
-						a.nav-link(href=list_invite) #{__('list_invite')}
-				ul.navbar-nav.navbar-right.collapse
-					if user
-						li.nav-item
-							a.nav-link(href=`/list/${user.id}`) #{user.username}
-						li.nav-item
-							a.nav-link(href="/auth/logout") #{__('nav_logout')}
-					else
-						li.nav-item
-							a.nav-link(href="/auth") #{__('nav_login')}
-					li.nav-item
-						a.nav-link(href="/lang") #{__('nav_lang')}
-					li.nav-item
-						a.nav-link(href="/theme") #{__('nav_theme')}
-		main
-			block jumbotron
-			block content
-		footer
-			block footer
-				.container
-					hr
-					p #{__('footer_copyright')}
-		block script
-		script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js")
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js")
-		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js")
-		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-67900801-5")
-		script.
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+  head
+    block title
+      title #{title ? `${title} -` : ''} #{__('website')}
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1")
+    meta(name="theme-color" content="#FFFFFF")
+    meta(property="og:type" content="website")
+    link(rel="publisher" href=location)
+    block embed
+      meta(name="author" content=location)
+      meta(property="og:description" content=__('website_description'))
+      meta(name="og:image" content="/img/terminal.png")
+      meta(property="og:title" content=__('website'))
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css")
+    link(href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet")
+    link(href="/css/bootstrap/index.css" rel="stylesheet")
+    link(href="/img/favicon.gif" rel="shortcut-icon")
+    link(href="/img/favicon.gif" rel="icon")
+    link(href="/css/pace-theme.css" rel="stylesheet")
+    script(src="/js/pace.min.js")
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      button.navbar-toggler.navbar-toggler-right.collapsed(type="button" data-toggle="collapse" data-target="#navbar")
+        span.navbar-toggler-icon
+      a.navbar-brand(href="/") #{__('nav_header')}
+      #navbar.navbar-collapse.collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href="/docs") #{__('nav_documentation')}
+          li.nav-item
+            a.nav-link(href="/") #{__('nav_list')}
+          li.nav-item
+            a.nav-link(href="/list/all") #{__('nav_all')}
+          li.nav-item
+            a.nav-link(href="/list/queue") #{__('nav_queue')}
+          if user
+            li.nav-item
+              a.nav-link(href="/bot/add") #{__('nav_add')}
+          li.nav-item
+            a.nav-link(href=list_invite) #{__('list_invite')}
+        ul.navbar-nav.navbar-right.collapse
+          if user
+            li.nav-item
+              a.nav-link(href=`/list/${user.id}`) #{user.username}
+            li.nav-item
+              a.nav-link(href="/auth/logout") #{__('nav_logout')}
+          else
+            li.nav-item
+              a.nav-link(href="/auth") #{__('nav_login')}
+          li.nav-item
+            a.nav-link(href="/lang") #{__('nav_lang')}
+          li.nav-item
+            a.nav-link(href="/theme") #{__('nav_theme')}
+    main
+      block jumbotron
+      block content
+    footer
+      block footer
+        .container
+          hr
+          p #{__('footer_copyright')}
+    block script
+    script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js")
+    script(async src="https://www.googletagmanager.com/gtag/js?id=UA-67900801-5")
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-			gtag('config', 'UA-67900801-5');
+      gtag('config', 'UA-67900801-5');

@@ -1,100 +1,100 @@
 .modal.fade#modalperms(tabindex="-1" role="dialog")
-	.modal-dialog.modal-lg(role="document")
-		.modal-content
-			.modal-header
-				h5.modal-title Permissions Generator
-			.modal-body
-				.row
-					.col-12.col-lg-4
-						h5 General
-						input#ADMINISTRATOR(type="checkbox" name="ADMINISTRATOR")
-						label.inline.left(for="ADMINISTRATOR") #{__('perm_ADMINISTRATOR')}
-						br
-						input#VIEW_AUDIT_LOG(type="checkbox" name="VIEW_AUDIT_LOG")
-						label.inline.left(for="VIEW_AUDIT_LOG") #{__('perm_VIEW_AUDIT_LOG')}
-						br
-						input#MANAGE_GUILD(type="checkbox" name="MANAGE_GUILD")
-						label.inline.left(for="MANAGE_GUILD") #{__('perm_MANAGE_GUILD')}
-						br
-						input#MANAGE_ROLES(type="checkbox" name="MANAGE_ROLES")
-						label.inline.left(for="MANAGE_ROLES") #{__('perm_MANAGE_ROLES')}
-						br
-						input#MANAGE_CHANNELS(type="checkbox" name="MANAGE_CHANNELS")
-						label.inline.left(for="MANAGE_CHANNELS") #{__('perm_MANAGE_CHANNELS')}
-						br
-						input#KICK_MEMBERS(type="checkbox" name="KICK_MEMBERS")
-						label.inline.left(for="KICK_MEMBERS") #{__('perm_KICK_MEMBERS')}
-						br
-						input#BAN_MEMBERS(type="checkbox" name="BAN_MEMBERS")
-						label.inline.left(for="BAN_MEMBERS") #{__('perm_BAN_MEMBERS')}
-						br
-						input#CREATE_INSTANT_INVITE(type="checkbox" name="CREATE_INSTANT_INVITE")
-						label.inline.left(for="CREATE_INSTANT_INVITE") #{__('perm_CREATE_INSTANT_INVITE')}
-						br
-						input#CHANGE_NICKNAME(type="checkbox" name="CHANGE_NICKNAME")
-						label.inline.left(for="CHANGE_NICKNAME") #{__('perm_CHANGE_NICKNAME')}
-						br
-						input#MANAGE_NICKNAMES(type="checkbox" name="MANAGE_NICKNAMES")
-						label.inline.left(for="MANAGE_NICKNAMES") #{__('perm_MANAGE_NICKNAMES')}
-						br
-						input#MANAGE_EMOJIS(type="checkbox" name="MANAGE_EMOJIS")
-						label.inline.left(for="MANAGE_EMOJIS") #{__('perm_MANAGE_EMOJIS')}
-						br
-						input#MANAGE_WEBHOOKS(type="checkbox" name="MANAGE_WEBHOOKS")
-						label.inline.left(for="MANAGE_WEBHOOKS") #{__('perm_MANAGE_WEBHOOKS')}
-					.col-12.col-lg-4
-						h5 Text Permissions
-						input#READ_MESSAGES(type="checkbox" name="READ_MESSAGES")
-						label.inline.left(for="READ_MESSAGES") #{__('perm_READ_MESSAGES')}
-						br
-						input#SEND_MESSAGES(type="checkbox" name="SEND_MESSAGES")
-						label.inline.left(for="SEND_MESSAGES") #{__('perm_SEND_MESSAGES')}
-						br
-						input#SEND_TTS_MESSAGES(type="checkbox" name="SEND_TTS_MESSAGES")
-						label.inline.left(for="SEND_TTS_MESSAGES") #{__('perm_SEND_TTS_MESSAGES')}
-						br
-						input#MANAGE_MESSAGES(type="checkbox" name="MANAGE_MESSAGES")
-						label.inline.left(for="MANAGE_MESSAGES") #{__('perm_MANAGE_MESSAGES')}
-						br
-						input#EMBED_LINKS(type="checkbox" name="EMBED_LINKS")
-						label.inline.left(for="EMBED_LINKS") #{__('perm_EMBED_LINKS')}
-						br
-						input#ATTACH_FILES(type="checkbox" name="ATTACH_FILES")
-						label.inline.left(for="ATTACH_FILES") #{__('perm_ATTACH_FILES')}
-						br
-						input#READ_MESSAGE_HISTORY(type="checkbox" name="READ_MESSAGE_HISTORY")
-						label.inline.left(for="READ_MESSAGE_HISTORY") #{__('perm_READ_MESSAGE_HISTORY')}
-						br
-						input#MENTION_EVERYONE(type="checkbox" name="MENTION_EVERYONE")
-						label.inline.left(for="MENTION_EVERYONE") #{__('perm_MENTION_EVERYONE')}
-						br
-						input#USE_EXTERNAL_EMOJIS(type="checkbox" name="USE_EXTERNAL_EMOJIS")
-						label.inline.left(for="USE_EXTERNAL_EMOJIS") #{__('perm_USE_EXTERNAL_EMOJIS')}
-						br
-						input#ADD_REACTIONS(type="checkbox" name="ADD_REACTIONS")
-						label.inline.left(for="ADD_REACTIONS") #{__('perm_ADD_REACTIONS')}
-						br
-					.col-12.col-lg-4
-						h5 Voice Permissions
-						input#CONNECT(type="checkbox" name="CONNECT")
-						label.inline.left(for="CONNECT") #{__('perm_CONNECT')}
-						br
-						input#SPEAK(type="checkbox" name="SPEAK")
-						label.inline.left(for="SPEAK") #{__('perm_SPEAK')}
-						br
-						input#MUTE_MEMBERS(type="checkbox" name="MUTE_MEMBERS")
-						label.inline.left(for="MUTE_MEMBERS") #{__('perm_MUTE_MEMBERS')}
-						br
-						input#DEAFEN_MEMBERS(type="checkbox" name="DEAFEN_MEMBERS")
-						label.inline.left(for="DEAFEN_MEMBERS") #{__('perm_DEAFEN_MEMBERS')}
-						br
-						input#MOVE_MEMBERS(type="checkbox" name="MOVE_MEMBERS")
-						label.inline.left(for="MOVE_MEMBERS") #{__('perm_MOVE_MEMBERS')}
-						br
-						input#USE_VAD(type="checkbox" name="USE_VAD")
-						label.inline.left(for="USE_VAD") #{__('perm_USE_VAD')}
-						br
-			.modal-footer
-				button.btn.btn-primary(type="button" class="btn btn-primary" data-dismiss="modal" onclick="modalperms()") Generate
-				button.btn.btn-primary(type="button" class="btn btn-secondary" data-dismiss="modal") Close
+  .modal-dialog.modal-lg(role="document")
+    .modal-content
+      .modal-header
+        h5.modal-title Permissions Generator
+      .modal-body
+        .row
+          .col-12.col-lg-4
+            h5 General
+            input#ADMINISTRATOR(type="checkbox" name="ADMINISTRATOR")
+            label.inline.left(for="ADMINISTRATOR") #{__('perm_ADMINISTRATOR')}
+            br
+            input#VIEW_AUDIT_LOG(type="checkbox" name="VIEW_AUDIT_LOG")
+            label.inline.left(for="VIEW_AUDIT_LOG") #{__('perm_VIEW_AUDIT_LOG')}
+            br
+            input#MANAGE_GUILD(type="checkbox" name="MANAGE_GUILD")
+            label.inline.left(for="MANAGE_GUILD") #{__('perm_MANAGE_GUILD')}
+            br
+            input#MANAGE_ROLES(type="checkbox" name="MANAGE_ROLES")
+            label.inline.left(for="MANAGE_ROLES") #{__('perm_MANAGE_ROLES')}
+            br
+            input#MANAGE_CHANNELS(type="checkbox" name="MANAGE_CHANNELS")
+            label.inline.left(for="MANAGE_CHANNELS") #{__('perm_MANAGE_CHANNELS')}
+            br
+            input#KICK_MEMBERS(type="checkbox" name="KICK_MEMBERS")
+            label.inline.left(for="KICK_MEMBERS") #{__('perm_KICK_MEMBERS')}
+            br
+            input#BAN_MEMBERS(type="checkbox" name="BAN_MEMBERS")
+            label.inline.left(for="BAN_MEMBERS") #{__('perm_BAN_MEMBERS')}
+            br
+            input#CREATE_INSTANT_INVITE(type="checkbox" name="CREATE_INSTANT_INVITE")
+            label.inline.left(for="CREATE_INSTANT_INVITE") #{__('perm_CREATE_INSTANT_INVITE')}
+            br
+            input#CHANGE_NICKNAME(type="checkbox" name="CHANGE_NICKNAME")
+            label.inline.left(for="CHANGE_NICKNAME") #{__('perm_CHANGE_NICKNAME')}
+            br
+            input#MANAGE_NICKNAMES(type="checkbox" name="MANAGE_NICKNAMES")
+            label.inline.left(for="MANAGE_NICKNAMES") #{__('perm_MANAGE_NICKNAMES')}
+            br
+            input#MANAGE_EMOJIS(type="checkbox" name="MANAGE_EMOJIS")
+            label.inline.left(for="MANAGE_EMOJIS") #{__('perm_MANAGE_EMOJIS')}
+            br
+            input#MANAGE_WEBHOOKS(type="checkbox" name="MANAGE_WEBHOOKS")
+            label.inline.left(for="MANAGE_WEBHOOKS") #{__('perm_MANAGE_WEBHOOKS')}
+          .col-12.col-lg-4
+            h5 Text Permissions
+            input#READ_MESSAGES(type="checkbox" name="READ_MESSAGES")
+            label.inline.left(for="READ_MESSAGES") #{__('perm_READ_MESSAGES')}
+            br
+            input#SEND_MESSAGES(type="checkbox" name="SEND_MESSAGES")
+            label.inline.left(for="SEND_MESSAGES") #{__('perm_SEND_MESSAGES')}
+            br
+            input#SEND_TTS_MESSAGES(type="checkbox" name="SEND_TTS_MESSAGES")
+            label.inline.left(for="SEND_TTS_MESSAGES") #{__('perm_SEND_TTS_MESSAGES')}
+            br
+            input#MANAGE_MESSAGES(type="checkbox" name="MANAGE_MESSAGES")
+            label.inline.left(for="MANAGE_MESSAGES") #{__('perm_MANAGE_MESSAGES')}
+            br
+            input#EMBED_LINKS(type="checkbox" name="EMBED_LINKS")
+            label.inline.left(for="EMBED_LINKS") #{__('perm_EMBED_LINKS')}
+            br
+            input#ATTACH_FILES(type="checkbox" name="ATTACH_FILES")
+            label.inline.left(for="ATTACH_FILES") #{__('perm_ATTACH_FILES')}
+            br
+            input#READ_MESSAGE_HISTORY(type="checkbox" name="READ_MESSAGE_HISTORY")
+            label.inline.left(for="READ_MESSAGE_HISTORY") #{__('perm_READ_MESSAGE_HISTORY')}
+            br
+            input#MENTION_EVERYONE(type="checkbox" name="MENTION_EVERYONE")
+            label.inline.left(for="MENTION_EVERYONE") #{__('perm_MENTION_EVERYONE')}
+            br
+            input#USE_EXTERNAL_EMOJIS(type="checkbox" name="USE_EXTERNAL_EMOJIS")
+            label.inline.left(for="USE_EXTERNAL_EMOJIS") #{__('perm_USE_EXTERNAL_EMOJIS')}
+            br
+            input#ADD_REACTIONS(type="checkbox" name="ADD_REACTIONS")
+            label.inline.left(for="ADD_REACTIONS") #{__('perm_ADD_REACTIONS')}
+            br
+          .col-12.col-lg-4
+            h5 Voice Permissions
+            input#CONNECT(type="checkbox" name="CONNECT")
+            label.inline.left(for="CONNECT") #{__('perm_CONNECT')}
+            br
+            input#SPEAK(type="checkbox" name="SPEAK")
+            label.inline.left(for="SPEAK") #{__('perm_SPEAK')}
+            br
+            input#MUTE_MEMBERS(type="checkbox" name="MUTE_MEMBERS")
+            label.inline.left(for="MUTE_MEMBERS") #{__('perm_MUTE_MEMBERS')}
+            br
+            input#DEAFEN_MEMBERS(type="checkbox" name="DEAFEN_MEMBERS")
+            label.inline.left(for="DEAFEN_MEMBERS") #{__('perm_DEAFEN_MEMBERS')}
+            br
+            input#MOVE_MEMBERS(type="checkbox" name="MOVE_MEMBERS")
+            label.inline.left(for="MOVE_MEMBERS") #{__('perm_MOVE_MEMBERS')}
+            br
+            input#USE_VAD(type="checkbox" name="USE_VAD")
+            label.inline.left(for="USE_VAD") #{__('perm_USE_VAD')}
+            br
+      .modal-footer
+        button.btn.btn-primary(type="button" class="btn btn-primary" data-dismiss="modal" onclick="modalperms()") Generate
+        button.btn.btn-primary(type="button" class="btn btn-secondary" data-dismiss="modal") Close
 script(src="/js/modalperms.js")

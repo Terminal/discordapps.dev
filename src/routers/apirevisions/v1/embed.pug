@@ -3,19 +3,19 @@ doctype xml
 // Created with ls.terminal.ink (https://terminal.ink/)
 
 svg(width=(query.width || "200") height="150" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink")
-	if (font) 
-		style text { font-family: "#{font}"; }
-	else
-		style text { font-family: "Noto Sans", "Noto-Sans", "Arial", sans-serif; }
-	rect(rx="5" ry="5" width=(query.width || "200") height="150" fill="#181818")
-	rect(y="31" width=(query.width || "200") height="93" fill="#333333")
-	text(x="10" y="22" font-size="16" fill="#FFFFFF") #{bot.name}
-	if (bot.approved)
-		text(x="10" y="46" font-size="12" fill="#FFFFFF") #{__('api_v1_embed_servers', { count: bot.count })}
-	else
-		text(x="10" y="46" font-size="12" fill="#FFFFFF") #{__('api_v1_embed_await')}
-	if (avatar)
-		image(x="10" y="51" width="50" height="50" xlink:href=avatar)
-	text(x="10" y="115" font-size="12" fill="#FFFFFF") #{__('api_v1_embed_author', { username: bot.ownerinfo.username, discriminator: bot.ownerinfo.discriminator })}
-	a(href=`${location}bot/${bot.id}`)
-		text(x="10" y="140" font-size="10" fill="#FFFFFF") #{__('api_v1_embed_footer', { website: __('website') })}
+  if (font) 
+    style text { font-family: "#{font}"; }
+  else
+    style text { font-family: "Noto Sans", "Noto-Sans", "Arial", sans-serif; }
+  rect(rx="5" ry="5" width=(query.width || "200") height="150" fill="#181818")
+  rect(y="31" width=(query.width || "200") height="93" fill="#333333")
+  text(x="10" y="22" font-size="16" fill="#FFFFFF") #{bot.name}
+  if (bot.approved)
+    text(x="10" y="46" font-size="12" fill="#FFFFFF") #{__('api_v1_embed_servers', { count: bot.count })}
+  else
+    text(x="10" y="46" font-size="12" fill="#FFFFFF") #{__('api_v1_embed_await')}
+  if (avatar)
+    image(x="10" y="51" width="50" height="50" xlink:href=avatar)
+  text(x="10" y="115" font-size="12" fill="#FFFFFF") #{__('api_v1_embed_author', { username: bot.ownerinfo.username, discriminator: bot.ownerinfo.discriminator })}
+  a(href=`${location}bot/${bot.id}`)
+    text(x="10" y="140" font-size="10" fill="#FFFFFF") #{__('api_v1_embed_footer', { website: __('website') })}

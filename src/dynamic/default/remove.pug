@@ -1,20 +1,20 @@
 extends templates/site.pug
 
 block title
-	title #{__('website')} - #{__('list_remove')}
+  title #{__('website')} - #{__('list_remove')}
 
 block main
-	h1 #{__('remove_jumbotron')}
-	p: i #{__('remove_description')}
-	form(method="POST")
-		.form-group
-			select#type.form-control(name="reason" required)
-				option(selected value="0") #{__('remove_select')}
-				for reason, index in reasons
-					option(value=index) #{__(`remove_${reason}`)}
-		.form-group
-			label(for="description") #{__('remove_description_evidence')}
-			textarea.form-control(name="description" maxlength="1000" rows="6" required)
-		button.button(type="submit") #{__('proceed')}
-		a.button(data-ajax-url href="/") #{__('cancel')}
-		input.hide(type="text" name="csrf" value=csrf)
+  h1 #{__('remove_jumbotron')}
+  p: i #{__('remove_description')}
+  form(method="POST")
+    .form-group
+      select#type.form-control(name="reason" required)
+        option(selected value="0") #{__('remove_select')}
+        for reason, index in reasons
+          option(value=index) #{__(`remove_${reason}`)}
+    .form-group
+      label(for="description") #{__('remove_description_evidence')}
+      textarea.form-control(name="description" maxlength="1000" rows="6" required)
+    button.button(type="submit") #{__('proceed')}
+    a.button(data-ajax-url href="/") #{__('cancel')}
+    input.hide(type="text" name="csrf" value=csrf)

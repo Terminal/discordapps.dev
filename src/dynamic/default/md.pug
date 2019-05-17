@@ -1,10 +1,10 @@
 extends templates/site.pug
 
 block title
-	title #{__('website')} - #{__('md_title')}
+  title #{__('website')} - #{__('md_title')}
 
 block nav
-	!= sidebar
+  != sidebar
 
 block main
-	!= markdown
+  != markdown

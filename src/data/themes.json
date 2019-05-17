@@ -1,16 +1,16 @@
 {
-	"selectable": [
-		"default",
-		"bootstrap",
-		"table"
-	],
-	"usable": [
-		"default",
-		"bootstrap",
-		"table",
-		"discordbotsorg",
-		"botsdiscordpw",
-		"blank",
-		"store"
-	]
+  "selectable": [
+    "default",
+    "bootstrap",
+    "table"
+  ],
+  "usable": [
+    "default",
+    "bootstrap",
+    "table",
+    "discordbotsorg",
+    "botsdiscordpw",
+    "blank",
+    "store"
+  ]
 }

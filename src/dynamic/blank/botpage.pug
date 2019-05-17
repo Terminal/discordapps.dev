@@ -1,20 +1,20 @@
 //*
-	This file is licenced under CC0 1.0
-	https://creativecommons.org/publicdomain/zero/1.0/
-	https://github.com/Terminal/discordapps.dev/tree/archive-pugjs
+  This file is licenced under CC0 1.0
+  https://creativecommons.org/publicdomain/zero/1.0/
+  https://github.com/Terminal/discordapps.dev/tree/archive-pugjs
 
 doctype html
 
 if botinfo.type === 'iframe'
-	iframe.botiframe(src=`${botinfo.longDesc}`)
+  iframe.botiframe(src=`${botinfo.longDesc}`)
 else if (botinfo.type === 'markdown' || botinfo.type === 'asciidoc' || botinfo.type === 'html')
-	!= render
+  != render
 
 
 script(async src="https://www.googletagmanager.com/gtag/js?id=UA-67900801-5")
 script.
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-	gtag('config', 'UA-67900801-5');
+  gtag('config', 'UA-67900801-5');

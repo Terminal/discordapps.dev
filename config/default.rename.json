@@ -1,38 +1,38 @@
 {
-	"rethinkdb": {
-		"db": "terminal",
-		"servers": [
-			{
-				"host": "rethinkdb",
-				"port": 28015
-			}
-		]
-	},
-	"discord": {
-		"clientID": "",
-		"clientSecret": "",
-		"scope": [ "identify" ],
-		"token": "",
-		"guild": "",
-		"channel": "",
-		"roles": [],
-		"invite": "https://discord.gg/DwBCgta",
-		"game": "ls.terminal.ink",
-		"prefix": [
-			"ls>"
-		],
-		"admins": []
-	},
-	"webserver": {
-		"port": 8080,
-		"secret": "",
-		"location": "",
-		"docs": "https://docs.terminal.ink/ls/",
-		"store": {
-			"browserSessionsMaxAge": 2592000000,
-			"clearInterval": 2592000000
-		}
-	},
-	"useragent": "Discord Bot (https://moustacheminer.com/, 2.0.0) Running at https://ls.terminal.ink/",
-	"production": true
+  "rethinkdb": {
+    "db": "terminal",
+    "servers": [
+      {
+        "host": "rethinkdb",
+        "port": 28015
+      }
+    ]
+  },
+  "discord": {
+    "clientID": "",
+    "clientSecret": "",
+    "scope": [ "identify" ],
+    "token": "",
+    "guild": "",
+    "channel": "",
+    "roles": [],
+    "invite": "https://discord.gg/DwBCgta",
+    "game": "ls.terminal.ink",
+    "prefix": [
+      "ls>"
+    ],
+    "admins": []
+  },
+  "webserver": {
+    "port": 8080,
+    "secret": "",
+    "location": "",
+    "docs": "https://docs.terminal.ink/ls/",
+    "store": {
+      "browserSessionsMaxAge": 2592000000,
+      "clearInterval": 2592000000
+    }
+  },
+  "useragent": "Discord Bot (https://moustacheminer.com/, 2.0.0) Running at https://ls.terminal.ink/",
+  "production": true
 }

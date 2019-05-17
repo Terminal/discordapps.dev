@@ -1,7 +1,7 @@
 /**
-	This file is licenced under CC0 1.0
-	https://creativecommons.org/publicdomain/zero/1.0/
-	https://github.com/Terminal/discordapps.dev/tree/archive-pugjs
+  This file is licenced under CC0 1.0
+  https://creativecommons.org/publicdomain/zero/1.0/
+  https://github.com/Terminal/discordapps.dev/tree/archive-pugjs
 */
 
 const config = require('config');
@@ -12,35 +12,35 @@ const r = require('../db');
 passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser((id, done) => {
-	r.table('users')
-		.get(id)
-		.then((user) => {
-			done(null, user);
-		});
+  r.table('users')
+    .get(id)
+    .then((user) => {
+      done(null, user);
+    });
 });
 
 // DiscordApp
 passport.use(new DiscordStrategy(
-	{
-		clientID: config.get('discord').clientID,
-		clientSecret: config.get('discord').clientSecret,
-		scope: config.get('discord').scope,
-		callbackURL: `${config.get('webserver').location}auth/callback`
-	},
-	(accessToken, refreshToken, profile, done) => {
-		if (accessToken !== null) {
-			r.table('users')
-				.insert(profile, {
-					conflict: 'replace'
-				})
-				.then(() => {
-					done(null, profile);
-				})
-				.catch((err) => {
-					throw err;
-				});
-		}
-	}
+  {
+    clientID: config.get('discord').clientID,
+    clientSecret: config.get('discord').clientSecret,
+    scope: config.get('discord').scope,
+    callbackURL: `${config.get('webserver').location}auth/callback`
+  },
+  (accessToken, refreshToken, profile, done) => {
+    if (accessToken !== null) {
+      r.table('users')
+        .insert(profile, {
+          conflict: 'replace'
+        })
+        .then(() => {
+          done(null, profile);
+        })
+        .catch((err) => {
+          throw err;
+        });
+    }
+  }
 ));
 
 module.exports = passport;

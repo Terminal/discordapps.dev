@@ -1,9 +1,9 @@
 extends templates/site.pug
 
 block title
-	title #{__('website')} - #{__('theme_title')}
+  title #{__('website')} - #{__('theme_title')}
 
 block main
-	h1 #{__('theme_themes')}
-	for theme in themes
-		li: a(href=`/theme/${theme}`) #{__(`theme_${theme}`)}
+  h1 #{__('theme_themes')}
+  for theme in themes
+    li: a(href=`/theme/${theme}`) #{__(`theme_${theme}`)}
