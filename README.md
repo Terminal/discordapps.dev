@@ -1,45 +1,34 @@
-# discordbots.co.uk legacy backend [![Build Status](https://travis-ci.org/Terminal/ls.terminal.ink.svg?branch=master)](https://travis-ci.org/Terminal/ls.terminal.ink)
-An open source Discord Bot listing website using Eris, Express and RethinkDB (and no jQuery if you select the `<table>` theme)
+# Discord Apps
+_curated by Terminal.ink_
 
-## Development Team
-Category            | People
-------------------- | --------------------------
-Lead Developer      | 7coil#3175 ([@lepon01](https://github.com/lepon01))
-Secondary Developer | Devoxin#0387 ([@Devoxin](https://github.com/Devoxin))
+ls.terminal.ink was a legacy in Bot Listing technology,
+abusing the latest web technology for the bot list of yesterday.
 
-## Translators
-Language | Name
--------- | ----------------
-Chinese  | The Double-Eyed Bus#6889 ([@austinhuang0131](https://github.com/austinhuang0131))
-Dutch    | Auxim#2994 ([@GeoffreyWesthoff](https://github.com/GeoffreyWesthoff))
-French   | Yvan#5761 ([@lepeli](https://github.com/lepeli))
-French   | iDroid#4441 ([@iDroid27210](https://github.com/iDroid27210))
-German   | MrLar#8117 ([@MrLar](https://github.com/MrLar))
-Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
+## Features
+### Interoperable Bot Pages
+![dont sue me](.github/chrome_2019-05-17_23-01-32.png)  
+Make your legacy bot pages work with `ls.terminal.ink` to spend less time rewriting
 
-## Installation
-1. Install `imagemagick`, `Node.js` v9.5.0, `npm` 5.6.0, `RethinkDB`
-1. Run `rethinkdb`
-1. `git clone https://github.com/terminal/ls.terminal.ink.git`
-1. `cd ls.terminal.ink`
-1. `npm i`
-1. `cp config/default.rename.json config/default.json`
-1. Edit `config/default.json`
-1. `npm start`
+### Multi Language support
+![zh-hans](.github/chrome_2019-05-17_23-06-23.png)
+Present your ideas in other languages other than English. Make your bot page in a different language to target much less users.
 
-### Installation on Docker
-1. `git clone https://github.com/terminal/ls.terminal.ink.git && cd ls.terminal.ink`
-1. `docker-compose build` to build the container
-1. `docker-compose up` to start the container
-1. `docker-compose start` to start the container in the background
+### Images, YouTube and YOUKU video embed
+![Image showing XSS vulnerability](.github/chrome_2019-05-17_23-09-28.png)
+Your description is your gateway to XSS vulnerabilities
 
-*Notice, when updating the list, you must pull and then `docker-compose build` to update*
+### Multi Prefix
+![Comma separated values](.github/chrome_2019-05-17_23-10-39.png)
+Comma separated values count as multiple prefixes.  
+Add the word `(mentionable)` in French and nobody will know if it means anything!
 
-### Translations
+## Development Previews
+Location                                                          | Description
+----------------------------------------------------------------- | -----------------
+&nbsp;                                                            | &nbsp;
 
-1. Edit `locales/{locale}.json`
-1. Add the tag `lang_{locale}` in your new file as well as `en-gb.json`
-
-## Licence
-CC0
-Read `LICENCE` for full licence.
+## Command Information
+Command            | Description
+------------------ | ---------------
+yarn               | Download dependencies
+yarn start         | Run the server

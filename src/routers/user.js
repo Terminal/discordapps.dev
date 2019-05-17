@@ -17,6 +17,7 @@ const userSetup = (req, res, next) => {
 
 	if (themelist.includes(req.cookies.theme)) res.theme(req.cookies.theme);
 	res.locals.lang = req.cookies.lang || 'en-gb';
+	res.setLocale(res.locals.lang);
 
 	next();
 };

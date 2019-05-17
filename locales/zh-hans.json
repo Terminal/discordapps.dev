@@ -58,7 +58,7 @@
 	"message_bot_changed": "您已成功修改您的机器人",
 	"message_bot_inserted": "您已成功添加您的机器人。我们将尽快对其进行审核。",
 	"message_bot_deleted": "您已成功删除您的机器人",
-	"footer_copyright": "版权所有 2015 - 2018, Moustacheminer Server Services",
+	"footer_copyright": "版权所有 2015 - 2019, Moustacheminer Server Services",
 	"footer_licence": "本软件以 GPL-3.0 许可证释出。",
 	"index_all": "查看所有机器人",
 	"index_jumbotron": "Welcome to a generic Bootstrap page.",

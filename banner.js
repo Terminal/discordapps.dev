@@ -48,5 +48,5 @@ module.exports = `\x1b[0m
   \x1b[0m  \x1b[1m\x1b[36m\x1b[44m\u2588\u2588\u2588\u2588\u2588\u2588\u2593\u2593\u2593\u2593\u2593\u2593\u2592\u2592\u2592\u2592\u2592\u2592\u2591\u2591\u2591\u2591\u2591\u2591      \x1b[0m
 \x1b[0m
 
-Copyright (C) 2015 - 2018 Moustacheminer Server Services
-Copyright (C) 2017 - 2018 ls.terminal.ink`;
+Copyright (C) 2015 - 2019 Moustacheminer Server Services
+Copyright (C) 2017 - 2019 ls.terminal.ink`;
