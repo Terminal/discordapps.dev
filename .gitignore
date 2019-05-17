@@ -18,3 +18,5 @@ config/default.json
 development.json
 test.json
 
+# Rethinkdb
+rethinkdb_data

@@ -43,4 +43,3 @@ Swedish  | Mackan#7196 ([@Sven65](https://github.com/Sven65))
 ## Licence
 CC0
 Read `LICENCE` for full licence.
-Files may be marked with "Unlicence" - This is just being lazy and not editing them.
