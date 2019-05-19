@@ -9,3 +9,9 @@
   font-size: 7em;
   margin: 0.1em;
 }
+
+.tooltip::after {
+  background-color: #787eb4;
+  font-size: 16pt;
+  top: 100%;
+}

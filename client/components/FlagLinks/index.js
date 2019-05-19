@@ -5,6 +5,7 @@ import languages from '../../locales';
 import { TwitterEmojis } from '../../data/Styles';
 import styles from './index.module.scss';
 import { Modesta } from '../../data/Styles';
+import ConstructCSS from '../../helpers/ConstructCSS';
 
 export default ({
   unlocalisedPath = ''
@@ -18,8 +19,9 @@ export default ({
             {(message) => (
               <Link
                 to={`/${language.code}${unlocalisedPath}`}
-                className={`${Modesta.emoji} ${TwitterEmojis[language.flag.replace(/-([a-z0-9])/g, (capture) => capture[1].toUpperCase()).replace('-', '')]} ${styles.flag}`}
+                className={ConstructCSS(Modesta.emoji, Modesta.tooltip, styles.tooltip, TwitterEmojis[language.flag.replace(/-([a-z0-9])/g, (capture) => capture[1].toUpperCase()).replace('-', '')], styles.flag)}
                 aria-label={message}
+                data-tooltip={message}
                 title={message}></Link>
             )}
           </FormattedMessage>
