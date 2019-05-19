@@ -8606,6 +8606,12 @@ noscript {
   font-size: 7em;
   margin: 0.1em;
 }
+
+._tooltip_94c62::after {
+  background-color: #787eb4;
+  font-size: 16pt;
+  top: 100%;
+}
 ._table_59897 {
   overflow-x: scroll;
 }
