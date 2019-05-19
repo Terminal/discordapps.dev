@@ -9365,7 +9365,8 @@ exports.default = _default;
 },{"../../components/BotCategoriesLinksList":"JxM1","../../components/BotCategoryCollection":"6W3R","../../components/Container":"tNeE","../../components/FlexColumns":"U1G4","../../components/GetStartedWithBots":"VUzD","../../components/Layout":"UCeK","../../components/WebsiteTypeButtons":"V0nm","../../../data/Categories":"3TUw"}],"CRMR":[function(require,module,exports) {
 module.exports = {
   "flags": "_flags_94c62",
-  "flag": "_flag_94c62"
+  "flag": "_flag_94c62",
+  "tooltip": "_tooltip_94c62"
 };
 },{}],"JilT":[function(require,module,exports) {
 "use strict";
@@ -9387,6 +9388,8 @@ var _Styles = require("../../data/Styles");
 
 var _indexModule = _interopRequireDefault(require("./index.module.scss"));
 
+var _ConstructCSS = _interopRequireDefault(require("../../helpers/ConstructCSS"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = ({
@@ -9398,13 +9401,14 @@ var _default = ({
   key: language.code
 }, message => _react.default.createElement(_reactRouterDom.Link, {
   to: `/${language.code}${unlocalisedPath}`,
-  className: `${_Styles.Modesta.emoji} ${_Styles.TwitterEmojis[language.flag.replace(/-([a-z0-9])/g, capture => capture[1].toUpperCase()).replace('-', '')]} ${_indexModule.default.flag}`,
+  className: (0, _ConstructCSS.default)(_Styles.Modesta.emoji, _Styles.Modesta.tooltip, _indexModule.default.tooltip, _Styles.TwitterEmojis[language.flag.replace(/-([a-z0-9])/g, capture => capture[1].toUpperCase()).replace('-', '')], _indexModule.default.flag),
   "aria-label": message,
+  "data-tooltip": message,
   title: message
 }))));
 
 exports.default = _default;
-},{"../../locales":"Qpzm","../../data/Styles":"rs3k","./index.module.scss":"CRMR"}],"9DHm":[function(require,module,exports) {
+},{"../../locales":"Qpzm","../../data/Styles":"rs3k","./index.module.scss":"CRMR","../../helpers/ConstructCSS":"SwhA"}],"9DHm":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
