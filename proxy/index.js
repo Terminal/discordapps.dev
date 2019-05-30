@@ -1,24 +1,25 @@
-const express = require('express');
 const fetch = require('node-fetch');
-const config = require('./config.json');
 
-const app = express();
-
-console.log(config);
-
-app.get('*', (req, res, next) => {
-  if (req.get('Authorization') === config.webserver.authorization) {
-    next();
-  } else {
-    res.status(400).send('Unauthorised');
+/**
+ * Responds to any HTTP request.
+ *
+ * @param {!express:Request} req HTTP request context.
+ * @param {!express:Response} res HTTP response context.
+ */
+exports.imageProxy = (req, res) => {
+  if (req.get('Authorization') !== process.env.TOKEN) {
+    return res.status(400).send('Unauthorised');
   }
-}, (req, res) => {
-  fetch(req.originalUrl.substr(1))
+
+  if (!req.params.url) {
+    return res.status(400).send('No URL sent');
+  }
+
+  fetch(req.params.url)
     .then((data) => {
       data.body.pipe(res);
     })
     .catch((err) => {
       res.status(500).send(err.message);
     });
-})
-  .listen(config.webserver.port);
+};

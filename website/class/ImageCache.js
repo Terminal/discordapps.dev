@@ -76,10 +76,15 @@ class ImageCache {
 
   download() {
     // Fetch the URL of the image
-    return fetch(`${config.proxy.host}/${this.url}`, {
+    return fetch(`${config.proxy.host}`, {
       timeout: 30000,
+      method: 'POST',
+      body: JSON.stringify({
+        url: this.url
+      }),
       headers: {
-        Authorization: config.proxy.authorization
+        Authorization: config.proxy.authorization,
+        'Content-Type': 'application/json'
       }
     })
       .then(res => res.buffer())

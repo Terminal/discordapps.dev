@@ -6,8 +6,9 @@ Category            | People
 Lead Developer      | 7coil#3175 ([@lepon01](https://github.com/lepon01))
 
 ## setup.exe
-1. edit config
-2. `http://your-proxy.example.com/https://moustacheminer.com/img/background.jpg`
+1. Create a Google Cloud Function at https://cloud.console.google.com/
+2. Set an environment variable for `TOKEN`
+3. POST JSON with key `url` and header `Authorization` equal to `TOKEN` env var
 
 ## Licence
 All files in this folder are licenced under the MIT Licence.
