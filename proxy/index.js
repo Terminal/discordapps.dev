@@ -11,11 +11,11 @@ exports.imageProxy = (req, res) => {
     return res.status(400).send('Unauthorised');
   }
 
-  if (!req.params.url) {
+  if (!req.body.url) {
     return res.status(400).send('No URL sent');
   }
 
-  fetch(req.params.url)
+  fetch(req.body.url)
     .then((data) => {
       data.body.pipe(res);
     })
