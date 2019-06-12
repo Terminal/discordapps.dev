@@ -11652,7 +11652,7 @@ const ReactRenderer = (req, res, next) => {
 
 
     res.status(context.status);
-    res.send(htmlData.replace('<html lang="en">', `<html ${helmet.htmlAttributes.toString()}>`).replace('<title>Discord Apps Marketplace</title>', helmet.title.toString() + helmet.meta.toString() + helmet.link.toString() + helmet.script.toString()).replace('<div id="app"></div>', `<div id="app">${html}</div><script>window.REDUX_STATE = ${JSON.stringify(store.getState())}</script>`));
+    res.send(htmlData.replace('<html lang="en">', `<html ${helmet.htmlAttributes.toString()}>`).replace(/<title>[\w .]+<\/title>/, helmet.title.toString() + helmet.meta.toString() + helmet.link.toString() + helmet.script.toString()).replace('<div id="app"></div>', `<div id="app">${html}</div><script>window.REDUX_STATE = ${JSON.stringify(store.getState())}</script>`));
   }).catch(err => next(err));
 };
 
