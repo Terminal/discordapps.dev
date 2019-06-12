@@ -79,7 +79,7 @@ const ReactRenderer = (req, res, next) => {
             `<html ${helmet.htmlAttributes.toString()}>`
           )
           .replace(
-            '<title>Discord Apps Marketplace</title>',
+            /<title>[\w .]+<\/title>/,
             helmet.title.toString() +
             helmet.meta.toString() +
             helmet.link.toString() + 
