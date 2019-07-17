@@ -33,7 +33,7 @@
     "i18n": "^0.8.3",
     "joi": "^14.0.4",
     "js2xmlparser": "^4.0.0",
-    "multer": "^1.4.1",
+    "multer": "^1.4.2",
     "node-fetch": "^2.6.0",
     "passport": "^0.4.0",
     "passport-discord": "^0.1.3",
