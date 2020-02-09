@@ -8790,6 +8790,7 @@ class FilterPage extends _react.Component {
     })))), Array.isArray(results) ? _react.default.createElement(_ContentBox.default, null, _react.default.createElement(_BotCollection.default, {
       bots: results.sort((a, b) => {
         if (this.state.state === _States.default.APPROVED) return b.random - a.random;
+        if (this.state.state === _States.default.QUEUE) return a.created - b.created;
         return b.edited - a.edited;
       }),
       hidden: hidden
