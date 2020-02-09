@@ -119,6 +119,7 @@ class FilterPage extends Component {
                   results
                     .sort((a, b) => {
                       if (this.state.state === States.APPROVED) return b.random - a.random;
+                      if (this.state.state === States.QUEUE) return a.created - b.created;
                       return b.edited - a.edited;
                     })
                 } hidden={hidden} />
