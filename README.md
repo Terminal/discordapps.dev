@@ -1,3 +1,7 @@
+# Deprecation Warning
+This website is being replaced by https://github.com/7coil/ls20 as soon as it's production ready.
+No more changes (not even bug fixes) will be made to this repository at this time.
+
 # Discord Apps
 _curated by Terminal.ink_
 
